@@ -2335,4 +2335,55 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
     font-style: normal !important;
 }
 
+/* =================================================================
+   ✨ CORRECCIÓN DEFINITIVA: TÍTULOS BORDÓ Y TEXTOS LEGIBLES EN CEREMONIA
+   ================================================================= */
+
+/* 1. Fondo bordó y letra blanca para los títulos principales de Ceremonia */
+.ceremonia-facial-hero-title,
+.tu-ceremonia-main-title,
+[class*="ceremonia"] h1 {
+    background-color: #7A160E !important;
+    color: #ffffff !important;
+}
+
+.ceremonia-facial-hero-title-text {
+    color: #ffffff !important;
+}
+
+/* 2. Texto crema claro e impecable dentro de las tarjetas bordó */
+.ceremonia-facial-block-text-content,
+.ceremonia-facial-extra-block-content,
+.ceremonia-facial-block-text-content p,
+.ceremonia-facial-extra-block-content p {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+
+/* =================================================================
+   🏹 SALVAVIDAS: REPARACIÓN DE FLECHAS DE CARRUSEL (BIOTIPO)
+   ================================================================= */
+
+/* Neutralizamos los estilos de botón global para que no rompan las flechas */
+.slick-prev, .slick-next, 
+[class*="carousel"] button, 
+[class*="swiper-button"] {
+    background-color: transparent !important;
+    background: transparent !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+}
+
+/* Forzamos a que las flechas o íconos internos recuperen su color y forma original */
+.slick-prev::before, .slick-next::before,
+[class*="carousel"] button svg,
+[class*="swiper-button"] svg {
+    color: #7a160e !important; /* Rojo Alkimya o cambiá a #ffffff si van sobre fondo oscuro */
+    fill: #7a160e !important;
+    font-size: 24px !important;
+}
+
 
