@@ -2619,48 +2619,203 @@ a[href*="whatsapp"].elementor-button:hover {
 }
 
 /* =================================================================
-   ✨ CENTRADO Y POSICIONAMIENTO PERFECTO DE CAJAS EN CEREMONIA
+   ✨ REPARACIÓN DEFINITIVA CEREMONIA: ORDEN, CAJAS Y 3 BOTONES
    ================================================================= */
+
+/* 1. Restablecer el contenedor de Ceremonia en modo flujo vertical prolijo */
 .tu-ceremonia-content {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
+    justify-content: flex-start !important;
     position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 3rem 1rem 5rem !important;
+    gap: 2rem !important;
 }
 
+/* 2. Tarjetas de texto bien centradas, limpias y legibles */
 .tu-ceremonia-text-card {
     position: relative !important;
     top: auto !important;
     left: auto !important;
     right: auto !important;
     transform: none !important;
-    margin: 1.25rem auto !important;
-    width: 70% !important;
-    max-width: 800px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 750px !important;
     height: auto !important;
     background-color: #7a160e !important;
     border-radius: 0px 20px !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+    padding: 2rem !important;
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+}
+
+.tu-ceremonia-text-card-bg {
+    display: none !important;
 }
 
 .tu-ceremonia-text-card-content {
     position: relative !important;
     inset: auto !important;
     width: 100% !important;
-    padding: 2rem !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    padding: 0 !important;
+    display: block !important;
 }
 
 .tu-ceremonia-text-card-text {
     color: #ffffff !important;
     text-align: center !important;
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
     margin: 0 auto !important;
-    max-width: 90% !important;
+    max-width: 100% !important;
 }
+
+/* 3. Contenedor y diseño de los 3 botones inferiores de Ceremonia */
+.tu-ceremonia-buttons {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 2rem auto 0 auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* 4. Estilo unificado para los botones: fondo crema, letra bordó Alkimya */
+.tu-ceremonia-button,
+[class*="tu-ceremonia-button-"] {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-width: 240px !important;
+    max-width: 300px !important;
+    padding: 0.9rem 1.5rem !important;
+    background-color: #FFF2DB !important; /* Fondo crema divino */
+    color: #7a160e !important; /* Letra bordó impecable */
+    border: 2px solid #7a160e !important;
+    border-radius: 0 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(122, 22, 14, 0.15) !important;
+    transition: all 0.25s ease !important;
+}
+
+.tu-ceremonia-button:hover {
+    background-color: #7a160e !important; /* Inversión en hover: bordó de fondo */
+    color: #FFF2DB !important; /* Letra crema al pasar el mouse */
+    box-shadow: 0 6px 18px rgba(122, 22, 14, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 5. Blindaje anti-verde total en toda la sección */
+[class*="ceremonia"] a[href*="whatsapp"],
+[class*="ceremonia"] .elementor-button-success {
+    background-color: #7a160e !important;
+    color: #FFF2DB !important;
+}
+
+/* =================================================================
+   ✨ EXTERMINIO DEFINITIVO DEL VERDE Y RESCATE DE BOTONES ("NARNIA")
+   ================================================================= */
+
+/* 1. Destruir el verde de WhatsApp de una vez por todas */
+a[href*="whatsapp"], 
+.elementor-button[href*="whatsapp"], 
+[class*="whatsapp"], 
+.whatsapp-btn,
+.elementor-button-success {
+    background-color: #7a160e !important;
+    background: #7a160e !important;
+    color: #FFF2DB !important;
+    border: none !important;
+}
+
+a[href*="whatsapp"]:hover, 
+.elementor-button[href*="whatsapp"]:hover, 
+[class*="whatsapp"]:hover {
+    background-color: #590f0a !important;
+    color: #ffffff !important;
+}
+
+/* 2. Traer los botones de Narnia al centro con flexbox puro */
+.biotipos-section15-buttons-container,
+[class*="buttons-container"],
+.elementor-widget-button {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    margin: 2rem auto !important;
+    float: none !important;
+    clear: both !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* 3. Estándar prolijo y simétrico para ambos botones */
+.biotipos-section15-buttons-container a,
+.biotipos-section15-button,
+.elementor-button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 240px !important;
+    padding: 0.85rem 1.75rem !important;
+    border-radius: 0 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    font-style: normal !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* =================================================================
+   ✨ CONTraste PERFECTO EN SUBTÍTULOS DE SESIONES (OASIS, GÉNESIS, METAMORFOSIS)
+   ================================================================= */
+[class*="sesiones"] h2,
+[class*="sesiones"] h3,
+[class*="sesiones"] [class*="title"],
+.theme-sesiones h2,
+.theme-sesiones h3,
+.portal-subtitle,
+.sesiones-subtitle {
+    color: #0A432B !important; /* Verde botánico profundo de contraste */
+    font-style: normal !important;
+}
+
+/* Si están dentro de una caja clara específica de la sección */
+[class*="sesiones"] .elementor-widget-heading h1,
+[class*="sesiones"] .elementor-widget-heading h2,
+[class*="sesiones"] .elementor-widget-heading h3 {
+    color: #0A432B !important;
+}
+
