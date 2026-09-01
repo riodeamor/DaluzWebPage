@@ -2385,5 +2385,45 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
     fill: #7a160e !important;
     font-size: 24px !important;
 }
+/* =================================================================
+   ✨ FLECHAS DE CARRUSEL LIMPIAS (SIN CAJA CIRCULAR, SOLO EL ÍCONO)
+   ================================================================= */
 
+.elementor-swiper-button,
+.swiper-button-next,
+.swiper-button-prev,
+.slick-prev,
+.slick-next {
+    background-color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
+    height: auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Color y tamaño de las flechas limpias */
+.elementor-swiper-button svg,
+.swiper-button-next svg,
+.swiper-button-prev svg,
+.slick-prev::before,
+.slick-next::before,
+.elementor-swiper-button i {
+    color: #7a160e !important; /* Rojo Alkimya o cambiá a #FFF2DB si están sobre fondo oscuro */
+    fill: #7a160e !important;
+    font-size: 28px !important;
+    opacity: 1 !important;
+}
+
+/* Efecto sutil al pasar el mouse */
+.elementor-swiper-button:hover svg,
+.swiper-button-next:hover svg,
+.swiper-button-prev:hover svg,
+.slick-prev:hover::before,
+.slick-next:hover::before {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+}
 
