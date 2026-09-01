@@ -736,3 +736,50 @@
     display: flex !important;
     flex-direction: column !important;
 }
+
+/* =================================================================
+   ✨ CENTRADO Y POSICIONAMIENTO PERFECTO DE CAJAS EN CEREMONIA
+   ================================================================= */
+.tu-ceremonia-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.tu-ceremonia-text-card {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin: 1.25rem auto !important;
+    width: 70% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    background-color: #7a160e !important;
+    border-radius: 0px 20px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.tu-ceremonia-text-card-content {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    padding: 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.tu-ceremonia-text-card-text {
+    color: #ffffff !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    max-width: 90% !important;
+}
