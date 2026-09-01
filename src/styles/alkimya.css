@@ -1563,9 +1563,9 @@ input:focus, select:focus {
 
 /* 1. EXTERMINIO DE CURSIVAS EN TÍTULOS DE PROCESOS */
 
-[class*="procesos"] h1, [class*="procesos"] h2, [class*="procesos"] h3, 
+[class*="procesos"] h2, [class*="procesos"] h3, 
 
-.theme-procesos h1, .theme-procesos h2, .theme-procesos h3 {
+.theme-procesos h2, .theme-procesos h3 {
 
     font-family: 'Cormorant Garamond', serif !important;
 
@@ -1835,5 +1835,291 @@ li.procesos .sub-menu a {
 
     font-weight: 600 !important;
 
+}
+
+/* 2. EXTERMINADOR DE LA GRONCHADA AMARILLA (BOTÓN BIOTIPO / INSTAGRAM) */
+/* Forzamos que este botón respete los códigos de clase Alkimya (Fondo Rojo y Letra Crema) */
+[class*="biotipo"] a, [class*="biotipo"] button, 
+.biotipo-btn, [class*="instagram"] a,
+section[style*="background-color: #fdfaf4"] a.elementor-button,
+.elementor-widget-button a[href*="instagram"],
+.elementor-widget-button a[href*="biotipo"] {
+    background-color: #7a160e !important; /* Rojo Alkimya oficial */
+    color: #fdfaf4 !important; /* Letra crema vainilla */
+    border: none !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    transition: all 0.3s ease !important;
+}
+
+/* 3. ESTADO HOOVER ELEGANTE (Al pasar el mouse) */
+[class*="biotipo"] a:hover, [class*="biotipo"] button:hover, 
+.biotipo-btn:hover, [class*="instagram"] a:hover,
+.elementor-widget-button a[href*="instagram"]:hover,
+.elementor-widget-button a[href*="biotipo"]:hover {
+    background-color: #590f0a !important; /* Un rojo un poquito más oscuro y profundo */
+    color: #ffffff !important;
+    box-shadow: 0 4px 15px rgba(122, 22, 14, 0.3) !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — CORRECCIÓN DE BOTONES (SECCIÓN BIOTIPO / ALKIMYA)
+   ================================================================= */
+
+[class*="biotipo"] a.elementor-button, 
+[class*="biotipo"] .elementor-button,
+[class*="biotipo"] button,
+.theme-alkimya a.elementor-button,
+section[style*="background-color: #7a160e"] a.elementor-button,
+section[style*="background-color: #860119"] a.elementor-button {
+    background-color: #860119 !important; /* Fondo normal requerido para Alkimya */
+    color: #fdfaf4 !important; /* Texto crema boutique */
+    font-family: 'Synthese', sans-serif !important; /* Fuente de interfaz obligatoria */
+    text-transform: uppercase !important; /* Mayúsculas */
+    letter-spacing: 0.18em !important;
+    font-size: 1.125rem !important;
+    font-style: normal !important;
+    border: none !important;
+    border-radius: 0 15px !important; /* Estilo boutique esquinas opuestas */
+    transition: background-color 0.3s ease !important;
+}
+
+/* Estado Hover estricto para Alkimya */
+[class*="biotipo"] a.elementor-button:hover, 
+[class*="biotipo"] .elementor-button:hover,
+[class*="biotipo"] button:hover,
+.theme-alkimya a.elementor-button:hover,
+section[style*="background-color: #7a160e"] a.elementor-button:hover,
+section[style*="background-color: #860119"] a.elementor-button:hover {
+    background-color: #AE0000 !important; /* Hover oficial requerido */
+    color: #ffffff !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — EXTERMINIO DE AMARILLOS Y TRANSPARENCIA EN TESOROS
+   ================================================================= */
+
+/* 1. MATAR EL AMARILLO EN TEXTOS Y ENLACES (ILEGIBLES) */
+/* Forzamos que cualquier texto o enlace claro use un tono oscuro nítido o rojo Alkimya */
+a[style*="yellow"], span[style*="yellow"], p[style*="yellow"],
+.tesoros-box a, .portal-card a, [class*="tesoros"] a {
+    color: #7a160e !important; /* Rojo Alkimya legible */
+    text-decoration: none !important;
+}
+
+/* Excepción específica para el texto amarillo de la captura de membresía */
+[class*="membresia"] a, [class*="membership"] a, 
+a[href*="membresia"], a[href*="membership"] {
+    color: #7a160e !important; /* Texto oscuro/rojo legible, adiós amarillo */
+    font-weight: 600 !important;
+}
+
+/* 2. TRANSPARENCIA SUTIL EN CAJAS DE TESOROS / PORTALES */
+/* Reemplazamos el fondo blanco sólido por una transparencia elegante */
+.tesoros-box, [class*="tesoros"] .card, [class*="tesoros"] .elementor-widget-wrap,
+[class*="tesoros"] > div, .portal-card, [class*="portal"] {
+    background-color: rgba(253, 250, 244, 0.65) !important; /* Crema translúcido (65% de opacidad) */
+    backdrop-filter: blur(8px) !important; /* Efecto vidrio esmerilado boutique sutil */
+    border: 1px solid rgba(122, 22, 14, 0.12) !important; /* Borde ultra fino */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — EXTERMINIO DEFINITIVO DE TEXTOS CLAROS/INVISIBLES
+   ================================================================= */
+
+/* 1. TÍTULOS DENTRO DE TARJETAS Y CAJAS ➔ ROJO ALKIMYA OSCURO */
+.tesoros-box h1, .tesoros-box h2, .tesoros-box h3, .tesoros-box h4,
+.portal-card h1, .portal-card h2, .portal-card h3, .portal-card h4,
+[class*="tesoros"] h1, [class*="tesoros"] h2, [class*="tesoros"] h3, [class*="tesoros"] h4,
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3, [class*="card"] h4,
+[class*="portal"] h1, [class*="portal"] h2, [class*="portal"] h3 {
+    color: #7a160e !important; /* Rojo Alkimya fuerte y nítido */
+    font-style: italic !important; /* Mantiene la cursiva sutil de los títulos */
+    opacity: 1 !important; /* Mata cualquier transparencia heredada */
+}
+
+/* 2. PÁRRAFOS Y TEXTOS INTERNOS ➔ GRIS-ROJIZO OSCURO NÍDIDO */
+.tesoros-box p, .tesoros-box li, .tesoros-box span,
+.portal-card p, .portal-card li, .portal-card span,
+[class*="tesoros"] p, [class*="tesoros"] li, [class*="tesoros"] span,
+[class*="card"] p, [class*="card"] li, [class*="card"] span {
+    color: #251d1c !important; /* Tono oscuro profundo para lectura perfecta */
+    opacity: 1 !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — CONTRASTE PERFECTO EN CAJAS BORDÓ (CEREMONIA)
+   ================================================================= */
+
+/* Si la caja o el bloque tiene fondo bordó/rojo oscuro, el texto pasa a BLANCO */
+section[style*="background-color: #7a160e"] p,
+section[style*="background-color: #860119"] p,
+section[style*="background-color: #7a160e"] li,
+section[style*="background-color: #860119"] li,
+[class*="ceremonia"] [style*="background-color"] p,
+[class*="ceremonia"] [class*="box"] p, 
+[class*="ceremonia"] div[style*="background"] p,
+.theme-alkimya [class*="bg-red"] p,
+div[style*="background-color: rgb(122, 22, 14)"] p,
+div[style*="background-color: rgb(134, 1, 25)"] p {
+    color: #ffffff !important; /* Letra blanca brillante sobre fondo bordó */
+    font-weight: 500 !important;
+}
+
+/* Asegurar también los títulos que estén dentro de esas cajas bordó */
+section[style*="background-color: #7a160e"] h1,
+section[style*="background-color: #7a160e"] h2,
+section[style*="background-color: #7a160e"] h3,
+[class*="ceremonia"] div[style*="background"] h1,
+[class*="ceremonia"] div[style*="background"] h2,
+[class*="ceremonia"] div[style*="background"] h3 {
+    color: #fdfaf4 !important; /* Títulos en crema luminoso sobre fondo bordó */
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — LIMPIEZA DE FUENTE EN TABLAS Y BANNERS DE BIOTIPO
+   ================================================================= */
+
+/* Quitamos la fuente de títulos (Velista/Cormorant) de los encabezados de tablas/biotipos */
+[class*="biotipo"] table th, 
+[class*="biotipo"] .elementor-grid-item h4,
+[class*="biotipo"] .elementor-grid-item h3,
+[class*="biotipo"] th,
+.biotipo-table th,
+[class*="biotipo"] [class*="header"] {
+    font-family: 'Synthese', sans-serif !important; /* Tipografía limpia de interfaz */
+    font-style: normal !important; /* Sin cursivas */
+    text-transform: uppercase !important; /* Mayúsculas prolijas para datos */
+    color: #7a160e !important; /* Rojo Alkimya nítido */
+    font-weight: 600 !important;
+    letter-spacing: 0.1em !important;
+    font-size: 0.85rem !important; /* Tamaño compacto y legible para cabeceras de tabla */
+}
+
+/* Asegurar que las celdas de texto común dentro de las tablas de biotipo sean súper legibles */
+[class*="biotipo"] table td, 
+[class*="biotipo"] td,
+.biotipo-table td {
+    font-family: 'Cormorant Garamond', serif !important; /* El cuerpo de texto sí usa Cormorant */
+    font-style: normal !important;
+    color: #251d1c !important; /* Tono oscuro profundo */
+    font-weight: 500 !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 13 (BOTONES Y TÍTULOS EN SESIONES)
+   ================================================================= */
+
+/* 1. BOTONES INVERSOS EN PLACAS CLARAS (SECCIÓN SESIONES / VERDE) */
+[class*="sesiones"] a.elementor-button, 
+[class*="sesiones"] .elementor-button,
+[class*="sesiones"] a.btn,
+.theme-sesiones a.elementor-button {
+    background-color: #0A432B !important; /* Verde oficial para botones en esta sección */
+    color: #ffffff !important; /* Letra blanca brillante */
+    font-family: 'Synthese', sans-serif !important; /* Fuente de interfaz obligatoria */
+    text-transform: uppercase !important;
+    letter-spacing: 0.18em !important;
+    font-size: 0.875rem !important;
+    font-style: normal !important;
+    border: none !important;
+    border-radius: 0 15px !important; /* Estilo boutique esquinas opuestas */
+    padding: 14px 20px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+/* Estado Hover para los botones de Sesiones */
+[class*="sesiones"] a.elementor-button:hover, 
+[class*="sesiones"] .elementor-button:hover {
+    background-color: #285D30 !important; /* Verde hover oficial */
+    color: #ffffff !important;
+}
+
+/* 2. JERARQUÍA DE TÍTULOS EN LAS TARJETAS DE SESIONES */
+/* Hacemos que el título principal de la tarjeta ("Pausa Vital", etc.) sea grande e imponente */
+[class*="sesiones"] [class*="card"] h3, 
+[class*="sesiones"] [class*="box"] h3,
+[class*="sesiones"] .elementor-widget-wrap h3,
+.portal-card h3, .tesoros-box h3 {
+    font-size: 1.6rem !important; /* Tamaño mayor para destacar sobre el texto */
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+    color: #7a160e !important; /* Rojo Alkimya para el título de la tarjeta */
+}
+
+/* Si los títulos son h2 o h4 dentro de las tarjetas, aplicamos la misma jerarquía */
+[class*="sesiones"] [class*="card"] h2, 
+[class*="sesiones"] [class*="box"] h2 {
+    font-size: 1.7rem !important;
+    color: #7a160e !important;
+}
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 14 (ESTILIZACIÓN DE FILTROS Y BUSCADOR)
+   ================================================================= */
+
+/* 1. ARREGLO DEL BUSCADOR ("BUSCAR PRODUCTOS...") */
+.shop-sidebar input[type="search"], .shop-sidebar input[type="text"],
+.search-form input, .woocommerce-product-search input,
+[class*="search"] input {
+    background-color: #860119 !important; /* Tono Alkimya oscuro-medio */
+    color: #ffffff !important; /* Letra blanca impecable */
+    border: none !important;
+    border-radius: 0 15px !important; /* Estilo boutique esquinas opuestas */
+    padding: 12px 20px !important;
+    font-family: 'Synthese', sans-serif !important;
+    font-style: normal !important;
+}
+
+/* Placeholder del buscador en blanco translúcido para que se lea bien */
+.shop-sidebar input::placeholder, .search-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 2. EXTERMINIO DEL DOBLE BORDE HORRIBLE EN SELECTORES Y INPUTS DE FILTRO */
+.shop-sidebar select, 
+.shop-sidebar input[type="number"],
+.widget_layered_nav select,
+[class*="filter"] select,
+[class*="filter"] input {
+    background-color: #860119 !important; /* Fondo Alkimya oscuro-medio */
+    color: #ffffff !important; /* Letras blancas para contraste sexy */
+    border: none !important; /* Muerte definitiva al doble borde */
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0 15px !important; /* Estilo boutique */
+    padding: 10px 15px !important;
+    font-family: 'Synthese', sans-serif !important;
+    font-style: normal !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+}
+
+/* Flechita de los selectores en blanco */
+.shop-sidebar select {
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%20%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%20%22292.4%22%20height%3D%20%22292.4%22%3E%3Cpath%20fill%3D%20%22%23FFFFFF%22%20d%3D%20%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 10px auto !important;
+    appearance: none !important;
+}
+
+/* 3. CAMPOS DE PRECIO (MIN / MAX) */
+.shop-sidebar .price_slider_amount input,
+[class*="price"] input {
+    background-color: #860119 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 0 10px !important;
+    text-align: center !important;
+}
+.shop-sidebar .price_slider_amount input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
