@@ -309,6 +309,47 @@
   }
 }
 
+/* =================================================================
+   ✨ CORRECCIÓN DE CAJAS INTERNAS Y CONTRASTE EN TESOROS
+   ================================================================= */
+
+/* 1. Limpiar fondos y recuadros blancos/rosas internos heredados por Elementor */
+.tesoros-page .tesoros-content-card div,
+.tesoros-page .tesoros-content-card .elementor-widget-wrap,
+.tesoros-page .tesoros-content-card .elementor-widget-container {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. Mantener únicamente el fondo degradado bordó en la tarjeta principal */
+.tesoros-page .tesoros-content-card {
+    background: linear-gradient(135deg,
+        var(--color-brand-primary) 0%,
+        #8a0000 50%,
+        var(--color-brand-secondary) 100%) !important;
+    border-radius: 0 15px !important;
+    padding: 1.5rem 2rem !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(240, 234, 206, 0.2) !important;
+}
+
+/* 3. Forzar tipografía blanca/crema impecable y sin cursivas forzadas dentro de las tarjetas */
+.tesoros-page .tesoros-content-card h1,
+.tesoros-page .tesoros-content-card h2,
+.tesoros-page .tesoros-content-card h3,
+.tesoros-page .tesoros-content-card h4,
+.tesoros-page .tesoros-content-card p,
+.tesoros-page .tesoros-content-card span,
+.tesoros-page .tesoros-content-card a,
+.tesoros-page .tesoros-content-card strong,
+.tesoros-page .tesoros-content-card li,
+.tesoros-page .tesoros-content-card .tesoros-card-text,
+.tesoros-page .tesoros-content-card .tesoros-card-title {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
 /* ===========================
    MANIFIESTO ALKIMYCO — REDISEÑO 2026
    ===========================
@@ -1048,12 +1089,6 @@
     width: 100% !important;
     margin: 2rem auto 0 auto !important;
 }
-
-/* =================================================================
-
-   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 2 (TARJETAS LANDING)
-
-   ================================================================= */
 
 
 
@@ -2053,25 +2088,6 @@ h2, h3, h4, h5, h6,
 }
 
 
-
-
-
-/* 3. COLORES BORDÓ EN HEADER PARA ALKIMYA Y TIENDA */
-
-.menu-item-has-children:nth-child(1) a, /* Tienda */
-
-.menu-item-has-children:nth-child(2) a, /* Alkimya */
-
-[class*="alkimya"] > a, [class*="tienda"] > a,
-
-li.alkimya > a, li.tienda > a {
-
-    color: #7a160e !important;
-
-}
-
-
-
 /* 4. REVERSIÓN DE TESOROS Y ARREGLO DE CAJAS BORDÓ CON LETRA BLANCA */
 
 /* Volvemos el fondo de tesoros a su estado original sólido/limpio sin transparencias bajas */
@@ -2127,79 +2143,9 @@ div[style*="background-color: #860119"] span {
 }
 
 
-
-/* 2. CAJAS DE TEXTO / BOTONES DE LANDING CON FONDO BLANCO ➔ FONDO BORDÓ Y LETRA BLANCA */
-
-/* Si hay cajas o botones blancos flotando sobre fondos oscuros, los pasamos a bordó con texto blanco */
-
-.elementor-widget-button a.elementor-button[style*="background-color: #fdfaf4"],
-
-.elementor-widget-button a.elementor-button[style*="background-color: rgb(253"],
-
-[class*="landing"] [class*="card"] a,
-
-[class*="landing"] .elementor-button,
-
-section[style*="background-color"] .elementor-button {
-
-    background-color: #7a160e !important; /* Fondo bordó oficial */
-
-    color: #ffffff !important; /* Letra blanca impecable */
-
-    border: none !important;
-
-}
-
-
-
-/* Transformar las tarjetas de enlace con fondo blanco de la imagen 2 en bloques sólidos bordó/blanco */
-
-.elementor-widget-wrap > .elementor-element[style*="background-color: #fdfaf4"],
-
-[class*="process"] .elementor-widget-container[style*="background"],
-
-.elementor-widget-container > a[style*="background"] {
-
-    background-color: #7a160e !important;
-
-    color: #ffffff !important;
-
-}
-
-
-
-.elementor-widget-container > a[style*="background"] * {
-
-    color: #ffffff !important;
-
-} 
-
 /* =================================================================
    ✨ DA LUZ ALKIMYA — ACTIVOS Y ORIGEN: COLOR ALKIMYA & CERO ITÁLICA
    ================================================================= */
-
-/* 1. FORZAR COLOR ROJO ALKIMYA OSCURO Y QUITAR ITÁLICAS EN ACTIVOS Y ORIGEN */
-.activos-origen-page h1,
-.activos-origen-page h2,
-.activos-origen-page h3,
-.activos-origen-page .ayo-section-title,
-.activos-origen-page .ayo-section-subtitle,
-.activos-origen-page .ayo-card-heading,
-.activos-origen-page .ayo-blockquote,
-.activos-origen-page .ayo-bullet-list li::before {
-    color: #7a160e !important; /* Rojo Alkimya oficial */
-    font-style: normal !important; /* Matamos las cursivas / itálicas */
-}
-
-/* 2. ASEGURAR BORDES Y DETALLES EN TONO ALKIMYA */
-.activos-origen-page .ayo-blockquote {
-    border-left-color: #7a160e !important;
-    background: rgba(122, 22, 14, 0.04) !important;
-}
-
-.activos-origen-page .ayo-card {
-    border-color: rgba(122, 22, 14, 0.15) !important;
-}
 
 /* REGLA MAESTRA COMPLEMENTARIA: Fondo oscuro = Texto crema claro obligatoriamente */
 section[style*="background-color: #7a160e"] *,
@@ -2207,6 +2153,35 @@ section[style*="background-color: #860119"] *,
 [class*="ceremonia"] *,
 [class*="manifesto"] *,
 [class*="tesoros"] .tesoros-content-card * {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+
+/* =================================================================
+   ✨ REGLA MAESTRA UNIVERSAL ABSOLUTA IQ200
+   Fondo Oscuro/Color (Rojo, Verde, Azul) ➔ Texto Blanco o Crema (#FFF2DB)
+   ================================================================= */
+
+/* 1. Cobertura para todas las secciones oscuras o de color institucionales */
+[class*="ceremonia"] *,
+[class*="manifesto"] *,
+[class*="tesoros-content-card"] *,
+[class*="alkimya"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
+[class*="procesos"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
+[class*="daluz"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
+[class*="biotipo"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]) {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+
+/* 2. Cobertura universal por estilos en línea (Cualquier caja o sección con fondo de color) */
+div[style*="background-color: rgb(122"],
+div[style*="background-color: #7a160e"],
+div[style*="background-color: #860119"],
+div[style*="background-color: #0a3a5c"],
+div[style*="background-color: #2d5a3f"],
+div[style*="background-color: #0A432B"],
+section[style*="background"] * {
     color: #FFF2DB !important;
     font-style: normal !important;
 }
