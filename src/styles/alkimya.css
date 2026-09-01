@@ -2875,7 +2875,7 @@ a[href*="whatsapp"]:hover,
 .ayo-card-heading,
 [class*="activos"] h1, [class*="activos"] h2, [class*="activos"] h3,
 [class*="origen"] h1, [class*="origen"] h2, [class*="origen"] h3 {
-    color: #7a160e !important;
+    color: #72111A !important;
     font-style: normal !important;
 }
 
@@ -3038,5 +3038,26 @@ a[href*="whatsapp"]:hover,
 .ciclos-subtitle,
 .portal-subtitle {
     color: #2E6F40 !important;
+    font-style: normal !important;
+}
+
+/* =================================================================
+   ✨ ACTIVOS Y ORIGEN: TÍTULOS SOBRE FONDO BORDÓ A BLANCO
+   ================================================================= */
+
+/* 1. Título principal y títulos que quedan sobre las ondas bordó de fondo -> BLANCOS */
+.activos-origen-page h1,
+[class*="activos"] h1, 
+[class*="origen"] h1,
+.ayo-section-title {
+    color: #ffffff !important;
+    font-style: normal !important;
+}
+
+/* 2. Títulos intermedios o inferiores (como "La Arquitectura..." y "Transparencia Total...") 
+   que están sobre el fondo bordó, excluyendo los que caen dentro de la caja crema */
+.activos-origen-page h2:not(.ayo-card h2):not([class*="box"] h2),
+.activos-origen-page h3:not(.ayo-card h3):not([class*="box"] h3) {
+    color: #ffffff !important;
     font-style: normal !important;
 }
