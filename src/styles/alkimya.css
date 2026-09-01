@@ -2317,10 +2317,8 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
 }
 
 /* =================================================================
-   🌿 SALVAVIDAS EXCLUSIVO: TARJETAS DE SESIONES / PROCESOS
+   🌿 SALVAVIDAS DEFINITIVO: TARJETAS DE SESIONES / PROCESOS
    ================================================================= */
-
-/* 1. Arreglar texto "blanco sobre blanco" en las cajas claras */
 [class*="sesiones"] [class*="card"] p,
 [class*="sesiones"] [class*="card"] span,
 [class*="sesiones"] [class*="card"] li,
@@ -2333,7 +2331,7 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
 [class*="procesos"] [class*="box"] p,
 [class*="procesos"] .elementor-widget-text-editor,
 [class*="procesos"] .elementor-text-editor {
-    color: #1a3324 !important; /* Verde súper oscuro / casi negro para lectura nítida */
+    color: #1a3324 !important;
     font-style: normal !important;
 }
 
