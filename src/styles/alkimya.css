@@ -1048,3 +1048,792 @@
     width: 100% !important;
     margin: 2rem auto 0 auto !important;
 }
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 2 (TARJETAS LANDING)
+
+   ================================================================= */
+
+
+
+/* 1. EXTERMINADOR DE CURSIVAS Y MAYÚSCULAS EN TARJETAS */
+
+/* Este selector atrapa cualquier título dentro de una "card" o "box" sin tocar la caja */
+
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3, [class*="card"] h4,
+
+[class*="box"] h1, [class*="box"] h2, [class*="box"] h3, [class*="box"] h4,
+
+.elementor-heading-title, [class*="title"] {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Mata la cursiva */
+
+    text-transform: none !important; /* Quita las MAYÚSCULAS forzadas, deja como se escribió */
+
+    font-weight: 600 !important; /* Grosor boutique */
+
+    letter-spacing: 0.02em !important;
+
+}
+
+
+
+/* 2. LIMPIEZA DE LOS BOTONES "VER MÁS" DENTRO DE ESAS CAJAS */
+
+[class*="card"] a, [class*="box"] a {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+    font-weight: 600 !important;
+
+}
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 3 (FAQS Y CONTACTO)
+
+   ================================================================= */
+
+
+
+/* 1. LIMPIEZA DE ACORDEONES (FAQ, COMPOSICIÓN, POLÍTICAS) */
+
+/* Apunta a los títulos de los desplegables para quitar Velista, cursivas y mayúsculas */
+
+.accordion-title, .faq-title, [class*="accordion"] h1, [class*="accordion"] h2, 
+
+[class*="accordion"] h3, [class*="faq"] h1, [class*="faq"] h2, [class*="faq"] h3,
+
+details summary, .elementor-accordion-title, .accordion-header {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Adiós cursiva */
+
+    text-transform: none !important; /* Adiós MAYÚSCULAS forzadas */
+
+    font-weight: 600 !important;
+
+    letter-spacing: 0.01em !important;
+
+    font-size: 1.15rem !important; /* Tamaño legible y elegante */
+
+}
+
+
+
+/* 2. LIMPIEZA DE TARJETAS DE CONTACTO (EMAIL Y WHATSAPP) */
+
+/* Apunta a los textos de contacto para que el mail y número sean súper legibles */
+
+.contact-card h1, .contact-card h2, .contact-card h3, .contact-card p,
+
+[class*="contact"] h1, [class*="contact"] h2, [class*="contact"] h3, [class*="contact"] p,
+
+.support-email, .whatsapp-number {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Adiós cursiva */
+
+    text-transform: none !important; /* Adiós MAYÚSCULAS forzadas */
+
+}
+
+
+
+/* Aseguramos que el texto principal (el mail y el número) destaque bien */
+
+.contact-card p, [class*="contact"] p {
+
+    font-size: 1.1rem !important;
+
+    font-weight: 500 !important;
+
+    letter-spacing: 0.02em !important;
+
+}
+
+
+
+/* 3. BOTONES DE CONTACTO ("ENVIAR EMAIL" / "CONTACTAR") */
+
+.contact-card a.btn, [class*="contact"] a.btn, .contact-btn {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+    font-weight: 600 !important;
+
+    text-transform: uppercase !important; /* Los botones sí quedan bien en mayúsculas */
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 4 (TIENDA Y FILTROS)
+
+   ================================================================= */
+
+
+
+/* 1. EXTERMINADOR DE LETRA TOSCA, CURSIVA Y COLOR AZUL EN LA BARRA LATERAL */
+
+/* Apunta a: Buscar, Categorías, Filtros, Ordenar y Vista */
+
+.shop-sidebar h1, .shop-sidebar h2, .shop-sidebar h3, .shop-sidebar h4,
+
+.filter-title, .sidebar-title, [class*="sidebar"] h2, [class*="sidebar"] h3,
+
+.widget-title {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Mata la cursiva */
+
+    color: #7a160e !important; /* Nuestro rojo alquímico en vez de ese azul marino tosco */
+
+    font-weight: 600 !important;
+
+    letter-spacing: 0.05em !important;
+
+    text-transform: uppercase !important;
+
+}
+
+
+
+/* 2. LIMPIEZA DE LAS OPCIONES DEL DESPLEGABLE (Seca, Grasa, Mixta, etc.) */
+
+.filter-options li, .dropdown-menu li, select option, 
+
+[class*="filter"] label, [class*="dropdown"] span {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Adiós cursiva en las opciones de piel */
+
+    font-weight: 500 !important;
+
+    color: #333333 !important; /* Gris oscuro elegante, no negro chillón ni azul */
+
+}
+
+
+
+/* 3. EXTERMINADOR DE BORDES GRISES Y DOBLES EN LOS SELECTORES Y CAJAS */
+
+input[type="text"], input[type="search"], select, .dropdown-toggle,
+
+.search-input, [class*="select-box"], .shop-sidebar select {
+
+    border: 1px solid rgba(122, 22, 14, 0.2) !important; /* Borde rojo súper sutil, casi crema */
+
+    border-radius: 8px !important; /* Esquinas suaves */
+
+    box-shadow: none !important; /* Elimina cualquier sombra sucia que haga parecer un borde doble */
+
+    background-color: transparent !important;
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+}
+
+
+
+/* Evita que al hacer clic se ponga un borde negro fuerte */
+
+input:focus, select:focus {
+
+    outline: none !important;
+
+    border: 1px solid #7a160e !important; /* Borde rojo Alkimya al seleccionar */
+
+    box-shadow: 0 0 5px rgba(122, 22, 14, 0.1) !important;
+
+}
+
+
+
+/* 4. ARREGLO DEL BOTÓN NARANJA/ROJO FUERTE DEL FILTRO (Todos los tipos) */
+
+.active-filter, .selected-option, [class*="active-item"],
+
+.dropdown-menu .selected {
+
+    background-color: #7a160e !important; /* Rojo elegante Alkimya */
+
+    color: #fff2db !important; /* Texto crema */
+
+    font-style: normal !important;
+
+    border: none !important;
+
+}
+
+
+
+/* Eliminar sombras feas genéricas de las cajas laterales (opcional para limpiar aún más) */
+
+.shop-sidebar .widget, .sidebar-box, aside [class*="box"] {
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; /* Sombra levísima, casi invisible */
+
+    border: 1px solid rgba(240, 234, 206, 0.5) !important; /* Borde beige muy suave */
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 5 (SISTEMA DE CONTRASTE)
+
+   ================================================================= */
+
+
+
+/* 1. RESCATE DE EMERGENCIA: MANIFIESTO Y ACTIVOS */
+
+/* Mata el texto "blanco sobre blanco" y el marrón lavado */
+
+.manifiesto-title, [class*="manifiesto"] h1, [class*="manifiesto"] h2,
+
+.elementor-widget-heading h2, .elementor-heading-title {
+
+    color: #7a160e !important; /* Rojo Alkimya por defecto para títulos */
+
+    text-shadow: none !important; /* Extermina la sombra fantasmal blanca/gris */
+
+}
+
+
+
+/* Oscurece los textos amarronados para que parezcan impresos en alta calidad */
+
+.elementor-text-editor p, .elementor-text-editor li,
+
+[class*="origen"] p, [class*="origen"] li,
+
+[class*="activos"] p, [class*="activos"] li,
+
+[class*="manifiesto"] p, [class*="manifiesto"] li {
+
+    color: #251d1c !important; /* Un gris-rojizo súper oscuro y nítido */
+
+    font-weight: 500 !important;
+
+}
+
+
+
+/* 2. DIRECTIVA IQ200: SISTEMA DE CLASES AUTOMÁTICO */
+
+/* A. SECCIONES ALKIMYA (ROJOS) */
+
+.theme-alkimya h1, .theme-alkimya h2, .theme-alkimya h3, 
+
+[class*="alkimya"] h1, [class*="alkimya"] h2, [class*="alkimya"] h3 {
+
+    color: #7a160e !important; /* Rojo Alkimya */
+
+}
+
+.theme-alkimya p, .theme-alkimya li, [class*="alkimya"] p, [class*="alkimya"] li {
+
+    color: #251d1c !important; /* Texto oscuro para contraste */
+
+}
+
+
+
+/* B. SECCIONES DALUZ (AZULES) */
+
+.theme-daluz h1, .theme-daluz h2, .theme-daluz h3, 
+
+[class*="daluz"] h1, [class*="daluz"] h2, [class*="daluz"] h3 {
+
+    color: #0a3a5c !important; /* Azul Profundo */
+
+}
+
+.theme-daluz p, .theme-daluz li, [class*="daluz"] p, [class*="daluz"] li {
+
+    color: #112233 !important; /* Texto oscuro azulado para contraste */
+
+}
+
+
+
+/* C. SECCIONES PROCESOS (VERDES) */
+
+.theme-procesos h1, .theme-procesos h2, .theme-procesos h3, 
+
+[class*="procesos"] h1, [class*="procesos"] h2, [class*="procesos"] h3 {
+
+    color: #2d5a3f !important; /* Verde Botánico */
+
+}
+
+.theme-procesos p, .theme-procesos li, [class*="procesos"] p, [class*="procesos"] li {
+
+    color: #1a3324 !important; /* Texto oscuro verdoso para contraste */
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 6 (CAJAS TESOROS)
+
+   ================================================================= */
+
+
+
+/* 1. UNIFICACIÓN DE COLOR DE FONDO (ADIÓS COLORES PASTEL MEZCLADOS) */
+
+/* Obligamos a todas las tarjetas de Tesoros/Portales a tener el mismo fondo elegante */
+
+.tesoros-box, [class*="tesoros"] .card, [class*="tesoros"] .elementor-widget-wrap,
+
+[class*="tesoros"] > div, .portal-card, [class*="portal"] {
+
+    background-color: #fdfaf4 !important; /* Crema vainilla súper elegante (estilo Alkimya) */
+
+    border: 1px solid rgba(122, 22, 14, 0.1) !important; /* Borde casi invisible para contener la caja */
+
+    background-image: none !important; /* Mata cualquier gradiente o color de fondo raro */
+
+}
+
+
+
+/* 2. LIMPIEZA DE TIPOGRAFÍA: TÍTULOS (ALMA TERRA, ECOS, ETC.) */
+
+.tesoros-box h1, .tesoros-box h2, .tesoros-box h3,
+
+[class*="tesoros"] h1, [class*="tesoros"] h2, [class*="tesoros"] h3,
+
+.portal-card h1, .portal-card h2, .portal-card h3 {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Extermina la cursiva */
+
+    text-transform: none !important; /* Extermina las MAYÚSCULAS forzadas */
+
+    color: #7a160e !important; /* Rojo oficial Alkimya */
+
+    font-weight: 600 !important;
+
+    letter-spacing: 0.02em !important;
+
+}
+
+
+
+/* 3. LIMPIEZA DE LOS TEXTOS INTERNOS Y LISTAS (PUNTITOS) */
+
+.tesoros-box p, .tesoros-box li, 
+
+[class*="tesoros"] p, [class*="tesoros"] li,
+
+.portal-card p, .portal-card li, .portal-card span {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Sin cursivas escondidas */
+
+    color: #251d1c !important; /* Tono gris-rojizo oscuro súper nítido para leer bien */
+
+    font-weight: 500 !important;
+
+}
+
+
+
+/* Limpieza específica para las palabras en negrita dentro del texto (ej: DODECAEDRO) */
+
+.tesoros-box strong, .tesoros-box b, [class*="tesoros"] strong {
+
+    color: #7a160e !important;
+
+    font-weight: 700 !important;
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 7 (BOTONES Y TEXTOS)
+
+   ================================================================= */
+
+
+
+/* 1. EXTERMINADOR DE CURSIVAS Y MAYÚSCULAS EN LANDING (Biotipo/Dosha) */
+
+.elementor-heading-title, [class*="title"], h1, h2, h3,
+
+.biotipo-title, .dosha-title {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Muerte a la cursiva */
+
+    text-transform: none !important; /* Muerte a la mayúscula forzada */
+
+}
+
+
+
+/* 2. OSCURECER TEXTOS GRISES ILEGIBLES (Servicios Holísticos y Landing) */
+
+.elementor-text-editor, .elementor-widget-text-editor p,
+
+[class*="servicios"] p, [class*="holistico"] p, [class*="card"] p {
+
+    color: #251d1c !important; /* Gris-rojizo súper oscuro y nítido */
+
+    font-weight: 500 !important;
+
+}
+
+
+
+/* 3. BOTONES INVERSOS EN PLACAS BLANCAS/CREMA */
+
+/* Hacemos que los botones dentro de las tarjetas destaquen: Fondo oscuro, letra blanca */
+
+.elementor-button, .btn, [class*="card"] a.button, [class*="box"] a.btn,
+
+.servicios-btn, [class*="holistico"] a {
+
+    background-color: #7a160e !important; /* Rojo Alkimya de fondo */
+
+    color: #ffffff !important; /* Letra blanca */
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+    text-transform: uppercase !important; /* Los botones sí quedan bien en mayúsculas */
+
+    border: none !important;
+
+    font-weight: 600 !important;
+
+}
+
+
+
+/* 4. TÍTULOS DE SERVICIOS HOLÍSTICOS (Sin cursiva, rojo Alkimya) */
+
+[class*="servicios"] h1, [class*="servicios"] h2, [class*="servicios"] h3,
+
+[class*="holistico"] h1, [class*="holistico"] h2, [class*="holistico"] h3 {
+
+    color: #7a160e !important;
+
+    font-style: normal !important;
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 8 (BOTONES PROCESOS)
+
+   ================================================================= */
+
+
+
+/* 1. EXTERMINIO DE CURSIVAS EN TÍTULOS DE PROCESOS */
+
+[class*="procesos"] h1, [class*="procesos"] h2, [class*="procesos"] h3, 
+
+.theme-procesos h1, .theme-procesos h2, .theme-procesos h3 {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Sin cursivas */
+
+    text-transform: none !important;
+
+}
+
+
+
+/* 2. LOGICA INVERSA: BOTONES DENTRO DE PLACAS BLANCAS (SECCIÓN VERDE) */
+
+/* Obligamos a que el botón se llene de Verde Botánico con letra blanca */
+
+[class*="procesos"] [class*="card"] a.elementor-button, 
+
+[class*="procesos"] [class*="box"] a.elementor-button,
+
+[class*="procesos"] .elementor-widget-wrap a.elementor-button,
+
+.theme-procesos a.elementor-button,
+
+.btn-procesos {
+
+    background-color: #2d5a3f !important; /* Verde Botánico Oscuro */
+
+    color: #ffffff !important; /* Letra blanca brillante */
+
+    border: none !important; /* Chau borde fantasma */
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+    font-weight: 600 !important;
+
+    text-transform: uppercase !important; /* Los botones en mayúscula quedan prolijos */
+
+    letter-spacing: 0.05em !important;
+
+    padding: 12px 24px !important; /* Le da cuerpo y presencia al botón */
+
+    border-radius: 4px !important; /* Esquinas apenas suaves */
+
+}
+
+
+
+/* Efecto hover sutil para que se note que es clickeable */
+
+[class*="procesos"] a.elementor-button:hover,
+
+.theme-procesos a.elementor-button:hover {
+
+    background-color: #1a3324 !important; /* Un verde aún más oscuro al pasar el mouse */
+
+    color: #fdfaf4 !important;
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 9 (LIMPIEZA FINAL DE BOTONES)
+
+   ================================================================= */
+
+
+
+/* 1. MUERTE ABSOLUTA A LA TIPOGRAFÍA VELISTA EN TODOS LOS BOTONES */
+
+/* Cubrimos Procesos, Sesiones, Raíces y cualquier botón genérico rebelde */
+
+a, button, .elementor-button, .btn, input[type="submit"], 
+
+[class*="button"], [class*="btn"], 
+
+[class*="procesos"] a, [class*="sesiones"] a, [class*="raices"] a {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important; /* Mata la cursiva */
+
+    letter-spacing: 0.05em !important;
+
+}
+
+
+
+/* 2. ARREGLO DE LOS BOTONES "FANTASMA" EN PROCESOS Y SESIONES */
+
+/* Para los que dicen "VER DETALLES" en las placas blancas */
+
+.elementor-widget-button a.elementor-button,
+
+[class*="box"] a.elementor-button, [class*="card"] a.elementor-button {
+
+    text-transform: uppercase !important;
+
+    font-weight: 600 !important;
+
+    border: none !important;
+
+    padding: 12px 24px !important;
+
+    border-radius: 4px !important;
+
+}
+
+
+
+/* 3. LÓGICA DE CONTRASTE: SECCIÓN DALUZ (FONDOS AZULES) */
+
+/* Si el fondo es oscuro (azul), el botón DEBE ser crema claro para destacar */
+
+.theme-daluz a.elementor-button, 
+
+[class*="daluz"] a.elementor-button, 
+
+[class*="raices"] a.elementor-button,
+
+[class*="biotipo"] a.elementor-button,
+
+.elementor-section-wrap > section[style*="background-color: #0a3a5c"] a.elementor-button,
+
+section[class*="bg-blue"] a.elementor-button {
+
+    background-color: #fdfaf4 !important; /* Crema vainilla para que resalte */
+
+    color: #0a3a5c !important; /* Letra azul oscuro para que se lea */
+
+    border: 1px solid rgba(10, 58, 92, 0.2) !important;
+
+    font-weight: 700 !important;
+
+}
+
+
+
+/* Efecto Hover para los botones sobre fondo azul */
+
+.theme-daluz a.elementor-button:hover, 
+
+[class*="daluz"] a.elementor-button:hover,
+
+[class*="raices"] a.elementor-button:hover {
+
+    background-color: #f2e9d8 !important; /* Crema apenitas más oscuro */
+
+    color: #0a3a5c !important;
+
+}
+
+
+
+/* 4. MUERTE A LA CURSIVA EN EL TÍTULO "Tu bienestar empieza hoy..." */
+
+[class*="biotipo"] h1, [class*="biotipo"] h2, [class*="biotipo"] h3,
+
+[class*="biotipo"] p, .biotipo-subtitle {
+
+    font-style: normal !important;
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 12 (MENÚS POR CLASE)
+
+   ================================================================= */
+
+
+
+/* 1. BASE COMÚN PARA TODOS LOS MENÚS DESPLEGABLES (Fondo Beige Boutique) */
+
+.sub-menu, .dropdown-menu, .mega-menu, [class*="sub-menu"] {
+
+    background-color: #fdfaf4 !important;
+
+    border: 1px solid rgba(0,0,0,0.08) !important;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+
+}
+
+
+
+/* Tipografía general limpia en los submenús */
+
+.sub-menu a, .dropdown-menu a, .sub-menu span, .dropdown-menu span {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: normal !important;
+
+    text-transform: none !important;
+
+}
+
+
+
+/* Descripciones chicas en gris oscuro elegante para todos */
+
+.sub-menu p, .sub-menu span.description, .dropdown-menu p {
+
+    color: #251d1c !important;
+
+    font-weight: 500 !important;
+
+}
+
+
+
+/* 2. MENÚ DESPLEGABLE DE "ALKIMYA" ➔ LETRA ROJA ALQUÍMICA */
+
+/* Apuntamos específicamente al menú de Alkimya para que use su color */
+
+.menu-item-has-children:nth-child(2) .sub-menu a,
+
+[class*="alkimya"] .sub-menu a,
+
+li.alkimya .sub-menu a {
+
+    color: #7a160e !important; /* Rojo Alkimya */
+
+    font-weight: 600 !important;
+
+}
+
+
+
+/* 3. MENÚ DESPLEGABLE DE "RAÍCES" ➔ LETRA AZUL PROFUNDO */
+
+/* Respetando su clase de color azul */
+
+.menu-item-has-children:nth-child(3) .sub-menu a,
+
+[class*="raices"] .sub-menu a,
+
+[class*="daluz"] .sub-menu a,
+
+li.raices .sub-menu a {
+
+    color: #0a3a5c !important; /* Azul DaLuz */
+
+    font-weight: 600 !important;
+
+}
+
+
+
+/* 4. MENÚ DESPLEGABLE DE "PROCESOS" ➔ LETRA VERDE BOTÁNICO */
+
+/* Respetando su clase de color verde */
+
+.menu-item-has-children:nth-child(4) .sub-menu a,
+
+[class*="procesos"] .sub-menu a,
+
+li.procesos .sub-menu a {
+
+    color: #2d5a3f !important; /* Verde Procesos */
+
+    font-weight: 600 !important;
+
+}
+
