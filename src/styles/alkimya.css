@@ -350,6 +350,39 @@
     color: #FFF2DB !important;
     font-style: normal !important;
 }
+
+/* =================================================================
+   ✨ TRANSFORMACIÓN BENTÓ TESOROS: FONDO BORDÓ Y TEXTO CREMA
+   ================================================================= */
+
+/* 1. Aplicar el degradado bordó a las 5 tarjetas del bento grid */
+.tesoros-bento-grid > *,
+.tesoros-bento-grid .elementor-element,
+.tesoros-bento-grid .elementor-widget-wrap {
+    background: linear-gradient(135deg,
+        var(--color-brand-primary, #7a160e) 0%,
+        #8a0000 50%,
+        var(--color-brand-secondary, #b32d24) 100%) !important;
+    border-radius: 0 15px !important;
+    padding: 1.5rem 2rem !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(240, 234, 206, 0.2) !important;
+}
+
+/* 2. Forzar que todo el contenido (títulos, párrafos, listas) sea crema luminoso (#FFF2DB) */
+.tesoros-bento-grid h1,
+.tesoros-bento-grid h2,
+.tesoros-bento-grid h3,
+.tesoros-bento-grid h4,
+.tesoros-bento-grid p,
+.tesoros-bento-grid span,
+.tesoros-bento-grid a,
+.tesoros-bento-grid li,
+.tesoros-bento-grid strong {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+
 /* ===========================
    MANIFIESTO ALKIMYCO — REDISEÑO 2026
    ===========================
