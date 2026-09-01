@@ -4955,7 +4955,7 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
   [class*="biotipos-section"][class*="-secondary-title-text"] {
     font-size: clamp(1.1rem, 4vw, 1.4rem);
   }
-}
+
 
 /* Tablet-specific tweaks (768–1279px) */
 @media (min-width: 768px) and (max-width: 1279px) {
@@ -4970,5 +4970,5 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
     max-width: 600px;
     margin: 0 auto 1.25rem auto;
   }
-}
+
 
