@@ -19,7 +19,7 @@
   pointer-events: none;
   background-image:
     radial-gradient(circle at 20% 30%, #791010 0%, transparent 60%),
-    radial-gradient(circle at 70% 20%, rgba(255, 78, 33, 0.6) 0%, transparent 50%), /* #FF4E21 */
+    radial-gradient(circle at 70% 20%, rgba(255, 78, 33, 0.6) 0%, transparent 50%),
     radial-gradient(circle at 30% 80%, #7A160E 0%, transparent 60%);
   filter: blur(30px);
   animation: mesh-flow 20s ease-in-out infinite alternate;
@@ -58,7 +58,7 @@
   z-index: 1;
   font-family: var(--font-title, 'VELISTA', serif);
   font-weight: normal;
-  text-align: flex-start;
+  text-align: left;
   padding: 0 1rem;
 }
 
@@ -80,7 +80,6 @@
    MOBILE FIRST - Stacked layout with adapted graphics
    =========================== */
 
-/* Hero - mobile (no background, cream text for contrast) */
 .ceremonia-facial-hero-title-bg {
   display: block;
   position: absolute;
@@ -111,7 +110,6 @@
   color: var(--color-bg-light, #F0EACE);
 }
 
-/* Step cards - mobile: stacked, with SVG backgrounds */
 .ceremonia-facial-step-title,
 .ceremonia-facial-block-title,
 .ceremonia-facial-block-text,
@@ -123,9 +121,6 @@
   margin-right: auto;
 }
 
-/* ✨ IQ200: ALINEACIÓN PERFECTA (Caja y Pastilla)
-   Grupo label + texto: usa Flexbox para forzar que el título 
-   superior y el cuadro inferior queden perfectamente centrados entre sí. */
 .ceremonia-facial-block-group {
   position: relative;
   width: 100%;
@@ -134,7 +129,7 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra los hijos horizontalmente */
+  align-items: center;
   justify-content: center;
 }
 
@@ -149,17 +144,12 @@
   margin-bottom: 0.5rem;
 }
 
-.ceremonia-facial-block-text {
-  min-height: 80px;
-  padding: 1rem 0;
-}
-
+.ceremonia-facial-block-text,
 .ceremonia-facial-extra-block {
   min-height: 80px;
   padding: 1rem 0;
 }
 
-/* SVG backgrounds - mobile (visible, adapted) */
 .ceremonia-facial-step-title-bg,
 .ceremonia-facial-block-title-bg,
 .ceremonia-facial-block-text-bg,
@@ -183,12 +173,10 @@
 .ceremonia-facial-block-text-bg,
 .ceremonia-facial-extra-block-bg {
   background-image: url('/svg/ceremonias/text2Bg.svg');
-  /* ✨ IQ200: Asegurar fondo bordó sin lavar */
   filter: none;
   opacity: 1;
 }
 
-/* Text content - mobile */
 .ceremonia-facial-step-title-text,
 .ceremonia-facial-block-title-text,
 .ceremonia-facial-block-text-content,
@@ -217,39 +205,30 @@
   font-size: clamp(0.9375rem, 3.5vw, 1.125rem);
   font-weight: 500;
   line-height: 1.3;
-  /* ✨ IQ200: Rojo Alkimya para las pastillas claras y sin cursiva */
   color: #7a160e;
   font-style: normal;
 }
 
-.ceremonia-facial-block-text-content {
+.ceremonia-facial-block-text-content,
+.ceremonia-facial-extra-block-content {
   padding: 1rem 12%;
   font-family: var(--font-text, 'EB Garamond', 'Times New Roman', serif);
   font-size: clamp(0.9375rem, 3.5vw, 1.125rem);
   line-height: 1.6;
-  /* ✨ IQ200: Letra Crema Claro para fondo Bordó oscuro */
   color: #FFF2DB;
   font-style: normal;
 }
 
 .ceremonia-facial-extra-block-content {
   flex-direction: column;
-  padding: 1rem 12%;
-  font-family: var(--font-text, 'EB Garamond', 'Times New Roman', serif);
-  font-size: clamp(0.9375rem, 3.5vw, 1.125rem);
-  line-height: 1.6;
-  /* ✨ IQ200: Letra Crema Claro para fondo Bordó oscuro */
-  color: #FFF2DB;
-  font-style: normal;
 }
 
-/* Mobile card wrapper - no background, transparent */
 .ceremonia-facial-mobile-card {
   background: transparent;
   padding: 1.25rem 0;
 }
 
-/* Photo Blocks - Mobile */
+/* Photo Blocks */
 .ceremonia-facial-photo-block {
   position: relative;
   margin: 2rem auto;
@@ -267,11 +246,15 @@
   padding: 8px;
 }
 
-.ceremonia-facial-foto-circle img {
+.ceremonia-facial-foto-circle img,
+.ceremonia-facial-foto-leaf img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+}
+
+.ceremonia-facial-foto-circle img {
+  border-radius: 50%;
 }
 
 .ceremonia-facial-foto-leaf {
@@ -284,10 +267,7 @@
 }
 
 .ceremonia-facial-foto-leaf img {
-  width: 100%;
-  height: 100%;
   border-radius: 50px 10px 50px 10px;
-  object-fit: cover;
 }
 
 .ceremonia-wavy-decoration {
@@ -311,12 +291,10 @@
 }
 
 /* ===========================
-   DESKTOP ONLY (min-width: 1024px) - Zigzag, absolute positioning
+   DESKTOP ONLY (min-width: 1024px)
    =========================== */
 
 @media (min-width: 1024px) {
-
-  /* Hero - desktop with ceremonyHeroBg full bleed */
   .ceremonia-facial-hero-title {
     min-height: 200px;
   }
@@ -348,7 +326,6 @@
     color: var(--color-bg-light, #F0EACE);
   }
 
-  /* Step container */
   .ceremonia-facial-step-container {
     min-height: 850px;
   }
@@ -359,7 +336,6 @@
     padding: 0;
   }
 
-  /* Zigzag - absolute positioning. */
   .ceremonia-facial-step-title,
   .ceremonia-facial-block-group,
   .ceremonia-facial-extra-block {
@@ -399,7 +375,6 @@
     right: auto;
   }
 
-  /* Desktop dimensions */
   .ceremonia-facial-step-title {
     top: -101px;
     width: 781px;
@@ -428,12 +403,10 @@
     min-height: 70px;
     padding: 1.25rem 1.5rem;
     font-size: clamp(1rem, 1.2vw, 1.25rem);
-    /* ✨ IQ200: Crema Claro en Desktop también */
     color: #FFF2DB;
     font-style: normal;
   }
 
-  /* Desktop top positions - se posiciona cada grupo por su orden */
   .ceremonia-facial-step-container>.ceremonia-facial-step-title {
     top: -101px;
   }
@@ -454,27 +427,24 @@
     top: 730px;
   }
 
-  /* Desktop photo blocks */
   .ceremonia-facial-photo-block {
     position: absolute;
     margin: 0;
     top: 170px;
-    z-index: 1; /* Put photos behind text */
+    z-index: 1;
   }
 
   .ceremonia-facial-step-title,
   .ceremonia-facial-block-group,
   .ceremonia-facial-extra-block {
-    z-index: 10; /* Ensure text sits on top of overlapping photos */
+    z-index: 10;
   }
 
-  /* Right-side photo blocks */
   .ceremonia-facial-photo-block[data-zigzag="right"] {
     left: auto;
     right: -18%;
   }
 
-  /* Left-side photo blocks */
   .ceremonia-facial-photo-block[data-zigzag="left"] {
     left: -18%;
     right: auto;
@@ -504,10 +474,21 @@
 
   .ceremonia-facial-foto-leaf img {
     border-radius: 70px 15px 70px 15px;
-  } 
-}
-  /* Section container */
-  .ceremonia-facial-content .max-w-4xl {
-    max-width: 65rem;
   }
+}
+
+/* =================================================================
+   ✨ ARREGLO EXCLUSIVO BOTONES DE CEREMONIA (TEXTO BORDÓ SOBRE CREMA)
+   ================================================================= */
+.tu-ceremonia-button,
+[class*="ceremonia"] a.tu-ceremonia-button {
+  color: #7a160e !important;
+  background-color: #FFF2DB !important;
+  border: 2px solid #7a160e !important;
+}
+
+.tu-ceremonia-button:hover,
+[class*="ceremonia"] a.tu-ceremonia-button:hover {
+  background-color: #7a160e !important;
+  color: #FFF2DB !important;
 }
