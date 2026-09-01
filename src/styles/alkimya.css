@@ -2462,3 +2462,126 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
     margin-right: auto !important;
     text-align: center !important;
 }
+
+/* =================================================================
+   ✨ 1. BOTONES DE BIOTIPO: COMPACTOS Y PROPORCIONALES AL TEXTO
+   ================================================================= */
+.biotipos-section15-buttons-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    margin-top: 2rem !important;
+}
+
+.biotipos-section15-button {
+    width: auto !important;
+    max-width: max-content !important;
+    flex: 0 0 auto !important;
+    padding: 0.75rem 2.25rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 0px 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.biotipos-section15-button-instagram {
+    background: #7a160e !important;
+    color: #FFF2DB !important;
+    border: none !important;
+}
+
+.biotipos-section15-button-whatsapp {
+    background: #0A432B !important;
+    color: #FFF2DB !important;
+    border: none !important;
+}
+
+
+/* =================================================================
+   ✨ 2. ALINEACIÓN PERFECTA DE TARJETAS EN CEREMONIAS (CAPILAR/FACIAL)
+   ================================================================= */
+[class*="ceremonia"] .elementor-widget-container,
+[class*="ceremonia"] .elementor-widget-wrap,
+.ceremonia-facial-block-group,
+.ceremonia-facial-content-wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+}
+
+.ceremonia-facial-block-text,
+.ceremonia-facial-extra-block,
+[class*="ceremonia"] [class*="block-text"],
+[class*="ceremonia"] [class*="extra-block"] {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 85% !important;
+    max-width: 800px !important;
+    text-align: center !important;
+}
+
+/* =================================================================
+   ✨ LIMPIEZA DE CURSIVAS Y COLOR ALKIMYA EN SERVICIOS Y VALOR/CONFIANZA
+   ================================================================= */
+
+/* 1. Apuntar a los títulos de las secciones de Servicios Holísticos y Valor/Confianza */
+[class*="servicios"] h2, [class*="servicios"] h3, [class*="servicios"] .elementor-heading-title,
+[class*="valor"] h2, [class*="valor"] h3, [class*="valor"] .elementor-heading-title,
+[class*="confianza"] h2, [class*="confianza"] h3, [class*="confianza"] .elementor-heading-title,
+.landing-servicios h2, .landing-servicios h3, .landing-valor h2, .landing-confianza h2 {
+    font-style: normal !important;
+    text-transform: uppercase !important;
+    color: #7a160e !important; /* Rojo Alkimya profundo */
+}
+
+/* 2. Quitar cursivas a los títulos de las tarjetas internas */
+[class*="servicios"] [class*="card"] h3, [class*="servicios"] [class*="box"] h3,
+[class*="valor"] [class*="card"] h3, [class*="valor"] [class*="box"] h3,
+[class*="confianza"] [class*="card"] h3, [class*="confianza"] [class*="box"] h3 {
+    font-style: normal !important;
+}
+
+/* 3. Cambiar los párrafos al tono oscuro elegante de Alkimya (#7a160e o marrón oscuro rico) */
+[class*="servicios"] p, [class*="servicios"] li, [class*="servicios"] span,
+[class*="valor"] p, [class*="valor"] li, [class*="valor"] span,
+[class*="confianza"] p, [class*="confianza"] li, [class*="confianza"] span {
+    color: #4a0d09 !important; /* Marrón/Rojo oscuro Alkimya, cálido y nítido */
+    font-style: normal !important;
+}
+
+/* =================================================================
+   ✨ ERRADICACIÓN DE VERDES: BOTONES ALKIMYA PUROS (ROJO Y BORDÓ)
+   ================================================================= */
+.biotipos-section15-button-whatsapp,
+[class*="ceremonia"] .biotipos-section15-button-whatsapp,
+a[href*="whatsapp"] .biotipos-section15-button,
+a[href*="whatsapp"].elementor-button {
+    background: #7a160e !important; /* Rojo/Bordó Alkimya profundo */
+    color: #FFF2DB !important; /* Texto crema vainilla */
+    border: none !important;
+}
+
+.biotipos-section15-button-whatsapp:hover,
+[class*="ceremonia"] .biotipos-section15-button-whatsapp:hover,
+a[href*="whatsapp"] .biotipos-section15-button:hover,
+a[href*="whatsapp"].elementor-button:hover {
+    background: #590f0a !important; /* Bordó más intenso al pasar el mouse */
+    color: #ffffff !important;
+}
