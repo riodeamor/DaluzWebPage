@@ -5149,3 +5149,20 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
     filter: brightness(1.1) !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
 }
+
+/* =================================================================
+   ✨ OCULTAR EL QUIZ TEMPORALMENTE (HASTA MEJORarlo)
+   ================================================================= */
+.biotipos-section2-quiz,
+.biotipos-section2-right-column {
+    display: none !important;
+}
+
+/* Hacemos que la columna de texto de la izquierda ocupe todo el ancho mientras no esté el quiz */
+@media (min-width: 1280px) {
+    .biotipos-section2-main-container {
+        grid-template-columns: 1fr !important;
+        max-width: 800px !important;
+        margin: 0 auto !important;
+    }
+}
