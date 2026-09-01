@@ -2156,7 +2156,19 @@ section[style*="background-color: #860119"] *,
     color: #FFF2DB !important;
     font-style: normal !important;
 }
-
+/* Corrección quirúrgica para Activos y Origen */
+.activos-origen-page h1,
+.activos-origen-page h2,
+.activos-origen-page h3,
+.ayo-title-text,
+.ayo-band-title,
+[class*="ayo-"] h1,
+[class*="ayo-"] h2,
+[class*="ayo-"] span {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
 /* =================================================================
    ✨ REGLA MAESTRA UNIVERSAL ABSOLUTA IQ200
    Fondo Oscuro/Color (Rojo, Verde, Azul) ➔ Texto Blanco o Crema (#FFF2DB)
