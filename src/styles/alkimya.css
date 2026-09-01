@@ -2123,3 +2123,88 @@ section[style*="background-color: #7a160e"] h3,
     color: rgba(255, 255, 255, 0.7) !important;
 }
 
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CORRECCIÓN DE CAPAS Y CONTRASTE EN SESIONES Y PROCESOS
+
+   ================================================================= */
+
+
+
+/* 1. BLINDAJE DE CAPAS (Z-INDEX): EL TEXTO SIEMPRE AL FRENTE EN VERDES */
+
+[class*="procesos"] .elementor-shape, [class*="sesiones"] .elementor-shape,
+
+[class*="procesos"] [class*="shape"], [class*="sesiones"] [class*="shape"],
+
+[class*="procesos"] svg, [class*="sesiones"] svg,
+
+[class*="procesos"] .elementor-background-overlay, [class*="sesiones"] .elementor-background-overlay {
+
+    z-index: 1 !important; /* Formas orgánicas al fondo */
+
+}
+
+
+
+[class*="procesos"] .elementor-container, [class*="sesiones"] .elementor-container,
+
+[class*="procesos"] .elementor-widget-wrap, [class*="sesiones"] .elementor-widget-wrap,
+
+[class*="procesos"] h1, [class*="sesiones"] h1,
+
+[class*="procesos"] h2, [class*="sesiones"] h2,
+
+[class*="procesos"] p, [class*="sesiones"] p,
+
+[class*="procesos"] .elementor-text-editor, [class*="sesiones"] .elementor-text-editor {
+
+    position: relative !important;
+
+    z-index: 10 !important; /* Textos flotando al frente absoluto */
+
+}
+
+
+
+/* 2. CONTRASTE MAESTRO: VERDE SOBRE VERDE ➔ BLANCO PURO */
+
+[class*="procesos"] section p, [class*="sesiones"] section p,
+
+[class*="procesos"] section span, [class*="sesiones"] section span,
+
+[class*="procesos"] .elementor-text-editor p, [class*="sesiones"] .elementor-text-editor p,
+
+.theme-procesos p, .theme-sesiones p,
+
+section[style*="background-color: #2d5a3f"] p,
+
+section[style*="background-color: #0A432B"] p {
+
+    color: #ffffff !important; /* Blanco radiante sobre fondo verde */
+
+    font-weight: 500 !important;
+
+    opacity: 1 !important;
+
+}
+
+
+
+/* Subtítulos o textos dentro de formas en Sesiones y Procesos */
+
+[class*="procesos"] [class*="subtitle"], [class*="sesiones"] [class*="subtitle"],
+
+[class*="procesos"] em, [class*="sesiones"] em,
+
+[class*="procesos"] small, [class*="sesiones"] small {
+
+    color: #fdfaf4 !important; /* Crema luminoso */
+
+    font-style: italic !important;
+
+    opacity: 1 !important;
+
+}
+
+
