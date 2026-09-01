@@ -2585,3 +2585,20 @@ a[href*="whatsapp"].elementor-button:hover {
     background: #590f0a !important; /* Bordó más intenso al pasar el mouse */
     color: #ffffff !important;
 }
+
+/* =================================================================
+   ✨ CORRECCIÓN URGENTE: ALTURA AUTOMÁTICA DE TARJETAS EN CEREMONIA
+   ================================================================= */
+.tu-ceremonia-text-card {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 1.5rem !important;
+}
+
+.tu-ceremonia-text-card-content {
+    position: relative !important;
+    inset: auto !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
