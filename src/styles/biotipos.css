@@ -4971,3 +4971,92 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
     margin: 0 auto 1.25rem auto;
   }
 }
+
+/* =================================================================
+   ✨ CORRECCIÓN DEFINITIVA DE POSICIONAMIENTO EN SECCIÓN 15 (DESKTOP)
+   ================================================================= */
+@media (min-width: 1280px) {
+  .section-biotipos-15-content {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6rem 2rem !important;
+    height: auto !important;
+  }
+
+  .biotipos-section15-main-container {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 85% !important;
+    max-width: 1400px !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+  }
+
+  .biotipos-section15-main-container-content {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4rem 3rem !important;
+    gap: 2rem !important;
+  }
+
+  /* Liberamos el posicionamiento absoluto que rompía los textos y botones */
+  .biotipos-section15-main-title,
+  .biotipos-section15-main-text,
+  .biotipos-section15-buttons-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+
+  .biotipos-section15-main-title-link {
+    font-size: 2.25rem !important;
+    color: #791010 !important;
+  }
+
+  .biotipos-section15-main-text-paragraph {
+    font-size: 1.25rem !important;
+    color: #791010 !important;
+    line-height: 1.6 !important;
+  }
+
+  .biotipos-section15-buttons-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .biotipos-section15-button {
+    position: relative !important;
+    font-size: 1.125rem !important;
+    padding: 1rem 2.5rem !important;
+    min-width: 220px !important;
+    border-radius: 0px 15px !important;
+    color: #FFF2DB !important;
+    border: none !important;
+  }
+
+  .biotipos-section15-button-instagram {
+    background: linear-gradient(135deg, #9B201A 0%, #EA4F12 100%) !important;
+  }
+
+  .biotipos-section15-button-whatsapp {
+    background: linear-gradient(135deg, #04412D 0%, #066B47 100%) !important;
+  }
+}
