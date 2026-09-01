@@ -2819,3 +2819,44 @@ a[href*="whatsapp"]:hover,
     color: #0A432B !important;
 }
 
+/* =================================================================
+   ✨ MANIFIESTO ALKIMYCO: TÍTULO BORDÓ Y CAJA ÚNICA UNIFICADA
+   ================================================================= */
+
+/* 1. Arreglar el título inferior blanco sobre blanco ("Pilares de Alkimya Da Luz") */
+[class*="manifiesto"] h2,
+[class*="manifiesto"] h3,
+.manifiesto-page h2,
+.manifiesto-page h3 {
+    color: #7a160e !important; /* Bordó Alkimya profundo y nítido */
+    font-style: normal !important;
+}
+
+/* 2. Unificar las cajas separadas en un contenedor maestro único */
+/* Hace transparente el fondo de las cajitas internas individuales */
+[class*="manifiesto"] [class*="card"],
+[class*="manifiesto"] [class*="box"],
+.manifiesto-text-block {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Agrupa y da el fondo crema vainilla con bordes orgánicos a la gran caja contenedora */
+[class*="manifiesto"] [class*="container-inner"],
+[class*="manifiesto"] .elementor-widget-wrap,
+.manifiesto-content-wrapper {
+    background-color: #FFF2DB !important; /* Crema vainilla Alkimya */
+    border-radius: 0px 30px !important;
+    padding: 2.5rem !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+    max-width: 850px !important;
+    margin: 0 auto !important;
+}
+
+/* 3. Asegurar que el texto interno sea un marrón/bordó oscuro súper legible (cero negro duro) */
+[class*="manifiesto"] p, 
+[class*="manifiesto"] span {
+    color: #4a0d09 !important;
+    font-style: normal !important;
+}
