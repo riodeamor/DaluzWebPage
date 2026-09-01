@@ -1349,12 +1349,12 @@ input:focus, select:focus {
 
 }
 
-.theme-alkimya p, .theme-alkimya li, [class*="alkimya"] p, [class*="alkimya"] li {
-
-    color: #251d1c !important; /* Texto oscuro para contraste */
-
+/* Bloques oscuros / rojos Alkimya ➔ Texto claro obligatorio */
+.theme-alkimya p, .theme-alkimya li, 
+[class*="alkimya"] p, [class*="alkimya"] li,
+.tesoros-content-card p, .tesoros-content-card li, .tesoros-content-card span {
+    color: #fdfaf4 !important; /* Crema luminoso / blanco para lectura perfecta sobre rojo */
 }
-
 
 
 /* B. SECCIONES DALUZ (AZULES) */
@@ -1393,29 +1393,6 @@ input:focus, select:focus {
 
 
 
-/* =================================================================
-
-   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 6 (CAJAS TESOROS)
-
-   ================================================================= */
-
-
-
-/* 1. UNIFICACIÓN DE COLOR DE FONDO (ADIÓS COLORES PASTEL MEZCLADOS) */
-
-/* Obligamos a todas las tarjetas de Tesoros/Portales a tener el mismo fondo elegante */
-
-.tesoros-box, [class*="tesoros"] .card, [class*="tesoros"] .elementor-widget-wrap,
-
-[class*="tesoros"] > div, .portal-card, [class*="portal"] {
-
-    background-color: #fdfaf4 !important; /* Crema vainilla súper elegante (estilo Alkimya) */
-
-    border: 1px solid rgba(122, 22, 14, 0.1) !important; /* Borde casi invisible para contener la caja */
-
-    background-image: none !important; /* Mata cualquier gradiente o color de fondo raro */
-
-}
 
 
 
@@ -2205,6 +2182,259 @@ section[style*="background-color: #0A432B"] p {
 
     opacity: 1 !important;
 
+}
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CIRUGÍA LÁSER FASE 15 (CORRECCIONES FINALES)
+
+   ================================================================= */
+
+
+
+/* 1. CENTRAR TÍTULO PRINCIPAL DE BIOTIPO */
+
+[class*="biotipo"] h1, .biotipo-title {
+
+    text-align: center !important;
+
+    margin-left: auto !important;
+
+    margin-right: auto !important;
+
+    width: 100% !important;
+
+}
+
+
+
+/* 2. VELISTA / CURSIVA SUTIL EXCLUSIVAMENTE PARA EL PRIMER TÍTULO DE CADA SECCIÓN */
+
+/* Desactivamos cursiva general en subtítulos y títulos secundarios */
+
+h2, h3, h4, h5, h6, 
+
+.elementor-heading-title, 
+
+[class*="subtitle"], 
+
+[class*="card-title"] {
+
+    font-style: normal !important;
+
+}
+
+
+
+/* Únicamente el primer h1 o título principal de la sección lleva la cursiva elegante */
+
+section > .elementor-container h1:first-child,
+
+section > .elementor-widget-wrap > h1:first-child,
+
+.raices-filosofia-pages h1:first-child,
+
+[class*="biotipo"] h1:first-child,
+
+[class*="ceremonia"] h1:first-child {
+
+    font-family: 'Cormorant Garamond', serif !important;
+
+    font-style: italic !important;
+
+}
+
+
+
+/* 3. COLORES BORDÓ EN HEADER PARA ALKIMYA Y TIENDA */
+
+.menu-item-has-children:nth-child(1) a, /* Tienda */
+
+.menu-item-has-children:nth-child(2) a, /* Alkimya */
+
+[class*="alkimya"] > a, [class*="tienda"] > a,
+
+li.alkimya > a, li.tienda > a {
+
+    color: #7a160e !important;
+
+}
+
+
+
+/* 4. REVERSIÓN DE TESOROS Y ARREGLO DE CAJAS BORDÓ CON LETRA BLANCA */
+
+/* Volvemos el fondo de tesoros a su estado original sólido/limpio sin transparencias bajas */
+
+.tesoros-box, [class*="tesoros"] .card, [class*="tesoros"] .elementor-widget-wrap,
+
+.portal-card, [class*="portal"] {
+
+    background-color: #fdfaf4 !important;
+
+    backdrop-filter: none !important;
+
+    opacity: 1 !important;
+
+}
+
+
+
+/* Cajas de texto con fondo bordó (imágenes 4 y 5): Fondo rojo/bordó y LETRA BLANCA */
+
+div[style*="background-color: rgb(122, 22, 14)"],
+
+div[style*="background-color: #7a160e"],
+
+div[style*="background-color: #860119"],
+
+[class*="tesoros"] div[style*="background"],
+
+.elementor-element div[style*="background"] {
+
+    background-color: #7a160e !important;
+
+}
+
+
+
+div[style*="background-color: rgb(122, 22, 14)"] p,
+
+div[style*="background-color: #7a160e"] p,
+
+div[style*="background-color: #860119"] p,
+
+div[style*="background-color: rgb(122, 22, 14)"] span,
+
+div[style*="background-color: #7a160e"] span,
+
+div[style*="background-color: #860119"] span {
+
+    color: #ffffff !important; /* Letra blanca impecable sobre fondo bordó */
+
+    opacity: 1 !important;
+
+}
+
+
+
+/* =================================================================
+
+   ✨ DA LUZ ALKIMYA — CORRECCIÓN DEFINITIVA FILTROS TIENDA Y CAJAS LANDING
+
+   ================================================================= */
+
+
+
+/* 1. RESTAURAR Y BLINDAR FILTROS DE TIENDA (MIS FAVORITOS / SOLO OFERTAS) */
+
+.shop-sidebar .button, .shop-sidebar a.button, 
+
+.widget_layered_nav_filters a, .product-filters a,
+
+.shop-sidebar .elementor-button,
+
+.shop-sidebar .btn-favoritos, .shop-sidebar .btn-ofertas {
+
+    background-color: #860119 !important; /* Rojo Alkimya medio-oscuro */
+
+    color: #ffffff !important; /* Letra blanca pura */
+
+    border: none !important;
+
+    border-radius: 0 15px !important; /* Esquinas estilo boutique */
+
+    font-family: 'Synthese', sans-serif !important;
+
+    text-transform: uppercase !important;
+
+    letter-spacing: 0.12em !important;
+
+}
+
+
+
+.shop-sidebar .button:hover, .shop-sidebar a.button:hover {
+
+    background-color: #AE0000 !important;
+
+    color: #ffffff !important;
+
+}
+
+
+
+/* 2. CAJAS DE TEXTO / BOTONES DE LANDING CON FONDO BLANCO ➔ FONDO BORDÓ Y LETRA BLANCA */
+
+/* Si hay cajas o botones blancos flotando sobre fondos oscuros, los pasamos a bordó con texto blanco */
+
+.elementor-widget-button a.elementor-button[style*="background-color: #fdfaf4"],
+
+.elementor-widget-button a.elementor-button[style*="background-color: rgb(253"],
+
+[class*="landing"] [class*="card"] a,
+
+[class*="landing"] .elementor-button,
+
+section[style*="background-color"] .elementor-button {
+
+    background-color: #7a160e !important; /* Fondo bordó oficial */
+
+    color: #ffffff !important; /* Letra blanca impecable */
+
+    border: none !important;
+
+}
+
+
+
+/* Transformar las tarjetas de enlace con fondo blanco de la imagen 2 en bloques sólidos bordó/blanco */
+
+.elementor-widget-wrap > .elementor-element[style*="background-color: #fdfaf4"],
+
+[class*="process"] .elementor-widget-container[style*="background"],
+
+.elementor-widget-container > a[style*="background"] {
+
+    background-color: #7a160e !important;
+
+    color: #ffffff !important;
+
+}
+
+
+
+.elementor-widget-container > a[style*="background"] * {
+
+    color: #ffffff !important;
+
+} 
+
+/* =================================================================
+   ✨ DA LUZ ALKIMYA — ACTIVOS Y ORIGEN: COLOR ALKIMYA & CERO ITÁLICA
+   ================================================================= */
+
+/* 1. FORZAR COLOR ROJO ALKIMYA OSCURO Y QUITAR ITÁLICAS EN ACTIVOS Y ORIGEN */
+.activos-origen-page h1,
+.activos-origen-page h2,
+.activos-origen-page h3,
+.activos-origen-page .ayo-section-title,
+.activos-origen-page .ayo-section-subtitle,
+.activos-origen-page .ayo-card-heading,
+.activos-origen-page .ayo-blockquote,
+.activos-origen-page .ayo-bullet-list li::before {
+    color: #7a160e !important; /* Rojo Alkimya oficial */
+    font-style: normal !important; /* Matamos las cursivas / itálicas */
+}
+
+/* 2. ASEGURAR BORDES Y DETALLES EN TONO ALKIMYA */
+.activos-origen-page .ayo-blockquote {
+    border-left-color: #7a160e !important;
+    background: rgba(122, 22, 14, 0.04) !important;
+}
+
+.activos-origen-page .ayo-card {
+    border-color: rgba(122, 22, 14, 0.15) !important;
 }
 
 
