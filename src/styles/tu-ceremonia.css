@@ -682,3 +682,41 @@
     color: #ffffff !important;
     text-align: center !important;
 }
+
+/* =================================================================
+   ✨ CEREMONIAS: LETRAS BLANCAS EN CAJAS BORDÓ Y ALINEACIÓN DE CAPAS
+   ================================================================= */
+
+/* 1. Letras blancas y nítidas sobre las tarjetas bordó */
+[class*="ceremonia"] .ceremonia-facial-extra-block-content,
+[class*="ceremonia"] .ceremonia-facial-block-text-content,
+[class*="ceremonia"] [class*="block-text"] p,
+[class*="ceremonia"] [class*="extra-block"] p,
+.ceremonia-facial-extra-block-content p,
+.ceremonia-facial-block-text-content p {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+}
+
+/* 2. Alineación prolija de las formas de fondo en Capilar (y otras ceremonias) */
+.ceremonia-facial-block-group, 
+[class*="ceremonia"] [class*="block-group"],
+[class*="ceremonia"] [class*="step"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Forzamos que las cajas de texto inferiores se centren exactamente debajo de sus títulos crema */
+.ceremonia-facial-extra-block, 
+[class*="ceremonia"] [class*="extra-block"],
+[class*="ceremonia"] [class*="block-text"] {
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
