@@ -4948,7 +4948,7 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
   [class*="biotipos-section"][class*="-table"] td:last-child::before {
     color: #04412D;
   }
-}
+
 
 /* Mobile-specific tweaks (≤767px) */
 @media (max-width: 767px) {
