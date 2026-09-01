@@ -1,3 +1,46 @@
+/* ===========================
+   TABLA BIOTIPO + CAROUSEL
+   =========================== */
+
+/* Tabla individual */
+.tabla-biotipo {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: -4px 6px 24px rgba(0, 0, 0, 0.25);
+  background: #FFF2E9;
+}
+
+.tabla-biotipo-header {
+  background: #9F2212;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-radius: 18px 18px 50% 50% / 18px 18px 30px 30px;
+}
+
+.tabla-biotipo-title {
+  font-family: 'Cormorant Garamond', var(--font-title), serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: #FFF2DB;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tabla-biotipo-body {
+  padding: 2rem 1.5rem;
+  background: #FFF2E9;
+}
+
+.tabla-biotipo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'EB Garamond', var(--font-text), serif;
+  color: #691A11;
+}
+
 .tabla-biotipo-table thead th {
   font-family: 'Cormorant Garamond', var(--font-title), serif;
   font-weight: 700;
@@ -56,7 +99,7 @@
     letter-spacing: 0.05em;
     margin-bottom: 0.25rem;
   }
-} /* <--- ESTA LLAVE FALTABA Y CERRABA EL MEDIA QUERY DE MOBILE */
+}
 
 /* ===========================
    CAROUSEL
@@ -83,7 +126,7 @@
 }
 
 /* =================================================================
-   ✨ OCULTAR EL QUIZ TEMPORALMENTE (HASTA MEJORARLO)
+   ✨ OCULTAR EL QUIZ TEMPORALMENTE Y EXPANDIR TEXTO
    ================================================================= */
 .biotipos-section2-quiz,
 .biotipos-section2-right-column {
@@ -170,7 +213,6 @@
     -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Evitar que aparezca fondo al hacer hover, focus o active (tocar con el dedo) */
 .biotipos-tablas-carousel-arrow:hover,
 .biotipos-tablas-carousel-arrow:focus,
 .biotipos-tablas-carousel-arrow:active,
@@ -185,7 +227,6 @@
     border: none !important;
 }
 
-/* Forzar que el icono interno quede limpio y nítido */
 .biotipos-tablas-carousel-arrow svg,
 .elementor-swiper-button svg,
 .swiper-button-next svg,
@@ -200,7 +241,6 @@
     opacity: 0.9 !important;
 }
 
-/* Sutil escala al pasar el mouse por encima de la flecha sola */
 .biotipos-tablas-carousel-arrow:hover svg,
 .elementor-swiper-button:hover svg,
 .swiper-button-next:hover svg,
