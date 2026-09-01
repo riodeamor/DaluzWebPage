@@ -1786,39 +1786,6 @@ section[style*="background-color: #fdfaf4"] a.elementor-button,
     box-shadow: 0 4px 15px rgba(122, 22, 14, 0.3) !important;
 }
 
-/* =================================================================
-   ✨ DA LUZ ALKIMYA — CORRECCIÓN DE BOTONES (SECCIÓN BIOTIPO / ALKIMYA)
-   ================================================================= */
-
-[class*="biotipo"] a.elementor-button, 
-[class*="biotipo"] .elementor-button,
-[class*="biotipo"] button,
-.theme-alkimya a.elementor-button,
-section[style*="background-color: #7a160e"] a.elementor-button,
-section[style*="background-color: #860119"] a.elementor-button {
-    background-color: #860119 !important; /* Fondo normal requerido para Alkimya */
-    color: #fdfaf4 !important; /* Texto crema boutique */
-    font-family: 'Synthese', sans-serif !important; /* Fuente de interfaz obligatoria */
-    text-transform: uppercase !important; /* Mayúsculas */
-    letter-spacing: 0.18em !important;
-    font-size: 1.125rem !important;
-    font-style: normal !important;
-    border: none !important;
-    border-radius: 0 15px !important; /* Estilo boutique esquinas opuestas */
-    transition: background-color 0.3s ease !important;
-}
-
-/* Estado Hover estricto para Alkimya */
-[class*="biotipo"] a.elementor-button:hover, 
-[class*="biotipo"] .elementor-button:hover,
-[class*="biotipo"] button:hover,
-.theme-alkimya a.elementor-button:hover,
-section[style*="background-color: #7a160e"] a.elementor-button:hover,
-section[style*="background-color: #860119"] a.elementor-button:hover {
-    background-color: #AE0000 !important; /* Hover oficial requerido */
-    color: #ffffff !important;
-}
-
 
 /* =================================================================
    ✨ DA LUZ ALKIMYA — LIMPIEZA DE FUENTE EN TABLAS Y BANNERS DE BIOTIPO
@@ -2144,56 +2111,72 @@ div[style*="background-color: #860119"] span {
 
 
 /* =================================================================
-   ✨ DA LUZ ALKIMYA — ACTIVOS Y ORIGEN: COLOR ALKIMYA & CERO ITÁLICA
+   ✨ SISTEMA MAESTRO IQ200 — DOBLE CAPA SEGURO
    ================================================================= */
 
-/* REGLA MAESTRA COMPLEMENTARIA: Fondo oscuro = Texto crema claro obligatoriamente */
-section[style*="background-color: #7a160e"] *,
-section[style*="background-color: #860119"] *,
-[class*="ceremonia"] *,
-[class*="manifesto"] *,
-[class*="tesoros"] .tesoros-content-card * {
+/* CAPA 1: Todo lo que vive sobre el fondo rojo general de las páginas ➔ Crema (#FFF2DB) */
+.tesoros-page,
+[class*="biotipo"],
+[class*="ceremonia"],
+[class*="manifiesto"],
+[class*="activos-origen-page"] {
+    color: #FFF2DB !important;
+}
+
+section[class*="biotipo"] h1, section[class*="biotipo"] h2, section[class*="biotipo"] p,
+section[class*="ceremonia"] h1, section[class*="ceremonia"] h2, section[class*="ceremonia"] p,
+section[class*="manifiesto"] h1, section[class*="manifiesto"] h2, section[class*="manifiesto"] p,
+.activos-origen-page h1, .activos-origen-page h2, .activos-origen-page p,
+.ayo-title-text, .ayo-band-title {
     color: #FFF2DB !important;
     font-style: normal !important;
 }
-/* Corrección quirúrgica para Activos y Origen */
-.activos-origen-page h1,
-.activos-origen-page h2,
-.activos-origen-page h3,
-.ayo-title-text,
-.ayo-band-title,
-[class*="ayo-"] h1,
-[class*="ayo-"] h2,
-[class*="ayo-"] span {
-    color: #FFF2DB !important;
+
+
+/* CAPA 2: ESCUDO PROTECTOR EXCLUSIVO PARA TARJETAS Y CAJAS CLARAS */
+[class*="card"] p, [class*="card"] span, [class*="card"] li,
+[class*="box"] p, [class*="box"] span, [class*="box"] li,
+div[style*="background-color: #fdfaf4"] p,
+div[style*="background-color: #FFF2DB"] p,
+div[style*="background-color: rgb(253"] p {
+    color: #251d1c !important;
     font-style: normal !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
 }
+
+/* Títulos dentro de esas mismas tarjetas claras ➔ Rojo Alkimya */
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3,
+[class*="box"] h1, [class*="box"] h2, [class*="box"] h3 {
+    color: #7a160e !important;
+    font-style: normal !important;
+}
+
 /* =================================================================
-   ✨ REGLA MAESTRA UNIVERSAL ABSOLUTA IQ200
-   Fondo Oscuro/Color (Rojo, Verde, Azul) ➔ Texto Blanco o Crema (#FFF2DB)
+   ✨ BOTONES UNIFICADOS DE BIOTIPO Y ALKIMYA (DEFINITIVO)
    ================================================================= */
-
-/* 1. Cobertura para todas las secciones oscuras o de color institucionales */
-[class*="ceremonia"] *,
-[class*="manifesto"] *,
-[class*="tesoros-content-card"] *,
-[class*="alkimya"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
-[class*="procesos"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
-[class*="daluz"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]),
-[class*="biotipo"] *:not([class*="light"]):not([class*="beige"]):not([class*="card"]) {
-    color: #FFF2DB !important;
+[class*="biotipo"] a.elementor-button, 
+[class*="biotipo"] .elementor-button,
+[class*="biotipo"] button,
+.theme-alkimya a.elementor-button,
+section[style*="background-color: #7a160e"] a.elementor-button,
+section[style*="background-color: #860119"] a.elementor-button {
+    background-color: #860119 !important;
+    color: #fdfaf4 !important;
+    font-family: 'Synthese', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    font-size: 0.9rem !important;
     font-style: normal !important;
+    border: none !important;
+    border-radius: 0 15px !important;
+    white-space: nowrap !important;
+    transition: background-color 0.3s ease !important;
 }
 
-/* 2. Cobertura universal por estilos en línea (Cualquier caja o sección con fondo de color) */
-div[style*="background-color: rgb(122"],
-div[style*="background-color: #7a160e"],
-div[style*="background-color: #860119"],
-div[style*="background-color: #0a3a5c"],
-div[style*="background-color: #2d5a3f"],
-div[style*="background-color: #0A432B"],
-section[style*="background"] * {
-    color: #FFF2DB !important;
-    font-style: normal !important;
+[class*="biotipo"] a.elementor-button:hover, 
+[class*="biotipo"] .elementor-button:hover,
+.theme-alkimya a.elementor-button:hover,
+section[style*="background-color: #7a160e"] a.elementor-button:hover,
+section[style*="background-color: #860119"] a.elementor-button:hover {
+    background-color: #AE0000 !important;
+    color: #ffffff !important;
 }
