@@ -5060,3 +5060,48 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
     background: linear-gradient(135deg, #04412D 0%, #066B47 100%) !important;
   }
 }
+
+/* =================================================================
+   ✨ BOTONES DE BIOTIPO COMPACTOS Y PROPORCIONALES AL TEXTO
+   ================================================================= */
+.biotipos-section15-buttons-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+}
+
+.biotipos-section15-button,
+.biotipos-section15-button-instagram,
+.biotipos-section15-button-whatsapp {
+    width: auto !important;
+    max-width: max-content !important;
+    flex: 0 0 auto !important;
+    padding: 0.75rem 2.25rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 0px 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Botón Instagram: Rojo Alkimya elegante */
+.biotipos-section15-button-instagram {
+    background: linear-gradient(135deg, #7a160e 0%, #ae0000 100%) !important;
+    color: #FFF2DB !important;
+    border: none !important;
+}
+
+/* Botón WhatsApp: Verde botánico Alkimya */
+.biotipos-section15-button-whatsapp {
+    background: linear-gradient(135deg, #0A432B 0%, #165b3d 100%) !important;
+    color: #FFF2DB !important;
+    border: none !important;
+}
