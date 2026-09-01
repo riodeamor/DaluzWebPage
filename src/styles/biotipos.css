@@ -4388,9 +4388,10 @@
   .section-biotipos-12 .svg-container-desktop,
   .section-biotipos-13 .svg-container-desktop,
   .section-biotipos-14 .svg-container-desktop,
-  .section-biotipos-15 .svg-container-desktop,
-  -container-desktop,
-  -container-desktop {
+  .section-biotipos-15 .svg-container-desktop
+
+   
+ {
     height: calc(100vw * (1078.65 / 1920)) !important;
     min-height: calc(100vw * (1078.65 / 1920)) !important;
     max-height: calc(100vw * (1078.65 / 1920)) !important;
