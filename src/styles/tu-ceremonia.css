@@ -658,3 +658,27 @@
 }
 
 
+/* =================================================================
+   ✨ RECTÁNGULOS MÁS COMPACTOS, BORDÓ Y LETRA BLANCA
+   ================================================================= */
+
+/* 1. Reducir la horizontalidad (ancho más angosto y centrado) */
+.tu-ceremonia-text-card {
+    width: 65% !important;
+    max-width: 850px !important;
+    margin: 0 auto !important;
+    background-color: #7a160e !important; /* Fondo bordó oficial */
+    border-radius: 0px 20px !important;     /* Esquinas orgánicas boutique */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 2. Ocultar el fondo SVG estirado anterior */
+.tu-ceremonia-text-card-bg {
+    display: none !important;
+}
+
+/* 3. Letra blanca impecable y texto centrado */
+.tu-ceremonia-text-card-text {
+    color: #ffffff !important;
+    text-align: center !important;
+}
