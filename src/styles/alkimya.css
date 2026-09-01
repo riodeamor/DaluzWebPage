@@ -2980,3 +2980,63 @@ a[href*="whatsapp"]:hover,
     background-color: #7a160e !important;
     color: #FFF2DB !important;
 }
+
+/* =================================================================
+   ✨ QUITAR VELISTA Y CURSIVAS EN PROCESOS, SESIONES Y CICLOS
+   ================================================================= */
+[class*="procesos"] h1, [class*="procesos"] h2, [class*="procesos"] h3, [class*="procesos"] h4,
+[class*="sesiones"] h1, [class*="sesiones"] h2, [class*="sesiones"] h3, [class*="sesiones"] h4,
+[class*="ciclos"] h1, [class*="ciclos"] h2, [class*="ciclos"] h3, [class*="ciclos"] h4,
+[class*="procesos"] [class*="title"], [class*="sesiones"] [class*="title"], [class*="ciclos"] [class*="title"],
+[class*="procesos"] [class*="heading"], [class*="sesiones"] [class*="heading"], [class*="ciclos"] [class*="heading"],
+.portal-card h2, .portal-card h3 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: normal !important;
+}
+
+/* =================================================================
+   ✨ BOTONES E INVERSIÓN: SESIONES, PROCESOS Y CICLOS ALQUÍMICOS
+   ================================================================= */
+[class*="sesiones"] a.elementor-button, 
+[class*="sesiones"] .elementor-button,
+[class*="sesiones"] a.btn,
+[class*="procesos"] a.elementor-button,
+[class*="procesos"] .elementor-button,
+[class*="ciclos"] a.elementor-button,
+[class*="ciclos"] .elementor-button,
+.theme-sesiones a.elementor-button,
+.portal-card a {
+    font-family: 'Cormorant Garamond', serif !important;
+    background-color: #0A432B !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+}
+
+[class*="sesiones"] a.elementor-button:hover, 
+[class*="sesiones"] .elementor-button:hover,
+[class*="procesos"] a.elementor-button:hover,
+[class*="procesos"] .elementor-button:hover,
+[class*="ciclos"] a.elementor-button:hover,
+[class*="ciclos"] .elementor-button:hover,
+.theme-sesiones a.elementor-button:hover,
+.portal-card a:hover {
+    background-color: #ffffff !important;
+    color: #0A432B !important;
+}
+
+/* =================================================================
+   ✨ TÍTULOS Y SUBTÍTULOS: VERDE BOTÁNICO LUMINOSO GENERAL
+   ================================================================= */
+[class*="sesiones"] h2,
+[class*="sesiones"] h3,
+[class*="procesos"] h2,
+[class*="procesos"] h3,
+[class*="ciclos"] h2,
+[class*="ciclos"] h3,
+.sesiones-subtitle,
+.procesos-subtitle,
+.ciclos-subtitle,
+.portal-subtitle {
+    color: #2E6F40 !important;
+    font-style: normal !important;
+}
