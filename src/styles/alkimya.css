@@ -352,34 +352,37 @@
 }
 
 /* =================================================================
-   ✨ TRANSFORMACIÓN BENTÓ TESOROS: FONDO BORDÓ Y TEXTO CREMA
+   ✨ /* =================================================================
+   ✨ TRANSFORMACIÓN BENTÓ TESOROS: FONDO BEIGE & TEXTO OSCURO/ROJO
    ================================================================= */
 
-/* 1. Aplicar el degradado bordó a las 5 tarjetas del bento grid */
+/* 1. Aplicar degradado de beiges de la paleta Alkimya a las 5 tarjetas */
 .tesoros-bento-grid > *,
 .tesoros-bento-grid .elementor-element,
 .tesoros-bento-grid .elementor-widget-wrap {
-    background: linear-gradient(135deg,
-        var(--color-brand-primary, #7a160e) 0%,
-        #8a0000 50%,
-        var(--color-brand-secondary, #b32d24) 100%) !important;
+    background: linear-gradient(135deg, #FFF2DB 0%, #f6efd9 100%) !important;
     border-radius: 0 15px !important;
     padding: 1.5rem 2rem !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid rgba(240, 234, 206, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(122, 22, 14, 0.15) !important;
 }
 
-/* 2. Forzar que todo el contenido (títulos, párrafos, listas) sea crema luminoso (#FFF2DB) */
+/* 2. Títulos dentro de las tarjetas bento ➔ Rojo Alkimya */
 .tesoros-bento-grid h1,
 .tesoros-bento-grid h2,
 .tesoros-bento-grid h3,
-.tesoros-bento-grid h4,
+.tesoros-bento-grid h4 {
+    color: #7a160e !important;
+    font-style: normal !important;
+}
+
+/* 3. Textos, párrafos y listas dentro de las tarjetas bento ➔ Gris oscuro elegante */
 .tesoros-bento-grid p,
 .tesoros-bento-grid span,
 .tesoros-bento-grid a,
 .tesoros-bento-grid li,
 .tesoros-bento-grid strong {
-    color: #FFF2DB !important;
+    color: #251d1c !important;
     font-style: normal !important;
 }
 
@@ -1791,23 +1794,6 @@ li.procesos .sub-menu a {
 
 }
 
-/* 2. EXTERMINADOR DE LA GRONCHADA AMARILLA (BOTÓN BIOTIPO / INSTAGRAM) */
-/* Forzamos que este botón respete los códigos de clase Alkimya (Fondo Rojo y Letra Crema) */
-[class*="biotipo"] a, [class*="biotipo"] button, 
-.biotipo-btn, [class*="instagram"] a,
-section[style*="background-color: #fdfaf4"] a.elementor-button,
-.elementor-widget-button a[href*="instagram"],
-.elementor-widget-button a[href*="biotipo"] {
-    background-color: #7a160e !important; /* Rojo Alkimya oficial */
-    color: #FFF2E9 !important; /* Letra crema vainilla */
-    border: none !important;
-    font-family: 'Cormorant Garamond', serif !important;
-    font-style: normal !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
-    transition: all 0.3s ease !important;
-}
 
 /* 3. ESTADO HOOVER ELEGANTE (Al pasar el mouse) */
 [class*="biotipo"] a:hover, [class*="biotipo"] button:hover, 
@@ -1879,18 +1865,23 @@ section[style*="background-color: #fdfaf4"] a.elementor-button,
     color: #ffffff !important;
 }
 
-/* 2. JERARQUÍA DE TÍTULOS EN LAS TARJETAS DE SESIONES */
-/* Hacemos que el título principal de la tarjeta ("Pausa Vital", etc.) sea grande e imponente */
+/* 2. JERARQUÍA DE TÍTULOS EN LAS TARJETAS DE SESIONES (CORREGIDO) */
 [class*="sesiones"] [class*="card"] h3, 
 [class*="sesiones"] [class*="box"] h3,
 [class*="sesiones"] .elementor-widget-wrap h3,
 .portal-card h3, .tesoros-box h3 {
-    font-size: 1.6rem !important; /* Tamaño mayor para destacar sobre el texto */
+    font-size: 1.6rem !important;
     line-height: 1.2 !important;
     margin-bottom: 1rem !important;
     font-family: 'Cormorant Garamond', serif !important;
     font-style: italic !important;
-    color: #7a160e !important; /* Rojo Alkimya para el título de la tarjeta */
+    color: #0A432B !important; /* Verde Botánico profundo en lugar de rojo */
+}
+
+[class*="sesiones"] [class*="card"] h2, 
+[class*="sesiones"] [class*="box"] h2 {
+    font-size: 1.7rem !important;
+    color: #0A432B !important; /* Verde Botánico profundo */
 }
 
 /* Si los títulos son h2 o h4 dentro de las tarjetas, aplicamos la misma jerarquía */
@@ -2029,6 +2020,50 @@ section[style*="background-color: #0A432B"] p {
 
 }
 
+/* =================================================================
+   🛡️ BLINDAJE IQ200: TARJETAS ROJAS DE LA LANDING
+   ================================================================= */
+
+/* Anulamos la regla oscura SOLO para esta sección de la landing */
+section[class*="tarjetas-landing"] p,
+section[class*="tarjetas-landing"] span,
+section[class*="tarjetas-landing"] li,
+section[class*="tarjetas-landing"] h1,
+section[class*="tarjetas-landing"] h2,
+section[class*="tarjetas-landing"] h3,
+section[class*="tarjetas-landing"] h4,
+[class*="tarjetas-landing"] [class*="card"] p,
+[class*="tarjetas-landing"] [class*="card"] h3,
+[class*="tarjetas-landing"] .elementor-text-editor {
+    color: #FFF2DB !important; /* Crema brillante para contraste perfecto */
+    font-style: normal !important;
+}
+
+/* Íconos claros */
+[class*="tarjetas-landing"] .elementor-icon i,
+[class*="tarjetas-landing"] .elementor-icon svg {
+    color: #FFF2DB !important;
+    fill: #FFF2DB !important;
+}
+
+
+
+/* 2. Cambiar los títulos de Bordó a Verde Botánico en estas tarjetas */
+[class*="sesiones"] [class*="card"] h1,
+[class*="sesiones"] [class*="card"] h2,
+[class*="sesiones"] [class*="card"] h3,
+[class*="sesiones"] [class*="box"] h1,
+[class*="sesiones"] [class*="box"] h2,
+[class*="sesiones"] [class*="box"] h3,
+[class*="procesos"] [class*="card"] h1,
+[class*="procesos"] [class*="card"] h2,
+[class*="procesos"] [class*="card"] h3,
+[class*="procesos"] [class*="box"] h1,
+[class*="procesos"] [class*="box"] h2,
+[class*="procesos"] [class*="box"] h3 {
+    color: #0A432B !important; /* Verde profundo oficial de Sesiones */
+}
+
 
 
 /* Subtítulos o textos dentro de formas en Sesiones y Procesos */
@@ -2045,6 +2080,19 @@ section[style*="background-color: #0A432B"] p {
 
     opacity: 1 !important;
 
+}
+
+/* =================================================================
+   🌿 SALVAVIDAS: TEXTO CAMUFLADO EN SECCIÓN VERDE
+   ================================================================= */
+[class*="procesos"] h2, 
+[class*="procesos"] h3, 
+[class*="procesos"] .elementor-heading-title,
+[class*="sesiones"] h2, 
+[class*="sesiones"] h3, 
+[class*="sesiones"] .elementor-heading-title {
+    color: #FFF2DB !important; /* Crema luminoso para contraste perfecto sobre verde */
+    font-style: italic !important; /* Estilo sutil que elegiste para subtítulos */
 }
 
 /* =================================================================
@@ -2147,24 +2195,6 @@ div[style*="background-color: #860119"] span {
    ✨ SISTEMA MAESTRO IQ200 — DOBLE CAPA SEGURO
    ================================================================= */
 
-/* CAPA 1: Todo lo que vive sobre el fondo rojo general de las páginas ➔ Crema (#FFF2DB) */
-.tesoros-page,
-[class*="biotipo"],
-[class*="ceremonia"],
-[class*="manifiesto"],
-[class*="activos-origen-page"] {
-    color: #FFF2DB !important;
-}
-
-section[class*="biotipo"] h1, section[class*="biotipo"] h2, section[class*="biotipo"] p,
-section[class*="ceremonia"] h1, section[class*="ceremonia"] h2, section[class*="ceremonia"] p,
-section[class*="manifiesto"] h1, section[class*="manifiesto"] h2, section[class*="manifiesto"] p,
-.activos-origen-page h1, .activos-origen-page h2, .activos-origen-page p,
-.ayo-title-text, .ayo-band-title {
-    color: #FFF2DB !important;
-    font-style: normal !important;
-}
-
 
 /* CAPA 2: ESCUDO PROTECTOR EXCLUSIVO PARA TARJETAS Y CAJAS CLARAS */
 [class*="card"] p, [class*="card"] span, [class*="card"] li,
@@ -2213,3 +2243,98 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
     background-color: #AE0000 !important;
     color: #ffffff !important;
 }
+
+/* =================================================================
+   🚑 SALVAVIDAS EXCLUSIVO: PÁGINA TU CEREMONIA 
+   ================================================================= */
+
+/* 1. Rescatar el Título principal (para que no sea bordó sobre bordó) */
+.tu-ceremonia-main-title, 
+.tu-ceremonia-secondary-title,
+.tu-ceremonia-page h1, 
+.tu-ceremonia-page h2 {
+    color: #FFF2DB !important; /* Letra crema brillante */
+}
+
+/* 2. Rescatar los Botones (para que la letra vuelva a ser bordó oscuro) */
+.tu-ceremonia-button,
+[class*="ceremonia"] a.tu-ceremonia-button {
+    color: #7a160e !important; /* Texto rojo Alkimya */
+    background-color: #FFF2DB !important; /* Fondo crema */
+    border: 2px solid #7a160e !important;
+}
+
+/* 3. Efecto Hover de los botones de ceremonia (Inverso) */
+.tu-ceremonia-button:hover,
+[class*="ceremonia"] a.tu-ceremonia-button:hover {
+    background-color: #7a160e !important; /* Fondo rojo al pasar el mouse */
+    color: #FFF2DB !important; /* Letra crema al pasar el mouse */
+}
+
+
+/* =================================================================
+   🚑 SALVAVIDAS EXCLUSIVO: CAJAS DE BIOTIPO Y LINK ROTO
+   ================================================================= */
+
+/* 1. Forzar letra bordó en los textos dentro de las cajas claras */
+[class*="biotipo"] .elementor-widget-text-editor, 
+[class*="biotipo"] .elementor-text-editor,
+[class*="biotipo"] .elementor-text-editor p {
+    color: #7a160e !important; /* Letra bordó oscuro */
+}
+
+/* 2. Matar el fondo rojo gigante del texto "CLICK A CEREMONIA" */
+[class*="biotipo"] a:not(.elementor-button):not(.btn) {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* 3. Asegurar que ese título "CLICK A CEREMONIA" se lea bordó sobre el fondo crema */
+[class*="biotipo"] a:not(.elementor-button) h1,
+[class*="biotipo"] a:not(.elementor-button) h2,
+[class*="biotipo"] a:not(.elementor-button) h3 {
+    color: #7a160e !important;
+}
+
+/* 4. Rescate de los botones mutantes en Biotipo (PIELES / CABELLOS) */
+[class*="biotipo"] .elementor-button,
+[class*="biotipo"] .btn,
+.biotipo-btn,
+[class*="biotipo"] button {
+    width: auto !important;
+    min-width: 180px !important; /* Un tamaño estándar y parejo para ambos */
+    max-width: 100% !important;
+    padding: 14px 28px !important; /* Relleno proporcionado */
+    font-size: 0.9rem !important; /* Tamaño de letra sutil */
+    white-space: nowrap !important; /* Prohíbe terminantemente que la palabra se rompa en dos líneas */
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+/* =================================================================
+   🌿 SALVAVIDAS EXCLUSIVO: TARJETAS DE SESIONES / PROCESOS
+   ================================================================= */
+
+/* 1. Arreglar texto "blanco sobre blanco" en las cajas claras */
+[class*="sesiones"] [class*="card"] p,
+[class*="sesiones"] [class*="card"] span,
+[class*="sesiones"] [class*="card"] li,
+[class*="sesiones"] [class*="box"] p,
+[class*="sesiones"] .elementor-widget-text-editor,
+[class*="sesiones"] .elementor-text-editor,
+[class*="procesos"] [class*="card"] p,
+[class*="procesos"] [class*="card"] span,
+[class*="procesos"] [class*="card"] li,
+[class*="procesos"] [class*="box"] p,
+[class*="procesos"] .elementor-widget-text-editor,
+[class*="procesos"] .elementor-text-editor {
+    color: #1a3324 !important; /* Verde súper oscuro / casi negro para lectura nítida */
+    font-style: normal !important;
+}
+
+
