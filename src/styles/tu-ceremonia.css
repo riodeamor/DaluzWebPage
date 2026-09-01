@@ -621,3 +621,40 @@
   
 }
 
+/* =================================================================
+   ✨ CEREMONIA: QUITAR FONDO BORDÓ Y DEJAR LETRA BORDÓ
+   ================================================================= */
+
+.ceremonia-facial-hero-title,
+.tu-ceremonia-main-title,
+[class*="ceremonia"] h1 {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.ceremonia-facial-hero-title-bg {
+    display: none !important;
+}
+
+.ceremonia-facial-hero-title-text,
+.tu-ceremonia-main-title,
+[class*="ceremonia"] h1 {
+    color: #7a160e !important;
+}
+
+/* =================================================================
+   ✨ BOTONES DE CEREMONIA: TEXTOS CENTRADOS Y SIN BORDE NEGRO
+   ================================================================= */
+.tu-ceremonia-button,
+[class*="ceremonia"] a.tu-ceremonia-button,
+[class*="ceremonia"] .elementor-button {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: inline-flex !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 12px rgba(122, 22, 14, 0.15) !important; /* Sombra limpia acorde al tono */
+}
+
+
