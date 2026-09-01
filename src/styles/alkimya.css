@@ -2316,24 +2316,6 @@ section[style*="background-color: #860119"] a.elementor-button:hover {
     line-height: normal !important;
 }
 
-/* =================================================================
-   🌿 SALVAVIDAS DEFINITIVO: TARJETAS DE SESIONES / PROCESOS
-   ================================================================= */
-[class*="sesiones"] [class*="card"] p,
-[class*="sesiones"] [class*="card"] span,
-[class*="sesiones"] [class*="card"] li,
-[class*="sesiones"] [class*="box"] p,
-[class*="sesiones"] .elementor-widget-text-editor,
-[class*="sesiones"] .elementor-text-editor,
-[class*="procesos"] [class*="card"] p,
-[class*="procesos"] [class*="card"] span,
-[class*="procesos"] [class*="card"] li,
-[class*="procesos"] [class*="box"] p,
-[class*="procesos"] .elementor-widget-text-editor,
-[class*="procesos"] .elementor-text-editor {
-    color: #1a3324 !important;
-    font-style: normal !important;
-}
 
 /* =================================================================
    ✨ CORRECCIÓN DEFINITIVA: TÍTULOS BORDÓ Y TEXTOS LEGIBLES EN CEREMONIA
