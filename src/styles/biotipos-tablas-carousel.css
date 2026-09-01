@@ -125,120 +125,80 @@
   padding: 0 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .biotipos-tablas-carousel {
-    margin-top: 14rem;
-  }
-}
-
-.biotipos-tablas-carousel-viewport {
-  overflow: hidden;
-}
-
-.biotipos-tablas-carousel-track {
-  display: flex;
-  transition: transform 700ms ease-in-out;
-}
-
-.biotipos-tablas-carousel-slide {
-  flex: 0 0 100%;
-  width: 100%;
-  padding: 0 0.5rem;
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  .biotipos-tablas-carousel {
-    padding: 0 4rem;
-  }
-
-  .biotipos-tablas-carousel-slide {
-    padding: 0 1rem;
-  }
-}
-
-/* Arrows */
-.biotipos-tablas-carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: #FFF2E9;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  width: 32px;
-  height: 40px;
-}
-
-.biotipos-tablas-carousel-arrow:hover {
-  transform: translateY(-50%) scale(1.15);
-}
-
-.biotipos-tablas-carousel-arrow svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(-1px 2px 4px rgba(0, 0, 0, 0.4));
-}
-
-.biotipos-tablas-carousel-arrow-left {
-  left: 0;
-}
-
-.biotipos-tablas-carousel-arrow-right {
-  right: 0;
-}
-
-@media (min-width: 768px) {
-  .biotipos-tablas-carousel-arrow {
-    width: 44px;
-    height: 56px;
-    padding: 0.5rem;
-  }
+/* =================================================================
+   ✨ OCULTAR EL QUIZ TEMPORALMENTE (HASTA MEJORARLO)
+   ================================================================= */
+.biotipos-section2-quiz,
+.biotipos-section2-right-column {
+    display: none !important;
 }
 
 @media (min-width: 1280px) {
-  .biotipos-tablas-carousel-arrow {
-    width: 56px;
-    height: 70px;
-  }
-}
-
-/* Dots */
-.biotipos-tablas-carousel-dots {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.biotipos-tablas-carousel-dot {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-}
-
-.biotipos-tablas-carousel-dot-inner {
-  display: block;
-  border-radius: 999px;
-  background: rgba(255, 242, 233, 0.5);
-  transition: all 0.3s ease;
-  width: 8px;
-  height: 8px;
-}
-
-.biotipos-tablas-carousel-dot:hover .biotipos-tablas-carousel-dot-inner {
-  background: rgba(255, 242, 233, 0.8);
+    .biotipos-section2-main-container {
+        grid-template-columns: 1fr !important;
+        max-width: 800px !important;
+        margin: 0 auto !important;
+    }
 }
 
 /* =================================================================
-   ✨ FLECHAS DE CARRUSEL LIMPIAS (SIN CAJA CIRCULAR, SOLO EL ÍCONO)
+   ✨ BOTONES DE BIOTIPO (SECCIÓN 15): BORDÓ, CENTRADOS Y TAMAÑO IDEAL
    ================================================================= */
+.biotipos-section15-buttons-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 2.5rem auto 1rem auto !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    clear: both !important;
+}
 
+.biotipos-section15-button,
+.biotipos-section15-button-instagram,
+.biotipos-section15-button-whatsapp,
+.biotipos-section15-buttons-container a {
+    background: linear-gradient(135deg, #7a160e 0%, #ae0000 100%) !important;
+    color: #F2E2D8 !important;
+    width: auto !important;
+    min-width: 260px !important;
+    max-width: 320px !important;
+    flex: 0 0 auto !important;
+    padding: 0.95rem 1.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 0 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    text-decoration: none !important;
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    white-space: nowrap !important;
+}
+
+.biotipos-section15-buttons-container a:hover {
+    transform: translateY(-2px) !important;
+    filter: brightness(1.1) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* =================================================================
+   ✨ LIMPIEZA ABSOLUTA DE FLECHAS DE CARRUSEL (CERO CÍRCULOS)
+   ================================================================= */
+.biotipos-tablas-carousel-arrow,
 .elementor-swiper-button,
 .swiper-button-next,
 .swiper-button-prev,
@@ -246,59 +206,49 @@
 .slick-next {
     background-color: transparent !important;
     background: transparent !important;
+    background-image: none !important;
     border: none !important;
     box-shadow: none !important;
-    width: auto !important;
-    height: auto !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
 
-/* Color y tamaño de las flechas limpias */
+/* Evitar que aparezca fondo al hacer hover, focus o active (tocar con el dedo) */
+.biotipos-tablas-carousel-arrow:hover,
+.biotipos-tablas-carousel-arrow:focus,
+.biotipos-tablas-carousel-arrow:active,
+.elementor-swiper-button:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:hover,
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: transparent !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* Forzar que el icono interno quede limpio y nítido */
+.biotipos-tablas-carousel-arrow svg,
 .elementor-swiper-button svg,
 .swiper-button-next svg,
 .swiper-button-prev svg,
 .slick-prev::before,
-.slick-next::before,
-.elementor-swiper-button i {
-    color: #7a160e !important; /* Rojo Alkimya o cambiá a #FFF2DB si están sobre fondo oscuro */
-    fill: #7a160e !important;
-    font-size: 28px !important;
-    opacity: 1 !important;
+.slick-next::before {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: #FFF2DB !important;
+    fill: #FFF2DB !important;
+    opacity: 0.9 !important;
 }
 
-/* Efecto sutil al pasar el mouse */
+/* Sutil escala al pasar el mouse por encima de la flecha sola */
+.biotipos-tablas-carousel-arrow:hover svg,
 .elementor-swiper-button:hover svg,
 .swiper-button-next:hover svg,
-.swiper-button-prev:hover svg,
-.slick-prev:hover::before,
-.slick-next:hover::before {
-    transform: scale(1.15);
-    filter: brightness(1.2);
+.swiper-button-prev:hover svg {
+    transform: scale(1.15) !important;
+    opacity: 1 !important;
 }
-
-.biotipos-tablas-carousel-dot[aria-current="true"] .biotipos-tablas-carousel-dot-inner {
-  background: #FFF2E9;
-  width: 28px;
-  height: 8px;
-}
-
-
-/* =================================================================
-   ✨ OCULTAR FLECHAS O BOTONES DESCARRIADOS FUERA DE LAS TARJETAS
-   ================================================================= */
-[class*="biotipos-section"] .slick-next,
-[class*="biotipos-section"] .slick-prev,
-[class*="biotipos-section"] [class*="carousel-arrow"],
-[class*="biotipos-section"] [class*="swiper-button"],
-[class*="biotipos-section"] button[class*="next"],
-[class*="biotipos-section"] button[class*="prev"] {
-    display: none !important;
-}
-
-/* Blindar los contenedores de tabla para cortar cualquier elemento flotante excedente */
-[class*="biotipos-section"][class*="-table-container"] {
-    overflow: hidden !important;
-}
-
 
