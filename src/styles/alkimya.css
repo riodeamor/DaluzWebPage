@@ -2918,3 +2918,65 @@ a[href*="whatsapp"]:hover,
 }
 
 
+/* =================================================================
+   ✨ CEREMONIA: TARJETAS ORIGINALES + BOTONES ABAJO PERFECTOS
+   ================================================================= */
+
+/* 1. Devolver el contenedor de botones al flujo prolijo inferior */
+.tu-ceremonia-buttons {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 3rem auto 2rem auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    clear: both !important;
+}
+
+/* 2. Estilo unificado para los 3 botones inferiores */
+.tu-ceremonia-button,
+[class*="tu-ceremonia-button-"] {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-width: 240px !important;
+    max-width: 300px !important;
+    padding: 0.9rem 1.5rem !important;
+    background-color: #FFF2DB !important;
+    color: #7a160e !important;
+    border: 2px solid #7a160e !important;
+    border-radius: 0 15px !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: 0 4px 12px rgba(122, 22, 14, 0.15) !important;
+    transition: all 0.25s ease !important;
+}
+
+.tu-ceremonia-button:hover {
+    background-color: #7a160e !important;
+    color: #FFF2DB !important;
+    box-shadow: 0 6px 18px rgba(122, 22, 14, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 3. Cero verde en la sección */
+[class*="ceremonia"] a[href*="whatsapp"],
+[class*="ceremonia"] .elementor-button-success {
+    background-color: #7a160e !important;
+    color: #FFF2DB !important;
+}
