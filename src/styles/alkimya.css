@@ -2370,3 +2370,17 @@ a[href*="whatsapp"]:hover,
     color: #4a0d09 !important;
     font-style: normal !important;
 }
+
+/* =================================================================
+   ✨ UNIFICACIÓN MAESTRA: TIPOGRAFÍA DE TÍTULOS EN PROCESOS / SESIONES / CICLOS
+   ================================================================= */
+[class*="procesos"] h1, [class*="procesos"] h2, [class*="procesos"] .elementor-heading-title,
+[class*="sesiones"] h1, [class*="sesiones"] h2, [class*="sesiones"] .elementor-heading-title,
+[class*="ciclos"] h1, [class*="ciclos"] h2, [class*="ciclos"] .elementor-heading-title,
+.procesos-title, .sesiones-title, .ciclos-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: normal !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.12em !important;
+    font-weight: 600 !important;
+}
