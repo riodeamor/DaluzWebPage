@@ -2401,3 +2401,15 @@ a[href*="whatsapp"]:hover,
     width: 100% !important;
     max-width: 1200px !important;
 }
+
+/* =================================================================
+   ✨ ANIQUILACIÓN TOTAL DE ITÁLICAS EN TODO EL SITIO
+   ================================================================= */
+h1, h2, h3, h4, h5, h6,
+[class*="title"], 
+[class*="heading"], 
+[class*="card"],
+.elementor-heading-title {
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
