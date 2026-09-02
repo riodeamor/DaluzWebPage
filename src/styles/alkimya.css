@@ -2384,3 +2384,20 @@ a[href*="whatsapp"]:hover,
     letter-spacing: 0.12em !important;
     font-weight: 600 !important;
 }
+
+/* =================================================================
+   ✨ CENTRADO PERFECTO DE TÍTULOS EN BIOTIPO Y SESIONES
+   ================================================================= */
+[class*="biotipo"] h1, [class*="biotipo"] h2, [class*="biotipo"] .elementor-heading-title,
+[class*="sesiones"] h1, [class*="sesiones"] h2, [class*="sesiones"] .elementor-heading-title,
+.biotipos-main-title, .sesiones-main-title,
+.biotipos-secondary-title, .sesiones-secondary-title {
+    text-align: center !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+}
