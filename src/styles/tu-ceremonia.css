@@ -698,3 +698,25 @@
     position: relative !important;
     margin: 1.5rem auto !important;
 }
+
+/* =================================================================
+   ✨ DES-SUPERPOSICIÓN DE TEXTOS EN TU CEREMONIA
+   ================================================================= */
+[class*="tu-ceremonia"] .elementor-widget-text-editor,
+[class*="ceremonia-facial"] .elementor-widget-text-editor,
+[class*="tu-ceremonia"] .elementor-text-editor,
+[class*="ceremonia-facial"] .elementor-text-editor {
+    position: relative !important;
+    display: block !important;
+    transform: none !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    height: auto !important;
+    opacity: 1 !important;
+}
+
+[class*="tu-ceremonia"] .elementor-widget,
+[class*="ceremonia-facial"] .elementor-widget {
+    position: relative !important;
+    transform: none !important;
+}
