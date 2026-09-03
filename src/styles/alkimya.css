@@ -2413,3 +2413,130 @@ h1, h2, h3, h4, h5, h6,
     font-style: normal !important;
     font-weight: 600 !important;
 }
+
+/* ==========================================================================
+   ✨ SISTEMA MAESTRO IQ200 — CONSOLIDADO DE CORRECCIONES (2026)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. LA DOBLE CAPA (Fondos oscuros vs Cajas claras)
+   -------------------------------------------------------------------------- */
+/* 1. Fondo rojo general ➔ Texto crema luminoso (#FFF2DB) */
+.tesoros-page, [class*="biotipo"], [class*="ceremonia"], [class*="manifiesto"], [class*="activos-origen-page"] {
+    color: #FFF2DB !important;
+}
+
+section[class*="biotipo"] h1, section[class*="biotipo"] h2, section[class*="biotipo"] p,
+section[class*="ceremonia"] h1, section[class*="ceremonia"] h2, section[class*="ceremonia"] p,
+section[class*="manifiesto"] h1, section[class*="manifiesto"] h2, section[class*="manifiesto"] p,
+.activos-origen-page h1, .activos-origen-page h2, .activos-origen-page p,
+.ayo-title-text, .ayo-band-title {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+
+/* 2. Escudo para Tarjetas/Cajas Claras ➔ Texto oscuro legible y Títulos Rojos */
+[class*="card"] p, [class*="card"] span, [class*="card"] li,
+[class*="box"] p, [class*="box"] span, [class*="box"] li,
+div[style*="background-color: #fdfaf4"] p,
+div[style*="background-color: #FFF2DB"] p,
+div[style*="background-color: rgb(253"] p {
+    color: #251d1c !important;
+    font-style: normal !important;
+}
+
+[class*="card"] h1, [class*="card"] h2, [class*="card"] h3,
+[class*="box"] h1, [class*="box"] h2, [class*="box"] h3 {
+    color: #7a160e !important;
+    font-style: normal !important;
+}
+
+/* --------------------------------------------------------------------------
+   B. BOTONES BOUTIQUE PERFECTOS (Biotipos, Alkimya y Home)
+   -------------------------------------------------------------------------- */
+/* Botones Biotipo (Arreglo para que "CABELLOS" no se rompa) */
+[class*="biotipo"] a.elementor-button, [class*="biotipo"] .elementor-button, [class*="biotipo"] button,
+.theme-alkimya a.elementor-button,
+section[style*="background-color: #7a160e"] a.elementor-button,
+section[style*="background-color: #860119"] a.elementor-button {
+    background-color: #860119 !important;
+    color: #fdfaf4 !important;
+    font-family: 'Synthese', sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important; /* Letras juntas para que entre la palabra */
+    font-size: 0.9rem !important;
+    font-style: normal !important;
+    border: none !important;
+    border-radius: 0 15px !important;
+    white-space: nowrap !important; /* Fuerza una sola línea */
+}
+
+/* Arreglo botones de la HOME (Elimina sombra/borde fantasma doble) */
+.home [class*="card"] a.elementor-button,
+.home [class*="box"] a.elementor-button,
+.home .elementor-widget-button a.elementor-button {
+    background-color: #fdfaf4 !important;
+    color: #7a160e !important;
+    border: 1px solid rgba(122, 22, 14, 0.2) !important;
+    box-shadow: none !important;
+    background-image: none !important;
+    border-radius: 0 15px !important;
+    font-family: 'Synthese', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+/* --------------------------------------------------------------------------
+   C. CEREMONIA FACIAL (Contraste exacto en las formas SVG)
+   -------------------------------------------------------------------------- */
+/* Pastillas claras de arriba ➔ Texto Rojo Alkimya */
+.ceremonia-facial-block-title-text {
+    color: #7a160e !important;
+    font-style: normal !important;
+}
+
+/* Cajas inferiores Bordó ➔ Texto Crema Claro y Fondo intacto */
+.ceremonia-facial-block-text-content,
+.ceremonia-facial-extra-block-content {
+    color: #FFF2DB !important;
+    font-style: normal !important;
+}
+.ceremonia-facial-block-text-bg,
+.ceremonia-facial-extra-block-bg {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* --------------------------------------------------------------------------
+   D. TESOROS BENTO GRID (Fondo Beige Elegante)
+   -------------------------------------------------------------------------- */
+/* Fondo degradado beige a las 5 tarjetas */
+.tesoros-bento-grid > *,
+.tesoros-bento-grid .elementor-element,
+.tesoros-bento-grid .elementor-widget-wrap {
+    background: linear-gradient(135deg, #FFF2DB 0%, #f6efd9 100%) !important;
+    border-radius: 0 15px !important;
+    padding: 1.5rem 2rem !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(122, 22, 14, 0.15) !important;
+}
+
+/* Títulos rojos y Textos oscuros para que se lean sobre el beige */
+.tesoros-bento-grid h1, .tesoros-bento-grid h2, .tesoros-bento-grid h3, .tesoros-bento-grid h4 {
+    color: #7a160e !important;
+    font-style: normal !important;
+}
+.tesoros-bento-grid p, .tesoros-bento-grid span, .tesoros-bento-grid a, .tesoros-bento-grid li, .tesoros-bento-grid strong {
+    color: #251d1c !important;
+    font-style: normal !important;
+}
+
+/* --------------------------------------------------------------------------
+   E. EXTERMINIO DE CURSIVAS EN LANDINGS (Biotipo/Dosha)
+   -------------------------------------------------------------------------- */
+[class*="biotipo"] h1, [class*="biotipo"] h2,
+[class*="dosha"] h1, [class*="dosha"] h2,
+[class*="landing"] h1, [class*="landing"] h2,
+.elementor-widget-heading h1, .elementor-widget-heading h2 {
+    font-style: normal !important;
+    font-weight: 600 !important;
+}
