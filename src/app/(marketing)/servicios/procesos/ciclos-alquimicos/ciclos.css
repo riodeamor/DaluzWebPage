@@ -1,12 +1,11 @@
-/**
- * Ciclos Alquímicos - Exclusive Styles
- * Design: Dedicated structure for transformation paths
- */
+/* ===========================
+   CICLOS ALQUÍMICOS - PALETA AZUL DA LUZ
+   =========================== */
 
-/* Ciclos: tarjetas con borde default (igual que responsivo) */
+/* Ciclos: tarjetas con borde default */
 .ciclos-main .procesos-oval-box {
   background-color: transparent;
-  border: 2px solid rgba(253, 252, 240, 0.6);
+  border: 2px solid rgba(255, 242, 233, 0.4);
   border-radius: 0 15px;
   box-shadow: none;
   width: 100%;
@@ -17,7 +16,7 @@
 
 .ciclos-main .procesos-oval-box-inner {
   transform: none;
-  color: var(--procesos-accent);
+  color: #FFF2E9;
   font-family: var(--font-text), var(--font-body), serif;
   font-size: clamp(0.9375rem, 1.4vw, 1rem);
   line-height: 1.65;
@@ -26,7 +25,7 @@
 .ciclos-main .procesos-oval-box-inner strong {
   font-family: var(--font-subtitle), var(--font-heading), serif;
   font-weight: 600;
-  color: var(--procesos-accent);
+  color: #FFF2E9;
 }
 
 /* Ciclos page - main container */
@@ -39,23 +38,24 @@
   padding-bottom: env(safe-area-inset-bottom, 2rem);
 }
 
-/* Ciclos page - alignment utilities (ovals) */
+/* Ciclos page - alignment utilities (ovals) con fondo Azul Institucional */
 .ciclos-oval-left {
   margin-right: auto;
-  background-color: #0D3221 !important;
-
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%) !important;
+  border: 1px solid rgba(255, 242, 233, 0.2);
 }
 
 .ciclos-oval-right {
   margin-left: auto;
-  background-color: #0D3221 !important;
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%) !important;
+  border: 1px solid rgba(255, 242, 233, 0.2);
 }
 
 .ciclos-oval-center {
   margin-left: auto;
   margin-right: auto;
-  background-color: #0D3221 !important;
-
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%) !important;
+  border: 1px solid rgba(255, 242, 233, 0.2);
 }
 
 .ciclos-text-center .procesos-oval-box-inner {
@@ -67,8 +67,8 @@
   font-family: var(--font-velista), var(--font-heading), serif;
   font-weight: 600;
   font-size: clamp(1.75rem, 5vw, 2.75rem);
-  color: var(--procesos-text-on-cream);
-  background-color: var(--procesos-cream);
+  color: #051341;
+  background-color: #FFF2E9;
   padding: 1.25rem 3.5rem;
   border-radius: 0 20px;
   display: inline-block;
@@ -76,12 +76,12 @@
   margin-top: 1rem !important;
 }
 
-/* Ciclos section header (CICLOS ALQUIMICOS) */
+/* Ciclos section header */
 .ciclos-section-header {
   font-family: var(--font-title), var(--font-velista), serif;
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 400;
-  color: #fffef5;
+  color: #FFF2E9;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -90,7 +90,7 @@
   transform: translateY(-25px);
 }
 
-/* Ciclos link button - min 44px touch target */
+/* Ciclos link button */
 a.procesos-btn-cream.ciclos-detail-link {
   font-size: 1.1rem;
   padding: 1rem 3rem;
@@ -98,9 +98,17 @@ a.procesos-btn-cream.ciclos-detail-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: #16345F;
+  color: #FFF2E9;
+  border-radius: 0 15px;
+  transition: background-color 0.3s ease;
 }
 
-/* Ciclos page - intro block */
+a.procesos-btn-cream.ciclos-detail-link:hover {
+  background-color: #005080;
+}
+
+/* Ciclos page - intro block con degradado azul profundo */
 .ciclos-intro {
   position: relative;
   z-index: 10;
@@ -112,10 +120,7 @@ a.procesos-btn-cream.ciclos-detail-link {
   margin-bottom: 0rem;
   margin-top: 0.5rem;
   padding: 6rem 8vw 6rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 180 1920 600' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%230d3221;filter:url(%23ds-2)%7D%3C/style%3E%3Cfilter id='ds-2' x='-50' y='160' width='2020' height='700' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M497.2,727.1c-108.77-9.8-192.45-17.34-297.48-4.36-25.01,3.09-85.65,5.79-144.83-22.67-61.7-29.67-64.31-86.8-3.91-115.08,19.19-8.99,43.83-14.64,182.01-21.79,221.92-11.49,235.98-.92,315.1-13.95,111.53-18.37,126.72-20.84,243.48-48.82,116.43-27.9,106.98-30.14,138.89-50.56,37.59-24.06,7.73-59.49-39.83-84.56-51.24-27.02-91.17-28.83-144.87-33.13-130.27-10.43-171.23,8.9-350.33,13.95-137.78,3.88-250.52,7.06-303.35-23.54-43.52-25.2-38.03-68.47,4.26-96.56,40.16-26.67,116.82-41.85,445.88-42.93,362.87-1.19,564.13-.61,604.75,40.1,43.25,43.34-162.28,93.14-121.34,132.51,40.82,39.26,288.44,39.96,446.23,27.9,100.01-7.65,234.7-17.86,351.2-2.66,35.14,4.58,64.44,10.93,84.11,32.3,23.25,25.28-33.3,59.22-83.02,78.46-106.71,41.28-214.41,77.9-386.84,66.07-118.1-8.1-223.36-66.25-345.98-59.75-209.33,11.08-283.15,33.99-282.92,34.65,5.5,16.38,218.27-3.2,275.96,36.62,9.94,6.86,16.36,15.08,19.58,24.21,16.17,45.82-89.3,126.18-191.81,156.25-14.73,4.32-26.07,6.63-36.26,7.88-12.34,1.52-22.18,2.12-29.65,2.41,0,0-16.33.63-32.16-.12-38.1-1.81-249.45-26.77-316.84-32.84Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center top;
+  background: linear-gradient(180deg, #051341 0%, #16345F 100%);
 }
 
 .ciclos-intro-item {
@@ -123,7 +128,7 @@ a.procesos-btn-cream.ciclos-detail-link {
   font-family: var(--font-velista), var(--font-heading), serif;
   font-size: 1.2rem;
   line-height: 1.7;
-  color: var(--procesos-accent);
+  color: #FFF2E9;
   max-width: 520px;
 }
 
@@ -137,13 +142,13 @@ a.procesos-btn-cream.ciclos-detail-link {
   margin-left: 15%;
   margin-top: -0.5rem;
   transform: translateY(-10px);
+  text-align: right;
 }
 
 .ciclos-intro-left-2 {
   margin-left: 5%;
   margin-top: -0.5rem;
   transform: translateY(35px);
-
 }
 
 .ciclos-intro-item:last-of-type {
@@ -155,22 +160,16 @@ a.procesos-btn-cream.ciclos-detail-link {
   margin-left: 0;
 }
 
-.ciclos-intro-right {
-  margin-left: auto;
-  margin-right: 0;
-  text-align: right;
-}
-
 .ciclos-intro-cta {
   text-align: center;
   margin-top: 2rem;
   font-family: var(--font-subtitle), var(--font-heading), serif;
   font-size: clamp(1rem, 2.5vw, 1.125rem);
-  color: var(--procesos-accent);
+  color: #FFF2E9;
   line-height: 1.6;
 }
 
-/* Ciclos header band - full width como Sesiones */
+/* Ciclos header band */
 .ciclos-header-band {
   position: relative;
   z-index: 10;
@@ -179,10 +178,7 @@ a.procesos-btn-cream.ciclos-detail-link {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 290' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%230d3221;filter:url(%23ds-1)%7D%3C/style%3E%3Cfilter id='ds-1' x='-50' y='-20' width='2020' height='350' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M1920,0v65c-155,90-355,173-595,188-278,18-321-74-652-73C362,180,152,263,0,285V0h1920Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: top center;
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%);
   padding: 1.5rem 1rem 1.5rem;
   margin-top: 0;
   margin-bottom: 3rem;
@@ -218,7 +214,7 @@ a.procesos-btn-cream.ciclos-detail-link {
   text-align: center;
   font-family: var(--font-playfair), serif;
   font-size: 1.2rem;
-  color: var(--procesos-accent);
+  color: #FFF2E9;
   margin-top: 1rem;
   transform: translateY(20px);
   line-height: 1.6;
@@ -230,37 +226,18 @@ a.procesos-btn-cream.ciclos-detail-link {
   z-index: 1;
 }
 
-.ciclos-cycle-subtitle::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: calc(100% + 40px);
-  max-width: 800px;
-  height: 80px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 235 1920 165'%3E%3Cpath fill='none' stroke='%23fff2db' stroke-miterlimit='10' stroke-width='1.52' d='M1628.31,318.59c24.33,37.98-293.71,77.61-692.06,82.72-382.18,4.9-692.06-37.04-692.06-82.72s309.85-82.72,692.06-82.72,667.42,44.25,692.06,82.72Z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  pointer-events: none;
-  z-index: -1;
-}
-
 .ciclos-cycle-ovals {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   align-items: start;
   margin: 2.5rem 0;
-
 }
 
 .ciclos-cycle-ovals-single {
   grid-template-columns: 1fr;
   justify-items: center;
-  background-color: #0D3221;
+  background-color: #051341;
 }
 
 .ciclos-cycle-cta {
@@ -271,21 +248,26 @@ a.procesos-btn-cream.ciclos-detail-link {
 .ciclos-cycle-cta .procesos-btn-cream {
   display: inline-flex;
   margin: 0 auto;
+  background-color: #16345F;
+  color: #FFF2E9;
+  border-radius: 0 15px;
+}
+
+.ciclos-cycle-cta .procesos-btn-cream:hover {
+  background-color: #005080;
 }
 
 /* ===========================
    RESPONSIVE - TABLET (max 768px)
    =========================== */
 @media (max-width: 768px) {
-
-  /* Ciclos responsive - tablet */
   .ciclos-main {
     padding: 0 1rem 2rem;
   }
 
   .ciclos-intro {
     padding: 2.5rem 1rem 2rem;
-    background-image: none;
+    background: #051341;
     width: 100%;
     left: auto;
     right: auto;
@@ -298,8 +280,7 @@ a.procesos-btn-cream.ciclos-detail-link {
   }
 
   .ciclos-header-band {
-    background-image: none;
-    background-color: #0d3221;
+    background: #051341;
     width: 100%;
     left: auto;
     right: auto;
@@ -330,8 +311,6 @@ a.procesos-btn-cream.ciclos-detail-link {
    RESPONSIVE - SMALL MOBILE (max 480px)
    =========================== */
 @media (max-width: 480px) {
-
-  /* Ciclos responsive - small mobile */
   .ciclos-main {
     padding: 0 0.75rem 1.5rem;
   }

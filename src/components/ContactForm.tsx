@@ -1,96 +1,94 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Heart, ArrowRight, Check, AlertCircle } from 'lucide-react'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Heart, ArrowRight, Check, AlertCircle } from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const [errors, setErrors] = useState<{
-    name?: string
-    email?: string
-    message?: string
-  }>({})
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateForm = (): boolean => {
-    const newErrors: typeof errors = {}
+    const newErrors: typeof errors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido'
+      newErrors.name = "El nombre es requerido";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido'
+      newErrors.email = "El email es requerido";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email inválido'
+      newErrors.email = "Email inválido";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = 'El mensaje es requerido'
+      newErrors.message = "El mensaje es requerido";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitError(null)
+    e.preventDefault();
+    setSubmitError(null);
 
-    if (!validateForm()) return
+    if (!validateForm()) return;
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
-      const data = await response.json()
+      const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.error || data.details || 'Error al enviar el mensaje')
+        throw new Error(data.error || data.details || "Error al enviar el mensaje");
       }
 
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      setErrors({})
-
+      setIsSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setErrors({});
     } catch (error) {
-      console.error('Contact form error:', error)
+      console.error("Contact form error:", error);
       setSubmitError(
         error instanceof Error
           ? error.message
-          : 'Error al enviar el mensaje. Por favor intenta nuevamente.'
-      )
+          : "Error al enviar el mensaje. Por favor intenta nuevamente."
+      );
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
-    // Clear error when user starts typing
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }))
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
     if (submitError) {
-      setSubmitError(null)
+      setSubmitError(null);
     }
-  }
+  };
 
   if (isSubmitted) {
     return (
@@ -108,10 +106,10 @@ export default function ContactForm() {
           <Button
             variant="outline"
             onClick={() => {
-              setIsSubmitted(false)
-              setFormData({ name: '', email: '', message: '' })
-              setErrors({})
-              setSubmitError(null)
+              setIsSubmitted(false);
+              setFormData({ name: "", email: "", message: "" });
+              setErrors({});
+              setSubmitError(null);
             }}
             className="text-brand-primary hover:bg-brand-primary hover:text-white"
           >
@@ -119,7 +117,7 @@ export default function ContactForm() {
           </Button>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -132,9 +130,10 @@ export default function ContactForm() {
           <input
             type="text"
             value={formData.name}
-            onChange={(e) => handleChange('name', e.target.value)}
-            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text ${errors.name ? 'border-red-300' : 'border-gray-200'
-              }`}
+            onChange={(e) => handleChange("name", e.target.value)}
+            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text ${
+              errors.name ? "border-red-300" : "border-gray-200"
+            }`}
             placeholder="Tu nombre completo"
             disabled={isSubmitting}
           />
@@ -153,9 +152,10 @@ export default function ContactForm() {
           <input
             type="email"
             value={formData.email}
-            onChange={(e) => handleChange('email', e.target.value)}
-            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text ${errors.email ? 'border-red-300' : 'border-gray-200'
-              }`}
+            onChange={(e) => handleChange("email", e.target.value)}
+            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text ${
+              errors.email ? "border-red-300" : "border-gray-200"
+            }`}
             placeholder="tu@email.com"
             disabled={isSubmitting}
           />
@@ -174,9 +174,10 @@ export default function ContactForm() {
           <textarea
             rows={5}
             value={formData.message}
-            onChange={(e) => handleChange('message', e.target.value)}
-            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text resize-none ${errors.message ? 'border-red-300' : 'border-gray-200'
-              }`}
+            onChange={(e) => handleChange("message", e.target.value)}
+            className={`form-enhanced w-full p-4 border-2 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all duration-300 font-text resize-none ${
+              errors.message ? "border-red-300" : "border-gray-200"
+            }`}
             placeholder="Contame qué buscás o qué te trae a Da Luz"
             disabled={isSubmitting}
           />
@@ -202,12 +203,12 @@ export default function ContactForm() {
           type="submit"
           disabled={isSubmitting}
           className="group w-full py-4 text-lg text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ 
-            backgroundColor: "#16345F", 
-            fontFamily: "var(--font-synthese), sans-serif" 
+          style={{
+            backgroundColor: "#16345F",
+            fontFamily: "var(--font-synthese), sans-serif",
           }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#005080")}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#16345F")}
         >
           {isSubmitting ? (
             <>
@@ -222,3 +223,7 @@ export default function ContactForm() {
             </>
           )}
         </Button>
+      </form>
+    </div>
+  );
+}

@@ -1,3 +1,6 @@
+'use client';
+
+
 import Link from "next/link";
 import Image from "next/image";
 import { client, queries } from "@/lib/sanity/client";
@@ -77,7 +80,6 @@ export default async function HomePage() {
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
           </div>
         </div>
-      </section>
 
 
 <AnimatedBackground />
