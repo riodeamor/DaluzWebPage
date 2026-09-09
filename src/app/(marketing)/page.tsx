@@ -79,10 +79,8 @@ export default async function HomePage() {
         </div>
       </section>
     </div>
-  );
-}
 
-        <AnimatedBackground />
+<AnimatedBackground />
 
         <div className="relative z-10 text-center text-white px-6 max-w-6xl mx-auto">
           <div className="space-y-8 mb-16">
