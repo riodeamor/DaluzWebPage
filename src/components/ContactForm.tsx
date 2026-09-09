@@ -201,7 +201,13 @@ export default function ContactForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="group btn-enhanced w-full py-4 text-lg text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className="group w-full py-4 text-lg text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{ 
+            backgroundColor: "#16345F", 
+            fontFamily: "var(--font-synthese), sans-serif" 
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
         >
           {isSubmitting ? (
             <>
@@ -210,14 +216,9 @@ export default function ContactForm() {
             </>
           ) : (
             <>
-              <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
+              <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
               Enviar Mensaje
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight className="w-5 h-5 ml-2 text-white group-hover:translate-x-1 transition-transform duration-300" />
             </>
           )}
         </Button>
-      </form>
-    </div>
-  )
-}
-

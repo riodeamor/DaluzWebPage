@@ -151,14 +151,20 @@ export default async function HomePage() {
 
               <Link href="/filosofia-proposito">
                 <Button
-                  variant="outline"
-                  className="group px-8 py-4 text-lg font-medium text-white border-2 border-white/40 hover:bg-[#16345F] hover:text-[#FFF2E9] hover:border-[#16345F] transition-all duration-500 uppercase tracking-[0.18em]"
-                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}
-                >
-                  <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  Conoce Nuestra Historia
-                </Button>
-              </Link>
+    variant="outline"
+    className="group px-8 py-4 text-lg font-medium text-white border-none uppercase tracking-[0.18em] transition-all duration-300"
+    style={{ 
+      borderRadius: "0px 15px", 
+      fontFamily: "var(--font-synthese), sans-serif",
+      backgroundColor: "#16345F" 
+    }}
+    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+  >
+    <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
+    Conoce Nuestra Historia
+  </Button>
+</Link>
             </div>
           </div>
         </div>
@@ -286,8 +292,7 @@ export default async function HomePage() {
 
       {/* CARRUSEL DE LÍNEAS */}
       <LineasCarousel />
-
-      {/* VALOR Y CONFIANZA DA LUZ */}
+{/* VALOR Y CONFIANZA DA LUZ */}
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-valor-confianza" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 1, marginTop: "-4px" }}>
         <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.07 / 1080.12", minHeight: "100%", zIndex: 0 }}>
@@ -316,14 +321,24 @@ export default async function HomePage() {
               { title: "TESOROS DA LUZ", text: "¡Descubrí los regalos alkímicos a los que accederás con cada una de tus compras!", link: "/alkimya/tesoros-daluz" },
               { title: "MANIFIESTO Y VISIÓN", text: "Conoce la filosofía en la que nos basamos para entregarte productos expansivos y amorosos.", link: "/alkimya" }
             ].map((item, idx) => (
-              <div key={idx} className="card-enhanced border-0 p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 text-center flex flex-col justify-between h-full">
+              <div key={idx} className="card-enhanced border-0 p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 text-center flex flex-col justify-between h-full" style={{ borderTop: "3px solid #16345F" }}>
                 <div>
-                  <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-[#051341] mb-3 sm:mb-4">{item.title}</h3>
+                  <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-[#051341] mb-3 sm:mb-4 not-italic font-semibold">{item.title}</h3>
                   <p className="font-text text-gray-800 text-sm sm:text-base md:text-base lg:text-lg xl:text-lg mb-4 sm:mb-5 md:mb-6 leading-relaxed">{item.text}</p>
                 </div>
                 <Link href={item.link} className="w-full">
-                  <Button variant="outline" className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em]" style={{ borderRadius: "0px 15px", borderColor: "#16345F", color: "#16345F", fontFamily: "var(--font-synthese), sans-serif" }}>
-                    Ver más <ArrowRight className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  <Button 
+                    className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em] text-white" 
+                    style={{ 
+                      borderRadius: "0px 15px", 
+                      fontFamily: "var(--font-synthese), sans-serif",
+                      backgroundColor: "#16345F",
+                      border: "none"
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                  >
+                    Ver más <ArrowRight className="w-5 h-5 ml-2 text-white group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </Button>
                 </Link>
               </div>
@@ -332,13 +347,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ✨ SERVICIOS HOLÍSTICOS SECTION */}
+    {/* ✨ SERVICIOS HOLÍSTICOS SECTION */}
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-servicios" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 10, marginTop: "-4px" }}>
         <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.23 / 1080.23", minHeight: "100%", zIndex: 0 }}>
           <ServiciosHolisticosBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
-
+        
         <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full py-12 pt-16 sm:pt-20 md:pt-24 lg:pt-12 servicios-holisticos-container">
           <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
             <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
@@ -351,14 +366,14 @@ export default async function HomePage() {
           </div>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
-
+            
             {/* PROCESOS INTEGRATIVOS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#051341] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <ProcesosIntegrativosIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
                   Procesos Cíclicos
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
@@ -370,8 +385,10 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR LOS PROCESOS DE TRANSFORMACIÓN</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -382,12 +399,12 @@ export default async function HomePage() {
             </div>
 
             {/* SESIONES HOLÍSTICAS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#051341] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <SesionesIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
                   Sesiones Integrales
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
@@ -398,8 +415,10 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
                     >
                       <span className="text-center text-sm leading-tight flex-1">¡CONOCE NUESTRAS PROPUESTAS!</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -410,12 +429,12 @@ export default async function HomePage() {
             </div>
 
             {/* MEMBRESÍA */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#051341] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <MembresiaIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
                   Experiencias: Programas y Membresías
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
@@ -425,8 +444,10 @@ export default async function HomePage() {
                   <Link href="/programa-transformacion" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
                     >
                       <span className="text-center text-sm leading-tight flex-1">SÉ PARTE DEL RITUAL</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -435,7 +456,7 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
-
+            
           </div>
         </div>
       </section>
@@ -585,6 +606,11 @@ export default async function HomePage() {
             className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight uppercase tracking-[0.12em]"
             style={{ color: "#051341" }}
           >
+           {/* 📖 BLOG DA LUZ SECTION */}
+      <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
+        <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
+          <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]" style={{ color: "#051341" }}>
             BLOG DA LUZ
           </h2>
           <div
@@ -599,12 +625,12 @@ export default async function HomePage() {
         <div className="container mx-auto max-w-7xl relative z-20 pb-12">
           {featuredPosts.length > 0 ? (
             <div className="grid lg:grid-cols-2 gap-8">
-              {/* LEFT SIDE */}
+              {/* LEFT SIDE (Fondo claro - mantiene texto oscuro) */}
               <div className="space-y-6 lg:mr-[5rem]">
                 <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
                   {featuredPosts[0] && (
                     <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-2 row-span-1">
-                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
+                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
                         <div className="grid grid-cols-2 gap-4 h-full">
                           <div className="bg-[#051341]/5 rounded-lg flex items-center justify-center overflow-hidden relative">
                             {featuredPosts[0].mainImage?.asset?.url ? (
@@ -616,7 +642,7 @@ export default async function HomePage() {
                           <div className="flex flex-col justify-between">
                             <div>
                               <Badge className="bg-[#16345F] text-[#FFF2E9] mb-2 hover:bg-[#005080]" variant="default">Post</Badge>
-                              <h3 className="font-subtitle text-lg text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-3 mb-2">
+                              <h3 className="font-subtitle text-lg text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
                                 {featuredPosts[0].title}
                               </h3>
                               <p className="font-text text-gray-700 text-sm leading-relaxed line-clamp-2">
@@ -635,7 +661,7 @@ export default async function HomePage() {
 
                   {featuredPosts[2] && (
                     <Link href={`/blog/${featuredPosts[2].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
+                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
                         <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
                           {featuredPosts[2].mainImage?.asset?.url ? (
                             <Image src={featuredPosts[2].mainImage.asset.url} alt={featuredPosts[2].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
@@ -643,7 +669,7 @@ export default async function HomePage() {
                             <Leaf className="w-6 h-6 text-[#051341]/30" />
                           )}
                         </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2">
+                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
                           {featuredPosts[2].title}
                         </h4>
                         <div className="flex items-center text-gray-500 text-xs">
@@ -656,7 +682,7 @@ export default async function HomePage() {
 
                   {featuredPosts[3] && (
                     <Link href={`/blog/${featuredPosts[3].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
+                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
                         <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
                           {featuredPosts[3].mainImage?.asset?.url ? (
                             <Image src={featuredPosts[3].mainImage.asset.url} alt={featuredPosts[3].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
@@ -664,7 +690,7 @@ export default async function HomePage() {
                             <Leaf className="w-6 h-6 text-[#051341]/30" />
                           )}
                         </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2">
+                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
                           {featuredPosts[3].title}
                         </h4>
                         <div className="flex items-center text-gray-500 text-xs">
@@ -677,23 +703,23 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              {/* RIGHT SIDE */}
+              {/* RIGHT SIDE (Fondo azul - Textos en BLANCO FORZADO) */}
               <div className="space-y-6 lg:ml-[5rem]">
                 <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
                   {featuredPosts[0] && (
                     <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
-                        <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                        <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
                           {featuredPosts[0].mainImage?.asset?.url ? (
                             <Image src={featuredPosts[0].mainImage.asset.url} alt={featuredPosts[0].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
                           ) : (
-                            <Leaf className="w-6 h-6 text-[#051341]/30" />
+                            <Leaf className="w-6 h-6 text-white/50" />
                           )}
                         </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2">
+                        <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
                           {featuredPosts[0].title}
                         </h4>
-                        <div className="flex items-center text-gray-500 text-xs">
+                        <div className="flex items-center text-white/80 text-xs">
                           <Calendar className="w-3 h-3 mr-1" />
                           {new Date(featuredPosts[0].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
                         </div>
@@ -703,18 +729,18 @@ export default async function HomePage() {
 
                   {featuredPosts[1] && (
                     <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
-                        <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                        <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
                           {featuredPosts[1].mainImage?.asset?.url ? (
                             <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
                           ) : (
-                            <Leaf className="w-6 h-6 text-[#051341]/30" />
+                            <Leaf className="w-6 h-6 text-white/50" />
                           )}
                         </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2">
+                        <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
                           {featuredPosts[1].title}
                         </h4>
-                        <div className="flex items-center text-gray-500 text-xs">
+                        <div className="flex items-center text-white/80 text-xs">
                           <Calendar className="w-3 h-3 mr-1" />
                           {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
                         </div>
@@ -724,28 +750,28 @@ export default async function HomePage() {
 
                   {featuredPosts[1] && (
                     <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-2 row-span-1">
-                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
+                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
                         <div className="grid grid-cols-2 gap-4 h-full">
                           <div className="flex flex-col justify-between">
                             <div>
-                              <Badge className="bg-[#16345F] text-[#FFF2E9] mb-2 hover:bg-[#005080]" variant="default">Post</Badge>
-                              <h3 className="font-subtitle text-lg text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-3 mb-2">
+                              <Badge className="bg-[#005080] text-white mb-2" variant="default">Post</Badge>
+                              <h3 className="font-subtitle text-lg text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
                                 {featuredPosts[1].title}
                               </h3>
-                              <p className="font-text text-gray-700 text-sm leading-relaxed line-clamp-2">
+                              <p className="font-text text-white/90 text-sm leading-relaxed line-clamp-2">
                                 {featuredPosts[1].excerpt || "Explora este contenido fascinante..."}
                               </p>
                             </div>
-                            <div className="flex items-center text-gray-500 text-xs">
+                            <div className="flex items-center text-white/80 text-xs">
                               <Calendar className="w-3 h-3 mr-1" />
                               {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
                             </div>
                           </div>
-                          <div className="bg-[#051341]/5 rounded-lg flex items-center justify-center overflow-hidden relative">
+                          <div className="bg-[#051341]/40 rounded-lg flex items-center justify-center overflow-hidden relative">
                             {featuredPosts[1].mainImage?.asset?.url ? (
                               <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-lg" />
                             ) : (
-                              <Sparkles className="w-12 h-12 text-[#051341]/30" />
+                              <Sparkles className="w-12 h-12 text-white/50" />
                             )}
                           </div>
                         </div>
@@ -756,37 +782,43 @@ export default async function HomePage() {
               </div>
             </div>
           ) : (
-            <div className="text-center py-12"><p className="font-text text-[#051341]">Próximamente más artículos...</p></div>
+            <div className="text-center py-12"><p className="font-text text-white">Próximamente más artículos...</p></div>
           )}
 
           <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
             <Link
               href="/blog"
-              className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300"
-              style={{ borderRadius: "0 15px", fontFamily: "var(--font-synthese), sans-serif" }}
+              className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300"
+              style={{ 
+                borderRadius: "0 15px", 
+                fontFamily: "var(--font-synthese), sans-serif",
+                backgroundColor: "#16345F"
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
             >
-              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
-              <span className="text-sm sm:text-base font-semibold">Ir al blog</span>
+              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
+              <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
             </Link>
           </div>
         </div>
       </section>
+      
 
-      {/* ✨ ENHANCED GALERÍA SECTION */}
+     {/* ✨ ENHANCED GALERÍA SECTION */}
       <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
         <div
           className="absolute inset-0 xl:hidden"
           style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }}
         />
         <div className="hidden xl:block absolute inset-0">
-          <GaleriaBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-95" />
+          <GaleriaBackground bgColor="#FFF2E9" waveColor="#16345F" className="opacity-95" />
         </div>
 
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">
           <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#051341" }}
+            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em] text-white"
           >
             GALERÍA
           </h2>
@@ -797,15 +829,25 @@ export default async function HomePage() {
           <InteractiveGallery />
           <div className="text-center mt-16">
             <div className="space-y-4">
-              <h3 className="font-subtitle text-2xl text-[#051341]">FRAGMENTOS DE UN RITUAL VIVO</h3>
+              <h3 className="font-subtitle text-2xl text-[#051341] not-italic font-semibold">FRAGMENTOS DE UN RITUAL VIVO</h3>
               <p className="font-text max-w-2xl mx-auto text-gray-800">
                 Cada imagen cuenta una historia de transformación, belleza consciente y conexión con la naturaleza.
               </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
-                <Button className="group btn-enhanced px-8 py-4 text-lg bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em]" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}>
-                  <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                  Seguinos en Instagram
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                <Button 
+                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em]" 
+                  style={{ 
+                    borderRadius: "0px 15px", 
+                    fontFamily: "var(--font-synthese), sans-serif",
+                    backgroundColor: "#16345F",
+                    border: "none"
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                >
+                  <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
+                  SEGUINOS EN INSTAGRAM
+                  <ArrowRight className="w-5 h-5 ml-2 text-white group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </a>
             </div>
@@ -843,9 +885,10 @@ export default async function HomePage() {
               fontWeight: "500",
             }}
           >
-            Iniciá tu transformación: enviame tu consulta
+            <p className="text-white">
+  Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
           </p>
-
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
             <div className="space-y-8 order-2 lg:order-1">
               <ContactForm />

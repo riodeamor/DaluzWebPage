@@ -778,8 +778,8 @@ export const GaleriaBackground: React.FC<{
   waveColor?: string;
   className?: string;
 }> = ({ 
-  bgColor = "#F0EACE", 
-  waveColor = "#AE0000",
+  bgColor = "#FFF2E9", // Fondo beige cálido o el que prefieras para la sección
+  waveColor = "#16345F", // Cambiado de rojo (#AE0000) a azul institucional
   className = ""
 }) => {
   return (
@@ -788,8 +788,8 @@ export const GaleriaBackground: React.FC<{
       style={{
         '--bg-color': bgColor,
         '--wave-color': waveColor,
-        transform: 'translateZ(0)', // Mobile performance optimization
-        willChange: 'transform' // GPU acceleration hint
+        transform: 'translateZ(0)',
+        willChange: 'transform'
       } as React.CSSProperties}
     >
       <svg
@@ -805,8 +805,8 @@ export const GaleriaBackground: React.FC<{
         <defs>
           <style>
             {`
-              .galeria-bg-fill { fill: var(--bg-color, #F0EACE); }
-              .galeria-wave-fill { fill: var(--wave-color, #AE0000); }
+              .galeria-bg-fill { fill: var(--bg-color, #FFF2E9); }
+              .galeria-wave-fill { fill: var(--wave-color, #16345F); }
             `}
           </style>
         </defs>
@@ -814,8 +814,7 @@ export const GaleriaBackground: React.FC<{
         {/* Background */}
         <rect width="1920" height="1080" className="galeria-bg-fill" />
         
-        {/* Decorative Wave Pattern - Place your SVG file content here */}
-        {/* This will be replaced with actual SVG content from galeriaBG.svg */}
+        {/* Decorative Wave Pattern */}
         <path 
           className="galeria-wave-fill" 
           d="M0,300 Q480,200 960,300 T1920,300 L1920,0 L0,0 Z"
