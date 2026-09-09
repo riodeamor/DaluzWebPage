@@ -48,6 +48,7 @@ async function getFeaturedPosts() {
         },
       },
     );
+    
     const recentPosts = posts?.slice(0, 4) || [];
     return recentPosts;
   } catch (error) {
