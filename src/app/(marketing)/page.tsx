@@ -151,20 +151,20 @@ export default async function HomePage() {
 
               <Link href="/filosofia-proposito">
                 <Button
-    variant="outline"
-    className="group px-8 py-4 text-lg font-medium text-white border-none uppercase tracking-[0.18em] transition-all duration-300"
-    style={{ 
-      borderRadius: "0px 15px", 
-      fontFamily: "var(--font-synthese), sans-serif",
-      backgroundColor: "#16345F" 
-    }}
-    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
-  >
-    <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
-    Conoce Nuestra Historia
-  </Button>
-</Link>
+                  variant="outline"
+                  className="group px-8 py-4 text-lg font-medium text-white border-none uppercase tracking-[0.18em] transition-all duration-300"
+                  style={{ 
+                    borderRadius: "0px 15px", 
+                    fontFamily: "var(--font-synthese), sans-serif",
+                    backgroundColor: "#16345F" 
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                >
+                  <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
+                  Conoce Nuestra Historia
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
