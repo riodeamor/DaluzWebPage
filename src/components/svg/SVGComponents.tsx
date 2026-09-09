@@ -362,14 +362,14 @@ export const ServiciosHolisticosBackground: React.FC<{
   );
 };
 
-// ✨ BLOG SECTION BACKGROUND (Bottom edge wave only)
+// ✨ BLOG SECTION BACKGROUND
 export const BlogBackground: React.FC<{
   bgColor?: string;
   waveColor?: string;
   className?: string;
 }> = ({ 
-  bgColor = "#F0EACE", // Default theme background color
-  waveColor = "#AE0000", // Brand red wine color
+  bgColor = "#051341", // Fondo ancla azul oscuro por defecto
+  waveColor = "#16345F", // Onda en azul acción por defecto
   className = ""
 }) => {
   return (
@@ -403,7 +403,7 @@ export const BlogBackground: React.FC<{
       >
         <defs>
           <style>{`
-            .wave-fill { fill: var(--wave-color, #AE0000); }
+            .wave-fill { fill: var(--wave-color, #16345F); }
           `}</style>
         </defs>
         <g>
@@ -560,7 +560,7 @@ export const ProcesosBackground: React.FC<{
   className?: string;
 }> = ({ 
   bgColor = "#ffffff", 
-  waveColor = "#AE0000",
+  waveColor = "#16345F", // Actualizado a azul institucional
   className = ""
 }) => {
   return (
@@ -585,7 +585,7 @@ export const ProcesosBackground: React.FC<{
         <defs>
           <style>
             {`.background-fill { fill: var(--bg-color, #ffffff); }
-             .wave-fill { fill: var(--wave-color, #AE0000); }`}
+             .wave-fill { fill: var(--wave-color, #16345F); }`}
           </style>
         </defs>
         <g id="Layer_2" data-name="Layer 2">
@@ -606,7 +606,7 @@ export const SesionesBackground: React.FC<{
   className?: string;
 }> = ({ 
   bgColor = "#F0EACE", 
-  waveColor = "#920000",
+  waveColor = "#16345F", // Actualizado a azul institucional
   className = ""
 }) => {
   return (
@@ -615,8 +615,8 @@ export const SesionesBackground: React.FC<{
       style={{
         '--bg-color': bgColor,
         '--wave-color': waveColor,
-        transform: 'translateZ(0)', // Mobile performance optimization
-        willChange: 'transform' // GPU acceleration hint
+        transform: 'translateZ(0)',
+        willChange: 'transform'
       } as React.CSSProperties}
     >
       <svg
@@ -634,15 +634,13 @@ export const SesionesBackground: React.FC<{
           <style>
             {`
               .sesiones-bg-fill { fill: var(--bg-color, #F0EACE); }
-              .sesiones-wave-fill { fill: var(--wave-color, #920000); }
+              .sesiones-wave-fill { fill: var(--wave-color, #16345F); }
             `}
           </style>
         </defs>
         <g id="Layer_2" data-name="Layer 2">
           <g id="Capa_1" data-name="Capa 1">
-            {/* Background from your updated sesionesBG.svg */}
             <rect x="0.15" y="0.2" width="1919.85" height="1085.55" className="sesiones-bg-fill"/>
-            {/* Wave Pattern from your updated sesionesBG.svg */}
             <path 
               d="M1919.67,277C1600.81,256.08,1276.76,242.22,960,176.22,627.15,106.86.8,58.88.8,12.65L0,0H1920l-.33,12.65Z" 
               className="sesiones-wave-fill"
@@ -654,7 +652,7 @@ export const SesionesBackground: React.FC<{
   );
 };
 
-// Enhanced Service Icons
+// Enhanced Service Icons (Actualizado el filtro a azul #16345F)
 export const AlkimyaDaLuzIcon: React.FC<SVGProps> = ({ size = 64, className = "" }) => {
   return (
     <div className={`service-icon ${className}`}>
@@ -664,23 +662,22 @@ export const AlkimyaDaLuzIcon: React.FC<SVGProps> = ({ size = 64, className = ""
         width={size} 
         height={size}
         className="transition-transform duration-300 group-hover:scale-110"
-        style={{ filter: `brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(7472%) hue-rotate(2deg) brightness(95%) contrast(118%)` }}
+        style={{ filter: `brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1487%) hue-rotate(185deg) brightness(92%) contrast(98%)` }}
       />
     </div>
   );
 };
 
-// Enhanced Service Icons
 export const ProcesosIntegrativosIcon: React.FC<SVGProps> = ({ size = 64, className = "" }) => {
   return (
     <div className={`service-icon ${className}`}>
       <img 
         src="/images/servicios/procesos.svg" 
-        alt="Biología De Luz" 
+        alt="Procesos" 
         width={size} 
         height={size}
         className="transition-transform duration-300 group-hover:scale-110"
-        style={{ filter: `brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(7472%) hue-rotate(2deg) brightness(95%) contrast(118%)` }}
+        style={{ filter: `brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1487%) hue-rotate(185deg) brightness(92%) contrast(98%)` }}
       />
     </div>
   );
@@ -695,7 +692,7 @@ export const SesionesIcon: React.FC<SVGProps> = ({ size = 64, className = "" }) 
         width={size} 
         height={size}
         className="transition-transform duration-300 group-hover:scale-110"
-        style={{ filter: `brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(7472%) hue-rotate(2deg) brightness(95%) contrast(118%)` }}
+        style={{ filter: `brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1487%) hue-rotate(185deg) brightness(92%) contrast(98%)` }}
       />
     </div>
   );
@@ -710,21 +707,20 @@ export const MembresiaIcon: React.FC<SVGProps> = ({ size = 64, className = "" })
         width={size} 
         height={size}
         className="transition-transform duration-300 group-hover:scale-110"
-        style={{ filter: `brightness(0) saturate(100%) invert(11%) sepia(96%) saturate(7472%) hue-rotate(2deg) brightness(95%) contrast(118%)` }}
+        style={{ filter: `brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1487%) hue-rotate(185deg) brightness(92%) contrast(98%)` }}
       />
     </div>
   );
 };
 
-// Animated Background Component
 // ✨ BLOG COMUNIDAD SECTION BACKGROUND
 export const BlogComunidadBackground: React.FC<{
   bgColor?: string;
   waveColor?: string;
   className?: string;
 }> = ({ 
-  bgColor = "#AE0000", 
-  waveColor = "#920000",
+  bgColor = "#051341", // Azul ancla oscuro por defecto
+  waveColor = "#16345F", // Azul acción secundario por defecto
   className = ""
 }) => {
   return (
@@ -733,8 +729,8 @@ export const BlogComunidadBackground: React.FC<{
       style={{
         '--bg-color': bgColor,
         '--wave-color': waveColor,
-        transform: 'translateZ(0)', // Mobile performance optimization
-        willChange: 'transform' // GPU acceleration hint
+        transform: 'translateZ(0)',
+        willChange: 'transform'
       } as React.CSSProperties}
     >
       <svg
@@ -751,8 +747,8 @@ export const BlogComunidadBackground: React.FC<{
         <defs>
           <style>
             {`
-              .blog-bg-fill { fill: var(--bg-color, #AE0000); }
-              .blog-wave-fill { fill: var(--wave-color, #920000); }
+              .blog-bg-fill { fill: var(--bg-color, #051341); }
+              .blog-wave-fill { fill: var(--wave-color, #16345F); }
             `}
           </style>
         </defs>
@@ -760,7 +756,7 @@ export const BlogComunidadBackground: React.FC<{
           <g id="Capa_1" data-name="Capa 1">
             {/* Background */}
             <rect x="0.07" width="1919.85" height="1079.42" className="blog-bg-fill"/>
-            {/* Wave Pattern from your blogBG.svg */}
+            {/* Wave Pattern */}
             <path 
               d="M0,1078.78l1920,.29V202.8c-218.21-17.92-840.69-1-878.37,11.45s-134.6,47.2-106,206.52c37.44,208.62,27.15,313.71,15.93,400.34C917.17,1086.7,0,1078.78,0,1078.78Z" 
               className="blog-wave-fill"
@@ -778,8 +774,8 @@ export const GaleriaBackground: React.FC<{
   waveColor?: string;
   className?: string;
 }> = ({ 
-  bgColor = "#FFF2E9", // Fondo beige cálido o el que prefieras para la sección
-  waveColor = "#16345F", // Cambiado de rojo (#AE0000) a azul institucional
+  bgColor = "#FFF2E9", 
+  waveColor = "#051341", 
   className = ""
 }) => {
   return (
@@ -806,7 +802,6 @@ export const GaleriaBackground: React.FC<{
           <style>
             {`
               .galeria-bg-fill { fill: var(--bg-color, #FFF2E9); }
-              .galeria-wave-fill { fill: var(--wave-color, #16345F); }
             `}
           </style>
         </defs>
@@ -814,16 +809,17 @@ export const GaleriaBackground: React.FC<{
         {/* Background */}
         <rect width="1920" height="1080" className="galeria-bg-fill" />
         
-        {/* Decorative Wave Pattern */}
+        {/* Onda superior en azul ancla */}
         <path 
-          className="galeria-wave-fill" 
+          fill="#051341" 
           d="M0,300 Q480,200 960,300 T1920,300 L1920,0 L0,0 Z"
-          opacity="0.6"
+          opacity="0.9"
         />
+        {/* Onda inferior en azul acción */}
         <path 
-          className="galeria-wave-fill" 
+          fill="#16345F" 
           d="M0,400 Q480,300 960,400 T1920,400 L1920,0 L0,0 Z"
-          opacity="0.4"
+          opacity="0.8"
         />
       </svg>
     </div>

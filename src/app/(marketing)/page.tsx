@@ -577,202 +577,206 @@ export default async function HomePage() {
       </section>
 
            {/* 📖 BLOG DA LUZ SECTION */}
-      <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
-        <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
-          <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]" style={{ color: "#051341" }}>
-            BLOG DA LUZ
-          </h2>
-          <div
-            className="w-32 h-0.5 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-5 md:mb-6"
-            style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }}
-          />
-          <p className="font-text text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-gray-800 max-w-3xl mx-auto leading-relaxed px-4">
-            Un espacio donde fusionamos teorías, reflexión e introspección con herramientas para la autogestión y la presencia.
-          </p>
-        </div>
+<section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#051341" }}>
+  <div className="absolute inset-0">
+    <BlogBackground bgColor="#051341" waveColor="#16345F" className="opacity-100" />
+  </div>
 
-        <div className="container mx-auto max-w-7xl relative z-20 pb-12">
-          {featuredPosts.length > 0 ? (
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* LEFT SIDE (Fondo claro - mantiene texto oscuro) */}
-              <div className="space-y-6 lg:mr-[5rem]">
-                <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
-                  {featuredPosts[0] && (
-                    <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-2 row-span-1">
-                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
-                        <div className="grid grid-cols-2 gap-4 h-full">
-                          <div className="bg-[#051341]/5 rounded-lg flex items-center justify-center overflow-hidden relative">
-                            {featuredPosts[0].mainImage?.asset?.url ? (
-                              <Image src={featuredPosts[0].mainImage.asset.url} alt={featuredPosts[0].title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-lg" />
-                            ) : (
-                              <Sparkles className="w-12 h-12 text-[#051341]/30" />
-                            )}
-                          </div>
-                          <div className="flex flex-col justify-between">
-                            <div>
-                              <Badge className="bg-[#16345F] text-[#FFF2E9] mb-2 hover:bg-[#005080]" variant="default">Post</Badge>
-                              <h3 className="font-subtitle text-lg text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
-                                {featuredPosts[0].title}
-                              </h3>
-                              <p className="font-text text-gray-700 text-sm leading-relaxed line-clamp-2">
-                                {featuredPosts[0].excerpt || "Descubre más sobre este fascinante tema..."}
-                              </p>
-                            </div>
-                            <div className="flex items-center text-gray-500 text-xs">
-                              <Calendar className="w-3 h-3 mr-1" />
-                              {new Date(featuredPosts[0].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
+  <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
+    <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+    <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]" style={{ color: "#FFF2E9" }}>
+      BLOG DA LUZ
+    </h2>
+    <div
+      className="w-32 h-0.5 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-5 md:mb-6"
+      style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }}
+    />
+    <p className="font-text text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-[#FFF2E9] max-w-3xl mx-auto leading-relaxed px-4">
+      Un espacio donde fusionamos teorías, reflexión e introspección con herramientas para la autogestión y la presencia.
+    </p>
+  </div>
 
-                  {featuredPosts[2] && (
-                    <Link href={`/blog/${featuredPosts[2].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
-                        <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
-                          {featuredPosts[2].mainImage?.asset?.url ? (
-                            <Image src={featuredPosts[2].mainImage.asset.url} alt={featuredPosts[2].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
-                          ) : (
-                            <Leaf className="w-6 h-6 text-[#051341]/30" />
-                          )}
-                        </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
-                          {featuredPosts[2].title}
-                        </h4>
-                        <div className="flex items-center text-gray-500 text-xs">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {new Date(featuredPosts[2].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-
-                  {featuredPosts[3] && (
-                    <Link href={`/blog/${featuredPosts[3].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-white/60" style={{ borderColor: "rgba(5, 19, 65, 0.1)" }}>
-                        <div className="bg-[#051341]/5 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
-                          {featuredPosts[3].mainImage?.asset?.url ? (
-                            <Image src={featuredPosts[3].mainImage.asset.url} alt={featuredPosts[3].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
-                          ) : (
-                            <Leaf className="w-6 h-6 text-[#051341]/30" />
-                          )}
-                        </div>
-                        <h4 className="font-subtitle text-sm text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
-                          {featuredPosts[3].title}
-                        </h4>
-                        <div className="flex items-center text-gray-500 text-xs">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {new Date(featuredPosts[3].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              </div>
-
-              {/* RIGHT SIDE (Fondo azul - Textos en BLANCO FORZADO) */}
-              <div className="space-y-6 lg:ml-[5rem]">
-                <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
-                  {featuredPosts[0] && (
-                    <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
-                        <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
-                          {featuredPosts[0].mainImage?.asset?.url ? (
-                            <Image src={featuredPosts[0].mainImage.asset.url} alt={featuredPosts[0].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
-                          ) : (
-                            <Leaf className="w-6 h-6 text-white/50" />
-                          )}
-                        </div>
-                        <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
+  <div className="container mx-auto max-w-7xl relative z-20 pb-12">
+    {featuredPosts.length > 0 ? (
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* LEFT SIDE */}
+        <div className="space-y-6 lg:mr-[5rem]">
+          <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
+            {featuredPosts[0] && (
+              <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-2 row-span-1">
+                <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="grid grid-cols-2 gap-4 h-full">
+                    <div className="bg-[#051341]/40 rounded-lg flex items-center justify-center overflow-hidden relative">
+                      {featuredPosts[0].mainImage?.asset?.url ? (
+                        <Image src={featuredPosts[0].mainImage.asset.url} alt={featuredPosts[0].title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-lg" />
+                      ) : (
+                        <Sparkles className="w-12 h-12 text-white/50" />
+                      )}
+                    </div>
+                    <div className="flex flex-col justify-between">
+                      <div>
+                        <Badge className="bg-[#16345F] text-[#FFF2E9] mb-2 hover:bg-[#005080]" variant="default">Post</Badge>
+                        <h3 className="font-subtitle text-lg text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
                           {featuredPosts[0].title}
-                        </h4>
-                        <div className="flex items-center text-white/80 text-xs">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {new Date(featuredPosts[0].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                        </div>
+                        </h3>
+                        <p className="font-text text-white/90 text-sm leading-relaxed line-clamp-2">
+                          {featuredPosts[0].excerpt || "Descubre más sobre este fascinante tema..."}
+                        </p>
                       </div>
-                    </Link>
-                  )}
-
-                  {featuredPosts[1] && (
-                    <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-1 row-span-1">
-                      <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
-                        <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
-                          {featuredPosts[1].mainImage?.asset?.url ? (
-                            <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
-                          ) : (
-                            <Leaf className="w-6 h-6 text-white/50" />
-                          )}
-                        </div>
-                        <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
-                          {featuredPosts[1].title}
-                        </h4>
-                        <div className="flex items-center text-white/80 text-xs">
-                          <Calendar className="w-3 h-3 mr-1" />
-                          {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                        </div>
+                      <div className="flex items-center text-white/80 text-xs">
+                        <Calendar className="w-3 h-3 mr-1" />
+                        {new Date(featuredPosts[0].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
                       </div>
-                    </Link>
-                  )}
-
-                  {featuredPosts[1] && (
-                    <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-2 row-span-1">
-                      <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
-                        <div className="grid grid-cols-2 gap-4 h-full">
-                          <div className="flex flex-col justify-between">
-                            <div>
-                              <Badge className="bg-[#005080] text-white mb-2" variant="default">Post</Badge>
-                              <h3 className="font-subtitle text-lg text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
-                                {featuredPosts[1].title}
-                              </h3>
-                              <p className="font-text text-white/90 text-sm leading-relaxed line-clamp-2">
-                                {featuredPosts[1].excerpt || "Explora este contenido fascinante..."}
-                              </p>
-                            </div>
-                            <div className="flex items-center text-white/80 text-xs">
-                              <Calendar className="w-3 h-3 mr-1" />
-                              {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
-                            </div>
-                          </div>
-                          <div className="bg-[#051341]/40 rounded-lg flex items-center justify-center overflow-hidden relative">
-                            {featuredPosts[1].mainImage?.asset?.url ? (
-                              <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-lg" />
-                            ) : (
-                              <Sparkles className="w-12 h-12 text-white/50" />
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ) : (
-            <div className="text-center py-12"><p className="font-text text-white">Próximamente más artículos...</p></div>
-          )}
+              </Link>
+            )}
 
-          <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
-            <Link
-              href="/blog"
-              className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300"
-              style={{ 
-                borderRadius: "0 15px", 
-                fontFamily: "var(--font-synthese), sans-serif",
-                backgroundColor: "#16345F"
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
-            >
-              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
-              <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
-            </Link>
+            {featuredPosts[2] && (
+              <Link href={`/blog/${featuredPosts[2].slug.current}`} className="group col-span-1 row-span-1">
+                <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                    {featuredPosts[2].mainImage?.asset?.url ? (
+                      <Image src={featuredPosts[2].mainImage.asset.url} alt={featuredPosts[2].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
+                    ) : (
+                      <Leaf className="w-6 h-6 text-white/50" />
+                    )}
+                  </div>
+                  <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
+                    {featuredPosts[2].title}
+                  </h4>
+                  <div className="flex items-center text-white/80 text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(featuredPosts[2].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {featuredPosts[3] && (
+              <Link href={`/blog/${featuredPosts[3].slug.current}`} className="group col-span-1 row-span-1">
+                <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                    {featuredPosts[3].mainImage?.asset?.url ? (
+                      <Image src={featuredPosts[3].mainImage.asset.url} alt={featuredPosts[3].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
+                    ) : (
+                      <Leaf className="w-6 h-6 text-white/50" />
+                    )}
+                  </div>
+                  <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
+                    {featuredPosts[3].title}
+                  </h4>
+                  <div className="flex items-center text-white/80 text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(featuredPosts[3].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
+                  </div>
+                </div>
+              </Link>
+            )}
           </div>
         </div>
-      </section>
+
+        {/* RIGHT SIDE */}
+        <div className="space-y-6 lg:ml-[5rem]">
+          <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
+            {featuredPosts[0] && (
+              <Link href={`/blog/${featuredPosts[0].slug.current}`} className="group col-span-1 row-span-1">
+                <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                    {featuredPosts[0].mainImage?.asset?.url ? (
+                      <Image src={featuredPosts[0].mainImage.asset.url} alt={featuredPosts[0].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
+                    ) : (
+                      <Leaf className="w-6 h-6 text-white/50" />
+                    )}
+                  </div>
+                  <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
+                    {featuredPosts[0].title}
+                  </h4>
+                  <div className="flex items-center text-white/80 text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(featuredPosts[0].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {featuredPosts[1] && (
+              <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-1 row-span-1">
+                <div className="glass-card h-full p-4 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="bg-[#051341]/40 rounded-lg h-20 mb-3 flex items-center justify-center overflow-hidden relative">
+                    {featuredPosts[1].mainImage?.asset?.url ? (
+                      <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 50vw, 16vw" className="object-cover rounded-lg" />
+                    ) : (
+                      <Leaf className="w-6 h-6 text-white/50" />
+                    )}
+                  </div>
+                  <h4 className="font-subtitle text-sm text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-2 mb-2 not-italic font-semibold">
+                    {featuredPosts[1].title}
+                  </h4>
+                  <div className="flex items-center text-white/80 text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {featuredPosts[1] && (
+              <Link href={`/blog/${featuredPosts[1].slug.current}`} className="group col-span-2 row-span-1">
+                <div className="glass-card h-full p-6 rounded-2xl border transition-all duration-500 transform hover:-translate-y-2 bg-[#16345F]/40 backdrop-blur-md" style={{ borderColor: "rgba(255, 255, 255, 0.2)" }}>
+                  <div className="grid grid-cols-2 gap-4 h-full">
+                    <div className="flex flex-col justify-between">
+                      <div>
+                        <Badge className="bg-[#005080] text-white mb-2" variant="default">Post</Badge>
+                        <h3 className="font-subtitle text-lg text-white group-hover:text-blue-200 transition-colors duration-300 line-clamp-3 mb-2 not-italic font-semibold">
+                          {featuredPosts[1].title}
+                        </h3>
+                        <p className="font-text text-white/90 text-sm leading-relaxed line-clamp-2">
+                          {featuredPosts[1].excerpt || "Explora este contenido fascinante..."}
+                        </p>
+                      </div>
+                      <div className="flex items-center text-white/80 text-xs">
+                        <Calendar className="w-3 h-3 mr-1" />
+                        {new Date(featuredPosts[1].publishedAt).toLocaleDateString("es-ES", { month: "short", day: "numeric" })}
+                      </div>
+                    </div>
+                    <div className="bg-[#051341]/40 rounded-lg flex items-center justify-center overflow-hidden relative">
+                      {featuredPosts[1].mainImage?.asset?.url ? (
+                        <Image src={featuredPosts[1].mainImage.asset.url} alt={featuredPosts[1].title} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover rounded-lg" />
+                      ) : (
+                        <Sparkles className="w-12 h-12 text-white/50" />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div className="text-center py-12"><p className="font-text text-white">Próximamente más artículos...</p></div>
+    )}
+
+    <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
+      <Link
+        href="/blog"
+        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300"
+        style={{ 
+          borderRadius: "0 15px", 
+          fontFamily: "var(--font-synthese), sans-serif",
+          backgroundColor: "#16345F"
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
+        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+      >
+        <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
+        <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
+      </Link>
+    </div>
+  </div>
+</section>
       
 
      {/* ✨ ENHANCED GALERÍA SECTION */}
@@ -826,69 +830,69 @@ export default async function HomePage() {
       </section>
 
       {/* ✨ ENHANCED CONTACTO SECTION */}
-      <section
-        className="section-enhanced relative py-6 md:py-8 lg:py-16 px-6 overflow-hidden"
-        style={{ marginTop: "-3rem", backgroundColor: "#FFF2E9" }}
-      >
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }} />
-        <div className="hidden xl:block absolute inset-0">
-          <ContactoBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-95" />
-        </div>
+    <section
+      className="section-enhanced relative py-6 md:py-8 lg:py-16 px-6 overflow-hidden"
+      style={{ marginTop: "-3rem", backgroundColor: "#051341" }}
+    >
+      <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #051341 0%, rgba(5, 19, 65, 0.9) 25%, #051341 50%, rgba(5, 19, 65, 0.95) 75%, #051341 100%)" }} />
+      <div className="hidden xl:block absolute inset-0">
+        <ContactoBackground bgColor="#051341" waveColor="#FFF2E9" className="opacity-95" />
+      </div>
 
-        <div className="container mx-auto max-w-7xl text-left pb-[3rem] sm:pb-[5rem] mt-[0rem] mb-[0rem] relative z-20 px-4">
-          <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mb-2" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-          <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#051341" }}
-          >
-            CONTACTO
-          </h2>
-          <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mt-2" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-        </div>
+      <div className="container mx-auto max-w-7xl text-left pb-[3rem] sm:pb-[5rem] mt-[0rem] mb-[0rem] relative z-20 px-4">
+        <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mb-2" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+        <h2
+          className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em]"
+          style={{ color: "#FFF2E9" }}
+        >
+          CONTACTO
+        </h2>
+        <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mt-2" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+      </div>
 
-        <div className="container mx-auto max-w-7xl relative z-20 px-4">
-         <p
-            className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#051341]"
-            style={{
-              fontFamily: "var(--font-cormorant), serif",
-              fontStyle: "normal",
-              fontWeight: "500",
-            }}
-          >
-            Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
-          </p>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
-            <div className="space-y-8 order-2 lg:order-1">
-              <ContactForm />
-            </div>
+      <div className="container mx-auto max-w-7xl relative z-20 px-4">
+       <p
+          className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#FFF2E9]"
+          style={{
+            fontFamily: "var(--font-cormorant), serif",
+            fontStyle: "normal",
+            fontWeight: "500",
+          }}
+        >
+          Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
+        </p>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
+          <div className="space-y-8 order-2 lg:order-1">
+            <ContactForm />
+          </div>
 
-            <div className="flex items-center justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
-              <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-lg h-[300px] sm:h-[400px] lg:h-[400px] xl:h-[500px] lg:mr-[-2rem] xl:mr-[-5rem]">
-                <div
-                  className="w-full h-full shadow-2xl relative overflow-hidden"
+          <div className="flex items-center justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-lg h-[300px] sm:h-[400px] lg:h-[400px] xl:h-[500px] lg:mr-[-2rem] xl:mr-[-5rem]">
+              <div
+                className="w-full h-full shadow-2xl relative overflow-hidden"
+                style={{
+                  borderRadius: "0px 100px",
+                  background: "linear-gradient(135deg, rgba(5, 19, 65, 0.1) 0%, rgba(255, 242, 233, 0.1) 100%)",
+                  border: "2px solid #FFF2E9",
+                }}
+              >
+                <Image
+                  src="/images/contact-background.jpg"
+                  alt="Contacto DA LUZ CONSCIENTE"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="object-cover"
                   style={{
                     borderRadius: "0px 100px",
-                    background: "linear-gradient(135deg, rgba(5, 19, 65, 0.1) 0%, rgba(255, 242, 233, 0.1) 100%)",
-                    border: "2px solid #051341",
                   }}
-                >
-                  <Image
-                    src="/images/contact-background.jpg"
-                    alt="Contacto DA LUZ CONSCIENTE"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                    className="object-cover"
-                    style={{
-                      borderRadius: "0px 100px",
-                    }}
-                  />
-                </div>
+                />
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
     </div>
   );
 }

@@ -414,3 +414,32 @@
     border: 2px solid #ffffff;
   }
 }
+
+/* ==========================================================
+   DA LUZ CONSCIENTE - Overrides Globales (Azules e Italics)
+   ========================================================== */
+
+/* 1. Forzar estilo recto (sin cursiva) globalmente en títulos y textos */
+h1, h2, h3, h4, h5, h6,
+[class*="font-"],
+.font-title,
+.font-subtitle,
+.font-text {
+  font-style: normal !important;
+}
+
+/* 2. Eliminar bordes o líneas rojas en tarjetas (estados base y hover/touch con azules institucionales) */
+.card-enhanced {
+  border-color: #16345F !important;
+}
+
+.card-enhanced:hover,
+.card-enhanced:active,
+.card-enhanced:focus {
+  border-color: #005080 !important;
+  border-top-color: #005080 !important;
+}
+/* 3. Reemplazar la franja superior roja/naranja de las tarjetas al hacer hover por la paleta azul */
+.card-enhanced::before {
+  background: linear-gradient(90deg, #051341, #16345F, #005080) !important;
+}
