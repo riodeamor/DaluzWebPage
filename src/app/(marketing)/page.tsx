@@ -78,7 +78,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+
 
 <AnimatedBackground />
 
@@ -574,41 +574,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ✨ ENHANCED BLOG DE LA COMUNIDAD SECTION */}
-      <section
-        className="relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0"
-        style={{
-          minHeight: "400px",
-          backgroundColor: "#FFF2E9",
-          position: "relative",
-        }}
-      >
-        <div
-          className="absolute inset-0 xl:hidden"
-          style={{
-            background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)",
-          }}
-        />
-        <div
-          className="hidden xl:block absolute inset-0"
-          style={{ minHeight: "1080px", height: "1080px" }}
-        >
-          <BlogBackground
-            bgColor="#FFF2E9"
-            waveColor="#051341"
-            className="opacity-100"
-          />
-        </div>
-
-        <div className="container mx-auto max-w-7xl text-center relative z-20 py-12">
-          <div
-            className="w-32 h-0.5 mx-auto mb-5"
-            style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }}
-          />
-          <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#051341" }}
-          >
            {/* 📖 BLOG DA LUZ SECTION */}
       <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
         <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
@@ -880,7 +845,7 @@ export default async function HomePage() {
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-20 px-4">
-          <p
+         <p
             className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#051341]"
             style={{
               fontFamily: "var(--font-cormorant), serif",
@@ -888,8 +853,7 @@ export default async function HomePage() {
               fontWeight: "500",
             }}
           >
-            <p className="text-white">
-  Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
+            Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
           </p>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
