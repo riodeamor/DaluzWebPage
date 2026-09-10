@@ -1,21 +1,39 @@
 /* =============================================
    LOGIN & SIGNUP PAGE STYLES — DA LUZ CONSCIENTE
-   Adapted to Raíces & Blog therapeutic color scheme
    ============================================= */
 
-/* ── Card Container ── */
-.login-card {
-  border-radius: 0px 15px;
-  background-color: #051341; /* Azul ancla profundo */
-  border: none;
-  overflow: hidden;
-  max-height: 99vh;
+/* ── Fondo general de la página de auth ── */
+body {
+  background-color: #051341;
   color: #FFF2E9;
 }
 
-/* ── Header ── */
+/* ── Títulos exteriores ── */
+.auth-brand-title, 
+h1.auth-title, 
+.login-outer-title {
+  color: #FFF2E9 !important;
+}
+
+.text-center h1, 
+.text-center p {
+  color: #FFF2E9;
+}
+
+/* ── Card Container con Degradé en Azules ── */
+.login-card {
+  border-radius: 0px 15px;
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%);
+  border: 1px solid rgba(0, 80, 128, 0.3);
+  overflow: hidden;
+  max-height: 99vh;
+  color: #FFF2E9;
+  box-shadow: 0 10px 25px -5px rgba(5, 19, 65, 0.5);
+}
+
+/* ── Header interno de la Card ── */
 .login-header {
-  background-color: #051341;
+  background: transparent;
   padding-bottom: 0.75rem;
 }
 
@@ -31,21 +49,11 @@
   opacity: 0.85;
 }
 
-/* ── Content Area ── */
+/* ── Content Area (Caja inferior beige) ── */
 .login-content {
-  background-color: #FFF2E9; /* Fondo beige de lectura */
+  background-color: #FFF2E9;
   padding: 1.5rem 1.75rem;
   color: #051341;
-}
-
-/* ── Error Alert ── */
-.login-alert {
-  background-color: #fef2f2;
-  border-color: #fecaca;
-}
-
-.login-alert-text {
-  color: #991b1b;
 }
 
 /* ── Form Field Groups ── */
@@ -57,7 +65,7 @@
 
 .login-field-label {
   font-weight: 500;
-  color: #051341; /* Títulos de campos en azul profundo */
+  color: #051341;
 }
 
 /* ── Input Wrappers & Icons ── */
@@ -137,15 +145,15 @@
   text-decoration: underline;
   transition: color 0.2s;
   text-align: center;
-  color: #16345F; /* Azul de acción */
+  color: #16345F;
   font-weight: 500;
 }
 
 .login-forgot-link:hover {
-  color: #005080; /* Sal azul de hover */
+  color: #005080;
 }
 
-/* ── Submit Button (Crear Cuenta / Iniciar Sesión) ── */
+/* ── Submit Button ── */
 .login-submit-btn {
   width: 100%;
   padding-top: 0.75rem;
@@ -155,17 +163,17 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0px 15px;
-  background-color: #16345F !important; /* Azul de acción principal */
+  background-color: #16345F !important;
   color: #FFF2E9 !important;
   border: none;
 }
 
 .login-submit-btn:hover {
-  background-color: #005080 !important; /* Sal azul para encender en hover */
+  background-color: #005080 !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Divider (La línea con el "O" en el medio) ── */
+/* ── Divider ("O") ── */
 .login-divider {
   position: relative;
   margin: 1rem 0;
@@ -193,7 +201,7 @@
 }
 
 .login-divider-text {
-  background-color: #FFF2E9; /* Coincide con el fondo de lectura */
+  background-color: #FFF2E9;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   color: #051341;
@@ -213,7 +221,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0px 15px;
-  background-color: #051341 !important; /* Azul ancla */
+  background-color: #051341 !important;
   border: 1px solid #051341 !important;
   color: #FFF2E9 !important;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -231,7 +239,7 @@
   flex-shrink: 0;
 }
 
-/* ── Signup Link / Footer text inside form ── */
+/* ── Signup/Login Footer text ── */
 .login-signup-text {
   text-align: center;
   font-size: 0.875rem;
@@ -251,7 +259,7 @@
   color: #005080;
 }
 
-/* Responsive: pantallas pequeñas */
+/* ── Responsive: pantallas pequeñas ── */
 @media (max-width: 480px) {
   .login-google-btn {
     font-size: 0.875rem;
