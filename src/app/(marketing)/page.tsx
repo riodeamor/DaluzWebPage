@@ -1,6 +1,3 @@
-'use client';
-
-
 import Link from "next/link";
 import Image from "next/image";
 import { client, queries } from "@/lib/sanity/client";
@@ -153,23 +150,6 @@ export default async function HomePage() {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
-
-              <Link href="/filosofia-proposito">
-                <Button
-                  variant="outline"
-                  className="group px-8 py-4 text-lg font-medium text-white border-none uppercase tracking-[0.18em] transition-all duration-300"
-                  style={{ 
-                    borderRadius: "0px 15px", 
-                    fontFamily: "var(--font-synthese), sans-serif",
-                    backgroundColor: "#16345F" 
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
-                >
-                  <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
-                  Conoce Nuestra Historia
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -297,7 +277,7 @@ export default async function HomePage() {
 
       {/* CARRUSEL DE LÍNEAS */}
       <LineasCarousel />
-{/* VALOR Y CONFIANZA DA LUZ */}
+      {/* VALOR Y CONFIANZA DA LUZ */}
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-valor-confianza" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 1, marginTop: "-4px" }}>
         <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.07 / 1080.12", minHeight: "100%", zIndex: 0 }}>
@@ -333,15 +313,12 @@ export default async function HomePage() {
                 </div>
                 <Link href={item.link} className="w-full">
                   <Button 
-                    className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em] text-white" 
+                    className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em] text-white bg-[#16345F] hover:bg-[#005080]" 
                     style={{ 
                       borderRadius: "0px 15px", 
                       fontFamily: "var(--font-synthese), sans-serif",
-                      backgroundColor: "#16345F",
                       border: "none"
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
                   >
                     Ver más <ArrowRight className="w-5 h-5 ml-2 text-white group-hover/btn:translate-x-1 transition-transform duration-300" />
                   </Button>
@@ -372,7 +349,7 @@ export default async function HomePage() {
 
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
             
-            {/* PROCESOS INTEGRATIVOS */}
+           {/* PROCESOS INTEGRATIVOS */}
             <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
@@ -390,10 +367,8 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR LOS PROCESOS DE TRANSFORMACIÓN</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -420,10 +395,8 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">¡CONOCE NUESTRAS PROPUESTAS!</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -449,10 +422,8 @@ export default async function HomePage() {
                   <Link href="/programa-transformacion" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none", backgroundColor: "#16345F" }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">SÉ PARTE DEL RITUAL</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -677,7 +648,7 @@ export default async function HomePage() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
+       {/* RIGHT SIDE */}
         <div className="space-y-6 lg:ml-[5rem]">
           <div className="grid grid-cols-2 grid-rows-2 gap-3 sm:gap-4">
             {featuredPosts[0] && (
@@ -762,14 +733,11 @@ export default async function HomePage() {
     <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
       <Link
         href="/blog"
-        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300"
+        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 bg-[#16345F] hover:bg-[#005080]"
         style={{ 
           borderRadius: "0 15px", 
-          fontFamily: "var(--font-synthese), sans-serif",
-          backgroundColor: "#16345F"
+          fontFamily: "var(--font-synthese), sans-serif"
         }}
-        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
       >
         <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
         <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
@@ -777,7 +745,7 @@ export default async function HomePage() {
     </div>
   </div>
 </section>
-      
+
 
      {/* ✨ ENHANCED GALERÍA SECTION */}
       <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
@@ -809,15 +777,12 @@ export default async function HomePage() {
               </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em]" 
+                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-[#051341] hover:bg-[#005080]" 
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-synthese), sans-serif",
-                    backgroundColor: "#051341",
                     border: "none"
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#051341"}
                 >
                   <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
                   SEGUINOS EN INSTAGRAM
