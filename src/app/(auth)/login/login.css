@@ -1,37 +1,41 @@
 /* =============================================
-   LOGIN PAGE STYLES — DA LUZ CONSCIENTE
-   Follows the project's design system using
-   CSS variables from globals.css
+   LOGIN & SIGNUP PAGE STYLES — DA LUZ CONSCIENTE
+   Adapted to Raíces & Blog therapeutic color scheme
    ============================================= */
 
 /* ── Card Container ── */
 .login-card {
   border-radius: 0px 15px;
-  background-color: var(--admin-accent-primary);
+  background-color: #051341; /* Azul ancla profundo */
   border: none;
   overflow: hidden;
   max-height: 99vh;
+  color: #FFF2E9;
 }
 
 /* ── Header ── */
 .login-header {
-  background-color: var(--admin-accent-primary);
+  background-color: #051341;
   padding-bottom: 0.75rem;
 }
 
 .login-title {
   font-size: 1.875rem;
   text-align: center;
+  color: #FFF2E9;
 }
 
 .login-description {
   text-align: center;
+  color: #FFF2E9;
+  opacity: 0.85;
 }
 
 /* ── Content Area ── */
 .login-content {
-  background-color: var(--color-bg-light);
-  padding: 1rem 1.5rem;
+  background-color: #FFF2E9; /* Fondo beige de lectura */
+  padding: 1.5rem 1.75rem;
+  color: #051341;
 }
 
 /* ── Error Alert ── */
@@ -53,6 +57,7 @@
 
 .login-field-label {
   font-weight: 500;
+  color: #051341; /* Títulos de campos en azul profundo */
 }
 
 /* ── Input Wrappers & Icons ── */
@@ -67,21 +72,29 @@
   transform: translateY(-50%);
   height: 1rem;
   width: 1rem;
-  opacity: 0.4;
+  opacity: 0.5;
+  color: #051341;
 }
 
 /* ── Inputs ── */
 .login-input {
   padding-left: 2.5rem;
-  background-color: var(--admin-bg-tertiary);
-  border-color: var(--admin-text-primary);
+  background-color: #ffffff;
+  border-color: #051341;
+  color: #051341;
+}
+
+.login-input::placeholder {
+  color: #051341;
+  opacity: 0.4;
 }
 
 .login-input--with-toggle {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  background-color: var(--admin-bg-tertiary);
-  border-color: var(--admin-text-primary);
+  background-color: #ffffff;
+  border-color: #051341;
+  color: #051341;
 }
 
 .login-input--error {
@@ -96,6 +109,7 @@
   height: 100%;
   padding: 0.5rem 0.75rem;
   opacity: 0.6;
+  color: #051341;
 }
 
 .login-toggle-password:hover {
@@ -115,7 +129,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .login-forgot-link {
@@ -123,9 +137,15 @@
   text-decoration: underline;
   transition: color 0.2s;
   text-align: center;
+  color: #16345F; /* Azul de acción */
+  font-weight: 500;
 }
 
-/* ── Submit Button ── */
+.login-forgot-link:hover {
+  color: #005080; /* Sal azul de hover */
+}
+
+/* ── Submit Button (Crear Cuenta / Iniciar Sesión) ── */
 .login-submit-btn {
   width: 100%;
   padding-top: 0.75rem;
@@ -135,15 +155,20 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0px 15px;
+  background-color: #16345F !important; /* Azul de acción principal */
+  color: #FFF2E9 !important;
+  border: none;
 }
 
 .login-submit-btn:hover {
+  background-color: #005080 !important; /* Sal azul para encender en hover */
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Divider ── */
+/* ── Divider (La línea con el "O" en el medio) ── */
 .login-divider {
   position: relative;
+  margin: 1rem 0;
 }
 
 .login-divider-line {
@@ -155,7 +180,7 @@
 
 .login-divider-line span {
   width: 100%;
-  border-top: 1px solid;
+  border-top: 1px solid #051341;
   opacity: 0.2;
 }
 
@@ -168,10 +193,11 @@
 }
 
 .login-divider-text {
-  background-color: var(--color-bg-light);
+  background-color: #FFF2E9; /* Coincide con el fondo de lectura */
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  opacity: 0.6;
+  color: #051341;
+  opacity: 0.7;
 }
 
 /* ── Google Button ── */
@@ -187,22 +213,42 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   border-radius: 0px 15px;
-  background-color: var(--admin-bg-secondary) !important;
-  border: 1px solid var(--admin-bg-secondary) !important;
-  color: var(--color-text-inverse) !important;
+  background-color: #051341 !important; /* Azul ancla */
+  border: 1px solid #051341 !important;
+  color: #FFF2E9 !important;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
 }
 
 .login-google-btn:hover {
+  background-color: #16345F !important;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Override shadcn Button's forced [&_svg]:size-4 */
 .login-google-btn svg {
   width: 1.25rem !important;
   height: 1.25rem !important;
   flex-shrink: 0;
+}
+
+/* ── Signup Link / Footer text inside form ── */
+.login-signup-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #051341;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.login-signup-link {
+  font-weight: 600;
+  text-decoration: underline;
+  color: #16345F;
+  transition: color 0.2s;
+}
+
+.login-signup-link:hover {
+  color: #005080;
 }
 
 /* Responsive: pantallas pequeñas */
@@ -223,19 +269,4 @@
     text-align: center !important;
     justify-content: center !important;
   }
-
-
-}
-
-/* ── Signup Link ── */
-.login-signup-text {
-  text-align: center;
-  font-size: 0.875rem;
-  opacity: 0.7;
-}
-
-.login-signup-link {
-  font-weight: 600;
-  text-decoration: underline;
-  transition: color 0.2s;
 }
