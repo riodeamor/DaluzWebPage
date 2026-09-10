@@ -1,8 +1,3 @@
-/**
- * Sesiones Integrales Page - Specific Styles
- * Design: Grid variation, dark forest green theme heritage
- */
-
 /* ===========================
    SESIONES HEADER BAND
    =========================== */
@@ -19,7 +14,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 1919.66 310' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23fff2db;filter:url(%23drop-shadow-1)%7D%3C/style%3E%3Cfilter id='drop-shadow-1' x='-22.33' y='-.25' width='1950.24' height='313.2' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M1919.83,7.85v63.79c-153.8,89.23-354.71,172.18-594.46,187.57-278.32,17.86-320.72-73.84-651.77-72.53C361.82,187.9,151.55,270.22-.17,290.72V7.85h1920Z'/%3E%3C/svg%3E");
+  /* SVG inyectado con fill:%23FFF2E9 (Crema Da Luz) */
+  background-image: url("data:image/svg+xml,%3Csvg id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 1919.66 310' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23FFF2E9;filter:url(%23drop-shadow-1)%7D%3C/style%3E%3Cfilter id='drop-shadow-1' x='-22.33' y='-.25' width='1950.24' height='313.2' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M1919.83,7.85v63.79c-153.8,89.23-354.71,172.18-594.46,187.57-278.32,17.86-320.72-73.84-651.77-72.53C361.82,187.9,151.55,270.22-.17,290.72V7.85h1920Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: top center;
@@ -37,7 +33,7 @@
   font-family: var(--font-title), var(--font-velista), serif;
   font-size: 3rem !important;
   font-weight: 400;
-  color: #0D3221;
+  color: #051341; /* Pasado a Azul Profundo (era #0D3221) */
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transform: translateX(-150px) !important;
@@ -53,7 +49,8 @@
   width: 100vw;
   max-width: 1000px;
   margin: 0 auto;
-  background-image: url("data:image/svg+xml,%3Csvg id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='-25 150 1944.66 610' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23093123;filter:url(%23drop-shadow-1)%7D%3C/style%3E%3Cfilter id='drop-shadow-1' x='-17.89' y='141.77' width='1941.36' height='615.84' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M1913.73,607.95c-10.28,38.92-67.73,49.96-286.11,47.3-159.47-1.95-156.38-8.17-215.31-6.42-282.74,8.43-400.45,153.09-514.78,49.22-24.28-22.06-57.14-63.26-82.25-146.62-3.86-17.22-10.75-55.76,3.07-79.63,7.23-12.49,18.28-17.76,28.99-19.7-23.32-32.49-66.6-61.23-89.56-84.4-323.74,22.29-472.27,127.22-622.61,30.65-35.48-22.79-83.83-65-122.26-149.23-6.03-17.37-17.02-56.17,2.14-79.69,20.58-25.25,65.08-19.61,80.99-17.73,152.72,17.99,309.16-7.77,461.03,16.35,197.15,31.3,302.12,52.62,439.15,45.62,241.31-12.34,405.54-83.82,530.21,14.73,31.79,25.14,77.22,74.14,65.04,108.65-13.65,38.7-95.81,48.12-409.39,39.23-212.23-6.02-224.1-11.74-292.02-12.48,24.87,25.54,79.08,59.74,108.49,91.84,66.26-2.99,132.71-8.93,197.59,4.04,136.79,27.35,209.52,46.57,305.17,36.85,168.43-17.11,284.3-91.75,369.24,4.21,21.66,24.47,52.35,72.51,43.18,107.21Z'/%3E%3C/svg%3E");
+  /* SVG inyectado con fill:%23051341 (Azul Profundo en lugar del verde bosque) */
+  background-image: url("data:image/svg+xml,%3Csvg id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='-25 150 1944.66 610' preserveAspectRatio='none'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23051341;filter:url(%23drop-shadow-1)%7D%3C/style%3E%3Cfilter id='drop-shadow-1' x='-17.89' y='141.77' width='1941.36' height='615.84' filterUnits='userSpaceOnUse'%3E%3CfeOffset dx='-7' dy='7'/%3E%3CfeGaussianBlur result='blur' stdDeviation='5'/%3E%3CfeFlood flood-color='%23000' flood-opacity='.5'/%3E%3CfeComposite in2='blur' operator='in'/%3E%3CfeComposite in='SourceGraphic'/%3E%3C/filter%3E%3C/defs%3E%3Cpath class='cls-1' d='M1913.73,607.95c-10.28,38.92-67.73,49.96-286.11,47.3-159.47-1.95-156.38-8.17-215.31-6.42-282.74,8.43-400.45,153.09-514.78,49.22-24.28-22.06-57.14-63.26-82.25-146.62-3.86-17.22-10.75-55.76,3.07-79.63,7.23-12.49,18.28-17.76,28.99-19.7-23.32-32.49-66.6-61.23-89.56-84.4-323.74,22.29-472.27,127.22-622.61,30.65-35.48-22.79-83.83-65-122.26-149.23-6.03-17.37-17.02-56.17,2.14-79.69,20.58-25.25,65.08-19.61,80.99-17.73,152.72,17.99,309.16-7.77,461.03,16.35,197.15,31.3,302.12,52.62,439.15,45.62,241.31-12.34,405.54-83.82,530.21,14.73,31.79,25.14,77.22,74.14,65.04,108.65-13.65,38.7-95.81,48.12-409.39,39.23-212.23-6.02-224.1-11.74-292.02-12.48,24.87,25.54,79.08,59.74,108.49,91.84,66.26-2.99,132.71-8.93,197.59,4.04,136.79,27.35,209.52,46.57,305.17,36.85,168.43-17.11,284.3-91.75,369.24,4.21,21.66,24.47,52.35,72.51,43.18,107.21Z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -65,7 +62,7 @@
   font-family: var(--font-text), var(--font-body), serif;
   font-size: clamp(0.95rem, 2vw, 1.2rem);
   line-height: 1.65;
-  color: var(--procesos-accent);
+  color: #FFF2E9; /* Forzado a crema brillante sobre el nuevo fondo azul */
 }
 
 .sesiones-intro-block:last-of-type {
@@ -77,7 +74,6 @@
   max-width: 670px;
   margin-top: -1rem;
   transform: translateX(-2rem);
-
 }
 
 .sesiones-intro-block.sesiones-intro-right {
@@ -106,7 +102,7 @@
   color: var(--procesos-text-on-cream);
   padding: 2rem 1.5rem;
   border-radius: 0 15px;
-  border: 1px solid rgba(1, 31, 24, 0.08);
+  border: 1px solid rgba(5, 19, 65, 0.08); /* Sombra/borde sutil en azul oscuro en vez de verde */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
@@ -174,7 +170,6 @@
     background-image: none;
     text-align: center;
     transform: translateX(0.8rem);
-
   }
 
   .sesiones-intro-block.sesiones-intro-right {
