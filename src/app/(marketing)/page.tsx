@@ -813,11 +813,11 @@ export default async function HomePage() {
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-synthese), sans-serif",
-                    backgroundColor: "#16345F",
+                    backgroundColor: "#051341",
                     border: "none"
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#005080"}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#16345F"}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "#051341"}
                 >
                   <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
                   SEGUINOS EN INSTAGRAM
@@ -852,7 +852,7 @@ export default async function HomePage() {
 
       <div className="container mx-auto max-w-7xl relative z-20 px-4">
        <p
-          className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#FFF2E9]"
+          className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#051341]"
           style={{
             fontFamily: "var(--font-cormorant), serif",
             fontStyle: "normal",

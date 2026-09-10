@@ -443,3 +443,13 @@ h1, h2, h3, h4, h5, h6,
 .card-enhanced::before {
   background: linear-gradient(90deg, #051341, #16345F, #005080) !important;
 }
+/* 4. Asegurar que los fondos absolutos nunca bloqueen los clics del Header */
+.section-enhanced .absolute,
+.product-line-section .absolute {
+  pointer-events: none !important;
+}
+
+/* 5. Forzar prioridad absoluta de capas para los menús desplegables del Header */
+header, nav, [class*="dropdown"], [class*="menu"] {
+  z-index: 9999 !important;
+}
