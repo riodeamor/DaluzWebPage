@@ -2,10 +2,11 @@
    LOGIN & SIGNUP PAGE STYLES — DA LUZ CONSCIENTE
    ============================================= */
 
-/* ── Fondo general de la página de auth ── */
-body {
-  background-color: #051341;
-  color: #FFF2E9;
+/* ── Fondo general de la página de auth con degradé en azules ── */
+html, body {
+  background: linear-gradient(135deg, #051341 0%, #16345F 100%) !important;
+  color: #FFF2E9 !important;
+  min-height: 100vh;
 }
 
 /* ── Títulos exteriores ── */
