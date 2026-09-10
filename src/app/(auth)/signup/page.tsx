@@ -15,8 +15,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Eye, EyeOff, Mail, Lock, User, Phone, CheckCircle2 } from "lucide-react";
 
 /* Conectamos esta página al mismo CSS que armamos para el Login */
-import '../login/login.css';
-
+import "@/app/(auth)/login/login.css";
 const signupSchema = z.object({
   firstName: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
   lastName: z.string().min(2, "El apellido debe tener al menos 2 caracteres"),
