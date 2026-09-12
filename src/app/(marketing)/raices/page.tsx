@@ -48,12 +48,12 @@ export default function FilosofiaPropositoPage() {
           <div className="raices-header-band-inner">
             <h1 id="filosofia-title" className="raices-band-title">
               La Alquimista y Creadora Detrás de Da Luz
-          </h1>
+            </h1>
           </div>
         </section>
         <div className="raices-content raices-hero-mobile">
           <p className="raices-intro">
-            ¡Hola! Soy la alquimista, terapeuta holística y creadora detrás de Da Luz Consciente. Siento profundamente la vocación de servir a la Nueva Humanidad, impulsando la presencia, la consciencia de unidad, el amor y el coraje para habitar y crear en la Tierra.
+            ¡Hola! Soy la alquimista, terapeuta y formadora detrás de Da Luz Consciente. Mi vocación es servir a esta Nueva Humanidad, brindando herramientas que impulsen la presencia, la consciencia de unidad y el coraje para habitar nuestro cuerpo y crear en la Tierra.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function FilosofiaPropositoPage() {
               </div>
               <div className="raices-hero-paragraph-wrap">
                 <p className="raices-hero-paragraph">
-                  ¡Hola! Soy la alquimista, terapeuta holística y creadora detrás de Da Luz Consciente. Siento profundamente la vocación de servir a la Nueva Humanidad, impulsando la presencia, la consciencia de unidad, el amor y el coraje para habitar y crear en la Tierra.
+                  ¡Hola! Soy la alquimista, terapeuta y formadora detrás de Da Luz Consciente. Mi vocación es servir a esta Nueva Humanidad, brindando herramientas que impulsen la presencia, la consciencia de unidad y el coraje para habitar nuestro cuerpo y crear en la Tierra.
                 </p>
                 <div className="raices-hero-underline" aria-hidden>
                   <img src="/svg/filosofia/filo/UnderLine.svg" alt="" className="raices-hero-underline-svg" />
@@ -87,6 +87,24 @@ export default function FilosofiaPropositoPage() {
             </div>
           </div>
         </section>
+
+        {/* Filosofía Central / Manifiesto */}
+        <div className="raices-content" style={{ marginTop: '2rem' }}>
+          <article className="raices-card raices-section-card">
+            <p style={{ fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.6, marginBottom: '1rem' }}>
+              La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y amor incondicional.
+            </p>
+            <p>
+              Da Luz Consciente es una invitación a nutrir integralmente tu cuerpo, tus emociones, tu mente y tu espíritu. No somos una solución instantánea; somos el puente para quienes se comprometen a escuchar su propio pulso, a habitar la pausa y a comprender la salud como un proceso de autogestión y soberanía.
+            </p>
+            <p>
+              Deseamos que el acto de cuidarte se convierta en un ritual diario, donde la Presencia, la gratitud y el goce acompañen cada uno de tus pasos. Nuestro propósito es acompañarte a construir un equilibrio genuino, sumergiéndote en un viaje alquímico hacia tu interior, donde tu cuerpo es honrado como un templo.
+            </p>
+            <p style={{ textAlign: 'center', fontStyle: 'italic', fontWeight: 600, marginTop: '1.5rem', color: 'var(--color-brand-primary, #72111A)' }}>
+              Acá, la pausa es un acto sagrado.
+            </p>
+          </article>
+        </div>
 
         {/* De la Sombra - Mobile/Tablet (original band) */}
         <section className="raices-section-band filo-mobile-only" aria-labelledby="sombra-title-mobile">
@@ -110,16 +128,10 @@ export default function FilosofiaPropositoPage() {
         <div className="raices-content">
           <article className="raices-card raices-section-card">
             <p>
-              El origen de Da Luz surge de una transformación genuina. El origen de Da Luz nace de una transformación genuina. He transitado el victimismo, la disociación y la incoherencia, manifestados en somatizaciones físicas que mi cuerpo ya no podía ignorar.
+              El origen de Da Luz nace de una transformación radical. Como muchas, habité la disociación y el dolor, manifestados en somatizaciones físicas que mi cuerpo ya no podía ignorar. Ese quiebre fue el combustible de mi curiosidad: necesitaba comprender mi propia biología y energía para cooperar con mi sanación.
             </p>
             <p>
-              Ese dolor fue el combustible de mi curiosidad: necesitaba entender mi Ser para cooperar, primero, con mi propia sanación.
-            </p>
-            <p>
-              Mi pulso fue siempre el mismo: entender y ayudar a mi Ser para después poder cooperar con la Humanidad.
-            </p>
-            <p>
-              Por ello, inicié con Psicología en la UNC. Fascinada con la información, pero con deseos de más, empecé a formarme paralelamente en diversos saberes integrales y fui explorando en mi propio cuerpo cada herramienta, asombrada por cómo la transformación interna operaba efectivamente en mi exterior.
+              Mi pulso siempre fue claro: sanar para luego compartir. Inicié mis estudios en Psicología en la UNC, pero mi fascinación me llevó a expandir las fronteras hacia saberes integrales y holísticos. Exploré cada herramienta en mi propio cuerpo, asombrada al ver cómo la transmutación interna rediseñaba por completo mi realidad exterior.
             </p>
           </article>
         </div>
@@ -141,16 +153,13 @@ export default function FilosofiaPropositoPage() {
         <div className="raices-content">
           <article className="raices-card raices-section-card">
             <p>
-              Me enamoré por completo de la autogestión y seguí estudiando ya no solo al Ser, sino también a todo aquello que nos afecta por cercanía: la alimentación, la cosmética, las plantas.
+              Me enamoré de la autogestión y comencé a estudiar todo lo que nos nutre y afecta: la alimentación, la química cosmética y el poder oculto de las plantas. Tras sanar dolores crónicos a través de la fitoterapia, empecé a formular mis propios productos.
             </p>
             <p>
-              Vivencié mi propia sanación de colon irritable y dolor crónico con medicina herbal y me enamoré de este mundo. Empecé a formular mis propios cosméticos, y en el proceso de explorarlos descubrí que estaban siendo un canal hermoso a través del cual no solo me nutría, sino que también me conectaba con mi placer y sensibilidad, forzando un vínculo más consciente.
+              En el laboratorio descubrí que la cosmética no era solo estética, sino un canal poderoso para reconectar con el placer, la sensibilidad y el autocuidado consciente. Al experimentar esta armonía, el deseo de compartirlo fue ineludible. Dejé atrás el miedo a la &quot;intensidad&quot; de mi visión y di vida a mi deseo primal: crear un puente tangible entre el ritual interno y el cuidado externo.
             </p>
             <p>
-              Al experimentar cómo el auto-amor y la escucha activa de mis cuerpos me hacían sentir en mayor armonía, nació el deseo ineludible de compartirlo.
-            </p>
-            <p>
-              Tras un proceso de repliegue y transmutación —donde dejé atrás el miedo a la &quot;intensidad&quot; de mi propuesta— permití que naciera mi deseo primal: <strong>crear un puente tangible que uniera el ritual interno con el cuidado externo.</strong>
+              Así nació Da Luz Consciente y su línea Alkimya Da Luz, diseñadas para iluminar nuestras sensaciones y devolvernos el goce de habitar la Vida.
             </p>
           </article>
 
@@ -222,19 +231,19 @@ export default function FilosofiaPropositoPage() {
         <div className="raices-content">
           <article className="raices-card raices-section-card">
             <p>
-              Mi deseo es que expandas tu autogestión. Integramos la alquimia botánica con la tecnología del autoconocimiento para que recuperes tu equilibrio.
+              Mi deseo es que expandas tu soberanía personal. En Da Luz integramos la alquimia botánica con la tecnología del autoconocimiento para que recuperes tu centro.
             </p>
             <p>
               <strong>Esta es tu comunidad si buscás:</strong>
             </p>
             <ul className="raices-list">
               <li><strong>Tu Ceremonia:</strong> Diagnósticos de Biotipo y rutinas de presencia.</li>
-              <li><strong>Transparencia:</strong> Materia prima consciente y trazabilidad total.</li>
+              <li><strong>Transparencia:</strong> Materia prima consciente, activa y con trazabilidad total.</li>
               <li><strong>Membresía:</strong> Un espacio de crecimiento, herramientas somáticas y Tesoros Da Luz.</li>
               <li><strong>Procesos Holísticos:</strong> Acompañamiento personalizado para acuerpar tu transformación.</li>
             </ul>
-            <p>
-              Te invito a dar el primer paso para crear desde la vitalidad y el coraje.
+            <p style={{ marginTop: '1rem' }}>
+              Te invito a dar el primer paso para crear tu realidad desde la vitalidad y el coraje.
             </p>
           </article>
         </div>
