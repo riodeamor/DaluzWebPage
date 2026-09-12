@@ -708,7 +708,7 @@ export default async function HomePage() {
           style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }}
         />
         <div className="hidden xl:block absolute inset-0">
-          <GaleriaBackground bgColor="#FFF2E9" waveColor="#16345F" className="opacity-100" />
+          <GaleriaBackground bgColor="#051341" waveColor="#16345F" className="opacity-100" />
         </div>
 
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">
@@ -726,10 +726,10 @@ export default async function HomePage() {
           <InteractiveGallery />
           <div className="text-center mt-16">
             <div className="space-y-4">
-              <h3 className="font-subtitle text-2xl text-[#051341] not-italic font-semibold">FRAGMENTOS DE UN RITUAL VIVO</h3>
-              <p className="font-text max-w-2xl mx-auto text-gray-800">
-                Habitar el cuerpo. Honrar la raíz
-              </p>
+              <h3 className="font-subtitle text-2xl text-[#FFFFFF] not-italic font-semibold">FRAGMENTOS DE UN RITUAL VIVO</h3>
+              <p className="font-text max-w-2xl mx-auto" style={{ color: "#FFF4E0" }}>
+              Habitar el cuerpo. Honrar la raíz
+            </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
                   className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-[#051341] hover:bg-[#005080]" 
