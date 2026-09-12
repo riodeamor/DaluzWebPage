@@ -16,8 +16,8 @@ const DEFAULT_INSTAGRAM = "https://instagram.com/daluzconsciente";
 const DEFAULT_FACEBOOK = "https://facebook.com/daluzconsciente";
 
 /* Procesos pages: green theme matching page background */
-const PROCESOS_BG = "#011f18";
-const PROCESOS_BORDER = "#093123";
+const PROCESOS_BG = "#051341";
+const PROCESOS_BORDER = "#16345F";
 const isProcesosPage = (pathname: string) =>
   pathname === "/servicios/procesos" ||
   pathname.startsWith("/servicios/procesos/");
@@ -92,14 +92,14 @@ export default function Footer() {
       ? PROCESOS_BG
       : isFaqPage(pathname ?? "")
         ? FAQ_BG
-        : "#AE0000";
+        : "#051341";
   const footerBorder = isRaicesPage(pathname ?? "")
     ? RAICES_BORDER
     : isProcesosPage(pathname ?? "")
       ? PROCESOS_BORDER
       : isFaqPage(pathname ?? "")
         ? FAQ_BORDER
-        : "#C70000";
+        : "#051341";
 
   const footerSections = [
     {

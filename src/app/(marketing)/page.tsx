@@ -120,12 +120,12 @@ export default async function HomePage() {
                 </div>
 
                 <BlurText
-                  text="ALKIMYAS PARA ALMA Y CUERPO"
+                  text="Un portal hacia la alquimia viva: donde la medicina de la tierra se encuentra con la consciencia del ser."
                   as="div"
-                  className="text-1xl md:text-2xl lg:text-3xl opacity-95 max-w-4xl mx-auto leading-relaxed tracking-[0.12em] group-hover:text-[#FFF2E9] transition-colors duration-500 uppercase"
+                  className="text-lg md:text-xl lg:text-2xl opacity-95 max-w-3xl mx-auto leading-tight tracking-wide group-hover:text-[#FFF2E9] transition-colors duration-500"
                   style={{
                     fontFamily: "var(--font-cormorant), serif",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     fontStyle: "normal",
                   }}
                   delay={100}
@@ -155,117 +155,57 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ✨ MANIFIESTO DA LUZ SECTION */}
-      <section
-        className="relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-manifiesto"
-        style={{ minHeight: "550px", marginBottom: 0 }}
-      >
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }} />
-        <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1922.91 / 1080.08" }}>
-          <SobreNosotrosBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
-        </div>
-
-        <div className="text-center relative z-10 flex-shrink-0" style={{ paddingTop: "clamp(1.25rem, 3%, 2.5rem)", paddingBottom: "clamp(0.5rem, 1.5%, 1rem)" }}>
-          <div className="lg:mb-8 xl:mb-0"></div>
-          <div className="hidden xl:block w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-          <div className="xl:hidden w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em]">
-            MANIFIESTO DA LUZ
-          </h2>
-          <p className="font-subtitle text-base sm:text-lg md:text-xl lg:text-lg xl:text-2xl 2xl:text-2xl mt-[0.3rem] text-[#051341] xl:text-[#FFF2E9]">
-            Viví en Presencia, Creá con Placer.
-          </p>
-          <div className="hidden xl:block w-32 h-0.5 mx-auto mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-          <div className="xl:hidden w-32 h-0.5 mx-auto mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-        </div>
-
-        <div className="flex-1 flex items-center justify-center relative z-10 py-4 lg:py-8 xl:py-0" style={{ paddingTop: "clamp(0.5rem, 1vh, 1rem)", paddingBottom: "clamp(0.5rem, 1vh, 1rem)" }}>
-          <div className="container mx-auto max-w-7xl w-full lg:-mt-12 xl:-mt-36">
-            <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-8 xl:gap-16 items-center">
-              <div className="flex justify-center lg:justify-end order-1 lg:order-2 w-full">
-                <div className="relative">
-                  <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-72 lg:h-72 xl:w-96 xl:h-96 overflow-hidden" style={{ borderRadius: "0px 100px", border: "2px solid #051341" }}>
-                    <div className="w-full h-full flex items-center justify-center overflow-hidden relative">
-                      <Image src="/images/sobre-daluz/sobre-daluz-main.jpg" alt="DA LUZ CONSCIENTE" fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover" style={{ borderRadius: "0px 100px" }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="order-2 lg:order-1 w-full">
-                <div className="rounded-2xl p-4 sm:p-5 md:p-6 lg:p-6 xl:p-8 text-left">
-                  <div className="space-y-3 sm:space-y-4 md:space-y-5 lg:space-y-4 xl:space-y-6 text-sm sm:text-base md:text-base lg:text-base xl:text-lg leading-relaxed">
-                    <p className="font-text text-gray-800">
-                      Deseamos que experimentes la profunda conexión con tu Ser esencial. La vida es tu mayor acto de creación: te invitamos a un viaje donde tu cuerpo es el templo y el Placer es el verdadero pase hacia tu Poder Creador
-                    </p>
-                  </div>
-                  <div className="pt-3 sm:pt-4 md:pt-5 lg:pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <Link href="/productos">
-                      <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300 w-full sm:w-auto" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}>
-                        VER PRODUCTOS
-                      </Button>
-                    </Link>
-                    <Link href="/servicios/procesos">
-                      <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300 w-full sm:w-auto" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}>
-                        PROCESOS
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ✨ ALKIMYA DA LUZ: NEUROCOSMÉTICA SECTION */}
+      {/* ✨ ALKIMYA DA LUZ SECTION */}
       <section className="relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-neurocosmetica" style={{ minHeight: "550px", marginTop: "-4px" }}>
         <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.19 / 1080.18" }}>
           <AlkimyaNeurocosmeticaBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
 
-        <div className="text-center relative z-10 flex-shrink-0" style={{ paddingTop: "clamp(0.25rem, 1%, 1rem)", paddingBottom: "clamp(0.5rem, 1.5%, 1rem)" }}>
+        {/* 🔥 FIX: Título ALKIMYA DA LUZ más abajo, sin neurocosmética */}
+        <div className="text-center relative z-10 flex-shrink-0 pt-16 sm:pt-20 md:pt-24 lg:pt-28 xl:pt-32" style={{ paddingBottom: "clamp(0.5rem, 1.5%, 1rem)" }}>
           <div className="lg:mb-4 xl:mb-0"></div>
-          <div className="hidden xl:block w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-          <div className="xl:hidden w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em]">
+          <div className="w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+          
+          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
             ALKIMYA DA LUZ
           </h2>
-          <p className="font-subtitle text-base sm:text-lg md:text-xl lg:text-lg xl:text-2xl 2xl:text-2xl mt-[0.3rem] text-[#051341] xl:text-[#FFF2E9]">
-            Neurocosmética que Transforma
-          </p>
-          <div className="hidden xl:block w-32 h-0.5 mx-auto mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-          <div className="xl:hidden w-32 h-0.5 mx-auto mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+          
+          <div className="w-32 h-0.5 mx-auto mt-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
         </div>
 
         <div className="flex-1 flex items-center justify-center relative z-10 py-4 lg:py-8 xl:py-0" style={{ paddingTop: "clamp(1.5rem, 3vh, 3rem)", paddingBottom: "clamp(0.5rem, 1vh, 1rem)" }}>
-          <div className="container mx-auto max-w-4xl w-full lg:mt-0 xl:-mt-12">
+          <div className="container mx-auto max-w-4xl w-full lg:mt-0 xl:-mt-2">
             <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-5 xl:space-y-8 text-center">
+              
+              {/* 🔥 FIX: Devolvemos la frase original recuperada aquí arriba */}
               <div className="space-y-3 sm:space-y-4">
-                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800">
+                <p className="font-text text-base sm:text-lg md:text-xl lg:text-xl xl:text-xl leading-relaxed text-gray-800 not-italic" style={{ fontStyle: "normal" }}>
                   Una fusión entre saberes ancestrales y biotecnología consciente, creada para quienes buscan ir más allá de la cosmética convencional.
                 </p>
-                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800">
-                  Nuestra alquimia es una invitación a potenciar y honrar la comunicación entre tu piel y tu mente, usando tus Sentidos como un canal a tu favor.
+                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800 font-medium not-italic" style={{ fontStyle: "normal" }}>
+                  Sinergizamos el poder vibracional de extractos botánicos e hidrolatos puros con la eficacia de activos dermo-compatibles para acompañar la inteligencia de tu biología y potenciar la capacidad innata de tu piel para regenerarse.
+                </p>
+                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800 not-italic" style={{ fontStyle: "normal" }}>
+                  Nuestra alquimia es una invitación a potenciar y honrar la comunicación entre tu piel y tu mente, usando tus sentidos como un canal de Transformación y Goce.
                 </p>
               </div>
 
               <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4">
-                <h3 className="font-title text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl leading-tight text-[#051341]">
+                <h3 className="font-title text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl leading-tight text-[#051341] not-italic uppercase tracking-wider" style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "normal", fontWeight: "600" }}>
                   TU BIOTIPO Y DOSHA
                 </h3>
-                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800">
+                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800 not-italic" style={{ fontStyle: "normal" }}>
                   Tu Alkimya Comienza con la Consciencia.
                 </p>
-                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800">
+                <p className="font-text text-base sm:text-lg md:text-lg lg:text-base xl:text-xl leading-relaxed text-gray-800 not-italic" style={{ fontStyle: "normal" }}>
                   ¿Sabés qué necesita realmente tu piel para alcanzar su bioequilibrio?
                 </p>
               </div>
 
               <div className="pt-4 sm:pt-5 md:pt-6">
                 <Link href="/alkimya/biotipos-doshas">
-                  <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}>
+                  <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}>
                     CONOCE TU BIOTIPO Y DOSHA
                   </Button>
                 </Link>
@@ -274,6 +214,22 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      
+      {/* 🔥 FIX: TÍTULO DE LÍNEAS (CON MAYÚSCULA INICIAL, MÁS CHICO Y ELEGANTE) */}
+      <div className="w-full text-center relative z-20" style={{ backgroundColor: "#051341", paddingTop: "4rem", paddingBottom: "1rem", marginTop: "-4px" }}>
+        <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+        <h2 
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-wide text-[#FFF2E9] px-4 not-italic"
+          style={{ 
+            fontFamily: "var(--font-cormorant), serif", 
+            fontStyle: "normal", 
+            fontWeight: "500" 
+          }}
+        >
+          Nuestras 5 líneas botánicas y dermocosméticas
+        </h2>
+        <div className="w-24 sm:w-32 h-0.5 mx-auto mt-3" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+      </div>
 
       {/* CARRUSEL DE LÍNEAS */}
       <LineasCarousel />
@@ -281,35 +237,35 @@ export default async function HomePage() {
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-valor-confianza" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 1, marginTop: "-4px" }}>
         <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.07 / 1080.12", minHeight: "100%", zIndex: 0 }}>
-          <ValorYConfianzaBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
+          <ValorYConfianzaBackground bgColor="#051341" waveColor="#051341" className="opacity-100" />
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full py-12 pt-8 sm:pt-10 md:pt-12 lg:pt-6">
           <div className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-8">
-            <div className="w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-[#051341] uppercase tracking-[0.12em]">
+            <div className="w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
+            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-white uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
               VALOR Y CONFIANZA DA LUZ
             </h2>
-            <div className="w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+            <div className="w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           </div>
 
           <div className="max-w-4xl mx-auto text-center px-4 mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            <p className="font-text text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-gray-800 leading-relaxed">
+            <p className="font-text text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-white leading-relaxed not-italic" style={{ fontStyle: "normal" }}>
               Compromiso con la pureza y la eficacia biológica. También, un compromiso con tu Soberanía: te entregamos información y rituales para que seas la guía de tu propio proceso.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-7 xl:gap-8">
             {[
-              { title: "TRANSPARENCIA TOTAL", text: "Accede a toda la información sobre la materia prima que usamos para nutrir tu piel.", link: "/alkimya/activos-origen" },
-              { title: "CEREMONIA DIARIA", text: "Conoce los pasos y rituales para transformar tu rutina en un verdadero acto de amor y presencia.", link: "/alkimya/tu-ceremonia" },
-              { title: "TESOROS DA LUZ", text: "¡Descubrí los regalos alkímicos a los que accederás con cada una de tus compras!", link: "/alkimya/tesoros-daluz" },
-              { title: "MANIFIESTO Y VISIÓN", text: "Conoce la filosofía en la que nos basamos para entregarte productos expansivos y amorosos.", link: "/alkimya" }
+              { title: "TRANSPARENCIA TOTAL", text: "Accedé a la información detallada sobre las materias primas y activos botánicos con los que formulamos para acompañar tu biología.", link: "/alkimya/activos-origen" },
+              { title: "CEREMONIA DIARIA", text: "Descubrí los Kits Alkimycos según tu biotipo y la secuencia sugerida para transformar tu rutina en un ritual en presencia.", link: "/alkimya/tu-ceremonia" },
+              { title: "TESOROS DA LUZ", text: "Descubrí los regalos especiales que preparamos con amor para acompañar tus compras.", link: "/alkimya/tesoros-daluz" },
+              { title: "MANIFIESTO Y VISIÓN", text: "Conocé los principios y la filosofía ética que guían la formulación y creación de cada uno de nuestros preparados.", link: "/alkimya" }
             ].map((item, idx) => (
-              <div key={idx} className="card-enhanced border-0 p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 text-center flex flex-col justify-between h-full" style={{ borderTop: "3px solid #16345F" }}>
+              <div key={idx} className="bg-white border-0 shadow-lg p-5 sm:p-6 md:p-7 lg:p-8 xl:p-10 text-center flex flex-col justify-between h-full rounded-2xl" style={{ borderTop: "3px solid #16345F" }}>
                 <div>
-                  <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-[#051341] mb-3 sm:mb-4 not-italic font-semibold">{item.title}</h3>
-                  <p className="font-text text-gray-800 text-sm sm:text-base md:text-base lg:text-lg xl:text-lg mb-4 sm:mb-5 md:mb-6 leading-relaxed">{item.text}</p>
+                  <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-2xl text-[#051341] mb-3 sm:mb-4 not-italic font-semibold" style={{ fontStyle: "normal" }}>{item.title}</h3>
+                  <p className="font-text text-gray-800 text-sm sm:text-base md:text-base lg:text-lg xl:text-lg mb-4 sm:mb-5 md:mb-6 leading-relaxed not-italic" style={{ fontStyle: "normal" }}>{item.text}</p>
                 </div>
                 <Link href={item.link} className="w-full">
                   <Button 
@@ -336,32 +292,31 @@ export default async function HomePage() {
           <ServiciosHolisticosBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
         
-        <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full py-12 pt-16 sm:pt-20 md:pt-24 lg:pt-12 servicios-holisticos-container">
+        {/* 🔥 FIX: Redujimos el pt (padding-top) y agregamos un margen negativo (-mt-6) para subir el título a la ola */}
+        <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full pb-12 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:-mt-6 servicios-holisticos-container">
           <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
             <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
             <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em]">
-              SERVICIOS HOLÍSTICOS
+              PROCESOS VIVOS
             </h2>
             <div className="xl:hidden w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
           </div>
 
-          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
+          <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-2 sm:pt-4 md:pt-6 lg:pt-8">
             
-           {/* PROCESOS INTEGRATIVOS */}
+           {/* CICLOS ALQUÍMICOS */}
             <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <ProcesosIntegrativosIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
                 <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
-                  Procesos Cíclicos
+                  Ciclos Alquímicos
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
-                  <p>Programas cíclicos para que te re-conectes con tu naturaleza.</p>
-                  <p>Aprendé a escuchar tu cuerpo y a crear mayor consciencia sobre tus acciones.</p>
-                  <p>Explorá ejercicios reflexivos, corporales y energéticos para reprogramarte y sentir tu poder creador.</p>
+                  <p>Programas de acompañamiento individual diseñados para limpiar tus filtros orgánicos, restaurar tu bioequilibrio y reconectar tu biología con tu esencia vital a través de la medicina herbal y la guía holística.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
@@ -370,7 +325,7 @@ export default async function HomePage() {
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
-                      <span className="text-center text-sm leading-tight flex-1">EXPLORAR LOS PROCESOS DE TRANSFORMACIÓN</span>
+                      <span className="text-center text-sm leading-tight flex-1">EXPLORAR CICLOS</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
                     </Button>
                   </Link>
@@ -378,7 +333,7 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* SESIONES HOLÍSTICAS */}
+            {/* SESIONES INTEGRALES */}
             <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
@@ -388,8 +343,7 @@ export default async function HomePage() {
                   Sesiones Integrales
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
-                  <p>3 propuestas para potenciar tu claridad y armonía.</p>
-                  <p>Conectá con el aquí y ahora. Utilizamos herramientas ancestrales como Reiki Usui y Karuna, Cuencos Sonoros, Aromaterapia, Flores de Bach y más.</p>
+                  <p>Espacios individuales de abordaje personalizado (en vivo o diferido). Integramos fitoterapia, lectura vibracional y hábitos conscientes para brindarte un mapa claro de salud integral en tu momento presente.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
@@ -398,7 +352,7 @@ export default async function HomePage() {
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
-                      <span className="text-center text-sm leading-tight flex-1">¡CONOCE NUESTRAS PROPUESTAS!</span>
+                      <span className="text-center text-sm leading-tight flex-1">RESERVAR SESIÓN</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
                     </Button>
                   </Link>
@@ -406,17 +360,17 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* MEMBRESÍA */}
+            {/* EXPERIENCIAS */}
             <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <MembresiaIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
                 <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
-                  Experiencias: Programas y Membresías
+                  Experiencias
                 </h3>
                 <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
-                  <p>Un espacio para introducirte en el mundo de Da Luz, con videos, meditaciones, ejercicios y biblioteca virtual.</p>
+                  <p>Contenedores de transformación en red con inicio y fin explícitos. Clases virtuales, ejercicios reflexivos y dinámicas grupales para habitar la sincronicidad lunar y los portales de transformación en tribu.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/programa-transformacion" className="w-full">
@@ -425,7 +379,7 @@ export default async function HomePage() {
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
-                      <span className="text-center text-sm leading-tight flex-1">SÉ PARTE DEL RITUAL</span>
+                      <span className="text-center text-sm leading-tight flex-1">VER EXPERIENCIAS</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
                     </Button>
                   </Link>
@@ -563,7 +517,7 @@ export default async function HomePage() {
       style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }}
     />
     <p className="font-text text-base sm:text-lg md:text-lg lg:text-xl xl:text-xl text-[#FFF2E9] max-w-3xl mx-auto leading-relaxed px-4">
-      Un espacio donde fusionamos teorías, reflexión e introspección con herramientas para la autogestión y la presencia.
+      Reflexión, alquimia e introspección: un espacio diseñado para nutrir tu autogestión y anclarte en el presente.
     </p>
   </div>
 
@@ -754,17 +708,18 @@ export default async function HomePage() {
           style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }}
         />
         <div className="hidden xl:block absolute inset-0">
-          <GaleriaBackground bgColor="#FFF2E9" waveColor="#16345F" className="opacity-95" />
+          <GaleriaBackground bgColor="#FFF2E9" waveColor="#16345F" className="opacity-100" />
         </div>
 
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">
-          <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+          <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em] text-white"
+            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]"
+            style={{ color: "#FFFFFF" }}
           >
             GALERÍA
           </h2>
-          <div className="w-24 sm:w-32 h-0.5 mx-auto mt-3 mb-3" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+          <div className="w-24 sm:w-32 h-0.5 mx-auto mt-3 mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-20 -mt-8 sm:-mt-10 md:-mt-12 lg:-mt-16">
@@ -773,7 +728,7 @@ export default async function HomePage() {
             <div className="space-y-4">
               <h3 className="font-subtitle text-2xl text-[#051341] not-italic font-semibold">FRAGMENTOS DE UN RITUAL VIVO</h3>
               <p className="font-text max-w-2xl mx-auto text-gray-800">
-                Cada imagen cuenta una historia de transformación, belleza consciente y conexión con la naturaleza.
+                Habitar el cuerpo. Honrar la raíz
               </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
@@ -801,46 +756,48 @@ export default async function HomePage() {
     >
       <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #051341 0%, rgba(5, 19, 65, 0.9) 25%, #051341 50%, rgba(5, 19, 65, 0.95) 75%, #051341 100%)" }} />
       <div className="hidden xl:block absolute inset-0">
-        <ContactoBackground bgColor="#051341" waveColor="#FFF2E9" className="opacity-95" />
+        <ContactoBackground bgColor="#051341" waveColor="#16345F" className="opacity-95" />
       </div>
 
-      <div className="container mx-auto max-w-7xl text-left pb-[3rem] sm:pb-[5rem] mt-[0rem] mb-[0rem] relative z-20 px-4">
-        <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mb-2" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+      {/* 🔥 FIX: Título CONTACTO alineado hacia la izquierda/centro superior de la ola azul */}
+      <div className="container mx-auto max-w-7xl text-left pl-6 sm:pl-12 md:pl-16 pb-6 sm:pb-8 pt-6 relative z-20">
+        <div className="w-24 sm:w-32 h-0.5 mb-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
         <h2
-          className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em]"
-          style={{ color: "#FFF2E9" }}
+          className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em] not-italic"
+          style={{ color: "#FFF2E9", fontStyle: "normal" }}
         >
           CONTACTO
         </h2>
-        <div className="w-24 sm:w-32 h-0.5 mx-4 sm:mx-10 mt-2" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
+        <div className="w-24 sm:w-32 h-0.5 mt-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
       </div>
 
-      <div className="container mx-auto max-w-7xl relative z-20 px-4">
+      <div className="container mx-auto max-w-7xl relative z-20 px-4 mt-2">
+       {/* Párrafo centrado impecable abajo */}
        <p
-          className="text-xl sm:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed text-center text-[#051341]"
-          style={{
-            fontFamily: "var(--font-cormorant), serif",
-            fontStyle: "normal",
-            fontWeight: "500",
-          }}
-        >
-          Iniciá tu transformación: enviame tu consulta y descubrí cómo podemos acompañarte en tu viaje de autoconocimiento y bienestar integral.
-        </p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
-          <div className="space-y-8 order-2 lg:order-1">
-            <ContactForm />
-          </div>
+         className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto leading-tight text-center text-[#FFF2E9] not-italic"
+         style={{
+           fontFamily: "var(--font-cormorant), serif",
+           fontStyle: "normal",
+           fontWeight: "500",
+         }}
+       >
+         Tracemos juntas tu nuevo sendero: compartime tu momento presente para acompañarte con una alquimia a la medida de tu biología.
+       </p>
+       
+       <div className="grid grid-cols-1 lg:grid-cols-2 pt-[3rem] lg:pt-[4rem] xl:pt-[5rem] gap-8 lg:gap-8 xl:gap-16 items-center">
+         <div className="space-y-8 order-2 lg:order-1">
+           <ContactForm />
+         </div>
 
-          <div className="flex items-center justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-lg h-[300px] sm:h-[400px] lg:h-[400px] xl:h-[500px] lg:mr-[-2rem] xl:mr-[-5rem]">
-              <div
-                className="w-full h-full shadow-2xl relative overflow-hidden"
-                style={{
-                  borderRadius: "0px 100px",
-                  background: "linear-gradient(135deg, rgba(5, 19, 65, 0.1) 0%, rgba(255, 242, 233, 0.1) 100%)",
-                  border: "2px solid #FFF2E9",
-                }}
+         <div className="flex items-center justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0">
+           <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-lg h-[300px] sm:h-[400px] lg:h-[400px] xl:h-[500px] lg:mr-[-2rem] xl:mr-[-5rem]">
+             <div
+               className="w-full h-full shadow-2xl relative overflow-hidden"
+               style={{
+                 borderRadius: "0px 100px",
+                 background: "linear-gradient(135deg, rgba(3, 22, 83, 0.1) 0%, rgba(255, 242, 233, 0.1) 100%)",
+                 border: "2px solid #FFF2E9",
+               }}
               >
                 <Image
                   src="/images/contact-background.jpg"

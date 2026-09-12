@@ -58,12 +58,12 @@ interface BlogPost {
   publishedAt: string;
 }
 
-// Component definitions
+// Component definitions con color dinámico y fondo blanco puro
 const ListItem = ({
   href,
   title,
   children,
-  textColor = "#1C1B1A",
+  textColor = "#051341", 
 }: {
   href: string;
   title: string;
@@ -75,17 +75,17 @@ const ListItem = ({
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
         >
           <div
             className="text-sm font-subtitle font-medium leading-none"
-            style={{ color: textColor }}
+            style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
             className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: textColor, opacity: 0.7 }}
+            style={{ color: "#1C1B1A", opacity: 0.8 }}
           >
             {children}
           </p>
@@ -99,27 +99,29 @@ const BlogListItem = ({
   href,
   title,
   subtitle,
+  textColor = "#051341",
 }: {
   href: string;
   title: string;
   subtitle: string;
+  textColor?: string;
 }) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
         >
           <div
             className="text-sm font-subtitle font-medium leading-none"
-            style={{ color: "#1C1B1A" }}
+            style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
             className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#1C1B1A", opacity: 0.7 }}
+            style={{ color: "#1C1B1A", opacity: 0.8 }}
           >
             {subtitle}
           </p>
@@ -154,22 +156,18 @@ export default function Header() {
 
   const headerBg = isAlkimyaOrTiendaPage(pathname ?? "")
     ? BORDO_ALKIMYA
-    : AZUL_PROFUNDO; // Color azul por defecto para Raíces, Procesos, FAQ, Legales, Landing, etc.
+    : AZUL_PROFUNDO;
 
   // Fetch latest blog posts
   useEffect(() => {
     const fetchLatestPosts = async () => {
       try {
         const response = await fetch("/api/blog/latest?limit=2", {
-          cache: "no-store", // Always fetch fresh data
+          cache: "no-store",
         });
         if (response.ok) {
           const data = await response.json();
           setLatestPosts(data.posts || []);
-          console.log(
-            "🔄 Header: Updated with latest posts",
-            data.posts?.length || 0,
-          );
         } else {
           console.error("Error fetching latest posts:", response.statusText);
         }
@@ -179,10 +177,7 @@ export default function Header() {
     };
 
     fetchLatestPosts();
-
-    // Set up interval to refresh posts every 60 seconds
     const interval = setInterval(fetchLatestPosts, 60000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -198,10 +193,9 @@ export default function Header() {
         style={{ backgroundColor: headerBg }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              {/* SVG Logo - Hidden on mobile/tablet */}
               <div className="flex-shrink-0 hidden xl:block">
                 <Image
                   src="/svg/logo.svg"
@@ -213,7 +207,6 @@ export default function Header() {
                 />
               </div>
 
-              {/* Text Logo - Vertical Layout - Centered */}
               <div className="flex flex-col justify-center items-center">
                 <div
                   className="text-2xl font-display font-normal transition-colors duration-300 leading-tight text-center"
@@ -224,19 +217,21 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* Desktop Navigation - REORDERED: Tienda, Alkimya, Nosotros, Servicios, Blog, Membresia */}
+            {/* Desktop Navigation */}
             <NavigationMenu className="hidden xl:flex">
-              <NavigationMenuList>
+              <NavigationMenuList className="space-x-1">
+                
+                {/* 1. TIENDA (Bordó al abrir) */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                    style={{ color: "#FFF4E0" }}
+                    className="bg-transparent hover:!bg-[#72111A]/40 focus:!bg-[#72111A] data-[active]:!bg-[#72111A] data-[state=open]:!bg-[#72111A] text-base lg:text-lg px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
                     Tienda
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
-                    className="border border-gray-200 shadow-lg"
-                    style={{ backgroundColor: "#fff4e0" }}
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
                   >
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li className="row-span-3 min-h-[220px] flex">
@@ -245,9 +240,8 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#fff4e0",
-                              backgroundImage:
-                                "url(/svg/header/bgtiendadaluz.webp)",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bgtiendadaluz.webp)",
                               backgroundSize: "cover",
                               backgroundPosition: "center",
                               backgroundRepeat: "no-repeat",
@@ -255,7 +249,7 @@ export default function Header() {
                             }}
                             href="/productos"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <Image
                                 src="/svg/header/Tienda%20Da%20luz.svg"
                                 alt="Tienda Da Luz"
@@ -266,71 +260,52 @@ export default function Header() {
                               />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#1C1B1A" }}
+                                style={{ color: "#72111A" }}
                               >
                                 TIENDA DA LUZ
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.7 }}
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
                               >
-                                Explora todas nuestras líneas de productos y
-                                alkimyas.
+                                Explora todas nuestras líneas de productos y alkimyas.
                               </p>
                             </div>
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem
-                        href="/categorias/linea-umbral"
-                        title="LINEA UMBRAL"
-                      >
+                      <ListItem href="/categorias/linea-umbral" title="LINEA UMBRAL" textColor="#72111A">
                         Tonicos, Cremas faciales y corporales, Serums
                       </ListItem>
-                      <ListItem
-                        href="/categorias/linea-ecos"
-                        title="LINEA ECOS"
-                      >
-                        Shampoo´s, Acondicionador, Pasta dental, Limpiadores
-                        Faciales, Mascarillas
+                      <ListItem href="/categorias/linea-ecos" title="LINEA ECOS" textColor="#72111A">
+                        Shampoo´s, Acondicionador, Pasta dental, Limpiadores Faciales, Mascarillas
                       </ListItem>
-                      <ListItem
-                        href="/categorias/linea-alma-terra"
-                        title="LINEA ALMA TERRA"
-                      >
-                        Brumas aromáticas en Spray, Pocimas Roll-On de
-                        aromaterapia
+                      <ListItem href="/categorias/linea-alma-terra" title="LINEA ALMA TERRA" textColor="#72111A">
+                        Brumas aromáticas en Spray, Pocimas Roll-On de aromaterapia
                       </ListItem>
                     </ul>
                     <ul className="grid grid-cols-2 gap-3 p-4 pt-0 md:w-[500px] lg:w-[600px]">
-                      <ListItem
-                        href="/categorias/linea-jade-ritual"
-                        title="LINEA JADE RITUAL"
-                      >
-                        Tinturas Madre para desequilibrios organicos, Flores de
-                        Bach
+                      <ListItem href="/categorias/linea-jade-ritual" title="LINEA JADE RITUAL" textColor="#72111A">
+                        Tinturas Madre para desequilibrios organicos, Flores de Bach
                       </ListItem>
-                      <ListItem
-                        href="/categorias/linea-prisma"
-                        title="LINEA PRISMA"
-                      >
+                      <ListItem href="/categorias/linea-prisma" title="LINEA PRISMA" textColor="#72111A">
                         Sombras en polvo, Barra labial, Iluminadores
                       </ListItem>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* ALKIMYA DROPDOWN MENU */}
+                {/* 2. ALKIMYA (Bordó al abrir) */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                    style={{ color: "#FFF4E0" }}
+                    className="bg-transparent hover:!bg-[#72111A]/40 focus:!bg-[#72111A] data-[active]:!bg-[#72111A] data-[state=open]:!bg-[#72111A] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
                     Alkimya
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
-                    className="border border-gray-200 shadow-lg"
-                    style={{ backgroundColor: "#fff4e0" }}
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
                   >
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li className="row-span-3 min-h-[220px] flex">
@@ -339,9 +314,8 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#fff4e0",
-                              backgroundImage:
-                                "url(/svg/header/bg%20manifiesto.webp)",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bg%20manifiesto.webp)",
                               backgroundSize: "cover",
                               backgroundPosition: "center",
                               backgroundRepeat: "no-repeat",
@@ -349,7 +323,7 @@ export default function Header() {
                             }}
                             href="/alkimya"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <Image
                                 src="/svg/header/manifiesto.svg"
                                 alt="Manifiesto"
@@ -360,13 +334,13 @@ export default function Header() {
                               />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#1C1B1A" }}
+                                style={{ color: "#72111A" }}
                               >
                                 MANIFIESTO
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.7 }}
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
                               >
                                 Nuestra visión y propósito fundamental.
                               </p>
@@ -375,217 +349,198 @@ export default function Header() {
                         </NavigationMenuLink>
                       </li>
                       <li className="row-span-3 flex flex-col justify-evenly">
-                        <ListItem
-                          href="/alkimya/activos-origen"
-                          title="Activos y Origen"
-                        >
+                        <ListItem href="/alkimya/activos-origen" title="Activos y Origen" textColor="#72111A">
                           Ingredientes naturales y su procedencia
                         </ListItem>
-                        <ListItem
-                          href="/alkimya/biotipos-doshas"
-                          title="Biotipos y Doshas"
-                        >
+                        <ListItem href="/alkimya/biotipos-doshas" title="Biotipos y Doshas" textColor="#72111A">
                           Personalización según tu naturaleza
                         </ListItem>
-                        <ListItem
-                          href="/alkimya/tu-ceremonia"
-                          title="Tu Ceremonia"
-                        >
+                        <ListItem href="/alkimya/tu-ceremonia" title="Tu Ceremonia" textColor="#72111A">
                           Rituales y ceremonias personalizadas
                         </ListItem>
-                        <ListItem
-                          href="/alkimya/tesoros-daluz"
-                          title="Tesoros Da Luz"
-                        >
+                        <ListItem href="/alkimya/tesoros-daluz" title="Tesoros Da Luz" textColor="#72111A">
                           Productos especiales y exclusivos
-                      </ListItem>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                        </ListItem>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
 
-              {/* 👇 ACÁ EMPIEZA EL BLOQUE LIMPIO DE RAÍCES DA LUZ 👇 */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                  style={{ color: "#FFF4E0" }}
-                >
-                  Raíces Da Luz
-                </NavigationMenuTrigger>
-                <NavigationMenuContent
-                  className="border border-gray-200 shadow-lg"
-                  style={{ backgroundColor: "#fff4e0" }}
-                >
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    
-                    {/* Tarjeta 1: Origen Alquímico / Historia */}
-                    <li className="row-span-3 min-h-[220px] flex">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
-                          style={{
-                            borderRadius: "0px 15px",
-                            backgroundColor: "#fff4e0",
-                            backgroundImage: "url(/svg/header/bg%20origen.webp)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                            minHeight: 220,
-                          }}
-                          href="/raices"
-                        >
-                          <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                            <Image
-                              src="/svg/header/origen.svg"
-                              alt="Origen Alquímico"
-                              width={64}
-                              height={64}
-                              className="mb-3"
-                              unoptimized
-                            />
-                            <div
-                              className="mb-2 text-xl font-title font-semibold uppercase"
-                              style={{ color: "#051341" }}
-                            >
-                              ORIGEN ALQUÍMICO
-                            </div>
-                            <p
-                              className="text-base font-text font-medium leading-tight"
-                              style={{ color: "#051341", opacity: 0.7 }}
-                            >
-                              De la sombra a la alkimia: el viaje.
-                            </p>
-                          </div>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-
-                    {/* Tarjeta 2: Filosofía y Propósito */}
-                    <li className="row-span-3 min-h-[220px] flex">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
-                          style={{
-                            borderRadius: "0px 15px",
-                            backgroundColor: "#fff4e0",
-                            backgroundImage: "url(/svg/header/bg%20filosofia%20y%20rpoposito.webp)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                            minHeight: 220,
-                          }}
-                          href="/filosofia-proposito"
-                        >
-                          <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                            <Image
-                              src="/svg/header/Filosofia%20y%20proposito.svg"
-                              alt="Filosofía y Propósito"
-                              width={64}
-                              height={64}
-                              className="mb-3"
-                              unoptimized
-                            />
-                            <div
-                              className="mb-2 text-xl font-title font-semibold uppercase"
-                              style={{ color: "#051341" }}
-                            >
-                              FILOSOFÍA Y PROPÓSITO
-                            </div>
-                            <p
-                              className="text-base font-text font-medium leading-tight"
-                              style={{ color: "#051341", opacity: 0.7 }}
-                            >
-                              Nuestra visión y valores.
-                            </p>
-                          </div>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-                    <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                  style={{ color: "#FFF4E0" }}
-                >
-                  Procesos
-                </NavigationMenuTrigger>
-                <NavigationMenuContent
-                  className="border border-gray-200 shadow-lg"
-                  style={{ backgroundColor: "#fff4e0" }}
-                >
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    <li className="row-span-3 min-h-[220px] flex">
-                      <NavigationMenuLink asChild>
-                        <Link
-                          className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
-                          style={{
-                            borderRadius: "0px 15px",
-                            backgroundColor: "#fff4e0",
-                            backgroundImage: "url(/svg/header/bg%20procesos%20holisticos.webp)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                            minHeight: 220,
-                          }}
-                          href="/servicios/procesos"
-                        >
-                          <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                            <Image
-                              src="/svg/header/Procesos%20holisticos.svg"
-                              alt="Procesos Holísticos"
-                              width={64}
-                              height={64}
-                              className="mb-3"
-                              unoptimized
-                            />
-                            <div
-                              className="mb-2 text-xl font-title font-semibold uppercase"
-                              style={{ color: "#1C1B1A" }}
-                            >
-                              PROCESOS
-                            </div>
-                            <p
-                              className="text-base font-text font-medium leading-tight"
-                              style={{ color: "#1C1B1A", opacity: 0.7 }}
-                            >
-                              Terapias para el bienestar integral.
-                            </p>
-                          </div>
-                        </Link>
-                      </NavigationMenuLink>
-                    </li>
-                    <ListItem
-                      href="/servicios/procesos/ciclos-alquimicos"
-                      title="Ciclos Alquímicos"
-                    >
-                      Procesos transformadores cíclicos
-                    </ListItem>
-                    <ListItem
-                      href="/servicios/procesos/sesiones-integrales"
-                      title="Sesiones Integrales"
-                    >
-                      Sesiones holísticas personalizadas
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
+                {/* 3. RAÍCES DA LUZ (Celeste al abrir) */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                    style={{ color: "#FFF4E0" }}
+                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
+                  >
+                    Raíces Da Luz
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
+                  >
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <li className="row-span-3 min-h-[220px] flex">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
+                            style={{
+                              borderRadius: "0px 15px",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bg%20origen.webp)",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              minHeight: 220,
+                            }}
+                            href="/raices"
+                          >
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <Image
+                                src="/svg/header/origen.svg"
+                                alt="Origen Alquímico"
+                                width={64}
+                                height={64}
+                                className="mb-3"
+                                unoptimized
+                              />
+                              <div
+                                className="mb-2 text-xl font-title font-semibold uppercase"
+                                style={{ color: "#051341" }}
+                              >
+                                ORIGEN ALQUÍMICO
+                              </div>
+                              <p
+                                className="text-base font-text font-medium leading-tight"
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                              >
+                                De la sombra a la alkimia: el viaje.
+                              </p>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li className="row-span-3 min-h-[220px] flex">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
+                            style={{
+                              borderRadius: "0px 15px",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bg%20filosofia%20y%20rpoposito.webp)",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              minHeight: 220,
+                            }}
+                            href="/filosofia-proposito"
+                          >
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <Image
+                                src="/svg/header/Filosofia%20y%20proposito.svg"
+                                alt="Filosofía y Propósito"
+                                width={64}
+                                height={64}
+                                className="mb-3"
+                                unoptimized
+                              />
+                              <div
+                                className="mb-2 text-xl font-title font-semibold uppercase"
+                                style={{ color: "#051341" }}
+                              >
+                                FILOSOFÍA Y PROPÓSITO
+                              </div>
+                              <p
+                                className="text-base font-text font-medium leading-tight"
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                              >
+                                Nuestra visión y valores.
+                              </p>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* 4. PROCESOS (Celeste al abrir) */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
+                  >
+                    Procesos
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
+                  >
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                      <li className="row-span-3 min-h-[220px] flex">
+                        <NavigationMenuLink asChild>
+                          <Link
+                            className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
+                            style={{
+                              borderRadius: "0px 15px",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bg%20procesos%20holisticos.webp)",
+                              backgroundSize: "cover",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              minHeight: 220,
+                            }}
+                            href="/servicios/procesos"
+                          >
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <Image
+                                src="/svg/header/Procesos%20holisticos.svg"
+                                alt="Procesos Holísticos"
+                                width={64}
+                                height={64}
+                                className="mb-3"
+                                unoptimized
+                              />
+                              <div
+                                className="mb-2 text-xl font-title font-semibold uppercase"
+                                style={{ color: "#051341" }}
+                              >
+                                PROCESOS
+                              </div>
+                              <p
+                                className="text-base font-text font-medium leading-tight"
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                              >
+                                Terapias para el bienestar integral.
+                              </p>
+                            </div>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li className="row-span-3 flex flex-col justify-evenly">
+                        <ListItem href="/servicios/procesos/ciclos-alquimicos" title="Ciclos Alquímicos" textColor="#051341">
+                          Procesos transformadores cíclicos
+                        </ListItem>
+                        <ListItem href="/servicios/procesos/sesiones-integrales" title="Sesiones Integrales" textColor="#051341">
+                          Sesiones holísticas personalizadas
+                        </ListItem>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* 5. BLOG (Celeste al abrir) */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
                     Blog
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
-                    className="border border-gray-200 shadow-lg"
-                    style={{ backgroundColor: "#fff4e0" }}
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
                   >
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li className="row-span-3 min-h-[220px] flex">
                         <NavigationMenuLink asChild>
                           <Link
@@ -593,7 +548,7 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#fff4e0",
+                              backgroundColor: "#FFFFFF",
                               backgroundImage: "url(/svg/header/bgBlog.webp)",
                               backgroundSize: "cover",
                               backgroundPosition: "center",
@@ -601,7 +556,7 @@ export default function Header() {
                               minHeight: 220,
                             }}
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <Image
                                 src="/svg/header/Blog.svg"
                                 alt="Blog"
@@ -612,13 +567,13 @@ export default function Header() {
                               />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#1C1B1A" }}
+                                style={{ color: "#051341" }}
                               >
                                 BLOG
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.7 }}
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
                               >
                                 Lee nuestras últimas publicaciones.
                               </p>
@@ -626,9 +581,7 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-
-                      {/* Latest Blog Posts */}
-                      {latestPosts.map((post, index) => (
+                      {latestPosts.map((post) => (
                         <BlogListItem
                           key={post._id}
                           href={`/blog/${post.slug.current}`}
@@ -643,38 +596,24 @@ export default function Header() {
                               day: "numeric",
                             })}`
                           }
+                          textColor="#051341"
                         />
                       ))}
-
-                      {/* If no posts available, show placeholder */}
-                      {latestPosts.length === 0 && (
-                        <>
-                          <BlogListItem
-                            href="/blog"
-                            title="Últimas Publicaciones"
-                            subtitle="Explora nuestros artículos más recientes sobre alkimyas y bienestar consciente."
-                          />
-                          <BlogListItem
-                            href="/blog"
-                            title="Contenido Actualizado"
-                            subtitle="Mantente al día con las novedades y conocimientos de DA LUZ CONSCIENTE."
-                          />
-                        </>
-                      )}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
+                {/* 6. MEMBRESÍA (Celeste al abrir) */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="bg-transparent focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10 hover:bg-white/10 font-text font-medium text-base"
-                    style={{ color: "#FFF4E0" }}
+                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
+                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
                     Membresía
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
-                    className="border border-gray-200 shadow-lg"
-                    style={{ backgroundColor: "#fff4e0" }}
+                    className="border border-gray-200 shadow-xl"
+                    style={{ backgroundColor: "#FFFFFF" }}
                   >
                     <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <div className="row-span-3 min-h-[220px] flex">
@@ -683,9 +622,8 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#fff4e0",
-                              backgroundImage:
-                                "url(/svg/header/bg%20programa7.webp)",
+                              backgroundColor: "#FFFFFF",
+                              backgroundImage: "url(/svg/header/bg%20programa7.webp)",
                               backgroundSize: "cover",
                               backgroundPosition: "center",
                               backgroundRepeat: "no-repeat",
@@ -693,7 +631,7 @@ export default function Header() {
                             }}
                             href="/programa-transformacion"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <Image
                                 src="/svg/header/Programa7.svg"
                                 alt="Programa de 7 Meses"
@@ -710,7 +648,7 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: AZUL_PROFUNDO, opacity: 0.7 }}
+                                style={{ color: "#1C1B1A", opacity: 0.8 }}
                               >
                                 Transformación integral para alma y cuerpo
                               </p>
@@ -718,55 +656,26 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </div>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href="/programa-transformacion"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        >
-                          <div
-                            className="text-sm font-subtitle font-medium leading-none"
-                            style={{ color: AZUL_PROFUNDO }}
-                          >
-                            Conocé el Programa
-                          </div>
-                          <p
-                            className="line-clamp-2 text-sm font-text leading-snug"
-                            style={{ color: AZUL_PROFUNDO, opacity: 0.7 }}
-                          >
-                            Detalles del programa de transformación
-                          </p>
-                        </Link>
-                      </NavigationMenuLink>
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href="/programa-transformacion"
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        >
-                          <div
-                            className="text-sm font-subtitle font-medium leading-none"
-                            style={{ color: AZUL_PROFUNDO }}
-                          >
-                            Mi Membresía
-                          </div>
-                          <p
-                            className="line-clamp-2 text-sm font-text leading-snug"
-                            style={{ color: AZUL_PROFUNDO, opacity: 0.7 }}
-                          >
-                            Accede a tu progreso y contenido
-                          </p>
-                        </Link>
-                      </NavigationMenuLink>
+                      <div className="flex flex-col justify-evenly space-y-2">
+                        <ListItem href="/programa-transformacion" title="Conocé el Programa" textColor="#051341">
+                          Detalles del programa de transformación
+                        </ListItem>
+                        <ListItem href="/mi-membresia" title="Mi Membresía" textColor="#051341">
+                          Accede a tu progreso y contenido
+                        </ListItem>
+                      </div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+
               </NavigationMenuList>
             </NavigationMenu>
 
             {/* FAQ Link - Desktop */}
             <Link
               href="/faq"
-              className="hidden xl:flex items-center px-3 py-2 text-base font-text font-medium hover:bg-white/10 transition-colors rounded-md"
-              style={{ color: "#FFF4E0" }}
+              className="hidden xl:flex items-center px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
+              style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
             >
               <HelpCircle className="h-5 w-5 mr-2" />
               FAQ
@@ -774,7 +683,6 @@ export default function Header() {
 
             {/* User Menu / Auth Buttons - DESKTOP ONLY */}
             <div className="hidden xl:flex items-center space-x-4">
-              {/* Shopping Cart - Available for all users */}
               <Button
                 variant="ghost"
                 size="sm"
@@ -794,119 +702,101 @@ export default function Header() {
               </Button>
 
               {user ? (
-                <>
-                  {/* User Menu */}
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className="relative h-8 w-8 rounded-full hover:bg-white/10"
-                      >
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage
-                            src={profile?.avatar_url || ""}
-                            alt="Avatar"
-                          />
-                          <AvatarFallback
-                            className="text-brand-primary"
-                            style={{ backgroundColor: "#FFF4E0" }}
-                          >
-                            {profile?.first_name?.charAt(0) ||
-                              user.email?.charAt(0) ||
-                              "U"}
-                          </AvatarFallback>
-                        </Avatar>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="w-56 border border-gray-200 shadow-lg"
-                      align="end"
-                      style={{ backgroundColor: "#fff4e0" }}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="relative h-8 w-8 rounded-full hover:bg-white/10"
                     >
-                      <DropdownMenuLabel className="font-normal">
-                        <div className="flex flex-col space-y-1">
-                          <p
-                            className="text-sm font-subtitle font-medium leading-none"
-                            style={{ color: "#1C1B1A" }}
-                          >
-                            {profile?.first_name} {profile?.last_name}
-                          </p>
-                          <p
-                            className="text-xs font-caption leading-none"
-                            style={{ color: "#1C1B1A", opacity: 0.6 }}
-                          >
-                            {user.email}
-                          </p>
-                        </div>
-                      </DropdownMenuLabel>
-                      <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/perfil"
-                          className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                      <Avatar className="h-8 w-8">
+                        <AvatarImage
+                          src={profile?.avatar_url || ""}
+                          alt="Avatar"
+                        />
+                        <AvatarFallback
+                          className="text-brand-primary"
+                          style={{ backgroundColor: "#FFF4E0" }}
+                        >
+                          {profile?.first_name?.charAt(0) ||
+                            user.email?.charAt(0) ||
+                            "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    className="w-56 border border-gray-200 shadow-lg"
+                    align="end"
+                    style={{ backgroundColor: "#fff4e0" }}
+                  >
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1">
+                        <p
+                          className="text-sm font-subtitle font-medium leading-none"
                           style={{ color: "#1C1B1A" }}
                         >
-                          <User
-                            className="mr-2 h-4 w-4"
-                            style={{ color: "#2A2543" }}
-                          />
-                          <span className="font-text">Perfil</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/mis-pedidos"
-                          className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                          style={{ color: "#1C1B1A" }}
+                          {profile?.first_name} {profile?.last_name}
+                        </p>
+                        <p
+                          className="text-xs font-caption leading-none"
+                          style={{ color: "#1C1B1A", opacity: 0.6 }}
                         >
-                          <Package
-                            className="mr-2 h-4 w-4"
-                            style={{ color: "#2A2543" }}
-                          />
-                          <span className="font-text">Mis Pedidos</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/mi-membresia"
-                          className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                          style={{ color: "#1C1B1A" }}
-                        >
-                          <BookOpen
-                            className="mr-2 h-4 w-4"
-                            style={{ color: "#2A2543" }}
-                          />
-                          <span className="font-text">Mi Membresía</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem asChild>
-                        <Link
-                          href="/configuracion"
-                          className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                          style={{ color: "#1C1B1A" }}
-                        >
-                          <Settings
-                            className="mr-2 h-4 w-4"
-                            style={{ color: "#2A2543" }}
-                          />
-                          <span className="font-text">Configuración</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
-                      <DropdownMenuItem
-                        onSelect={handleSignOut}
-                        className="hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                          {user.email}
+                        </p>
+                      </div>
+                    </DropdownMenuLabel>
+                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/perfil"
+                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
                         style={{ color: "#1C1B1A" }}
                       >
-                        <LogOut
-                          className="mr-2 h-4 w-4"
-                          style={{ color: "#2A2543" }}
-                        />
-                        <span className="font-text">Cerrar Sesión</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </>
+                        <User className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <span className="font-text">Perfil</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/mis-pedidos"
+                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                        style={{ color: "#1C1B1A" }}
+                      >
+                        <Package className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <span className="font-text">Mis Pedidos</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/mi-membresia"
+                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                        style={{ color: "#1C1B1A" }}
+                      >
+                        <BookOpen className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <span className="font-text">Mi Membresía</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link
+                        href="/configuracion"
+                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                        style={{ color: "#1C1B1A" }}
+                      >
+                        <Settings className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <span className="font-text">Configuración</span>
+                      </Link>
+                    </DropdownMenuItem>
+                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
+                    <DropdownMenuItem
+                      onSelect={handleSignOut}
+                      className="hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
+                      style={{ color: "#1C1B1A" }}
+                    >
+                      <LogOut className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                      <span className="font-text">Cerrar Sesión</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               ) : (
                 <div className="flex items-center space-x-2">
                   <Button
@@ -915,11 +805,7 @@ export default function Header() {
                     className="relative hover:bg-white/10 font-text text-base"
                     style={{ color: "#FFF4E0" }}
                     type="button"
-                    onClick={() => {
-                      if (typeof window !== "undefined") {
-                        router.push("/login");
-                      }
-                    }}
+                    onClick={() => router.push("/login")}
                   >
                     Iniciar Sesión
                   </Button>
@@ -929,11 +815,7 @@ export default function Header() {
                     className="relative hover:bg-white/10 font-text text-base"
                     style={{ color: "#FFF4E0" }}
                     type="button"
-                    onClick={() => {
-                      if (typeof window !== "undefined") {
-                        router.push("/signup");
-                      }
-                    }}
+                    onClick={() => router.push("/signup")}
                   >
                     Registro
                   </Button>
@@ -941,9 +823,8 @@ export default function Header() {
               )}
             </div>
 
-            {/* MOBILE/TABLET MENU - Enhanced with Cart and User Auth at bottom */}
+            {/* MOBILE/TABLET MENU */}
             <div className="flex xl:hidden items-center space-x-3">
-              {/* Mobile Shopping Cart */}
               <Button
                 variant="ghost"
                 size="sm"
@@ -962,7 +843,6 @@ export default function Header() {
                 )}
               </Button>
 
-              {/* Mobile Menu Trigger */}
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button
@@ -988,15 +868,10 @@ export default function Header() {
                     </SheetTitle>
                   </SheetHeader>
 
-                  {/* Main Navigation - Scrollable */}
                   <div className="flex-1 overflow-y-auto">
                     <nav className="flex flex-col space-y-1 mt-6">
-                      {/* Tienda Section */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#72111A" }}
-                        >
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#72111A" }}>
                           Tienda
                         </div>
                         <div className="ml-4 space-y-2">
@@ -1009,12 +884,8 @@ export default function Header() {
                         </div>
                       </div>
 
-                      {/* Alkimya Section */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#72111A" }}
-                        >
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#72111A" }}>
                           Alkimya
                         </div>
                         <div className="ml-4 space-y-2">
@@ -1026,13 +897,9 @@ export default function Header() {
                         </div>
                       </div>
 
-                      {/* Raices Da Luz Section */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#051341" }}
-                        >
-                          Raices Da Luz
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
+                          Raíces Da Luz
                         </div>
                         <div className="ml-4 space-y-2">
                           <Link href="/filosofia-proposito" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
@@ -1040,12 +907,8 @@ export default function Header() {
                         </div>
                       </div>
 
-                      {/* Procesos Section */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#051341" }}
-                        >
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
                           Procesos
                         </div>
                         <div className="ml-4 space-y-2">
@@ -1055,12 +918,8 @@ export default function Header() {
                         </div>
                       </div>
 
-                      {/* Blog Section - Icon button + link */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#051341" }}
-                        >
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
                           Blog
                         </div>
                         <div className="ml-4 flex items-center gap-3">
@@ -1071,21 +930,16 @@ export default function Header() {
                         </div>
                       </div>
 
-                      {/* Membresía Section */}
                       <div className="mb-4">
-                        <div
-                          className="text-lg font-title font-medium mb-3"
-                          style={{ color: "#2A2543" }}
-                        >
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#2A2543" }}>
                           Membresía
                         </div>
                         <div className="ml-4 space-y-2">
                           <Link href="/programa-transformacion" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
-                          <Link href="/mi-membresia" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
+                          <Link href="/programa-transformacion" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
                         </div>
                       </div>
 
-                      {/* FAQ Section */}
                       <div className="mb-4">
                         <Link href="/faq" className="flex items-center gap-3 py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>
                           <HelpCircle className="h-5 w-5" />
@@ -1094,87 +948,6 @@ export default function Header() {
                       </div>
                     </nav>
                   </div>
-
-                  {/* User Section at Bottom */}
-                  <div className="border-t border-brand-primary/20 pt-4 mt-4">
-                    {user ? (
-                      <div className="space-y-3">
-                        {/* User Info */}
-                        <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/50">
-                          <Avatar className="h-10 w-10">
-                            <AvatarImage src={profile?.avatar_url || ""} alt="Avatar" />
-                            <AvatarFallback className="text-brand-primary bg-white">
-                              {profile?.first_name?.charAt(0) || user.email?.charAt(0) || "U"}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <p className="text-sm font-subtitle font-medium" style={{ color: "#1C1B1A" }}>
-                              {profile?.first_name || "Usuario"}
-                            </p>
-                            <p className="text-xs font-caption opacity-70" style={{ color: "#1C1B1A" }}>
-                              {user.email}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* User Menu Links */}
-                        <div className="space-y-1">
-                          <Link href="/perfil" className="flex items-center space-x-3 py-2 px-3 rounded-lg hover:bg-white/30 transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                            <User className="h-4 w-4" style={{ color: "#2A2543" }} />
-                            <span className="font-text" style={{ color: "#1C1B1A" }}>Mi Perfil</span>
-                          </Link>
-                          
-                          <Link href="/mis-pedidos" className="flex items-center space-x-3 py-2 px-3 rounded-lg hover:bg-white/30 transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                            <Package className="h-4 w-4" style={{ color: "#2A2543" }} />
-                            <span className="font-text" style={{ color: "#1C1B1A" }}>Mis Pedidos</span>
-                          </Link>
-
-                          <Link href="/configuracion" className="flex items-center space-x-3 py-2 px-3 rounded-lg hover:bg-white/30 transition-colors" onClick={() => setMobileMenuOpen(false)}>
-                            <Settings className="h-4 w-4" style={{ color: "#2A2543" }} />
-                            <span className="font-text" style={{ color: "#1C1B1A" }}>Configuración</span>
-                          </Link>
-
-                          <Button
-                            variant="ghost"
-                            onClick={() => {
-                              handleSignOut();
-                              setMobileMenuOpen(false);
-                            }}
-                            className="w-full justify-start px-3 py-2 hover:bg-white/30 transition-colors"
-                          >
-                            <LogOut className="h-4 w-4 mr-3" style={{ color: "#2A2543" }} />
-                            <span className="font-text" style={{ color: "#1C1B1A" }}>Cerrar Sesión</span>
-                          </Button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-3">
-                        <div className="text-sm font-subtitle" style={{ color: "#1C1B1A" }}>Accede a tu cuenta</div>
-                        <div className="space-y-2">
-                          <Button
-                            variant="default"
-                            onClick={() => {
-                              router.push("/login");
-                              setMobileMenuOpen(false);
-                            }}
-                            className="w-full bg-brand-primary hover:bg-brand-secondary text-white font-text"
-                          >
-                            Iniciar Sesión
-                          </Button>
-                          <Button
-                            variant="outline"
-                            onClick={() => {
-                              router.push("/signup");
-                              setMobileMenuOpen(false);
-                            }}
-                            className="w-full border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white font-text"
-                          >
-                            Crear Cuenta
-                          </Button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
                 </SheetContent>
               </Sheet>
             </div>
@@ -1182,7 +955,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Cart Sidebar */}
       <CartSidebar />
     </>
   );
