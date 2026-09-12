@@ -553,7 +553,7 @@ h4 {
   font-family: "Playfair Display", var(--font-heading), serif !important;
   font-weight: 700 !important;
   /* Bold */
-  font-style: italic !important;
+  
 }
 
 /* GLOBAL PARAGRAPH OVERRIDE - EB Garamond Medium */
@@ -2649,4 +2649,10 @@ button.pagination-current-page:hover {
   .ser-integral-divider {
     background: linear-gradient(to right, transparent, #f0eace, transparent);
   }
+}
+/* Forzar texto recto en toda la web y evitar cursivas heredadas no deseadas */
+body *, 
+h1, h2, h3, h4, h5, h6, 
+p, span, a {
+  font-style: normal;
 }
