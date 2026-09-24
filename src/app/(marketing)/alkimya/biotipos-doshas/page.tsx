@@ -3,137 +3,23 @@
 import Link from 'next/link';
 import BiotiposTablasCarousel from '@/components/biotipos/BiotiposTablasCarousel';
 
-const BIOTIPOS_COLUMNS = [
-  "Biotipo Cutáneo",
-  "Correspondencia a Dosha/s",
-  "Características Clave",
-  "Necesidades Esenciales",
-  "ALKIMYA RECOMENDADA",
-];
-
+const BIOTIPOS_COLUMNS = ["Cómo se siente", "Tu necesidad", "Alkimyas Aliadas"];
 const BIOTIPOS_TABLAS = [
-  {
-    title: "Piel Normal",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Normal (Eudérmica)",
-        "Correspondencia a Dosha/s": "Tridoshic (Equilibrada)",
-        "Características Clave": "Piel lisa, suave, color uniforme y brillo moderado. Representa el equilibrio perfecto.",
-        "Necesidades Esenciales": "Mantenimiento y prevención. Foco en antioxidantes y humectantes ligeros.",
-        "ALKIMYA RECOMENDADA": "SERENA",
-      },
-    ],
-  },
-  {
-    title: "Piel Seca",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Seca (Alípica)",
-        "Correspondencia a Dosha/s": "Vata (Éter y Aire)",
-        "Características Clave": "Piel fina, tirante, con tendencia a la descamación y arrugas. Déficit en secreción sebácea.",
-        "Necesidades Esenciales": "Nutrición intensa (aceites pesados), lípidos, ceramidas y alta humectación.",
-        "ALKIMYA RECOMENDADA": "NUTRE",
-      },
-    ],
-  },
-  {
-    title: "Piel Grasa",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Grasa y/o Acnéica",
-        "Correspondencia a Dosha/s": "Kapha (Tierra y Agua)",
-        "Características Clave": "Piel gruesa, brillante, con poros dilatados, tendencia a comedones y/o acné. Exceso de secreción sebácea.",
-        "Necesidades Esenciales": "Regulación de sebo, activos astringentes (arcillas) y texturas ligeras.",
-        "ALKIMYA RECOMENDADA": "ILUMINA",
-      },
-    ],
-  },
-  {
-    title: "Piel Mixta",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Mixta",
-        "Correspondencia a Dosha/s": "Vata/Kapha o Pitta/Kapha",
-        "Características Clave": "Sebo excesivo en la Zona T y áreas normales/secas en las mejillas.",
-        "Necesidades Esenciales": "Balancear. Regulación en Zona T y nutrición ligera en el resto del rostro.",
-        "ALKIMYA RECOMENDADA": "ILUMINA (Zona T) / SERENA (Resto)",
-      },
-    ],
-  },
-  {
-    title: "Piel Sensible",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Sensible",
-        "Correspondencia a Dosha/s": "Pitta (Fuego y Agua)",
-        "Características Clave": "Piel que reacciona fácilmente a estímulos externos, con tendencia a rojeces, picazón e inflamación.",
-        "Necesidades Esenciales": "Calma, reparación de la barrera cutánea, activos desinflamatorios (Árnica, Manzanilla).",
-        "ALKIMYA RECOMENDADA": "CALMA",
-      },
-    ],
-  },
-  {
-    title: "Piel Madura",
-    columns: BIOTIPOS_COLUMNS,
-    rows: [
-      {
-        "Biotipo Cutáneo": "Madura",
-        "Correspondencia a Dosha/s": "Vata (Envejecimiento)",
-        "Características Clave": "Piel con pérdida de firmeza, elasticidad, volumen y líneas de expresión profundas.",
-        "Necesidades Esenciales": "Reafirmación, alta nutrición, colágeno vegetal y activos anti-edad.",
-        "ALKIMYA RECOMENDADA": "NUTRE / SERENA",
-      },
-    ],
-  },
+  { title: "Piel Seca — Nutrición Envolvente", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Fina, tirante o áspera, con tendencia a la descamación reactiva. Un tejido con déficit lipídico que tiende a marcar líneas de expresión tempranas.", "Tu necesidad": "Restauración profunda del manto lipídico. Requiere lípidos biocompatibles, ceramidas vegetales y nutrición botánica densa que selle la hidratación celular.", "Alkimyas Aliadas": "Línea Ilumina." }] },
+  { title: "Piel Madura — Regeneración & Sostén Estructural (Vata)", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Pérdida de turgencia, adelgazamiento dérmico y menor producción de sebo natural. Marcación de líneas y necesidad de sostén.", "Tu necesidad": "Reestructuración celular. Alta nutrición, fito-colágeno y antioxidantes botánicos que reparen la matriz del tejido y devuelvan densidad y volumen.", "Alkimyas Aliadas": "Línea Ilumina y Línea Soy." }] },
+  { title: "Piel Mixta — Equilibrio Dual", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Polarizada. Mix Frío (Vata-Kapha): Zona T con brillo sebáceo y mejillas deshidratadas. Mix Calor (Pitta-Kapha): Zona T congestionada y mejillas reactivas con rojez.", "Tu necesidad": "Calibración por zonas. Seborregulación en el eje central sin deshidratar los laterales, combinando astringencia botánica con nutrición ligera.", "Alkimyas Aliadas": "Línea Serena en Zona T; Línea Pureza o Ilumina en mejillas." }] },
+  { title: "Piel Grasa — Claridad & Seborregulación (Kapha)", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Densa, con brillo oleoso constante, poros dilatados y propensión a comedones o sobrecarga folicular.", "Tu necesidad": "Descongestión no abrasiva y purificación del poro. Activos astringentes (arcillas, hidrolatos puros) y texturas fluidas que equilibren el sebo sin dañar el microbioma.", "Alkimyas Aliadas": "Línea Serena." }] },
+  { title: "Piel Sensible — Calma & Reparación de Barrera", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Reactiva, con enrojecimiento difuso, ardor o intolerancia térmica. Un tejido con hiperreactividad nerviosa que refleja calor interno.", "Tu necesidad": "Desinflamación profunda y blindaje del estrato córneo. Moléculas botánicas calmantes que enfríen la temperatura del tejido y reduzcan la irritabilidad sensorial.", "Alkimyas Aliadas": "Línea Pureza. (Refuerzo: Línea Ilumina si tiende a seca; Línea Serena si tiende a grasa)." }] },
+  { title: "Piel Normal — El Pulso de la Salud (Tridóshica)", columns: BIOTIPOS_COLUMNS, rows: [{ "Cómo se siente": "Turgente, elástica, con textura lisa, tono homogéneo y luminosidad natural. El estado biológico donde los tres doshas conviven en armonía.", "Tu necesidad": "Mantenimiento y protección antioxidante preventiva para resguardar la barrera frente al desgaste ambiental y el fotoenvejecimiento.", "Alkimyas Aliadas": "Línea Pureza." }] },
 ];
 
-const BIOTIPOS_CAPILARES_COLUMNS = [
-  "Como se siente",
-  "Tu necesidad",
-  "Alkimyas Aliadas",
-];
-
+const BIOTIPOS_CAPILARES_COLUMNS = BIOTIPOS_COLUMNS;
 const BIOTIPOS_CAPILARES_TABLAS = [
-  {
-    title: "Cabello Seco (VATA)",
-    columns: BIOTIPOS_CAPILARES_COLUMNS,
-    rows: [
-      {
-        "Como se siente": "Pelo poroso, con frizz, quebrado o con puntas abiertas.",
-        "Tu necesidad": "Un abrazo de nutrición e hidratación intensa. Necesitás aceites y mantecas que sellen la cutícula y aporten el peso saludable que tus hebras piden.",
-        "Alkimyas Aliadas": "Shampoo Ilumina y Serum Capilar Ilumina.",
-      },
-    ],
-  },
-  {
-    title: "Cabello Graso (Kapha)",
-    columns: BIOTIPOS_CAPILARES_COLUMNS,
-    rows: [
-      {
-        "Como se siente": "Pelo grueso y pesado con cuero cabelludo oleoso y tendencia a la congestión. Se siente una pérdida de volumen y movimiento natural.",
-        "Tu necesidad": "Regulación sebácea y detox. Necesitás activos botánicos que purifiquen y texturas ligeras.",
-        "Alkimyas Aliadas": "Shampoo Serena.",
-      },
-    ],
-  },
-  {
-    title: "Cuero Cabelludo Sensible (Pitta)",
-    columns: BIOTIPOS_CAPILARES_COLUMNS,
-    rows: [
-      {
-        "Como se siente": "Cuero cabelludo con picazón, descamación (caspa) o enrojecimiento. También se manifiesta en pérdida excesiva o crecimiento lento debido al estrés o inflamación.",
-        "Tu necesidad": "Calma de raíz y estimulación folicular. Necesitás regular el pH, desinflamar el tejido y nutrir profundamente la base para que el pelo crezca con fuerza.",
-        "Alkimyas Aliadas": "Tónico Capilar Raíz y Shampoo Raíz.",
-      },
-    ],
-  },
+  { title: "Cabello Seco — Reparación Lipídica de la Hebra", columns: BIOTIPOS_CAPILARES_COLUMNS, rows: [{ "Cómo se siente": "Áspero al tacto, opaco, quebradizo y con estática/frizz. Frecuente en cabellos con rulos, ondas o expuestos a estrés ambiental.", "Tu necesidad": "Sellado de cutícula y reposición de ácidos grasos esenciales. Fórmulas botánicas con peso saludable que devuelvan docilidad y flexibilidad a la fibra.", "Alkimyas Aliadas": "Shampoo Ilumina y Sérum Capilar Ilumina." }] },
+  { title: "Cabello Normal — Sostén del Equilibrio Biológico", columns: BIOTIPOS_CAPILARES_COLUMNS, rows: [{ "Cómo se siente": "Suave, con brillo natural, fibra flexible y un cuero cabelludo equilibrado (sin exceso de grasa ni sequedad).", "Tu necesidad": "Limpieza consciente y no invasiva que preserve los lípidos naturales y proteja la microbiota capilar en el tiempo.", "Alkimyas Aliadas": "Shampoo Líquido Pureza." }] },
+  { title: "Cabello Graso — Purificación & Detox Folicular (Kapha)", columns: BIOTIPOS_CAPILARES_COLUMNS, rows: [{ "Cómo se siente": "Pesado en la raíz, pérdida rápida de volumen pocas horas después del lavado y cuero cabelludo con tendencia a la oclusión sebácea.", "Tu necesidad": "Regulación botánica de la glándula sebácea sin efecto rebote. Activos purificantes que oxigenen el folículo y aporten ligereza a la raíz.", "Alkimyas Aliadas": "Shampoo Serena." }] },
+  { title: "Cuero Cabelludo Sensible — Calma & Desinflamación de Raíz (Pitta)", columns: BIOTIPOS_CAPILARES_COLUMNS, rows: [{ "Cómo se siente": "Prurito (picazón), descamación irritativa (caspa seca/grasa), ardor o caída reactiva asociada a sobrecarga nerviosa.", "Tu necesidad": "Modulación del microbioma capilar, regulación del pH y estimulación circulatoria suave para desinflamar el folículo piloso y fortalecer el anclaje.", "Alkimyas Aliadas": "Tónico Capilar Raíz y Shampoo Raíz." }] },
 ];
-
 
 export default function BiotiposDoshasPage() {
   return (
@@ -148,13 +34,13 @@ export default function BiotiposDoshasPage() {
           <div className="biotipos-section1-main-title-wrapper">
             <div className="biotipos-section1-main-title-bg"></div>
             <h1 className="biotipos-text-element biotipos-section1-main-title">
-              ¡DESCUBRÍ TU BIOTIPO!
+              biotipos
             </h1>
           </div>
 
           {/* Subtitle */}
           <p className="biotipos-text-element biotipos-section1-subtitle" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.3rem)' }}>
-            El Reconocimiento de que Cada Ser es Único: Bio-individualidad y Sabiduría Ancestra
+            Conectar con tu Piel y Cabello.
           </p>
 
           {/* Main Text with SVG Background */}
@@ -162,9 +48,7 @@ export default function BiotiposDoshasPage() {
             <div className="biotipos-section1-main-text-bg"></div>
             <div className="biotipos-section1-main-text-content">
               <p className="biotipos-section1-main-text-paragraph" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.2rem)' }}>
-                El concepto de bio-individualidad es un pilar central para Da Luz, integrando lo ancestral (Ayurveda) y la autogestión.
-                <br /><br />
-                Comprender tu biotipo es el primer paso para elegir las Alquimias de Da Luz que mejor te acompañarán. No buscamos clasificar, buscamos honrar tu esencia única.
+                La soberanía sobre tu bienestar empieza por el reconocimiento de tu Bio-individualidad. No buscamos encasillar, buscamos honrar tu diseño único. Comprender tu biotipo es el primer paso para elegir las Alquimias de Da Luz que mejor cooperarán con tu organismo.
               </p>
             </div>
           </div>
@@ -213,7 +97,7 @@ export default function BiotiposDoshasPage() {
                 <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
                   <p className="biotipos-section2-text-paragraph">
-                    Sus funciones vitales actúan como nuestra primera línea de defensa: Controlar la pérdida de agua, proteger contra el entorno y actuar como barrera frente a químicos y agentes externos.
+                    Para comprender el biotipo, es esencial reconocer a la piel como el órgano vivo más extenso y una frontera sumamente activa entre nuestro templo interno y el entorno. Sus funciones vitales actúan como nuestra primera línea de defensa biológica y sensorial.
                   </p>
                 </div>
               </div>
@@ -225,7 +109,7 @@ export default function BiotiposDoshasPage() {
                 <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
                   <p className="biotipos-section2-text-paragraph">
-                    Sus funciones vitales actúan como nuestra primera línea de defensa: Controlar la pérdida de agua, proteger contra el entorno y actuar como barrera frente a químicos y agentes externos.
+                    Regula la temperatura, modula la pérdida transdérmica de agua y protege frente a radiaciones solares, patógenos y cambios térmicos. Es un escudo celular inteligente en continua comunicación con tu sistema nervioso e inmunológico.
                   </p>
                 </div>
               </div>
@@ -306,28 +190,26 @@ export default function BiotiposDoshasPage() {
               {/* Main Title */}
               <h2 className="biotipos-section15-main-title">
                 <Link href="/alkimya/tu-ceremonia" className="biotipos-section15-main-title-link">
-                  CLICK A CEREMONIA PARA TU RUTINA IDEAL
+                  encontrá tu ceremonia diaria
                 </Link>
               </h2>
 
               {/* Main Text */}
               <div className="biotipos-section15-main-text">
                 <p className="biotipos-section15-main-text-paragraph">
-                  ¿Aún tienes dudas? ¡Te ayudamos a elegir!
-                  <br /><br />
-                  Si después de identificar tu biotipo todavía tienes dudas sobre cuál es el mejor producto para ti, contáctanos. ¡Estamos para guiarte en tu camino de bienestar!
+                  ¿Aún tenés dudas sobre tu biotipo? Te asesoramos para que encuentres tu combinación botánica exacta.
                 </p>
               </div>
 
               {/* Buttons Container */}
               <div className="biotipos-section15-buttons-container">
                 <a
-                  href="https://www.instagram.com/daluzconsciente/"
+                  href="/alkimya/tu-ceremonia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="biotipos-section15-button biotipos-section15-button-instagram"
                 >
-                  Contactá por Instagram
+                  EXPLORAR CEREMONIAS
                 </a>
                 <a
                   href="https://wa.me/5493512344580"
@@ -335,7 +217,7 @@ export default function BiotiposDoshasPage() {
                   rel="noopener noreferrer"
                   className="biotipos-section15-button biotipos-section15-button-whatsapp"
                 >
-                  Consultá por WhatsApp
+                  CONSULTAR POR WHATSAPP
                 </a>
               </div>
             </div>

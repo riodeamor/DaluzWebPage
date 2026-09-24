@@ -587,7 +587,7 @@ export default function ProductCard({
                       onClick={handleAddToCart}
                       disabled={stock === 0}
                       className={cn(
-                        "flex-1 font-semibold shadow-md transition-all duration-300 uppercase tracking-wide",
+                        "tienda-add-button flex-1 font-semibold shadow-md transition-all duration-300 uppercase tracking-wide",
                         "hover:shadow-lg hover:scale-105 active:scale-95",
                         "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
                         "text-[9px] lg:text-[10px] h-[44px] px-1 lg:px-2",
@@ -762,7 +762,7 @@ export default function ProductCard({
                   onClick={handleAddToCart}
                   disabled={stock === 0}
                   className={cn(
-                    "w-full font-semibold shadow-md transition-all duration-300",
+                    "tienda-add-button w-full font-semibold shadow-md transition-all duration-300",
                     "hover:shadow-lg hover:scale-105 active:scale-95",
                     "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
                     "text-xs h-[44px]",

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import '@/styles/raices-filosofia.css'
 
 export const metadata: Metadata = {
-  title: 'Filosofía y Propósito | La Alquimista | DA LUZ CONSCIENTE',
+  title: 'Raíces | La Alquimista | DA LUZ CONSCIENTE',
   description: 'La alquimista y creadora detrás de Da Luz Consciente. De la sombra a la alkimia viva, formación holística y propósito.',
 }
 
@@ -36,98 +36,19 @@ const SABERES = [
   'Psicología UNC',
 ]
 
-export default function FilosofiaPropositoPage() {
+export default function RaicesPage() {
   return (
     <div className={WRAPPER}>
       <div className="raices-page-container">
         {/* Background */}
         <div className="raices-page-bg raices-bg-general" aria-hidden />
 
-        {/* Mobile/Tablet Hero - visible < 1024px */}
-        <section className="raices-header-band raices-hero-mobile" aria-labelledby="filosofia-title">
-          <div className="raices-header-band-inner">
-            <h1 id="filosofia-title" className="raices-band-title">
-              Filosofía y Propósito
-            </h1>
-          </div>
-        </section>
-        <div className="raices-content raices-hero-mobile">
-          <p className="raices-intro">
-            La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y presencia.
-          </p>
-        </div>
-
-        {/* Desktop Hero - visible >= 1024px only */}
-        <section className="raices-hero-desktop" aria-labelledby="filosofia-hero-title">
-          <div className="raices-hero-desktop-grid">
-            <div className="raices-hero-desktop-left">
-              <div className="raices-hero-title-wrap">
-                <h1 id="filosofia-hero-title" className="raices-hero-title">
-                  Filosofía y Propósito
-                </h1>
-              </div>
-              <div className="raices-hero-arrow" aria-hidden>
-                <img src="/svg/filosofia/filo/arrowDown.svg" alt="" className="raices-hero-arrow-svg" />
-              </div>
-              <div className="raices-hero-paragraph-wrap">
-                <p className="raices-hero-paragraph">
-                  La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y presencia.
-                </p>
-                <div className="raices-hero-underline" aria-hidden>
-                  <img src="/svg/filosofia/filo/UnderLine.svg" alt="" className="raices-hero-underline-svg" />
-                </div>
-              </div>
-            </div>
-            <div className="raices-hero-desktop-right">
-              <div className="raices-hero-image-placeholder">
-                <div className="raices-hero-image-circle">
-                  <span className="raices-hero-placeholder-text">Imagen</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Filosofía Central / Manifiesto */}
-        <div className="raices-content" style={{ marginTop: '2rem' }}>
-          <article className="raices-card raices-section-card">
-            <p style={{ fontSize: '1.1rem', fontWeight: 500, lineHeight: 1.6, marginBottom: '1rem' }}>
-              La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y presencia.
-            </p>
-            <p>
-              Da Luz Consciente es una invitación a nutrir integralmente tu cuerpo, tus emociones, tu mente y tu espíritu. No somos una solución instantánea; somos el puente para quienes se comprometen a escuchar su propio pulso, a habitar la pausa y a comprender la salud como un proceso de autogestión y soberanía.
-            </p>
-            <p>
-              Deseamos que el acto de cuidarte se convierta en un ritual diario, donde la Presencia, la gratitud y el goce acompañen cada uno de tus pasos. Nuestro propósito es acompañarte a construir un equilibrio genuino, sumergiéndote en un viaje alquímico hacia tu interior, donde tu cuerpo sea honrado como un templo. Acá, la pausa es un acto sagrado.
-            </p>
-            <p style={{ textAlign: 'center', fontStyle: 'italic', fontWeight: 600, marginTop: '1.5rem', color: 'var(--color-brand-primary, #72111A)' }}>
-              LOS 4 PILARES DA LUZ — Viví en Presencia. Creá con Placer. Honrá tus Raíces.
-            </p>
-          </article>
-        </div>
-
-        <section className="raices-section-band" aria-labelledby="pilares-title">
-          <div className="raices-section-band-inner">
-            <h2 id="pilares-title" className="raices-section-band-title">LOS 4 PILARES DA LUZ</h2>
-          </div>
-        </section>
-        <div className="raices-content">
-          <p className="raices-intro" style={{ textAlign: 'center' }}>Viví en Presencia. Creá con Placer. Honrá tus Raíces.</p>
-          <div className="raices-herramientas-grid">
-            <article className="raices-card"><h3 className="raices-card-title">1. Naturaleza y Ancestralidad</h3><p>En Da Luz, todo lo que ofrecemos está intrínsecamente conectado con la sabiduría de la Madre Tierra, la medicina herbal y las técnicas ancestrales de sanación. Creemos profundamente que estas herramientas primales son esenciales para recuperar el bioequilibrio y reconectar con el ritmo natural del Ser.</p><p><strong>Compromiso Sostenible:</strong> Utilizamos insumos libres de parabenos, ftalatos, disruptores endocrinos y toxinas, protegiendo al planeta, a los animales y a nuestra propia biología.</p></article>
-            <article className="raices-card"><h3 className="raices-card-title">2. Visión Integral y Autogestión</h3><p>Entendemos que el equilibrio no proviene solo del cuerpo físico, sino de la sintonía fina con tus emociones, pensamientos y energía, así como de la atención a tu fisiología.</p><p><strong>Soberanía de los Cuerpos:</strong> Comprenderte como un ser integral te devuelve el poder de autogestionar tu salud. Inspirados en el Ayurveda, la Medicina China y la Sabiduría Floral, brindamos un sendero práctico para pasar de la supervivencia a la soberanía activa.</p></article>
-            <article className="raices-card"><h3 className="raices-card-title">3. Ceremonia y Presencia</h3><p>La magia de lo cotidiano. Te invitamos a vivir una Ceremonia diaria: un llamado a la presencia, a habitarte desde los sentidos, conectando con tu propio cuerpo desde una mirada de Amor y cuidado.</p><p><strong>Lo Cotidiano como Ritual:</strong> Cada propuesta es un portal para explorar tu sensorialidad, utilizando tu voz, tu respiración y tu cuerpo como herramientas de regulación.</p></article>
-            <article className="raices-card"><h3 className="raices-card-title">4. Placer y Creatividad</h3><p>Crear desde el placer es nuestro mantra. Te proponemos explorar nuevas formas de vincularte con tus procesos vitales. El goce no es un lujo; es la puerta de entrada a tu verdadero poder creador.</p><p><strong>Disolver la resistencia:</strong> Te invitamos al asombro en los pequeños detalles, a la curiosidad y la exploración para reconectar con tus aguas internas y tu fuerza primal.</p></article>
-          </div>
-          <section className="raices-cta-standalone"><div className="raices-cta-buttons"><Link href="/alkimya/biotipos-doshas" className="raices-cta-button">¡DESCUBRÍ TU BIOTIPO AHORA!</Link></div></section>
-        </div>
-
         {/* De la Sombra - Mobile/Tablet (original band) */}
         <section className="raices-section-band filo-mobile-only" aria-labelledby="sombra-title-mobile">
           <div className="raices-section-band-inner">
-            <h2 id="sombra-title-mobile" className="raices-section-band-title">
+            <h1 id="sombra-title-mobile" className="raices-section-band-title">
               La Alquimista y Creadora detrás de Da Luz
-            </h2>
+            </h1>
           </div>
         </section>
         {/* De la Sombra - Desktop (TitleCard bg, centered) */}
@@ -136,9 +57,9 @@ export default function FilosofiaPropositoPage() {
             <div className="filo-section-title-bg" aria-hidden>
               <img src="/svg/filosofia/filo/TitleCard.svg" alt="" className="filo-section-title-card" />
             </div>
-            <h2 id="sombra-title" className="filo-section-title-text">
+            <h1 id="sombra-title" className="filo-section-title-text">
               La Alquimista y Creadora detrás de Da Luz
-            </h2>
+            </h1>
           </div>
         </div>
         <div className="raices-content">

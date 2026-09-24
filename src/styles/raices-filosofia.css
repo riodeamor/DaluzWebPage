@@ -885,3 +885,31 @@
     text-align: center;
   }
 }
+
+
+/* Raíces y Filosofía: profundidad azul sin textura rasterizada. */
+.raices-page-container {
+  background: linear-gradient(145deg, #051341 0%, #0F3460 56%, #16345F 100%) !important;
+}
+.raices-bg-general {
+  background-image: none !important;
+  background: linear-gradient(145deg, #051341 0%, #0F3460 56%, #16345F 100%) !important;
+}
+
+
+/* Título de Raíces sin el marco que cruzaba sus letras. */
+.raices-filosofia-pages .filo-section-title-bg { display: none !important; }
+.raices-filosofia-pages .filo-section-title-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+}
+.raices-filosofia-pages .filo-section-title-text {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: min(100%, 46rem) !important;
+  text-align: center !important;
+  line-height: 1.15 !important;
+}

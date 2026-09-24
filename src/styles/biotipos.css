@@ -5014,3 +5014,50 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
 .biotipos-section15-button:hover { box-shadow: var(--da-luz-button-hover-shadow); }
 @media (min-width: 640px) { .biotipos-section15-buttons-container { flex-direction: row; } }
 @media (min-width: 768px) { .biotipos-section2-main-container { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Títulos y cierre editorial de Biotipos. */
+.biotipos-section1-main-title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  text-transform: none !important;
+  text-align: center !important;
+}
+.biotipos-section15-main-container,
+.biotipos-section15-main-container-content { background: #FFF2E9 !important; }
+.biotipos-section15-main-container-bg { display: none !important; }
+.biotipos-section15-main-container {
+  max-width: 68rem !important;
+  aspect-ratio: auto !important;
+  min-height: 0 !important;
+  border-radius: 1rem;
+  box-shadow: var(--da-luz-card-shadow);
+}
+.biotipos-section15-main-container-content {
+  position: relative !important;
+  inset: auto !important;
+  padding: 3rem 2rem !important;
+  border-radius: 1rem;
+}
+.biotipos-section15-main-title,
+.biotipos-section15-main-text {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: auto !important;
+  max-width: 46rem !important;
+  margin-inline: auto !important;
+}
+.biotipos-section15-main-title-link {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  text-transform: none !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  color: #4A0D10 !important;
+}
+.biotipos-section15-main-text-paragraph { color: #4A0D10 !important; }
+
+
+.biotipos-section1-main-title {
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem) !important;
+  line-height: 1.1 !important;
+}
+
+.biotipos-section3-main-title { color: #860119 !important; }

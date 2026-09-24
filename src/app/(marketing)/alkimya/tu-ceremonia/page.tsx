@@ -39,12 +39,12 @@ export default function TuCeremoniaPage() {
         {/* Title + Subtitle wrapped in a single card on mobile/tablet */}
         <div className="tu-ceremonia-title-card">
           <h1 className="tu-ceremonia-main-title">
-            CONOCÉ TU CEREMONIA DIARIA
+            tu ceremonia diaria
           </h1>
 
           {/* Subtítulo blanco */}
           <h2 className="tu-ceremonia-secondary-title">
-            ¡Transformá tu Rutina en un Ritual Consciente!
+            Transformá tu rutina en un ritual de presencia y consagración corporal.
           </h2>
         </div>
 
@@ -53,7 +53,7 @@ export default function TuCeremoniaPage() {
           <div className="tu-ceremonia-text-card-bg"></div>
           <div className="tu-ceremonia-text-card-content">
             <p className="tu-ceremonia-text-card-text">
-              Tu cuidado personal es el reflejo directo de tu bienestar interno. En DA LUZ Alkimya no solo formulamos cosmética consciente, sino que proponemos una Ceremonia para entrelazar la intención pura, tu templo físico y tu consciencia superior.
+              Tu cuidado personal es el reflejo directo de tu bienestar interno. En Da Luz no solo formulamos biocosmética viva; proponemos una ceremonia cotidiana para entrelazar la intención pura, la arquitectura de tu templo físico y la frecuencia de tu Ser.
             </p>
           </div>
         </div>
@@ -63,9 +63,7 @@ export default function TuCeremoniaPage() {
           <div className="tu-ceremonia-text-card-bg"></div>
           <div className="tu-ceremonia-text-card-content">
             <p className="tu-ceremonia-text-card-text">
-              Cada ritual es un acto de consagración hacia vos misma. 
-              <br /><br />
-              Antes de comenzar el paso a paso, hacé una pausa: la constancia en tu rutina no solo embellece tu materia, sino que ancla tu frecuencia más elevada en el día a día.
+              Cada paso es un acto sagrado de consagración hacia vos misma. Antes de comenzar tu secuencia, hacé una pausa: la constancia en tu ritual no solo nutre tu biología, sino que ancla tu presencia más soberana en el día a día.
             </p>
           </div>
         </div>

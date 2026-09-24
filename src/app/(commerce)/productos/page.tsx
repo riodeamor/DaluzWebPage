@@ -442,12 +442,13 @@ function ProductsContent() {
                         <SelectValue placeholder="Piel" />
                       </SelectTrigger>
                       <SelectContent className="tienda-select-panel">
-                        <SelectItem value="all">Todos</SelectItem>
-                        <SelectItem value="dry">Seca</SelectItem>
-                        <SelectItem value="oily">Grasa</SelectItem>
-                        <SelectItem value="combination">Mixta</SelectItem>
-                        <SelectItem value="normal">Normal</SelectItem>
-                        <SelectItem value="sensitive">Sensible</SelectItem>
+                        <SelectItem value="all">Todos los tipos</SelectItem>
+                        <SelectItem value="dry">Piel Seca</SelectItem>
+                        <SelectItem value="oily">Piel Grasa</SelectItem>
+                        <SelectItem value="combination">Piel Mixta</SelectItem>
+                        <SelectItem value="sensitive">Piel Sensible</SelectItem>
+                        <SelectItem value="normal">Piel Normal</SelectItem>
+                        <SelectItem value="mature">Piel Madura</SelectItem>
                       </SelectContent>
                     </Select>
 
@@ -513,7 +514,7 @@ function ProductsContent() {
                       {showOnlyFavorites && (
                         <Heart className="h-3 w-3 mr-1 fill-current" />
                       )}
-                      Solo favoritos
+                      MIS FAVORITOS
                     </Button>
 
                     <Button
@@ -523,7 +524,7 @@ function ProductsContent() {
                       className="tienda-action-button w-full text-xs h-6"
                     >
                       {showOnlySale && <Tag className="h-3 w-3 mr-1" />}
-                      Solo ofertas
+                      SOLO OFERTAS
                     </Button>
 
                     {hasActiveFilters && (

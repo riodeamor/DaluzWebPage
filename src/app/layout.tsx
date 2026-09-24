@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, EB_Garamond } from "next/font/google";
+import { Inter, Playfair_Display, EB_Garamond, Montserrat, Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider as NextThemeProvider } from "@/components/theme-provider";
 import { ThemeProvider as ProductLineThemeProvider } from "@/contexts/ThemeContext";
@@ -13,6 +13,19 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -105,7 +118,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${playfair.variable} ${ebGaramond.variable} ${malisha.variable} ${velista.variable} font-text antialiased`}
+        className={`${inter.variable} ${montserrat.variable} ${cormorant.variable} ${playfair.variable} ${ebGaramond.variable} ${malisha.variable} ${velista.variable} font-text antialiased`}
       >
         <NextThemeProvider
           attribute="class"

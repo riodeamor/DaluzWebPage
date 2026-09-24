@@ -99,7 +99,7 @@ export default function TesorosDaLuzPage() {
       {/* Full-width title band */}
       <section className="tesoros-header-band">
         <div className="tesoros-header-band-inner">
-          <h1 className="tesoros-page-title">Tesoros Da Luz</h1>
+          <h1 className="tesoros-page-title">tesoros da luz</h1>
         </div>
       </section>
 

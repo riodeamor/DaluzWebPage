@@ -1107,7 +1107,7 @@ export default function ProductForm({
 
                 {/* Certifications */}
                 <div className="space-y-3">
-                  <Label>Certificaciones</Label>
+                  <Label>Detalles</Label>
                   <div className="flex flex-wrap gap-2">
                     {formData.certifications.map((cert: string) => {
                       const certLabel =

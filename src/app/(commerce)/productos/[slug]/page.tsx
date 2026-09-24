@@ -1979,7 +1979,7 @@ export default function ProductDetailPage() {
               </p>
               <Link href="/productos">
                 <Button
-                  className={`px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 ${getColorPalette().buttonColor}`}
+                  className={`tienda-line-button px-8 py-3 transition-all duration-300 hover:scale-105 ${getColorPalette().buttonColor}`}
                 >
                   Ver todos los productos
                 </Button>
@@ -1997,10 +1997,10 @@ export default function ProductDetailPage() {
               })()}
             >
               <Button
-                className={`px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 ${getColorPalette().buttonColor}`}
+                className={`tienda-line-button px-8 py-3 transition-all duration-300 hover:scale-105 ${getColorPalette().buttonColor}`}
               >
                 <Sparkles className="w-4 h-4 mr-2" />
-                Ver toda la línea {determineProductLine(product)?.name}
+                VER TODA LA LÍNEA
               </Button>
             </Link>
           </div>

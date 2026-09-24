@@ -42,7 +42,7 @@ const BandWave = () => (
   >
     <path
       d="M0,0 H1440 V52 C1400,55 1370,58 1330,60 C1250,66 1200,82 1120,95 C1010,112 950,150 850,150 C760,150 700,128 620,132 C520,138 460,116 360,120 C270,123 220,178 150,178 C90,178 50,160 0,150 Z"
-      fill="#fff2db"
+      fill="#FFF2E9"
     />
   </svg>
 );
@@ -60,49 +60,14 @@ const AlkimyaPage: NextPage = () => {
         <div className="mf-band-wrap">
           <div className="mf-band">
             <BandWave />
-            <h1 className="mf-band-title">Manifiesto Alkimyco</h1>
+            <h1 className="mf-band-title">manifiesto alkimyco</h1>
           </div>
         </div>
 
         <div className="mf-manifiesto-body">
-          <div className="mf-blob-block mf-cloud">
-
-            <p className="mf-lead">
-              <em>
-                Neurocosmética que Transforma: una fusión entre los saberes
-                ancestrales y la química moderna.
-              </em>
-            </p>
-            <p className="mf-text">
-              Creada para quienes buscan ir más allá de la cosmética, deseando
-              una experiencia de transformación genuina.
-            </p>
-          </div>
-
-          <div className="mf-blob-block mf-cloud">
-
-            <p className="mf-text">
-              Inspirada en la sabiduría de las medicinas ancestrales que
-              transformaron la conexión con mi cuerpo, he creado alquimias
-              diversas con el sincero deseo de acompañarte a equilibrar no sólo la
-              salud de tu piel, sino también la armonía de tus emociones y la
-              claridad de tus pensamientos.
-            </p>
-          </div>
-
-          <div className="mf-blob-block mf-cloud">
-
-            <p className="mf-lead mf-lead--bold">
-              Como la naturaleza misma, nuestros cuerpos hablan, y Da Luz es el
-              puente para escucharlos,
-            </p>
-            <p className="mf-text">
-              <em>
-                para que a través de cada aroma, cada toque, cada gota, y cada
-                sonido puedas reconectar con lo más profundo de tu Ser.
-              </em>
-            </p>
-          </div>
+          <p className="mf-lead"><em>Neurocosmética que transforma: la sinergia precisa entre saberes botánicos ancestrales y biotecnología vegetal moderna.</em></p>
+          <p className="mf-text">Creada para quienes buscan ir más allá de la cosmética convencional y eligen una experiencia de transformación encarnada. Inspirada en la sabiduría de las medicinas botánicas que transformaron la relación con mi propio cuerpo, formulo alquimias vivas con un propósito claro: acompañarte a restaurar la salud de tu barrera cutánea en profunda sintonía con la regulación de tu sistema nervioso y la claridad de tu mente.</p>
+          <p className="mf-text">Como la naturaleza misma, tu biología habla; Da Luz es el puente somático para escucharla. A través de cada aroma botánico, cada gota viva, cada tacto consciente y cada frecuencia sonora, te invito a habitar tu cuerpo con presencia, soberanía y verdadero goce en tu cotidiano.</p>
         </div>
       </section>
 
@@ -118,97 +83,21 @@ const AlkimyaPage: NextPage = () => {
         </div>
 
         <div className="mf-pilares-grid">
-          {/* Pilar 1 */}
           <article className="mf-pilar">
-            <h3 className="mf-pilar-title">
-              <span className="mf-pilar-num">1.</span> Ecología y Conciencia
-            </h3>
-            <div className="mf-pilar-body mf-cloud">
-
-              <p className="mf-text">
-                Creemos que es innecesario dañar la Madre Tierra, nuestro propio
-                cuerpo y/o los seres vivos con los que convivimos para cuidarnos.
-                Por eso rechazamos el uso de cualquier ingrediente o subproducto
-                de origen animal en nuestras formulaciones, así como tampoco
-                realizamos pruebas en animales.
-              </p>
-              <p className="mf-text">
-                <strong>Envases Conscientes:</strong> Nuestros envases son
-                elegidos por su capacidad de ser reutilizados, reciclados o
-                biodegradados.
-              </p>
-              <p className="mf-text">
-                <strong>Balance en la Formulación:</strong> Buscamos un
-                equilibrio consciente, utilizando activos sintéticos de origen
-                vegetal cuando es la opción más responsable que evita agotar la
-                naturaleza y potenciar tu Ser.
-              </p>
-            </div>
+            <h3 className="mf-pilar-title"><span className="mf-pilar-num">1.</span> Ecología, Conciencia &amp; Biotecnología Limpia</h3>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Cuidar de nuestro templo no debe comprometer la salud de la Tierra ni la de los seres que la habitan. Nuestras fórmulas son 100% libres de crueldad animal y envasadas en vidrio ámbar reutilizable. Elegimos un equilibrio responsable: el alma de nuestras alquimias es pura botánica viva, potenciada por una fracción precisa de activos biotecnológicos de origen vegetal (química verde). Lejos de la sobreexplotación de especies silvestres, estos activos ofrecen una biocompatibilidad celular excepcional, garantizando fórmulas estables, seguras y en total afinidad con tu biología y con la naturaleza.</p></div>
           </article>
-
-          {/* Pilar 2 */}
           <article className="mf-pilar">
-            <h3 className="mf-pilar-title">
-              <span className="mf-pilar-num">2.</span> Botánica y Natural
-            </h3>
-            <div className="mf-pilar-body mf-cloud">
-
-              <p className="mf-lead">
-                <em>La naturaleza es nuestra farmacia más sabia.</em>
-              </p>
-              <p className="mf-text">
-                Basándonos en la tradición herbolaria y en lo aprendido en la
-                formación en fitoterapia, seleccionamos extractos, aceites
-                esenciales, hidrolatos, aceites vegetales y tinturas madre por sus
-                beneficios específicos para los diversos biotipos de piel, las
-                emociones y la función de los diversos órganos.
-              </p>
-              <p className="mf-text">
-                Nuestras alquimias botánicas aprovechan el poder concentrado de
-                las plantas para nutrir y promover el bienestar integral.
-              </p>
-            </div>
+            <h3 className="mf-pilar-title"><span className="mf-pilar-num">2.</span> Botánica Viva &amp; Rigor Fitoterapéutico</h3>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text">La naturaleza es nuestro laboratorio más sabio. Seleccionamos extractos botánicos puros, aceites esenciales de grado terapéutico, hidrolatos destilados al vapor y tinturas madre bajo estricto rigor clínico y respeto ancestral. Cada activo vegetal es elegido por su función bioquímica sobre tu biotipo cutáneo, su impacto sobre el sistema nervioso y su capacidad de devolverle a tus tejidos su orden biológico natural.</p></div>
           </article>
-
-          {/* Pilar 3 */}
           <article className="mf-pilar">
-            <h3 className="mf-pilar-title">
-              <span className="mf-pilar-num">3.</span> Coherencia y Transmutación
-            </h3>
-            <div className="mf-pilar-body mf-cloud">
-
-              <p className="mf-text">
-                Cada producto está diseñado con una intención clara. Combinamos la
-                sabiduría de las hierbas medicinales con activos biotecnológicos
-                de procedencia vegetal para potenciar los beneficios.
-              </p>
-              <p className="mf-text">
-                Creamos sinergias teniendo en cuenta los diferentes tipos de piel,
-                y cabellos (biotipos y doshas), asegurando que cada alquimia nutra
-                tu Ser en coherencia con lo que tu cuerpo necesita, desde el Amor y
-                la Presencia.
-              </p>
-            </div>
+            <h3 className="mf-pilar-title"><span className="mf-pilar-num">3.</span> Transparencia Radical &amp; Soberanía</h3>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Saber exactamente qué ponés sobre tu piel es un acto innegociable de soberanía personal. Garantizamos transparencia absoluta publicando el desglose INCI completo de cada fórmula y abriendo las puertas de nuestro laboratorio en la sección de Activos y Origen. Te brindamos información clara, fundamentada y accesible para que elijas conectar con nuestras alquimias desde el conocimiento y la libertad.</p></div>
           </article>
-
-          {/* Pilar 4 */}
           <article className="mf-pilar">
-            <h3 className="mf-pilar-title">
-              <span className="mf-pilar-num">4.</span> Neurocosmética Vibracional
-            </h3>
-            <div className="mf-pilar-body mf-cloud">
-
-              <p className="mf-text">
-                Nuestra cosmética es una invitación a potenciar y honrar la
-                comunicación entre tu piel y tu mente, usando tus Sentidos como un
-                canal a tu favor.
-              </p>
-              <p className="mf-text">
-                El uso intencionado de aceites esenciales no solo tiene beneficios
-                físicos, sino que también crea una resonancia emocional y sensorial
-                que refuerza tu bioequilibrio integralmente.
-              </p>
-            </div>
+            <h3 className="mf-pilar-title"><span className="mf-pilar-num">4.</span> Neurocosmética &amp; Alquimia Frecuencial</h3>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Honramos el diálogo bidireccional entre tu piel y tu cerebro (el eje neurocutáneo). Fusionamos la precisión biológica de los activos botánicos con el impacto límbico y emocional de los aromas puros. Esta sinergia trasciende lo superficial: es un estímulo sensorial diseñado para silenciar el estrés y devolverle la calma a tus células. Para sellar este pulso, cada lote es frecuenciado cinética y cimáticamente mediante la vibración acústica de cuencos tibetanos, diapasones y armonización sutil.</p></div>
           </article>
         </div>
       </section>
@@ -217,37 +106,16 @@ const AlkimyaPage: NextPage = () => {
           SECCIÓN 3 — NUESTRO COMPROMISO SUSTENTABLE
           ============================================================ */}
       <section className="mf-section mf-sustentable">
-        <h2 className="mf-sustentable-title">Nuestro Compromiso Sustentable</h2>
+        <h2 className="mf-sustentable-title">compromiso sustentable</h2>
 
         <div className="mf-ciclo">
           <ArrowRing />
           <div className="mf-ciclo-content">
-            <p className="mf-ciclo-lead">¡Reutilizalos!</p>
-            <p className="mf-text">
-              <strong>Puntos de reciclaje:</strong> Podés dejar tus envases (y
-              todos los residuos que generes) en un punto cercano de reciclaje.
-            </p>
-            <p className="mf-text">
-              Te dejamos 2 sitios para que encuentres la mejor opción y ubicación
-              para hacerte cargo de tus consumos de forma consciente:
-            </p>
+            <p className="mf-ciclo-lead">¡REUTILIZALOS!</p>
+            <p className="mf-text">Podés dejar tus envases de vidrio ámbar (y los residuos limpios que generes) en un punto cercano de reciclaje. Te compartimos accesos directos para encontrar la mejor ubicación y hacerte cargo de tus consumos con soberanía y conciencia ecológica.</p>
             <div className="mf-ciclo-links">
-              <a
-                className="mf-recycle-btn"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Punto de reciclaje 1
-              </a>
-              <a
-                className="mf-recycle-btn"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Punto de reciclaje 2
-              </a>
+              <a className="mf-recycle-btn" href="#" target="_blank" rel="noopener noreferrer">PUNTO DE RECICLAJE 1</a>
+              <a className="mf-recycle-btn" href="#" target="_blank" rel="noopener noreferrer">PUNTO DE RECICLAJE 2</a>
             </div>
           </div>
         </div>

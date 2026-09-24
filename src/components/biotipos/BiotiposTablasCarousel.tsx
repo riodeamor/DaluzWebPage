@@ -75,12 +75,6 @@ export default function BiotiposTablasCarousel({ tablas }: BiotiposTablasCarouse
   };
 
   return (
-    <>
-      <div className="biotipos-tablas-grid">
-        {tablas.map((tabla, idx) => (
-          <TablaBiotipo key={`${tabla.title}-${idx}`} {...tabla} />
-        ))}
-      </div>
     <div
       className="biotipos-tablas-carousel"
       onMouseEnter={() => setIsPaused(true)}
@@ -140,6 +134,5 @@ export default function BiotiposTablasCarousel({ tablas }: BiotiposTablasCarouse
         ))}
       </div>
     </div>
-    </>
   );
 }

@@ -61,17 +61,19 @@ const productLines = [
 ];
 
 const skinTypes = [
-  { value: "dry", label: "Seca" },
-  { value: "oily", label: "Grasa" },
-  { value: "combination", label: "Mixta" },
-  { value: "sensitive", label: "Sensible" },
-  { value: "normal", label: "Normal" },
+  { value: "dry", label: "Piel Seca" },
+  { value: "oily", label: "Piel Grasa" },
+  { value: "combination", label: "Piel Mixta" },
+  { value: "sensitive", label: "Piel Sensible" },
+  { value: "normal", label: "Piel Normal" },
+  { value: "mature", label: "Piel Madura" },
 ];
 
 const hairTypes = [
   { value: "oily", label: "Graso" },
   { value: "dry", label: "Seco" },
-  { value: "normal", label: "Normal" },
+  { value: "normal", label: "Piel Normal" },
+  { value: "mature", label: "Piel Madura" },
   { value: "combination", label: "Mixto" },
   { value: "curly", label: "Rizado" },
   { value: "straight", label: "Lacio" },
@@ -326,7 +328,7 @@ export default function TiendaSidebar({
                 {showOnlyFavorites && (
                   <Heart className="h-4 w-4 fill-current" />
                 )}
-                Mis favoritos
+                MIS FAVORITOS
               </Button>
             )}
 
@@ -339,7 +341,7 @@ export default function TiendaSidebar({
                 className="tienda-action-button w-full flex items-center justify-center gap-2 text-sm h-8 lg:h-9"
               >
                 {showOnlySale && <Tag className="h-4 w-4" />}
-                Solo ofertas
+                SOLO OFERTAS
               </Button>
             )}
 
@@ -480,7 +482,7 @@ export default function TiendaSidebar({
                 )}
                 {showOnlySale && (
                   <Badge variant="secondary" className="text-xs">
-                    Solo ofertas
+                    SOLO OFERTAS
                   </Badge>
                 )}
               </div>
