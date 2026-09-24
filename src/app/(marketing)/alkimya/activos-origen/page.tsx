@@ -1,24 +1,19 @@
 'use client';
 
-import { ActivosOrigenBackground } from '@/components/svg/SVGComponents';
 import Link from 'next/link';
 
 export default function ActivosOrigenPage() {
   return (
     <div className="activos-origen-page">
-      <ActivosOrigenBackground bgColor="#F6FBD6" className="opacity-100" />
 
       {/* Section 1 */}
       <section className="activos-origen-section">
         {/* H1 - Activos y Origen with AYOTitle.svg */}
         <div className="ayo-title-band">
-          <h1 className="ayo-title-text">Activos y Origen</h1>
+          <h1 className="ayo-title-text">la arquitectura de nuestras fórmulas</h1>
         </div>
 
         {/* H2 - La Arquitectura de nuestras Fórmulas with AYOband.svg */}
-        <div className="ayo-band-section">
-          <h2 className="ayo-band-title">La Arquitectura de nuestras Fórmulas</h2>
-        </div>
 
         {/* Content */}
         <div className="activos-origen-content-wrap">

@@ -139,6 +139,7 @@ const AZUL_PROFUNDO = "#051341"; // Para Raíces, Procesos, FAQ, Legales, Landin
 
 const isAlkimyaOrTiendaPage = (pathname: string) =>
   pathname === "/productos" ||
+  pathname.startsWith("/productos/") ||
   pathname.startsWith("/categorias/") ||
   pathname.startsWith("/producto/") ||
   pathname === "/alkimya" ||

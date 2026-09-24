@@ -682,3 +682,34 @@ a.procesos-btn-orientation {
     transform: none;
   }
 }
+
+
+/* Botonera final de orientación con la misma geometría en ambos destinos. */
+.procesos-page-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 20rem));
+  gap: 1rem;
+  justify-content: center;
+}
+.procesos-page-buttons a.procesos-btn-orientation {
+  display: inline-flex;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 0.85rem 1rem;
+  border: 0;
+  border-radius: 0 15px;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-align: center;
+  white-space: normal;
+  box-shadow: var(--da-luz-button-shadow);
+}
+.procesos-page-buttons a.procesos-btn-orientation:hover {
+  box-shadow: var(--da-luz-button-hover-shadow);
+}
+@media (max-width: 680px) {
+  .procesos-page-buttons { grid-template-columns: minmax(0, 20rem); }
+}

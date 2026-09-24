@@ -15,6 +15,17 @@ const DEFAULT_WHATSAPP = "5493512344580";
 const DEFAULT_INSTAGRAM = "https://instagram.com/daluzconsciente";
 const DEFAULT_FACEBOOK = "https://facebook.com/daluzconsciente";
 
+/* Alkimya y Tienda comparten el bordó del encabezado. */
+const ALKIMYA_BG = "#72111A";
+const ALKIMYA_BORDER = "#4A0D10";
+const isAlkimyaOrTiendaPage = (pathname: string) =>
+  pathname === "/alkimya" ||
+  pathname.startsWith("/alkimya/") ||
+  pathname === "/productos" ||
+  pathname.startsWith("/productos/") ||
+  pathname.startsWith("/producto/") ||
+  pathname.startsWith("/categorias/");
+
 /* Procesos pages: green theme matching page background */
 const PROCESOS_BG = "#051341";
 const PROCESOS_BORDER = "#16345F";
@@ -86,14 +97,18 @@ export default function Footer() {
     contactConfig?.social_whatsapp || DEFAULT_WHATSAPP,
   );
 
-  const footerBg = isRaicesPage(pathname ?? "")
+  const footerBg = isAlkimyaOrTiendaPage(pathname ?? "")
+    ? ALKIMYA_BG
+    : isRaicesPage(pathname ?? "")
     ? RAICES_BG
     : isProcesosPage(pathname ?? "")
       ? PROCESOS_BG
       : isFaqPage(pathname ?? "")
         ? FAQ_BG
         : "#051341";
-  const footerBorder = isRaicesPage(pathname ?? "")
+  const footerBorder = isAlkimyaOrTiendaPage(pathname ?? "")
+    ? ALKIMYA_BORDER
+    : isRaicesPage(pathname ?? "")
     ? RAICES_BORDER
     : isProcesosPage(pathname ?? "")
       ? PROCESOS_BORDER

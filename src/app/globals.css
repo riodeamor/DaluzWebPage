@@ -2786,3 +2786,36 @@ main a.tu-ceremonia-button:hover {
   box-shadow: var(--da-luz-button-hover-shadow);
   transform: translateY(-2px);
 }
+
+/* Botones de compra en la paleta del filtro de Tienda. */
+.tienda-add-button {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  background: linear-gradient(135deg, #4A0D10, #860119) !important;
+  color: #FFFFFF !important;
+  border: 0 !important;
+  border-radius: 0 15px !important;
+  box-shadow: var(--da-luz-button-shadow) !important;
+}
+.tienda-add-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6B1018, #9B1729) !important;
+  box-shadow: var(--da-luz-button-hover-shadow) !important;
+  transform: translateY(-2px);
+}
+
+
+/* Accesos a líneas de producto. */
+.tienda-line-button {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #4A0D10, #860119) !important;
+  border: 0 !important;
+  border-radius: 0 15px !important;
+  box-shadow: var(--da-luz-button-shadow);
+  text-decoration: none;
+}
+.tienda-line-button:hover {
+  color: #FFFFFF !important;
+  box-shadow: var(--da-luz-button-hover-shadow);
+  transform: translateY(-2px);
+}

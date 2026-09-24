@@ -92,7 +92,7 @@ export default function ProcesosPage() {
             <Link href="/servicios/procesos/ciclos-alquimicos" className="procesos-btn-cream procesos-btn-orientation">
               EXPLORAR CICLOS ALQUÍMICOS
             </Link>
-            <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
+            <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue procesos-btn-orientation">
               ELEGIR UNA SESIÓN INTEGRAL
             </Link>
           </div>

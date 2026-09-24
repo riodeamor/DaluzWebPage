@@ -3,13 +3,13 @@ import Link from 'next/link'
 import '@/styles/raices-filosofia.css'
 
 export const metadata: Metadata = {
-  title: 'Raíces | Filosofía y Propósito | DA LUZ CONSCIENTE',
+  title: 'Filosofía y Propósito | DA LUZ CONSCIENTE',
   description: 'Filosofía, propósito y los 4 pilares de DA LUZ CONSCIENTE. Naturaleza, visión integral, ceremonia y placer.',
 }
 
 const PROCESOS_WRAPPER = 'raices-filosofia-pages raices-page'
 
-export default function RaicesPage() {
+export default function FilosofiaPropositoPage() {
   return (
     <div className={PROCESOS_WRAPPER}>
       <div className="raices-page-container">

@@ -333,7 +333,7 @@ export default function FeaturedLineSection({
               fontStyle: "normal",
             }}
           >
-            Descubri la línea {selectedLine.name}
+            Descubrí la línea {selectedLine.name}
           </h2>
 
           <p
@@ -344,8 +344,8 @@ export default function FeaturedLineSection({
             cuidadosamente elegidos para tu bienestar.
           </p>
 
-          <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`}>
-
+          <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`} className="tienda-line-button inline-flex items-center justify-center px-8 py-3 mt-2">
+            VER TODA LA LÍNEA
           </Link>
         </div>
 
@@ -384,15 +384,15 @@ export default function FeaturedLineSection({
           <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`}>
             <Button
               className={cn(
-                "group relative px-10 py-4 text-lg font-semibold text-white transition-all duration-500 transform hover:scale-105 overflow-hidden",
+                "tienda-line-button group relative px-10 py-4 text-lg font-semibold text-white transition-all duration-500 transform hover:scale-105 overflow-hidden",
                 selectedLine.buttonColor,
               )}
               style={{
-                borderRadius: "50px",
+                borderRadius: "0 15px",
               }}
             >
               <span className="relative z-10">
-                Ver más productos de {selectedLine.name}
+                VER MÁS PRODUCTOS DE {selectedLine.name}
               </span>
               <div className="absolute inset-0 -top-1 -left-1 w-[calc(100%+8px)] h-[calc(100%+8px)] bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
             </Button>

@@ -2499,3 +2499,153 @@ h1, h2, h3, h4, h5, h6,
   .mf-ciclo { margin: 2rem 1rem; padding: 2.5rem; }
   .mf-arrow-ring { display: none; }
 }.mf-arrow-ring { z-index: 0; }
+
+/* Contraste del manifiesto y espacio de seguridad del gráfico orbital. */
+.mf-manifiesto-body .mf-blob-block,
+.mf-manifiesto-body .mf-blob-block p,
+.mf-manifiesto-body .mf-blob-block span,
+.mf-manifiesto-body .mf-blob-block em,
+.mf-manifiesto-body .mf-blob-block strong {
+  color: #FFFFFF !important;
+}
+.mf-manifiesto-body .mf-blob-block em { font-style: italic !important; }
+.mf-ciclo {
+  padding: 5.5rem 4rem;
+  text-align: center;
+}
+.mf-ciclo-content { max-width: 32rem; margin-inline: auto; }
+.mf-arrow-ring {
+  inset: 0.5rem;
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
+  pointer-events: none;
+}
+.mf-ciclo-links {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.activos-origen-section:first-of-type .ayo-title-band {
+  background-image: none !important;
+  min-height: auto;
+}
+.activos-origen-section:first-of-type .ayo-title-text {
+  color: #97000D !important;
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 4.25rem);
+  line-height: 1.1;
+  text-transform: none;
+  text-align: center;
+  text-shadow: none;
+}
+.ayo-card-heading { color: #97000D !important; }
+.ayo-card-desc { color: #4A0D10 !important; }
+.ayo-card-button {
+  background: #860119 !important;
+  color: #FFFFFF !important;
+  border-radius: 0 15px;
+}
+@media (max-width: 767px) {
+  .mf-ciclo { padding: 2.5rem 1.5rem; }
+}
+
+
+/* Títulos y acciones del manifiesto renovado. */
+.mf-manifiesto .mf-band-title,
+.mf-sustentable-title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  text-transform: none !important;
+  text-align: center !important;
+}
+.mf-manifiesto-body > .mf-lead,
+.mf-manifiesto-body > .mf-text { color: #FFFFFF !important; }
+.mf-manifiesto-body > .mf-lead em { color: #FFFFFF !important; }
+.mf-manifiesto-body > .mf-text { margin-top: 1.4rem; }
+.mf-ciclo .mf-text,
+.mf-ciclo .mf-ciclo-lead { text-align: center !important; }
+.mf-recycle-btn {
+  background: #FFFFFF !important;
+  color: #860119 !important;
+  border-radius: 0 15px !important;
+}
+
+
+/* Contraste del título de pilares sobre su banda crema. */
+.mf-pilares .mf-band-title { color: #4A0D10 !important; }
+
+
+/* Escala y alineación común de los títulos principales de Alkimya. */
+.mf-manifiesto .mf-band-title,
+.tesoros-page-title,
+.activos-origen-section:first-of-type .ayo-title-text {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.1 !important;
+  text-transform: lowercase !important;
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+
+/* Fondos continuos sin imagen rasterizada. */
+.tesoros-page {
+  background-image: none !important;
+  background: linear-gradient(145deg, #4A0D10 0%, #690D17 50%, #860119 100%) !important;
+}
+.tesoros-header-band,
+.tesoros-page .tesoros-content-card {
+  background: linear-gradient(135deg, #4A0D10, #860119) !important;
+}
+.tesoros-page .tesoros-subtitle,
+.tesoros-page .tesoros-page-title {
+  color: #FFF2E9 !important;
+}
+.tesoros-page .tesoros-container > section > p {
+  color: #FFF2E9 !important;
+}
+.activos-origen-page {
+  background: linear-gradient(145deg, #4A0D10 0%, #690D17 50%, #860119 100%) !important;
+}
+.activos-origen-content-wrap,
+.activos-origen-page .ayo-transparency-card,
+.activos-origen-page .ayo-bullet-list {
+  background: #FFF2E9 !important;
+  color: #4A0D10 !important;
+  border-radius: 1rem;
+  box-shadow: var(--da-luz-card-shadow);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 2rem;
+}
+.activos-origen-page .ayo-title-text,
+.activos-origen-page .ayo-section-title,
+.activos-origen-page .ayo-section-subtitle,
+.activos-origen-page .ayo-footer {
+  color: #FFF2E9 !important;
+}
+.activos-origen-page .ayo-paragraph,
+.activos-origen-page .ayo-blockquote,
+.activos-origen-page .ayo-bullet-list li {
+  color: #4A0D10 !important;
+}
+.activos-origen-page .ayo-card {
+  background: #FFF2E9 !important;
+}
+
+
+/* La cabecera de Activos conserva el título bordó sobre una banda crema. */
+.activos-origen-page .ayo-title-band {
+  background: #FFF2E9 !important;
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: var(--da-luz-card-shadow);
+}
+.activos-origen-page .ayo-title-band .ayo-title-text {
+  color: #97000D !important;
+}
+
+.tesoros-page .tesoros-container h2,
+.tesoros-page .tesoros-container h3,
+.tesoros-page .tesoros-container h4 { color: #FFF2E9 !important; }

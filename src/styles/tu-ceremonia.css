@@ -469,3 +469,32 @@
   padding: 0.5rem 1rem !important;
 }
 .tu-ceremonia-text-card-text { text-align: center !important; color: #FFF2E9 !important; }
+
+/* Títulos y selectores de la ceremonia diaria. */
+.tu-ceremonia-page h1.tu-ceremonia-main-title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  text-transform: none !important;
+  text-align: center !important;
+  font-weight: 600;
+}
+.tu-ceremonia-button {
+  background: #FFF2E9 !important;
+  color: #860119 !important;
+  border: 0 !important;
+  border-radius: 0 15px !important;
+  box-shadow: var(--da-luz-button-shadow);
+}
+.tu-ceremonia-button:hover {
+  background: #860119 !important;
+  color: #FFFFFF !important;
+  box-shadow: var(--da-luz-button-hover-shadow);
+}
+
+
+.tu-ceremonia-page h1.tu-ceremonia-main-title {
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem) !important;
+  line-height: 1.1 !important;
+  text-transform: lowercase !important;
+}
+
+.tu-ceremonia-secondary-title { margin-top: 0.75rem !important; }

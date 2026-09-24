@@ -137,7 +137,7 @@ export const productContentSchema = defineType({
     }),
     defineField({
       name: 'certifications',
-      title: 'Certificaciones',
+      title: 'Detalles',
       type: 'array',
       of: [
         {
