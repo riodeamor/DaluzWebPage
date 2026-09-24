@@ -299,7 +299,7 @@ function ProductsContent() {
   const skinTypes = ["seca", "grasa", "mixta", "sensible", "normal"];
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="tienda-page min-h-screen overflow-hidden">
       {/* SVG Background */}
       <div
         className="fixed inset-0 w-full h-full opacity-100 pointer-events-none z-0"
@@ -317,29 +317,38 @@ function ProductsContent() {
       <div className="container mx-auto px-4 py-8 bg-transparent">
         {/* Mobile Filters - 3x1 Horizontal Grid */}
         <div className="lg:hidden mb-4">
+          {/* Search Card - Always Open */}
+                      <div className="col-span-3">
+                        <Card variant="artisanal" className="tienda-card p-3">
+                          <div className="tienda-section-title flex items-center gap-2 mb-2">
+                            <Search className="h-4 w-4" />
+                            <span className="text-sm">Buscar</span>
+                          </div>
+                          <div className="relative">
+                            <Input
+                              variant="tienda"
+                              placeholder="Buscar productos..."
+                              value={searchTerm}
+                              onChange={(e) => setSearchTerm(e.target.value)}
+                              className="h-8 text-xs"
+                            />
+                          </div>
+                        </Card>
+                      </div>
+
+          <Button className="tienda-mobile-open w-full h-[44px]" onClick={() => setShowFilters(true)}>
+            <SlidersHorizontal className="h-4 w-4 mr-2" /> Filtrar
+          </Button>
+          {showFilters && (
+            <div className="tienda-drawer-backdrop" onClick={() => setShowFilters(false)}>
+              <div className="tienda-drawer-panel" role="dialog" aria-modal="true" aria-label="Filtros" onClick={(event) => event.stopPropagation()}>
+                <div className="tienda-drawer-scroll">
           <div className="grid grid-cols-3 gap-2">
-            {/* Search Card - Always Open */}
-            <div className="col-span-3">
-              <Card variant="artisanal" className="p-3">
-                <div className="tienda-section-title flex items-center gap-2 mb-2">
-                  <Search className="h-4 w-4" />
-                  <span className="text-sm">Buscar</span>
-                </div>
-                <div className="relative">
-                  <Input
-                    variant="tienda"
-                    placeholder="Buscar productos..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="h-8 text-xs"
-                  />
-                </div>
-              </Card>
-            </div>
+
 
             {/* Categories Card - Collapsible */}
             <div className="col-span-1">
-              <Card variant="artisanal" className="p-2">
+              <Card variant="artisanal" className="tienda-card p-2">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() =>
@@ -403,7 +412,7 @@ function ProductsContent() {
 
             {/* Filters Card - Collapsible */}
             <div className="col-span-1">
-              <Card variant="artisanal" className="p-2">
+              <Card variant="artisanal" className="tienda-card p-2">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() =>
@@ -533,7 +542,7 @@ function ProductsContent() {
 
             {/* Sort Card - Collapsible */}
             <div className="col-span-1">
-              <Card variant="artisanal" className="p-2">
+              <Card variant="artisanal" className="tienda-card p-2">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() =>
@@ -580,6 +589,11 @@ function ProductsContent() {
               </Card>
             </div>
           </div>
+                </div>
+                <Button className="tienda-drawer-apply" onClick={() => setShowFilters(false)}>APLICAR FILTROS</Button>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8">

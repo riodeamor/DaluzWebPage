@@ -2656,3 +2656,133 @@ h1, h2, h3, h4, h5, h6,
 p, span, a {
   font-style: normal;
 }
+/* Elevación Da Luz */
+:root {
+  --da-luz-card-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.30), 0 6px 12px -2px rgba(0, 0, 0, 0.18);
+  --da-luz-organic-shadow: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.35));
+  --da-luz-button-shadow: 0 4px 12px rgba(0, 0, 0, 0.20);
+  --da-luz-button-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+main .rounded-xl.border.bg-card,
+main .rounded-2xl.border.bg-card,
+main .glass-card,
+.tienda-page .tienda-card,
+.tienda-page .group.relative.overflow-hidden.flex.flex-col.box-border {
+  box-shadow: var(--da-luz-card-shadow);
+}
+
+main .btn-global,
+main .btn-enhanced,
+main button:not(:disabled):not([role="tab"]):not([data-radix-select-trigger]) {
+  box-shadow: var(--da-luz-button-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+main .btn-global:hover,
+main .btn-enhanced:hover,
+main button:not(:disabled):not([role="tab"]):not([data-radix-select-trigger]):hover {
+  box-shadow: var(--da-luz-button-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* Tienda */
+.tienda-page .tienda-card,
+.tienda-page .lg\:hidden .bg-bg-cream {
+  background: linear-gradient(145deg, #4A0D10 0%, #860119 100%);
+  border-color: transparent;
+  color: #FFF2E9;
+}
+.tienda-page .tienda-section-title,
+.tienda-page .tienda-field-label,
+.tienda-page .tienda-card .text-azul-institucional {
+  color: #FFF2E9;
+}
+.tienda-page .tienda-card input,
+.tienda-page .tienda-select-trigger,
+.tienda-page .tienda-card button,
+.tienda-page .tienda-card [role="separator"] {
+  border-color: rgba(255, 242, 233, 0.24);
+}
+.tienda-page .tienda-select-trigger {
+  background: #FFF2E9;
+  color: #4A0D10;
+}
+.tienda-select-panel {
+  background: #FFF2E9 !important;
+  color: #4A0D10 !important;
+  border: 0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: var(--da-luz-card-shadow) !important;
+  font-family: var(--font-body), serif !important;
+  font-style: italic;
+}
+.tienda-select-panel [role="option"] {
+  color: #4A0D10;
+  border-radius: 0.5rem;
+}
+.tienda-select-panel [role="option"][data-highlighted],
+.tienda-select-panel [role="option"][data-state="checked"] {
+  background: #860119;
+  color: #FFFFFF;
+}
+.tienda-page .tienda-line-button { color: #FFF2E9; }
+.tienda-page .tienda-line-button:hover { color: #FFFFFF; }
+.tienda-page .tienda-card [data-active="true"] { background: #FFF2E9; color: #4A0D10; }
+.tienda-page .tienda-card [data-active="true"]:hover { background: #FFFFFF; }
+.tienda-page .group.relative.overflow-hidden.flex.flex-col.box-border { box-shadow: var(--da-luz-card-shadow); }
+
+.tienda-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-end;
+}
+.tienda-drawer-panel {
+  width: 100%;
+  max-height: min(88dvh, 760px);
+  display: flex;
+  flex-direction: column;
+  background: #4A0D10;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem 1rem max(1rem, env(safe-area-inset-bottom));
+  box-shadow: var(--da-luz-card-shadow);
+  animation: tienda-drawer-rise 0.3s ease-out;
+}
+.tienda-drawer-scroll { overflow-y: auto; min-height: 0; }
+.tienda-drawer-scroll > .grid { grid-template-columns: 1fr; gap: 0.75rem; }
+.tienda-drawer-scroll > .grid > div { grid-column: 1 / -1; }
+.tienda-drawer-apply {
+  flex: none;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 0.75rem;
+  border-radius: 0 15px;
+  background: #FFF2E9 !important;
+  color: #4A0D10 !important;
+  font-weight: 700;
+}
+.tienda-mobile-open { background: #4A0D10 !important; color: #FFF2E9 !important; border-radius: 0 15px; }
+@keyframes tienda-drawer-rise { from { transform: translateY(100%); } to { transform: translateY(0); } }
+/* Sombras de formas orgánicas y SVG decorativos */
+main svg[class*="shape"],
+main svg[class*="wave"],
+main svg[class*="organic"],
+main svg[class*="blob"] {
+  filter: var(--da-luz-organic-shadow);
+}
+main a.btn-global,
+main a.mf-recycle-btn,
+main a.ayo-card-button,
+main a.tu-ceremonia-button {
+  box-shadow: var(--da-luz-button-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+main a.btn-global:hover,
+main a.mf-recycle-btn:hover,
+main a.ayo-card-button:hover,
+main a.tu-ceremonia-button:hover {
+  box-shadow: var(--da-luz-button-hover-shadow);
+  transform: translateY(-2px);
+}

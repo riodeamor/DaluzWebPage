@@ -34,7 +34,7 @@ export default function CiclosAlquimicosPage() {
         >
           <div className="ciclos-header-band-inner">
             <h1 id="ciclos-section-title" className="ciclos-section-header">
-              CICLOS ALQUIMICOS
+              CICLOS ALQUÍMICOS
             </h1>
           </div>
         </section>
@@ -70,18 +70,24 @@ export default function CiclosAlquimicosPage() {
               </h2>
             </div>
             <p className="ciclos-cycle-subtitle">
-              <strong>Ideal para:</strong> Quien busca una sanación 100% a medida para comenzar.
+              Navegando Mis Aguas: Calibración &amp; Depuración Emocional
             </p>
             <div className="ciclos-cycle-ovals">
               <ProcesosOvalBox className="ciclos-oval-left">
-                <strong>Modalidad:</strong>
-                <br />
-                Individual, asistido con preparados de Flores de Bach o Aromaterapia.
+                <strong>Enfoque:</strong> Depuración Emocional, Alquimia Vibracional &amp; Reconfiguración Subconsciente.
+                <br /><br />
+                <strong>Duración &amp; Formato:</strong> Proceso individual continuo (Encuentros 1:1 quincenales o mensuales).
+                <br /><br />
+                <strong>Tecnologías:</strong> Péndulo Evolutivo, Terapia Floral de Precisión, Aromaterapia Límbica y Regulación Somática.
+                <br /><br />
+                <strong>Para qué sirve:</strong> Un espacio de calibración y contención profunda para cuando el cuerpo empieza a hablar a través del cansancio crónico, la reactividad ansiosa o la sensación constante de incoherencia interna. No venimos a forzar cambios agresivos, sino a desarmar automatismos y devolverle el equilibrio a tu sistema nervioso.
               </ProcesosOvalBox>
               <ProcesosOvalBox className="ciclos-oval-right">
-                <strong>Foco Principal:</strong> Acechar tus puntos débiles y reconocer tu potencial para mapear y restaurar tu bioequilibrio.
+                <strong>Ideal para:</strong> Quienes cargan con sobreexigencia mental, postergan su propio sentir por sostener a otros, o necesitan un acompañamiento íntimo y a medida para ordenar sus aguas emocionales.
                 <br /><br />
-                <strong>Incluye:</strong> Mapeo Astrológico y meditaciones personalizados para tu viaje.
+                <strong>La Metodología (4 Niveles):</strong> Integramos en cada encuentro el rastreo subconsciente (péndulo), la indagación biopsicoemocional de la raíz, la reeducación celular (Flores de Bach + Elixir aromático) y la descarga fascial en el cuerpo.
+                <br /><br />
+                <strong>Incluye:</strong> Sesiones 1:1 personalizadas + Medicina botánica viva formulada mes a mes + Hoja de ruta sobre tus Ejes Arquetípicos + Soporte continuo entre sesiones.
               </ProcesosOvalBox>
             </div>
             <div className="ciclos-cycle-cta">
@@ -101,19 +107,25 @@ export default function CiclosAlquimicosPage() {
                 METAMORFOSIS
               </h2>
               <p className="ciclos-cycle-subtitle">
-                <strong>Duración:</strong> entre 3 a 5 meses de inmersión y purificación.
+                El Futuro es Volver al Origen: Depuración de Filtros Orgánicos &amp; Transmutación
               </p>
             </div>
             <div className="ciclos-cycle-ovals">
               <ProcesosOvalBox className="ciclos-oval-left">
-                <strong>Herramientas:</strong>
-                <br />
-                Medicina Herbal, Chamanismo y Elixires.
+                <strong>Enfoque:</strong> Acompañamiento Biopsicoemocional, Depuración de Filtros Orgánicos y Desprogramación Celular.
+                <br /><br />
+                <strong>Duración:</strong> 5 Meses (El Sendero de los 5 Elementos y Emuntorios Biológicos).
+                <br /><br />
+                <strong>Tecnologías:</strong> Fitoterapia Clínica de Precisión, Biodecodificación, Radiestesia Evolutiva y Liberación Fascial.
+                <br /><br />
+                <strong>Para qué sirve:</strong> Desconectar el piloto automático y desintoxicar la memoria que el cuerpo retiene en sus órganos. El síntoma no es un error biológico a tapar: es una puerta de entrada al subconsciente. Al limpiar tus filtros físicos con medicina vegetal, el terreno se afloja y las emociones estancadas emergen para ser transmutadas.
               </ProcesosOvalBox>
               <ProcesosOvalBox className="ciclos-oval-right">
-                <strong>Foco Principal:</strong> Limpieza de filtros orgánicos para permitir el flujo vital con la sabiduría ancestral de las hierbas medicinales, y re-programación vibracional con Elixires asistentes.
+                <strong>Ideal para:</strong> Quienes experimentan inflamación crónica (digestiva, cutánea o menstrual), fatiga que no cede, patrones repetitivos en sus vínculos o la sensación de vivir atrapadas en una coraza de autoexigencia.
                 <br /><br />
-                <strong>Incluye:</strong> Meditaciones y ejercicios personalizados.
+                <strong>La Hoja de Ruta (5 Estaciones):</strong> Intestino &amp; Mente (Mes 1), Colon &amp; Linaje Ancestral (Mes 2), Hígado &amp; Poder Personal (Mes 3), Útero, Huesos &amp; Límites (Mes 4), hasta culminar en el Sistema Nervioso y la integración de tu Adulta Soberana (Mes 5).
+                <br /><br />
+                <strong>Incluye:</strong> 1 Sesión individual mensual de 90 min (1:1) + Kit mensual de Fitoterapia Viva (tinturas madre, elixires y pócimas) + Bitácora Da Luz de trabajo somático + Acompañamiento y soporte continuo.
               </ProcesosOvalBox>
             </div>
             <div className="ciclos-cycle-cta">
@@ -130,27 +142,33 @@ export default function CiclosAlquimicosPage() {
           >
             <div className="ciclos-cycle-header">
               <h2 id="ciclos-genesis-title" className="ciclos-cycle-title">
-                GENESIS
+                GÉNESIS
               </h2>
               <p className="ciclos-cycle-subtitle">
-                <strong>Duración:</strong> 7 meses, el ciclo completo para una renovación consciente.
+                La Tecnología del Ser: Soberanía Celular &amp; Reestructuración Somática
               </p>
             </div>
             <div className="ciclos-cycle-ovals">
               <ProcesosOvalBox className="ciclos-oval-left">
-                <strong>El Programa:</strong> Acceso paulatino al recorrido de los 6 Ejes para una purificación orgánica y psíquica total.
+                <strong>Enfoque:</strong> Formación y Reestructuración Somática, Biológica y Transgeneracional.
                 <br /><br />
-                <strong>La Diferencia:</strong> Incluye sesiones individuales mensuales (1h 15min) para ajustar el proceso a tu pulso único.
+                <strong>Duración:</strong> 7 a 8 Meses (El tiempo biológico necesario para reeducar la fascia, los hábitos y la memoria celular).
+                <br /><br />
+                <strong>Tecnologías:</strong> Los 5 Pilares Da Luz: Fitoterapia Clínica, Anatomía de la Fascia, Psicomagia Subconsciente, Resonancia Sensorial y Vaciado Nervioso.
+                <br /><br />
+                <strong>Para qué sirve:</strong> Es una intervención profunda en tu biografía para desarmar el piloto automático y reeducar tu organismo. No busca alivios pasajeros, sino una transformación estructural en tu terreno: limpiar filtros físicos, liberar la memoria del estrés retenida en el tejido conectivo y desmantelar los mandatos automáticos que sostienen el malestar.
               </ProcesosOvalBox>
               <ProcesosOvalBox className="ciclos-oval-right">
-                <strong>Foco Principal:</strong> Depuración integral con la potencia de las hierbas medicinales, enfocada en la limpieza profunda y específica de sistemas y órganos clave, llevando el bienestar a nivel celular.
+                <strong>Ideal para:</strong> Cualquier persona que habite un cuerpo biológico y comprenda que la salud requiere depurar sus órganos y ordenar su química interna. Para quienes buscan reconocer y honrar a sus ancestros, pero con la soberanía suficiente para cortar las lealtades invisibles y los patrones de dolor o escasez que ya no eligen perpetuar.
                 <br /><br />
-                <strong>Incluye:</strong> Archivos descargables semanales y una sesión mensual uno a uno para una guía profunda + Elixir aromático-floral.
+                <strong>El Recorrido (Matriz de Estaciones):</strong> El Vacío, Raíces e Intestino, Hígado y Fuego, Centro Creativo &amp; Pelvis, El Puente del Corazón, La Voz Laríngea, hasta anclar en la glándula pineal y la integración de tu autogestión.
+                <br /><br />
+                <strong>Formatos de participación:</strong> Modalidad Autogestión: acceso completo, clases grabadas, bitácoras clínicas y audios de integración somática. Modalidad Mentoría 1:1: programa completo + sesiones mensuales individuales de 90 min con Guadalupe + canal de soporte prioritario. Ambas disponibles en versión 100% Digital o sumando el Botiquín Alquímico Físico con fórmulas botánicas vivas.
               </ProcesosOvalBox>
             </div>
             <div className="ciclos-cycle-cta">
               <Link href="#" className="procesos-btn-cream ciclos-detail-link">
-                VER DETALLES COMPLETOS DE GENESIS
+                VER DETALLES Y FORMATOS DE GÉNESIS
               </Link>
             </div>
           </article>

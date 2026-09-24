@@ -446,3 +446,26 @@
 /* Override the inherited Alkimya heading palette only in this hero. */
 .tu-ceremonia-page h1.tu-ceremonia-main-title { color: #4A0D10 !important; }
 .tu-ceremonia-page h2.tu-ceremonia-secondary-title { color: #FFFFFF !important; }
+
+/* Texto editorial sobre el fondo degradado */
+.tu-ceremonia-text-card,
+.tu-ceremonia-text-card-1,
+.tu-ceremonia-text-card-2 {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: min(100%, 56rem) !important;
+  height: auto !important;
+  margin-inline: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.tu-ceremonia-text-card-bg { display: none !important; }
+.tu-ceremonia-text-card-content {
+  position: relative !important;
+  inset: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0.5rem 1rem !important;
+}
+.tu-ceremonia-text-card-text { text-align: center !important; color: #FFF2E9 !important; }

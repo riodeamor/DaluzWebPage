@@ -31,7 +31,7 @@ export default function ProcesosPage() {
         <section className="procesos-header-band" aria-labelledby="procesos-title">
           <div className="procesos-header-band-inner">
             <h1 id="procesos-title" className="procesos-band-title">
-              PROCESOS DA LUZ: LA ALQUIMÍA DE TU SOBERANÍA
+              PROCESOS DA LUZ: LA ALQUIMIA DE TU SOBERANÍA
             </h1>
           </div>
         </section>
@@ -39,7 +39,7 @@ export default function ProcesosPage() {
         {/* Intro quote */}
         <section className="procesos-intro-quote" aria-label="Introducción">
           <p className="procesos-intro-quote-text">
-            &ldquo;En Da Luz, el cuerpo refleja el funcionamiento del Alma. Abordamos la causa raíz para reequilibrar tus cuerpos físico, energético, emocional y mental.&rdquo;
+            &ldquo;El cuerpo no miente ni negocia: es una tecnología viva que somatiza lo que el sistema nervioso y el subconsciente no logran metabolizar. No creemos en soluciones mágicas ni en terapias que generan dependencia; abordamos la causa raíz combinando fitoterapia clínica, modulación vibracional y liberación somática para devolverte el mando de tu propia biología.&rdquo;
           </p>
         </section>
 
@@ -54,12 +54,12 @@ export default function ProcesosPage() {
                 />
               </div>
               <div className="procesos-herramienta-content">
-                <h3 className="procesos-herramienta-name">EL BOTIQUÍN ALQUÍMICO</h3>
+                <h3 className="procesos-herramienta-name">EL BOTIQUÍN BOTÁNICO</h3>
                 <p className="procesos-herramienta-desc">
-                  Tu farmacia natural para la autogestión diaria. (Tinturas, Microdosis, Elixires y Aromaterapia).
+                  Nuestra farmacia viva para la autogestión y el reseteo orgánico. Accedé al catálogo detallado de las hierbas medicinales, tinturas madre, microdosis y elixires florales con los que formulamos y asistimos cada proceso. Conocé la signatura botánica de cada planta, sus principios activos y cómo actúan sobre la depuración de tus filtros emuntorios (hígado, intestino, riñones) y la regulación del sistema nervioso.
                 </p>
-                <Link href="/productos" className="procesos-btn-cream">
-                  EXPLORAR EL BOTIQUÍN
+                <Link href="/productos" className="procesos-btn-blue">
+                  CONOCER NUESTRAS PLANTAS Y ELIXIRES
                 </Link>
               </div>
             </div>
@@ -71,12 +71,12 @@ export default function ProcesosPage() {
                 />
               </div>
               <div className="procesos-herramienta-content">
-                <h3 className="procesos-herramienta-name">COFRE DA LUZ</h3>
+                <h3 className="procesos-herramienta-name">COFRE DE TECNOLOGÍAS VIBRACIONALES</h3>
                 <p className="procesos-herramienta-desc">
-                  Tecnologías vibracionales que sostienen el campo de sanación. (Sonidos Ancestrales, Péndulo, Reiki y Mapeos de Personalidad).
+                  Las herramientas clínicas y energéticas con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestras terapias: sonoterapia con cuencos tibetanos (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y liberación de la fascia corporal. Saberes de precisión para ordenar lo sutil antes de que se cristalice en síntoma físico.
                 </p>
-                <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-cream">
-                  ABRIR EL COFRE DE ALIADOS
+                <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
+                  EXPLORAR HERRAMIENTAS Y TERAPIAS
                 </Link>
               </div>
             </div>
@@ -86,14 +86,14 @@ export default function ProcesosPage() {
         {/* Footer CTA */}
         <footer className="procesos-page-footer">
           <p className="procesos-page-cta-text">
-            ¿No sabés por dónde empezar?
+            ¿Por dónde ingresar a tu proceso?
           </p>
           <div className="procesos-page-buttons">
-            <Link href="/servicios/procesos/ciclos-alquimicos" className="procesos-btn-cream">
-              CICLOS ALQUÍMICOS
+            <Link href="/servicios/procesos/ciclos-alquimicos" className="procesos-btn-cream procesos-btn-orientation">
+              EXPLORAR CICLOS ALQUÍMICOS
             </Link>
-            <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-cream">
-              SESIONES INTEGRALES
+            <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
+              ELEGIR UNA SESIÓN INTEGRAL
             </Link>
           </div>
         </footer>

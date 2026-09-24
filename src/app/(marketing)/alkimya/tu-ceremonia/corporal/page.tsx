@@ -69,7 +69,7 @@ export default function CeremoniaCorporalPage() {
         </section>
 
         {/* Paso a Paso */}
-        <section className="px-4 pb-12 sm:px-6 sm:pb-16 md:px-8 md:pb-20 lg:px-12 lg:pb-24">
+        <section className="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 lg:px-12 lg:pb-8">
           <div className="mx-auto max-w-4xl space-y-12 md:space-y-16 lg:space-y-20">
             {PASOS.map((paso, stepIndex) => {
               const isEvenStep = stepIndex % 2 === 0
@@ -169,7 +169,7 @@ export default function CeremoniaCorporalPage() {
 
         {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
-          <div className="mt-8 flex justify-center sm:mt-10">
+          <div className="mt-8 flex justify-center">
             <Link
               href="/productos"
               className="font-title inline-flex justify-center rounded-r-[15px] border-2 border-[var(--color-brand-primary)] bg-[var(--color-bg-light)] px-8 py-4 text-sm font-medium uppercase tracking-[1px] text-[var(--color-brand-primary)] transition-colors hover:bg-[var(--color-brand-primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-primary)] focus-visible:ring-offset-2 sm:text-base"

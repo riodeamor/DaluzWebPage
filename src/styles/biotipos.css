@@ -4971,3 +4971,46 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
   }
 }
 
+
+/* Biotipos: recuadros gemelos y CTA centrada */
+.biotipos-section2-main-container {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  gap: 1.5rem !important;
+  align-items: stretch;
+  max-width: 72rem !important;
+  margin: 0 auto;
+}
+.biotipos-section2-left-column,
+.biotipos-section2-right-column { width: 100%; height: 100%; }
+.biotipos-section2-left-column .biotipos-section2-text-left,
+.biotipos-section2-right-column .biotipos-section2-text-left {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  background: #FFF2E9;
+  border-radius: 1rem;
+  box-shadow: var(--da-luz-card-shadow);
+}
+.biotipos-section2-text-left-bg { display: none !important; }
+.biotipos-section2-text-left-content { min-height: 100%; padding: 2.5rem; }
+.biotipos-section15-buttons-container {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100% !important;
+  max-width: none !important;
+  margin-top: 2rem;
+}
+.biotipos-section15-button { margin-left: 0 !important; float: none !important; box-shadow: var(--da-luz-button-shadow); }
+.biotipos-section15-button:hover { box-shadow: var(--da-luz-button-hover-shadow); }
+@media (min-width: 640px) { .biotipos-section15-buttons-container { flex-direction: row; } }
+@media (min-width: 768px) { .biotipos-section2-main-container { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

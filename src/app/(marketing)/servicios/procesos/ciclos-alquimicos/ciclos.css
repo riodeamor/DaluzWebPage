@@ -98,14 +98,16 @@ a.procesos-btn-cream.ciclos-detail-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #16345F;
-  color: #FFF2E9;
+  background: linear-gradient(135deg, #005080, #0085B1);
+  color: #FFFFFF;
+  font-family: Montserrat, var(--font-text), sans-serif;
+  letter-spacing: 0.18em;
   border-radius: 0 15px;
   transition: background-color 0.3s ease;
 }
 
 a.procesos-btn-cream.ciclos-detail-link:hover {
-  background-color: #005080;
+  background: #16345F;
 }
 
 /* Ciclos page - intro block con degradado azul profundo */
