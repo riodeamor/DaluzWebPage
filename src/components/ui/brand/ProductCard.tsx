@@ -460,7 +460,7 @@ export default function ProductCard({
                   )}
                 </div>
                 {originalPrice && originalPrice > price && (
-                  <div className="text-sm text-white font-semibold bg-[#920000] px-2 py-1 rounded-md inline-block">
+                  <div className="text-sm text-[#791010] font-semibold bg-transparent px-0 py-1 inline-block">
                     Ahorrás {formatPrice(originalPrice - price)}
                   </div>
                 )}
@@ -468,11 +468,11 @@ export default function ProductCard({
                   <div className="flex flex-col gap-1.5">
                     {installments3Enabled && (
                       <div
-                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border whitespace-nowrap"
+                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border-0 whitespace-nowrap"
                         style={{
-                          backgroundColor: "#ECFDF5",
-                          borderColor: "#A7F3D0",
-                          color: "#15803D",
+                          backgroundColor: "#FAF2EC",
+                          borderColor: "transparent",
+                          color: "#4A0D10",
                         }}
                       >
                         <CreditCard className="h-3.5 w-3.5 flex-shrink-0" />
@@ -483,11 +483,11 @@ export default function ProductCard({
                     )}
                     {installments6Enabled && (
                       <div
-                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border whitespace-nowrap"
+                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border-0 whitespace-nowrap"
                         style={{
-                          backgroundColor: "#ECFDF5",
-                          borderColor: "#A7F3D0",
-                          color: "#15803D",
+                          backgroundColor: "#FAF2EC",
+                          borderColor: "transparent",
+                          color: "#4A0D10",
                         }}
                       >
                         <CreditCard className="h-3.5 w-3.5 flex-shrink-0" />
@@ -504,7 +504,7 @@ export default function ProductCard({
                     {transferDiscountPrice && (
                       <div
                         className="px-2 py-1 rounded-md"
-                        style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                        style={{ backgroundColor: "transparent", color: "#791010" }}
                       >
                         <span
                           style={{
@@ -521,7 +521,7 @@ export default function ProductCard({
                     {cashDiscountPrice && (
                       <div
                         className="px-2 py-1 rounded-md"
-                        style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                        style={{ backgroundColor: "transparent", color: "#791010" }}
                       >
                         <span
                           style={{
@@ -554,11 +554,11 @@ export default function ProductCard({
                 {stock > 0 && (
                   <div className="flex items-center gap-1 min-w-0">
                     {/* Desktop: Compact quantity selector */}
-                    <div className="flex items-center border border-border rounded-md lg:rounded-lg bg-white shadow-sm flex-shrink-0">
+                    <div className="flex h-[44px] items-center border border-border rounded-md lg:rounded-lg bg-white flex-shrink-0">
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-8 w-8 lg:h-9 lg:w-9 p-0 hover:bg-gray-50 rounded-l-md lg:rounded-l-lg disabled:opacity-50"
+                        className="h-[44px] w-8 lg:w-9 p-0 hover:bg-gray-50 rounded-l-md lg:rounded-l-lg disabled:opacity-50"
                         onClick={() => {
                           setQuantity(Math.max(1, quantity - 1));
                         }}
@@ -572,7 +572,7 @@ export default function ProductCard({
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="h-8 w-8 lg:h-9 lg:w-9 p-0 hover:bg-gray-50 rounded-r-md lg:rounded-r-lg disabled:opacity-50"
+                        className="h-[44px] w-8 lg:w-9 p-0 hover:bg-gray-50 rounded-r-md lg:rounded-r-lg disabled:opacity-50"
                         onClick={() => {
                           setQuantity(Math.min(stock, quantity + 1));
                         }}
@@ -590,7 +590,7 @@ export default function ProductCard({
                         "flex-1 font-semibold shadow-md transition-all duration-300 uppercase tracking-wide",
                         "hover:shadow-lg hover:scale-105 active:scale-95",
                         "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                        "text-[9px] lg:text-[10px] h-8 lg:h-9 px-1 lg:px-2",
+                        "text-[9px] lg:text-[10px] h-[44px] px-1 lg:px-2",
                         theme.button,
                       )}
                       size="sm"
@@ -675,11 +675,11 @@ export default function ProductCard({
                   <div className="flex flex-col gap-1">
                     {installments3Enabled && (
                       <div
-                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border whitespace-nowrap"
+                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border-0 whitespace-nowrap"
                         style={{
-                          backgroundColor: "#ECFDF5",
-                          borderColor: "#A7F3D0",
-                          color: "#15803D",
+                          backgroundColor: "#FAF2EC",
+                          borderColor: "transparent",
+                          color: "#4A0D10",
                         }}
                       >
                         <CreditCard className="h-3 w-3 flex-shrink-0" />
@@ -690,11 +690,11 @@ export default function ProductCard({
                     )}
                     {installments6Enabled && (
                       <div
-                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border whitespace-nowrap"
+                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border-0 whitespace-nowrap"
                         style={{
-                          backgroundColor: "#ECFDF5",
-                          borderColor: "#A7F3D0",
-                          color: "#15803D",
+                          backgroundColor: "#FAF2EC",
+                          borderColor: "transparent",
+                          color: "#4A0D10",
                         }}
                       >
                         <CreditCard className="h-3 w-3 flex-shrink-0" />
@@ -711,7 +711,7 @@ export default function ProductCard({
                     {transferDiscountPrice && (
                       <div
                         className="px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                        style={{ backgroundColor: "transparent", color: "#791010" }}
                       >
                         <span
                           style={{
@@ -726,7 +726,7 @@ export default function ProductCard({
                     {cashDiscountPrice && (
                       <div
                         className="px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                        style={{ backgroundColor: "transparent", color: "#791010" }}
                       >
                         <span
                           style={{
@@ -765,7 +765,7 @@ export default function ProductCard({
                     "w-full font-semibold shadow-md transition-all duration-300",
                     "hover:shadow-lg hover:scale-105 active:scale-95",
                     "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                    "text-xs h-8",
+                    "text-xs h-[44px]",
                     theme.button,
                   )}
                   size="sm"

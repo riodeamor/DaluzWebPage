@@ -550,13 +550,14 @@
   padding: 0.75rem 2rem;
   min-height: 44px;
   /* Color: azul fondo con blanco texto (Raíces) */
-  background-color: var(--raices-azul, #051341);
-  color: var(--raices-blanco, #ffffff);
-  font-family: var(--font-title), var(--font-velista), serif;
+  background: linear-gradient(135deg, #005080, #0085B1);
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(5, 19, 65, 0.35);
+  font-family: Montserrat, var(--font-text), sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.18em;
   text-decoration: none;
   border: none;
   border-radius: 0 15px;
@@ -564,7 +565,9 @@
 }
 
 .raices-cta-button:hover {
-  opacity: 0.9;
+  background: #16345F;
+  color: #FFFFFF;
+  opacity: 1;
   transform: translateY(-1px);
   /* Sin sombraextraña */
 }

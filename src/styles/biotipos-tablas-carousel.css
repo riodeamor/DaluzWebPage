@@ -241,3 +241,38 @@
   height: 8px;
 }
 
+
+.biotipos-tablas-grid { display: none; }
+@media (min-width: 768px) {
+  .biotipos-tablas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1320px;
+    margin: 2rem auto 0;
+    align-items: stretch;
+  }
+  .biotipos-tablas-grid .tabla-biotipo { height: 100%; box-shadow: var(--da-luz-card-shadow); }
+  .biotipos-tablas-grid .tabla-biotipo-body { padding: 1.25rem; }
+  .biotipos-tablas-grid .tabla-biotipo-table { table-layout: fixed; overflow-wrap: anywhere; }
+  .biotipos-tablas-grid .tabla-biotipo-table th,
+  .biotipos-tablas-grid .tabla-biotipo-table td { padding: 0.4rem; font-size: 0.8rem; }
+  .biotipos-tablas-carousel { display: none; }
+}@media (min-width: 768px) {
+  .biotipos-tablas-grid .tabla-biotipo-table thead { display: none; }
+  .biotipos-tablas-grid .tabla-biotipo-table tr { display: block; }
+  .biotipos-tablas-grid .tabla-biotipo-table td {
+    display: block;
+    text-align: left;
+    overflow-wrap: anywhere;
+    padding: 0.65rem 0;
+  }
+  .biotipos-tablas-grid .tabla-biotipo-table td::before {
+    content: attr(data-label);
+    display: block;
+    color: #860119;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+}

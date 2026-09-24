@@ -9,8 +9,8 @@
    =========================== */
 .procesos-pages {
   --procesos-bg: #051341;
-  --procesos-bg-mid: #091c52;
-  --procesos-bg-light: #16345F;
+  --procesos-bg-mid: #16345F;
+  --procesos-bg-light: #1A3F71;
   --procesos-cream: #FFF2E9;
   --procesos-text-on-cream: #051341;
   --procesos-accent: #ffffff;
@@ -30,11 +30,7 @@
   /* Rich gradient background using brand colors */
   background-color: var(--procesos-bg);
   background-image:
-    radial-gradient(ellipse at 0% 0%, #16345F 0%, transparent 55%),
-    radial-gradient(ellipse at 100% 30%, #091c52 0%, transparent 50%),
-    radial-gradient(ellipse at 20% 70%, #091c52 0%, transparent 45%),
-    radial-gradient(ellipse at 80% 100%, #16345F 0%, transparent 50%),
-    linear-gradient(160deg, #051341 0%, #091c52 40%, #16345F 75%, #091c52 100%);
+    linear-gradient(160deg, #051341 0%, #16345F 50%, #1A3F71 100%);
   overflow-x: hidden;
 }
 
@@ -235,6 +231,39 @@ a.procesos-btn-cream:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
   color: #FFF2E9 !important;
+}
+
+a.procesos-btn-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #005080, #0085B1);
+  color: #FFFFFF;
+  border: 0;
+  border-radius: 0 15px;
+  box-shadow: 0 4px 10px rgba(5, 19, 65, 0.35);
+  font-family: Montserrat, var(--font-text), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+a.procesos-btn-blue:hover {
+  background: #16345F;
+  box-shadow: 0 6px 16px rgba(0, 133, 177, 0.45);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+a.procesos-btn-orientation {
+  background: #FFF2E9;
+  color: #051341;
 }
 
 /* ===========================

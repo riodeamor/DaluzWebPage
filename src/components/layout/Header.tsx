@@ -609,7 +609,7 @@ export default function Header() {
                     className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
                     style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
-                    Membresía
+                    Experiencias
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
@@ -932,7 +932,7 @@ export default function Header() {
 
                       <div className="mb-4">
                         <div className="text-lg font-title font-medium mb-3" style={{ color: "#2A2543" }}>
-                          Membresía
+                          Experiencias
                         </div>
                         <div className="ml-4 space-y-2">
                           <Link href="/programa-transformacion" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>

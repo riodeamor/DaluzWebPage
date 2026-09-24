@@ -2,21 +2,6 @@
 
 import { NextPage } from 'next';
 
-/* Nube blanca festoneada (pilares 3 y 4) — se estira al alto del contenido */
-const CloudShape = () => (
-  <svg
-    className="mf-cloud-svg"
-    viewBox="0 0 300 200"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M20 16 C74 4 226 4 280 16 C297 21 296 60 295 100 C296 140 297 179 280 184 C226 196 74 196 20 184 C3 179 4 140 5 100 C4 60 3 21 20 16 Z"
-      fill="#fdfbf4"
-    />
-  </svg>
-);
-
 /* Anillo decorativo de 4 flechas del ciclo de reciclaje (solo desktop/tablet) */
 const ArrowRing = () => (
   <svg
@@ -24,13 +9,13 @@ const ArrowRing = () => (
     viewBox="0 0 1000 500"
     aria-hidden="true"
   >
-    <g fill="none" stroke="#f6efd9" strokeWidth={5} strokeLinecap="round">
+    <g fill="none" stroke="#FFF2E9" strokeWidth={2.5} opacity={0.85} strokeLinecap="round">
       <path d="M962.9 288.2 A470 220 0 0 1 581.6 466.7" />
       <path d="M418.4 466.7 A470 220 0 0 1 37.1 288.2" />
       <path d="M37.1 211.8 A470 220 0 0 1 418.4 33.3" />
       <path d="M581.6 33.3 A470 220 0 0 1 962.9 211.8" />
     </g>
-    <g fill="#f6efd9">
+    <g fill="#FFF2E9" opacity={0.85}>
       <g transform="translate(581.6 466.7) rotate(175.3)">
         <path d="M0 0 L-24 -13 L-24 13 Z" />
       </g>
@@ -81,7 +66,7 @@ const AlkimyaPage: NextPage = () => {
 
         <div className="mf-manifiesto-body">
           <div className="mf-blob-block mf-cloud">
-            <CloudShape />
+
             <p className="mf-lead">
               <em>
                 Neurocosmética que Transforma: una fusión entre los saberes
@@ -95,7 +80,7 @@ const AlkimyaPage: NextPage = () => {
           </div>
 
           <div className="mf-blob-block mf-cloud">
-            <CloudShape />
+
             <p className="mf-text">
               Inspirada en la sabiduría de las medicinas ancestrales que
               transformaron la conexión con mi cuerpo, he creado alquimias
@@ -106,7 +91,7 @@ const AlkimyaPage: NextPage = () => {
           </div>
 
           <div className="mf-blob-block mf-cloud">
-            <CloudShape />
+
             <p className="mf-lead mf-lead--bold">
               Como la naturaleza misma, nuestros cuerpos hablan, y Da Luz es el
               puente para escucharlos,
@@ -139,7 +124,7 @@ const AlkimyaPage: NextPage = () => {
               <span className="mf-pilar-num">1.</span> Ecología y Conciencia
             </h3>
             <div className="mf-pilar-body mf-cloud">
-              <CloudShape />
+
               <p className="mf-text">
                 Creemos que es innecesario dañar la Madre Tierra, nuestro propio
                 cuerpo y/o los seres vivos con los que convivimos para cuidarnos.
@@ -167,7 +152,7 @@ const AlkimyaPage: NextPage = () => {
               <span className="mf-pilar-num">2.</span> Botánica y Natural
             </h3>
             <div className="mf-pilar-body mf-cloud">
-              <CloudShape />
+
               <p className="mf-lead">
                 <em>La naturaleza es nuestra farmacia más sabia.</em>
               </p>
@@ -191,7 +176,7 @@ const AlkimyaPage: NextPage = () => {
               <span className="mf-pilar-num">3.</span> Coherencia y Transmutación
             </h3>
             <div className="mf-pilar-body mf-cloud">
-              <CloudShape />
+
               <p className="mf-text">
                 Cada producto está diseñado con una intención clara. Combinamos la
                 sabiduría de las hierbas medicinales con activos biotecnológicos
@@ -212,7 +197,7 @@ const AlkimyaPage: NextPage = () => {
               <span className="mf-pilar-num">4.</span> Neurocosmética Vibracional
             </h3>
             <div className="mf-pilar-body mf-cloud">
-              <CloudShape />
+
               <p className="mf-text">
                 Nuestra cosmética es una invitación a potenciar y honrar la
                 comunicación entre tu piel y tu mente, usando tus Sentidos como un
