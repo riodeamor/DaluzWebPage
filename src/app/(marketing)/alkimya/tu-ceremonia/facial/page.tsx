@@ -49,54 +49,40 @@ type Paso = {
 
 const PASOS: readonly Paso[] = [
   {
-    num: 1,
-    titulo: 'Limpieza Facial',
-    proposito:
-      'Elimina suciedad, sebo, maquillaje y toxinas. Prepara la piel para absorber tratamientos.',
-    intencion:
-      'Con el agua, liberá la piel de lo que ya no necesita y conectate con la pureza para recibir el nuevo día .',
-    consejos:
-      'Usá tu Agua Micelar para desmaquillar y tu limpiador facial en Gel como segundo paso.',
+    "num": 1,
+    "titulo": "Limpieza Facial: El Vaciado",
+    "proposito": "Remueve con eficacia residuos urbanos, exceso de sebo y maquillaje, optimizando la permeabilidad cutánea para los tratamientos posteriores.",
+    "intencion": "A través del fluir del agua, liberá tu piel de lo estancado y conectá con la claridad para recibir el nuevo ciclo.",
+    "consejos": "Iniciá con tu Agua Micelar para desmaquillar con suavidad y continuá con tu limpiador facial en Gel como segundo paso de la doble limpieza."
   },
   {
-    num: 2,
-    titulo: 'Exfoliación (Complementaria)',
-    proposito:
-      'Renueva el cutis, desobstruye poros y elimina la piel muerta. Mejora la absorción.',
-    intencion:
-      'Liberá las capas de lo viejo (células muertas) y prepará tu ser para la nueva recepción.',
-    consejos:
-      'Aplicar de 1 a 3 veces por semana, según el biotipo. Utilizar el Gel exfoliante Renace.',
+    "num": 2,
+    "titulo": "Exfoliación: La Renovación (Complementaria)",
+    "proposito": "Acelera la regeneración celular y pule la textura de la piel, maximizando la absorción de los principios activos.",
+    "intencion": "Soltá las capas del pasado y prepará tu superficie para una receptividad absoluta.",
+    "consejos": "Integrá el Gel Exfoliante Renace de 1 a 3 veces por semana, respetando los tiempos de tu biotipo."
   },
   {
-    num: 3,
-    titulo: 'Tonificación',
-    proposito:
-      'Equilibra el pH de la piel tras la limpieza y prepara la barrera cutánea.',
-    intencion: 'Tonificá tu intención y tu campo energético.',
-    consejos:
-      'Aplicá el Tónico Hidratante con toques suaves o brumizando el rostro, mañana y noche.',
+    "num": 3,
+    "titulo": "Tonificación: La Frecuencia",
+    "proposito": "Restaura el equilibrio del pH tras la limpieza y fortalece la función de la barrera hidrolipídica.",
+    "intencion": "Tonificá tu foco y tu campo energético con cada vaporización.",
+    "consejos": "Brumizá tu Tónico Hidratante directamente sobre el rostro o mediante toques de tecleo, mañana y noche."
   },
   {
-    num: 4,
-    titulo: 'Nutrición (Sérum)',
-    proposito:
-      'Aporta la alta concentración de activos específicos (Vitaminas, Ácido Hialurónico) que tu piel necesita.',
-    intencion:
-      'Nutrí tu Ser con lo más vital que necesita. Conectá con la intención detrás de la Alkimya elegida.',
-    consejos:
-      'Aplicá tu Sérum específico (Vitamina C, Niacinamida, etc.) con masajes suaves.',
+    "num": 4,
+    "titulo": "Nutrición: El Sérum",
+    "proposito": "Infunde biomoléculas activas de alta concentración (Vitaminas, Ácido Hialurónico) que penetran en profundidad para tratar las necesidades específicas de la dermis.",
+    "intencion": "Nutrí tu Ser con lo esencial. Conectá conscientemente con la frecuencia de la Alkimya elegida.",
+    "consejos": "Distribuí tu Sérum específico mediante sutiles presiones y masajes ascendentes hasta su total integración."
   },
   {
-    num: 5,
-    titulo: 'Humectación y Protección (Hidratación)',
-    proposito:
-      'Sella los activos, previene la pérdida de agua y restaura el confort.',
-    intencion:
-      'Sellá la gratitud por tu Ser. Que tu piel se sienta mimada y cuidada.',
-    consejos:
-      'Usá la Emulsión o Crema específica para tu biotipo. Aplicá después del sérum.',
-  },
+    "num": 5,
+    "titulo": "Humectación y Protección: El Sello",
+    "proposito": "Crea un manto oclusivo que previene la deshidratación transepidérmica y devuelve un confort inmediato.",
+    "intencion": "Sellá el cuidado hacia tu templo físico. Permití que tu piel descanse abrigada y protegida.",
+    "consejos": "Aplicá la Emulsión o Crema específica para tu biotipo inmediatamente después del sérum."
+  }
 ];
 
 export default function CeremoniaFacialPage() {
@@ -112,9 +98,17 @@ export default function CeremoniaFacialPage() {
               CEREMONIA FACIAL
             </span>
           </h1>
-          <h3 className="font-subtitle mt-4 text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-facial-hero-subtitle">
+          <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-facial-hero-subtitle">
             El Rostro: Activación del Escudo Protector
-          </h3>
+          </h2>
+        </section>
+
+        {/* Carrusel de biotipos */}
+        <section className="px-4 pb-8 sm:px-6 sm:pb-12 md:px-8 md:pb-16 lg:px-12 lg:pb-20">
+          <CeremoniaCarousel
+            banners={BANNERS}
+            label="Ceremonias faciales según tu biotipo"
+          />
         </section>
 
         {/* Paso a Paso */}
@@ -155,17 +149,13 @@ export default function CeremoniaFacialPage() {
                     data-order="1"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
                         Propósito y Beneficio
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content">
-                        {paso.proposito}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content">
+                      {paso.proposito}
+                    </p>
                   </div>
 
                   {/* Intención de la Ceremonia */}
@@ -175,17 +165,13 @@ export default function CeremoniaFacialPage() {
                     data-order="2"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
                         Intención de la Ceremonia
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content">
-                        {paso.intencion}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content">
+                      {paso.intencion}
+                    </p>
                   </div>
 
                   {/* Consejos de Aplicación */}
@@ -195,17 +181,13 @@ export default function CeremoniaFacialPage() {
                     data-order="3"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
                         Consejos de Aplicación
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content whitespace-pre-line">
-                        {paso.consejos}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content whitespace-pre-line">
+                      {paso.consejos}
+                    </p>
                   </div>
 
                   {/* Texto extra (solo si aplica) */}
@@ -250,12 +232,8 @@ export default function CeremoniaFacialPage() {
           </div>
         </section>
 
-        {/* Elegí tu Ceremonia - Carrusel de biotipos */}
-        <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32 -mt-4 sm:-mt-8 lg:-mt-16">
-          <CeremoniaCarousel
-            banners={BANNERS}
-            label="Ceremonias faciales según tu biotipo"
-          />
+        {/* Elegí tu Ceremonia */}
+        <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
           <div className="mt-8 flex justify-center sm:mt-10">
             <Link
               href="/productos"

@@ -121,7 +121,6 @@
 /* Step cards - mobile: stacked, with SVG backgrounds */
 .ceremonia-corporal-step-title,
 .ceremonia-corporal-block-title,
-.ceremonia-corporal-block-text,
 .ceremonia-corporal-extra-block {
   position: relative;
   width: 100%;
@@ -168,8 +167,6 @@
 
 /* SVG backgrounds - mobile (visible, adapted) */
 .ceremonia-corporal-step-title-bg,
-.ceremonia-corporal-block-title-bg,
-.ceremonia-corporal-block-text-bg,
 .ceremonia-corporal-extra-block-bg {
   position: absolute;
   inset: 0;
@@ -183,11 +180,6 @@
   background-image: url('/svg/ceremonias/SectionTitleBg.svg');
 }
 
-.ceremonia-corporal-block-title-bg {
-  background-image: url('/svg/ceremonias/SectionTitle2.svg');
-}
-
-.ceremonia-corporal-block-text-bg,
 .ceremonia-corporal-extra-block-bg {
   background-image: url('/svg/ceremonias/text2Bg.svg');
 }
@@ -523,5 +515,99 @@
   /* Section container */
   .ceremonia-corporal-content .max-w-4xl {
     max-width: 65rem;
+  }
+}
+/* Scoped contrast rules: decorative backgrounds stay inside their containers. */
+.ceremonia-corporal-hero-title {
+  background-color: transparent;
+  color: #4A0D10;
+}
+.ceremonia-corporal-hero-title-text {
+  color: #4A0D10 !important;
+}
+.ceremonia-corporal-hero-subtitle {
+  position: relative;
+  margin-top: -10px;
+  z-index: 10;
+  color: #FFFFFF !important;
+}
+.ceremonia-corporal-extra-block {
+  background-color: #4A0D10;
+  border-radius: 0 24px;
+}
+.ceremonia-corporal-extra-block-bg {
+  background-image: none;
+}
+.ceremonia-corporal-block-text-content,
+.ceremonia-corporal-extra-block-content,
+.ceremonia-corporal-extra-block-content p {
+  color: #FFFFFF !important;
+}
+.ceremonia-corporal-page .ceremonia-corporal-block-title-text {
+  color: #FFFFFF !important;
+}
+
+/* Content-sized rows preserve the zigzag without overlapping longer copy. */
+@media (min-width: 1024px) {
+  .ceremonia-corporal-step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    padding-bottom: 3rem;
+  }
+  .ceremonia-corporal-step-container > .ceremonia-corporal-step-title,
+  .ceremonia-corporal-step-container > .ceremonia-corporal-block-group[data-order],
+  .ceremonia-corporal-step-container > .ceremonia-corporal-extra-block {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+  }
+  .ceremonia-corporal-step-container > [data-zigzag="left"] { align-self: flex-start; }
+  .ceremonia-corporal-step-container > [data-zigzag="right"] { align-self: flex-end; }
+  .ceremonia-corporal-step-title {
+    min-height: 150px;
+  }
+  .ceremonia-corporal-step-title-text {
+    position: relative;
+    inset: auto;
+    min-height: 118px;
+  }
+}
+
+/* A single heading plaque followed by an unboxed, content-sized paragraph. */
+.ceremonia-corporal-block-title {
+  min-height: 0;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #4A0D10;
+  border-radius: 0 24px;
+}
+.ceremonia-corporal-block-title-text {
+  padding: 0;
+}
+.ceremonia-corporal-page .ceremonia-corporal-block-text-content {
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0 0;
+  padding: 0 1.25rem;
+  background: transparent;
+  color: #FFFFFF !important;
+  font-family: var(--font-text, 'EB Garamond', 'Times New Roman', serif);
+  font-style: normal;
+  line-height: 1.6;
+}
+@media (min-width: 1024px) {
+  .ceremonia-corporal-step-container > .ceremonia-corporal-photo-block[data-zigzag] {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    align-self: center;
+    margin: 0.5rem auto 0;
+    width: 240px;
+    height: 240px;
   }
 }

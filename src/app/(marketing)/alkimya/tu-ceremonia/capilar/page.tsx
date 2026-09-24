@@ -32,43 +32,33 @@ export const metadata: Metadata = {
 
 const PASOS = [
   {
-    num: 1,
-    titulo: 'Reparación Profunda (Pre-Lavado)',
-    proposito:
-      'Aporta nutrientes intensos, reconstruye la hebra y previene el quiebre. Doble valor: Usar Acondicionador como Mascarilla.',
-    intencion: 'Repará tu fuerza interior. Dedicate tiempo y presencia.',
-    consejos:
-      'Aplicá el Acondicionador Pureza sobre el pelo seco, de medios a puntas, 1 vez por semana. Dejá actuar 20 minutos antes de lavar.',
+    "num": 1,
+    "titulo": "Reparación Profunda: El Pre-Lavado",
+    "proposito": "Infunde nutrientes esenciales, reestructura la hebra y previene el quiebre mecánico. Tip estratégico: Utilizá el Acondicionador como mascarilla intensiva.",
+    "intencion": "Fortalecé tu eje interior. Regalate presencia y pausa antes de la acción.",
+    "consejos": "Distribuí el Acondicionador Pureza sobre el pelo seco, enfocándote de medios a puntas, 1 vez por semana. Dejá actuar 20 minutos antes de lavar."
   },
   {
-    num: 2,
-    titulo: 'Limpieza y Desintoxicación',
-    proposito:
-      'Remueve impurezas, sebo y residuos. Abre las cutículas para recibir el tratamiento.',
-    intencion:
-      'Limpia tu mente de pensamientos repetitivos. Nutrí el templo de tu cabeza para recibir nuevas ideas.',
-    consejos:
-      'Usá el Shampoo para tu biotipo. Aplicá con masajes circulares suaves, acompañando con respiraciones.',
+    "num": 2,
+    "titulo": "Limpieza y Desintoxicación: El Reseteo",
+    "proposito": "Remueve la polución y acumulación de productos, abriendo las cutículas para optimizar el tratamiento.",
+    "intencion": "Limpiá el exceso de ruido mental. Despejá el canal de la creatividad desde la raíz.",
+    "consejos": "Seleccioná el Shampoo ideal para tu biotipo. Masajeá el cuero cabelludo en círculos suaves, acompañando el momento con respiraciones profundas."
   },
   {
-    num: 3,
-    titulo: 'Acondicionamiento',
-    proposito:
-      'Cierra las cutículas, desenreda y da brillo. Aporta suavidad y protección.',
-    intencion: 'Sella el amor en cada hebra. Honrá la sabiduría de tu pelo.',
-    consejos:
-      'Usá el Acondicionador Pureza de medios a puntas. Dejá actuar 1-2 minutos y enjuagá.',
+    "num": 3,
+    "titulo": "Acondicionamiento: El Sellado",
+    "proposito": "Sella las cutículas, facilita el desenredado y aporta una capa protectora contra agresiones externas.",
+    "intencion": "Envolvé cada hebra con suavidad. Honrá la historia y estructura de tu cabello.",
+    "consejos": "Aplicá el Acondicionador Pureza de medios a puntas, dejalo actuar 1 a 2 minutos y enjuagá con agua tibia."
   },
   {
-    num: 4,
-    titulo: 'Nutrición y Equilibrio (Post-Lavado)',
-    proposito:
-      'Aporta activos específicos, equilibra el cuero cabelludo y sella las puntas.',
-    intencion:
-      'Mantené el equilibrio y la intención de vitalidad hasta el próximo lavado.',
-    consejos:
-      'Aplicá tu Sérum Capilar Ilumina, poné 2 o 3 gotas en las yemas de los dedos y aplicá en las puntas para sellar.',
-  },
+    "num": 4,
+    "titulo": "Nutrición y Equilibrio: El Toque Final",
+    "proposito": "Aporta activos botánicos de precisión y equilibra el microbioma del cuero cabelludo.",
+    "intencion": "Sostén la armonía y la vitalidad de tu melena hasta el próximo ciclo de lavado.",
+    "consejos": "Colocá de 2 a 3 gotas de tu Sérum Capilar Ilumina en las yemas de los dedos y distribuilo delicadamente para sellar las puntas."
+  }
 ] as const
 
 export default function CeremoniaCapilarPage() {
@@ -84,9 +74,17 @@ export default function CeremoniaCapilarPage() {
               CEREMONIA CAPILAR
             </span>
           </h1>
-          <h3 className="font-subtitle mt-4 text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-capilar-hero-subtitle">
+          <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-capilar-hero-subtitle">
             El Cabello: Fortaleciendo la Raíz
-          </h3>
+          </h2>
+        </section>
+
+        {/* Carrusel de biotipos */}
+        <section className="px-4 pb-8 sm:px-6 sm:pb-12 md:px-8 md:pb-16 lg:px-12 lg:pb-20">
+          <CeremoniaCarousel
+            banners={BANNERS}
+            label="Ceremonias capilares según tu biotipo"
+          />
         </section>
 
         {/* Paso a Paso */}
@@ -125,17 +123,13 @@ export default function CeremoniaCapilarPage() {
                     data-order="1"
                   >
                     <div className="ceremonia-capilar-block-title">
-                      <div className="ceremonia-capilar-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-capilar-block-title-text">
                         Propósito y Beneficio
                       </span>
                     </div>
-                    <div className="ceremonia-capilar-block-text">
-                      <div className="ceremonia-capilar-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-capilar-block-text-content">
-                        {paso.proposito}
-                      </p>
-                    </div>
+                    <p className="ceremonia-capilar-block-text-content">
+                      {paso.proposito}
+                    </p>
                   </div>
 
                   {/* Intención de la Ceremonia */}
@@ -145,17 +139,13 @@ export default function CeremoniaCapilarPage() {
                     data-order="2"
                   >
                     <div className="ceremonia-capilar-block-title">
-                      <div className="ceremonia-capilar-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-capilar-block-title-text">
                         Intención de la Ceremonia
                       </span>
                     </div>
-                    <div className="ceremonia-capilar-block-text">
-                      <div className="ceremonia-capilar-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-capilar-block-text-content">
-                        {paso.intencion}
-                      </p>
-                    </div>
+                    <p className="ceremonia-capilar-block-text-content">
+                      {paso.intencion}
+                    </p>
                   </div>
 
                   {/* Consejos de Aplicación */}
@@ -165,17 +155,13 @@ export default function CeremoniaCapilarPage() {
                     data-order="3"
                   >
                     <div className="ceremonia-capilar-block-title">
-                      <div className="ceremonia-capilar-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-capilar-block-title-text">
                         Consejos de Aplicación
                       </span>
                     </div>
-                    <div className="ceremonia-capilar-block-text">
-                      <div className="ceremonia-capilar-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-capilar-block-text-content">
-                        {paso.consejos}
-                      </p>
-                    </div>
+                    <p className="ceremonia-capilar-block-text-content">
+                      {paso.consejos}
+                    </p>
                   </div>
 
                   {/* Foto del Paso Capilar */}
@@ -200,12 +186,8 @@ export default function CeremoniaCapilarPage() {
           </div>
         </section>
 
-        {/* Elegí tu Ceremonia - Carrusel de biotipos capilares */}
+        {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
-          <CeremoniaCarousel
-            banners={BANNERS}
-            label="Ceremonias capilares según tu biotipo"
-          />
           <div className="mt-8 flex justify-center sm:mt-10">
             <Link
               href="/productos"
