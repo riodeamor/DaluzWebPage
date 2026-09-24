@@ -11,33 +11,26 @@ export const metadata: Metadata = {
 
 const PASOS = [
   {
-    num: 1,
-    titulo: 'Limpieza y Renovacion',
-    proposito:
-      'Elimina impurezas del cuerpo. Prepara la piel para recibir la nutricion.',
-    intencion:
-      'Con el agua, flui, solta y renovate. Deja ir las cargas del dia.',
-    consejos:
-      'Usa el Gel Exfoliante ECOS 1 o 2 veces por semana, con movimientos circulares en seco.',
+    "num": 1,
+    "titulo": "Limpieza y Renovación: La Exfoliación",
+    "proposito": "Elimina células muertas, alisa la textura corporal y optimiza la permeabilidad para los tratamientos de nutrición.",
+    "intencion": "Al compás del agua, fluí, soltá y renovate. Dejá ir el peso y las cargas del día.",
+    "consejos": "Utilizá el Gel Exfoliante ECOS 1 a 2 veces por semana, realizando movimientos circulares ascendentes."
   },
   {
-    num: 2,
-    titulo: 'Alivio Específico',
-    proposito:
-      'Brinda sensación inmediata de bienestar y calma la inflamación (Dolor, hinchazón, calor).',
-    intencion: 'Sella la intención y la protección del cuerpo.',
-    consejos:
-      'Aplicá el Gel Susurro sobre zonas de tensión o piernas cansadas, masajeando hasta su absorción.',
+    "num": 2,
+    "titulo": "Alivio Específico: El Descanso",
+    "proposito": "Brinda frescura inmediata y bienestar, mitigando la inflamación y la tensión muscular acumulada.",
+    "intencion": "Aterrizá en tu cuerpo. Devolvé la calma a las zonas que sostienen tu rutina diaria.",
+    "consejos": "Masajeá el Gel Susurro sobre áreas de tensión o piernas cansadas, con presión firme hasta su total absorción."
   },
   {
-    num: 3,
-    titulo: 'Hidratación y Calma',
-    proposito:
-      'Sella la humedad, restaura la barrera lipídica y calma condiciones como el picor.',
-    intencion: 'Acompañá la piel con amor y nutrición después del baño.',
-    consejos:
-      'Usa la Crema Corporal Pureza diariamente después de la ducha. Aplicar con masaje ascendente sobre la piel ligeramente húmeda.',
-  },
+    "num": 3,
+    "titulo": "Hidratación y Calma: La Nutrición",
+    "proposito": "Restaura la película hidrolipídica, sella la humedad profunda y calma tiranteces o irritaciones.",
+    "intencion": "Abrázate al salir del agua. Devolvé nutrición, suavidad y protección a tu envoltura física.",
+    "consejos": "Extendé la Crema Corporal Pureza de forma diaria post-ducha, masajeando con movimientos ascendentes sobre la piel ligeramente húmeda."
+  }
 ] as const
 
 export default function CeremoniaCorporalPage() {
@@ -53,9 +46,26 @@ export default function CeremoniaCorporalPage() {
               CEREMONIA CORPORAL
             </span>
           </h1>
-          <h3 className="font-subtitle mt-4 text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-corporal-hero-subtitle">
+          <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-corporal-hero-subtitle">
             El Cuerpo: Sostén y Descarga de la Tensión
-          </h3>
+          </h2>
+        </section>
+
+        {/* Kit corporal */}
+        <section className="px-4 pb-8 sm:px-6 sm:pb-12 md:px-8 md:pb-16 lg:px-12 lg:pb-20">
+          <Link
+            href="/productos"
+            className="relative -mx-4 block overflow-hidden rounded-none shadow-2xl sm:mx-auto sm:max-w-[1600px] sm:rounded-xl"
+          >
+            <Image
+              src="/images/ceremonias/carrusel/corporal-kit.webp"
+              alt="Kit corporal: exfoliación, hidratación y alivio muscular"
+              width={2000}
+              height={563}
+              sizes="(max-width: 1500px) 100vw, 1500px"
+              className="h-auto w-full"
+            />
+          </Link>
         </section>
 
         {/* Paso a Paso */}
@@ -94,17 +104,13 @@ export default function CeremoniaCorporalPage() {
                     data-order="1"
                   >
                     <div className="ceremonia-corporal-block-title">
-                      <div className="ceremonia-corporal-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-corporal-block-title-text">
                         Propósito y Beneficio
                       </span>
                     </div>
-                    <div className="ceremonia-corporal-block-text">
-                      <div className="ceremonia-corporal-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-corporal-block-text-content">
-                        {paso.proposito}
-                      </p>
-                    </div>
+                    <p className="ceremonia-corporal-block-text-content">
+                      {paso.proposito}
+                    </p>
                   </div>
 
                   {/* Intención de la Ceremonia */}
@@ -114,17 +120,13 @@ export default function CeremoniaCorporalPage() {
                     data-order="2"
                   >
                     <div className="ceremonia-corporal-block-title">
-                      <div className="ceremonia-corporal-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-corporal-block-title-text">
                         Intención de la Ceremonia
                       </span>
                     </div>
-                    <div className="ceremonia-corporal-block-text">
-                      <div className="ceremonia-corporal-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-corporal-block-text-content">
-                        {paso.intencion}
-                      </p>
-                    </div>
+                    <p className="ceremonia-corporal-block-text-content">
+                      {paso.intencion}
+                    </p>
                   </div>
 
                   {/* Consejos de Aplicación */}
@@ -134,17 +136,13 @@ export default function CeremoniaCorporalPage() {
                     data-order="3"
                   >
                     <div className="ceremonia-corporal-block-title">
-                      <div className="ceremonia-corporal-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-corporal-block-title-text">
                         Consejos de Aplicación
                       </span>
                     </div>
-                    <div className="ceremonia-corporal-block-text">
-                      <div className="ceremonia-corporal-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-corporal-block-text-content">
-                        {paso.consejos}
-                      </p>
-                    </div>
+                    <p className="ceremonia-corporal-block-text-content">
+                      {paso.consejos}
+                    </p>
                   </div>
 
                   {/* Foto del Paso Corporal */}
@@ -169,21 +167,8 @@ export default function CeremoniaCorporalPage() {
           </div>
         </section>
 
-        {/* Elegí tu Ceremonia - Kit Corporal */}
+        {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
-          <Link
-            href="/productos"
-            className="relative -mx-4 block overflow-hidden rounded-none shadow-2xl sm:mx-auto sm:max-w-[1600px] sm:rounded-xl"
-          >
-            <Image
-              src="/images/ceremonias/carrusel/corporal-kit.webp"
-              alt="Kit corporal: exfoliación, hidratación y alivio muscular"
-              width={2000}
-              height={563}
-              sizes="(max-width: 1500px) 100vw, 1500px"
-              className="h-auto w-full"
-            />
-          </Link>
           <div className="mt-8 flex justify-center sm:mt-10">
             <Link
               href="/productos"

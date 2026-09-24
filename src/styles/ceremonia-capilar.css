@@ -121,7 +121,6 @@
 /* Step cards - mobile: stacked, with SVG backgrounds */
 .ceremonia-capilar-step-title,
 .ceremonia-capilar-block-title,
-.ceremonia-capilar-block-text,
 .ceremonia-capilar-extra-block {
   position: relative;
   width: 100%;
@@ -168,8 +167,6 @@
 
 /* SVG backgrounds - mobile (visible, adapted) */
 .ceremonia-capilar-step-title-bg,
-.ceremonia-capilar-block-title-bg,
-.ceremonia-capilar-block-text-bg,
 .ceremonia-capilar-extra-block-bg {
   position: absolute;
   inset: 0;
@@ -183,11 +180,6 @@
   background-image: url('/svg/ceremonias/SectionTitleBg.svg');
 }
 
-.ceremonia-capilar-block-title-bg {
-  background-image: url('/svg/ceremonias/SectionTitle2.svg');
-}
-
-.ceremonia-capilar-block-text-bg,
 .ceremonia-capilar-extra-block-bg {
   background-image: url('/svg/ceremonias/text2Bg.svg');
 }
@@ -518,5 +510,100 @@
   /* Section container */
   .ceremonia-capilar-content .max-w-4xl {
     max-width: 65rem;
+  }
+}
+
+/* Scoped contrast rules: decorative backgrounds stay inside their containers. */
+.ceremonia-capilar-hero-title {
+  background-color: transparent;
+  color: #4A0D10;
+}
+.ceremonia-capilar-hero-title-text {
+  color: #4A0D10 !important;
+}
+.ceremonia-capilar-hero-subtitle {
+  position: relative;
+  margin-top: -10px;
+  z-index: 10;
+  color: #FFFFFF !important;
+}
+.ceremonia-capilar-extra-block {
+  background-color: #4A0D10;
+  border-radius: 0 24px;
+}
+.ceremonia-capilar-extra-block-bg {
+  background-image: none;
+}
+.ceremonia-capilar-block-text-content,
+.ceremonia-capilar-extra-block-content,
+.ceremonia-capilar-extra-block-content p {
+  color: #FFFFFF !important;
+}
+.ceremonia-capilar-page .ceremonia-capilar-block-title-text {
+  color: #FFFFFF !important;
+}
+
+/* Content-sized rows preserve the zigzag without overlapping longer copy. */
+@media (min-width: 1024px) {
+  .ceremonia-capilar-step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    padding-bottom: 3rem;
+  }
+  .ceremonia-capilar-step-container > .ceremonia-capilar-step-title,
+  .ceremonia-capilar-step-container > .ceremonia-capilar-block-group[data-order],
+  .ceremonia-capilar-step-container > .ceremonia-capilar-extra-block {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+  }
+  .ceremonia-capilar-step-container > [data-zigzag="left"] { align-self: flex-start; }
+  .ceremonia-capilar-step-container > [data-zigzag="right"] { align-self: flex-end; }
+  .ceremonia-capilar-step-title {
+    min-height: 150px;
+  }
+  .ceremonia-capilar-step-title-text {
+    position: relative;
+    inset: auto;
+    min-height: 118px;
+  }
+}
+
+/* A single heading plaque followed by an unboxed, content-sized paragraph. */
+.ceremonia-capilar-block-title {
+  min-height: 0;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #4A0D10;
+  border-radius: 0 24px;
+}
+.ceremonia-capilar-block-title-text {
+  padding: 0;
+}
+.ceremonia-capilar-page .ceremonia-capilar-block-text-content {
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0 0;
+  padding: 0 1.25rem;
+  background: transparent;
+  color: #FFFFFF !important;
+  font-family: var(--font-text, 'EB Garamond', 'Times New Roman', serif);
+  font-style: normal;
+  line-height: 1.6;
+}
+@media (min-width: 1024px) {
+  .ceremonia-capilar-step-container > .ceremonia-capilar-photo-block[data-zigzag] {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    align-self: center;
+    margin: 0.5rem auto 0;
+    width: 240px;
+    height: 240px;
   }
 }
