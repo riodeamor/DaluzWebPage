@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function CiclosAlquimicosPage() {
   return (
-    <div className={PROCESOS_WRAPPER}>
+    <div className={`${PROCESOS_WRAPPER} ciclos-page`}>
       <div className="procesos-page-container">
         <ProcesosBackground variant="general" />
 

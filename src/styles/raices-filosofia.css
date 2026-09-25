@@ -1422,3 +1422,106 @@
   font-style: italic;
   line-height: 1.55;
 }
+
+/* Filosofía y Propósito — Módulo 2 */
+.filosofia-editorial-page {
+  min-height: 100vh;
+  padding: clamp(4rem, 8vw, 7rem) 1.5rem;
+  color: #FFF2E9;
+  background: radial-gradient(ellipse at 50% 30%, #0085B1 0%, #005080 30%, #16345F 65%, #051341 100%);
+}
+.filosofia-editorial-hero,
+.filosofia-editorial-content {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+}
+.filosofia-editorial-hero { text-align: center; }
+.filosofia-editorial-hero h1,
+.filosofia-editorial-content h2,
+.filosofia-editorial-card h3 {
+  font-family: var(--font-cormorant-garamond), 'Cormorant Garamond', serif;
+  font-style: normal;
+}
+.filosofia-editorial-hero h1 {
+  margin: 0;
+  color: #FFF2E9;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(5, 19, 65, 0.35);
+}
+.filosofia-editorial-tagline {
+  max-width: 48rem;
+  margin: 1.25rem auto 2rem;
+  color: rgba(255, 242, 233, 0.9);
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+  font-size: clamp(1.25rem, 2.6vw, 1.65rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+.filosofia-editorial-manifesto {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+.filosofia-editorial-manifesto p,
+.filosofia-editorial-card p {
+  margin: 0;
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif;
+  line-height: 1.72;
+}
+.filosofia-editorial-manifesto p { color: #FFF2E9; font-size: 1.125rem; }
+.filosofia-editorial-content { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.filosofia-editorial-content h2 {
+  margin: 0 0 2rem;
+  color: #FFF2E9;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 600;
+  text-align: center;
+}
+.filosofia-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+.filosofia-editorial-card {
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border-radius: 1rem;
+  background: #FFF2E9;
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.30), 0 6px 12px -2px rgba(0, 0, 0, 0.18);
+}
+.filosofia-editorial-card h3 {
+  margin: 0 0 1rem;
+  color: #051341;
+  font-size: clamp(1.45rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+.filosofia-editorial-card p { color: #051341; font-size: 1rem; }
+.filosofia-editorial-cta {
+  display: flex;
+  width: fit-content;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem auto 0;
+  padding: 0.85rem 1.75rem;
+  border-radius: 0 15px;
+  color: #FFFFFF;
+  background: #005080;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-align: center;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.filosofia-editorial-cta:hover { background: #16345F; box-shadow: 0 8px 20px rgba(0,0,0,.35); transform: translateY(-2px); }
+@media (max-width: 767px) {
+  .filosofia-editorial-page { padding-inline: 1rem; }
+  .filosofia-editorial-grid { grid-template-columns: 1fr; }
+  .filosofia-editorial-cta { width: 100%; }
+}

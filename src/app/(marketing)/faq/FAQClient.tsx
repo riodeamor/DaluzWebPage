@@ -84,7 +84,7 @@ function CollapsibleFAQ({
           aria-expanded={isOpen}
         >
           <div className="flex items-center justify-between gap-4">
-            <h3 className="font-heading text-lg font-semibold text-faq-ink md:text-xl">
+            <h3 className="font-heading text-lg font-medium normal-case text-faq-ink md:text-xl">
               {question}
             </h3>
             <motion.div

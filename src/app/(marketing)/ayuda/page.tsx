@@ -193,7 +193,7 @@ export default function AyudaPage() {
           >
             <h2 className={styles.sectionHeading}>¿Cómo podemos ayudarte?</h2>
             <p className={styles.sectionDescription}>
-              Selecciona la categoría que mejor describe tu consulta
+              Seleccioná la categoría que mejor describe tu consulta
             </p>
           </motion.header>
 

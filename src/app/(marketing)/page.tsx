@@ -732,7 +732,7 @@ export default async function HomePage() {
             </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(0,0,0,0.28)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)]"
+                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-200 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] active:bg-none active:bg-[#16345F] focus-visible:bg-none focus-visible:bg-[#16345F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0085B1] hover:-translate-y-0.5 shadow-[0_6px_16px_rgba(0,0,0,0.30)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)] [-webkit-tap-highlight-color:transparent]"
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-montserrat), Montserrat, sans-serif",

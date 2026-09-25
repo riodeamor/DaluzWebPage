@@ -121,7 +121,7 @@ export const FAQ_DATA: FAQCategory[] = [
     icon: "Shield",
     items: [
       {
-        question: "¿Cuánto duran las Alquimias?",
+        question: "¿Cuánto duran las alquimias?",
         answer: `Consumir preferentemente dentro de los <strong>6 meses</strong> de abierto para asegurar la frescura y potencia de su fuerza vital botánica. (Símbolo PAO 6M).`,
       },
       {
@@ -130,7 +130,7 @@ export const FAQ_DATA: FAQCategory[] = [
       },
       {
         question:
-          "¿Puedo usar los Óleos y Elixires si estoy embarazada o amamantando?",
+          "¿Puedo usar los óleos y elixires si estoy embarazada o amamantando?",
         answer: `Algunos aceites esenciales y plantas medicinales están contraindicados en esta etapa. Siempre realizamos una <strong>Anamnesis previa</strong> para adaptar la fórmula a tu estado actual.<br><br>
         Si elegís un producto de línea, consultanos antes de comprar si tenés dudas; estamos para acompañarte.`,
       },

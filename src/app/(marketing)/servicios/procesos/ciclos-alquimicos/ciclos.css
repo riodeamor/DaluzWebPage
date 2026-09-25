@@ -422,3 +422,40 @@ a.procesos-btn-cream.ciclos-detail-link:hover {
   .ciclos-intro { width: calc(100% - 1rem); padding: 3rem 1.5rem; background-color: transparent; }
   .ciclos-cycle-header { padding: 1.6rem 1rem 2rem; }
 }
+
+/* Módulo 2: onda universal y fondo de Ciclos */
+.ciclos-page .procesos-page-container {
+  background: linear-gradient(180deg, #051341 0%, #16345F 40%, #005080 80%, #0085B1 100%);
+}
+.ciclos-page .procesos-bg-img,
+.ciclos-page .procesos-bg-general { display: none; }
+.ciclos-header-band {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 290' preserveAspectRatio='none'%3E%3Cpath fill='%23051341' d='M1920,0v65c-155,90-355,173-595,188-278,18-321-74-652-73C362,180,152,263,0,285V0h1920Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: top center;
+  padding: 1.5rem 2rem 4rem;
+  margin-bottom: -1rem;
+  filter: drop-shadow(0 14px 20px rgba(5, 19, 65, 0.28));
+}
+.ciclos-section-header {
+  font-family: var(--font-cormorant-garamond), 'Cormorant Garamond', serif;
+  text-shadow: 0 2px 8px rgba(5, 19, 65, 0.20);
+}
+a.procesos-btn-cream.ciclos-detail-link,
+.ciclos-cycle-cta .procesos-btn-cream {
+  border: 0;
+  border-radius: 0 15px;
+  background: #005080;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+a.procesos-btn-cream.ciclos-detail-link::before,
+.ciclos-cycle-cta .procesos-btn-cream::before { content: none !important; display: none !important; }
+a.procesos-btn-cream.ciclos-detail-link:hover,
+.ciclos-cycle-cta .procesos-btn-cream:hover {
+  background: #16345F;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
