@@ -20,9 +20,9 @@ import { motion, AnimatePresence } from "framer-motion";
 // Estilo de botón azul (aplicado directo al Link; el componente Button con
 // asChild no propaga clases sobre un Fragment de icono + texto).
 const btnSolid =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white bg-faq-bright shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-light";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 const btnOutline =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white border-2 border-white/40 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 
 // Acentos monocromáticos azules para las zonas (sobre tarjeta clara)
 const zoneColor: Record<
@@ -156,7 +156,7 @@ function CollapsibleShippingFAQ({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <p className="px-6 pb-6 pl-[3.75rem] font-body text-faq-ink/90">
+              <p className="px-6 pb-6 pl-[3.75rem] font-body text-[#051341]">
                 {answer}
               </p>
             </motion.div>
@@ -199,7 +199,7 @@ export default function PoliticasEnvioPage() {
             transition={{ duration: 0.6 }}
           >
 
-            <h1 className="mb-6 font-velista text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 font-heading text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
               Políticas de Envío
             </h1>
 
@@ -224,7 +224,7 @@ export default function PoliticasEnvioPage() {
             transition={{ duration: 0.6 }}
             className="mb-16 text-center"
           >
-            <h2 className="mb-4 font-velista text-3xl font-bold text-text-inverse md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
               Zonas de Envío
             </h2>
             <p className="mx-auto max-w-2xl font-body text-lg text-white/80">
@@ -253,10 +253,10 @@ export default function PoliticasEnvioPage() {
                       >
                         <IconComponent className="h-7 w-7" />
                       </div>
-                      <h3 className="mb-1 font-velista text-lg font-bold text-faq-ink">
+                      <h3 className="mb-1 font-heading text-lg font-bold text-faq-ink">
                         {zone.zone}
                       </h3>
-                      <p className="mb-4 font-body text-sm text-faq-ink/70">
+                      <p className="mb-4 font-body text-sm text-[#051341]">
                         {zone.description}
                       </p>
                       <div className="space-y-2">
@@ -289,7 +289,7 @@ export default function PoliticasEnvioPage() {
             transition={{ duration: 0.6 }}
             className="mb-12 text-center"
           >
-            <h2 className="mb-4 font-velista text-3xl font-bold text-text-inverse md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
               Consultas sobre Envíos
             </h2>
           </motion.div>
@@ -327,11 +327,11 @@ export default function PoliticasEnvioPage() {
             <div className="rounded-2xl bg-faq-surface p-8 text-center shadow-soft">
               <div className="mb-4 flex items-center justify-center gap-3">
                 <Shield className="h-6 w-6 text-faq-ocean" />
-                <h3 className="font-velista text-xl font-bold text-faq-ink">
+                <h3 className="font-heading text-xl font-bold text-faq-ink">
                   Compromiso con tu Experiencia
                 </h3>
               </div>
-              <p className="mx-auto mb-6 max-w-2xl font-body text-faq-ink/90">
+              <p className="mx-auto mb-6 max-w-2xl font-body text-[#051341]">
                 Todos tus pedidos son preparados con sumo cuidado y enviados en
                 packaging protector para asegurar que lleguen en perfectas
                 condiciones. Si tenés alguna consulta sobre tu envío, no dudes
@@ -344,7 +344,7 @@ export default function PoliticasEnvioPage() {
                 </Link>
                 <Link
                   href="/ayuda"
-                  className="inline-flex items-center justify-center gap-2 h-11 rounded-md border-2 border-faq-ocean px-6 text-sm font-title uppercase tracking-wider text-faq-ocean transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-ocean hover:text-white"
+                  className="inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
                 >
                   Centro de Ayuda
                 </Link>
@@ -372,7 +372,7 @@ export default function PoliticasEnvioPage() {
               <Phone className="h-4 w-4" />
               ¿Necesitás ayuda?
             </span>
-            <h2 className="mb-4 font-velista text-3xl font-bold text-text-inverse md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
               Contactanos por cualquier consulta
             </h2>
             <p className="mx-auto mb-8 max-w-2xl font-body text-lg text-white/80">

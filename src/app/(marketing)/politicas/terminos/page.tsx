@@ -22,9 +22,9 @@ import { motion, AnimatePresence } from "framer-motion";
 // Estilo de botón azul (aplicado directo al Link; el componente Button con
 // asChild no propaga clases sobre un Fragment de icono + texto).
 const btnSolid =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white bg-faq-bright shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-light";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 const btnOutline =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-faq-ocean border-2 border-faq-ocean transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-ocean hover:text-white";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 
 const generalidadesContent = [
   "Este sitio web es operado por Da Luz Consciente (en adelante, 'la Titular').",
@@ -179,7 +179,7 @@ function LabeledItem({ label, text }: { label: string; text: string }) {
       <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-faq-ocean" />
       <div>
         <h4 className="font-heading font-semibold text-faq-ocean">{label}</h4>
-        <p className="font-body text-faq-ink/90">{text}</p>
+        <p className="font-body text-[#051341]">{text}</p>
       </div>
     </div>
   );
@@ -222,7 +222,7 @@ function CollapsibleSection({
               <span className="mb-1 inline-block rounded-full border border-faq-ocean/30 px-2 py-0.5 font-caption text-xs font-medium text-faq-ocean">
                 Sección {number}
               </span>
-              <h3 className="font-velista text-lg font-bold text-faq-ink md:text-xl">
+              <h3 className="font-heading text-lg font-bold text-faq-ink md:text-xl">
                 {title}
               </h3>
             </div>
@@ -288,7 +288,7 @@ export default function TerminosPage() {
             transition={{ duration: 0.6 }}
           >
 
-            <h1 className="mb-6 font-velista text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 font-heading text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
               Términos y Condiciones
             </h1>
 
@@ -330,7 +330,7 @@ export default function TerminosPage() {
               onToggle={() => toggle("generalidades")}
             >
               {generalidadesContent.map((text, index) => (
-                <p key={index} className="font-body text-faq-ink/90">
+                <p key={index} className="font-body text-[#051341]">
                   {text}
                 </p>
               ))}
@@ -354,7 +354,7 @@ export default function TerminosPage() {
                       </p>
                     </InfoBox>
                   ) : (
-                    <p className="font-body text-faq-ink/90">{item.text}</p>
+                    <p className="font-body text-[#051341]">{item.text}</p>
                   )}
                 </div>
               ))}
@@ -394,7 +394,7 @@ export default function TerminosPage() {
               isOpen={isOpen("arrepentimiento")}
               onToggle={() => toggle("arrepentimiento")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Según la <strong>Ley 24.240</strong> de Defensa del Consumidor,
                 el cliente tiene <strong>10 días corridos</strong> para revocar
                 su compra online.
@@ -423,7 +423,7 @@ export default function TerminosPage() {
                   enlace de descarga.
                 </p>
               </InfoBox>
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Para ejercer este derecho, contactanos a:{" "}
                 <strong>daluzalkimya@gmail.com</strong>
               </p>
@@ -436,7 +436,7 @@ export default function TerminosPage() {
               onToggle={() => toggle("exencion")}
             >
               {exencionContent.map((text, index) => (
-                <p key={index} className="font-body text-faq-ink/90">
+                <p key={index} className="font-body text-[#051341]">
                   {text}
                 </p>
               ))}
@@ -458,7 +458,7 @@ export default function TerminosPage() {
               isOpen={isOpen("privacidad")}
               onToggle={() => toggle("privacidad")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 En cumplimiento con la <strong>Ley 25.326</strong> de Protección
                 de Datos Personales, recolectamos datos únicamente para los
                 siguientes fines:
@@ -474,7 +474,7 @@ export default function TerminosPage() {
               isOpen={isOpen("derechos-arco")}
               onToggle={() => toggle("derechos-arco")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Podés solicitar en cualquier momento el <strong>Acceso</strong>,{" "}
                 <strong>Rectificación</strong> o <strong>Eliminación</strong> de
                 tus datos personales.
@@ -485,16 +485,16 @@ export default function TerminosPage() {
                     key={index}
                     className="rounded-xl border border-faq-ink/10 bg-white/70 p-4 text-center"
                   >
-                    <h4 className="mb-2 font-velista text-lg font-bold text-faq-ocean">
+                    <h4 className="mb-2 font-heading text-lg font-bold text-faq-ocean">
                       {item.label}
                     </h4>
-                    <p className="font-body text-sm text-faq-ink/70">
+                    <p className="font-body text-sm text-[#051341]">
                       {item.text}
                     </p>
                   </div>
                 ))}
               </div>
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Para ejercer estos derechos, enviá un email a:{" "}
                 <strong>daluzalkimya@gmail.com</strong>
               </p>
@@ -510,7 +510,7 @@ export default function TerminosPage() {
                 {seguridadContent.map((text, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Shield className="mt-0.5 h-5 w-5 flex-shrink-0 text-faq-ocean" />
-                    <span className="font-body text-faq-ink/90">{text}</span>
+                    <span className="font-body text-[#051341]">{text}</span>
                   </li>
                 ))}
               </ul>
@@ -525,10 +525,10 @@ export default function TerminosPage() {
             transition={{ duration: 0.6 }}
             className="mt-8 rounded-2xl bg-faq-surface p-8 text-center shadow-soft"
           >
-            <h3 className="mb-1 font-velista text-xl font-bold text-faq-ink">
+            <h3 className="mb-1 font-heading text-xl font-bold text-faq-ink">
               ¿Tenés dudas?
             </h3>
-            <p className="mb-5 font-body text-faq-ink/70">
+            <p className="mb-5 font-body text-[#051341]">
               Contactanos y te ayudamos con cualquier consulta legal o de tu
               compra.
             </p>

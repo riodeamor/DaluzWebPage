@@ -4,208 +4,80 @@ import '@/styles/raices-filosofia.css'
 
 export const metadata: Metadata = {
   title: 'Raíces | La Alquimista | DA LUZ CONSCIENTE',
-  description: 'La alquimista y creadora detrás de Da Luz Consciente. De la sombra a la alkimia viva, formación holística y propósito.',
+  description: 'La alquimista y creadora detrás de Da Luz Consciente: un recorrido de biología, presencia, límites y goce.',
 }
-
-const WRAPPER = 'raices-filosofia-pages'
-
-const FORMACIONES = [
-  'Eneagrama y Epigenetica',
-  'Reiki Usui (Niveles 1, 2, 3 y Master)',
-  'Reiki Karuna (Niveles 1 y 2)',
-  'Flores de Bach',
-  'Fitoterapia (Medicina Herbal)',
-  'Gemoterapia',
-  'Química Cosmética',
-  'Formulación Cosmética Avanzada',
-  'Aromaterapia',
-  'Chamanismo Universal',
-  'Salud Hormonal',
-]
-
-const SABERES = [
-  'Cuencos Sonoros',
-  'Péndulo Evolutivo',
-  'Canto Medicina',
-  'Astrología',
-  'Danza Primal, Danza Matriz, Danza Butoh',
-  'Ciclicidad Lunar-Menstrual',
-  'Ayurveda',
-  'Numerología',
-  'Nutrición Antiinflamatoria',
-  'Psicología UNC',
-]
 
 export default function RaicesPage() {
   return (
-    <div className={WRAPPER}>
-      <div className="raices-page-container">
-        {/* Background */}
-        <div className="raices-page-bg raices-bg-general" aria-hidden />
-
-        {/* De la Sombra - Mobile/Tablet (original band) */}
-        <section className="raices-section-band filo-mobile-only" aria-labelledby="sombra-title-mobile">
-          <div className="raices-section-band-inner">
-            <h1 id="sombra-title-mobile" className="raices-section-band-title">
-              La Alquimista y Creadora detrás de Da Luz
-            </h1>
-          </div>
-        </section>
-        {/* De la Sombra - Desktop (TitleCard bg, centered) */}
-        <div className="filo-desktop-only filo-section-title-desktop">
-          <div className="filo-section-title-wrap">
-            <div className="filo-section-title-bg" aria-hidden>
-              <img src="/svg/filosofia/filo/TitleCard.svg" alt="" className="filo-section-title-card" />
-            </div>
-            <h1 id="sombra-title" className="filo-section-title-text">
-              La Alquimista y Creadora detrás de Da Luz
-            </h1>
-          </div>
-        </div>
-        <div className="raices-content">
-          <article className="raices-card raices-section-card">
-            <p>
-              ¡Hola! Soy la alquimista, terapeuta y creadora detrás de Da Luz. Mi vocación es brindar herramientas y propuestas que impulsen la presencia, el goce y la consciencia. Mi propósito es acompañarte a habitar el cuerpo desde tu Poder, en conexión con tus deseos y sensaciones, utilizando nuestra tecnología humana —tan amplia como compleja— a tu favor. Quiero cooperar para que aprendas a poner tus propias acciones, elecciones y sentires a favor de vos misma, y te asombres del poder real que tenemos cada uno como humanos, por más pequeños que a veces nos percibamos.
-            </p>
-            <p>
-              <strong>De la Sombra a la Soberanía: El Viaje.</strong> El origen de Da Luz nace de una transformación radical. Como muchas, habité la disociación y el dolor, manifestados en somatizaciones físicas que mi cuerpo ya no podía ignorar. Ese quiebre fue el combustible de mi curiosidad: necesitaba comprender mi propia biología y energía para cooperar con mi sanación. Siendo Capricornio con ascendente en Virgo, siempre necesité encontrarle una lógica a todo; por eso, abrirme a explorar herramientas holísticas marcó un antes y un después. Me permití Ser: curiosa, probar, investigar y explorar sin vergüenza ni miedo al qué dirán.
-            </p>
-            <p>
-              Experimentar en mi propio cuerpo me trajo cambios que fueron desde lo sutil —reconocer mi fisiología, mis verdaderos deseos y mis límites— hasta lo más profundo: reprogramar creencias obsoletas y desarmar el deber ser que me mantenía en el silencio y la represión. Esa exploración radical me llevó a pararme en un lugar de poder personal que creía no tener, cultivando una compasión inmensa hacia mí misma a la hora de elegir y cuidarme.
-            </p>
-          </article>
-        </div>
-
-        {/* El Cuerpo - Mobile/Tablet (original band) */}
-        <section className="raices-section-band filo-mobile-only" aria-labelledby="cuerpo-title-mobile">
-          <div className="raices-section-band-inner">
-            <h2 id="cuerpo-title-mobile" className="raices-section-band-title">
-              El Despertar y las Musas Alquímicas
-            </h2>
-          </div>
-        </section>
-        {/* El Cuerpo - Desktop (title without bg band) */}
-        <div className="filo-desktop-only filo-section-title-desktop filo-section-title-nobg">
-          <h2 id="cuerpo-title" className="filo-section-title-plain">
-            El Despertar y las Musas Alquímicas
-          </h2>
-        </div>
-        <div className="raices-content">
-          <article className="raices-card raices-section-card">
-            <p>
-              En plena pandemia, empecé a investigar marcas de cosmética natural en Córdoba. Quería cuidar mi piel en serio, alejándome de los disruptores endocrinos. En esa exploración descubrí que mi rutina de cuidado facial se estaba convirtiendo en un momento sagrado para mí: un espacio de conexión, goce, masaje y liberación de tensiones.
-            </p>
-            <p>
-              Gracias a mis primeras formaciones —Eneagrama, Epigenética, Astrología Evolutiva, Reiki Usui, Gemoterapia y Flores de Bach— todo comenzó a cobrar sentido. Cuando mis exploradores cooperadores se convirtieron en mis musas, mi fascinación creció. Un taller de botiquín herbal me llevó a descubrir mi gran pasión: mi primera alquimia fue una crema y el resultado fue un desastre, pero me empujó a investigar, formarme en formulación y arrancar Fitoterapia.
-            </p>
-            <p>
-              Entender cómo la información de las hierbas medicinales juega a favor de nuestro organismo literalmente me voló la cabeza. Al permitirme poner en práctica estas herramientas en otros cuerpos, mi fascinación creció y se volvió una vocación de acompañamiento.
-            </p>
-            <p>
-              <strong>La Crisis, el Límite y la Reconstrucción.</strong> Así nació Zentidoconsciente, la marca que precedió a Da Luz. Los desafíos me llevaron a definir dónde quería estar, poner límites y compartir las herramientas que antes no me animaba a mostrar. <strong>El Goce como Brújula.</strong> Decidí que mis proyectos no tenían que valer la pena: tenían que valer el goce. Así le di vida a mi deseo primal: crear un puente tangible entre el ritual interno y el cuidado externo, dando paso a Da Luz Consciente y Alkimya Da Luz.
-            </p>
-            <p>
-              Durante un año había operado desde el hacer rígido, sin tiempo para escuchar mis deseos y la visión de mi marca. El síndrome del impostor llegó, pero decidí no darle lugar: vi con honestidad dónde estaba parada y definí dónde quería estar. Hoy sé que mis propuestas nacen del más absoluto corazón, pero tienen los pies en la Tierra.
-            </p>
-          </article>
-
-          {/* Quote - Mobile/Tablet: original oval */}
-          <div className="raices-oval-quote filo-mobile-only">
-            La tecnología humana se expande cuando elegimos habitar el cuerpo con presencia, límites y goce.
-          </div>
-          {/* Quote - Desktop: CircularCardBorder.svg background */}
-          <div className="filo-desktop-only filo-circular-quote-wrap">
-            <div className="filo-circular-quote-bg" aria-hidden>
-              <img src="/svg/filosofia/filo/CircularCardBorder.svg" alt="" className="filo-circular-quote-svg" />
-            </div>
-            <p className="filo-circular-quote-text">
-              La tecnología humana se expande cuando elegimos habitar el cuerpo con presencia, límites y goce.
-            </p>
-          </div>
-        </div>
-
-        {/* Mi Caja de Herramientas - Title band (full width) */}
-        <section className="raices-section-band" aria-labelledby="herramientas-title">
-          <div className="raices-section-band-inner">
-            <h2 id="herramientas-title" className="raices-section-band-title">
-              Mi Caja de Herramientas: Formación y Saberes
-            </h2>
-          </div>
-        </section>
-        <div className="raices-content">
-          {/* Intro text outside card */}
-          <p className="raices-intro" style={{ marginBottom: '1rem' }}>
-            Mi recorrido hacia el bioequilibrio integrando todos nuestros cuerpos será eterno, esa es mi certeza. Soy una aficionada a explorar las tecnologías de nuestros cuerpos, de habitarme para conocerme, así como también de adquirir herramientas y conocimientos teóricos para ir probando, corroborando y aprendiendo a gestionar mis propios recursos.
+    <main className="raices-editorial-page">
+      <article className="raices-editorial-shell">
+        <header className="raices-editorial-header">
+          <p className="raices-editorial-kicker">Raíces Da Luz</p>
+          <h1>La Alquimista y Creadora detrás de Da Luz</h1>
+          <p className="raices-editorial-opening">
+            ¡Hola! Soy la alquimista, terapeuta y creadora detrás de Da Luz. Mi vocación es brindar herramientas y propuestas que impulsen la presencia, el goce y la consciencia. Mi propósito es acompañarte a habitar el cuerpo desde tu propio Poder, en conexión íntima con tus deseos y sensaciones, poniendo a favor nuestra tecnología humana: tan amplia, compleja y disponible cuando aprendemos a escucharla.
           </p>
-          <p className="raices-intro" style={{ marginBottom: '1.5rem' }}>
-            He explorado diversas disciplinas que son la base de los acompañamientos que brindo:
-          </p>
+        </header>
 
-          {/* 2 cards: Formaciones | Saberes */}
-          <div className="raices-herramientas-grid">
-            <div className="raices-herramientas-col">
-              <h3 className="raices-herramientas-col-title-bordered">FORMACIONES</h3>
-              <article className="raices-card">
-                <ul className="raices-list">
-                  {FORMACIONES.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            </div>
-            <div className="raices-herramientas-col">
-              <h3 className="raices-herramientas-col-title-bordered">SABERES Y TALLERES</h3>
-              <article className="raices-card">
-                <ul className="raices-list">
-                  {SABERES.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            </div>
+        <section className="raices-editorial-act raices-editorial-act-dark" aria-labelledby="acto-uno">
+          <p className="raices-editorial-act-number">Acto I</p>
+          <h2 id="acto-uno">De la Razón Pura a la Certeza en el Cuerpo</h2>
+          <div className="raices-editorial-copy">
+            <p>El origen de este camino no nació de una epifanía mística, sino de somatizaciones físicas y dolores que mi cuerpo ya no pudo sostener. Siendo capricorniana con ascendente en Virgo, siempre necesité encontrarle una lógica y un fundamento a todo; la facultad de Psicología en la UNC me abría preguntas, pero la pura intelectualización no me alcanzaba para aliviar lo que sentía en la carne.</p>
+            <p>A mis 19 años, atravesada por prejuicios hacia lo holístico pero con una necesidad real de ordenar mi propia biología, mi terapeuta de ese momento, Sol Millán, me sugirió hacer la diplomatura en Eneagrama. Aquello fue un quiebre absoluto. Aunque había conceptos que a esa edad y con mi estructura racional tardé años en decantar —repasando apuntes y encontrando joyas recién con la experiencia—, ahí se me grabó una certeza que rige mi vida.</p>
           </div>
-        </div>
-
-        {/* El Propósito Final - Title band (full width) */}
-        <section className="raices-section-band" aria-labelledby="proposito-title">
-          <div className="raices-section-band-inner">
-            <h2 id="proposito-title" className="raices-section-band-title">
-              El Propósito Final: La Autogestión Consciente
-            </h2>
+          <blockquote className="raices-editorial-quote">
+            “Mi realidad la construyo yo a través de mis elecciones, mis percepciones, mis límites y mis acciones: puedo elegir desde dónde pararme.”
+          </blockquote>
+          <div className="raices-editorial-copy">
+            <p>A partir de ahí decidí sacarme la piel vieja. Me permití ser curiosa, explorar sin vergüenza y probar en el propio cuerpo cada herramienta que se me presentara siempre que me pulsara. A los meses me formé en Reiki Usui hasta la Maestría; el impacto de esa energía sutil —tan inexplicable para mi mente adolescente pero tan tangible para mi cuerpo— empezó a mover mi mundo: me dio la fuerza para alejarme de entornos que me intoxicaban, marcar límites firmes y elegir con honestidad lo que deseaba.</p>
+            <p>Con la llegada de la pandemia y el tiempo que abrió la virtualidad, me zambullí en formaciones profundas de 6 a 8 meses con Pedro Marano en Flores de Bach y Gemoterapia, abriéndome las puertas de la gestión emocional con elixires y cristales de la Tierra cooperando con el organismo. La vida, de parecerme desabrida, había pasado a parecerme una locura hermosa. Esos meses de teoría, prácticas meditativas y conexión con la frecuencia de las piedras y las flores me acompañaron a desarmar la vergüenza, la timidez y mis propios prejuicios; me impulsaron a expresarme con más verdad, primero conmigo misma, para desde ahí poder comunicarme de forma certera con los demás.</p>
+            <p>Empecé a explorar estas herramientas en mis conocidos, amigos y familiares; sus devoluciones inmediatas me confirmaron una premisa fundamental: el cuerpo no miente, no negocia y tiene una tecnología regenerativa extraordinaria cuando se le brindan los estímulos correctos.</p>
           </div>
         </section>
-        <div className="raices-content">
-          <article className="raices-card raices-section-card">
-            <p>
-              Mi deseo es que expandas tu soberanía personal. En Da Luz integramos la alquimia botánica con la tecnología del autoconocimiento para que recuperes tu centro.
-            </p>
-            <p>
-              <strong>Esta es tu comunidad si buscás:</strong>
-            </p>
-            <ul className="raices-list">
-              <li><strong>Tu Ceremonia:</strong> Diagnósticos de Biotipo y rutinas de presencia.</li>
-              <li><strong>Transparencia:</strong> Materia prima consciente, activa y con trazabilidad total.</li>
-              <li><strong>Experiencias:</strong> Un espacio de crecimiento, herramientas somáticas y Tesoros Da Luz.</li>
-              <li><strong>Procesos Integrales:</strong> Acompañamiento personalizado para acuerpar tu transformación.</li>
-            </ul>
-            <p style={{ marginTop: '1rem' }}>
-              Te invito a dar el primer paso para crear tu realidad desde la vitalidad y el coraje.
-            </p>
-          </article>
-        </div>
 
-        {/* CTAs outside card */}
-        <section className="raices-cta-standalone">
-          <div className="raices-cta-buttons">
-            <Link href="/servicios/procesos/sesiones-integrales" className="raices-cta-button">
-              SESIONES
-            </Link>
-            <Link href="/productos" className="raices-cta-button">
-              TIENDA
-            </Link>
+        <section className="raices-editorial-act raices-editorial-act-card" aria-labelledby="acto-dos">
+          <p className="raices-editorial-act-number">Acto II</p>
+          <h2 id="acto-dos">El Quiebre del Mandato, la Alquimia y la Decisión de Emprender</h2>
+          <div className="raices-editorial-copy">
+            <p>A la par de estas exploraciones, mi transición al vegetarianismo encendió una alarma sobre el acecho de los hábitos cotidianos: me di cuenta de cuántas conductas automáticas sostenemos creyendo que nos cuidan, cuando en realidad entorpecen nuestra fisiología.</p>
+            <p>Comencé a probar cosmética artesanal y natural en Córdoba buscando alejarme de los disruptores endocrinos. Por un lado, me topé con la incomodidad de una oferta que muchas veces no me garantizaba qué usaba realmente, saturada de etiquetas de “vegano” o “eco-amigable” que ocultaban parabenos y plásticos. Pero por el otro, en el contacto con los productos de diversas emprendedoras locales, descubrí algo revelador: el goce de cuidar mi cuerpo físico y mi rostro.</p>
+          </div>
+          <blockquote className="raices-editorial-quote">
+            “Cuidar mi cuerpo dejó de ser un mandato cultural para encajar y se convirtió en el ritual sagrado de habitar mi propio templo.”
+          </blockquote>
+          <div className="raices-editorial-copy">
+            <p>Sentir la nobleza de una textura viva en mis manos le dio una vuelta de tuerca a la ecuación: no era estética vacía, era un momento sagrado de contacto conmigo, de masaje, presencia y liberación de tensiones.</p>
+            <p>Ese chispazo despertó mi necesidad de comprender qué pasaba en el tejido y en la célula. Hice un primer taller de botiquín herbal y mi primera fórmula —una crema— fue un desastre absoluto. Lejos de quedarme en la frustración —porque frustrarse es humano, pero estancarse es una elección—, mi exigencia me empujó a investigar de manera autogestiva, a tomar talleres técnicos de formulación galénica y a certificarme formalmente en Fitoterapia Clínica. Entender la farmacopea de las plantas medicinales y su afinidad biológica con el organismo terminó de integrar todas mis piezas.</p>
+            <p>En medio de ese proceso tomé una decisión radical: dejar la facultad para formarme de lleno en las diferentes aristas de nuestra tecnología y lanzarme a emprender. Si la Guadi de ese entonces hubiese sabido todo lo que implicaba, jamás se hubiese animado; pero el impulso de mi Luna en Aries fue más fuerte. Así nació Zentidoconsciente, la marca que precedió a este presente, ofreciendo mis primeros productos en tiendas, abriendo sesiones y acompañando a seres preciosos en sus procesos.</p>
           </div>
         </section>
-      </div>
-    </div>
+
+        <section className="raices-editorial-act raices-editorial-act-dark" aria-labelledby="acto-tres">
+          <p className="raices-editorial-act-number">Acto III</p>
+          <h2 id="acto-tres">El Punto Ciego, el Límite y el Nacimiento de Da Luz</h2>
+          <div className="raices-editorial-copy">
+            <p>Sin embargo, en ese primer impulso algo vital había quedado en un punto ciego. Había una resistencia a escuchar una voz interna que venía a ordenar y expandir los horizontes.</p>
+            <p>Siempre quise crear lo que a mí me hacía falta ver como consumidora-clienta: transparencia radical para saber exactamente qué lleva cada producto y qué incluye cada propuesta, junto a una integración real entre la materia física y los saberes energéticos. La belleza física de la piel no se puede escindir de nuestra tecnología emocional, mental y sensitiva; nada hubiera sido lo mismo en mi proceso si no le hubiese puesto intención, presencia y goce al ritual de cuidado.</p>
+            <p>Tuve que hacer una pausa en el momento en que más ganas tenía de avanzar. Durante un año entero la vida me la dio contra la pared avisándome que frenara: había estado operando desde el “hacer” rígido, impaciente y sobreexigido, sin darle tiempo a lo más importante: escuchar el sentir de mi marca por encima de lo que mi ego creía que debía hacer.</p>
+            <p>Fueron tantos los desafíos que pensé en dejar todo, quedarme solo con un par de sesiones o directamente irme a viajar y vivir de cualquier aventura. Pero en el fondo me di cuenta de la verdad: a mis propuestas les faltaba una vuelta de tuerca desde el encuadre. Había límites que ya no deseaba permitir en la consulta, dinámicas que no iban más, y herramientas espectaculares con las que me había formado que aún no me animaba a desplegar.</p>
+            <p>En esos meses de pausa, comenzaron a llegar mensajes consultando por sesiones, por productos y compartiendo devoluciones sobre los procesos y alquimias ya transitados. Ahí recordé que los desafíos no siempre son señales de que el camino no es por ahí; qué errado es creer que solo lo que fluye sin fricción es lo que “vale la pena”.</p>
+          </div>
+          <blockquote className="raices-editorial-quote raices-editorial-quote-final">
+            “No quiero nada que valga la pena; quiero que valga el goce.”
+          </blockquote>
+          <div className="raices-editorial-copy">
+            <p>Elegí hacer cada paso desde el goce y la presencia, sin correr, sintiendo realmente y dirigiendo mis proyectos hacia donde elijo que vayan, poniendo los límites necesarios a quienes haga falta. El miedo a la “intensidad” de mi visión dejó de estar o, por lo menos, dejó de estorbar.</p>
+            <p>Desarmé el síndrome del impostor viéndome con honestidad: dónde estaba parada y, con una mano en el corazón, dónde elijo estar. Me hice cargo de áreas que jamás pensé explorar, puse los límites necesarios y tracé un sendero firme donde la intuición y el corazón tienen los pies bien puestos en la Tierra.</p>
+            <p>Así nació Da Luz Consciente y su universo botánico Alkimya Da Luz: creadas para acompañarte a habitar tu cuerpo desde tu propio Poder, encender tus sentidos y devolverte el inmenso goce de vivir en coherencia.</p>
+          </div>
+        </section>
+
+        <nav className="raices-editorial-ctas" aria-label="Próximos pasos">
+          <Link href="/servicios/procesos/sesiones-integrales">SESIONES</Link>
+          <Link href="/productos">TIENDA</Link>
+        </nav>
+      </article>
+    </main>
   )
 }

@@ -913,3 +913,142 @@
   text-align: center !important;
   line-height: 1.15 !important;
 }
+
+/* ============================================================
+   RAÍCES — RELATO EDITORIAL EN TRES ACTOS
+   ============================================================ */
+.raices-editorial-page,
+.raices-filosofia-pages .raices-page-container,
+.raices-filosofia-pages .raices-page-bg {
+  background: linear-gradient(180deg, #051341 0%, #16345F 50%, #1A3F71 100%) !important;
+  background-image: linear-gradient(180deg, #051341 0%, #16345F 50%, #1A3F71 100%) !important;
+}
+.raices-editorial-page {
+  min-height: 100vh;
+  color: #FFF2E9;
+}
+.raices-editorial-shell {
+  width: min(100%, 64rem);
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 6rem) 1.5rem;
+}
+.raices-editorial-header {
+  max-width: 54rem;
+  margin: 0 auto clamp(3.5rem, 8vw, 6rem);
+  text-align: center;
+}
+.raices-editorial-kicker,
+.raices-editorial-act-number {
+  margin: 0 0 .75rem;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.raices-editorial-header h1 {
+  margin: 0 0 2rem;
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.04;
+  color: #FFF2E9;
+  text-shadow: 0 6px 18px rgba(0,0,0,.28);
+}
+.raices-editorial-opening,
+.raices-editorial-copy p {
+  font-family: var(--font-eb-garamond), "EB Garamond", serif;
+  font-size: 1.125rem;
+  line-height: 1.78;
+}
+.raices-editorial-opening { margin: 0; color: #FFF2E9; }
+.raices-editorial-act {
+  margin: 0 auto clamp(4rem, 9vw, 7rem);
+}
+.raices-editorial-act h2 {
+  max-width: 48rem;
+  margin: 0 0 2.25rem;
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.12;
+  color: #FFFFFF;
+}
+.raices-editorial-copy {
+  display: grid;
+  gap: 1.35rem;
+}
+.raices-editorial-copy p { margin: 0; color: #FFF2E9; }
+.raices-editorial-quote {
+  margin: 3rem 0;
+  padding: 1.5rem clamp(.5rem, 3vw, 2rem);
+  border-top: 1px solid rgba(0,133,177,.55);
+  border-bottom: 1px solid rgba(0,133,177,.55);
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.25;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0 2px 12px rgba(0,80,128,.4);
+}
+.raices-editorial-act-card {
+  padding: clamp(2rem, 6vw, 3.5rem);
+  border-radius: 1rem;
+  background: #FFF2E9;
+  box-shadow: 0 16px 36px -4px rgba(0,0,0,.35);
+}
+.raices-editorial-act-card h2,
+.raices-editorial-act-card .raices-editorial-act-number,
+.raices-editorial-act-card .raices-editorial-copy p { color: #051341; }
+.raices-editorial-act-card .raices-editorial-quote {
+  color: #16345F;
+  border-color: rgba(5,19,65,.2);
+  text-shadow: none;
+}
+.raices-editorial-quote-final { font-size: clamp(2rem, 4vw, 3rem); }
+.raices-editorial-ctas {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 4rem;
+}
+.raices-editorial-ctas a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 240px);
+  min-width: 200px;
+  height: 48px;
+  padding: 0 1.75rem;
+  border-radius: 0 15px;
+  background: linear-gradient(135deg, #005080, #0085B1);
+  color: #FFFFFF;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+.raices-editorial-ctas a:hover {
+  background: #16345F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+.raices-card-title,
+.raices-card-subtitle {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  font-style: normal !important;
+}
+@media (max-width: 639px) {
+  .raices-editorial-shell { padding-inline: 1rem; }
+  .raices-editorial-ctas { flex-direction: column; }
+  .raices-editorial-ctas a { width: 100%; }
+}

@@ -51,7 +51,7 @@ const pillInactiveClasses =
 // Botón de acción para las tarjetas del CTA (se aplica directo al Link/anchor
 // porque el `asChild` del componente Button no propaga clases sobre un Fragment).
 const ctaButtonBase =
-  "inline-flex w-full items-center justify-center gap-2 min-h-[2.75rem] rounded-md px-4 py-2.5 text-center text-sm leading-tight font-btn uppercase tracking-wider transition-all duration-300 hover:-translate-y-0.5";
+  "inline-flex w-full items-center justify-center gap-2 min-h-12 rounded-[0_15px] px-4 py-2.5 text-center text-sm leading-tight font-btn uppercase tracking-[0.18em] transition-all duration-300 hover:-translate-y-0.5";
 
 interface CollapsibleFAQProps {
   question: string;
@@ -175,7 +175,7 @@ export default function FAQClient() {
               Centro de Ayuda
             </Badge>
 
-            <h1 className="font-velista text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-text-inverse tracking-wide">
+            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-text-inverse tracking-wide">
               Preguntas Frecuentes
             </h1>
 
@@ -267,7 +267,7 @@ export default function FAQClient() {
                     >
                       {IconComponent && <IconComponent className="w-6 h-6" />}
                     </div>
-                    <h2 className="font-velista text-2xl md:text-3xl font-bold text-text-inverse tracking-wide text-left">
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-inverse tracking-wide text-left">
                       {category.name}
                     </h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-faq-light/40 to-transparent" />
@@ -335,7 +335,7 @@ export default function FAQClient() {
               <MessageCircle className="w-4 h-4 mr-2" />
               ¿Necesitas ayuda personalizada?
             </Badge>
-            <h2 className="font-velista text-3xl md:text-4xl font-bold mb-4 text-text-inverse">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-text-inverse">
               {FAQ_CONTACT_CTA.title}
             </h2>
             <p className="font-body text-lg text-white/80 max-w-2xl mx-auto">
@@ -355,7 +355,7 @@ export default function FAQClient() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                 <MessageCircle className="w-8 h-8 text-faq-light" />
               </div>
-              <h3 className="font-velista text-xl font-bold mb-2 text-text-inverse">
+              <h3 className="font-heading text-xl font-bold mb-2 text-text-inverse">
                 Chat en Vivo
               </h3>
               <p className="font-body text-sm text-white/70 mb-6">
@@ -374,7 +374,7 @@ export default function FAQClient() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                 <Mail className="w-8 h-8 text-faq-light" />
               </div>
-              <h3 className="font-velista text-xl font-bold mb-2 text-text-inverse">
+              <h3 className="font-heading text-xl font-bold mb-2 text-text-inverse">
                 Email
               </h3>
               <p className="font-body text-sm text-white/70 mb-6">
@@ -382,7 +382,7 @@ export default function FAQClient() {
               </p>
               <Link
                 href="mailto:daluzconsciente@gmail.com"
-                className={`${ctaButtonBase} border border-white/20 bg-faq-mid text-white shadow-soft hover:bg-faq-ocean`}
+                className={`${ctaButtonBase} border-0 bg-gradient-to-r from-[#005080] to-[#0085B1] text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]`}
               >
                 <Mail className="w-4 h-4 shrink-0" />
                 Enviar Email
@@ -394,7 +394,7 @@ export default function FAQClient() {
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                 <Phone className="w-8 h-8 text-faq-light" />
               </div>
-              <h3 className="font-velista text-xl font-bold mb-2 text-text-inverse">
+              <h3 className="font-heading text-xl font-bold mb-2 text-text-inverse">
                 WhatsApp
               </h3>
               <p className="font-body text-sm text-white/70 mb-6">
@@ -402,7 +402,7 @@ export default function FAQClient() {
               </p>
               <Link
                 href={FAQ_CONTACT_CTA.buttonLink}
-                className={`${ctaButtonBase} bg-faq-bright text-white shadow-soft hover:bg-faq-light`}
+                className={`${ctaButtonBase} border-0 bg-gradient-to-r from-[#005080] to-[#0085B1] text-white shadow-[0_4px_14px_rgba(0,0,0,0.25)] hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]`}
               >
                 <Phone className="w-4 h-4 shrink-0" />
                 {FAQ_CONTACT_CTA.buttonText}
@@ -423,7 +423,7 @@ export default function FAQClient() {
             </p>
             <Link
               href="/ayuda"
-              className="inline-flex items-center justify-center gap-2 h-11 rounded-md border-2 border-white/40 px-6 text-sm font-btn uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
             >
               Visitar Centro de Ayuda
               <ArrowRight className="w-4 h-4" />
