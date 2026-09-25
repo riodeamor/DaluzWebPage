@@ -5061,3 +5061,100 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
 }
 
 .biotipos-section3-main-title { color: #860119 !important; }
+
+/* Correcciones de alineación, escala y ritmo en Biotipos. */
+.biotipos-section1-main-title-wrapper,
+.biotipos-section1-main-title-bg,
+.biotipos-section1-main-title {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+.biotipos-section1-main-title {
+  color: #97000D !important;
+  text-shadow: 0 5px 12px rgba(74,13,16,.25);
+}
+.biotipos-section1-button {
+  width: auto !important;
+  min-width: 180px !important;
+  min-height: 52px !important;
+  padding: .8rem 1.6rem !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 15px !important;
+}
+.biotipos-section2-title {
+  width: min(100%, 760px) !important;
+  margin: 0 auto 1.5rem !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  text-align: center !important;
+}
+.biotipos-section2-title-bg {
+  inset: 0 !important;
+  transform: none !important;
+  width: 100% !important;
+  background-position: center !important;
+}
+.biotipos-section2-title-text { width: 100%; text-align: center; }
+.section-biotipos-2,
+.section-biotipos-2-content {
+  min-height: 0 !important;
+  height: auto !important;
+}
+.section-biotipos-2-content { padding-bottom: 3rem !important; }
+.section-biotipos-tablas { padding-top: 2.5rem !important; }
+.biotipos-section15-buttons-container { justify-content: center !important; align-items: stretch !important; }
+.biotipos-section15-button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 360px) !important;
+  min-height: 56px !important;
+  padding: .9rem 1.5rem !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .8rem !important;
+  text-align: center;
+}
+
+/* Precisión de centrado sobre las reglas históricas absolutas. */
+.biotipos-section1-main-title-wrapper {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+}
+.biotipos-section1-main-title-bg {
+  left: 0 !important;
+  right: 0 !important;
+  transform: none !important;
+}
+.biotipos-section1-main-title {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: none !important;
+}
+.section-biotipos-2-content .biotipos-section2-title {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: min(100%, 760px) !important;
+  max-width: 760px !important;
+  margin: 0 auto 1.5rem !important;
+  transform: none !important;
+}
+.section-biotipos-2,
+.section-biotipos-2-content {
+  aspect-ratio: auto !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 0 !important;
+}
+.section-biotipos-2 .biotipos-section2-main-container {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+}

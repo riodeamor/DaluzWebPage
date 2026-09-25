@@ -43,7 +43,7 @@ export default function CeremoniaCorporalPage() {
           <h1 className="ceremonia-corporal-hero-title">
             <div className="ceremonia-corporal-hero-title-bg" aria-hidden="true" />
             <span className="ceremonia-corporal-hero-title-text">
-              CEREMONIA CORPORAL
+              Ceremonia Corporal
             </span>
           </h1>
           <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-corporal-hero-subtitle">

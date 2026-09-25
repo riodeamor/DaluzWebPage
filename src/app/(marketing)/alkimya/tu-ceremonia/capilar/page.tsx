@@ -71,7 +71,7 @@ export default function CeremoniaCapilarPage() {
           <h1 className="ceremonia-capilar-hero-title">
             <div className="ceremonia-capilar-hero-title-bg" aria-hidden="true" />
             <span className="ceremonia-capilar-hero-title-text">
-              CEREMONIA CAPILAR
+              Ceremonia Capilar
             </span>
           </h1>
           <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-capilar-hero-subtitle">

@@ -68,10 +68,10 @@ export default function CiclosAlquimicosPage() {
               <h2 id="ciclos-oasis-title" className="ciclos-cycle-title">
                 OASIS
               </h2>
-            </div>
-            <p className="ciclos-cycle-subtitle">
+              <p className="ciclos-cycle-subtitle">
               Navegando Mis Aguas: Calibración &amp; Depuración Emocional
             </p>
+            </div>
             <div className="ciclos-cycle-ovals">
               <ProcesosOvalBox className="ciclos-oval-left">
                 <strong>Enfoque:</strong> Depuración Emocional, Alquimia Vibracional &amp; Reconfiguración Subconsciente.

@@ -607,3 +607,35 @@
     height: 240px;
   }
 }
+
+/* Jerarquía Alkimya y ritmo compacto de pasos. */
+.ceremonia-capilar-hero-title-text {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem) !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  color: #97000D !important;
+  text-shadow: 0 5px 12px rgba(74,13,16,.25);
+}
+@media (min-width: 1024px) {
+  .ceremonia-capilar-step-container {
+    gap: .75rem !important;
+    padding-bottom: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .ceremonia-capilar-step-title { min-height: 96px !important; }
+  .ceremonia-capilar-step-title-text { min-height: 78px !important; }
+  .ceremonia-capilar-step-container > .ceremonia-capilar-photo-block[data-zigzag] {
+    width: 220px !important;
+    height: 220px !important;
+    margin-top: -.25rem !important;
+  }
+  .ceremonia-capilar-step-container > .ceremonia-capilar-photo-block[data-zigzag="left"] {
+    align-self: flex-start !important;
+    margin-left: 6% !important;
+  }
+  .ceremonia-capilar-step-container > .ceremonia-capilar-photo-block[data-zigzag="right"] {
+    align-self: flex-end !important;
+    margin-right: 6% !important;
+  }
+}
