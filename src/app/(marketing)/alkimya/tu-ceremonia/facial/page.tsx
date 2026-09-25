@@ -115,7 +115,7 @@ export default function CeremoniaFacialPage() {
         <section className="ceremony-steps-section">
           <CeremonyStepsCarousel
             steps={PASOS}
-            imageForStep={(num) => `/images/ceremonias/step_${num}.png`}
+            imagePrefix="/images/ceremonias/step_"
             imageAltPrefix="Ceremonia facial, paso"
           />
         </section>

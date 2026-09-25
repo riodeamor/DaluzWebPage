@@ -12,11 +12,11 @@ type CeremonyStep = {
 
 type CeremonyStepsCarouselProps = {
   steps: readonly CeremonyStep[];
-  imageForStep: (num: number) => string;
+  imagePrefix: string;
   imageAltPrefix: string;
 };
 
-export default function CeremonyStepsCarousel({ steps, imageForStep, imageAltPrefix }: CeremonyStepsCarouselProps) {
+export default function CeremonyStepsCarousel({ steps, imagePrefix, imageAltPrefix }: CeremonyStepsCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = steps[activeIndex];
   const goTo = (index: number) => setActiveIndex((index + steps.length) % steps.length);
@@ -52,7 +52,7 @@ export default function CeremonyStepsCarousel({ steps, imageForStep, imageAltPre
         </div>
         <figure className="ceremony-steps__media">
           <span className="ceremony-steps__organic-ring" aria-hidden="true" />
-          <img src={imageForStep(active.num)} alt={`${imageAltPrefix} ${active.num}: ${active.titulo}`} />
+          <img src={`${imagePrefix}${active.num}.png`} alt={`${imageAltPrefix} ${active.num}: ${active.titulo}`} />
         </figure>
       </article>
 

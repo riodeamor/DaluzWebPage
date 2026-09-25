@@ -91,7 +91,7 @@ export default function CeremoniaCapilarPage() {
         <section className="ceremony-steps-section">
           <CeremonyStepsCarousel
             steps={PASOS}
-            imageForStep={(num) => `/images/ceremonias/cap_step_${num}.png`}
+            imagePrefix="/images/ceremonias/cap_step_"
             imageAltPrefix="Ceremonia capilar, paso"
           />
         </section>
