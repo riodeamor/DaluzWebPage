@@ -69,15 +69,7 @@ const skinTypes = [
   { value: "mature", label: "Piel Madura" },
 ];
 
-const hairTypes = [
-  { value: "oily", label: "Graso" },
-  { value: "dry", label: "Seco" },
-  { value: "normal", label: "Piel Normal" },
-  { value: "mature", label: "Piel Madura" },
-  { value: "combination", label: "Mixto" },
-  { value: "curly", label: "Rizado" },
-  { value: "straight", label: "Lacio" },
-];
+const hairTypes = [`r`n  { value: "oily", label: "Graso" },`r`n  { value: "dry", label: "Seco" },`r`n  { value: "normal", label: "Normal" },`r`n  { value: "sensitive", label: "Sensible" },`r`n  { value: "combination", label: "Mixto" },`r`n  { value: "curly", label: "Rizado" },`r`n  { value: "straight", label: "Lacio" },`r`n];
 
 // Las etiquetas evitan "á" y ":": Synthese.otf no incluye esos glifos y el
 // panel del Select se renderiza con esa tipografía.
@@ -493,4 +485,5 @@ export default function TiendaSidebar({
     </div>
   );
 }
+
 
