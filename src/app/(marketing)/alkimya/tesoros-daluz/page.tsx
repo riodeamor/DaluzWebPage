@@ -176,7 +176,7 @@ export default function TesorosDaLuzPage() {
             <h4 className="font-subtitle text-xl text-brand-primary italic">
               A. EL TESORO UNIVERSAL (Regalo Fijo para todas las compras)
             </h4>
-            <p className="font-text text-lg text-text-primary leading-relaxed italic">
+            <p className="tesoros-intro-copy font-text text-lg leading-relaxed italic">
               Tu infraestructura de regulación y conexión con la filosofía Da Luz:
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -201,7 +201,7 @@ export default function TesorosDaLuzPage() {
             <h4 className="font-subtitle text-xl text-brand-primary italic">
               B. EL TESORO ESPECÍFICO (El Ritual de tu Línea)
             </h4>
-            <p className="font-text text-lg text-text-primary leading-relaxed">
+            <p className="tesoros-intro-copy font-text text-lg leading-relaxed">
               Según la Alkimya que elijas, desbloqueás un Portal de Inmersión diseñado para transformar tu rutina en un acto de poder:
             </p>
             {/* Bento grid: 5 cards - 2 large, 3 small or similar layout */}
@@ -236,7 +236,7 @@ export default function TesorosDaLuzPage() {
           <h3 className="font-subtitle text-2xl md:text-3xl text-brand-primary italic">
             3. EL PLUS DE LA SINERGIA (Kits Da Luz)
           </h3>
-          <p className="font-text text-lg text-text-primary leading-relaxed">
+          <p className="tesoros-intro-copy font-text text-lg leading-relaxed">
             Si elegís un kit, el valor de tu Tesoro se multiplica. Recibís TODO lo del Nivel Base (Tesoro Universal + Específico de cada línea incluida) MÁS tres herramientas de Maestría exclusivas, diseñadas para la sinergia e integración profunda:
           </p>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -311,5 +311,3 @@ export default function TesorosDaLuzPage() {
     </div>
   )
 }
-
-

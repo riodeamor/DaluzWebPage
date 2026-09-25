@@ -24,7 +24,7 @@ const BIOTIPOS_CAPILARES_TABLAS = [
 
 export default function BiotiposDoshasPage() {
   return (
-    <>
+    <div className="biotipos-page">
       <div className="biotipos-mesh-bg-global"></div>
       {/* Section 1 */}
       <section className="relative overflow-hidden flex flex-col section-biotipos-1">
@@ -193,8 +193,6 @@ export default function BiotiposDoshasPage() {
 
 
 
-    </>
+    </div>
   )
 }
-
-

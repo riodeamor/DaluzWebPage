@@ -2906,3 +2906,115 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.5 !important;
   }
 }
+
+/* Biotipos: un solo fondo continuo y ritmo compacto entre contenido, carruseles y cierre. */
+.biotipos-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(90deg, #4A0D10 0%, #690D17 24%, #860119 52%, #97000D 76%, #B3262E 100%);
+}
+.biotipos-page .biotipos-mesh-bg-global { display: none !important; }
+.biotipos-page .section-biotipos-1,
+.biotipos-page .section-biotipos-2,
+.biotipos-page .section-biotipos-9,
+.biotipos-page .section-biotipos-tablas,
+.biotipos-page .section-biotipos-15 {
+  background: transparent !important;
+  background-image: none !important;
+}
+.biotipos-page .section-biotipos-tablas {
+  padding-block: clamp(1.25rem, 2.5vw, 2rem) !important;
+}
+.biotipos-page .biotipos-tablas-carousel {
+  margin-top: 0 !important;
+}
+@media (min-width: 1280px) {
+  .biotipos-page .section-biotipos-9,
+  .biotipos-page .section-biotipos-15 {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: clamp(2rem, 4vw, 3.5rem) 1.5rem !important;
+    overflow: visible !important;
+  }
+  .biotipos-page .section-biotipos-9-content,
+  .biotipos-page .section-biotipos-15-content {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  .biotipos-page .biotipos-section9-main-title {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 0 auto clamp(1.25rem, 2.5vw, 2rem) !important;
+  }
+  .biotipos-page .biotipos-section9-main-text--wide {
+    margin: 0 auto !important;
+  }
+  .biotipos-page .biotipos-section15-main-container {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: min(92%, 68rem) !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Tesoros: introducciones blancas y cards densas de una sola superficie. */
+.tesoros-page .tesoros-intro-copy { color: #FFFFFF !important; }
+.tesoros-page .tesoros-portal-card {
+  padding: 1.25rem !important;
+  overflow: hidden;
+}
+.tesoros-page .tesoros-portal-card * {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+.tesoros-page .tesoros-portal-card [class*="card-header"] { padding: 0 0 .6rem !important; }
+.tesoros-page .tesoros-portal-card [class*="card-content"] { padding: 0 !important; }
+.tesoros-page .tesoros-portal-title { font-size: clamp(1.05rem, 1.6vw, 1.25rem) !important; }
+.tesoros-page .tesoros-portal-meta {
+  margin-top: .2rem !important;
+  font-size: .78rem !important;
+  line-height: 1.25 !important;
+}
+.tesoros-page .tesoros-portal-kicker {
+  margin: 0 0 .5rem !important;
+  font-size: .625rem !important;
+  line-height: 1.2 !important;
+}
+.tesoros-page .tesoros-portal-list {
+  gap: .5rem !important;
+  margin: 0 !important;
+  font-size: .8125rem !important;
+  line-height: 1.28 !important;
+}
+.tesoros-page .tesoros-portal-effect {
+  margin: .75rem 0 0 !important;
+  padding: .75rem 0 0 !important;
+  border-top: 1px solid rgba(107, 23, 36, .15) !important;
+  font-size: .8125rem !important;
+  font-style: italic;
+  line-height: 1.28 !important;
+}
+
+/* Mantiene el bloque capilar dentro del flujo tras retirar las alturas heredadas. */
+@media (min-width: 1280px) {
+  .biotipos-page .biotipos-section9-main-text--wide {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+  }
+}
