@@ -459,3 +459,15 @@ a.procesos-btn-cream.ciclos-detail-link:hover,
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   transform: translateY(-2px);
 }
+
+/* Ciclos: misma onda del título principal de Procesos, en azul. */
+.ciclos-page .procesos-page-container {
+  background: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+}
+.ciclos-header-band {
+  background-color: transparent !important;
+  background-image: url('/svg/procesos/ProcesosTitleWaveBlue.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: top center !important;
+  background-size: 100% 100% !important;
+}

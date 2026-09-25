@@ -1781,3 +1781,15 @@
 .raices-accordion-content-list p { color: rgba(255, 242, 233, .82); }
 .raices-accordion-column.is-open .raices-accordion-trigger,
 .raices-accordion-trigger:hover { color: #FFF2E9; background: #0c2044; }
+
+/* Raíces y Filosofía: profundidad horizontal visible. */
+.raices-editorial-page {
+  background-color: #051341;
+  background-image: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+  background-attachment: fixed;
+}
+.raices-filosofia-pages .raices-page-container,
+.raices-filosofia-pages .raices-page-bg {
+  background-color: #051341 !important;
+  background-image: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+}

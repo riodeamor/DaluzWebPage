@@ -752,3 +752,9 @@ a.procesos-btn-orientation {
     margin: 0 !important;
   }
 }
+
+/* Procesos, Sesiones y Ciclos: degradado institucional horizontal. */
+.procesos-page-container {
+  background-color: #051341;
+  background-image: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+}

@@ -8,5 +8,5 @@
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <path fill="#FFF2E9" filter="url(#title-shadow)" d="M1920,0v65c-155,90-355,173-595,188-278,18-321-74-652-73C362,180,152,263,0,285V0h1920Z"/>
+  <path fill="#FFFFFF" filter="url(#title-shadow)" d="M1920,0v65c-155,90-355,173-595,188-278,18-321-74-652-73C362,180,152,263,0,285V0h1920Z"/>
 </svg>
