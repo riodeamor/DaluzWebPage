@@ -2819,3 +2819,17 @@ main a.tu-ceremonia-button:hover {
   box-shadow: var(--da-luz-button-hover-shadow);
   transform: translateY(-2px);
 }
+
+/* Módulo 4: buscador y filtros de Tienda. */
+.tienda-page input[type="search"],
+.tienda-page input[placeholder*="Buscar"],
+.tienda-page input[placeholder*="buscar"] { background:#FFF2E9 !important; color:#4A0D10 !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-style:normal !important; }
+.tienda-page input[type="search"]::placeholder,
+.tienda-page input[placeholder*="Buscar"]::placeholder,
+.tienda-page input[placeholder*="buscar"]::placeholder { color:rgba(74,13,16,.52) !important; opacity:1; }
+.tienda-page .tienda-select-trigger,.tienda-select-panel,.tienda-select-panel * { font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-style:normal !important; }
+.tienda-page .tienda-action-button { min-height:40px; background:#FFF2E9 !important; color:#860119 !important; border:0 !important; border-radius:0 15px !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-style:normal !important; font-weight:600; letter-spacing:.1em; text-transform:uppercase; box-shadow:0 2px 6px rgba(0,0,0,.15) !important; }
+.tienda-page .tienda-action-button[data-active="true"] { background:linear-gradient(135deg,#A40000 0%,#860119 100%) !important; color:#FFFFFF !important; border:1px solid rgba(255,242,233,.5) !important; box-shadow:0 4px 14px rgba(164,0,0,.4) !important; }
+.tienda-page .tienda-action-button[data-active="true"]:hover { background:linear-gradient(135deg,#B3131A 0%,#97000D 100%) !important; color:#FFFFFF !important; }
+.tienda-page .tienda-drawer-apply { min-height:48px; border:0; border-radius:0 15px; background:linear-gradient(135deg,#A40000,#860119); color:#FFFFFF; font-family:var(--font-montserrat),Montserrat,sans-serif; font-weight:700; letter-spacing:.12em; }
+.tienda-page .tienda-add-button { height:44px !important; border-radius:0 15px !important; background:#860119 !important; color:#FFFFFF !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-style:normal !important; }
