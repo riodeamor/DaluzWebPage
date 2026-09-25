@@ -60,7 +60,7 @@ const AlkimyaPage: NextPage = () => {
         <div className="mf-band-wrap">
           <div className="mf-band">
             <BandWave />
-            <h1 className="mf-band-title">manifiesto alkimyco</h1>
+            <h1 className="mf-band-title">Manifiesto Alkimyco</h1>
           </div>
         </div>
 

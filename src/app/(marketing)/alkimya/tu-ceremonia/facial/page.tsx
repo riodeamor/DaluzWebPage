@@ -95,7 +95,7 @@ export default function CeremoniaFacialPage() {
           <h1 className="ceremonia-facial-hero-title">
             <div className="ceremonia-facial-hero-title-bg" aria-hidden="true" />
             <span className="ceremonia-facial-hero-title-text">
-              CEREMONIA FACIAL
+              Ceremonia Facial
             </span>
           </h1>
           <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-facial-hero-subtitle">

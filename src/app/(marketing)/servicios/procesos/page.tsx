@@ -2,8 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ProcesosBackground,
-  ProcesosOrganicBox,
-  ProcesosOvalPlaceholder,
 } from '@/components/svg/ProcesosPageComponents';
 import './procesos-pages.css';
 
@@ -47,12 +45,7 @@ export default function ProcesosPage() {
         <section className="procesos-section procesos-herramientas" aria-labelledby="herramientas-title">
           <div className="procesos-herramientas-grid">
             <div className="procesos-herramienta-card">
-              <div className="procesos-herramienta-image">
-                <ProcesosOvalPlaceholder
-                  src="/svg/procesos/image1%20Procesos.png"
-                  alt="Botiquín Alquímico - tinturas, microdosis y elixires"
-                />
-              </div>
+              <div className="procesos-herramienta-image procesos-photo-ready" aria-label="Espacio preparado para fotografía del Botiquín Botánico" />
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">EL BOTIQUÍN BOTÁNICO</h3>
                 <p className="procesos-herramienta-desc">
@@ -64,12 +57,7 @@ export default function ProcesosPage() {
               </div>
             </div>
             <div className="procesos-herramienta-card">
-              <div className="procesos-herramienta-image">
-                <ProcesosOvalPlaceholder
-                  src="/svg/procesos/image2%20Procesos.png"
-                  alt="Cofre DA LUZ - tecnologías vibracionales"
-                />
-              </div>
+              <div className="procesos-herramienta-image procesos-photo-ready" aria-label="Espacio preparado para fotografía del Cofre de Tecnologías Vibracionales" />
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">COFRE DE TECNOLOGÍAS VIBRACIONALES</h3>
                 <p className="procesos-herramienta-desc">

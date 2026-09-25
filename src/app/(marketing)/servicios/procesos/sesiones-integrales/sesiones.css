@@ -256,3 +256,16 @@
   .sesiones-card-details { grid-template-columns: 1fr; }
   .sesiones-card-cta .procesos-btn-blue { width: 100%; }
 }
+
+/* Fase 4: cabecera centrada en el viewport. */
+.sesiones-header-band-inner {
+  max-width: none;
+  width: 100%;
+  justify-content: center;
+}
+.sesiones-page-title {
+  transform: none !important;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 4px 12px rgba(5, 19, 65, 0.22);
+}

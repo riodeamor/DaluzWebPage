@@ -713,3 +713,42 @@ a.procesos-btn-orientation {
 @media (max-width: 680px) {
   .procesos-page-buttons { grid-template-columns: minmax(0, 20rem); }
 }
+
+/* Fase 4: marcos listos para fotografía real y botonera de orientación coherente. */
+.procesos-photo-ready {
+  width: min(100%, 480px);
+  aspect-ratio: 4 / 3;
+  min-height: 260px;
+  border-radius: 42% 58% 52% 48% / 48% 42% 58% 52%;
+  border: 2px solid rgba(255,242,233,.62);
+  background:
+    linear-gradient(145deg, rgba(255,242,233,.13), rgba(255,242,233,.03)),
+    linear-gradient(135deg, #16345F, #051341);
+  box-shadow: 0 12px 28px -4px rgba(0,0,0,.30), 0 6px 12px -2px rgba(0,0,0,.18);
+}
+.procesos-page-buttons { flex-direction: row; gap: 1rem; }
+.procesos-btn-orientation { width: min(100%, 360px); min-height: 56px; }
+@media (max-width: 639px) {
+  .procesos-page-buttons { flex-direction: column; }
+}
+
+.procesos-pages .procesos-page-buttons {
+  display: flex !important;
+  grid-template-columns: none !important;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
+}
+@media (max-width: 639px) {
+  .procesos-pages .procesos-page-buttons { flex-direction: column; align-items: center; }
+}
+
+@media (min-width: 640px) {
+  .procesos-pages .procesos-page-buttons { flex-wrap: nowrap !important; }
+  .procesos-pages .procesos-btn-orientation {
+    flex: 0 1 360px !important;
+    width: 360px !important;
+    margin: 0 !important;
+  }
+}

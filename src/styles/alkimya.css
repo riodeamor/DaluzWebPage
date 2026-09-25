@@ -2649,3 +2649,112 @@ h1, h2, h3, h4, h5, h6,
 .tesoros-page .tesoros-container h2,
 .tesoros-page .tesoros-container h3,
 .tesoros-page .tesoros-container h4 { color: #FFF2E9 !important; }
+
+/* Ajuste editorial final de títulos y contraste de Alkimya. */
+.tesoros-page {
+  background: linear-gradient(135deg, #97000D 0%, #860119 48%, #4A0D10 100%) !important;
+}
+.tesoros-header-band {
+  background: #FFF2E9 !important;
+  border-radius: 0 0 32px 0;
+  box-shadow: 0 12px 28px -4px rgba(0,0,0,.30), 0 6px 12px -2px rgba(0,0,0,.18);
+}
+.tesoros-page-title,
+.activos-origen-page .ayo-title-text,
+.mf-band-title {
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif !important;
+  color: #97000D !important;
+  text-transform: none !important;
+  text-align: center !important;
+  text-shadow: 0 5px 12px rgba(74,13,16,.25);
+}
+.tesoros-page .tesoros-content-card {
+  background: linear-gradient(145deg, #860119 0%, #4A0D10 100%) !important;
+}
+.tesoros-page .tesoros-container li,
+.tesoros-page .tesoros-container li strong {
+  color: #FFFFFF !important;
+}
+.activos-origen-page .ayo-title-band {
+  max-width: min(94%, 1180px);
+  margin: 0 auto 2rem;
+  min-height: clamp(150px, 20vw, 230px);
+  display: grid;
+  place-items: center;
+  background: #FFF2E9 !important;
+  border-radius: 0 0 32px 32px;
+  clip-path: ellipse(76% 62% at 50% 34%);
+  box-shadow: none !important;
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,.25));
+}
+.activos-origen-page .ayo-title-band .ayo-title-text {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  padding: 1rem 2rem 3rem;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem) !important;
+}
+
+.tesoros-page .tesoros-header-band .tesoros-page-title {
+  color: #97000D !important;
+}
+
+/* Centrado definitivo del hero de Biotipos frente a estilos heredados. */
+.section-biotipos-1-content .biotipos-section1-main-title-wrapper {
+  left: 50% !important;
+  right: auto !important;
+  width: min(100%, 1200px) !important;
+  transform: translateX(-50%) !important;
+}
+.section-biotipos-1-content .biotipos-section1-main-title-bg {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: none !important;
+}
+.section-biotipos-1-content .biotipos-section1-main-title {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  transform: none !important;
+}
+@media (min-width: 768px) {
+  .section-biotipos-2 { min-height: 460px !important; }
+}
+@media (max-width: 767px) {
+  .section-biotipos-2 { min-height: 760px !important; }
+}
+
+/* Normalización de flujo para el hero y la frontera activa de Biotipos. */
+.section-biotipos-1-content .biotipos-section1-main-title-wrapper {
+  position: relative !important;
+  inset: auto !important;
+  width: min(100%, 1200px) !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+.section-biotipos-1-content .biotipos-section1-main-title-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  transform: none !important;
+}
+.section-biotipos-1-content .biotipos-section1-main-title {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  transform: none !important;
+}
+.section-biotipos-2 {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  min-height: 520px !important;
+}
+.section-biotipos-2-content {
+  position: relative !important;
+  inset: auto !important;
+}
+@media (max-width: 767px) {
+  .section-biotipos-2 { min-height: 820px !important; }
+}

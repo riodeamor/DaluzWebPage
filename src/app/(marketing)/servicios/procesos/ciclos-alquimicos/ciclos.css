@@ -368,3 +368,57 @@ a.procesos-btn-cream.ciclos-detail-link:hover {
     padding: 0.875rem 1rem;
   }
 }
+
+/* Fase 4: introducción orgánica y banners editoriales de ancho completo. */
+.ciclos-intro {
+  width: min(100% - 2rem, 1120px);
+  left: auto;
+  right: auto;
+  margin: 0 auto 3rem;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(2rem, 8vw, 7rem);
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520'%3E%3Cpath fill='%23051341' d='M25 135C10 38 157 8 310 33c134 22 205 86 292 73 104-15 163-91 332-74 150 16 256 87 241 184-15 96-122 110-211 143-108 39-144 129-282 135-151 7-195-87-312-79-107 8-212 88-298 18-71-58-7-175-47-298Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,.35));
+}
+.ciclos-intro-item {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto 1.25rem !important;
+  transform: none !important;
+  text-align: center !important;
+}
+.ciclos-cycle-header {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 1.5rem 0 2rem !important;
+  padding: 2rem clamp(1.25rem, 5vw, 4rem) 2.4rem;
+  color: #051341;
+  background: #FFF2E9;
+  border-radius: 0 28px;
+  box-shadow: 0 12px 28px -4px rgba(0,0,0,.30), 0 6px 12px -2px rgba(0,0,0,.18);
+  clip-path: polygon(0 8%, 12% 2%, 28% 7%, 45% 1%, 62% 6%, 80% 2%, 100% 8%, 100% 88%, 83% 96%, 65% 90%, 47% 98%, 29% 91%, 13% 97%, 0 90%);
+}
+.ciclos-cycle-title {
+  display: block;
+  margin: 0 !important;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  color: #051341;
+}
+.ciclos-cycle-subtitle {
+  width: auto;
+  margin: .45rem auto 0;
+  padding: 0;
+  transform: none;
+  color: #16345F;
+}
+@media (max-width: 768px) {
+  .ciclos-intro { width: calc(100% - 1rem); padding: 3rem 1.5rem; background-color: transparent; }
+  .ciclos-cycle-header { padding: 1.6rem 1rem 2rem; }
+}

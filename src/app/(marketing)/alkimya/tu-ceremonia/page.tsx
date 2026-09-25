@@ -13,33 +13,12 @@ export default function TuCeremoniaPage() {
       {/* Mobile/Tablet mesh background (shared with biotipos-doshas, hidden on desktop) */}
       <div className="biotipos-mesh-bg-global tu-ceremonia-mesh-bg"></div>
 
-      {/* SVG Background (desktop only) */}
-      <div className="tu-ceremonia-bg-container">
-        <img
-          src="/svg/ceremonias/TuCeremoniaPagebg2.svg"
-          alt="Tu Ceremonia Background"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center top',
-            display: 'block',
-            minHeight: '100%',
-            minWidth: '100%',
-            transform: 'translateZ(0)',
-            WebkitTransform: 'translateZ(0)',
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden'
-          }}
-        />
-      </div>
-
       {/* Page Content */}
       <div className="tu-ceremonia-content">
         {/* Title + Subtitle wrapped in a single card on mobile/tablet */}
         <div className="tu-ceremonia-title-card">
           <h1 className="tu-ceremonia-main-title">
-            tu ceremonia diaria
+            Tu ceremonia diaria
           </h1>
 
           {/* Subtítulo blanco */}

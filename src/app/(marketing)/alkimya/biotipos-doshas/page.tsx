@@ -34,16 +34,11 @@ export default function BiotiposDoshasPage() {
           <div className="biotipos-section1-main-title-wrapper">
             <div className="biotipos-section1-main-title-bg"></div>
             <h1 className="biotipos-text-element biotipos-section1-main-title">
-              biotipos
+              Biotipos
             </h1>
           </div>
 
-          {/* Subtitle */}
-          <p className="biotipos-text-element biotipos-section1-subtitle" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.3rem)' }}>
-            Conectar con tu Piel y Cabello.
-          </p>
-
-          {/* Main Text with SVG Background */}
+{/* Main Text with SVG Background */}
           <div className="biotipos-text-element biotipos-section1-main-text">
             <div className="biotipos-section1-main-text-bg"></div>
             <div className="biotipos-section1-main-text-content">

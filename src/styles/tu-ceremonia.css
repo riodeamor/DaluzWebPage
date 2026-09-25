@@ -498,3 +498,36 @@
 }
 
 .tu-ceremonia-secondary-title { margin-top: 0.75rem !important; }
+
+/* Ceremonia principal: fondo limpio, encabezado sutil y escala editorial. */
+.tu-ceremonia-page {
+  background: linear-gradient(145deg, #4A0D10 0%, #860119 46%, #97000D 100%) !important;
+}
+.tu-ceremonia-bg-container { display: none !important; }
+.tu-ceremonia-content { gap: 1.4rem; padding-top: 2.5rem; }
+.tu-ceremonia-title-card {
+  display: flex !important;
+  width: min(94%, 980px);
+  min-height: 190px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #FFF2E9;
+  border-radius: 0 0 34px 34px;
+  clip-path: ellipse(76% 64% at 50% 34%);
+  filter: drop-shadow(0 14px 20px rgba(0,0,0,.30));
+}
+.tu-ceremonia-page h1.tu-ceremonia-main-title {
+  color: #97000D !important;
+  text-transform: none !important;
+  text-shadow: 0 5px 12px rgba(74,13,16,.25);
+}
+.tu-ceremonia-page h2.tu-ceremonia-secondary-title {
+  max-width: 720px;
+  margin: .5rem auto 0 !important;
+  color: #4A0D10 !important;
+  font-size: clamp(1.05rem, 2vw, 1.45rem) !important;
+  line-height: 1.35;
+  text-align: center;
+}
