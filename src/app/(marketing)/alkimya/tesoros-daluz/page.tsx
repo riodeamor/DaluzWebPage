@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import AlkimyaWaveHeader from '@/components/alkimya/AlkimyaWaveHeader';
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -96,12 +97,7 @@ const PLUS_SINERGIA_ITEMS = [
 export default function TesorosDaLuzPage() {
   return (
     <div className="tesoros-page min-h-screen">
-      {/* Full-width title band */}
-      <section className="tesoros-header-band">
-        <div className="tesoros-header-band-inner">
-          <h1 className="tesoros-page-title">Tesoros Da Luz</h1>
-        </div>
-      </section>
+      <AlkimyaWaveHeader title="tesoros da luz" />
 
       <div className="tesoros-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10 md:space-y-14">
         {/* Hero intro */}
@@ -312,3 +308,4 @@ export default function TesorosDaLuzPage() {
     </div>
   )
 }
+

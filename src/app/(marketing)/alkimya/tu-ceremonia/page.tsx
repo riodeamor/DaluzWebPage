@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import '@/styles/tu-ceremonia.css'
+import AlkimyaWaveHeader from '@/components/alkimya/AlkimyaWaveHeader'
 
 export const metadata: Metadata = {
   title: 'Tu Ceremonia | ALKIMYA | DA LUZ CONSCIENTE',
@@ -15,17 +16,9 @@ export default function TuCeremoniaPage() {
 
       {/* Page Content */}
       <div className="tu-ceremonia-content">
-        {/* Title + Subtitle wrapped in a single card on mobile/tablet */}
-        <div className="tu-ceremonia-title-card">
-          <h1 className="tu-ceremonia-main-title">
-            Tu ceremonia diaria
-          </h1>
-
-          {/* Subtítulo blanco */}
-          <h2 className="tu-ceremonia-secondary-title">
-            Transformá tu rutina en un ritual de presencia y consagración corporal.
-          </h2>
-        </div>
+        <AlkimyaWaveHeader title="tu ceremonia diaria">
+          <p className="alkimya-wave-header__subtitle">Transformá tu rutina en un ritual de presencia y consagración corporal.</p>
+        </AlkimyaWaveHeader>
 
         {/* Text Card 1 */}
         <div className="tu-ceremonia-text-card tu-ceremonia-text-card-1">
@@ -63,3 +56,4 @@ export default function TuCeremoniaPage() {
     </div>
   )
 }
+

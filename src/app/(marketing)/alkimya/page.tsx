@@ -1,6 +1,7 @@
 'use client';
 
 import { NextPage } from 'next';
+import AlkimyaWaveHeader from '@/components/alkimya/AlkimyaWaveHeader';
 
 /* Anillo decorativo de 4 flechas del ciclo de reciclaje (solo desktop/tablet) */
 const ArrowRing = () => (
@@ -57,12 +58,7 @@ const AlkimyaPage: NextPage = () => {
           SECCIÓN 1 — MANIFIESTO ALKIMYCO
           ============================================================ */}
       <section className="mf-section mf-manifiesto">
-        <div className="mf-band-wrap">
-          <div className="mf-band">
-            <BandWave />
-            <h1 className="mf-band-title">Manifiesto Alkimyco</h1>
-          </div>
-        </div>
+        <AlkimyaWaveHeader title="manifiesto alkimyco" />
 
         <div className="mf-manifiesto-body">
           <p className="mf-lead"><em>Neurocosmética que transforma: la sinergia precisa entre saberes botánicos ancestrales y biotecnología vegetal moderna.</em></p>
@@ -125,3 +121,4 @@ const AlkimyaPage: NextPage = () => {
 };
 
 export default AlkimyaPage;
+

@@ -2758,3 +2758,17 @@ h1, h2, h3, h4, h5, h6,
 @media (max-width: 767px) {
   .section-biotipos-2 { min-height: 820px !important; }
 }
+
+/* Módulo 3: sistema compartido de cabeceras y fondos Alkimya. */
+.alkimya-wave-header { position:relative; isolation:isolate; width:100%; min-height:clamp(155px,17vw,220px); display:grid; place-items:center; margin:0 auto clamp(1.5rem,4vw,3rem); padding:clamp(1.5rem,4vw,3rem) 1.25rem clamp(2.5rem,6vw,4.5rem); }
+.alkimya-wave-header__shape { position:absolute; z-index:-1; inset:0; background:#FFF2E9; clip-path:polygon(0 0,100% 0,100% 62%,94% 72%,86% 78%,75% 77%,63% 72%,52% 76%,39% 83%,27% 78%,16% 65%,7% 72%,0 82%); filter:drop-shadow(0 14px 18px rgba(42,6,8,.28)); }
+.alkimya-wave-header__content { width:min(100%,1000px); text-align:center; }
+.alkimya-wave-header h1 { margin:0; font-family:var(--font-cormorant),"Cormorant Garamond",serif; font-size:clamp(2.25rem,4.6vw,3.75rem); line-height:1; font-weight:600; text-transform:lowercase; color:#97000D; text-shadow:0 5px 12px rgba(74,13,16,.22); }
+.alkimya-wave-header__subtitle { max-width:720px; margin:.75rem auto 0; font-family:var(--font-cormorant),"Cormorant Garamond",serif; font-size:clamp(1.05rem,2vw,1.4rem); line-height:1.35; color:#4A0D10; }
+.mf-page,.section-biotipos-1,.section-biotipos-2,.section-biotipos-9,.section-biotipos-15,.section-biotipos-tablas,.tu-ceremonia-page { background:linear-gradient(180deg,#97000D 0%,#860119 35%,#4A0D10 75%,#2A0608 100%) !important; }
+.tesoros-page,.activos-origen-page,.ceremonia-facial-page,.ceremonia-capilar-page,.ceremonia-corporal-page { background:radial-gradient(ellipse at 50% 25%,#A40000 0%,#860119 45%,#4A0D10 90%,#2A0608 100%) !important; }
+.tu-ceremonia-page .alkimya-wave-header { margin-bottom:.5rem; }
+.tu-ceremonia-page .tu-ceremonia-title-card { display:none !important; }
+.section-biotipos-1-content > .alkimya-wave-header { flex:none; }
+.section-biotipos-tablas { padding-block:2.5rem 3rem !important; }
+@media (max-width:767px) { .alkimya-wave-header { min-height:145px; padding-bottom:2.8rem; } .alkimya-wave-header__shape { clip-path:polygon(0 0,100% 0,100% 70%,85% 77%,70% 74%,55% 82%,38% 78%,22% 69%,8% 76%,0 84%); } }

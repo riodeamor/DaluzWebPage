@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import AlkimyaWaveHeader from '@/components/alkimya/AlkimyaWaveHeader';
 
 export default function ActivosOrigenPage() {
   return (
@@ -9,9 +10,7 @@ export default function ActivosOrigenPage() {
       {/* Section 1 */}
       <section className="activos-origen-section">
         {/* H1 - Activos y Origen with AYOTitle.svg */}
-        <div className="ayo-title-band">
-          <h1 className="ayo-title-text">La arquitectura de nuestras fórmulas</h1>
-        </div>
+        <AlkimyaWaveHeader title="la arquitectura de nuestras fórmulas" />
 
         {/* H2 - La Arquitectura de nuestras Fórmulas with AYOband.svg */}
 
@@ -108,3 +107,4 @@ export default function ActivosOrigenPage() {
     </div>
   );
 }
+

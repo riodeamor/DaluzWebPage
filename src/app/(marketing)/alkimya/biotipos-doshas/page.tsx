@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import BiotiposTablasCarousel from '@/components/biotipos/BiotiposTablasCarousel';
+import AlkimyaWaveHeader from '@/components/alkimya/AlkimyaWaveHeader';
 
 const BIOTIPOS_COLUMNS = ["Cómo se siente", "Tu necesidad", "Alkimyas Aliadas"];
 const BIOTIPOS_TABLAS = [
@@ -30,13 +31,7 @@ export default function BiotiposDoshasPage() {
 
         {/* Content Area - Flexible area for adding text and other elements */}
         <div className="relative z-10 flex-1 section-biotipos-1-content">
-          {/* Main Title */}
-          <div className="biotipos-section1-main-title-wrapper">
-            <div className="biotipos-section1-main-title-bg"></div>
-            <h1 className="biotipos-text-element biotipos-section1-main-title">
-              Biotipos
-            </h1>
-          </div>
+          <AlkimyaWaveHeader title="biotipos" />
 
 {/* Main Text with SVG Background */}
           <div className="biotipos-text-element biotipos-section1-main-text">
