@@ -38,7 +38,7 @@ export default function BiotiposDoshasPage() {
             <div className="biotipos-section1-main-text-bg"></div>
             <div className="biotipos-section1-main-text-content">
               <p className="biotipos-section1-main-text-paragraph" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.2rem)' }}>
-                La soberanía sobre tu bienestar empieza por el reconocimiento de tu Bio-individualidad. No buscamos encasillar, buscamos honrar tu diseño único. Comprender tu biotipo es el primer paso para elegir las Alquimias de Da Luz que mejor cooperarán con tu organismo.
+                La soberanía sobre tu bienestar comienza por reconocer tu bio-individualidad. La industria masiva te enseñó a tratar a tu piel como un problema a corregir, encasillándote en categorías rígidas; en Da Luz honramos tu diseño como un terreno biológico vivo, inteligente y en constante movimiento. Comprender tu biotipo no es etiquetarte: es decodificar el lenguaje sutil de tu piel y tu cabello para elegir las alquimias botánicas que cooperarán de forma exacta con tu fisiología.
               </p>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function BiotiposDoshasPage() {
                 <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
                   <p className="biotipos-section2-text-paragraph">
-                    Para comprender el biotipo, es esencial reconocer a la piel como el órgano vivo más extenso y una frontera sumamente activa entre nuestro templo interno y el entorno. Sus funciones vitales actúan como nuestra primera línea de defensa biológica y sensorial.
+                    Para comprender tu biotipo, es esencial reconocer a la piel como tu frontera sensorial más activa. Embriológicamente, tu piel y tu cerebro nacen del mismo tejido original (el ectodermo): son dos extremos de un mismo sistema. Por eso, lo que tu mente calla o tu sistema nervioso no logra digerir, tu piel lo somatiza en tiempo real: desde ese brote repentino en semanas de sobreexigencia, hasta la rojez o el ardor cuando estás al límite. Tu barrera no es un envoltorio pasivo; es un mapa vivo que siente, procesa y comunica tu estado interno antes de que la razón logre nombrarlo.
                   </p>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function BiotiposDoshasPage() {
                 <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
                   <p className="biotipos-section2-text-paragraph">
-                    Regula la temperatura, modula la pérdida transdérmica de agua y protege frente a radiaciones solares, patógenos y cambios térmicos. Es un escudo celular inteligente en continua comunicación con tu sistema nervioso e inmunológico.
+                    Como primera línea de defensa, regula la pérdida transdérmica de agua (TEWL) y equilibra un microbioma de millones de bacterias protectoras. ¿Cómo se siente esto en tu cotidiano? Cuando este escudo se debilita por estrés o químicos agresivos, la humedad se evapora: aparece la tirantez después de lavarte, la piel que “se chupa” las cremas y sigue seca, o la reactividad al frío y al viento. Cuidar tu biotipo no es maquillar el síntoma; es sellar ese escudo biológico para que tu barrera retenga su agua celular y habite el entorno con elasticidad, frescura y vitalidad soberana.
                   </p>
                 </div>
               </div>
@@ -130,35 +130,10 @@ export default function BiotiposDoshasPage() {
           </h2>
 
           {/* Main Text */}
-          <div className="biotipos-text-element biotipos-section9-main-text">
+          <div className="biotipos-text-element biotipos-section9-main-text biotipos-section9-main-text--wide">
             <div className="biotipos-section9-main-text-bg"></div>
             <div className="biotipos-section9-main-text-content">
-              <p className="biotipos-section9-main-text-paragraph">
-                Al igual que el rostro, el cabello y el cuero cabelludo son un reflejo directo de nuestro equilibrio interno (Doshas). El cuero cabelludo no es más que la piel de la cabeza, con las mismas funciones protectoras y la misma composición de barrera hidrolipídica.
-              </p>
-            </div>
-          </div>
-
-          {/* Text Grid Container */}
-          <div className="biotipos-section9-text-grid">
-            {/* Left Side Text */}
-            <div className="biotipos-text-element biotipos-section9-left-text">
-              <div className="biotipos-section9-left-text-bg"></div>
-              <div className="biotipos-section9-left-text-content">
-                <p className="biotipos-section9-side-text-paragraph">
-                  Tu biotipo capilar se define por el patrón de secreciones sebáceas en la raíz (Kapha, Vata, Pitta) y la estructura de la fibra (Vata, Pitta). Esto determina su tendencia a la oleosidad, la sequedad, la caída o la irritación.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Side Text */}
-            <div className="biotipos-text-element biotipos-section9-right-text">
-              <div className="biotipos-section9-right-text-bg"></div>
-              <div className="biotipos-section9-right-text-content">
-                <p className="biotipos-section9-side-text-paragraph">
-                  Comprender tu Dosha capilar es clave para elegir un tratamiento que no solo repare la fibra, sino que armonice la raíz y asegure la vitalidad a largo plazo.
-                </p>
-              </div>
+              <p className="biotipos-section9-main-text-paragraph">Al igual que el rostro, el cabello y el cuero cabelludo son un sismógrafo directo de tu equilibrio interno. Lejos de ser un filamento inerte, cada hebra nace de un terreno vascularizado donde convergen la microcirculación, las terminaciones nerviosas y la fascia craneal. Tu biotipo capilar se define por la danza entre la secreción sebácea de la raíz y la arquitectura lipídica de la fibra: el pulso Vata se traduce en sequedad y fragilidad; el pulso Pitta somatiza a través del exceso térmico y la inflamación folicular; y el pulso Kapha se manifiesta en sobrecarga oleosa y congestión del poro. Comprender tu Dosha capilar es la llave para abandonar el maquillaje temporal de las siliconas y habilitar un cuidado botánico de raíz: oxigenar el folículo, preservar los lípidos naturales y devolverle a tu melena su volumen y vitalidad soberana.</p>
             </div>
           </div>
         </div>
@@ -221,4 +196,5 @@ export default function BiotiposDoshasPage() {
     </>
   )
 }
+
 
