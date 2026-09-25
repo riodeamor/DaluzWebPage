@@ -1650,3 +1650,11 @@
     width: min(42rem, 52%);
   }
 }
+
+/* Centrado óptico final del texto en el lóbulo inferior */
+@media (min-width: 1024px) {
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p:last-child {
+    left: 53%;
+    width: min(41rem, 50%);
+  }
+}
