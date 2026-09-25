@@ -2828,3 +2828,13 @@ h1, h2, h3, h4, h5, h6,
 .biotipos-section15-buttons-container { display:flex !important; flex-wrap:wrap !important; justify-content:center !important; gap:1.5rem !important; }
 .biotipos-section15-button { flex:0 1 350px !important; width:350px !important; min-height:48px !important; border-radius:0 15px !important; background:#860119 !important; color:#FFFFFF !important; }
 @media (max-width:767px) { .biotipos-section15-button { width:100% !important; } }
+
+/* Activos y Origen: cierre de contraste y jerarquía del Módulo 3. */
+.activos-origen-page .ayo-section-title,
+.activos-origen-page .ayo-section-subtitle { color:#FFF2E9 !important; text-align:center; }
+.activos-origen-page .ayo-card { background:#FFF2E9 !important; border-radius:0 22px !important; box-shadow:0 14px 30px rgba(42,6,8,.32) !important; }
+.activos-origen-page .ayo-card-heading { color:#97000D !important; font-family:var(--font-cormorant),"Cormorant Garamond",serif !important; font-style:normal !important; }
+.activos-origen-page .ayo-card-desc,.activos-origen-page .ayo-card-desc strong { color:#4A0D10 !important; }
+.activos-origen-page .ayo-card-button { display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:.75rem 1.25rem; border-radius:0 15px !important; background:#860119 !important; color:#FFFFFF !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 6px 16px rgba(42,6,8,.28); }
+.activos-origen-page .ayo-card-button:hover { background:#97000D !important; transform:translateY(-2px); }
+.activos-origen-page .ayo-footer,.activos-origen-page .ayo-footer p,.activos-origen-page .ayo-footer strong { color:#FFFFFF !important; }
