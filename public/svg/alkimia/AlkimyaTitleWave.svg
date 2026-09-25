@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 290" preserveAspectRatio="none">
+  <defs>
+    <filter id="title-shadow" x="-3%" y="-8%" width="106%" height="125%">
+      <feOffset dx="-7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#2A0608" flood-opacity=".32"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path fill="#FFF2E9" filter="url(#title-shadow)" d="M1920,0v65c-155,90-355,173-595,188-278,18-321-74-652-73C362,180,152,263,0,285V0h1920Z"/>
+</svg>

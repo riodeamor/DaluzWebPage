@@ -2838,3 +2838,22 @@ h1, h2, h3, h4, h5, h6,
 .activos-origen-page .ayo-card-button { display:inline-flex; align-items:center; justify-content:center; min-height:46px; padding:.75rem 1.25rem; border-radius:0 15px !important; background:#860119 !important; color:#FFFFFF !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 6px 16px rgba(42,6,8,.28); }
 .activos-origen-page .ayo-card-button:hover { background:#97000D !important; transform:translateY(-2px); }
 .activos-origen-page .ayo-footer,.activos-origen-page .ayo-footer p,.activos-origen-page .ayo-footer strong { color:#FFFFFF !important; }
+
+/* Cabeceras Alkimya: onda principal tomada de Procesos Da Luz. */
+.alkimya-wave-header {
+  min-height: clamp(165px, 18vw, 230px);
+  padding: clamp(1.35rem, 3.5vw, 2.75rem) 1.25rem clamp(3.2rem, 7vw, 5.25rem);
+}
+.alkimya-wave-header__shape {
+  inset: 0;
+  clip-path: none;
+  background: transparent url('/svg/alkimia/AlkimyaTitleWave.svg') top center / 100% 100% no-repeat;
+  filter: none;
+}
+@media (max-width: 767px) {
+  .alkimya-wave-header {
+    min-height: 150px;
+    padding: 1.35rem 1rem 3.5rem;
+  }
+  .alkimya-wave-header__shape { clip-path: none; }
+}
