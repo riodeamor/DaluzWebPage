@@ -531,3 +531,8 @@
   line-height: 1.35;
   text-align: center;
 }
+
+/* Fondo compartido con Tesoros y Activos: rojo-bordó luminoso horizontal. */
+.tu-ceremonia-page {
+  background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
+}

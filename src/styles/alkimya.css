@@ -2873,7 +2873,7 @@ h1, h2, h3, h4, h5, h6,
   background: linear-gradient(90deg, #4A0D10 0%, #690D17 24%, #860119 52%, #97000D 76%, #B3262E 100%) !important;
 }
 .tesoros-page {
-  background: linear-gradient(90deg, #4A0D10 0%, #690D17 24%, #860119 52%, #97000D 76%, #B3262E 100%) !important;
+  background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
 }
 .alkimya-wave-header__shape {
   background-image: url('/svg/alkimia/AlkimyaTitleWave.svg') !important;
@@ -3240,4 +3240,13 @@ h1, h2, h3, h4, h5, h6,
 .ceremonia-corporal-page .ceremonia-back-button {
   background: #FFFFFF !important;
   background-color: #FFFFFF !important;
+}
+
+/* Intercambio final de fondos Alkimya solicitado. */
+.tu-ceremonia-page {
+  background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
+}
+.tesoros-page,
+.activos-origen-page {
+  background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
 }
