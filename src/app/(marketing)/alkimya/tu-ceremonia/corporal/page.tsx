@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import CeremonyStepsCarousel from '@/components/alkimya/CeremonyStepsCarousel'
 import Image from 'next/image'
 import '@/styles/ceremonia-corporal.css'
 
@@ -67,105 +68,15 @@ export default function CeremoniaCorporalPage() {
             />
           </Link>
         </section>
-
-        {/* Paso a Paso */}
-        <section className="px-4 pb-4 sm:px-6 sm:pb-6 md:px-8 md:pb-8 lg:px-12 lg:pb-8">
-          <div className="mx-auto max-w-4xl space-y-12 md:space-y-16 lg:space-y-20">
-            {PASOS.map((paso, stepIndex) => {
-              const isEvenStep = stepIndex % 2 === 0
-              const photoShapeClass = stepIndex % 2 === 0 ? 'ceremonia-corporal-foto-circle' : 'ceremonia-corporal-foto-leaf'
-              const zigzag = {
-                title: isEvenStep ? 'left' : 'right',
-                proposito: isEvenStep ? 'right' : 'left',
-                intencion: isEvenStep ? 'left' : 'right',
-                consejos: isEvenStep ? 'right' : 'left',
-                photo: isEvenStep ? 'right' : 'left',
-              }
-              return (
-                <article
-                  key={paso.num}
-                  className="ceremonia-corporal-step-container ceremonia-corporal-mobile-card lg:bg-transparent lg:shadow-none lg:p-0"
-                >
-                  {/* Titulo Principal */}
-                  <div
-                    className="ceremonia-corporal-step-title"
-                    data-zigzag={zigzag.title}
-                  >
-                    <div className="ceremonia-corporal-step-title-bg" aria-hidden="true" />
-                    <h4 className="ceremonia-corporal-step-title-text">
-                      {paso.num}. {paso.titulo}
-                    </h4>
-                  </div>
-
-                  {/* Propósito y Beneficio */}
-                  <div
-                    className="ceremonia-corporal-block-group"
-                    data-zigzag={zigzag.proposito}
-                    data-order="1"
-                  >
-                    <div className="ceremonia-corporal-block-title">
-                      <span className="ceremonia-corporal-block-title-text">
-                        Propósito y Beneficio
-                      </span>
-                    </div>
-                    <p className="ceremonia-corporal-block-text-content">
-                      {paso.proposito}
-                    </p>
-                  </div>
-
-                  {/* Intención de la Ceremonia */}
-                  <div
-                    className="ceremonia-corporal-block-group"
-                    data-zigzag={zigzag.intencion}
-                    data-order="2"
-                  >
-                    <div className="ceremonia-corporal-block-title">
-                      <span className="ceremonia-corporal-block-title-text">
-                        Intención de la Ceremonia
-                      </span>
-                    </div>
-                    <p className="ceremonia-corporal-block-text-content">
-                      {paso.intencion}
-                    </p>
-                  </div>
-
-                  {/* Consejos de Aplicación */}
-                  <div
-                    className="ceremonia-corporal-block-group"
-                    data-zigzag={zigzag.consejos}
-                    data-order="3"
-                  >
-                    <div className="ceremonia-corporal-block-title">
-                      <span className="ceremonia-corporal-block-title-text">
-                        Consejos de Aplicación
-                      </span>
-                    </div>
-                    <p className="ceremonia-corporal-block-text-content">
-                      {paso.consejos}
-                    </p>
-                  </div>
-
-                  {/* Foto del Paso Corporal */}
-                  <div
-                    className={`ceremonia-corporal-photo-block ${photoShapeClass}`}
-                    data-zigzag={zigzag.photo}
-                  >
-                    <img
-                      src={`/images/ceremonias/corp_step_${paso.num}.png`}
-                      alt={`Foto Corporal paso ${paso.num}`}
-                    />
-                    {/* Wavy Line Decoration */}
-                    <div className="ceremonia-wavy-decoration" aria-hidden="true">
-                      <svg width="25" height="120" viewBox="0 0 25 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 12 0 C 30 20 0 40 12 60 C 30 80 0 100 12 120" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
+        {/* Paso a paso compacto e interactivo */}
+        <section className="ceremony-steps-section">
+          <CeremonyStepsCarousel
+            steps={PASOS}
+            imageForStep={(num) => `/images/ceremonias/corp_step_${num}.png`}
+            imageAltPrefix="Ceremonia corporal, paso"
+          />
         </section>
+
 
         {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
@@ -182,3 +93,5 @@ export default function CeremoniaCorporalPage() {
     </div>
   )
 }
+
+

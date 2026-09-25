@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import CeremonyStepsCarousel from '@/components/alkimya/CeremonyStepsCarousel'
 import CeremoniaCarousel, {
   type CeremoniaBanner,
 } from '@/components/marketing/CeremoniaCarousel'
@@ -110,127 +111,15 @@ export default function CeremoniaFacialPage() {
             label="Ceremonias faciales según tu biotipo"
           />
         </section>
-
-        {/* Paso a Paso */}
-        <section className="px-4 pb-2 sm:px-6 sm:pb-4 md:px-8 md:pb-6 lg:px-12 lg:pb-10">
-          <div className="mx-auto max-w-4xl space-y-6 md:space-y-8 lg:space-y-10">
-            {PASOS.map((paso, stepIndex) => {
-              /* Zigzag: Step 1 starts L,R,L,R,L. Step 2 continues R,L,R,L. Step 3 L,R,L,R. etc. */
-              const isEvenStep = stepIndex % 2 === 0
-              const zigzag = {
-                title: isEvenStep ? 'left' : 'right',
-                proposito: isEvenStep ? 'right' : 'left',
-                intencion: isEvenStep ? 'left' : 'right',
-                consejos: isEvenStep ? 'right' : 'left',
-                extra: 'left' as const,
-                photo: isEvenStep ? 'right' : 'left',
-              }
-              const photoShapeClass = stepIndex % 2 === 0 ? 'ceremonia-facial-foto-circle' : 'ceremonia-facial-foto-leaf'
-              return (
-                <article
-                  key={paso.num}
-                  className="ceremonia-facial-step-container ceremonia-facial-mobile-card lg:bg-transparent lg:shadow-none lg:p-0"
-                >
-                  {/* Titulo Principal */}
-                  <div
-                    className="ceremonia-facial-step-title"
-                    data-zigzag={zigzag.title}
-                  >
-                    <div className="ceremonia-facial-step-title-bg" aria-hidden="true" />
-                    <h4 className="ceremonia-facial-step-title-text pb-4 lg:pb-6">
-                      {paso.num}. {paso.titulo}
-                    </h4>
-                  </div>
-
-                  {/* Propósito y Beneficio */}
-                  <div
-                    className="ceremonia-facial-block-group"
-                    data-zigzag={zigzag.proposito}
-                    data-order="1"
-                  >
-                    <div className="ceremonia-facial-block-title">
-                      <span className="ceremonia-facial-block-title-text">
-                        Propósito y Beneficio
-                      </span>
-                    </div>
-                    <p className="ceremonia-facial-block-text-content">
-                      {paso.proposito}
-                    </p>
-                  </div>
-
-                  {/* Intención de la Ceremonia */}
-                  <div
-                    className="ceremonia-facial-block-group"
-                    data-zigzag={zigzag.intencion}
-                    data-order="2"
-                  >
-                    <div className="ceremonia-facial-block-title">
-                      <span className="ceremonia-facial-block-title-text">
-                        Intención de la Ceremonia
-                      </span>
-                    </div>
-                    <p className="ceremonia-facial-block-text-content">
-                      {paso.intencion}
-                    </p>
-                  </div>
-
-                  {/* Consejos de Aplicación */}
-                  <div
-                    className="ceremonia-facial-block-group"
-                    data-zigzag={zigzag.consejos}
-                    data-order="3"
-                  >
-                    <div className="ceremonia-facial-block-title">
-                      <span className="ceremonia-facial-block-title-text">
-                        Consejos de Aplicación
-                      </span>
-                    </div>
-                    <p className="ceremonia-facial-block-text-content whitespace-pre-line">
-                      {paso.consejos}
-                    </p>
-                  </div>
-
-                  {/* Texto extra (solo si aplica) */}
-                  {'extra' in paso && paso.extra && paso.extra.length > 0 && (
-                    <div
-                      className="ceremonia-facial-extra-block"
-                      data-zigzag={zigzag.extra}
-                    >
-                      <div className="ceremonia-facial-extra-block-bg" aria-hidden="true" />
-                      <div className="ceremonia-facial-extra-block-content">
-                        {paso.extra.map((item, i) => (
-                          <p key={i}>
-                            <span className="font-subtitle font-medium italic">
-                              {item.titulo}{' '}
-                            </span>
-                            {item.texto}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Foto del Paso */}
-                  <div
-                    className={`ceremonia-facial-photo-block ${photoShapeClass}`}
-                    data-zigzag={zigzag.photo}
-                  >
-                    <img
-                      src={`/images/ceremonias/step_${paso.num}.png`}
-                      alt={`Foto paso ${paso.num}`}
-                    />
-                    {/* Wavy Line Decoration */}
-                    <div className="ceremonia-wavy-decoration" aria-hidden="true">
-                      <svg width="25" height="120" viewBox="0 0 25 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 12 0 C 30 20 0 40 12 60 C 30 80 0 100 12 120" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
+        {/* Paso a paso compacto e interactivo */}
+        <section className="ceremony-steps-section">
+          <CeremonyStepsCarousel
+            steps={PASOS}
+            imageForStep={(num) => `/images/ceremonias/step_${num}.png`}
+            imageAltPrefix="Ceremonia facial, paso"
+          />
         </section>
+
 
         {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
@@ -247,3 +136,5 @@ export default function CeremoniaFacialPage() {
     </div>
   )
 }
+
+
