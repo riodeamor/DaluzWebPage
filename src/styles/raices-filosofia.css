@@ -1658,3 +1658,11 @@
     width: min(41rem, 50%);
   }
 }
+
+/* El texto inferior se centra respecto de su lóbulo, desplazado a la derecha */
+@media (min-width: 1024px) {
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p:last-child {
+    left: 60%;
+    width: min(41rem, 50%);
+  }
+}
