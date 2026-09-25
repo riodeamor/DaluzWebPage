@@ -1671,9 +1671,10 @@
 .raices-editorial-page {
   background-color: #051341;
   background-image:
-    radial-gradient(circle at 50% 8%, rgba(0, 80, 128, 0.35) 0%, transparent 55%),
-    radial-gradient(circle at 85% 45%, rgba(0, 80, 128, 0.20) 0%, transparent 50%),
-    linear-gradient(180deg, #051341 0%, #0c2044 25%, #16345F 50%, #081738 75%, #051341 100%);
+    radial-gradient(circle at 48% 7%, rgba(0, 133, 177, 0.48) 0%, rgba(0, 80, 128, 0.18) 28%, transparent 56%),
+    radial-gradient(circle at 88% 43%, rgba(0, 133, 177, 0.28) 0%, transparent 42%),
+    radial-gradient(circle at 12% 72%, rgba(22, 52, 95, 0.72) 0%, transparent 44%),
+    linear-gradient(180deg, #051341 0%, #0B2852 22%, #005080 46%, #16345F 67%, #081738 84%, #051341 100%);
   background-attachment: fixed;
 }
 
