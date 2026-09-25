@@ -1593,3 +1593,48 @@
     filter: none;
   }
 }
+
+/* Ajuste fino de composición SVG en Filosofía */
+.filosofia-editorial-page { padding-top: 0; }
+.filosofia-editorial-hero { width: 100%; max-width: none; }
+.filosofia-editorial-wave {
+  margin-top: 0;
+  padding-top: 2rem;
+}
+.filosofia-editorial-wave h1 {
+  font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+  line-height: 1;
+}
+.filosofia-editorial-tagline {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .filosofia-editorial-manifesto-shape {
+    width: 88vw;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto {
+    position: absolute;
+    inset: 0;
+    max-width: none;
+  }
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p:first-child {
+    top: 25%;
+    width: min(54rem, 66%);
+  }
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p:last-child {
+    bottom: 7%;
+    width: min(43rem, 54%);
+  }
+}
