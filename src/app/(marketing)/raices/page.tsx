@@ -10,17 +10,17 @@ export const metadata: Metadata = {
 }
 
 const formaciones = [
-  { title: 'Eneagrama y Epigenética', description: 'Mapeo de patrones psicoemocionales y cómo el entorno y la percepción reprograman la biología celular.' },
-  { title: 'Reiki Usui (Niveles 1, 2, 3 y Maestría)', description: 'Canalización bioenergética para armonizar centros sutiles y restaurar el flujo vital.' },
-  { title: 'Reiki Karuna (Niveles 1 y 2)', description: 'Trabajo somático sobre memorias celulares profundas y linaje ancestral.' },
-  { title: 'Flores de Bach', description: 'Terapia vibracional líquida para la modulación neuroquímica del estrés, miedos y sobreexigencia.' },
-  { title: 'Fitoterapia (Medicina Herbal)', description: 'Uso clínico de activos botánicos para depurar filtros orgánicos y equilibrar la piel.' },
-  { title: 'Gemoterapia', description: 'Aplicación de redes piezoeléctricas y minerales para anclaje, calma y reordenamiento sutil.' },
-  { title: 'Química Cosmética', description: 'Enlaces moleculares, estabilidad galénica y fórmulas puras libres de disruptores endocrinos.' },
-  { title: 'Formulación Cosmética Avanzada', description: 'Absorción transdérmica de activos biotecnológicos vegetales y alta cosmética.' },
-  { title: 'Aromaterapia', description: 'Moléculas aromáticas puras con impacto directo en el sistema límbico y nervioso autónomo.' },
-  { title: 'Chamanismo Universal', description: 'Prácticas arquetípicas de enraizamiento, conexión con los 5 elementos y reintegración.' },
-  { title: 'Salud Hormonal', description: 'Sincronización cíclica femenina (fases menstruales y climaterio) mediante nutrición y botánica.' },
+  { title: 'Eneagrama y Epigenética', description: 'Mapeo de la estructura del carácter y desprogramación de patrones inconscientes. Integración de cómo la percepción, el estrés y el entorno modulan activamente la expresión genética y la biología celular.' },
+  { title: 'Reiki Usui (Niveles 1, 2, 3 y Maestría)', description: 'Canalización y ordenamiento del flujo vital (Ki/Prana). Alineación de centros sutiles, sellado del campo electromagnético y disolución de bloqueos en los planos físico, emocional y mental.' },
+  { title: 'Reiki Karuna (Niveles 1 y 2)', description: 'Frecuencia de sanación compasiva de alta vibración. Intervención energética profunda para transmutar improntas kármicas inconscientes, memorias de dolor enquistadas y pactos limitantes a nivel álmico.' },
+  { title: 'Flores de Bach', description: 'Terapia floral vibracional para alquimizar estados emocionales densos, regulando el terreno psicoemocional, la sobreexigencia, el miedo y la reactividad del sistema nervioso.' },
+  { title: 'Fitoterapia (Medicina Herbal)', description: 'Farmacopea botánica aplicada: uso clínico de activos vegetales y extractos estandarizados para modular órganos emuntorios (hígado, riñones, intestinos) y desinflamar el terreno biológico. Abordaje integrativo que restaura la capacidad depurativa del organismo y equilibra la fisiología cutánea e inmunológica desde la causa raíz.' },
+  { title: 'Gemoterapia', description: 'Terapia mineral bioeléctrica basada en la geometría y las propiedades piezoeléctricas de las redes cristalinas de cuarzo y minerales nobles. Intervención sobre el campo sutil para calibrar la frecuencia electromagnética corporal, favorecer el enraizamiento telúrico y sostener estados de profunda calma y coherencia interna.' },
+  { title: 'Química Cosmética', description: 'Ciencia de estabilidad galénica, fisicoquímica de emulsiones y balance de pH fisiológico mediante sistemas buffer (citrato/lactato) para la preservación del manto ácido y la microbiota cutánea. Formulación rigurosa y limpia, 100% libre de disruptores endocrinos (ftalatos, parabenos, filtros químicos sintéticos, bisfenoles) y de cargas inertes bioacumulables.' },
+  { title: 'Formulación Cosmética Avanzada', description: 'Ingeniería transdérmica de activos de alto rendimiento: vehículos biointeligentes (liposomas, nanoesferas), biomimética lipídica y balance de ácidos grasos poliinsaturados para la regeneración de la barrera cutánea. Diseño galénico con biotecnología vegetal, péptidos de señal y activos fraccionados por peso molecular para una penetración celular profunda y biodisponible.' },
+  { title: 'Aromaterapia', description: 'Bioquímica de quimiotipos y moléculas aromáticas vivas, estructuradas según su volatilidad y polaridad (notas altas, medias y bajas) en fórmulas puras sin fijadores sintéticos. Acción neurofisiológica directa sobre el sistema límbico y el nervio vago para modular el sistema neurovegetativo, liberar anclajes emocionales y armonizar el biocampo.' },
+  { title: 'Chamanismo Universal', description: 'Puente entre la física cuántica (campos mórficos, efecto observador) y las cosmovisiones ancestrales: trabajo ceremonial con los cinco elementos y la sabiduría de la tierra para el rescate del poder personal. Prácticas arquetípicas y de enraizamiento telúrico que permiten habitar la ciclicidad, trascender el control lineal del ego y caminar la vida desde el goce y la soberanía.' },
+  { title: 'Salud Hormonal', description: 'Abordaje sistémico de la arquitectura endocrina: modulación del eje HPA (estrés/adrenales/cortisol), sensibilidad a la insulina, eje tiroideo y detoxificación hepática de metabolitos hormonales (Fase I y II). Integración de fitomedicina adaptógena y nutrición celular para resolver desbalances de raíz, restaurar el equilibrio metabólico y sostener los ritmos biológicos naturales.' },
 ]
 
 const saberes = [
@@ -43,8 +43,10 @@ export default function RaicesPage() {
         <header className="raices-editorial-hero">
           <div className="raices-editorial-hero-copy">
             <div className="raices-editorial-brackets">
+              <svg className="raices-editorial-title-wave raices-editorial-title-wave-top" viewBox="0 0 520 28" aria-hidden="true"><path d="M2 16C70 2 125 27 194 13C267-2 321 27 389 13C444 2 479 7 518 16" /></svg>
               <h1>La Alquimista y Creadora detrás de Da Luz</h1>
               <span className="raices-editorial-arrow" aria-hidden="true">↓</span>
+              <svg className="raices-editorial-title-wave raices-editorial-title-wave-bottom" viewBox="0 0 520 28" aria-hidden="true"><path d="M2 16C70 2 125 27 194 13C267-2 321 27 389 13C444 2 479 7 518 16" /></svg>
             </div>
             <p className="raices-editorial-opening">
               ¡Hola! Soy la alquimista, terapeuta y creadora detrás de Da Luz. Mi vocación es brindar herramientas y propuestas que impulsen la presencia, el goce y la consciencia. Mi propósito es acompañarte a habitar el cuerpo desde tu propio Poder, en conexión íntima con tus deseos y sensaciones, poniendo a favor nuestra tecnología humana: tan amplia, compleja y disponible cuando aprendemos a escucharla.
@@ -60,6 +62,7 @@ export default function RaicesPage() {
 
         <div className="raices-editorial-reading">
           <section className="raices-editorial-section" aria-labelledby="certeza-cuerpo">
+            <p className="raices-editorial-milestone">I · RAÍZ &amp; SOMATIZACIÓN</p>
             <h2 id="certeza-cuerpo">De la Razón Pura a la Certeza en el Cuerpo</h2>
             <div className="raices-editorial-copy">
               <p>El origen de este camino no nació de una epifanía mística, sino de somatizaciones físicas y dolores que mi cuerpo ya no pudo sostener. Siendo capricorniana con ascendente en Virgo, siempre necesité encontrarle una lógica y un fundamento a todo; la facultad de Psicología en la UNC me abría preguntas, pero la pura intelectualización no me alcanzaba para aliviar lo que sentía en la carne.</p>
@@ -71,10 +74,13 @@ export default function RaicesPage() {
               <p>Con la llegada de la pandemia y el tiempo que abrió la virtualidad, me zambullí en formaciones profundas de 6 a 8 meses con Pedro Marano en Flores de Bach y Gemoterapia, abriéndome las puertas de la gestión emocional con elixires y cristales de la Tierra cooperando con el organismo. La vida, de parecerme desabrida, había pasado a parecerme una locura hermosa. Esos meses de teoría, prácticas meditativas y conexión con la frecuencia de las piedras y las flores me acompañaron a desarmar la vergüenza, la timidez y mis propios prejuicios; me impulsaron a expresarme con más verdad, primero conmigo misma, para desde ahí poder comunicarme de forma certera con los demás.</p>
               <p>Empecé a explorar estas herramientas en mis conocidos, amigos y familiares; sus devoluciones inmediatas me confirmaron una premisa fundamental:</p>
             </div>
+            <p className="raices-editorial-milestone raices-editorial-milestone-inline">II · ELIXIRES &amp; FRECUENCIA</p>
+            <h2 className="raices-editorial-interlude-title">Sacarme la Piel Vieja</h2>
             <blockquote className="raices-editorial-quote">“El cuerpo no miente, no negocia y tiene una tecnología regenerativa extraordinaria cuando se le brindan los estímulos correctos.”</blockquote>
           </section>
 
           <section className="raices-editorial-section raices-editorial-act-card" aria-labelledby="quiebre-mandato">
+            <p className="raices-editorial-milestone">III · EL QUIEBRE &amp; LA MATERIA</p>
             <h2 id="quiebre-mandato">El Quiebre del Mandato, la Alquimia y la Decisión de Emprender</h2>
             <div className="raices-editorial-copy">
               <p>A la par de estas exploraciones, mi transición al vegetarianismo encendió una alarma sobre el acecho de los hábitos cotidianos: me di cuenta de cuántas conductas automáticas sostenemos creyendo que nos cuidan, cuando en realidad entorpecen nuestra fisiología.</p>
@@ -89,6 +95,7 @@ export default function RaicesPage() {
           </section>
 
           <section className="raices-editorial-section" aria-labelledby="nacimiento-da-luz">
+            <p className="raices-editorial-milestone">IV · LA PAUSA &amp; EL LÍMITE</p>
             <h2 id="nacimiento-da-luz">El Punto Ciego, el Límite y el Nacimiento de Da Luz</h2>
             <div className="raices-editorial-copy">
               <p>Sin embargo, en ese primer impulso algo vital había quedado en un punto ciego. Había una resistencia a escuchar una voz interna que venía a ordenar y expandir los horizontes.</p>
@@ -97,7 +104,9 @@ export default function RaicesPage() {
               <p>Fueron tantos los desafíos que pensé en dejar todo, quedarme solo con un par de sesiones o directamente irme a viajar y vivir de cualquier aventura. Pero en el fondo me di cuenta de la verdad: a mis propuestas les faltaba una vuelta de tuerca desde el encuadre. Había límites que ya no deseaba permitir en la consulta, dinámicas que no iban más, y herramientas espectaculares con las que me había formado que aún no me animaba a desplegar.</p>
               <p>En esos meses de pausa, comenzaron a llegar mensajes consultando por sesiones, por productos y compartiendo devoluciones sobre los procesos y alquimias ya transitados. Y ahí recordé que los desafíos no siempre son señales de que el camino no es por ahí; qué errado es creer que solo lo que fluye sin fricción es lo que “vale la pena”.</p>
             </div>
-            <blockquote className="raices-editorial-quote raices-editorial-quote-final">“Y la verdad, no quiero nada que valga la pena; quiero que valga el goce.”</blockquote>
+            <p className="raices-editorial-milestone raices-editorial-milestone-inline">V · EL GOCE COMO BRÚJULA</p>
+            <h2 className="raices-editorial-interlude-title">Valer el Goce</h2>
+            <blockquote className="raices-editorial-quote raices-editorial-quote-final">“No quiero nada que valga la pena; quiero que valga el goce.”</blockquote>
             <div className="raices-editorial-copy">
               <p>Elegí hacer cada paso desde el goce y la presencia, sin correr, sintiendo realmente y dirigiendo mis proyectos hacia donde deseo que vayan, poniendo los límites necesarios a quienes haga falta incluida a mí. El miedo a la “intensidad” de mi visión dejó de estar o, por lo menos, dejó de estorbar.</p>
               <p>Desarmé el síndrome del impostor viéndome con honestidad: dónde estaba parada y, con una mano en el corazón, dónde elijo estar. Me hice cargo de áreas que jamás pensé explorar, puse los límites necesarios y tracé un sendero firme donde la intuición y el corazón tienen los pies bien puestos en la Tierra.</p>

@@ -1666,3 +1666,117 @@
     width: min(41rem, 50%);
   }
 }
+
+/* Raíces — cierre atmosférico y trazos artesanales */
+.raices-editorial-page {
+  background-color: #051341;
+  background-image:
+    radial-gradient(circle at 50% 8%, rgba(0, 80, 128, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 85% 45%, rgba(0, 80, 128, 0.20) 0%, transparent 50%),
+    linear-gradient(180deg, #051341 0%, #0c2044 25%, #16345F 50%, #081738 75%, #051341 100%);
+  background-attachment: fixed;
+}
+
+.raices-editorial-brackets {
+  display: grid;
+  gap: .7rem;
+  padding: 0;
+  border: 0;
+}
+.raices-editorial-brackets::before,
+.raices-editorial-brackets::after { content: none; }
+.raices-editorial-title-wave {
+  display: block;
+  width: min(100%, 32rem);
+  height: 1.25rem;
+  margin-inline: auto;
+}
+.raices-editorial-title-wave path {
+  fill: none;
+  stroke: rgba(255, 242, 233, .72);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+}
+.raices-editorial-title-wave-top { transform: scaleY(-1); }
+.raices-editorial-brackets h1 { text-transform: uppercase; }
+.raices-editorial-arrow {
+  position: static;
+  margin: -.25rem auto;
+  background: transparent;
+  transform: none;
+}
+
+.raices-editorial-portrait {
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(0, 80, 128, .4);
+  border-radius: 2.25rem 5.5rem 2.75rem 6.25rem;
+  box-shadow: 0 20px 40px -15px rgba(0, 80, 128, .35);
+}
+.raices-editorial-reading { width: min(100%, 42.5rem); }
+.raices-editorial-copy { gap: 1.35rem; }
+.raices-editorial-opening,
+.raices-editorial-copy p {
+  color: rgba(255, 242, 233, .85);
+  line-height: 1.75;
+}
+.raices-editorial-act-card {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.raices-editorial-act-card h2,
+.raices-editorial-act-card .raices-editorial-copy p,
+.raices-editorial-act-card .raices-editorial-quote { color: #FFF2E9; }
+.raices-editorial-act-card .raices-editorial-quote {
+  border-color: rgba(0, 80, 128, .55);
+  text-shadow: 0 2px 10px rgba(0, 80, 128, .30);
+}
+.raices-editorial-milestone {
+  margin: 0 0 .65rem;
+  color: rgba(255, 242, 233, .64);
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.raices-editorial-milestone-inline { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.raices-editorial-interlude-title { margin-bottom: 1.5rem !important; }
+.raices-editorial-quote { border-color: rgba(0, 80, 128, .30); }
+
+.raices-accordion-column {
+  border: 1px solid #16345F;
+  background: #051341;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .24);
+}
+.raices-accordion-trigger {
+  color: #FFF2E9;
+  background: #051341;
+}
+.raices-accordion-column:hover,
+.raices-accordion-column.is-open { border-color: #005080; }
+.raices-accordion-panel { color: rgba(255, 242, 233, .88); background: #081738; }
+.raices-accordion-panel p { color: rgba(255, 242, 233, .88); }
+.raices-editorial-ctas a {
+  border: 1px solid #005080;
+  color: #FFF2E9;
+  background: linear-gradient(135deg, #16345F 0%, #005080 100%);
+}
+.raices-editorial-ctas a:hover {
+  background: linear-gradient(135deg, #005080 0%, #16345F 100%);
+  box-shadow: 0 0 20px rgba(0, 80, 128, .5);
+}
+
+@media (max-width: 767px) {
+  .raices-editorial-title-wave { width: min(100%, 22rem); }
+  .raices-editorial-brackets h1 { font-size: clamp(2rem, 11vw, 3rem); }
+}
+
+.raices-accordion-group-panel { background: #081738; }
+.raices-accordion-content-list li { border-color: rgba(22, 52, 95, .85); }
+.raices-accordion-content-list h4 { color: #FFF2E9; }
+.raices-accordion-content-list p { color: rgba(255, 242, 233, .82); }
+.raices-accordion-column.is-open .raices-accordion-trigger,
+.raices-accordion-trigger:hover { color: #FFF2E9; background: #0c2044; }
