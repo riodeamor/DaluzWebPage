@@ -3018,3 +3018,226 @@ h1, h2, h3, h4, h5, h6,
     transform: none !important;
   }
 }
+
+/* Corrección transversal: superficies blancas, ondas full bleed y contraste Alkimya. */
+.alkimya-wave-header {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+.alkimya-wave-header__content,
+.alkimya-wave-header h1 {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  inset-inline: auto !important;
+  transform: none !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+.biotipos-page .alkimya-wave-header { margin-top: 0 !important; }
+.biotipos-page .alkimya-wave-header h1 { width: 100% !important; }
+
+/* Ninguna caja editorial clara conserva el beige amarillento. */
+.biotipos-page .biotipos-section1-main-text,
+.biotipos-page .biotipos-section2-text-left,
+.biotipos-page .biotipos-section2-quiz,
+.biotipos-page .biotipos-section9-main-text,
+.biotipos-page .biotipos-section15-main-container,
+.biotipos-page .biotipos-section15-main-container-content,
+.biotipos-page .tabla-biotipo-card,
+.biotipos-page .tabla-biotipo-body,
+.tesoros-page .tesoros-portal-card,
+.activos-origen-page .ayo-card {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}
+.biotipos-page .tabla-biotipo-title { color: #FFFFFF !important; }
+
+/* Tesoros: una sola superficie blanca y todo el texto de lectura en bordó profundo. */
+.tesoros-page .tesoros-intro-copy { color: #FFFFFF !important; }
+.tesoros-page .tesoros-portal-card > *,
+.tesoros-page .tesoros-portal-card > * > *,
+.tesoros-page .tesoros-portal-card li,
+.tesoros-page .tesoros-portal-card p,
+.tesoros-page .tesoros-portal-card strong {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #4A0D10 !important;
+}
+.tesoros-page .tesoros-portal-title,
+.tesoros-page .tesoros-portal-title * { color: #97000D !important; }
+
+/* Activos y Tu Ceremonia: onda completa, alineada al header y sin laterales expuestos. */
+.activos-origen-page .alkimya-wave-header,
+.tu-ceremonia-page .alkimya-wave-header {
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+.tu-ceremonia-content { padding-top: 0 !important; }
+.tu-ceremonia-page .alkimya-wave-header {
+  margin-top: 0 !important;
+  margin-bottom: .5rem !important;
+}
+
+/* Títulos de las tres ceremonias: contraste blanco sobre el fondo bordó. */
+.ceremonia-facial-hero-title-text,
+.ceremonia-capilar-hero-title-text,
+.ceremonia-corporal-hero-title-text,
+.ceremony-steps__eyebrow,
+.ceremony-steps__copy h3 {
+  color: #FFFFFF !important;
+  text-shadow: 0 5px 14px rgba(42, 6, 8, .42) !important;
+}
+.ceremonia-facial-hero-subtitle,
+.ceremonia-capilar-hero-subtitle,
+.ceremonia-corporal-hero-subtitle { color: #FFFFFF !important; }
+.ceremony-steps__tab[aria-selected="true"],
+.ceremony-steps__nav button { background: #FFFFFF !important; }
+
+@media (max-width: 767px) {
+  .biotipos-page .biotipos-section3-main-title {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    color: #FFFFFF !important;
+    text-align: center !important;
+  }
+  .biotipos-page .biotipos-section9-main-title {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto 1.25rem !important;
+    padding: 0 1rem !important;
+  }
+  .biotipos-page .biotipos-section9-main-title-bg { display: none !important; }
+  .biotipos-page .biotipos-section9-main-title-text {
+    position: relative !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    color: #FFFFFF !important;
+    font-size: clamp(1.65rem, 8vw, 2.15rem) !important;
+    line-height: 1.08 !important;
+    text-align: center !important;
+  }
+  .biotipos-page .biotipos-section9-main-text {
+    margin: 0 auto !important;
+  }
+  .biotipos-page .biotipos-section15-buttons-container {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 1rem !important;
+    margin: 1.5rem auto 0 !important;
+  }
+  .biotipos-page .biotipos-section15-button {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: min(100%, 22rem) !important;
+    min-height: 48px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Biotipos: todos los textos de lectura clara usan el bordó profundo oficial. */
+.biotipos-page .biotipos-section1-main-text-paragraph,
+.biotipos-page .biotipos-section2-text-paragraph,
+.biotipos-page .biotipos-section9-main-text-paragraph,
+.biotipos-page .tabla-biotipo-body,
+.biotipos-page .tabla-biotipo-body p,
+.biotipos-page .tabla-biotipo-body td,
+.biotipos-page .biotipos-section15-main-title,
+.biotipos-page .biotipos-section15-main-text-paragraph {
+  color: #4A0D10 !important;
+}
+
+/* Botonera móvil de cierre: medidas gemelas sin alturas heredadas. */
+@media (max-width: 767px) {
+  .biotipos-page .biotipos-section15-button {
+    flex: 0 0 56px !important;
+    width: min(100%, 22rem) !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    aspect-ratio: auto !important;
+    padding: .85rem 1.25rem !important;
+  }
+}
+
+/* Cierre de Biotipos: botones gemelos con la misma forma de Explorar Ceremonias. */
+.biotipos-page .biotipos-section15-buttons-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+}
+.biotipos-page .biotipos-section15-button,
+.biotipos-page .biotipos-section15-button-whatsapp {
+  box-sizing: border-box !important;
+  flex: 0 0 350px !important;
+  width: 350px !important;
+  min-width: 350px !important;
+  max-width: 350px !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
+  aspect-ratio: auto !important;
+  margin: 0 !important;
+  padding: .85rem 1.25rem !important;
+  border: 0 !important;
+  border-radius: 0 15px !important;
+  background: #860119 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+}
+.biotipos-page .biotipos-section15-button::before,
+.biotipos-page .biotipos-section15-button::after,
+.biotipos-page .biotipos-section15-button-whatsapp::before,
+.biotipos-page .biotipos-section15-button-whatsapp::after {
+  content: none !important;
+  display: none !important;
+  background-image: none !important;
+}
+@media (max-width: 767px) {
+  .biotipos-page .biotipos-section15-buttons-container {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .biotipos-page .biotipos-section15-button,
+  .biotipos-page .biotipos-section15-button-whatsapp {
+    flex: 0 0 56px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+}
+
+/* Eliminación final de superficies beige detectadas en Alkimya. */
+.biotipos-page .tabla-biotipo,
+.activos-origen-page .activos-origen-content-wrap,
+.activos-origen-page .ayo-transparency-card,
+.activos-origen-page .ayo-bullet-list,
+.tu-ceremonia-page .tu-ceremonia-button,
+.ceremonia-facial-page .ceremonia-back-button,
+.ceremonia-capilar-page .ceremonia-back-button,
+.ceremonia-corporal-page .ceremonia-back-button {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}

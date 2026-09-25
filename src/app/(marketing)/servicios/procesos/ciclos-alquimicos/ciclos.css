@@ -471,3 +471,20 @@ a.procesos-btn-cream.ciclos-detail-link:hover,
   background-position: top center !important;
   background-size: 100% 100% !important;
 }
+
+/* Introducción de Ciclos: texto contenido y centrado dentro de la forma azul. */
+.ciclos-intro {
+  padding: clamp(3.25rem, 6vw, 4.75rem) clamp(3rem, 9vw, 7rem) !important;
+}
+.ciclos-intro-item {
+  max-width: 700px !important;
+  margin: 0 auto .85rem !important;
+  font-size: clamp(.95rem, 1.55vw, 1.08rem) !important;
+  line-height: 1.42 !important;
+  text-align: center !important;
+  transform: none !important;
+}
+@media (max-width: 768px) {
+  .ciclos-intro { padding: 2.75rem 1.75rem !important; }
+  .ciclos-intro-item { font-size: .95rem !important; line-height: 1.4 !important; }
+}
