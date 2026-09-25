@@ -18,7 +18,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Botón azul (aplicado directo al Link; el componente Button con asChild no
 // propaga clases sobre un Fragment de icono + texto).
 const btnSolid =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white bg-faq-bright shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-light";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 
 const condiciones = [
   { title: "Estado Original", text: "Sin usar, en su empaque original" },
@@ -134,7 +134,7 @@ function CollapsibleSection({
               <span className="mb-1 inline-block rounded-full border border-faq-ocean/30 px-2 py-0.5 font-caption text-xs font-medium text-faq-ocean">
                 Bloque {number}
               </span>
-              <h3 className="font-velista text-lg font-bold text-faq-ink md:text-xl">
+              <h3 className="font-heading text-lg font-bold text-faq-ink md:text-xl">
                 {title}
               </h3>
             </div>
@@ -200,7 +200,7 @@ export default function ArrepentimientoClient() {
             transition={{ duration: 0.6 }}
           >
 
-            <h1 className="mb-6 font-velista text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 font-heading text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
               Botón de Arrepentimiento
             </h1>
 
@@ -241,7 +241,7 @@ export default function ArrepentimientoClient() {
               isOpen={isOpen("que-es")}
               onToggle={() => toggle("que-es")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Según la <strong>Ley 24.240</strong> de Defensa del Consumidor,
                 tenés derecho a arrepentirte de una compra realizada fuera de un
                 local comercial (por ejemplo, por internet, teléfono o
@@ -261,7 +261,7 @@ export default function ArrepentimientoClient() {
               isOpen={isOpen("condiciones")}
               onToggle={() => toggle("condiciones")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Para que tu devolución sea aceptada, el producto debe cumplir
                 con:
               </p>
@@ -276,7 +276,7 @@ export default function ArrepentimientoClient() {
                       <h4 className="font-heading font-semibold text-faq-ocean">
                         {c.title}
                       </h4>
-                      <p className="font-body text-sm text-faq-ink/70">
+                      <p className="font-body text-sm text-[#051341]">
                         {c.text}
                       </p>
                     </div>
@@ -316,7 +316,7 @@ export default function ArrepentimientoClient() {
               isOpen={isOpen("como")}
               onToggle={() => toggle("como")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Seguí estos pasos para iniciar el proceso de devolución:
               </p>
               <div className="space-y-4">
@@ -329,7 +329,7 @@ export default function ArrepentimientoClient() {
                       <h4 className="font-heading font-semibold text-faq-ocean">
                         {p.title}
                       </h4>
-                      <p className="font-body text-sm text-faq-ink/80">
+                      <p className="font-body text-sm text-[#051341]">
                         {p.text}
                       </p>
                     </div>
@@ -353,10 +353,10 @@ export default function ArrepentimientoClient() {
                     <h4 className="font-heading font-semibold text-faq-ocean">
                       {t.label}
                     </h4>
-                    <p className="font-velista text-2xl font-bold text-faq-ink">
+                    <p className="font-heading text-2xl font-bold text-faq-ink">
                       {t.value}
                     </p>
-                    <p className="font-body text-sm text-faq-ink/60">{t.note}</p>
+                    <p className="font-body text-sm text-[#051341]">{t.note}</p>
                   </div>
                 ))}
               </div>
@@ -368,7 +368,7 @@ export default function ArrepentimientoClient() {
               isOpen={isOpen("contacto")}
               onToggle={() => toggle("contacto")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Si tenés alguna consulta sobre el proceso de devolución o
                 necesitás más información, no dudes en contactarnos:
               </p>

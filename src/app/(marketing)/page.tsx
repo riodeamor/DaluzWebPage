@@ -143,7 +143,7 @@ export default async function HomePage() {
               <Link href="/productos">
                 <Button
                   className="group relative px-10 py-4 text-lg font-semibold bg-[#16345F] text-[#FFF2E9] hover:bg-[#005080] transition-all duration-500 transform hover:scale-105 uppercase tracking-[0.18em] border-none"
-                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}
+                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
                 >
                   <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
                   Descubre Nuestras Alkimyas
@@ -205,7 +205,7 @@ export default async function HomePage() {
 
               <div className="pt-4 sm:pt-5 md:pt-6">
                 <Link href="/alkimya/biotipos-doshas">
-                  <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}>
+                  <Button className="bg-[#16345F] hover:bg-[#005080] text-[#FFF2E9] uppercase tracking-[0.18em] px-4 py-2 sm:px-5 sm:py-2.5 md:px-6 md:py-3 lg:px-7 lg:py-3.5 xl:px-8 xl:py-4 transition-all duration-300" style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}>
                     CONOCE TU BIOTIPO Y DOSHA
                   </Button>
                 </Link>
@@ -223,7 +223,7 @@ export default async function HomePage() {
           style={{ 
             fontFamily: "var(--font-cormorant), serif", 
             fontStyle: "normal", 
-            fontWeight: "500" 
+            fontWeight: "500"
           }}
         >
           Nuestras 5 líneas botánicas y dermocosméticas
@@ -269,10 +269,10 @@ export default async function HomePage() {
                 </div>
                 <Link href={item.link} className="w-full">
                   <Button 
-                    className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em] text-white bg-[#16345F] hover:bg-[#005080]" 
+                    className="group/btn w-full transition-all duration-300 uppercase tracking-[0.18em] text-white bg-[#16345F] hover:bg-[#005080]"
                     style={{ 
                       borderRadius: "0px 15px", 
-                      fontFamily: "var(--font-synthese), sans-serif",
+                      fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
                       border: "none"
                     }}
                   >
@@ -323,7 +323,7 @@ export default async function HomePage() {
                     <Button
                       variant="outline"
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR CICLOS</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -350,7 +350,7 @@ export default async function HomePage() {
                     <Button
                       variant="outline"
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">RESERVAR SESIÓN</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -377,7 +377,7 @@ export default async function HomePage() {
                     <Button
                       variant="outline"
                       className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
-                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
+                      style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">VER EXPERIENCIAS</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300 flex-shrink-0" />
@@ -690,7 +690,7 @@ export default async function HomePage() {
         className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 bg-[#16345F] hover:bg-[#005080]"
         style={{ 
           borderRadius: "0 15px", 
-          fontFamily: "var(--font-synthese), sans-serif"
+          fontFamily: "var(--font-montserrat), Montserrat, sans-serif"
         }}
       >
         <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
@@ -732,10 +732,10 @@ export default async function HomePage() {
             </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-[#051341] hover:bg-[#005080]" 
+                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] hover:-translate-y-0.5 shadow-[0_4px_14px_rgba(0,0,0,0.28)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)]"
                   style={{ 
                     borderRadius: "0px 15px", 
-                    fontFamily: "var(--font-synthese), sans-serif",
+                    fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
                     border: "none"
                   }}
                 >

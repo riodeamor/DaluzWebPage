@@ -25,10 +25,10 @@ import { motion, AnimatePresence } from "framer-motion";
 // Botón azul (aplicado directo al Link; el componente Button con asChild no
 // propaga clases sobre un Fragment de icono + texto).
 const btnSolid =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white bg-faq-bright shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:bg-faq-light";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 // Outline claro para fondos oscuros (sobre el degradado)
 const btnOutlineLight =
-  "inline-flex items-center justify-center gap-2 h-11 rounded-md px-6 text-sm font-title uppercase tracking-wider text-white border-2 border-white/40 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/10";
+  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
 
 // Acentos monocromáticos azules (reemplazan las líneas de color)
 const toneColor: Record<
@@ -247,7 +247,7 @@ function CollapsibleSection({
               <span className="mb-1 inline-block rounded-full border border-faq-ocean/30 px-2 py-0.5 font-caption text-xs font-medium text-faq-ocean">
                 Sección {number}
               </span>
-              <h3 className="font-velista text-lg font-bold text-faq-ink md:text-xl">
+              <h3 className="font-heading text-lg font-bold text-faq-ink md:text-xl">
                 {title}
               </h3>
             </div>
@@ -313,7 +313,7 @@ export default function PrivacidadPage() {
             transition={{ duration: 0.6 }}
           >
 
-            <h1 className="mb-6 font-velista text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
+            <h1 className="mb-6 font-heading text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
               Política de Privacidad
             </h1>
 
@@ -354,7 +354,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("compromiso")}
               onToggle={() => toggle("compromiso")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 En <strong>DA LUZ CONSCIENTE</strong> respetamos tu privacidad y
                 nos comprometemos a proteger tus datos personales. Esta política
                 de privacidad describe cómo recopilamos, usamos, divulgamos y
@@ -378,7 +378,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("informacion")}
               onToggle={() => toggle("informacion")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Recopilamos los siguientes tipos de información de forma segura:
               </p>
               <div className="mt-2 grid gap-4 md:grid-cols-3">
@@ -402,7 +402,7 @@ export default function PrivacidadPage() {
                         {data.items.map((item, i) => (
                           <li
                             key={i}
-                            className="flex items-center gap-2 font-body text-sm text-faq-ink/90"
+                            className="flex items-center gap-2 font-body text-sm text-[#051341]"
                           >
                             <div
                               className={`h-1.5 w-1.5 rounded-full ${colors.dot}`}
@@ -423,7 +423,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("finalidad")}
               onToggle={() => toggle("finalidad")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Utilizamos tu información exclusivamente para los siguientes
                 fines:
               </p>
@@ -447,7 +447,7 @@ export default function PrivacidadPage() {
                           <h4 className="mb-1 font-heading font-semibold text-faq-ocean">
                             {item.title}
                           </h4>
-                          <p className="font-body text-sm text-faq-ink/70">
+                          <p className="font-body text-sm text-[#051341]">
                             {item.description}
                           </p>
                         </div>
@@ -487,7 +487,7 @@ export default function PrivacidadPage() {
                       <h4 className="mb-1 font-heading font-semibold text-faq-ocean">
                         {item.title}
                       </h4>
-                      <p className="font-body text-sm text-faq-ink/70">
+                      <p className="font-body text-sm text-[#051341]">
                         {item.description}
                       </p>
                     </div>
@@ -502,7 +502,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("derechos")}
               onToggle={() => toggle("derechos")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Tenés los siguientes derechos sobre tus datos personales:
               </p>
               <div className="mt-2 grid gap-4 md:grid-cols-3">
@@ -522,10 +522,10 @@ export default function PrivacidadPage() {
                       >
                         <IconComponent className="h-7 w-7" />
                       </div>
-                      <h4 className="mb-2 font-velista text-lg font-bold text-faq-ocean">
+                      <h4 className="mb-2 font-heading text-lg font-bold text-faq-ocean">
                         {right.title}
                       </h4>
-                      <p className="font-body text-sm text-faq-ink/70">
+                      <p className="font-body text-sm text-[#051341]">
                         {right.description}
                       </p>
                     </div>
@@ -555,7 +555,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("cookies")}
               onToggle={() => toggle("cookies")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Nuestro sitio utiliza cookies y tecnologías similares para
                 mejorar tu experiencia de navegación:
               </p>
@@ -567,11 +567,11 @@ export default function PrivacidadPage() {
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-faq-ocean" />
-                    <span className="font-body text-faq-ink/90">{item}</span>
+                    <span className="font-body text-[#051341]">{item}</span>
                   </li>
                 ))}
               </ul>
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 <strong>Gestionar cookies:</strong> Podés configurar tu
                 navegador para rechazar todas las cookies o para indicar cuándo
                 se envía una cookie. Sin embargo, algunas funciones del sitio
@@ -585,7 +585,7 @@ export default function PrivacidadPage() {
               isOpen={isOpen("contacto")}
               onToggle={() => toggle("contacto")}
             >
-              <p className="font-body text-faq-ink/90">
+              <p className="font-body text-[#051341]">
                 Si tenés alguna pregunta sobre esta política de privacidad o
                 querés ejercer tus derechos, contactanos:
               </p>
@@ -599,13 +599,13 @@ export default function PrivacidadPage() {
                       <h4 className="font-heading font-semibold text-faq-ocean">
                         DA LUZ CONSCIENTE
                       </h4>
-                      <p className="font-body text-sm text-faq-ink/70">
+                      <p className="font-body text-sm text-[#051341]">
                         Tu privacidad, nuestra prioridad
                       </p>
                     </div>
                   </div>
                   <div className="space-y-2 border-t border-faq-ink/10 pt-4">
-                    <p className="font-body text-faq-ink/90">
+                    <p className="font-body text-[#051341]">
                       <strong>Email:</strong>{" "}
                       <a
                         href="mailto:daluzalkimya@gmail.com"
@@ -614,7 +614,7 @@ export default function PrivacidadPage() {
                         daluzalkimya@gmail.com
                       </a>
                     </p>
-                    <p className="font-body text-faq-ink/90">
+                    <p className="font-body text-[#051341]">
                       <strong>Ubicación:</strong> Córdoba, Argentina
                     </p>
                   </div>
@@ -628,7 +628,7 @@ export default function PrivacidadPage() {
       {/* Related Links */}
       <section className="border-t border-white/10 px-6 py-12">
         <div className="container mx-auto max-w-4xl">
-          <h3 className="mb-8 text-center font-velista text-xl font-bold text-text-inverse">
+          <h3 className="mb-8 text-center font-heading text-xl font-bold text-text-inverse">
             También te puede interesar
           </h3>
           <div className="flex flex-wrap items-center justify-center gap-4">
