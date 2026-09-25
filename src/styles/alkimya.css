@@ -2795,3 +2795,22 @@ h1, h2, h3, h4, h5, h6,
 .ceremony-steps__nav button { min-width:142px; padding:.8rem 1rem; border:0; border-radius:0 15px; background:#FFF2E9; color:#860119; font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.12em; box-shadow:0 6px 16px rgba(42,6,8,.3); }
 .ceremony-steps__nav span { font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.75rem; letter-spacing:.12em; }
 @media (max-width:767px) { .ceremony-steps__card { grid-template-columns:1fr; min-height:0; padding:1.5rem; border-radius:0 26px; } .ceremony-steps__media { width:min(82vw,290px); grid-row:1; } .ceremony-steps__nav { gap:.5rem; } .ceremony-steps__nav button { min-width:0; flex:1; } }
+
+/* Tesoros: tarjetas editoriales claras y contraste protegido. */
+.tesoros-page .tesoros-portal-card { background:#FFF2E9 !important; border:1px solid rgba(151,0,13,.14); border-radius:0 24px; box-shadow:0 16px 34px rgba(42,6,8,.32); }
+.tesoros-page .tesoros-portal-title { color:#97000D !important; font-style:normal !important; line-height:1.08; }
+.tesoros-page .tesoros-portal-meta,.tesoros-page .tesoros-portal-kicker,.tesoros-page .tesoros-portal-list,.tesoros-page .tesoros-portal-effect { color:#4A0D10 !important; }
+.tesoros-page .tesoros-portal-meta { font-family:var(--font-eb-garamond),"EB Garamond",serif; font-size:1rem; }
+.tesoros-page .tesoros-portal-kicker { font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.tesoros-page .tesoros-portal-list { display:grid; gap:.75rem; padding:0; list-style:none; font-family:var(--font-eb-garamond),"EB Garamond",serif; font-size:1rem; line-height:1.45; }
+.tesoros-page .tesoros-portal-list li,.tesoros-page .tesoros-portal-list li strong { color:#4A0D10 !important; }
+.tesoros-page .tesoros-portal-effect { padding-top:1rem; border-top:1px solid rgba(151,0,13,.18); font-family:var(--font-eb-garamond),"EB Garamond",serif; font-size:1.03rem; line-height:1.5; }
+.tesoros-cta-link { background:#860119 !important; color:#FFFFFF !important; border-radius:0 15px !important; }
+.tesoros-cta-link:hover { background:#FFF2E9 !important; color:#4A0D10 !important; box-shadow:0 0 20px rgba(255,242,233,.45) !important; }
+
+/* Tesoros: fondo rojo-bordó más luminoso para separar las tarjetas oscuras. */
+.tesoros-page {
+  background:
+    radial-gradient(ellipse at 48% 12%, rgba(214,52,42,.78) 0%, rgba(196,29,31,.66) 24%, transparent 58%),
+    linear-gradient(145deg,#B91F27 0%,#A40000 34%,#860119 68%,#5D0A12 100%) !important;
+}
