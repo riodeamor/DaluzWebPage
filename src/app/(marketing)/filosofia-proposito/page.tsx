@@ -30,11 +30,15 @@ export default function FilosofiaPropositoPage() {
   return (
     <main className="filosofia-editorial-page">
       <section className="filosofia-editorial-hero">
-        <h1>Filosofía y Propósito</h1>
+        <div className="filosofia-editorial-wave">
+          <h1>Filosofía y Propósito</h1>
+        </div>
         <p className="filosofia-editorial-tagline">La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y presencia.</p>
-        <div className="filosofia-editorial-manifesto">
-          <p>Da Luz Consciente es una invitación a nutrir integralmente tu cuerpo, tus emociones, tu mente y tu espíritu. No somos una solución instantánea; somos el puente para quienes se comprometen a escuchar su propio pulso, a habitar la pausa y a comprender la salud como un proceso de autogestión y soberanía.</p>
-          <p>Deseamos que el acto de cuidarte se convierta en un ritual diario, donde la Presencia, la gratitud y el goce acompañen cada uno de tus pasos. Nuestro propósito es acompañarte a construir un equilibrio genuino, sumergiéndote en un viaje alquímico hacia tu interior, donde tu cuerpo sea honrado como un templo. Acá, la pausa es un acto sagrado.</p>
+        <div className="filosofia-editorial-manifesto-shape">
+          <div className="filosofia-editorial-manifesto">
+            <p>Da Luz Consciente es una invitación a nutrir integralmente tu cuerpo, tus emociones, tu mente y tu espíritu. No somos una solución instantánea; somos el puente para quienes se comprometen a escuchar su propio pulso, a habitar la pausa y a comprender la salud como un proceso de autogestión y soberanía.</p>
+            <p>Deseamos que el acto de cuidarte se convierta en un ritual diario, donde la Presencia, la gratitud y el goce acompañen cada uno de tus pasos. Nuestro propósito es acompañarte a construir un equilibrio genuino, sumergiéndote en un viaje alquímico hacia tu interior, donde tu cuerpo sea honrado como un templo. Acá, la pausa es un acto sagrado.</p>
+          </div>
         </div>
       </section>
 
