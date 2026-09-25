@@ -13,33 +13,31 @@ type RaicesAccordionProps = {
 }
 
 export default function RaicesAccordion({ title, items }: RaicesAccordionProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isOpen, setIsOpen] = useState(false)
+  const panelId = `${title.toLowerCase().replace(/\s+/g, '-')}-panel`
 
   return (
-    <section className="raices-accordion-column" aria-label={title}>
-      <h3>{title}</h3>
-      <div className="raices-accordion-list">
-        {items.map((item, index) => {
-          const isOpen = openIndex === index
-          const panelId = `${title.toLowerCase().replace(/\s+/g, '-')}-${index}`
+    <section className={`raices-accordion-column${isOpen ? ' is-open' : ''}`} aria-label={title}>
+      <button
+        type="button"
+        className="raices-accordion-trigger"
+        aria-expanded={isOpen}
+        aria-controls={panelId}
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <span>{title}</span>
+        <span className="raices-accordion-icon" aria-hidden="true">{isOpen ? '×' : '+'}</span>
+      </button>
 
-          return (
-            <article className={`raices-accordion-item${isOpen ? ' is-open' : ''}`} key={item.title}>
-              <button
-                type="button"
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-              >
-                <span>{item.title}</span>
-                <span className="raices-accordion-icon" aria-hidden="true">{isOpen ? '×' : '+'}</span>
-              </button>
-              <div id={panelId} className="raices-accordion-panel" hidden={!isOpen}>
-                <p>{item.description}</p>
-              </div>
-            </article>
-          )
-        })}
+      <div id={panelId} className="raices-accordion-group-panel" hidden={!isOpen}>
+        <ol className="raices-accordion-content-list">
+          {items.map((item) => (
+            <li key={item.title}>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )
