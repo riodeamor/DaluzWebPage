@@ -3250,3 +3250,82 @@ h1, h2, h3, h4, h5, h6,
 .activos-origen-page {
   background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
 }
+
+/* Ajuste final de Biotipos: ritmo vertical, una sola forma blanca y texto editorial. */
+@media (min-width: 768px) {
+  .biotipos-page .section-biotipos-1-content { padding-top: 0 !important; }
+  .biotipos-page .section-biotipos-1-content > .alkimya-wave-header { margin-bottom: .75rem !important; }
+  .biotipos-page .biotipos-section1-main-text { top: clamp(12.75rem, 17vw, 15rem) !important; }
+  .biotipos-page #section-pieles .biotipos-section3-main-title-wrapper {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100vw !important;
+    height: auto !important;
+    min-height: clamp(180px, 16vw, 230px) !important;
+    margin: 0 calc(50% - 50vw) clamp(1rem, 2vw, 1.5rem) !important;
+  }
+  .biotipos-page #section-pieles .biotipos-tablas-carousel { margin-top: 0 !important; }
+  .biotipos-page .biotipos-section9-main-text--wide {
+    width: min(96%, 1460px) !important;
+    max-width: 1460px !important;
+    height: clamp(390px, 33vw, 480px) !important;
+    min-height: 390px !important;
+    background: transparent !important;
+  }
+  .biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(.65rem, 1vw, .9rem) !important;
+    padding: clamp(4.5rem, 6vw, 6rem) clamp(4rem, 8vw, 8rem) !important;
+  }
+}
+.biotipos-page .biotipos-section9-main-text--wide {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-paragraph {
+  margin: 0 !important;
+  color: #4A0D10 !important;
+  font-weight: 400 !important;
+}
+
+/* El degradado claro conserva el rojo coral y reduce su presencia anaranjada. */
+.tesoros-page,
+.activos-origen-page {
+  background: linear-gradient(90deg, #860119 0%, #97000D 27%, #B3262E 57%, #C43735 82%, #CA403A 100%) !important;
+}
+
+/* El hero de Biotipos se ordena en flujo: onda junto al header y texto apenas debajo. */
+@media (min-width: 768px) {
+  .biotipos-page .biotipos-section1-main-text {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: .5rem auto 0 !important;
+  }
+}
+@media (max-width: 767px) {
+  .biotipos-page #section-pieles .biotipos-section3-main-title-wrapper {
+    margin-bottom: 1rem !important;
+  }
+  .biotipos-page .biotipos-section9-main-text--wide {
+    background: transparent !important;
+  }
+  .biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-content {
+    gap: .75rem !important;
+  }
+}
+@media (max-width: 767px) {
+  .biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-bg {
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: url('/svg/Biotipos/section9MainText.svg') !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+  }
+}
