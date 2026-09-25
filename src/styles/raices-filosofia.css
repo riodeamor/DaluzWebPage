@@ -1638,3 +1638,15 @@
     width: min(43rem, 54%);
   }
 }
+
+/* Ajuste de lóbulos: centrado óptico y extremos suaves */
+@media (min-width: 1024px) {
+  .filosofia-editorial-manifesto-shape {
+    overflow: hidden;
+    border-radius: 10% 9% 12% 11% / 14% 13% 16% 15%;
+  }
+  .filosofia-editorial-manifesto-shape .filosofia-editorial-manifesto p:last-child {
+    left: 56%;
+    width: min(42rem, 52%);
+  }
+}
