@@ -52,9 +52,14 @@ describe("📝 TypeScript: No implicit any in critical files", () => {
   it("checkout route should not have implicit any", () => {
     const checkoutPath = join(process.cwd(), "src/app/api/checkout/route.ts");
     const content = readFileSync(checkoutPath, "utf-8");
+    const schemaPath = join(process.cwd(), "src/lib/validations/checkout.schema.ts");
+    const schema = readFileSync(schemaPath, "utf-8");
+    const servicePath = join(process.cwd(), "src/lib/services/checkout.service.ts");
+    const service = readFileSync(servicePath, "utf-8");
 
-    // Verificar que usa tipos definidos
-    expect(content).toContain("CartItem");
-    expect(content).toContain("CustomerInfo");
+    expect(content).toContain("checkoutPayloadSchema.safeParse(body)");
+    expect(schema).toContain("customerInfo");
+    expect(schema).toContain("CheckoutPayload");
+    expect(service).toContain("interface CartItem");
   });
 });

@@ -1,0 +1,59 @@
+.product-detail .product-detail-secondary {
+  border: 1px solid rgba(114, 47, 55, .3) !important;
+  background: linear-gradient(180deg, #FBF9F5 0%, #EFE9E0 100%) !important;
+  color: #722F37 !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.product-detail .product-detail-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(74, 13, 16, .14);
+}
+.product-detail [role="tablist"] {
+  height: auto;
+  border: 0;
+  border-bottom: 1px solid rgba(107, 23, 36, .2);
+  border-radius: 0;
+  background: transparent;
+}
+.product-detail [role="tab"] {
+  min-height: 2.75rem;
+  border-radius: 0 !important;
+  border-bottom: 2px solid transparent;
+  color: #5C5552 !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  box-shadow: none !important;
+}
+.product-detail [role="tab"][data-state="active"] {
+  border-bottom-color: #6B1724;
+  color: #6B1724 !important;
+  background: transparent !important;
+}
+.product-detail .product-detail-certification {
+  border: 1px solid rgba(114, 47, 55, .25);
+  background: #FBF9F5;
+  color: #722F37;
+}
+.product-detail .product-detail-precautions {
+  border-left: 4px solid #722F37;
+  background: #F8F5F0;
+  color: #231F20;
+}
+.product-detail .product-detail-precautions h4 { color: #6B1724; }
+.product-detail .product-detail-review {
+  background: linear-gradient(135deg, #7D1D2B 0%, #54101A 100%) !important;
+  color: #FFF2E9 !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}

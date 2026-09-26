@@ -16,29 +16,26 @@ export default function TuCeremoniaPage() {
 
       {/* Page Content */}
       <div className="tu-ceremonia-content">
-        <AlkimyaWaveHeader title="tu ceremonia diaria">
+        <AlkimyaWaveHeader title="Tu Ceremonia Diaria">
           <p className="alkimya-wave-header__subtitle">Transformá tu rutina en un ritual de presencia y consagración corporal.</p>
         </AlkimyaWaveHeader>
 
-        {/* Text Card 1 */}
-        <div className="tu-ceremonia-text-card tu-ceremonia-text-card-1">
-          <div className="tu-ceremonia-text-card-bg"></div>
-          <div className="tu-ceremonia-text-card-content">
-            <p className="tu-ceremonia-text-card-text">
-              Tu cuidado personal es el reflejo directo de tu bienestar interno. En Da Luz no solo formulamos biocosmética viva; proponemos una ceremonia cotidiana para entrelazar la intención pura, la arquitectura de tu templo físico y la frecuencia de tu Ser.
+        <section className="tu-ceremonia-intro w-full bg-[#FFF2E9] py-10 md:py-14">
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <p className="mb-5 font-serif text-xl font-medium leading-snug text-[#72111A] md:text-2xl">
+              El tacto consciente es el lenguaje más directo entre tu biología y tu presencia.
+            </p>
+            <p className="mb-4 font-serif text-base leading-relaxed text-[#4A0D10] md:text-lg">
+              En Da Luz no concebimos el cuidado como una rutina estética superficial; proponemos una <strong>ceremonia cotidiana de regreso al templo</strong>: una secuencia viva donde los activos botánicos puros, la fascia y el sistema nervioso entran en sintonía fina.
+            </p>
+            <p className="mb-5 font-serif text-base leading-relaxed text-[#4A0D10] md:text-lg">
+              Cada paso —sea en tu rostro, tu cabello o tu cuerpo— es un <strong>acto de consagración y soberanía</strong>. Esta guía es un <strong>mapa abierto para estructurar tu cuidado diario</strong>: tanto si estás descubriendo tus primeras fórmulas como si querés llevar tu cuidado cotidiano a una práctica con sentido.
+            </p>
+            <p className="font-serif text-base italic leading-relaxed text-[#72111A] md:text-lg">
+              Hacé una pausa, respirá y habitá la secuencia: cuando le das tiempo y verdad al contacto con tu materia, <strong>la química celular responde y tu terreno se regenera desde el goce.</strong>
             </p>
           </div>
-        </div>
-
-        {/* Text Card 2 */}
-        <div className="tu-ceremonia-text-card tu-ceremonia-text-card-2">
-          <div className="tu-ceremonia-text-card-bg"></div>
-          <div className="tu-ceremonia-text-card-content">
-            <p className="tu-ceremonia-text-card-text">
-              Cada paso es un acto sagrado de consagración hacia vos misma. Antes de comenzar tu secuencia, hacé una pausa: la constancia en tu ritual no solo nutre tu biología, sino que ancla tu presencia más soberana en el día a día.
-            </p>
-          </div>
-        </div>
+        </section>
 
         {/* Buttons */}
         <div className="tu-ceremonia-buttons">

@@ -7,7 +7,7 @@ export default function AlkimyaWaveHeader({ title, children }: AlkimyaWaveHeader
     <header className="alkimya-wave-header">
       <div className="alkimya-wave-header__shape" aria-hidden="true" />
       <div className="alkimya-wave-header__content">
-        <h1>{title.toLocaleLowerCase('es')}</h1>
+        <h1>{title}</h1>
         {children}
       </div>
     </header>

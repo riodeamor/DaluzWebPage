@@ -1,0 +1,33 @@
+.account-area { background: #F5F7F8; color: #16345F; }
+.account-area h1,
+.account-area h2 { color: #051341 !important; font-family: var(--font-cormorant), 'Cormorant Garamond', serif; font-weight: 500 !important; }
+.account-area h1 { font-size: clamp(1.5rem, 3vw, 1.875rem); }
+.account-area .profile-page h3 { color: #051341; }
+.account-area .profile-page .font-subtitle.italic { font-style: normal; }
+.account-area .account-primary {
+  border: 1px solid rgba(0, 80, 128, .3);
+  background: linear-gradient(135deg, #16345F 0%, #005080 100%) !important;
+  color: #FFF2E9 !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.account-area .account-primary:hover { filter: brightness(1.1); }
+.account-area input:not([type="checkbox"]),
+.account-area textarea {
+  border: 1px solid rgba(22, 52, 95, .2);
+  background: #FFF;
+  box-shadow: none;
+}
+.account-area input:not([type="checkbox"]):focus-visible,
+.account-area textarea:focus-visible {
+  border-color: #005080;
+  outline: 1px solid rgba(0, 80, 128, .2);
+  box-shadow: none;
+}
+.account-area [role="switch"][data-state="checked"] { background: #005080; }
+.account-area [role="switch"][data-state="unchecked"] { background: #D1D5DB; }
+.account-area .profile-avatar .w-24 { width: 5rem; height: 5rem; }
+.account-area .profile-avatar img { object-fit: cover; object-position: top; }

@@ -2833,3 +2833,19 @@ main a.tu-ceremonia-button:hover {
 .tienda-page .tienda-action-button[data-active="true"]:hover { background:linear-gradient(135deg,#B3131A 0%,#97000D 100%) !important; color:#FFFFFF !important; }
 .tienda-page .tienda-drawer-apply { min-height:48px; border:0; border-radius:0 15px; background:linear-gradient(135deg,#A40000,#860119); color:#FFFFFF; font-family:var(--font-montserrat),Montserrat,sans-serif; font-weight:700; letter-spacing:.12em; }
 .tienda-page .tienda-add-button { height:44px !important; border-radius:0 15px !important; background:#860119 !important; color:#FFFFFF !important; font-family:var(--font-montserrat),Montserrat,sans-serif !important; font-style:normal !important; }
+
+/* Only top-level desktop navigation; dropdown and mobile sheet keep their own contrast. */
+.site-header-nav > div > ul > li > button,
+.site-header-faq,
+.site-header-auth > button {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .75rem !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  color: #FFF2E9 !important;
+}
+.site-header-nav > div > ul > li > button:hover,
+.site-header-faq:hover,
+.site-header-auth > button:hover { color: #FFFFFF !important; }

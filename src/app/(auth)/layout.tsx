@@ -8,7 +8,7 @@ interface AuthLayoutProps {
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
     /* ── ¡Magia acá! Cambiamos el fondo beige por el degradé en azules ── */
-    <div className="min-h-screen bg-gradient-to-br from-[#051341] to-[#16345F]">
+    <div className="auth-layout min-h-screen bg-gradient-to-br from-[#051341] to-[#16345F]">
       <div className="flex min-h-screen items-center justify-center p-4 md:p-8">
         <div className="w-full max-w-md">
           {/* DA LUZ Brand Header */}

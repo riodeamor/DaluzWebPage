@@ -142,12 +142,11 @@ export default async function HomePage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/productos">
                 <Button
-                  className="group relative px-10 py-4 text-lg font-semibold bg-[#16345F] text-[#FFF2E9] hover:bg-[#005080] transition-all duration-500 transform hover:scale-105 uppercase tracking-[0.18em] border-none"
-                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+                  className="group relative px-10 py-4 text-sm font-medium text-[#FFF2E9] hover:text-[#FFF2E9] transition-all duration-500 transform hover:scale-105 uppercase tracking-widest border-none"
+                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", background: "linear-gradient(135deg, #16345F 0%, #005080 100%)", boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)" }}
                 >
                   <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                  Descubre Nuestras Alkimyas
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  DESCUBRÍ NUESTRAS ALKIMYAS →
                 </Button>
               </Link>
             </div>
@@ -297,8 +296,8 @@ export default async function HomePage() {
           <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
             <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em]">
-              PROCESOS VIVOS
+            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] tracking-[0.05em]">
+              Procesos Vivos
             </h2>
             <div className="xl:hidden w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
@@ -307,7 +306,7 @@ export default async function HomePage() {
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-2 sm:pt-4 md:pt-6 lg:pt-8">
             
            {/* CICLOS ALQUÍMICOS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <ProcesosIntegrativosIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -322,7 +321,7 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR CICLOS</span>
@@ -334,7 +333,7 @@ export default async function HomePage() {
             </div>
 
             {/* SESIONES INTEGRALES */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <SesionesIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -349,7 +348,7 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">RESERVAR SESIÓN</span>
@@ -361,7 +360,7 @@ export default async function HomePage() {
             </div>
 
             {/* EXPERIENCIAS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <MembresiaIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -376,7 +375,7 @@ export default async function HomePage() {
                   <Link href="/programa-transformacion" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">VER EXPERIENCIAS</span>
@@ -687,14 +686,16 @@ export default async function HomePage() {
     <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
       <Link
         href="/blog"
-        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 bg-[#16345F] hover:bg-[#005080]"
+        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-widest transition-all duration-300"
         style={{ 
           borderRadius: "0 15px", 
-          fontFamily: "var(--font-montserrat), Montserrat, sans-serif"
+          fontFamily: "var(--font-montserrat), Montserrat, sans-serif",
+          background: "linear-gradient(135deg, #16345F 0%, #005080 100%)",
+          boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)"
         }}
       >
         <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
-        <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
+        <span className="text-xs sm:text-sm font-medium text-[#FFF2E9]">IR AL BLOG</span>
       </Link>
     </div>
   </div>
@@ -732,7 +733,7 @@ export default async function HomePage() {
             </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-200 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] active:bg-none active:bg-[#16345F] focus-visible:bg-none focus-visible:bg-[#16345F] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0085B1] hover:-translate-y-0.5 shadow-[0_6px_16px_rgba(0,0,0,0.30)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)] [-webkit-tap-highlight-color:transparent]"
+                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-200 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] active:bg-none active:bg-[#16345F] focus:ring-0 focus:outline-none hover:-translate-y-0.5 shadow-[0_6px_16px_rgba(0,0,0,0.30)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)] [-webkit-tap-highlight-color:transparent]"
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-montserrat), Montserrat, sans-serif",

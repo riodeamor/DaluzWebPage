@@ -223,7 +223,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="profile-page space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -236,7 +236,7 @@ export default function ProfilePage() {
           <Button
             onClick={() => setIsEditing(true)}
             variant="brand"
-            className="font-title uppercase tracking-wider"
+            className="account-primary font-text uppercase tracking-wider"
           >
             <Edit3 className="h-4 w-4 mr-2" />
             Editar Perfil
@@ -246,10 +246,10 @@ export default function ProfilePage() {
 
       <AnimatedEntry
         delay={0.2}
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 gap-6"
       >
         {/* Profile Summary Card */}
-        <div className="lg:col-span-1">
+        <div className="profile-summary lg:hidden">
           <ProfileCard
             avatarUrl={displayProfile.avatar_url}
             firstName={displayProfile.first_name}
@@ -267,7 +267,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Profile Details Card */}
-        <div className="lg:col-span-2">
+        <div>
           <form id="profile-form" onSubmit={handleSubmit(onSubmit)}>
             <ProfileForm
               isEditing={isEditing}

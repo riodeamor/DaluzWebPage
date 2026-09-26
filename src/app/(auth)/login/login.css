@@ -3,7 +3,7 @@
    ============================================= */
 
 /* ── Fondo general de la página de auth con degradé en azules ── */
-html, body {
+.auth-layout {
   background: linear-gradient(135deg, #051341 0%, #16345F 100%) !important;
   color: #FFF2E9 !important;
   min-height: 100vh;
@@ -16,8 +16,8 @@ h1.auth-title,
   color: #FFF2E9 !important;
 }
 
-.text-center h1, 
-.text-center p {
+.auth-layout .text-center h1,
+.auth-layout .text-center p {
   color: #FFF2E9;
 }
 
@@ -89,7 +89,7 @@ h1.auth-title,
 .login-input {
   padding-left: 2.5rem;
   background-color: #ffffff;
-  border-color: #051341;
+  border: 1px solid #D6CEC5;
   color: #051341;
 }
 
@@ -102,7 +102,7 @@ h1.auth-title,
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   background-color: #ffffff;
-  border-color: #051341;
+  border: 1px solid #D6CEC5;
   color: #051341;
 }
 
@@ -119,6 +119,16 @@ h1.auth-title,
   padding: 0.5rem 0.75rem;
   opacity: 0.6;
   color: #051341;
+  background: transparent !important;
+  border: 0;
+  box-shadow: none !important;
+}
+
+.login-input:focus-visible,
+.login-input--with-toggle:focus-visible {
+  border-color: #005080;
+  outline: 1px solid rgba(0, 80, 128, .2);
+  box-shadow: none;
 }
 
 .login-toggle-password:hover {

@@ -44,6 +44,7 @@ import { ReviewList } from "@/components/ui/reviews/ReviewList";
 import { ReviewForm } from "@/components/ui/reviews/ReviewForm";
 import { StarDisplay } from "@/components/ui/reviews/StarRating";
 import { ArrowLeftSVG, ArrowRightSVG } from "@/components/svg/SVGComponents";
+import "./product-detail.css";
 
 interface ProductVariant {
   id: string;
@@ -581,7 +582,7 @@ export default function ProductDetailPage() {
   const isInStock = currentStock > 0;
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="product-detail min-h-screen overflow-hidden">
       {/* Background */}
       <div
         className="fixed inset-0 w-full h-full opacity-100 pointer-events-none z-0"
@@ -1185,18 +1186,17 @@ export default function ProductDetailPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setIsFavorite(!isFavorite)}
-                    className={`flex-1 ${getColorPalette().outlineColor} ${isFavorite ? "bg-red-50 border-red-200 text-red-600" : ""
-                      }`}
+                    className="product-detail-secondary flex-1"
                   >
                     <Heart
-                      className={`h-4 w-4 mr-2 ${isFavorite ? "fill-current text-red-500" : ""}`}
+                      className={`h-4 w-4 mr-2 ${isFavorite ? "fill-current" : ""}`}
                     />
                     {isFavorite ? "En favoritos" : "Agregar a favoritos"}
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className={getColorPalette().outlineColor}
+                    className="product-detail-secondary"
                     onClick={handleShare}
                   >
                     <Share2 className="h-4 w-4 mr-2" />
@@ -1453,7 +1453,9 @@ export default function ProductDetailPage() {
                                 color: getColorPalette().primaryColor,
                               }}
                             >
-                              {translatedType}
+                              {/^(piel|cabello)\s/i.test(translatedType)
+                                ? translatedType
+                                : `${/cabell|capilar/i.test(`${product.categories?.name || ""} ${product.categories?.slug || ""}`) ? "Cabello" : "Piel"} ${translatedType}`}
                             </Badge>
                           );
                         })}
@@ -1513,12 +1515,6 @@ export default function ProductDetailPage() {
                           borderColor: `${getColorPalette().primaryColor}10`,
                         }}
                       >
-                        <h4
-                          className="font-semibold mb-2"
-                          style={{ color: getColorPalette().primaryColor }}
-                        >
-                          Certificaciones:
-                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {product.certifications.map((cert, index) => {
                             // Translate certification names to Spanish
@@ -1548,7 +1544,7 @@ export default function ProductDetailPage() {
                               <Badge
                                 key={index}
                                 variant="secondary"
-                                className="bg-verde-suave/20 text-verde-suave border-verde-suave/30"
+                                className="product-detail-certification"
                               >
                                 {translatedCert}
                               </Badge>
@@ -1581,11 +1577,11 @@ export default function ProductDetailPage() {
                   )}
 
                   {product.precautions && (
-                    <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                      <h4 className="font-semibold text-amber-800 mb-2">
+                    <div className="product-detail-precautions mt-4 p-4">
+                      <h4 className="font-semibold mb-2">
                         Precauciones:
                       </h4>
-                      <div className="text-amber-700 text-sm">
+                      <div className="text-sm">
                         <RichTextDisplay content={product.precautions} />
                       </div>
                     </div>
@@ -1768,7 +1764,7 @@ export default function ProductDetailPage() {
                             </p>
                             <Button
                               onClick={() => setShowReviewForm(true)}
-                              className={`${getColorPalette().buttonColor} transition-all duration-300 hover:scale-105`}
+                              className="product-detail-review transition-all duration-300 hover:scale-105"
                             >
                               <Star className="w-4 h-4 mr-2" />
                               Escribir Reseña

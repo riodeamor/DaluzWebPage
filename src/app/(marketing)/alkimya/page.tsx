@@ -58,12 +58,12 @@ const AlkimyaPage: NextPage = () => {
           SECCIÓN 1 — MANIFIESTO ALKIMYCO
           ============================================================ */}
       <section className="mf-section mf-manifiesto">
-        <AlkimyaWaveHeader title="manifiesto alkimyco" />
+        <AlkimyaWaveHeader title="Manifiesto Alkimyco" />
 
         <div className="mf-manifiesto-body">
-          <p className="mf-lead"><em>Neurocosmética que transforma: la sinergia precisa entre saberes botánicos ancestrales y biotecnología vegetal moderna.</em></p>
-          <p className="mf-text">Creada para quienes buscan ir más allá de la cosmética convencional y eligen una experiencia de transformación encarnada. Inspirada en la sabiduría de las medicinas botánicas que transformaron la relación con mi propio cuerpo, formulo alquimias vivas con un propósito claro: acompañarte a restaurar la salud de tu barrera cutánea en profunda sintonía con la regulación de tu sistema nervioso y la claridad de tu mente.</p>
-          <p className="mf-text">Como la naturaleza misma, tu biología habla; Da Luz es el puente somático para escucharla. A través de cada aroma botánico, cada gota viva, cada tacto consciente y cada frecuencia sonora, te invito a habitar tu cuerpo con presencia, soberanía y verdadero goce en tu cotidiano.</p>
+          <p className="mf-lead"><strong>Neurocosmética que transforma:</strong></p>
+          <p className="mf-text">Cada fórmula de Alkimya Da Luz es una <strong>experiencia de transformación encarnada</strong>. Creamos tratamientos diseñados no solo para <strong>restaurar la salud de tu barrera cutánea</strong>, sino para impactar profundamente en la <strong>regulación de tu sistema nervioso y la claridad de tu mente</strong>.</p>
+          <p className="mf-text"><em>Como la naturaleza misma, tu biología habla; Da Luz es el puente somático para escucharla.</em> Nuestra cosmética viva integra biotecnología limpia y botánica de alta pureza para acompañarte a <strong>habitar tu cuerpo con presencia, soberanía y verdadero goce</strong>.</p>
         </div>
       </section>
 
@@ -81,19 +81,19 @@ const AlkimyaPage: NextPage = () => {
         <div className="mf-pilares-grid">
           <article className="mf-pilar">
             <h3 className="mf-pilar-title"><span className="mf-pilar-num">1.</span> Ecología, Conciencia &amp; Biotecnología Limpia</h3>
-            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Cuidar de nuestro templo no debe comprometer la salud de la Tierra ni la de los seres que la habitan. Nuestras fórmulas son 100% libres de crueldad animal y envasadas en vidrio ámbar reutilizable. Elegimos un equilibrio responsable: el alma de nuestras alquimias es pura botánica viva, potenciada por una fracción precisa de activos biotecnológicos de origen vegetal (química verde). Lejos de la sobreexplotación de especies silvestres, estos activos ofrecen una biocompatibilidad celular excepcional, garantizando fórmulas estables, seguras y en total afinidad con tu biología y con la naturaleza.</p></div>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text"><strong>Cuidar nuestro templo</strong> requiere un compromiso total con el ecosistema que nos sostiene. Formulamos productos <strong>100% libres de crueldad animal</strong> y envasados en vidrio ámbar reutilizable, seleccionando activos biotecnológicos de origen vegetal (química verde) que garantizan una biocompatibilidad celular excepcional y una total afinidad con tu biología y con la naturaleza.</p></div>
           </article>
           <article className="mf-pilar">
             <h3 className="mf-pilar-title"><span className="mf-pilar-num">2.</span> Botánica Viva &amp; Rigor Fitoterapéutico</h3>
-            <div className="mf-pilar-body mf-cloud"><p className="mf-text">La naturaleza es nuestro laboratorio más sabio. Seleccionamos extractos botánicos puros, aceites esenciales de grado terapéutico, hidrolatos destilados al vapor y tinturas madre bajo estricto rigor clínico y respeto ancestral. Cada activo vegetal es elegido por su función bioquímica sobre tu biotipo cutáneo, su impacto sobre el sistema nervioso y su capacidad de devolverle a tus tejidos su orden biológico natural.</p></div>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text"><em>La naturaleza es nuestro laboratorio más sabio.</em> Seleccionamos cada extracto, aceite y destilado vegetal bajo un <strong>estricto rigor clínico y respeto ancestral</strong>, asegurando que cada ingrediente cumpla una función bioquímica sobre tu biotipo cutáneo para devolverle a tus tejidos su <strong>orden biológico natural</strong>.</p></div>
           </article>
           <article className="mf-pilar">
             <h3 className="mf-pilar-title"><span className="mf-pilar-num">3.</span> Transparencia Radical &amp; Soberanía</h3>
-            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Saber exactamente qué ponés sobre tu piel es un acto innegociable de soberanía personal. Garantizamos transparencia absoluta publicando el desglose INCI completo de cada fórmula y abriendo las puertas de nuestro laboratorio en la sección de Activos y Origen. Te brindamos información clara, fundamentada y accesible para que elijas conectar con nuestras alquimias desde el conocimiento y la libertad.</p></div>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text"><strong>Conocer qué entra en contacto con tu piel</strong> es un acto innegociable de soberanía personal. Te ofrecemos el desglose INCI completo de cada fórmula, explicándote el propósito biológico de cada componente para que puedas conectar con nuestras alquimias desde el conocimiento y la libertad.</p></div>
           </article>
           <article className="mf-pilar">
             <h3 className="mf-pilar-title"><span className="mf-pilar-num">4.</span> Neurocosmética &amp; Alquimia Frecuencial</h3>
-            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Honramos el diálogo bidireccional entre tu piel y tu cerebro (el eje neurocutáneo). Fusionamos la precisión biológica de los activos botánicos con el impacto límbico y emocional de los aromas puros. Esta sinergia trasciende lo superficial: es un estímulo sensorial diseñado para silenciar el estrés y devolverle la calma a tus células. Para sellar este pulso, cada lote es frecuenciado cinética y cimáticamente mediante la vibración acústica de cuencos tibetanos, diapasones y armonización sutil.</p></div>
+            <div className="mf-pilar-body mf-cloud"><p className="mf-text">Nuestras fórmulas aprovechan el diálogo bidireccional entre tu piel y tu cerebro (el eje neurocutáneo). A través del impacto límbico y emocional de los aromas puros, nuestras alquimias ayudan a <strong>silenciar el estrés y devolverle la calma a tus células</strong>. Cada lote es frecuenciado cinética y cimáticamente mediante la vibración acústica de cuencos tibetanos, diapasones y armonización sutil.</p></div>
           </article>
         </div>
       </section>
@@ -102,13 +102,13 @@ const AlkimyaPage: NextPage = () => {
           SECCIÓN 3 — NUESTRO COMPROMISO SUSTENTABLE
           ============================================================ */}
       <section className="mf-section mf-sustentable">
-        <h2 className="mf-sustentable-title">compromiso sustentable</h2>
+        <h2 className="mf-sustentable-title">Compromiso Sustentable</h2>
 
         <div className="mf-ciclo">
           <ArrowRing />
           <div className="mf-ciclo-content">
-            <p className="mf-ciclo-lead">¡REUTILIZALOS!</p>
-            <p className="mf-text">Podés dejar tus envases de vidrio ámbar (y los residuos limpios que generes) en un punto cercano de reciclaje. Te compartimos accesos directos para encontrar la mejor ubicación y hacerte cargo de tus consumos con soberanía y conciencia ecológica.</p>
+            <p className="mf-ciclo-lead"><strong>¡REUTILIZALOS!</strong></p>
+            <p className="mf-text">Nuestros envases de vidrio están pensados para circular. Reutilizar es el primer paso para <strong>hacerte cargo de tus consumos con soberanía y conciencia ecológica</strong>.</p>
             <div className="mf-ciclo-links">
               <a className="mf-recycle-btn" href="#" target="_blank" rel="noopener noreferrer">PUNTO DE RECICLAJE 1</a>
               <a className="mf-recycle-btn" href="#" target="_blank" rel="noopener noreferrer">PUNTO DE RECICLAJE 2</a>

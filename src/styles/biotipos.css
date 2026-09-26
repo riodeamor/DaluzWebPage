@@ -5158,3 +5158,240 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
   inset: auto !important;
   transform: none !important;
 }
+
+/* Requested Biotipos copy lives in fluid panels; neither panel uses a stretched SVG. */
+.biotipos-page .section-biotipos-1 {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 0 0 3rem !important;
+}
+.biotipos-page .section-biotipos-1-content {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1.25rem !important;
+  width: min(100%, 1200px) !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: 0 1rem !important;
+}
+.biotipos-page .section-biotipos-1-content > .alkimya-wave-header {
+  flex: 0 0 100vw !important;
+  width: 100vw !important;
+  margin: 0 calc(50% - 50vw) 1rem !important;
+}
+.biotipos-page .biotipos-section1-main-text {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  flex: 0 1 64rem !important;
+  width: min(100%, 64rem) !important;
+  max-width: 64rem !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  padding: clamp(1.5rem, 3vw, 2.75rem) !important;
+  border: 1px solid rgba(255, 242, 233, .3);
+  border-radius: 0 18px;
+  background: linear-gradient(105deg, #860119 0%, #710d1b 48%, #4A0D10 100%) !important;
+  box-shadow: 0 12px 30px rgba(42, 6, 8, .22);
+}
+.biotipos-page .biotipos-section1-main-text-bg { display: none !important; }
+.biotipos-page .biotipos-section1-main-text-content {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  padding: 0 !important;
+}
+.biotipos-page .biotipos-section1-main-text-paragraph {
+  max-width: 52rem !important;
+  margin: 0 auto !important;
+  color: #FFF2E9 !important;
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif !important;
+  font-size: clamp(1.1rem, 2vw, 1.35rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  text-align: center !important;
+}
+.biotipos-page .biotipos-section1-button {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  flex: 0 1 20rem !important;
+  width: min(100%, 20rem) !important;
+  max-width: 20rem !important;
+  margin: 0 !important;
+  background: linear-gradient(105deg, #8A1428 0%, #4A0D10 100%) !important;
+  color: #FFF2E9 !important;
+}
+
+.biotipos-page .section-biotipos-2,
+.biotipos-page .section-biotipos-2-content,
+.biotipos-page .biotipos-section2-main-container {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+}
+.biotipos-page .section-biotipos-2-content {
+  position: relative !important;
+  inset: auto !important;
+}
+.biotipos-page .biotipos-section2-main-container {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: 1.5rem !important;
+  width: min(100%, 72rem) !important;
+  margin: 0 auto !important;
+}
+.biotipos-page .biotipos-section2-left-column,
+.biotipos-page .biotipos-section2-right-column {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+.biotipos-page .biotipos-section2-text-left {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 12px !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .12) !important;
+}
+.biotipos-page .biotipos-section2-text-left-bg { display: none !important; }
+.biotipos-page .biotipos-section2-text-left-content {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  padding: clamp(1.75rem, 3vw, 3rem) !important;
+}
+.biotipos-page .biotipos-section2-lead,
+.biotipos-page .biotipos-section2-body {
+  margin: 0 !important;
+  color: #4A0D10 !important;
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif !important;
+  text-align: left !important;
+}
+.biotipos-page .biotipos-section2-lead {
+  margin-bottom: 1rem !important;
+  color: #72111A !important;
+  font-size: clamp(1.125rem, 2vw, 1.25rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+}
+.biotipos-page .biotipos-section2-body {
+  margin-top: .85rem !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+}
+.biotipos-page .biotipos-section2-body strong { color: inherit !important; font-weight: 700 !important; }
+
+.biotipos-page #section-pieles .biotipos-section3-main-title-wrapper {
+  position: relative !important;
+  width: 100vw !important;
+  min-height: clamp(125px, 13vw, 190px) !important;
+  margin: 0 calc(50% - 50vw) 1.5rem !important;
+}
+.biotipos-page #section-pieles .biotipos-section3-main-title-bg {
+  display: block !important;
+  background-image: url('/svg/Biotipos/fullWidthDivider.svg') !important;
+  background-size: 100% 100% !important;
+}
+.biotipos-page #section-pieles .biotipos-section3-main-title {
+  position: relative !important;
+  inset: auto !important;
+  display: grid !important;
+  place-items: center !important;
+  width: 100% !important;
+  min-height: clamp(125px, 13vw, 190px) !important;
+  padding: 1.5rem 1rem !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .05em !important;
+  text-align: center !important;
+  transform: none !important;
+}
+
+.biotipos-page .section-biotipos-9,
+.biotipos-page .section-biotipos-9-content {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+}
+.biotipos-page .section-biotipos-9-content {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 2rem 1rem 4rem !important;
+}
+.biotipos-page .biotipos-section9-main-title {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: min(100%, 82rem) !important;
+  height: auto !important;
+  margin: 0 auto 2rem !important;
+}
+.biotipos-page .biotipos-section9-main-text--wide {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: min(100%, 85rem) !important;
+  max-width: 85rem !important;
+  height: auto !important;
+  min-height: 360px !important;
+  margin: 0 auto !important;
+  padding: clamp(2rem, 4vw, 4rem) !important;
+  border: 1px solid rgba(255, 242, 233, .3);
+  border-radius: 0 18px;
+  background: linear-gradient(105deg, #860119 0%, #710d1b 48%, #4A0D10 100%) !important;
+  box-shadow: 0 12px 30px rgba(42, 6, 8, .22);
+}
+.biotipos-page .biotipos-section9-main-text-bg { display: none !important; }
+.biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-content {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 1.25rem !important;
+  height: 100% !important;
+  padding: 0 !important;
+}
+.biotipos-page .biotipos-section9-main-text--wide .biotipos-section9-main-text-paragraph {
+  margin: 0 !important;
+  color: #FFF2E9 !important;
+  font-family: var(--font-eb-garamond), 'EB Garamond', serif !important;
+  font-size: clamp(1rem, 1.6vw, 1.2rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+}
+.biotipos-page .biotipos-section9-main-text-paragraph strong { color: inherit !important; font-weight: 700 !important; }
+.biotipos-page .biotipos-section15-main-title-link,
+.biotipos-page .biotipos-section15-main-text-paragraph { color: #4A0D10 !important; }
+.biotipos-page .biotipos-section15-main-text-paragraph + .biotipos-section15-main-text-paragraph { margin-top: .75rem !important; }
+
+@media (max-width: 767px) {
+  .biotipos-page .section-biotipos-1-content > .alkimya-wave-header { margin-bottom: .5rem !important; }
+  .biotipos-page .biotipos-section1-button { flex: 1 1 100% !important; max-width: 22rem !important; width: 100% !important; }
+  .biotipos-page .biotipos-section2-main-container { grid-template-columns: minmax(0, 1fr) !important; }
+  .biotipos-page .biotipos-section9-main-text--wide { min-height: 0 !important; }
+}
+@media (min-width: 768px) {
+  .biotipos-page .biotipos-section2-body { text-align: justify !important; }
+}

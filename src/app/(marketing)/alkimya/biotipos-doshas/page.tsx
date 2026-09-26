@@ -31,13 +31,12 @@ export default function BiotiposDoshasPage() {
 
         {/* Content Area - Flexible area for adding text and other elements */}
         <div className="relative z-10 flex-1 section-biotipos-1-content">
-          <AlkimyaWaveHeader title="biotipos" />
+          <AlkimyaWaveHeader title="Biotipos" />
 
 {/* Main Text with SVG Background */}
           <div className="biotipos-text-element biotipos-section1-main-text">
-            <div className="biotipos-section1-main-text-bg"></div>
             <div className="biotipos-section1-main-text-content">
-              <p className="biotipos-section1-main-text-paragraph" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.2rem)' }}>
+              <p className="biotipos-section1-main-text-paragraph">
                 La soberanía sobre tu bienestar comienza por reconocer tu bio-individualidad. La industria masiva te enseñó a tratar a tu piel como un problema a corregir, encasillándote en categorías rígidas; en Da Luz honramos tu diseño como un terreno biológico vivo, inteligente y en constante movimiento. Comprender tu biotipo no es etiquetarte: es decodificar el lenguaje sutil de tu piel y tu cabello para elegir las alquimias botánicas que cooperarán de forma exacta con tu fisiología.
               </p>
             </div>
@@ -84,10 +83,15 @@ export default function BiotiposDoshasPage() {
             <div className="biotipos-section2-left-column">
               {/* Text Box - Merged */}
               <div className="biotipos-text-element biotipos-section2-text-left">
-                <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
-                  <p className="biotipos-section2-text-paragraph">
-                    Para comprender tu biotipo, es esencial reconocer a la piel como tu frontera sensorial más activa. Embriológicamente, tu piel y tu cerebro nacen del mismo tejido original (el ectodermo): son dos extremos de un mismo sistema. Por eso, lo que tu mente calla o tu sistema nervioso no logra digerir, tu piel lo somatiza en tiempo real: desde ese brote repentino en semanas de sobreexigencia, hasta la rojez o el ardor cuando estás al límite. Tu barrera no es un envoltorio pasivo; es un mapa vivo que siente, procesa y comunica tu estado interno antes de que la razón logre nombrarlo.
+                  <p className="biotipos-section2-lead">
+                    Para comprender tu biotipo, es esencial reconocer a la piel como tu frontera sensorial más activa.
+                  </p>
+                  <p className="biotipos-section2-body">
+                    Embriológicamente, <strong>tu piel y tu cerebro nacen del mismo tejido original (el ectodermo)</strong>: son dos extremos de un mismo sistema. Por eso, <strong>lo que tu mente calla o tu sistema nervioso no logra digerir, tu piel lo somatiza en tiempo real</strong>: desde ese brote repentino en semanas de sobreexigencia, hasta la rojez o el ardor cuando estás al límite.
+                  </p>
+                  <p className="biotipos-section2-body">
+                    Tu barrera no es un envoltorio pasivo; <strong>es un mapa vivo que siente, procesa y comunica tu estado interno</strong> antes de que la razón logre nombrarlo.
                   </p>
                 </div>
               </div>
@@ -96,10 +100,15 @@ export default function BiotiposDoshasPage() {
             {/* Right Column - symmetric editorial card */}
             <div className="biotipos-section2-right-column">
               <div className="biotipos-text-element biotipos-section2-text-left">
-                <div className="biotipos-section2-text-left-bg"></div>
                 <div className="biotipos-section2-text-left-content">
-                  <p className="biotipos-section2-text-paragraph">
-                    Como primera línea de defensa, regula la pérdida transdérmica de agua (TEWL) y equilibra un microbioma de millones de bacterias protectoras. ¿Cómo se siente esto en tu cotidiano? Cuando este escudo se debilita por estrés o químicos agresivos, la humedad se evapora: aparece la tirantez después de lavarte, la piel que “se chupa” las cremas y sigue seca, o la reactividad al frío y al viento. Cuidar tu biotipo no es maquillar el síntoma; es sellar ese escudo biológico para que tu barrera retenga su agua celular y habite el entorno con elasticidad, frescura y vitalidad soberana.
+                  <p className="biotipos-section2-lead">
+                    Como primera línea de defensa, regula la pérdida transdérmica de agua (TEWL) y equilibra un microbioma de millones de bacterias protectoras.
+                  </p>
+                  <p className="biotipos-section2-body">
+                    ¿Cómo se siente esto en tu cotidiano? Cuando este escudo se debilita por estrés o químicos agresivos, la humedad se evapora: aparece la <strong>tirantez después de lavarte</strong>, la piel que <em>“se chupa”</em> las cremas y sigue seca, o la reactividad al frío y al viento.
+                  </p>
+                  <p className="biotipos-section2-body">
+                    Cuidar tu biotipo no es maquillar el síntoma; <strong>es sellar ese escudo biológico</strong> para que tu barrera retenga su agua celular y habite el entorno con elasticidad, frescura y <strong>vitalidad soberana</strong>.
                   </p>
                 </div>
               </div>
@@ -131,11 +140,10 @@ export default function BiotiposDoshasPage() {
 
           {/* Main Text */}
           <div className="biotipos-text-element biotipos-section9-main-text biotipos-section9-main-text--wide">
-            <div className="biotipos-section9-main-text-bg"></div>
             <div className="biotipos-section9-main-text-content">
-              <p className="biotipos-section9-main-text-paragraph">Al igual que el rostro, el cabello y el cuero cabelludo son un sismógrafo directo de tu equilibrio interno. Lejos de ser un filamento inerte, cada hebra nace de un terreno vascularizado donde convergen la microcirculación, las terminaciones nerviosas y la fascia craneal.</p>
-              <p className="biotipos-section9-main-text-paragraph">Tu biotipo capilar se define por la danza entre la secreción sebácea de la raíz y la arquitectura lipídica de la fibra: el pulso Vata se traduce en sequedad y fragilidad; el pulso Pitta somatiza a través del exceso térmico y la inflamación folicular; y el pulso Kapha se manifiesta en sobrecarga oleosa y congestión del poro.</p>
-              <p className="biotipos-section9-main-text-paragraph">Comprender tu Dosha capilar es la llave para abandonar el maquillaje temporal de las siliconas y habilitar un cuidado botánico de raíz: oxigenar el folículo, preservar los lípidos naturales y devolverle a tu melena su volumen y vitalidad soberana.</p>
+              <p className="biotipos-section9-main-text-paragraph">Al igual que el rostro, <strong>el cabello y el cuero cabelludo son un sismógrafo directo de tu equilibrio interno</strong>. Lejos de ser un filamento inerte, cada hebra nace de un terreno vascularizado donde convergen la microcirculación, las terminaciones nerviosas y la fascia craneal.</p>
+              <p className="biotipos-section9-main-text-paragraph">Tu biotipo capilar se define por la danza entre la secreción sebácea de la raíz y la arquitectura lipídica de la fibra: el pulso <strong>Vata</strong> se traduce en sequedad y fragilidad; el pulso <strong>Pitta</strong> somatiza a través del exceso térmico y la inflamación folicular; y el pulso <strong>Kapha</strong> se manifiesta en sobrecarga oleosa y congestión del poro.</p>
+              <p className="biotipos-section9-main-text-paragraph"><strong>Comprender tu Dosha capilar</strong> es la llave para abandonar el maquillaje temporal de las siliconas y habilitar un <strong>cuidado botánico de raíz</strong>: oxigenar el folículo, preservar los lípidos naturales y devolverle a tu melena su <strong>volumen y vitalidad soberana</strong>.</p>
             </div>
           </div>
         </div>
@@ -157,26 +165,25 @@ export default function BiotiposDoshasPage() {
               {/* Main Title */}
               <h2 className="biotipos-section15-main-title">
                 <Link href="/alkimya/tu-ceremonia" className="biotipos-section15-main-title-link">
-                  encontrá tu ceremonia diaria
+                  Encontrá Tu Ceremonia Diaria
                 </Link>
               </h2>
 
               {/* Main Text */}
               <div className="biotipos-section15-main-text">
-                <p className="biotipos-section15-main-text-paragraph">
-                  ¿Aún tenés dudas sobre tu biotipo? Te asesoramos para que encuentres tu combinación botánica exacta.
-                </p>
+                <p className="biotipos-section15-main-text-paragraph"><strong>¿Aún tienes dudas? ¡Te ayudamos a elegir!</strong></p>
+                <p className="biotipos-section15-main-text-paragraph">Si después de identificar tu biotipo todavía tienes dudas sobre cuál es el mejor producto para ti, contáctanos. ¡Estamos para guiarte en tu camino de bienestar!</p>
               </div>
 
               {/* Buttons Container */}
               <div className="biotipos-section15-buttons-container">
                 <a
-                  href="/alkimya/tu-ceremonia"
+                  href="https://instagram.com/daluzconsciente"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="biotipos-section15-button biotipos-section15-button-instagram"
                 >
-                  EXPLORAR CEREMONIAS
+                  CONTACTÁ POR INSTAGRAM
                 </a>
                 <a
                   href="https://wa.me/5493512344580"

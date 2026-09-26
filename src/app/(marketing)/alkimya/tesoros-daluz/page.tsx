@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import TesorosPortalCarousel from '@/components/alkimya/TesorosPortalCarousel'
 
 export const metadata: Metadata = {
   title: 'Tesoros Da Luz | ALKIMYA | DA LUZ CONSCIENTE',
@@ -75,47 +76,47 @@ const PORTAL_CARDS = [
 ]
 const TESORO_UNIVERSAL_ITEMS = [
   {
-    title: 'La Intención y el Biotipo (PDF Guía)',
-    description: 'Recibís el manifiesto de la marca en un formato breve, junto con tips y ejemplos para aprender a intencionar y conectar con la energía de tu Biotipo (Serena, Ilumina, Renace, etc.).',
+    title: 'La Intención y el Biotipo (Guía PDF)',
+    description: 'El manifiesto de la marca junto con pautas claras para decodificar el lenguaje de tu terreno (Serena, Ilumina, Renace, etc.) y personalizar tu ritual.',
   },
   {
-    title: 'Anclaje de la Presencia (Audio)',
-    description: 'Práctica breve de respiración consciente para centrarte y crear el hábito de la conexión.',
+    title: 'Anclaje de la Presencia (Audio de Autor)',
+    description: 'Práctica breve de respiración consciente para regular el sistema nervioso e instalar el hábito de la conexión diaria.',
   },
   {
-    title: 'Música Medicina',
-    description: 'Un link a la Playlist exclusiva de Da Luz para ambientar tu ceremonia.',
+    title: 'Frecuencia y Música Medicina',
+    description: 'Enlace a la Playlist exclusiva en 432 Hz de Da Luz para sintonizar el ambiente de tu ceremonia.',
   },
 ]
 
 const PLUS_SINERGIA_ITEMS = [
   {
-    title: 'EL PROTOCOLO ALQUÍMICO (Guía Teórica)',
-    description: 'Secuencia óptima y soporte teórico de la fusión de activos.',
+    title: 'El Protocolo Alquímico (Guía Galénica)',
+    description: 'Secuencia óptima y sustento técnico sobre la biodisponibilidad, orden de capas y sinergia molecular de los activos.',
   },
   {
-    title: 'EL RITUAL DE LA FUSIÓN (audio)',
-    description: 'Ceremonia guiada para transformar la aplicación del Kit en una experiencia meditativa y sinérgica.',
+    title: 'El Ritual de la Fusión (Audio Guiado)',
+    description: 'Ceremonia sonora para transformar la aplicación combinada de tus alquimias en una experiencia meditativa y sensorial.',
   },
   {
-    title: 'EL ANCLA DE LA CEREMONIA',
-    description: 'Ejercicios somáticos y de reflexión para integrar la intención.',
+    title: 'El Ancla de la Ceremonia (Práctica Somática)',
+    description: 'Maniobras corporales y preguntas de auto-indagación para sellar la intención biológica en el cuerpo.',
   },
 ]
 
 export default function TesorosDaLuzPage() {
   return (
     <div className="tesoros-page min-h-screen">
-      <AlkimyaWaveHeader title="tesoros da luz" />
+      <AlkimyaWaveHeader title="Tesoros Da Luz" />
 
       <div className="tesoros-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10 md:space-y-14">
         {/* Hero intro */}
         <section className="text-center space-y-6">
           <h2 className="tesoros-subtitle font-title text-center">
-            Tu Ritualización Comienza Aquí: Dos Llaves de Transformación
+            Tu Ritualización Comienza Acá: Dos Llaves de Transformación
           </h2>
           <p className="font-text text-lg md:text-xl text-text-primary leading-relaxed max-w-3xl mx-auto">
-            Con cada Alkimya física que recibís, desbloqueás el acceso a su Tesoro digital privado: un portal interactivo diseñado con audios inmersivos, mudras y decretos biológicos para que tu cuidado diario no quede en la superficie, sino que ordene tu sistema nervioso y tu terreno interno.
+            Con cada Alkimya física que recibís, desbloqueás el acceso a su Tesoro digital privado: un portal interactivo diseñado con frecuencias acústicas de autor, maniobras somáticas y códigos de reprogramación celular para que tu cuidado diario no quede en la superficie, sino que ordene tu sistema nervioso y tu terreno interno.
           </p>
         </section>
 
@@ -124,33 +125,33 @@ export default function TesorosDaLuzPage() {
         {/* Sección 1: Papel Semilla */}
         <section className="space-y-6">
           <h3 className="font-subtitle text-2xl md:text-3xl text-brand-primary italic">
-            1: Papel Semilla y la Siembra de la Intención
+            Llave 1: El Papel Semilla y la Siembra de la Intención
           </h3>
 
           <Card variant="brand" className="tesoros-content-card">
             <CardContent className="pt-6">
               <p className="tesoros-card-text font-text text-lg leading-relaxed">
-                Con la compra de una Alquimia o de un Kit Alkímico, te llevas de regalo un papel semilla: una invitación a honrar a la Madre Tierra mientras honrás tu propio templo.
+                Con la compra de cada Alkimya o Kit Alkímico, te llevás de regalo un papel semilla artesanal: una invitación viva a honrar a la Madre Tierra mientras habitás tu propio templo.
               </p>
               <p className="tesoros-card-text font-text text-lg leading-relaxed mt-4">
-                Un acto sagrado: Si no vas a sembrarlo ahora, regalalo a alguien que ame las plantas. Por favor, no lo tires; ahí habita vida y nutrición.
+                <strong>Un acto sagrado:</strong> Si no vas a sembrarlo ahora, regaláselo a alguien que ame las plantas. Por favor, no lo tires: ahí habita vida, nutrición y memoria vegetal.
               </p>
             </CardContent>
           </Card>
 
           <h4 className="font-subtitle text-xl text-brand-primary italic mt-6">
-            EL RITUAL DE SIEMBRA
+            El Ritual de Siembra
           </h4>
           <Card variant="brand" className="tesoros-content-card">
             <CardContent className="pt-6">
               <p className="tesoros-card-text font-text text-lg leading-relaxed">
-                Para activar tu semilla, te invitamos a un acto de presencia: escribí tu intención en un papel aparte y remojá el papel semilla 10 minutos antes de pasarlo a tierra fértil. Al plantarlo, activás tu Chakra Raíz, practicando el enraizamiento y la confianza en los ciclos de la vida.
+                Para activar tu semilla, te invitamos a un acto de presencia: escribí tu intención en un papel aparte y remojá el papel semilla durante 10 minutos antes de pasarlo a tierra fértil. Al plantarlo, activás tu enraizamiento y confianza en los ciclos orgánicos de la vida.
               </p>
               <Link
                 href="/blog"
                 className="font-subtitle italic inline-block mt-4"
               >
-                Guía completa: ¿Cómo cuido mi brote?
+                ✦ GUÍA COMPLETA: ¿CÓMO CUIDO MI BROTE?
               </Link>
             </CardContent>
           </Card>
@@ -161,23 +162,23 @@ export default function TesorosDaLuzPage() {
         {/* Sección 2: Portal de Inmersión */}
         <section className="space-y-8">
           <h3 className="font-subtitle text-2xl md:text-3xl text-brand-primary italic">
-            2. TU PORTAL DE INMERSIÓN
+            Llave 2: Tu Portal de Inmersión
           </h3>
 
           <Card variant="brand" className="tesoros-content-card">
             <CardContent className="pt-6">
               <p className="tesoros-card-text font-text text-lg leading-relaxed">
-                Con cada producto Da Luz que adquirís accedés a un <strong>Paquete de Bienvenida</strong> diseñado para la ritualización de tu autocuidado.
+                Con cada fórmula Da Luz que adquirís, accedés a una infraestructura privada de regulación y autocuidado consciente.
               </p>
             </CardContent>
           </Card>
 
           <div className="space-y-6">
             <h4 className="font-subtitle text-xl text-brand-primary italic">
-              A. EL TESORO UNIVERSAL (Regalo Fijo para todas las compras)
+              A. El Tesoro Universal (Regalo fijo incluido en todas las compras)
             </h4>
             <p className="tesoros-intro-copy font-text text-lg leading-relaxed italic">
-              Tu infraestructura de regulación y conexión con la filosofía Da Luz:
+              Tu base de regulación y conexión con la filosofía Da Luz:
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {TESORO_UNIVERSAL_ITEMS.map((item) => (
@@ -199,33 +200,12 @@ export default function TesorosDaLuzPage() {
 
           <div className="space-y-6">
             <h4 className="font-subtitle text-xl text-brand-primary italic">
-              B. EL TESORO ESPECÍFICO (El Ritual de tu Línea)
+              B. El Tesoro Específico (El Ritual Exclusivo de tu Línea)
             </h4>
             <p className="tesoros-intro-copy font-text text-lg leading-relaxed">
-              Según la Alkimya que elijas, desbloqueás un Portal de Inmersión diseñado para transformar tu rutina en un acto de poder:
+              Según la Alkimya que elijas, desbloqueás un Portal de Inmersión diseñado para transformar tu aplicación en un acto de soberanía:
             </p>
-            {/* Bento grid: 5 cards - 2 large, 3 small or similar layout */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 tesoros-bento-grid">
-              {PORTAL_CARDS.map((card) => (
-                <Card key={card.title} variant={card.variant} padding="default" className="h-full tesoros-portal-card">
-                  <CardHeader>
-                    <CardTitle className="tesoros-portal-title font-subtitle text-xl md:text-2xl">
-                      {card.title}
-                    </CardTitle>
-                    <p className="tesoros-portal-meta"><strong>{card.portal}</strong> · {card.frequency}</p>
-                  </CardHeader>
-                  <CardContent className="space-y-4 pt-0">
-                    <p className="tesoros-portal-kicker">Tu experiencia exclusiva en el portal</p>
-                    <ul className="tesoros-portal-list">
-                      {card.experiences.map(([label, text]) => (
-                        <li key={label}><strong>{label}:</strong> {text}</li>
-                      ))}
-                    </ul>
-                    <p className="tesoros-portal-effect"><strong>El efecto en tu cuerpo:</strong> {card.effect}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <TesorosPortalCarousel cards={PORTAL_CARDS} />
           </div>
         </section>
 
@@ -234,10 +214,10 @@ export default function TesorosDaLuzPage() {
         {/* Sección 3: Plus de la Sinergia */}
         <section className="space-y-6">
           <h3 className="font-subtitle text-2xl md:text-3xl text-brand-primary italic">
-            3. EL PLUS DE LA SINERGIA (Kits Da Luz)
+            3. La Sinergia de los Kits (Nivel Maestría)
           </h3>
           <p className="tesoros-intro-copy font-text text-lg leading-relaxed">
-            Si elegís un kit, el valor de tu Tesoro se multiplica. Recibís TODO lo del Nivel Base (Tesoro Universal + Específico de cada línea incluida) MÁS tres herramientas de Maestría exclusivas, diseñadas para la sinergia e integración profunda:
+            Al elegir un Kit Alkímico, el valor de tu experiencia se multiplica. Desbloqueás la totalidad de los Tesoros Base (Universal + Específicos de cada línea incluida) más tres herramientas exclusivas de integración profunda:
           </p>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {PLUS_SINERGIA_ITEMS.map((item) => (
@@ -262,11 +242,11 @@ export default function TesorosDaLuzPage() {
         {/* Sección 4: Cómo desbloquear */}
         <section className="space-y-4">
           <h3 className="font-subtitle text-2xl md:text-3xl text-brand-primary italic">
-            ¿CÓMO LO DESBLOQUEO?
+            ¿Cómo Desbloqueo mi Tesoro?
           </h3>
           <ul className="font-text text-lg text-text-primary leading-relaxed space-y-2 list-disc list-inside">
-            <li><strong>Compra en Web:</strong> Se acredita automáticamente en tu perfil tras confirmar tu pedido.</li>
-            <li><strong>Compra Externa (Local/WhatsApp):</strong> Registrate en la web y validá tu compra enviándonos tu mail y una foto del producto, número de lote o palabra clave por WhatsApp.</li>
+            <li><strong>Compra en la Web:</strong> Se acredita automáticamente en tu perfil de usuario una vez confirmado tu pedido.</li>
+            <li><strong>Compra Externa (Showroom / WhatsApp):</strong> Creá tu cuenta en la web y validamos tu acceso enviándonos por WhatsApp tu email junto a una foto del producto, número de lote o palabra clave.</li>
           </ul>
         </section>
 
@@ -276,10 +256,10 @@ export default function TesorosDaLuzPage() {
         <Card variant="brand" className="tesoros-content-card">
           <CardContent className="pt-6">
             <h3 className="tesoros-card-title font-subtitle text-xl md:text-2xl italic mb-4">
-              LA MAESTRÍA DE LA AUTOGESTIÓN: TU PRÓXIMO PASO
+              La Maestría de la Autogestión: Tu Próximo Paso
             </h3>
             <p className="tesoros-card-text font-text text-lg leading-relaxed">
-              Estos Tesoros son un portal de bienvenida. Si deseás profundizar con ejercicios extensos y meditaciones de visualización avanzada, te invitamos a explorar la Membresía Da Luz.
+              Los Tesoros son tu portal de bienvenida. Si sentís el llamado a profundizar con prácticas somáticas de integración, autoconocimiento biológico y masterclasses de autor, te invitamos a explorar la Membresía Da Luz.
             </p>
             <Link
               href="/membresia/programa"
@@ -295,7 +275,7 @@ export default function TesorosDaLuzPage() {
         {/* Cierre y CTA */}
         <section className="text-center space-y-8">
           <p className="font-text text-lg text-text-primary leading-relaxed italic max-w-2xl mx-auto">
-            El Tesoro es nuestra forma de honrar tu confianza y asegurar que cada gota de Alkimya cumpla su propósito de transformación.
+            <strong>El Tesoro es nuestra forma de honrar tu confianza</strong> y asegurar que cada gota de Alkimya cumpla su propósito sagrado de transformación celular.
           </p>
           <Link
             href="/productos"

@@ -18,10 +18,10 @@ export default function FilosofiaPropositoPage() {
         <div className="raices-hero-desktop-only">
           <section className="raices-header-band raices-title-band" aria-labelledby="raices-title">
             <div className="raices-header-band-inner">
-              <h1 id="raices-title" className="raices-band-title raices-band-title-deep">RAÍCES DA LUZ</h1>
+              <h1 id="raices-title" className="raices-band-title raices-band-title-deep">Raíces Da Luz</h1>
             </div>
           </section>
-          <p id="filosofia-proposito" className="raices-band-subtitle raices-band-subtitle-white">FILOSOFÍA Y PROPÓSITO</p>
+          <p id="filosofia-proposito" className="raices-band-subtitle raices-band-subtitle-white">Filosofía y Propósito</p>
           <section className="raices-main-text-section">
             <p className="raices-intro raices-intro-deep raices-intro-1"><em>La vida se transforma cuando cada acción se convierte en un acto sagrado de atención y presencia.</em></p>
             <p className="raices-intro raices-intro-deep raices-intro-2"><strong>DA LUZ CONSCIENTE ES UNA INVITACIÓN</strong> a nutrir integralmente tu cuerpo, tus emociones, tu mente y tu espíritu. No somos una solución instantánea; somos el puente para quienes se comprometen a escuchar su propio pulso, a habitar la pausa y a comprender la salud como un proceso de <strong>autogestión y soberanía.</strong></p>
@@ -34,8 +34,8 @@ export default function FilosofiaPropositoPage() {
         <div className="raices-hero-mobile-only">
           <section className="raices-header-band raices-hero-mobile-band" aria-labelledby="raices-title-mobile">
             <div className="raices-header-band-inner">
-              <h1 id="raices-title-mobile" className="raices-band-title">RAÍCES DA LUZ</h1>
-              <p id="filosofia-proposito-mobile" className="raices-band-subtitle">FILOSOFÍA Y PROPÓSITO</p>
+              <h1 id="raices-title-mobile" className="raices-band-title">Raíces Da Luz</h1>
+              <p id="filosofia-proposito-mobile" className="raices-band-subtitle">Filosofía y Propósito</p>
             </div>
           </section>
           <div className="raices-content raices-hero-mobile-content">

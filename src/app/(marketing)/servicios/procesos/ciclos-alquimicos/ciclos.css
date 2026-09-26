@@ -488,3 +488,10 @@ a.procesos-btn-cream.ciclos-detail-link:hover,
   .ciclos-intro { padding: 2.75rem 1.75rem !important; }
   .ciclos-intro-item { font-size: .95rem !important; line-height: 1.4 !important; }
 }
+.ciclos-section-header {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .05em !important;
+  text-transform: none !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .15) !important;
+}

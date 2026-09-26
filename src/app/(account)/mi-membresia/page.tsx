@@ -172,7 +172,7 @@ export default function MembershipPage() {
           }}
         >
           <CardContent>
-            <Sparkles className="h-20 w-20 text-dorado mx-auto mb-6" />
+            <Sparkles className="h-8 w-8 text-[#005080] mx-auto mb-6" strokeWidth={1.2} />
             <h3 className="text-2xl font-bold text-azul-profundo mb-4">
               ¡Inicia tu Transformación!
             </h3>
@@ -196,7 +196,7 @@ export default function MembershipPage() {
               </div>
             </div>
 
-            <Button size="lg" className="bg-dorado hover:bg-dorado/90 text-azul-profundo font-semibold">
+            <Button size="lg" className="account-primary">
               <Sparkles className="h-5 w-5 mr-2" />
               Explorar Membresía
             </Button>
@@ -457,4 +457,4 @@ export default function MembershipPage() {
       )}
     </div>
   );
-} 
+}

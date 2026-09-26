@@ -213,7 +213,7 @@ export default function OrdersPage() {
               Cuando realices tu primera compra, aparecerá aquí
             </p>
             <Button
-              className="bg-dorado hover:bg-dorado/90 text-azul-profundo"
+              className="account-primary"
               onClick={() => router.push('/productos')}
             >
               Explorar Productos
@@ -411,4 +411,4 @@ export default function OrdersPage() {
       )}
     </div>
   );
-} 
+}

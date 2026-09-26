@@ -10,7 +10,7 @@ export default function ActivosOrigenPage() {
       {/* Section 1 */}
       <section className="activos-origen-section">
         {/* H1 - Activos y Origen with AYOTitle.svg */}
-        <AlkimyaWaveHeader title="la arquitectura de nuestras fórmulas" />
+        <AlkimyaWaveHeader title="La Arquitectura de Nuestras Fórmulas" />
 
         {/* H2 - La Arquitectura de nuestras Fórmulas with AYOband.svg */}
 
@@ -20,13 +20,10 @@ export default function ActivosOrigenPage() {
             <strong>Habitar la propia medicina es un acto de soberanía.</strong>
           </blockquote>
           <p className="ayo-paragraph">
-            Diseñamos soluciones dermocosméticas donde la sabiduría botánica se encuentra con la biotecnología verde.
+            Diseñamos soluciones dermocosméticas donde la sabiduría botánica se encuentra con la biotecnología verde. Nuestras fórmulas son <strong>Alquimias Activas</strong> concebidas para respetar la inteligencia biológica de tu piel y su microbiota, nutriendo el diálogo constante entre tu naturaleza y tu bienestar.
           </p>
           <p className="ayo-paragraph">
-            Nuestras fórmulas son <strong>Alquimias Activas</strong> diseñadas para respetar la inteligencia biológica de tu piel y su microbiota, nutriendo el diálogo entre tu naturaleza y tu bienestar.
-          </p>
-          <p className="ayo-paragraph">
-            En <strong>Da Luz</strong>, no solo te entregamos un producto; te entregamos una herramienta de autogestión. Creemos que cuando entendés qué aplicás y por qué lo hacés, la eficacia de la Alquimia se potencia.
+            En Da Luz no entregamos un simple cosmético; entregamos una <strong>herramienta de autogestión</strong>. Creemos profundamente que cuando comprendés qué aplicás y por qué lo hacés, la eficacia celular de la Alquimia se potencia.
           </p>
         </div>
       </section>
@@ -35,63 +32,63 @@ export default function ActivosOrigenPage() {
       <section className="activos-origen-section">
         {/* H2 - Transparencia Total with AYOband.svg */}
         <div className="ayo-band-section">
-          <h2 className="ayo-band-title">Transparencia Total: Co-creá tu Bienestar</h2>
+          <h2 className="ayo-band-title">Transparencia Radical: Co-creá tu Bienestar</h2>
         </div>
 
         {/* Card with existing content */}
         <div className="ayo-transparency-card">
           <p className="ayo-card-text">
-            En Da Luz, entendemos que toda Alquimia se sostiene en un pilar: <strong>la transparencia</strong>. Nuestro compromiso más sólido es que tengas conciencia plena del origen de lo que aplicás a tu cuerpo.
+            Toda Alkimya se sostiene sobre un pilar innegociable: <strong>la transparencia radical</strong>. Nuestro compromiso es que tengas conciencia plena del origen, la pureza y el propósito de cada activo que entra en contacto con tu cuerpo.
           </p>
           <p className="ayo-card-text">
-            Queremos que seas <strong>co-creadora de tu bienestar</strong>. Por eso, te invitamos a explorar el origen, el propósito y los beneficios de cada componente que elegimos para tu fórmula.
+            Queremos que seas <strong>co-creadora informada de tu propio cuidado</strong>; por eso, abrimos de par en par el corazón de nuestras formulaciones:
           </p>
         </div>
 
         {/* Bullet points */}
         <ul className="ayo-bullet-list">
           <li>
-            <strong>Ciencia Verde y Eficacia:</strong> Utilizamos activos de alta pureza (como Niacinamida, Prebióticos y Ácidos suaves) para garantizar resultados visibles, evitando siempre parabenos, siliconas y aceites minerales.
+            <strong>Ciencia Verde y Eficacia:</strong> Empleamos activos biotecnológicos de alta pureza y biocompatibilidad (como Niacinamida, Ácido Hialurónico fraccionado y renovadores celulares suaves) para garantizar resultados visibles, formulando 100% libres de parabenos, siliconas, petrolatos y disruptores endocrinos.
           </li>
           <li>
-            <strong>Respeto por la Microbiota:</strong> Cada producto incorpora prebióticos como Xylitol e Inulina para nutrir las bacterias benéficas que protegen tu barrera cutánea.
+            <strong>Respeto por la Microbiota:</strong> Cada producto incorpora prebióticos de vanguardia como Xilitol e Inulina para nutrir las bacterias protectoras, sellar el manto ácido y prevenir la pérdida transdérmica de agua (TEWL).
           </li>
           <li>
-            <strong>Potencia Botánica:</strong> Trabajamos con aceites vegetales de primera prensada e hidrolatos puros que conservan el pulso vital de la tierra.
+            <strong>Potencia Botánica de Raíz:</strong> Trabajamos exclusivamente con aceites vegetales de primera prensada en frío e hidrolatos puros destilados al vapor, preservando intacto el pulso fitoquímico y la vitalidad de la planta.
           </li>
         </ul>
       </section>
 
       {/* Section 3 - Cards */}
       <section className="activos-origen-section ayo-section-cards">
-        <h2 className="ayo-section-title">CONOCIMIENTO Y SOBERANÍA</h2>
-        <h3 className="ayo-section-subtitle">Te invitamos a explorar el corazón de nuestra medicina a través de los siguientes accesos:</h3>
+        <h2 className="ayo-section-title">Conocimiento y Soberanía</h2>
+        <h3 className="ayo-section-subtitle"><em>Te invitamos a explorar la anatomía de nuestras fórmulas a través de tres portales de estudio:</em></h3>
 
         <div className="ayo-cards-grid">
           <div className="ayo-card">
-            <h4 className="ayo-card-heading">1. CIENCIA VERDE</h4>
+            <h4 className="ayo-card-heading">1. Ciencia Verde</h4>
             <p className="ayo-card-desc">
-              Descubrí nuestra clasificación técnica: desde el Corazón Botánico hasta la Pureza Clínica. Entendé el origen y el &quot;porqué&quot; de esos nombres que suelen asustar, pero que son el secreto de nuestra eficacia.
+              Descubrí nuestra clasificación técnica: desde el Corazón Botánico hasta la Pureza Clínica. Entendé el origen y el sustento de esos nombres científicos que a veces intimidan, pero que representan el estándar más alto de eficacia celular.
             </p>
             <Link href="#" className="ayo-card-button">
-              CIENCIA VERDE
+              EXPLORAR CIENCIA VERDE
             </Link>
           </div>
 
           <div className="ayo-card">
-            <h4 className="ayo-card-heading">2. SABER SEGURO: Guía de Uso Responsable</h4>
+            <h4 className="ayo-card-heading">2. Saber Seguro: Guía de Uso Responsable</h4>
             <p className="ayo-card-desc">
-              Para que tu experiencia sea 100% saludable, consultá nuestras recomendaciones sobre fotosensibilidad, embarazo y periodos de descanso de las plantas.
+              Para una práctica certera y consciente, consultá nuestras recomendaciones galénicas sobre fotosensibilidad de activos, adaptabilidad según tu terreno, compatibilidades y tiempos de asimilación de las plantas.
             </p>
             <Link href="#" className="ayo-card-button">
-              GUÍA DE SEGURIDAD
+              VER GUÍA DE SEGURIDAD
             </Link>
           </div>
 
           <div className="ayo-card">
-            <h4 className="ayo-card-heading">3. BITÁCORA DE MATERIA PRIMA</h4>
+            <h4 className="ayo-card-heading">3. Bitácora de Materia Prima</h4>
             <p className="ayo-card-desc">
-              El mapa detallado de nuestro Botiquín Alquímico. Un espacio para conocer los beneficios específicos de cada planta, activo y escudo nutritivo según tu tipo de piel.
+              El mapa detallado de nuestro Botiquín Alquímico. Un espacio abierto para conocer las propiedades terapéuticas, el origen botánico y la afinidad fisiológica de cada extracto, manteca y activo según las necesidades de tu piel.
             </p>
             <Link href="#" className="ayo-card-button">
               ABRIR BITÁCORA
@@ -102,7 +99,7 @@ export default function ActivosOrigenPage() {
 
       {/* Footer */}
       <footer className="ayo-footer">
-        <p><strong>Gracias por elegir una cosmética con conciencia, por respetar tu microbiota y por confiar en la inteligencia de la naturaleza.</strong></p>
+        <p><em>Gracias por elegir una cosmética viva y soberana, por honrar tu microbiota y por confiar en la inteligencia biológica de tu propio templo.</em></p>
       </footer>
     </div>
   );

@@ -758,3 +758,10 @@ a.procesos-btn-orientation {
   background-color: #051341;
   background-image: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
 }
+.procesos-band-title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .05em !important;
+  text-transform: none !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .15) !important;
+}

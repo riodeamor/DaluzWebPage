@@ -84,8 +84,8 @@ const ListItem = ({
             {title}
           </div>
           <p
-            className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#1C1B1A", opacity: 0.8 }}
+            className="text-sm font-text leading-snug"
+            style={{ color: textColor === "#72111A" ? "#4A0D10" : "#051341" }}
           >
             {children}
           </p>
@@ -121,7 +121,7 @@ const BlogListItem = ({
           </div>
           <p
             className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#1C1B1A", opacity: 0.8 }}
+            style={{ color: "#051341" }}
           >
             {subtitle}
           </p>
@@ -136,6 +136,13 @@ const BlogListItem = ({
    =========================== */
 const BORDO_ALKIMYA = "#72111A"; // Para Tienda y Alkimya
 const AZUL_PROFUNDO = "#051341"; // Para Raíces, Procesos, FAQ, Legales, Landing y el resto
+const featuredCardBackground = {
+  backgroundColor: "#FFFFFF",
+  backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/svg/header/bgBlog.webp)",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+};
 
 const isAlkimyaOrTiendaPage = (pathname: string) =>
   pathname === "/productos" ||
@@ -219,7 +226,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className="hidden xl:flex">
+            <NavigationMenu className="site-header-nav hidden xl:flex">
               <NavigationMenuList className="space-x-1">
                 
                 {/* 1. TIENDA (Bordó al abrir) */}
@@ -241,16 +248,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bgtiendadaluz.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/productos"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/Tienda%20Da%20luz.svg"
                                 alt="Tienda Da Luz"
@@ -267,7 +270,7 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#4A0D10" }}
                               >
                                 Explora todas nuestras líneas de productos y alkimyas.
                               </p>
@@ -315,16 +318,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bg%20manifiesto.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/alkimya"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/manifiesto.svg"
                                 alt="Manifiesto"
@@ -341,9 +340,9 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#4A0D10" }}
                               >
-                                Nuestra visión y propósito fundamental.
+                                El latido, la visión y la filosofía que inspiran cada fórmula.
                               </p>
                             </div>
                           </Link>
@@ -351,16 +350,16 @@ export default function Header() {
                       </li>
                       <li className="row-span-3 flex flex-col justify-evenly">
                         <ListItem href="/alkimya/activos-origen" title="Activos y Origen" textColor="#72111A">
-                          Ingredientes naturales y su procedencia
+                          Transparencia radical: la sinergia exacta entre botánica viva y biotecnología verde.
                         </ListItem>
                         <ListItem href="/alkimya/biotipos-doshas" title="Biotipos y Doshas" textColor="#72111A">
-                          Personalización según tu naturaleza
+                          Reconocé tu bio-individualidad y elegí la alquimia que tu terreno necesita.
                         </ListItem>
                         <ListItem href="/alkimya/tu-ceremonia" title="Tu Ceremonia" textColor="#72111A">
-                          Rituales y ceremonias personalizadas
+                          Rituales conscientes para elevar tu cuidado diario.
                         </ListItem>
                         <ListItem href="/alkimya/tesoros-daluz" title="Tesoros Da Luz" textColor="#72111A">
-                          Productos especiales y exclusivos
+                          Más que cosmética viva: explorá las herramientas digitales exclusivas que acompañan tu ritual.
                         </ListItem>
                       </li>
                     </ul>
@@ -386,16 +385,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bg%20origen.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/raices"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/origen.svg"
                                 alt="Origen Alquímico"
@@ -412,9 +407,9 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#051341" }}
                               >
-                                De la sombra a la alkimia: el viaje.
+                                De la desconexión al goce: la historia vital que dio origen a nuestro universo.
                               </p>
                             </div>
                           </Link>
@@ -426,16 +421,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bg%20filosofia%20y%20rpoposito.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/filosofia-proposito"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/Filosofia%20y%20proposito.svg"
                                 alt="Filosofía y Propósito"
@@ -452,9 +443,9 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#051341" }}
                               >
-                                Nuestra visión y valores.
+                                El corazón de Da Luz: los cuatro pilares vivos que sostienen todo nuestro universo.
                               </p>
                             </div>
                           </Link>
@@ -483,16 +474,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bg%20procesos%20holisticos.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/servicios/procesos"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/Procesos%20holisticos.svg"
                                 alt="Procesos Holísticos"
@@ -509,9 +496,9 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#051341" }}
                               >
-                                Terapias para el bienestar integral.
+                                Acompañamiento profundo para tu evolución consciente.
                               </p>
                             </div>
                           </Link>
@@ -519,10 +506,10 @@ export default function Header() {
                       </li>
                       <li className="row-span-3 flex flex-col justify-evenly">
                         <ListItem href="/servicios/procesos/ciclos-alquimicos" title="Ciclos Alquímicos" textColor="#051341">
-                          Procesos transformadores cíclicos
+                          Caminos de transformación cíclica y profunda.
                         </ListItem>
                         <ListItem href="/servicios/procesos/sesiones-integrales" title="Sesiones Integrales" textColor="#051341">
-                          Sesiones holísticas personalizadas
+                          Encuentros 1:1 para mapear, regular y transformar tu terreno biológico y emocional.
                         </ListItem>
                       </li>
                     </ul>
@@ -574,9 +561,9 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#051341" }}
                               >
-                                Lee nuestras últimas publicaciones.
+                                Nuestra bitácora de saberes botánicos, neurocosmética y evolución personal.
                               </p>
                             </div>
                           </Link>
@@ -623,16 +610,12 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bg%20programa7.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                             href="/programa-transformacion"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/Programa7.svg"
                                 alt="Programa de 7 Meses"
@@ -649,7 +632,7 @@ export default function Header() {
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#051341" }}
                               >
                                 Transformación integral para alma y cuerpo
                               </p>
@@ -675,7 +658,7 @@ export default function Header() {
             {/* FAQ Link - Desktop */}
             <Link
               href="/faq"
-              className="hidden xl:flex items-center px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
+              className="site-header-faq hidden xl:flex items-center px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
               style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
             >
               <HelpCircle className="h-5 w-5 mr-2" />
@@ -683,7 +666,7 @@ export default function Header() {
             </Link>
 
             {/* User Menu / Auth Buttons - DESKTOP ONLY */}
-            <div className="hidden xl:flex items-center space-x-4">
+            <div className="site-header-auth hidden xl:flex items-center space-x-4">
               <Button
                 variant="ghost"
                 size="sm"

@@ -29,11 +29,15 @@ describe("🔒 Security: Admin Products API Has Admin Check", () => {
     );
     const content = readFileSync(adminProductsPath, "utf-8");
 
-    // Verificar que tiene función verifyAdminUser
-    expect(content).toContain("verifyAdminUser");
-    expect(content).toContain("is_admin");
-    expect(content).toContain("Forbidden");
-    expect(content).toContain("403");
+    expect(content).toContain("requireAdmin()");
+    expect(content).toContain("if (!auth.ok) return auth.response");
+
+    const helpersPath = join(process.cwd(), "src/lib/auth/helpers.ts");
+    const helpers = readFileSync(helpersPath, "utf-8");
+    expect(helpers).toContain("supabase.rpc(");
+    expect(helpers).toContain('"is_admin"');
+    expect(helpers).toContain("Admin access required");
+    expect(helpers).toContain("status: 403");
   });
 });
 

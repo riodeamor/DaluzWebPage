@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import CeremonyStepsCarousel from '@/components/alkimya/CeremonyStepsCarousel'
+import PortalTesorosNotice from '@/components/alkimya/PortalTesorosNotice'
 import CeremoniaCarousel, {
   type CeremoniaBanner,
 } from '@/components/marketing/CeremoniaCarousel'
@@ -88,7 +89,7 @@ export default function CeremoniaCapilarPage() {
           />
         </section>
         {/* Paso a paso compacto e interactivo */}
-        <section className="ceremony-steps-section">
+        <section className="ceremony-steps-section ceremony-steps-section--before-notice">
           <CeremonyStepsCarousel
             steps={PASOS}
             imagePrefix="/images/ceremonias/cap_step_"
@@ -96,10 +97,12 @@ export default function CeremoniaCapilarPage() {
           />
         </section>
 
-
+        <section className="px-4 sm:px-6 md:px-8 lg:px-12">
+          <PortalTesorosNotice />
+        </section>
         {/* Elegí tu Ceremonia */}
         <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
-          <div className="mt-8 flex justify-center">
+          <div className="flex justify-center">
             <Link
               href="/productos"
               className="ceremonia-back-button font-title inline-flex justify-center rounded-r-[15px] border-2 border-[var(--color-brand-primary)] bg-[var(--color-bg-light)] px-8 py-4 text-sm font-medium uppercase tracking-[1px] text-[var(--color-brand-primary)] transition-colors hover:bg-[var(--color-brand-primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-primary)] focus-visible:ring-offset-2 sm:text-base"

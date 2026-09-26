@@ -3335,3 +3335,67 @@ h1, h2, h3, h4, h5, h6,
   color: #97000D !important;
   text-shadow: 0 5px 12px rgba(74, 13, 16, .22) !important;
 }
+
+/* Requested editorial panels: preserve their copy and use the Tesoros burgundy palette. */
+.activos-origen-page .ayo-transparency-card,
+.activos-origen-page .ayo-bullet-list {
+  background: linear-gradient(105deg, #860119 0%, #710d1b 48%, #4A0D10 100%) !important;
+  color: #FFF2E9 !important;
+}
+.activos-origen-page .ayo-transparency-card :is(p, strong),
+.activos-origen-page .ayo-bullet-list :is(li, strong) {
+  color: #FFF2E9 !important;
+}
+
+.tesoros-page {
+  background: linear-gradient(90deg, #4A0D10 0%, #690D17 24%, #860119 52%, #97000D 76%, #B3262E 100%) !important;
+}
+.tesoros-portal-carousel {
+  display: grid;
+  background: transparent !important;
+  grid-template-columns: 3rem minmax(0, 48rem) 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(.5rem, 2vw, 1.5rem);
+}
+.tesoros-portal-carousel-slide { min-width: 0; }
+.tesoros-portal-arrow {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3.5rem;
+  padding: 0;
+  border: 1px solid rgba(255, 242, 233, .4);
+  border-radius: 0 12px;
+  background: linear-gradient(145deg, #860119 0%, #4A0D10 100%) !important;
+  color: #FFF2E9;
+  cursor: pointer;
+  transition: filter .2s ease, transform .2s ease;
+}
+.tesoros-portal-arrow:hover,
+.tesoros-portal-arrow:focus-visible { filter: brightness(1.18); transform: translateY(-2px); }
+.tesoros-portal-arrow:focus-visible { outline: 2px solid #FFF2E9; outline-offset: 3px; }
+.tesoros-portal-arrow svg { width: 1.5rem; height: 1.5rem; }
+@media (max-width: 639px) {
+  .tesoros-portal-carousel { grid-template-columns: 2rem minmax(0, 1fr) 2rem; gap: .25rem; }
+  .tesoros-portal-arrow { width: 2rem; height: 3rem; }
+}
+
+.alkimya-wave-header h1 {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: .05em !important;
+  text-transform: none !important;
+  text-shadow: 0 2px 10px rgba(74, 13, 16, .15) !important;
+}
+.tu-ceremonia-page .alkimya-wave-header__subtitle,
+.alkimya-wave-header__subtitle { color: #4A0D10 !important; }
+.tu-ceremonia-page .alkimya-wave-header__shape {
+  background-image: url('/svg/alkimia/AlkimyaTitleWaveCeremonia.svg') !important;
+}
+.tu-ceremonia-page .alkimya-wave-header h1,
+.tu-ceremonia-page .alkimya-wave-header__subtitle {
+  color: #FFF2E9 !important;
+  text-shadow: 0 2px 10px rgba(42, 6, 8, .4) !important;
+}
+.ceremony-steps-section--before-notice { padding-bottom: 0 !important; }

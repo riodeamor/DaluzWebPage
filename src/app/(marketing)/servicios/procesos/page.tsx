@@ -29,7 +29,7 @@ export default function ProcesosPage() {
         <section className="procesos-header-band" aria-labelledby="procesos-title">
           <div className="procesos-header-band-inner">
             <h1 id="procesos-title" className="procesos-band-title">
-              PROCESOS DA LUZ: LA ALQUIMIA DE TU SOBERANÍA
+              El Retorno al Origen: Procesos de Soberanía y Transformación Encarnada
             </h1>
           </div>
         </section>
@@ -37,7 +37,7 @@ export default function ProcesosPage() {
         {/* Intro quote */}
         <section className="procesos-intro-quote" aria-label="Introducción">
           <p className="procesos-intro-quote-text">
-            &ldquo;El cuerpo no miente ni negocia: es una tecnología viva que somatiza lo que el sistema nervioso y el subconsciente no logran metabolizar. No creemos en soluciones mágicas ni en terapias que generan dependencia; abordamos la causa raíz combinando fitoterapia clínica, modulación vibracional y liberación somática para devolverte el mando de tu propia biología.&rdquo;
+            <strong>Tu cuerpo no está roto; es una tecnología viva lista para recordar su propio orden.</strong><br /><br />El cuerpo no miente ni negocia: es una tecnología biológica inteligente que somatiza lo que el sistema nervioso y el subconsciente no logran metabolizar. En Da Luz no creemos en soluciones mágicas ni en terapias que generan dependencia; abordamos la causa raíz combinando fitoterapia clínica, modulación vibracional y liberación somática para devolverte el mando soberano de tu propia fisiología.<br /><br />Tanto si buscás desarticular un síntoma agudo como si sentís el llamado a iniciarte en la depuración herbal, afinar tu bio-escucha y activar tu organismo a favor, este es el mapa para dejar de reaccionar en piloto automático y comenzar a habitarte con presencia real.
           </p>
         </section>
 
@@ -49,7 +49,7 @@ export default function ProcesosPage() {
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">EL BOTIQUÍN BOTÁNICO</h3>
                 <p className="procesos-herramienta-desc">
-                  Nuestra farmacia viva para la autogestión y el reseteo orgánico. Accedé al catálogo detallado de las hierbas medicinales, tinturas madre, microdosis y elixires florales con los que formulamos y asistimos cada proceso. Conocé la signatura botánica de cada planta, sus principios activos y cómo actúan sobre la depuración de tus filtros emuntorios (hígado, intestino, riñones) y la regulación del sistema nervioso.
+                  Nuestra farmacia viva para la autogestión y el reseteo orgánico. Accedé al catálogo detallado de las hierbas medicinales, tinturas madre, microdosis y elixires florales con los que formulamos y asistimos cada sendero. Conocé la signatura botánica de cada planta, sus fitoactivos específicos y cómo actúan sobre la depuración de tus filtros emuntorios (hígado, intestino, riñones) y la calibración del sistema nervioso autónomo.
                 </p>
                 <Link href="/productos" className="procesos-btn-blue">
                   CONOCER NUESTRAS PLANTAS Y ELIXIRES
@@ -61,7 +61,7 @@ export default function ProcesosPage() {
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">COFRE DE TECNOLOGÍAS VIBRACIONALES</h3>
                 <p className="procesos-herramienta-desc">
-                  Las herramientas clínicas y energéticas con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestras terapias: sonoterapia con cuencos tibetanos (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y liberación de la fascia corporal. Saberes de precisión para ordenar lo sutil antes de que se cristalice en síntoma físico.
+                  Las herramientas clínicas y sutiles con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestros abordajes: sonoterapia con cuencos tibetanos (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y descompresión de la fascia corporal. Saberes de alta precisión para ordenar lo sutil antes de que se cristalice en síntoma físico.
                 </p>
                 <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
                   EXPLORAR HERRAMIENTAS Y TERAPIAS
@@ -74,7 +74,7 @@ export default function ProcesosPage() {
         {/* Footer CTA */}
         <footer className="procesos-page-footer">
           <p className="procesos-page-cta-text">
-            ¿Por dónde ingresar a tu proceso?
+            ¿Por dónde ingresar a tu proceso?<br />Elegí un camino de acompañamiento continuo en el tiempo o agendá un encuentro individual 1:1 a medida de tu momento presente.
           </p>
           <div className="procesos-page-buttons">
             <Link href="/servicios/procesos/ciclos-alquimicos" className="procesos-btn-cream procesos-btn-orientation">
