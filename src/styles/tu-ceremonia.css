@@ -536,3 +536,14 @@
 .tu-ceremonia-page {
   background: linear-gradient(90deg, #860119 0%, #97000D 25%, #B3262E 52%, #C83A35 78%, #D95745 100%) !important;
 }
+
+.tu-ceremonia-intro {
+  width: min(calc(100% - 2rem), 960px) !important;
+  margin: 0 auto 1.5rem;
+  border: 1px solid rgba(255, 242, 233, .28);
+  border-radius: 0 18px;
+  background: linear-gradient(90deg, #4A0D10 0%, #860119 56%, #B3262E 100%) !important;
+  box-shadow: 0 12px 30px rgba(42, 6, 8, .22);
+}
+.tu-ceremonia-intro p,
+.tu-ceremonia-intro strong { color: #FFF2E9 !important; }

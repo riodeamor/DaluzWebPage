@@ -234,7 +234,7 @@ export default async function HomePage() {
       <LineasCarousel />
       {/* VALOR Y CONFIANZA DA LUZ */}
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-valor-confianza" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 1, marginTop: "-4px" }}>
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
+        <div className="absolute inset-0 xl:hidden homepage-section-gradient" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.07 / 1080.12", minHeight: "100%", zIndex: 0 }}>
           <ValorYConfianzaBackground bgColor="#051341" waveColor="#051341" className="opacity-100" />
         </div>
@@ -286,7 +286,7 @@ export default async function HomePage() {
 
     {/* ✨ SERVICIOS HOLÍSTICOS SECTION */}
       <section className="section-enhanced relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-servicios" style={{ minHeight: "400px", backgroundColor: "#FFF2E9", position: "relative", zIndex: 10, marginTop: "-4px" }}>
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
+        <div className="absolute inset-0 xl:hidden homepage-section-gradient" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)", zIndex: 0 }} />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.23 / 1080.23", minHeight: "100%", zIndex: 0 }}>
           <ServiciosHolisticosBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
@@ -294,12 +294,12 @@ export default async function HomePage() {
         {/* 🔥 FIX: Redujimos el pt (padding-top) y agregamos un margen negativo (-mt-6) para subir el título a la ola */}
         <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full pb-12 pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:-mt-6 servicios-holisticos-container">
           <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-            <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+            <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5 procesos-vivos-divider" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] tracking-[0.05em]">
+            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] tracking-[0.05em] procesos-vivos-title">
               Procesos Vivos
             </h2>
-            <div className="xl:hidden w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
+            <div className="xl:hidden w-32 h-0.5 mx-auto mt-3 sm:mt-4 procesos-vivos-divider" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
           </div>
 
@@ -703,9 +703,9 @@ export default async function HomePage() {
 
 
      {/* ✨ ENHANCED GALERÍA SECTION */}
-      <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
+      <section className="section-enhanced homepage-gallery relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#FFF2E9" }}>
         <div
-          className="absolute inset-0 xl:hidden"
+          className="absolute inset-0 xl:hidden homepage-gallery-gradient"
           style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }}
         />
         <div className="hidden xl:block absolute inset-0">
@@ -731,9 +731,9 @@ export default async function HomePage() {
               <p className="font-text max-w-2xl mx-auto" style={{ color: "#FFF4E0" }}>
               Habitar el cuerpo. Honrar la raíz
             </p>
-              <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
+              <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer" className="flex justify-center">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-200 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] active:bg-none active:bg-[#16345F] focus:ring-0 focus:outline-none hover:-translate-y-0.5 shadow-[0_6px_16px_rgba(0,0,0,0.30)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)] [-webkit-tap-highlight-color:transparent]"
+                  className="group px-4 sm:px-8 py-4 text-sm sm:text-lg text-white uppercase tracking-[0.18em] transition-all duration-200 bg-gradient-to-r from-[#005080] to-[#0085B1] hover:bg-none hover:bg-[#16345F] active:bg-none active:bg-[#16345F] focus:ring-0 focus:outline-none hover:-translate-y-0.5 shadow-[0_6px_16px_rgba(0,0,0,0.30)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.38)] [-webkit-tap-highlight-color:transparent]"
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-montserrat), Montserrat, sans-serif",

@@ -71,7 +71,6 @@ export default function BlogGuardadosPage() {
           <div className="flex items-center gap-3 mb-8">
             <div
               className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-brand-primary)]/15 border border-[var(--color-brand-primary)]/30"
-              style={{ color: "#AE0000" }}
             >
               <Heart className="w-6 h-6 fill-current" />
             </div>

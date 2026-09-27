@@ -175,7 +175,7 @@ export default function FAQClient() {
               Centro de Ayuda
             </Badge>
 
-            <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-text-inverse tracking-wide">
+            <h1 className="institutional-section-heading mb-6 text-4xl text-[#FFF2E9] md:text-5xl">
               Preguntas Frecuentes
             </h1>
 
@@ -267,7 +267,7 @@ export default function FAQClient() {
                     >
                       {IconComponent && <IconComponent className="w-6 h-6" />}
                     </div>
-                    <h2 className="font-heading text-2xl md:text-3xl font-bold text-text-inverse tracking-wide text-left">
+                    <h2 className="institutional-section-heading text-left text-2xl text-[#FFF2E9] md:text-3xl">
                       {category.name}
                     </h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-faq-light/40 to-transparent" />
@@ -335,7 +335,7 @@ export default function FAQClient() {
               <MessageCircle className="w-4 h-4 mr-2" />
               ¿Necesitas ayuda personalizada?
             </Badge>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-text-inverse">
+            <h2 className="institutional-section-heading mb-4 text-3xl text-[#FFF2E9] md:text-4xl">
               {FAQ_CONTACT_CTA.title}
             </h2>
             <p className="font-body text-lg text-white/80 max-w-2xl mx-auto">

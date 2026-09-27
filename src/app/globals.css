@@ -2592,6 +2592,25 @@ button.pagination-current-page:hover {
 }
 
 /* Desktop section aspect ratios - only apply on extra large screens */
+@media (max-width: 767px) {
+  .section-valor-confianza,
+  .section-servicios,
+  .homepage-gallery {
+    background: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+  }
+
+  .section-valor-confianza > .homepage-section-gradient,
+  .section-servicios > .homepage-section-gradient,
+  .homepage-gallery > .homepage-gallery-gradient {
+    background: linear-gradient(90deg, #051341 0%, #16345F 30%, #005080 66%, #0085B1 100%) !important;
+  }
+
+  .section-servicios .procesos-vivos-title { color: #FFF2E9 !important; }
+  .section-servicios .procesos-vivos-divider {
+    background: linear-gradient(to right, transparent, #FFF2E9, transparent) !important;
+  }
+}
+
 @media (min-width: 1280px) {
   .section-manifiesto {
     aspect-ratio: 1922.91 / 1080.08;
@@ -2849,3 +2868,38 @@ main a.tu-ceremonia-button:hover {
 .site-header-nav > div > ul > li > button:hover,
 .site-header-faq:hover,
 .site-header-auth > button:hover { color: #FFFFFF !important; }
+.site-header-nav .site-header-nav-control > a,
+.site-header-nav .site-header-nav-control > button {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: .18em !important;
+  color: #FFF2E9 !important;
+}
+.mobile-nav-menu a:not([aria-label="Ir al blog"]) {
+  border-radius: 8px;
+  padding: 8px 12px !important;
+  border: 1px solid rgba(5, 19, 65, .08);
+  background: rgba(255, 255, 255, .45);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+.mobile-nav-menu a:not([aria-label="Ir al blog"]):hover,
+.mobile-nav-menu a:not([aria-label="Ir al blog"]):focus-visible,
+.mobile-nav-menu a:not([aria-label="Ir al blog"]):active {
+  background: rgba(255, 255, 255, .85);
+}
+.blog-blue-theme {
+  --color-brand-primary: #005080;
+  --color-brand-secondary: #16345F;
+  --color-text-primary: #051341;
+  --color-highlight: #0085B1;
+  --color-bg-light: #FFF2E9;
+}
+
+.institutional-section-heading {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em;
+  text-transform: none !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}

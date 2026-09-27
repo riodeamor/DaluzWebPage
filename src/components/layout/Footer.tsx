@@ -4,12 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Badge } from "@/components/ui/badge";
-import { useTheme } from "@/contexts/ThemeContext";
 import { usePublicConfig } from "@/hooks/usePublicConfig";
 
 // Default values as fallbacks (used until config is loaded or if not set in DB)
 const DEFAULT_CONTACT_EMAIL = "contacto@daluzconsciente.com";
-const DEFAULT_PHONE = "+54 9 3512 344580";
+const DEFAULT_PHONE = "+54 9 351 234-4580";
 const DEFAULT_ADDRESS = "Córdoba, Argentina";
 const DEFAULT_WHATSAPP = "5493512344580";
 const DEFAULT_INSTAGRAM = "https://instagram.com/daluzconsciente";
@@ -59,10 +58,10 @@ import {
   Heart,
   Leaf,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 
 export default function Footer() {
-  const { currentLine } = useTheme();
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
@@ -84,17 +83,20 @@ export default function Footer() {
   // Derive contact values from config with fallbacks
   const contactEmail = contactConfig?.contact_email || DEFAULT_CONTACT_EMAIL;
   const contactPhone = contactConfig?.phone_number || DEFAULT_PHONE;
-  const contactWhatsApp = contactConfig?.whatsapp_phone || DEFAULT_WHATSAPP;
-  const contactAddress =
-    [contactConfig?.address, contactConfig?.city, contactConfig?.country]
-      .filter(Boolean)
-      .join(", ") || DEFAULT_ADDRESS;
+  const addressParts = [contactConfig?.address, contactConfig?.city, contactConfig?.country]
+    .filter((value): value is string => typeof value === "string" && Boolean(value.trim()))
+    .flatMap((value) => value.split(",").map((part) => part.trim()).filter(Boolean));
+  const contactAddress = addressParts.length
+    ? addressParts.filter((part, index) =>
+        addressParts.findIndex((other) => other.toLocaleLowerCase("es") === part.toLocaleLowerCase("es")) === index,
+      ).join(", ")
+    : DEFAULT_ADDRESS;
 
   // Social media from config (ensure string type for phone numbers)
   const socialInstagram = contactConfig?.social_instagram || DEFAULT_INSTAGRAM;
   const socialFacebook = contactConfig?.social_facebook || DEFAULT_FACEBOOK;
   const socialWhatsApp = String(
-    contactConfig?.social_whatsapp || DEFAULT_WHATSAPP,
+    contactConfig?.social_whatsapp || contactConfig?.whatsapp_phone || DEFAULT_WHATSAPP,
   );
 
   const footerBg = isAlkimyaOrTiendaPage(pathname ?? "")
@@ -118,41 +120,42 @@ export default function Footer() {
 
   const footerSections = [
     {
-      title: "Productos",
+      title: "Botica",
       links: [
-        { name: "Cremas Faciales", href: "/productos/cremas-faciales" },
-        { name: "Aceites Corporales", href: "/productos/aceites" },
-        { name: "Hidrolatos", href: "/productos/hidrolatos" },
-        { name: "Jabones Artesanales", href: "/productos/jabones" },
-        { name: "Kits Especiales", href: "/productos/kits" },
+        { name: "Ver toda la tienda", href: "/productos" },
+        { name: "Línea Umbral", href: "/categorias/linea-umbral" },
+        { name: "Línea Ecos", href: "/categorias/linea-ecos" },
+        { name: "Línea Alma Terra", href: "/categorias/linea-alma-terra" },
+        { name: "Línea Jade Ritual", href: "/categorias/linea-jade-ritual" },
+        { name: "Línea Prisma", href: "/categorias/linea-prisma" },
+        { name: "Kits y Experiencia", href: "/categorias/kits-y-experiencia" },
       ],
     },
     {
-      title: "Membresía",
+      title: "Procesos",
       links: [
-        { name: "Programa Completo", href: "/membresia/programa" },
-        { name: "Módulos Semanales", href: "/membresia/modulos" },
-        { name: "Comunidad", href: "/membresia/comunidad" },
-        { name: "Coaching Personal", href: "/membresia/coaching" },
-        { name: "Testimonios", href: "/membresia/testimonios" },
+        { name: "Ciclos Alquímicos", href: "/servicios/procesos/ciclos-alquimicos" },
+        { name: "Génesis", href: "/servicios/procesos/ciclos-alquimicos#ciclos-genesis-title" },
+        { name: "Metamorfosis", href: "/servicios/procesos/ciclos-alquimicos#ciclos-metamorfosis-title" },
+        { name: "Oasis", href: "/servicios/procesos/ciclos-alquimicos#ciclos-oasis-title" },
+        { name: "Sesiones Integrales", href: "/servicios/procesos/sesiones-integrales" },
       ],
     },
     {
-      title: "Servicios",
+      title: "Experiencias",
       links: [
-        { name: "Consultas Individuales", href: "/servicios/consultas" },
-        { name: "Terapias Grupales", href: "/servicios/grupos" },
-        { name: "Talleres", href: "/servicios/talleres" },
-        { name: "Retiros", href: "/servicios/retiros" },
-        { name: "Formaciones", href: "/servicios/formaciones" },
+        { name: "Programa de 7 Meses", href: "/programa-transformacion" },
+        { name: "Mi Membresía", href: "/mi-membresia" },
+        { name: "Blog y Saberes", href: "/blog" },
       ],
     },
     {
-      title: "Soporte",
+      title: "Cuidado y soporte",
       links: [
         { name: "Centro de Ayuda", href: "/ayuda" },
         { name: "Preguntas Frecuentes", href: "/faq" },
         { name: "Políticas de Envío", href: "/politicas/envio" },
+        { name: "Mi Perfil", href: "/perfil" },
         { name: "Términos y Condiciones", href: "/politicas/terminos" },
         { name: "Política de Privacidad", href: "/politicas/privacidad" },
         {
@@ -189,7 +192,7 @@ export default function Footer() {
               className="text-xs font-caption"
               style={{ color: "#FFFFFF", opacity: 0.8 }}
             >
-              Alkimyas para alma y cuerpo
+              Alkimya Botánica y Experiencias Integrales
             </div>
           </div>
 
@@ -206,41 +209,39 @@ export default function Footer() {
               style={{ color: "#FFFFFF", opacity: 0.9 }}
             >
               {/* Email */}
-              <div className="flex items-center justify-center space-x-3 px-4">
+              <div className="flex items-center justify-center gap-2">
                 <Mail
                   className="h-4 w-4 flex-shrink-0 lucide"
-                  style={{ color: "#F8D794" }}
+                  style={{ color: "#FFF2E9" }}
                 />
                 <a
                   href={`mailto:${contactEmail}`}
-                  className="text-sm hover:text-white transition-colors duration-300 flex-1 text-center"
+                  className="text-sm hover:text-white transition-colors duration-300"
                   style={{ wordBreak: "normal", overflowWrap: "break-word" }}
                 >
                   {contactEmail}
                 </a>
               </div>
               {/* Phone / WhatsApp */}
-              <div className="flex items-center justify-center space-x-3 px-4">
-                <MessageCircle
+              <div className="flex items-center justify-center gap-2">
+                <Phone
                   className="h-4 w-4 flex-shrink-0 lucide"
-                  style={{ color: "#F8D794" }}
+                  style={{ color: "#FFF2E9" }}
                 />
                 <a
-                  href={`https://wa.me/${contactWhatsApp.replace(/\s+/g, "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm hover:text-white transition-colors duration-300 flex-1 text-center"
+                  href={`tel:${contactPhone.replace(/[^\d+]/g, "")}`}
+                  className="text-sm hover:text-white transition-colors duration-300"
                 >
                   {contactPhone}
                 </a>
               </div>
               {/* Address */}
-              <div className="flex items-center justify-center space-x-3 px-4">
+              <div className="flex items-center justify-center gap-2">
                 <MapPin
                   className="h-4 w-4 flex-shrink-0 lucide"
-                  style={{ color: "#F8D794" }}
+                  style={{ color: "#FFF2E9" }}
                 />
-                <span className="text-sm flex-1 text-center">
+                <span className="text-sm">
                   {contactAddress}
                 </span>
               </div>
@@ -248,12 +249,12 @@ export default function Footer() {
           </div>
 
           {/* Social Media - Mobile */}
-          <div className="flex justify-center space-x-6 mb-8">
+          <div className="flex justify-center gap-6 mb-8">
             <a
               href={socialInstagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
               style={{ color: "#FFFFFF" }}
               aria-label="Instagram"
             >
@@ -263,7 +264,7 @@ export default function Footer() {
               href={socialFacebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
               style={{ color: "#FFFFFF" }}
               aria-label="Facebook"
             >
@@ -273,7 +274,7 @@ export default function Footer() {
               href={`https://wa.me/${socialWhatsApp.replace(/\s+/g, "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
               style={{ color: "#FFFFFF" }}
               aria-label="WhatsApp"
             >
@@ -288,7 +289,7 @@ export default function Footer() {
                 className="font-title font-medium mb-3 text-sm"
                 style={{ color: "#FFFFFF" }}
               >
-                Productos
+                Botica
               </h4>
               <div className="space-y-2">
                 <Link
@@ -296,14 +297,14 @@ export default function Footer() {
                   className="block text-xs font-text"
                   style={{ color: "#FFFFFF", opacity: 0.9 }}
                 >
-                  Ver Todo
+                  Ver toda la tienda
                 </Link>
                 <Link
-                  href="/productos/kits"
+                  href="/categorias/kits-y-experiencia"
                   className="block text-xs font-text"
                   style={{ color: "#FFFFFF", opacity: 0.9 }}
                 >
-                  Kits Especiales
+                  Kits y Experiencia
                 </Link>
               </div>
             </div>
@@ -312,22 +313,22 @@ export default function Footer() {
                 className="font-title font-medium mb-3 text-sm"
                 style={{ color: "#FFFFFF" }}
               >
-                Membresía
+                Experiencias
               </h4>
               <div className="space-y-2">
                 <Link
-                  href="/membresia"
+                  href="/programa-transformacion"
                   className="block text-xs font-text"
                   style={{ color: "#FFFFFF", opacity: 0.9 }}
                 >
-                  Programa
+                  Programa de 7 Meses
                 </Link>
                 <Link
-                  href="/membresia/comunidad"
+                  href="/servicios/procesos/sesiones-integrales"
                   className="block text-xs font-text"
                   style={{ color: "#FFFFFF", opacity: 0.9 }}
                 >
-                  Comunidad
+                  Sesiones Integrales
                 </Link>
               </div>
             </div>
@@ -335,23 +336,23 @@ export default function Footer() {
 
           {/* Values - Mobile */}
           <div
-            className="flex justify-center space-x-4 mb-6 font-caption"
+            className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-6 font-caption"
             style={{ color: "#FFFFFF", opacity: 0.9 }}
           >
             <div className="flex items-center space-x-1">
-              <Leaf className="h-3 w-3 lucide" style={{ color: "#F8D794" }} />
-              <span className="text-xs">Natural</span>
+              <Leaf className="h-3 w-3 lucide" style={{ color: "#FFF2E9" }} />
+              <span className="whitespace-nowrap text-xs">100% Origen Vegetal</span>
             </div>
             <div className="flex items-center space-x-1">
-              <Heart className="h-3 w-3 lucide" style={{ color: "#F8D794" }} />
-              <span className="text-xs">Cruelty Free</span>
+              <Heart className="h-3 w-3 lucide" style={{ color: "#FFF2E9" }} />
+              <span className="whitespace-nowrap text-xs">Libre de Crueldad</span>
             </div>
             <div className="flex items-center space-x-1">
               <Sparkles
                 className="h-3 w-3 lucide"
-                style={{ color: "#F8D794" }}
+                style={{ color: "#FFF2E9" }}
               />
-              <span className="text-xs">Artesanal</span>
+              <span className="whitespace-nowrap text-xs">Fórmulas de Autora</span>
             </div>
           </div>
 
@@ -362,6 +363,7 @@ export default function Footer() {
           >
             <div>© {currentYear} DA LUZ CONSCIENTE</div>
             <div className="mt-1">Todos los derechos reservados</div>
+            <p className="mx-auto mt-3 max-w-sm font-sans !text-[11px] leading-relaxed">Aviso: Fórmulas botánicas artesanales y rituales de bienestar consciente. No constituyen medicamentos ni reemplazan el diagnóstico o tratamiento médico profesional.</p>
           </div>
         </div>
       </div>
@@ -383,7 +385,7 @@ export default function Footer() {
                   className="text-xs font-caption"
                   style={{ color: "#FFFFFF", opacity: 0.8 }}
                 >
-                  Alkimyas para alma y cuerpo
+                  Alkimya Botánica y Experiencias Integrales
                 </div>
               </div>
 
@@ -391,10 +393,9 @@ export default function Footer() {
                 className="text-sm font-text leading-relaxed"
                 style={{ color: "#FFFFFF", opacity: 0.9 }}
               >
-                Transformamos vidas a través de la biocosmética artesanal y
-                terapias holísticas. Acompañamos tu camino hacia el bienestar
-                integral con productos naturales y un programa de transformación
-                personal de 7 meses.
+                Formulaciones botánicas vivas, rituales conscientes y experiencias
+                de autoconocimiento. Un puente sensible entre la biología de tu piel
+                y los ciclos de la naturaleza.
               </p>
 
               {/* Contact Info */}
@@ -402,10 +403,10 @@ export default function Footer() {
                 className="space-y-2 text-sm font-text"
                 style={{ color: "#FFFFFF", opacity: 0.9 }}
               >
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <Mail
                     className="h-4 w-4 lucide"
-                    style={{ color: "#F8D794" }}
+                    style={{ color: "#FFF2E9" }}
                   />
                   <a
                     href={`mailto:${contactEmail}`}
@@ -414,36 +415,34 @@ export default function Footer() {
                     {contactEmail}
                   </a>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <MessageCircle
+                <div className="flex items-center gap-2">
+                  <Phone
                     className="h-4 w-4 lucide"
-                    style={{ color: "#F8D794" }}
+                    style={{ color: "#FFF2E9" }}
                   />
                   <a
-                    href={`https://wa.me/${contactWhatsApp.replace(/\s+/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`tel:${contactPhone.replace(/[^\d+]/g, "")}`}
                     className="transition-colors duration-300 hover:bg-white/10 hover:text-white px-2 py-1 rounded"
                   >
                     {contactPhone}
                   </a>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center gap-2">
                   <MapPin
                     className="h-4 w-4 lucide"
-                    style={{ color: "#F8D794" }}
+                    style={{ color: "#FFF2E9" }}
                   />
                   <span>{contactAddress}</span>
                 </div>
               </div>
 
               {/* Social Media */}
-              <div className="flex space-x-4">
+              <div className="flex gap-4">
                 <a
                   href={socialInstagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
                   style={{ color: "#FFFFFF" }}
                   aria-label="Instagram"
                 >
@@ -453,7 +452,7 @@ export default function Footer() {
                   href={socialFacebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
                   style={{ color: "#FFFFFF" }}
                   aria-label="Facebook"
                 >
@@ -463,7 +462,7 @@ export default function Footer() {
                   href={`https://wa.me/${socialWhatsApp.replace(/\s+/g, "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-[#005080] transition-colors duration-300"
                   style={{ color: "#FFFFFF" }}
                   aria-label="WhatsApp"
                 >
@@ -494,7 +493,7 @@ export default function Footer() {
                             boxShadow: "0 2px 8px rgba(245, 158, 11, 0.4)",
                           }}
                         >
-                          🔔 {link.name}
+                          <ShieldCheck className="h-4 w-4" aria-hidden="true" /> {link.name}
                         </Link>
                       ) : (
                         <Link
@@ -532,9 +531,8 @@ export default function Footer() {
                 className="text-xs font-text"
                 style={{ color: "#FFFFFF", opacity: 0.6, maxWidth: "600px" }}
               >
-                Aviso legal: Nuestros productos son cosméticos de venta libre
-                que acompañan procesos de bienestar. No reemplazan la consulta
-                médica ni diagnósticos profesionales.
+                Aviso: Fórmulas botánicas artesanales y rituales de bienestar consciente.
+                No constituyen medicamentos ni reemplazan el diagnóstico o tratamiento médico profesional.
               </p>
             </div>
 
@@ -544,22 +542,22 @@ export default function Footer() {
               style={{ color: "#FFFFFF", opacity: 0.9 }}
             >
               <div className="flex items-center space-x-1 text-xs">
-                <Leaf className="h-4 w-4 lucide" style={{ color: "#F8D794" }} />
-                <span>100% Natural</span>
+                <Leaf className="h-4 w-4 lucide" style={{ color: "#FFF2E9" }} />
+                <span>100% Origen Vegetal</span>
               </div>
               <div className="flex items-center space-x-1 text-xs">
                 <Heart
                   className="h-4 w-4 lucide"
-                  style={{ color: "#F8D794" }}
+                  style={{ color: "#FFF2E9" }}
                 />
-                <span>Cruelty Free</span>
+                <span>Libre de Crueldad</span>
               </div>
               <div className="flex items-center space-x-1 text-xs">
                 <Sparkles
                   className="h-4 w-4 lucide"
-                  style={{ color: "#F8D794" }}
+                  style={{ color: "#FFF2E9" }}
                 />
-                <span>Artesanal</span>
+                <span>Fórmulas de Autora</span>
               </div>
             </div>
 
@@ -579,7 +577,7 @@ export default function Footer() {
                 variant="outline"
                 className="text-xs border-white/30 text-white/90 hover:bg-white/10 transition-all duration-300"
               >
-                Transferencia
+                Transferencia bancaria
               </Badge>
             </div>
           </div>

@@ -157,10 +157,6 @@ export default function BlogCard({
                     key={index}
                     variant="secondary" 
                     className="bg-white/90 text-[var(--color-text-primary)] text-xs font-subtitle italic"
-                    style={{ 
-                      backgroundColor: category.color ? `${category.color}20` : undefined,
-                      color: category.color || undefined 
-                    }}
                   >
                     {category.title}
                   </Badge>
@@ -265,4 +261,4 @@ export default function BlogCard({
       </Link>
     </Card>
   );
-} 
+}

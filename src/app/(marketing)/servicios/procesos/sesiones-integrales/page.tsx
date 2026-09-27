@@ -38,8 +38,6 @@ export default function SesionesIntegralesPage() {
           </p>
           <p className="sesiones-intro-block sesiones-intro-right">
             Tres portales diseñados para escuchar las señales del cuerpo, vaciarte de la sobrecarga electromagnética y retomar el comando de tu propia vida.
-            <br />
-            ¿Qué sesión integral necesita hoy tu proceso? Tu cuerpo es un mapa; elegí la ruta para tu equilibrio.
           </p>
         </section>
 

@@ -1,14 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { X, Plus, Minus, ShoppingBag, Trash2, Package, Info } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Trash2, Package, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/contexts/CartContext";
+import "./cart-sidebar.css";
 
 export default function CartSidebar() {
   const {
@@ -42,23 +42,19 @@ export default function CartSidebar() {
   return (
     <Sheet open={isOpen} onOpenChange={setCartOpen}>
       <SheetContent
-        className="w-full sm:max-w-lg bg-bg-light overflow-hidden flex flex-col p-0"
+        className="cart-sidebar w-full sm:max-w-lg overflow-hidden flex flex-col p-0 text-[#FFF2E9]"
         style={{ borderRadius: '0px 15px 0 0' }}
       >
         {/* Header */}
         <SheetHeader
-          className="px-6 pt-6 pb-4 border-b"
-          style={{
-            backgroundColor: 'var(--admin-accent-primary)',
-            borderBottomColor: 'var(--admin-bg-secondary)'
-          }}
+          className="border-b border-[#FFF2E9]/10 px-6 pb-4 pt-6 pr-16"
         >
           <div className="flex items-center justify-between">
-            <SheetTitle className="text-2xl font-title text-black flex items-center gap-2">
-              <ShoppingBag className="h-6 w-6" />
+            <SheetTitle className="flex items-center gap-2 font-title text-2xl font-medium text-[#FFF2E9]">
+              <ShoppingBag className="h-6 w-6" strokeWidth={1.2} />
               Carrito de Compras
               {itemCount > 0 && (
-                <Badge className="bg-brand-primary text-white font-text font-semibold">
+                <Badge className="bg-[#FFF2E9] text-[#4A0D10] font-text font-semibold">
                   {itemCount}
                 </Badge>
               )}
@@ -69,16 +65,16 @@ export default function CartSidebar() {
         <div className="flex flex-col h-full overflow-hidden">
           {items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center py-12 px-6">
-              <ShoppingBag className="mb-6 h-8 w-8 text-[#16345F]/60" strokeWidth={1.2} aria-hidden="true" />
-              <h3 className="text-xl font-title text-brand-primary mb-2">
-                Tu carrito está vacío
+              <ShoppingBag className="mb-6 h-12 w-12 text-[#FFF2E9]/60" strokeWidth={1.2} aria-hidden="true" />
+              <h3 className="mb-2 font-title text-2xl font-medium text-[#FFF2E9]">
+                Tu Carrito Está Vacío
               </h3>
-              <p className="text-text-primary/70 font-text text-center mb-6 max-w-sm">
-                Agrega productos a tu carrito para comenzar tu compra
+              <p className="cart-empty-subtitle mb-6 max-w-sm text-center text-xs leading-relaxed text-[#FFF2E9]/80">
+                Explorá nuestras fórmulas vivas y ceremonias para comenzar tu ritual.
               </p>
               <Link href="/productos" onClick={() => setCartOpen(false)}>
                 <Button
-                  className="bg-brand-primary hover:bg-brand-secondary text-white font-text font-semibold"
+                  className="cart-empty-action bg-[#FFF2E9] px-6 text-xs font-semibold uppercase tracking-widest text-[#4A0D10] transition-colors hover:bg-white hover:text-[#4A0D10]"
                   style={{ borderRadius: '0px 15px' }}
                 >
                   Continuar Comprando
@@ -97,7 +93,7 @@ export default function CartSidebar() {
                       backgroundColor: '#FFF2E9',
                       borderStyle: 'solid',
                       borderWidth: '1px',
-                      borderColor: 'var(--admin-bg-secondary)',
+                      borderColor: 'rgba(74, 13, 16, 0.12)',
                       borderRadius: '0px 15px'
                     }}
                   >
@@ -115,11 +111,11 @@ export default function CartSidebar() {
                     <div className="flex-1 space-y-3 min-w-0">
                       <div className="flex justify-between items-start gap-2">
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-title font-semibold text-black text-sm line-clamp-2 mb-1">
+                          <h4 className="font-title font-semibold text-[#4A0D10] text-sm line-clamp-2 mb-1">
                             {item.name}
                           </h4>
                           {item.size && (
-                            <p className="text-xs text-black font-text">
+                            <p className="text-xs text-[#4A0D10] font-text">
                               Talle: {item.size}
                             </p>
                           )}
@@ -127,7 +123,7 @@ export default function CartSidebar() {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-7 w-7 p-0 text-text-primary/40 hover:text-red-600 hover:bg-red-50 flex-shrink-0"
+                          className="h-7 w-7 p-0 text-[#4A0D10]/60 hover:text-[#4A0D10] hover:bg-[#4A0D10]/10 flex-shrink-0"
                           onClick={() => removeItem(item.id)}
                           style={{ borderRadius: '0px 15px' }}
                         >
@@ -139,7 +135,7 @@ export default function CartSidebar() {
                       <div className="flex items-center justify-between gap-4">
                         <div className="flex items-center border rounded-md overflow-hidden"
                           style={{
-                            borderColor: 'var(--admin-text-primary)',
+                            borderColor: '#4A0D10',
                             borderRadius: '0px 15px'
                           }}
                         >
@@ -152,7 +148,7 @@ export default function CartSidebar() {
                           >
                             <Minus className="h-3.5 w-3.5" />
                           </Button>
-                          <span className="px-3 text-sm font-text font-medium text-black min-w-[2.5rem] text-center">
+                          <span className="px-3 text-sm font-text font-medium text-[#4A0D10] min-w-[2.5rem] text-center">
                             {item.quantity}
                           </span>
                           <Button
@@ -169,16 +165,16 @@ export default function CartSidebar() {
 
                         {/* Price */}
                         <div className="text-right">
-                          <p className="font-title font-bold text-black text-base">
+                          <p className="font-title font-bold text-[#4A0D10] text-base">
                             {formatPrice(item.price * item.quantity)}
                           </p>
                           {item.originalPrice && item.originalPrice > item.price && (
-                            <p className="text-xs text-black/50 line-through font-text">
+                            <p className="text-xs text-[#4A0D10]/50 line-through font-text">
                               {formatPrice(item.originalPrice * item.quantity)}
                             </p>
                           )}
                           {item.quantity > 1 && (
-                            <p className="text-xs text-black font-text">
+                            <p className="text-xs text-[#4A0D10] font-text">
                               {formatPrice(item.price)} c/u
                             </p>
                           )}
@@ -201,11 +197,7 @@ export default function CartSidebar() {
 
               {/* Footer - Fixed */}
               <div
-                className="border-t pt-4 pb-6 px-6 space-y-4 bg-white"
-                style={{
-                  borderTopColor: 'var(--admin-bg-secondary)',
-                  backgroundColor: 'var(--admin-accent-primary)'
-                }}
+                className="space-y-4 border-t border-[#FFF2E9]/10 px-6 pb-6 pt-4"
               >
                 {/* Order Summary */}
                 {(() => {
@@ -242,21 +234,21 @@ export default function CartSidebar() {
                 <div
                   className="space-y-3 p-4 rounded-lg"
                   style={{
-                    backgroundColor: 'var(--admin-bg-tertiary)',
+                    backgroundColor: '#FFF2E9',
                     borderRadius: '0px 15px',
-                    border: '1px solid var(--admin-bg-secondary)'
+                    border: '1px solid rgba(74, 13, 16, 0.12)'
                   }}
                 >
                   <div className="flex justify-between text-sm font-text">
-                    <span className="text-black/70">Subtotal:</span>
-                    <span className="text-black font-medium">{formatPrice(total)}</span>
+                    <span className="text-[#4A0D10]/70">Subtotal:</span>
+                    <span className="text-[#4A0D10] font-medium">{formatPrice(total)}</span>
                   </div>
-                  <Separator className="my-2" style={{ backgroundColor: 'var(--admin-text-primary)' }} />
+                  <Separator className="my-2 bg-[#4A0D10]/20" />
                   <div className="flex justify-between font-title text-lg">
-                    <span className="text-black font-bold">Total:</span>
-                    <span className="text-black font-bold">{formatPrice(total)}</span>
+                    <span className="text-[#4A0D10] font-bold">Total:</span>
+                    <span className="text-[#4A0D10] font-bold">{formatPrice(total)}</span>
                   </div>
-                  <p className="text-xs text-black/60 font-text pt-1">
+                  <p className="text-xs text-[#4A0D10]/70 font-text pt-1">
                     El costo de envío se coordina por separado.
                   </p>
                 </div>
@@ -265,7 +257,7 @@ export default function CartSidebar() {
                 <div className="space-y-3">
                   <Link href="/checkout" className="block" onClick={() => setCartOpen(false)}>
                     <Button
-                      className="w-full bg-brand-primary hover:bg-brand-secondary text-white font-text font-semibold py-6 text-base"
+                      className="w-full bg-[#FFF2E9] hover:bg-white text-[#4A0D10] hover:text-[#4A0D10] font-text font-semibold py-6 text-base"
                       style={{ borderRadius: '0px 15px' }}
                     >
                       Finalizar Compra
@@ -277,7 +269,7 @@ export default function CartSidebar() {
                       variant="outline"
                       size="sm"
                       onClick={() => setCartOpen(false)}
-                      className="flex-1 font-text"
+                      className="flex-1 border-[#FFF2E9]/50 bg-transparent font-text text-[#FFF2E9] hover:bg-[#FFF2E9]/10 hover:text-white"
                       style={{ borderRadius: '0px 15px' }}
                     >
                       Seguir Comprando
@@ -286,7 +278,7 @@ export default function CartSidebar() {
                       variant="ghost"
                       size="sm"
                       onClick={clearCart}
-                      className="text-red-600 hover:text-red-700 hover:bg-red-50 font-text"
+                      className="font-text text-[#FFF2E9]/80 hover:bg-[#FFF2E9]/10 hover:text-white"
                       style={{ borderRadius: '0px 15px' }}
                     >
                       Vaciar

@@ -1,0 +1,45 @@
+.cart-sidebar {
+  background: linear-gradient(180deg, #4A0D10 0%, #230507 100%);
+  border-color: rgba(255, 242, 233, 0.12);
+}
+
+.cart-sidebar.cart-sidebar h2,
+.cart-sidebar.cart-sidebar h3 {
+  color: #FFF2E9 !important;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+}
+
+.cart-sidebar .lucide-shopping-bag.mb-6 {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.cart-sidebar .cart-empty-subtitle,
+.cart-sidebar .cart-empty-action {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+}
+
+.cart-sidebar > button:first-of-type {
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #FFF2E9;
+  opacity: 1;
+  border-radius: 0.375rem;
+}
+
+.cart-sidebar > button:first-of-type:hover {
+  background: rgba(255, 242, 233, 0.1);
+}
+
+.cart-sidebar > button:first-of-type svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 1.5;
+}

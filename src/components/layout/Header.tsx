@@ -45,6 +45,7 @@ import {
   Package,
   BookOpen,
   HelpCircle,
+  ChevronDown,
 } from "lucide-react";
 
 // Blog post interface
@@ -75,7 +76,7 @@ const ListItem = ({
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
+          className="block select-none space-y-1 rounded-lg border border-[#16345F]/10 bg-[#FFF2E9]/40 px-3 py-2 leading-none no-underline outline-none transition-colors duration-150 hover:bg-[#FFF2E9]/80 focus-visible:bg-[#FFF2E9]/80"
         >
           <div
             className="text-sm font-subtitle font-medium leading-none"
@@ -111,7 +112,7 @@ const BlogListItem = ({
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-100 focus:bg-gray-100"
+          className="block select-none space-y-1 rounded-lg border border-[#16345F]/10 bg-[#FFF2E9]/40 px-3 py-2 leading-none no-underline outline-none transition-colors duration-150 hover:bg-[#FFF2E9]/80 focus-visible:bg-[#FFF2E9]/80"
         >
           <div
             className="text-sm font-subtitle font-medium leading-none"
@@ -138,11 +139,99 @@ const BORDO_ALKIMYA = "#72111A"; // Para Tienda y Alkimya
 const AZUL_PROFUNDO = "#051341"; // Para Raíces, Procesos, FAQ, Legales, Landing y el resto
 const featuredCardBackground = {
   backgroundColor: "#FFFFFF",
-  backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(/svg/header/bgBlog.webp)",
-  backgroundSize: "cover",
+  backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.63), rgba(255, 255, 255, 0.63)), url(/svg/header/bgBlog.webp)",
+  backgroundSize: "calc(100% + 36px) calc(100% + 36px)",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
 };
+
+function HeaderNavControl({
+  label,
+  href,
+  tone,
+  isOpen,
+  onHover,
+}: {
+  label: string;
+  href: string;
+  tone: "burgundy" | "blue";
+  isOpen: boolean;
+  onHover: () => void;
+}) {
+  const toneClass = tone === "burgundy"
+    ? "hover:bg-[#72111A]/40"
+    : "hover:bg-[#0085B1]/40";
+  const openClass = isOpen
+    ? tone === "burgundy" ? "bg-[#72111A]" : "bg-[#0085B1]"
+    : "";
+
+  return (
+    <div
+      className={`site-header-nav-control flex items-center rounded-md transition-colors duration-200 ${toneClass} ${openClass}`}
+      onMouseEnter={onHover}
+    >
+      <NavigationMenuLink asChild>
+        <Link href={href} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          {label}
+        </Link>
+      </NavigationMenuLink>
+      <NavigationMenuTrigger
+        aria-label={`Abrir menú de ${label}`}
+        className="h-9 w-6 rounded-none bg-transparent px-0 py-0 text-[#FFF2E9] shadow-none hover:!bg-transparent hover:!text-white focus:!bg-transparent focus:!text-white data-[state=open]:!bg-transparent data-[state=open]:!text-white"
+      />
+    </div>
+  );
+}
+
+function MobileNavSection({
+  id,
+  label,
+  href,
+  tone,
+  open,
+  onToggle,
+  onNavigate,
+  children,
+}: {
+  id: string;
+  label: string;
+  href: string;
+  tone: "burgundy" | "blue";
+  open: boolean;
+  onToggle: () => void;
+  onNavigate: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mb-2">
+      <div className="flex items-center rounded-lg">
+        <Link
+          href={href}
+          onClick={onNavigate}
+          className="flex min-h-11 flex-1 items-center font-title text-lg font-medium"
+          style={{ color: tone === "burgundy" ? "#72111A" : "#051341" }}
+        >
+          {label}
+        </Link>
+        <button
+          type="button"
+          onClick={onToggle}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#051341] transition-colors duration-150 hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#005080]"
+          aria-label={`${open ? "Cerrar" : "Abrir"} opciones de ${label}`}
+          aria-expanded={open}
+          aria-controls={`mobile-nav-${id}`}
+        >
+          <ChevronDown className={`h-5 w-5 transition-transform duration-150 ${open ? "rotate-180" : ""}`} />
+        </button>
+      </div>
+      {open && (
+        <div id={`mobile-nav-${id}`} className="ml-2 space-y-1 border-l border-[#16345F]/15 pl-2">
+          {children}
+        </div>
+      )}
+    </section>
+  );
+}
 
 const isAlkimyaOrTiendaPage = (pathname: string) =>
   pathname === "/productos" ||
@@ -160,11 +249,15 @@ export default function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
+  const [openMenu, setOpenMenu] = useState("");
 
   const headerBg = isAlkimyaOrTiendaPage(pathname ?? "")
     ? BORDO_ALKIMYA
     : AZUL_PROFUNDO;
+
+  useEffect(() => setOpenMenu(""), [pathname]);
 
   // Fetch latest blog posts
   useEffect(() => {
@@ -226,17 +319,12 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className="site-header-nav hidden xl:flex">
+            <NavigationMenu className="site-header-nav hidden xl:flex" value={openMenu} onValueChange={setOpenMenu}>
               <NavigationMenuList className="space-x-1">
                 
                 {/* 1. TIENDA (Bordó al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#72111A]/40 focus:!bg-[#72111A] data-[active]:!bg-[#72111A] data-[state=open]:!bg-[#72111A] text-base lg:text-lg px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Tienda
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="tienda">
+                  <HeaderNavControl label="Tienda" href="/productos" tone="burgundy" isOpen={openMenu === "tienda"} onHover={() => setOpenMenu("tienda")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -300,13 +388,8 @@ export default function Header() {
                 </NavigationMenuItem>
 
                 {/* 2. ALKIMYA (Bordó al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#72111A]/40 focus:!bg-[#72111A] data-[active]:!bg-[#72111A] data-[state=open]:!bg-[#72111A] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Alkimya
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="alkimya">
+                  <HeaderNavControl label="Alkimya" href="/alkimya" tone="burgundy" isOpen={openMenu === "alkimya"} onHover={() => setOpenMenu("alkimya")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -348,7 +431,8 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <li className="row-span-3 flex flex-col justify-evenly">
+                      <li className="row-span-3">
+                        <ul className="flex h-full flex-col justify-evenly list-none">
                         <ListItem href="/alkimya/activos-origen" title="Activos y Origen" textColor="#72111A">
                           Transparencia radical: la sinergia exacta entre botánica viva y biotecnología verde.
                         </ListItem>
@@ -361,19 +445,15 @@ export default function Header() {
                         <ListItem href="/alkimya/tesoros-daluz" title="Tesoros Da Luz" textColor="#72111A">
                           Más que cosmética viva: explorá las herramientas digitales exclusivas que acompañan tu ritual.
                         </ListItem>
+                        </ul>
                       </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 {/* 3. RAÍCES DA LUZ (Celeste al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Raíces Da Luz
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="raices">
+                  <HeaderNavControl label="Raíces Da Luz" href="/raices" tone="blue" isOpen={openMenu === "raices"} onHover={() => setOpenMenu("raices")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -456,13 +536,8 @@ export default function Header() {
                 </NavigationMenuItem>
 
                 {/* 4. PROCESOS (Celeste al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Procesos
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="procesos">
+                  <HeaderNavControl label="Procesos" href="/servicios/procesos" tone="blue" isOpen={openMenu === "procesos"} onHover={() => setOpenMenu("procesos")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -504,26 +579,23 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <li className="row-span-3 flex flex-col justify-evenly">
+                      <li className="row-span-3">
+                        <ul className="flex h-full flex-col justify-evenly list-none">
                         <ListItem href="/servicios/procesos/ciclos-alquimicos" title="Ciclos Alquímicos" textColor="#051341">
                           Caminos de transformación cíclica y profunda.
                         </ListItem>
                         <ListItem href="/servicios/procesos/sesiones-integrales" title="Sesiones Integrales" textColor="#051341">
                           Encuentros 1:1 para mapear, regular y transformar tu terreno biológico y emocional.
                         </ListItem>
+                        </ul>
                       </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 {/* 5. BLOG (Celeste al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Blog
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="blog">
+                  <HeaderNavControl label="Blog" href="/blog" tone="blue" isOpen={openMenu === "blog"} onHover={() => setOpenMenu("blog")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -536,15 +608,11 @@ export default function Header() {
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
-                              backgroundColor: "#FFFFFF",
-                              backgroundImage: "url(/svg/header/bgBlog.webp)",
-                              backgroundSize: "cover",
-                              backgroundPosition: "center",
-                              backgroundRepeat: "no-repeat",
+                              ...featuredCardBackground,
                               minHeight: 220,
                             }}
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
                               <Image
                                 src="/svg/header/Blog.svg"
                                 alt="Blog"
@@ -592,13 +660,8 @@ export default function Header() {
                 </NavigationMenuItem>
 
                 {/* 6. MEMBRESÍA (Celeste al abrir) */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
-                    style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
-                  >
-                    Experiencias
-                  </NavigationMenuTrigger>
+                <NavigationMenuItem value="experiencias">
+                  <HeaderNavControl label="Experiencias" href="/programa-transformacion" tone="blue" isOpen={openMenu === "experiencias"} onHover={() => setOpenMenu("experiencias")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -640,14 +703,14 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </div>
-                      <div className="flex flex-col justify-evenly space-y-2">
+                      <ul className="flex flex-col justify-evenly space-y-2 list-none">
                         <ListItem href="/programa-transformacion" title="Conocé el Programa" textColor="#051341">
                           Detalles del programa de transformación
                         </ListItem>
                         <ListItem href="/mi-membresia" title="Mi Membresía" textColor="#051341">
                           Accede a tu progreso y contenido
                         </ListItem>
-                      </div>
+                      </ul>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -843,89 +906,61 @@ export default function Header() {
                   className="w-[320px] sm:w-[400px] flex flex-col h-full"
                   style={{ backgroundColor: "#fff4e0" }}
                 >
-                  <SheetHeader className="border-b border-brand-primary/20 pb-4">
+                  <SheetHeader className="border-b border-[#16345F]/20 pb-4">
                     <SheetTitle
                       className="font-title text-left"
-                      style={{ color: "#2A2543" }}
+                      style={{ color: "#051341" }}
                     >
                       Menú de Navegación
                     </SheetTitle>
                   </SheetHeader>
 
                   <div className="flex-1 overflow-y-auto">
-                    <nav className="flex flex-col space-y-1 mt-6">
-                      <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#72111A" }}>
-                          Tienda
-                        </div>
-                        <div className="ml-4 space-y-2">
+                    <nav className="mobile-nav-menu flex flex-col space-y-1 mt-6">
+                      <MobileNavSection id="tienda" label="Tienda" href="/productos" tone="burgundy" open={openMobileSection === "tienda"} onToggle={() => setOpenMobileSection(openMobileSection === "tienda" ? null : "tienda")} onNavigate={() => setMobileMenuOpen(false)}>
                           <Link href="/productos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Todos los Productos</Link>
                           <Link href="/categorias/linea-umbral" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Umbral</Link>
                           <Link href="/categorias/linea-ecos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Ecos</Link>
                           <Link href="/categorias/linea-alma-terra" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Alma Terra</Link>
                           <Link href="/categorias/linea-jade-ritual" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Jade Ritual</Link>
                           <Link href="/categorias/linea-prisma" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Prisma</Link>
-                        </div>
-                      </div>
+                      </MobileNavSection>
 
-                      <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#72111A" }}>
-                          Alkimya
-                        </div>
-                        <div className="ml-4 space-y-2">
+                      <MobileNavSection id="alkimya" label="Alkimya" href="/alkimya" tone="burgundy" open={openMobileSection === "alkimya"} onToggle={() => setOpenMobileSection(openMobileSection === "alkimya" ? null : "alkimya")} onNavigate={() => setMobileMenuOpen(false)}>
                           <Link href="/alkimya" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Manifiesto</Link>
                           <Link href="/alkimya/activos-origen" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Activos y Origen</Link>
                           <Link href="/alkimya/biotipos-doshas" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Biotipos y Doshas</Link>
                           <Link href="/alkimya/tu-ceremonia" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Tu Ceremonia</Link>
                           <Link href="/alkimya/tesoros-daluz" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Tesoros Da Luz</Link>
-                        </div>
-                      </div>
+                      </MobileNavSection>
 
-                      <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
-                          Raíces Da Luz
-                        </div>
-                        <div className="ml-4 space-y-2">
-                          <Link href="/filosofia-proposito" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
-                          <Link href="/raices" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Raíces</Link>
-                        </div>
-                      </div>
+                      <MobileNavSection id="raices" label="Raíces Da Luz" href="/raices" tone="blue" open={openMobileSection === "raices"} onToggle={() => setOpenMobileSection(openMobileSection === "raices" ? null : "raices")} onNavigate={() => setMobileMenuOpen(false)}>
+                          <Link href="/filosofia-proposito" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
+                          <Link href="/raices" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Raíces</Link>
+                      </MobileNavSection>
 
-                      <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
-                          Procesos
-                        </div>
-                        <div className="ml-4 space-y-2">
-                          <Link href="/servicios/procesos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Procesos</Link>
-                          <Link href="/servicios/procesos/ciclos-alquimicos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Ciclos Alquímicos</Link>
-                          <Link href="/servicios/procesos/sesiones-integrales" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Sesiones Integrales</Link>
-                        </div>
-                      </div>
+                      <MobileNavSection id="procesos" label="Procesos" href="/servicios/procesos" tone="blue" open={openMobileSection === "procesos"} onToggle={() => setOpenMobileSection(openMobileSection === "procesos" ? null : "procesos")} onNavigate={() => setMobileMenuOpen(false)}>
+                          <Link href="/servicios/procesos" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Procesos</Link>
+                          <Link href="/servicios/procesos/ciclos-alquimicos" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Ciclos Alquímicos</Link>
+                          <Link href="/servicios/procesos/sesiones-integrales" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Sesiones Integrales</Link>
+                      </MobileNavSection>
 
-                      <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
-                          Blog
-                        </div>
+                      <MobileNavSection id="blog" label="Blog" href="/blog" tone="blue" open={openMobileSection === "blog"} onToggle={() => setOpenMobileSection(openMobileSection === "blog" ? null : "blog")} onNavigate={() => setMobileMenuOpen(false)}>
                         <div className="ml-4 flex items-center gap-3">
-                          <Link href="/blog" className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-brand-primary)]/15 hover:bg-[var(--color-brand-primary)]/25 transition-colors border border-[var(--color-brand-primary)]/30 shrink-0" style={{ color: "#051341" }} onClick={() => setMobileMenuOpen(false)} aria-label="Ir al blog">
+                          <Link href="/blog" className="flex items-center justify-center w-12 h-12 rounded-xl border border-[#005080]/30 bg-[#005080]/10 transition-colors hover:bg-[#005080]/20 shrink-0" style={{ color: "#051341" }} onClick={() => setMobileMenuOpen(false)} aria-label="Ir al blog">
                             <BookOpen className="w-6 h-6" />
                           </Link>
-                          <Link href="/blog" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
+                          <Link href="/blog" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
                         </div>
-                      </div>
+                      </MobileNavSection>
+
+                      <MobileNavSection id="experiencias" label="Experiencias" href="/programa-transformacion" tone="blue" open={openMobileSection === "experiencias"} onToggle={() => setOpenMobileSection(openMobileSection === "experiencias" ? null : "experiencias")} onNavigate={() => setMobileMenuOpen(false)}>
+                          <Link href="/programa-transformacion" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
+                          <Link href="/mi-membresia" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
+                      </MobileNavSection>
 
                       <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#2A2543" }}>
-                          Experiencias
-                        </div>
-                        <div className="ml-4 space-y-2">
-                          <Link href="/programa-transformacion" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
-                          <Link href="/programa-transformacion" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
-                        </div>
-                      </div>
-
-                      <div className="mb-4">
-                        <Link href="/faq" className="flex items-center gap-3 py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>
+                        <Link href="/faq" className="flex items-center gap-3 py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>
                           <HelpCircle className="h-5 w-5" />
                           Preguntas Frecuentes
                         </Link>

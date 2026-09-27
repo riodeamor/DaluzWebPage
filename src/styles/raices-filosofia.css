@@ -1747,6 +1747,16 @@
 .raices-editorial-interlude-title { margin-bottom: 1.5rem !important; }
 .raices-editorial-quote { border-color: rgba(0, 80, 128, .30); }
 
+/* Los cuatro pilares se leen en marfil sobre la paleta institucional azul. */
+.raices-pilares-grid .raices-card {
+  background: linear-gradient(135deg, #051341, #16345F 58%, #005080);
+  border-color: rgba(255, 242, 233, .22);
+  color: #FFF2E9;
+}
+.raices-pilares-grid .raices-card :is(h3, p, strong, em) {
+  color: inherit;
+}
+
 .raices-accordion-column {
   border: 1px solid #16345F;
   background: #051341;
@@ -1768,6 +1778,11 @@
 .raices-editorial-ctas a:hover {
   background: linear-gradient(135deg, #005080 0%, #16345F 100%);
   box-shadow: 0 0 20px rgba(0, 80, 128, .5);
+}
+.raices-editorial-ctas a {
+  white-space: nowrap;
+  padding-inline: .75rem;
+  letter-spacing: .1em;
 }
 
 @media (max-width: 767px) {

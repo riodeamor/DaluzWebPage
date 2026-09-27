@@ -28,7 +28,7 @@ const modulos = [
   {
     month: 1,
     title: "Despertar Interior",
-    theme: "bg-alma-primary",
+    theme: "bg-[#051341]",
     Icon: Sparkles,
     description:
       "Encuentro con tu Ser esencial. Prácticas iniciáticas para sostener la presencia.",
@@ -36,7 +36,7 @@ const modulos = [
   {
     month: 2,
     title: "Conexión Elemental",
-    theme: "bg-ecos-primary",
+    theme: "bg-[#16345F]",
     Icon: Leaf,
     description:
       "Tierra, agua, fuego y aire como aliados en tu proceso de transformación.",
@@ -44,7 +44,7 @@ const modulos = [
   {
     month: 3,
     title: "Transformación",
-    theme: "bg-umbral-primary",
+    theme: "bg-[#005080]",
     Icon: Flame,
     description:
       "Atravesar el umbral. Trabajo con sombra, fuego interior y liberación.",
@@ -52,7 +52,7 @@ const modulos = [
   {
     month: 4,
     title: "Rituales Sagrados",
-    theme: "bg-jade-primary",
+    theme: "bg-[#0085B1]",
     Icon: Moon,
     description:
       "Ceremonia y ritmo lunar. Diseño de tu propio altar y prácticas devocionales.",
@@ -60,7 +60,7 @@ const modulos = [
   {
     month: 5,
     title: "Visión Elevada",
-    theme: "bg-utopica-primary",
+    theme: "bg-[#1A3F71]",
     Icon: Sun,
     description:
       "Claridad de propósito. Herramientas para ver con el corazón abierto.",
@@ -68,7 +68,7 @@ const modulos = [
   {
     month: 6,
     title: "Integración",
-    theme: "bg-brand-primary",
+    theme: "bg-[#16345F]",
     Icon: Heart,
     description:
       "Hilvanar lo vivido. Tejer cuerpo, alma y vida cotidiana en una sola coherencia.",
@@ -76,7 +76,7 @@ const modulos = [
   {
     month: 7,
     title: "Manifestación",
-    theme: "bg-brand-secondary",
+    theme: "bg-[#005080]",
     Icon: Star,
     description:
       "Florecer afuera lo cultivado adentro. Tu vida como obra alquímica.",
@@ -90,7 +90,7 @@ const INSCRIPCION_URL =
 
 export default function ProgramaTransformacionPage() {
   return (
-    <div className="min-h-screen overflow-hidden bg-[#F6FBD6]">
+    <div className="min-h-screen overflow-hidden bg-white">
       {/* HERO */}
       <section
         id="hero"
@@ -101,10 +101,10 @@ export default function ProgramaTransformacionPage() {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('/images/hero-botanical-background.jpg')",
-              filter: "brightness(0.55) saturate(1.1) contrast(1.1)",
+              filter: "grayscale(1) brightness(0.58) contrast(1.1)",
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#051341]/80 via-[#005080]/65 to-[#16345F]/80" />
           <div className="absolute inset-0 opacity-10 bg-gradient-to-tr from-transparent via-white/5 to-transparent" />
         </div>
 
@@ -115,12 +115,12 @@ export default function ProgramaTransformacionPage() {
 
           <div className="space-y-8 mb-12">
             <BlurText
-              text="PROGRAMA DE TRANSFORMACIÓN"
+              text="Programa de Transformación"
               as="h1"
-              className="text-4xl md:text-6xl lg:text-7xl font-normal leading-none tracking-wider drop-shadow-2xl"
+              className="institutional-section-heading text-4xl md:text-5xl leading-tight drop-shadow-2xl"
               style={{
-                fontFamily: "VELISTA, var(--font-velista), serif",
-                fontWeight: "normal",
+                fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                fontWeight: 500,
               }}
               delay={120}
               direction="top"
@@ -206,23 +206,23 @@ export default function ProgramaTransformacionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div className="order-2 lg:order-1">
               <h2
-                className="font-title text-3xl md:text-5xl text-[#AE0000] leading-tight mb-6"
+                className="institutional-section-heading text-3xl md:text-5xl text-[#051341] leading-tight mb-6"
                 style={{
-                  fontFamily: "VELISTA, var(--font-velista), serif",
-                  letterSpacing: "0.04em",
+                  fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                  fontWeight: 500,
                 }}
               >
-                UN PORTAL DE 7 LUNAS
+                Un Portal de 7 Lunas
               </h2>
               <p
-                className="text-xl md:text-2xl text-[#AE0000]/80 mb-6"
+                className="text-xl md:text-2xl text-[#16345F] mb-6"
                 style={{
                   fontFamily: "Malisha, var(--font-malisha), cursive",
                 }}
               >
                 Para encontrarte con tu Ser esencial
               </p>
-              <div className="space-y-5 text-base md:text-lg text-[#1C1B1A] leading-relaxed font-text">
+              <div className="space-y-5 text-base md:text-lg text-[#051341] leading-relaxed font-text">
                 <p>
                   Este programa es una invitación a recorrer un viaje
                   alquímico estructurado en siete módulos. Cada mes una nueva
@@ -242,7 +242,7 @@ export default function ProgramaTransformacionPage() {
                 className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 overflow-hidden"
                 style={{
                   borderRadius: "0px 100px",
-                  border: "2px solid #AE0000",
+                  border: "2px solid #005080",
                 }}
               >
                 <Image
@@ -250,7 +250,7 @@ export default function ProgramaTransformacionPage() {
                   alt="Programa de Transformación Da Luz Consciente"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  className="object-cover"
+                  className="object-cover grayscale"
                   style={{ borderRadius: "0px 100px" }}
                 />
               </div>
@@ -265,7 +265,7 @@ export default function ProgramaTransformacionPage() {
         className="relative px-6 py-16 md:py-24 overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #F0EACE 0%, #F6FBD6 50%, #F0EACE 100%)",
+            "linear-gradient(135deg, #FFF 0%, #EAF4F8 50%, #FFF 100%)",
         }}
       >
         <div className="container mx-auto max-w-7xl">
@@ -274,20 +274,20 @@ export default function ProgramaTransformacionPage() {
               className="w-32 h-0.5 mx-auto mb-5"
               style={{
                 background:
-                  "linear-gradient(to right, transparent, #AE0000, transparent)",
+                  "linear-gradient(to right, transparent, #005080, transparent)",
               }}
             />
             <h2
-              className="font-title text-3xl md:text-5xl text-[#AE0000] mb-4"
+              className="institutional-section-heading text-3xl md:text-5xl text-[#051341] mb-4"
               style={{
-                fontFamily: "VELISTA, var(--font-velista), serif",
-                letterSpacing: "0.04em",
+                fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                fontWeight: 500,
               }}
             >
-              MÓDULOS DEL PROGRAMA
+              Módulos del Programa
             </h2>
             <p
-              className="text-lg md:text-xl text-[#AE0000]/80 max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-[#16345F] max-w-3xl mx-auto"
               style={{ fontFamily: "Malisha, var(--font-malisha), cursive" }}
             >
               Siete pasos para tu despertar consciente
@@ -300,7 +300,7 @@ export default function ProgramaTransformacionPage() {
               return (
                 <div
                   key={mod.month}
-                  className="glass-card group relative overflow-hidden p-7 transition-all duration-500 hover:scale-[1.03] hover:shadow-xl"
+                  className="group relative overflow-hidden border border-[#005080]/15 bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-lg"
                   style={{ borderRadius: "0px 35px" }}
                 >
                   <div
@@ -309,24 +309,24 @@ export default function ProgramaTransformacionPage() {
                   <div className="flex items-center justify-between mb-5">
                     <Badge
                       variant="outline"
-                      className="border-[#AE0000]/40 text-[#AE0000] text-xs tracking-widest uppercase"
+                      className="border-[#005080]/40 text-[#005080] text-xs tracking-widest uppercase"
                     >
                       Mes {mod.month}
                     </Badge>
-                    <div className="w-12 h-12 rounded-full bg-[#AE0000]/10 flex items-center justify-center transition-transform duration-500 group-hover:rotate-12">
-                      <ModIcon className="w-6 h-6 text-[#AE0000]" />
+                    <div className="w-12 h-12 rounded-full bg-[#005080]/10 flex items-center justify-center transition-transform duration-500 group-hover:rotate-12">
+                      <ModIcon className="w-6 h-6 text-[#005080]" />
                     </div>
                   </div>
                   <h3
-                    className="font-title text-2xl text-[#1C1B1A] mb-3"
+                    className="institutional-section-heading text-2xl text-[#051341] mb-3"
                     style={{
-                      fontFamily: "VELISTA, var(--font-velista), serif",
-                      letterSpacing: "0.03em",
+                      fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+                      fontWeight: 500,
                     }}
                   >
                     {mod.title}
                   </h3>
-                  <p className="text-sm text-[#1C1B1A]/75 leading-relaxed font-text">
+                  <p className="text-sm text-[#16345F] leading-relaxed font-text">
                     {mod.description}
                   </p>
                 </div>
@@ -342,21 +342,21 @@ export default function ProgramaTransformacionPage() {
         className="relative px-6 py-20 md:py-28 overflow-hidden"
         style={{
           background:
-            "linear-gradient(135deg, #F0EACE 0%, rgba(174, 0, 0, 0.12) 50%, #F0EACE 100%)",
+            "linear-gradient(135deg, #FFF 0%, #EAF4F8 50%, #FFF 100%)",
         }}
       >
         <div className="container mx-auto max-w-4xl text-center">
           <h2
-            className="font-title text-3xl md:text-5xl text-[#AE0000] mb-6 leading-tight"
+            className="institutional-section-heading text-3xl md:text-5xl text-[#051341] mb-6 leading-tight"
             style={{
-              fontFamily: "VELISTA, var(--font-velista), serif",
-              letterSpacing: "0.04em",
+              fontFamily: "var(--font-cormorant), 'Cormorant Garamond', serif",
+              fontWeight: 500,
             }}
           >
-            EL VIAJE COMIENZA CON UN PASO
+            El Viaje Comienza con un Paso
           </h2>
           <p
-            className="text-xl md:text-2xl text-[#AE0000]/80 mb-10"
+            className="text-xl md:text-2xl text-[#16345F] mb-10"
             style={{ fontFamily: "Malisha, var(--font-malisha), cursive" }}
           >
             Sumate al programa o escribinos para conocer más
@@ -368,7 +368,8 @@ export default function ProgramaTransformacionPage() {
               rel="noopener noreferrer"
             >
               <Button
-                className="group btn-enhanced px-10 py-4 text-lg font-semibold text-white transition-all duration-500 hover:scale-105"
+                variant="ghost"
+                className="group bg-gradient-to-br from-[#16345F] to-[#005080] px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:from-[#005080] hover:to-[#16345F]"
                 style={{ borderRadius: "0px 15px" }}
               >
                 <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
@@ -383,7 +384,7 @@ export default function ProgramaTransformacionPage() {
             >
               <Button
                 variant="outline"
-                className="group px-8 py-4 text-lg font-medium border-2 border-[#AE0000] text-[#AE0000] hover:bg-[#AE0000] hover:text-white transition-all duration-500 hover:scale-105"
+                className="group px-8 py-4 text-lg font-medium border-2 border-[#005080] text-[#005080] hover:bg-[#005080] hover:text-white transition-all duration-300"
                 style={{ borderRadius: "0px 15px" }}
               >
                 <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />

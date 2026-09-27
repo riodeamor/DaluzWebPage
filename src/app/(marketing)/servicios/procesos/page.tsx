@@ -29,7 +29,8 @@ export default function ProcesosPage() {
         <section className="procesos-header-band" aria-labelledby="procesos-title">
           <div className="procesos-header-band-inner">
             <h1 id="procesos-title" className="procesos-band-title">
-              El Retorno al Origen: Procesos de Soberanía y Transformación Encarnada
+              <span>El Retorno al Origen:</span>{' '}
+              <span className="procesos-band-title-continuation">Procesos de Soberanía y Transformación Encarnada</span>
             </h1>
           </div>
         </section>
@@ -49,7 +50,7 @@ export default function ProcesosPage() {
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">EL BOTIQUÍN BOTÁNICO</h3>
                 <p className="procesos-herramienta-desc">
-                  Nuestra farmacia viva para la autogestión y el reseteo orgánico. Accedé al catálogo detallado de las hierbas medicinales, tinturas madre, microdosis y elixires florales con los que formulamos y asistimos cada sendero. Conocé la signatura botánica de cada planta, sus fitoactivos específicos y cómo actúan sobre la depuración de tus filtros emuntorios (hígado, intestino, riñones) y la calibración del sistema nervioso autónomo.
+                  <strong>Nuestra farmacia viva para la autogestión y el reseteo orgánico.</strong> Accedé al catálogo detallado de las <strong>hierbas medicinales, tinturas madre, microdosis y elixires florales</strong> con los que formulamos y asistimos cada sendero. Conocé la signatura botánica de cada planta, sus fitoactivos específicos y cómo actúan sobre la <strong>depuración de tus filtros emuntorios</strong> (hígado, intestino, riñones) y la calibración del sistema nervioso autónomo.
                 </p>
                 <Link href="/productos" className="procesos-btn-blue">
                   CONOCER NUESTRAS PLANTAS Y ELIXIRES
@@ -61,7 +62,7 @@ export default function ProcesosPage() {
               <div className="procesos-herramienta-content">
                 <h3 className="procesos-herramienta-name">COFRE DE TECNOLOGÍAS VIBRACIONALES</h3>
                 <p className="procesos-herramienta-desc">
-                  Las herramientas clínicas y sutiles con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestros abordajes: sonoterapia con cuencos tibetanos (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y descompresión de la fascia corporal. Saberes de alta precisión para ordenar lo sutil antes de que se cristalice en síntoma físico.
+                  <strong>Las herramientas clínicas y sutiles</strong> con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestros abordajes: <strong>sonoterapia con cuencos tibetanos</strong> (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y descompresión de la fascia corporal. <strong>Saberes de alta precisión</strong> para ordenar lo sutil antes de que se cristalice en síntoma físico.
                 </p>
                 <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
                   EXPLORAR HERRAMIENTAS Y TERAPIAS

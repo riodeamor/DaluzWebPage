@@ -20,7 +20,7 @@ export default function TuCeremoniaPage() {
           <p className="alkimya-wave-header__subtitle">Transformá tu rutina en un ritual de presencia y consagración corporal.</p>
         </AlkimyaWaveHeader>
 
-        <section className="tu-ceremonia-intro w-full bg-[#FFF2E9] py-10 md:py-14">
+        <section className="tu-ceremonia-intro w-full py-10 md:py-14">
           <div className="mx-auto max-w-3xl px-6 text-center">
             <p className="mb-5 font-serif text-xl font-medium leading-snug text-[#72111A] md:text-2xl">
               El tacto consciente es el lenguaje más directo entre tu biología y tu presencia.

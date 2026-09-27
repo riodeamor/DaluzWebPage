@@ -762,6 +762,10 @@ a.procesos-btn-orientation {
   font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
   font-weight: 500 !important;
   letter-spacing: .05em !important;
+  text-align: center;
   text-transform: none !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, .15) !important;
+}
+@media (min-width: 1024px) {
+  .procesos-band-title-continuation { display: block; }
 }

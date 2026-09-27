@@ -229,12 +229,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             priority
             sizes="100vw"
           />
-          {/* Gradient overlay - burgundy like main blog */}
+          {/* Blue overlay keeps hero text legible across post imagery. */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to top, rgba(96, 16, 16, 0.85) 0%, rgba(174, 0, 0, 0.4) 40%, transparent 70%)",
+                "linear-gradient(to top, rgba(5, 19, 65, 0.9) 0%, rgba(0, 80, 128, 0.55) 45%, transparent 75%)",
             }}
           />
           {/* BlogBackground texture - subtle */}
@@ -268,14 +268,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     <Badge
                       key={index}
                       className="bg-white/20 backdrop-blur-sm text-white border-white/30 font-subtitle italic text-xs"
-                      style={
-                        category.color
-                          ? {
-                              backgroundColor: `${category.color}40`,
-                              borderColor: category.color,
-                            }
-                          : undefined
-                      }
                     >
                       {category.title}
                     </Badge>

@@ -49,13 +49,13 @@ export default function CiclosAlquimicosPage() {
               Introducción a los Ciclos Alquímicos
             </h2>
             <p className="ciclos-intro-item ciclos-intro-left-1">
-              Ciclos Alquímicos: La Maestría de la Continuidad. Procesos de mediano y largo plazo concebidos para desarticular corazas crónicas, depurar órganos emuntorios y reeducar el subconsciente mediante hábitos escalonados sin agresión.
+              <strong>La verdadera alquimia requiere maduración.</strong>
             </p>
             <p className="ciclos-intro-item ciclos-intro-right">
-              La verdadera alquimia requiere maduración. Estos programas están creados para quienes eligen desarmar automatismos y reconstruir su fisiología paso a paso.
+              Procesos de mediano y largo plazo concebidos para desarticular corazas crónicas, depurar órganos y reeducar el subconsciente mediante hábitos escalonados sin agresión.
             </p>
             <p className="ciclos-intro-item ciclos-intro-left-2">
-              Iniciá el Viaje Alquímico: Donde la Biología y la Consciencia se unen.
+              Estos programas están creados para quienes eligen desarmar automatismos y reconstruir su fisiología paso a paso.
             </p>
 
           </section>
@@ -173,7 +173,7 @@ export default function CiclosAlquimicosPage() {
             </div>
           </article>
         </main>
-        <section className="ciclos-intro" aria-labelledby="ciclos-preventive-title">
+        <section className="ciclos-intro ciclos-intro--preventive" aria-labelledby="ciclos-preventive-title">
           <h2 id="ciclos-preventive-title" className="ciclos-cycle-title">No Necesitás Estar Rota para Prestarte Atención</h2>
           <p className="ciclos-intro-item">Aprender a usar tu propia tecnología biológica a favor.</p>
           <p className="ciclos-intro-item">La mayoría de las personas esperan a que el cuerpo colapse para mirarse. Si no tenés un diagnóstico concreto pero sentís curiosidad por conocer tu biotipo, experimentar tu primera depuración herbal noble y afinar tu energía, nuestros espacios te enseñan a leer las señales sutiles de tu terreno antes de que se transformen en grito.</p>

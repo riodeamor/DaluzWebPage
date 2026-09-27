@@ -5305,7 +5305,7 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
 }
 .biotipos-page #section-pieles .biotipos-section3-main-title-bg {
   display: block !important;
-  background-image: url('/svg/Biotipos/fullWidthDivider.svg') !important;
+  background-image: url('/svg/Biotipos/fullWidthDividerBordo.svg') !important;
   background-size: 100% 100% !important;
 }
 .biotipos-page #section-pieles .biotipos-section3-main-title {
@@ -5384,6 +5384,11 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
 .biotipos-page .biotipos-section9-main-text-paragraph strong { color: inherit !important; font-weight: 700 !important; }
 .biotipos-page .biotipos-section15-main-title-link,
 .biotipos-page .biotipos-section15-main-text-paragraph { color: #4A0D10 !important; }
+.biotipos-page .biotipos-section15-main-title-link:active,
+.biotipos-page .biotipos-section15-main-title-link:focus-visible {
+  background: transparent !important;
+  color: #4A0D10 !important;
+}
 .biotipos-page .biotipos-section15-main-text-paragraph + .biotipos-section15-main-text-paragraph { margin-top: .75rem !important; }
 
 @media (max-width: 767px) {
