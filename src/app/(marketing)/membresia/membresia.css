@@ -1,0 +1,57 @@
+.membership-landing {
+  --color-brand-primary: #23545D;
+  --color-brand-secondary: #4F787D;
+  --color-accent: #39666D;
+  --color-text-primary: #12414E;
+  background: linear-gradient(135deg, #D1E3DD 0%, #FFFFFF 60%, #D1E3DD 100%);
+  color: #12414E;
+}
+
+.membership-landing > div:first-child {
+  background: linear-gradient(135deg, #12414E 0%, #39666D 55%, #4F787D 100%);
+}
+
+.membership-landing .card-enhanced {
+  background: #FFFFFF;
+  border-color: rgba(35, 84, 93, .18);
+}
+
+.membership-landing .card-enhanced::before {
+  background: linear-gradient(90deg, #23545D, #4F787D);
+}
+
+.membership-landing .card-enhanced:hover {
+  border-color: rgba(35, 84, 93, .4);
+  box-shadow: 0 12px 28px rgba(18, 65, 78, .15);
+}
+
+.membership-landing [class*="bg-brand-primary/10"] {
+  background: rgba(79, 120, 125, .12);
+}
+
+.membership-landing .btn-enhanced,
+.membership-landing button.bg-primary {
+  background: linear-gradient(135deg, #23545D, #4F787D);
+  color: #FFFFFF;
+}
+
+.membership-landing .btn-enhanced:hover,
+.membership-landing button.bg-primary:hover {
+  box-shadow: 0 10px 24px rgba(18, 65, 78, .24);
+}
+
+.membership-landing button.border-input {
+  border-color: #23545D;
+  background: #FFFFFF;
+  color: #23545D;
+}
+
+.membership-landing button.border-input:hover {
+  background: #D1E3DD;
+  color: #12414E;
+}
+
+.membership-landing .text-gray-700,
+.membership-landing .text-gray-600 {
+  color: #23545D;
+}

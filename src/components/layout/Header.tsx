@@ -46,18 +46,8 @@ import {
   BookOpen,
   HelpCircle,
   ChevronDown,
+  ArrowRight,
 } from "lucide-react";
-
-// Blog post interface
-interface BlogPost {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-  };
-  excerpt?: string;
-  publishedAt: string;
-}
 
 // Component definitions con color dinámico y fondo blanco puro
 const ListItem = ({
@@ -76,55 +66,19 @@ const ListItem = ({
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none space-y-1 rounded-lg border border-[#16345F]/10 bg-[#FFF2E9]/40 px-3 py-2 leading-none no-underline outline-none transition-colors duration-150 hover:bg-[#FFF2E9]/80 focus-visible:bg-[#FFF2E9]/80"
+          className="block select-none space-y-1 rounded-md px-3 py-2.5 leading-none no-underline outline-none transition-all duration-150 hover:translate-x-1 hover:bg-[#FFF2E9]/70 focus-visible:bg-[#FFF2E9]/70"
         >
           <div
-            className="text-sm font-subtitle font-medium leading-none"
+            className="text-base font-subtitle font-semibold leading-tight"
             style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
-            className="text-sm font-text leading-snug"
-            style={{ color: textColor === "#72111A" ? "#4A0D10" : "#051341" }}
+            className="text-xs font-sans leading-relaxed"
+            style={{ color: textColor === "#72111A" ? "#4A0D10" : "#16345F", opacity: 0.75 }}
           >
             {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-};
-
-const BlogListItem = ({
-  href,
-  title,
-  subtitle,
-  textColor = "#051341",
-}: {
-  href: string;
-  title: string;
-  subtitle: string;
-  textColor?: string;
-}) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href}
-          className="block select-none space-y-1 rounded-lg border border-[#16345F]/10 bg-[#FFF2E9]/40 px-3 py-2 leading-none no-underline outline-none transition-colors duration-150 hover:bg-[#FFF2E9]/80 focus-visible:bg-[#FFF2E9]/80"
-        >
-          <div
-            className="text-sm font-subtitle font-medium leading-none"
-            style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
-          >
-            {title}
-          </div>
-          <p
-            className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#051341" }}
-          >
-            {subtitle}
           </p>
         </Link>
       </NavigationMenuLink>
@@ -153,7 +107,7 @@ function HeaderNavControl({
   onHover,
 }: {
   label: string;
-  href: string;
+  href: string | null;
   tone: "burgundy" | "blue";
   isOpen: boolean;
   onHover: () => void;
@@ -170,11 +124,17 @@ function HeaderNavControl({
       className={`site-header-nav-control flex items-center rounded-md transition-colors duration-200 ${toneClass} ${openClass}`}
       onMouseEnter={onHover}
     >
-      <NavigationMenuLink asChild>
-        <Link href={href} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+      {href ? (
+        <NavigationMenuLink asChild>
+          <Link href={href} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            {label}
+          </Link>
+        </NavigationMenuLink>
+      ) : (
+        <button type="button" onClick={onHover} aria-expanded={isOpen} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
           {label}
-        </Link>
-      </NavigationMenuLink>
+        </button>
+      )}
       <NavigationMenuTrigger
         aria-label={`Abrir menú de ${label}`}
         className="h-9 w-6 rounded-none bg-transparent px-0 py-0 text-[#FFF2E9] shadow-none hover:!bg-transparent hover:!text-white focus:!bg-transparent focus:!text-white data-[state=open]:!bg-transparent data-[state=open]:!text-white"
@@ -195,7 +155,7 @@ function MobileNavSection({
 }: {
   id: string;
   label: string;
-  href: string;
+  href: string | null;
   tone: "burgundy" | "blue";
   open: boolean;
   onToggle: () => void;
@@ -203,20 +163,34 @@ function MobileNavSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-2">
-      <div className="flex items-center rounded-lg">
-        <Link
-          href={href}
-          onClick={onNavigate}
-          className="flex min-h-11 flex-1 items-center font-title text-lg font-medium"
-          style={{ color: tone === "burgundy" ? "#72111A" : "#051341" }}
-        >
-          {label}
-        </Link>
+    <section className={`mb-2 mobile-nav-section mobile-nav-section--${tone}`}>
+      <div
+        className="flex items-center overflow-hidden rounded-lg shadow-sm"
+        style={{ background: tone === "burgundy" ? "linear-gradient(135deg, #7D1D2B 0%, #4A0D10 100%)" : "linear-gradient(135deg, #16345F 0%, #005080 100%)" }}
+      >
+        {href ? (
+          <Link
+            href={href}
+            onClick={onNavigate}
+            className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
+          >
+            {label}
+          </Link>
+        ) : (
+          <button
+            type="button"
+            onClick={onToggle}
+            aria-expanded={open}
+            aria-controls={`mobile-nav-${id}`}
+            className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-2 text-left font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
+          >
+            {label}
+          </button>
+        )}
         <button
           type="button"
           onClick={onToggle}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[#051341] transition-colors duration-150 hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#005080]"
+          className="flex h-11 w-11 shrink-0 items-center justify-center text-[#FFF2E9] transition-colors duration-150 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FFF2E9]"
           aria-label={`${open ? "Cerrar" : "Abrir"} opciones de ${label}`}
           aria-expanded={open}
           aria-controls={`mobile-nav-${id}`}
@@ -225,7 +199,7 @@ function MobileNavSection({
         </button>
       </div>
       {open && (
-        <div id={`mobile-nav-${id}`} className="ml-2 space-y-1 border-l border-[#16345F]/15 pl-2">
+        <div id={`mobile-nav-${id}`} className={`my-2 ml-4 space-y-1 border-l pl-4 ${tone === "burgundy" ? "border-[#4A0D10]/20" : "border-[#16345F]/20"}`}>
           {children}
         </div>
       )}
@@ -250,7 +224,6 @@ export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
-  const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
   const [openMenu, setOpenMenu] = useState("");
 
   const headerBg = isAlkimyaOrTiendaPage(pathname ?? "")
@@ -258,29 +231,6 @@ export default function Header() {
     : AZUL_PROFUNDO;
 
   useEffect(() => setOpenMenu(""), [pathname]);
-
-  // Fetch latest blog posts
-  useEffect(() => {
-    const fetchLatestPosts = async () => {
-      try {
-        const response = await fetch("/api/blog/latest?limit=2", {
-          cache: "no-store",
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setLatestPosts(data.posts || []);
-        } else {
-          console.error("Error fetching latest posts:", response.statusText);
-        }
-      } catch (error) {
-        console.error("Error fetching latest posts:", error);
-      }
-    };
-
-    fetchLatestPosts();
-    const interval = setInterval(fetchLatestPosts, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleSignOut = async () => {
     await signOut();
@@ -319,7 +269,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className="site-header-nav hidden xl:flex" value={openMenu} onValueChange={setOpenMenu}>
+            <NavigationMenu className={`site-header-nav hidden xl:flex ${openMenu === "blog" ? "site-header-nav--blog-open" : ""}`} value={openMenu} onValueChange={setOpenMenu}>
               <NavigationMenuList className="space-x-1">
                 
                 {/* 1. TIENDA (Bordó al abrir) */}
@@ -486,7 +436,7 @@ export default function Header() {
                                 ORIGEN ALQUÍMICO
                               </div>
                               <p
-                                className="text-base font-text font-medium leading-tight"
+                                className="text-sm font-text font-medium leading-snug"
                                 style={{ color: "#051341" }}
                               >
                                 De la desconexión al goce: la historia vital que dio origen a nuestro universo.
@@ -522,7 +472,7 @@ export default function Header() {
                                 FILOSOFÍA Y PROPÓSITO
                               </div>
                               <p
-                                className="text-base font-text font-medium leading-tight"
+                                className="text-sm font-text font-medium leading-snug"
                                 style={{ color: "#051341" }}
                               >
                                 El corazón de Da Luz: los cuatro pilares vivos que sostienen todo nuestro universo.
@@ -600,8 +550,8 @@ export default function Header() {
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
                   >
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <li className="row-span-3 min-h-[220px] flex">
+                    <ul className="w-[400px] max-w-[calc(100vw-2rem)] space-y-3 p-4">
+                      <li className="flex min-h-[220px]">
                         <NavigationMenuLink asChild>
                           <Link
                             href="/blog"
@@ -637,79 +587,41 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      {latestPosts.map((post) => (
-                        <BlogListItem
-                          key={post._id}
-                          href={`/blog/${post.slug.current}`}
-                          title={post.title}
-                          subtitle={
-                            post.excerpt ||
-                            `Artículo publicado el ${new Date(
-                              post.publishedAt,
-                            ).toLocaleDateString("es-ES", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            })}`
-                          }
-                          textColor="#051341"
-                        />
-                      ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* 6. MEMBRESÍA (Celeste al abrir) */}
+                {/* 6. EXPERIENCIAS (Celeste al abrir) */}
                 <NavigationMenuItem value="experiencias">
-                  <HeaderNavControl label="Experiencias" href="/programa-transformacion" tone="blue" isOpen={openMenu === "experiencias"} onHover={() => setOpenMenu("experiencias")} />
+                  <HeaderNavControl label="Experiencias" href={null} tone="blue" isOpen={openMenu === "experiencias"} onHover={() => setOpenMenu("experiencias")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
                   >
-                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      <div className="row-span-3 min-h-[220px] flex">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
-                            style={{
-                              borderRadius: "0px 15px",
-                              ...featuredCardBackground,
-                              minHeight: 220,
-                            }}
-                            href="/programa-transformacion"
-                          >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/Programa7.svg"
-                                alt="Programa de 7 Meses"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
-                              <div
-                                className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: AZUL_PROFUNDO }}
-                              >
-                                PROGRAMA DE 7 MESES
-                              </div>
-                              <p
-                                className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#051341" }}
-                              >
-                                Transformación integral para alma y cuerpo
-                              </p>
-                            </div>
-                          </Link>
-                        </NavigationMenuLink>
+                    <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[680px]">
+                      <div className="relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden p-6 text-center shadow-md" style={{ borderRadius: "0px 15px", ...featuredCardBackground }}>
+                        <Image src="/svg/header/Programa7.svg" alt="" width={64} height={64} className="mb-3" unoptimized />
+                        <div className="font-serif text-xl font-semibold leading-tight text-[#051341]">Portal de Experiencias</div>
+                        <p className="mt-3 font-sans text-xs leading-relaxed text-[#16345F]/80">
+                          Caminos vivos para habitar la soberanía de tu cuerpo y tu energía. Una mirada integral para acompañar el ritmo de tu biología.
+                        </p>
+                        <span className="mt-4 inline-flex items-center gap-1 font-sans text-xs font-semibold text-[#16345F]/70">
+                          Explorar todas las experiencias <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                        </span>
+                        <span className="mt-1 font-sans text-[10px] uppercase tracking-widest text-[#16345F]/60">Próximamente</span>
                       </div>
-                      <ul className="flex flex-col justify-evenly space-y-2 list-none">
-                        <ListItem href="/programa-transformacion" title="Conocé el Programa" textColor="#051341">
-                          Detalles del programa de transformación
+                      <ul className="flex flex-col justify-center gap-2 list-none">
+                        <ListItem href="/programa-transformacion" title="Génesis | Tecnología del Ser" textColor="#051341">
+                          El viaje de 8 meses hacia la soberanía biológica: transformá tu terreno y desprogramá el estrés de raíz.
                         </ListItem>
-                        <ListItem href="/mi-membresia" title="Mi Membresía" textColor="#051341">
-                          Accede a tu progreso y contenido
+                        <ListItem href="/membresia" title="El Pulso | Membresía" textColor="#051341">
+                          Tu mantenimiento de soberanía: sintonización mensual de tu eje biológico, contenidos vivos y beneficios en red.
                         </ListItem>
+                        <li className="px-3 py-2.5" aria-label="Sintropía, próximamente">
+                          <div className="font-subtitle text-base font-semibold leading-tight text-[#051341]">Sintropía | Recalibración</div>
+                          <p className="mt-1 font-sans text-xs leading-relaxed text-[#16345F]/75">Intervención intensiva de 33 días: desactivá la señal de alarma interna y pasá del ruido al orden funcional.</p>
+                          <span className="mt-1 block font-sans text-[10px] uppercase tracking-widest text-[#16345F]/60">Próximamente</span>
+                        </li>
                       </ul>
                     </div>
                   </NavigationMenuContent>
@@ -903,12 +815,12 @@ export default function Header() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="w-[320px] sm:w-[400px] flex flex-col h-full"
+                  className="mobile-nav-drawer w-[320px] sm:w-[400px] flex flex-col h-full [&>button]:flex [&>button]:h-11 [&>button]:w-11 [&>button]:items-center [&>button]:justify-center [&>button]:text-[#051341] [&>button]:opacity-100"
                   style={{ backgroundColor: "#fff4e0" }}
                 >
                   <SheetHeader className="border-b border-[#16345F]/20 pb-4">
                     <SheetTitle
-                      className="font-title text-left"
+                      className="mobile-nav-title pr-9 text-left text-2xl font-medium"
                       style={{ color: "#051341" }}
                     >
                       Menú de Navegación
@@ -946,17 +858,14 @@ export default function Header() {
                       </MobileNavSection>
 
                       <MobileNavSection id="blog" label="Blog" href="/blog" tone="blue" open={openMobileSection === "blog"} onToggle={() => setOpenMobileSection(openMobileSection === "blog" ? null : "blog")} onNavigate={() => setMobileMenuOpen(false)}>
-                        <div className="ml-4 flex items-center gap-3">
-                          <Link href="/blog" className="flex items-center justify-center w-12 h-12 rounded-xl border border-[#005080]/30 bg-[#005080]/10 transition-colors hover:bg-[#005080]/20 shrink-0" style={{ color: "#051341" }} onClick={() => setMobileMenuOpen(false)} aria-label="Ir al blog">
-                            <BookOpen className="w-6 h-6" />
-                          </Link>
-                          <Link href="/blog" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
-                        </div>
+                        <Link href="/blog" className="block" onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
                       </MobileNavSection>
 
-                      <MobileNavSection id="experiencias" label="Experiencias" href="/programa-transformacion" tone="blue" open={openMobileSection === "experiencias"} onToggle={() => setOpenMobileSection(openMobileSection === "experiencias" ? null : "experiencias")} onNavigate={() => setMobileMenuOpen(false)}>
-                          <Link href="/programa-transformacion" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
-                          <Link href="/mi-membresia" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
+                      <MobileNavSection id="experiencias" label="Experiencias" href={null} tone="blue" open={openMobileSection === "experiencias"} onToggle={() => setOpenMobileSection(openMobileSection === "experiencias" ? null : "experiencias")} onNavigate={() => setMobileMenuOpen(false)}>
+                          <span className="block px-3 py-2 text-xs font-semibold text-[#16345F]/70">Portal de Experiencias · Próximamente</span>
+                          <Link href="/programa-transformacion" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>Génesis | Tecnología del Ser</Link>
+                          <Link href="/membresia" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>El Pulso | Membresía</Link>
+                          <span className="block px-3 py-2 text-sm font-text text-[#16345F]/70">Sintropía | Recalibración · Próximamente</span>
                       </MobileNavSection>
 
                       <div className="mb-4">

@@ -90,14 +90,14 @@ export default function OrdersPage() {
     switch (status) {
       case 'completed':
         return (
-          <Badge className="bg-verde-suave text-white">
+          <Badge className="bg-[#005080] text-white">
             <CheckCircle className="h-3 w-3 mr-1" />
             Completado
           </Badge>
         );
       case 'pending':
         return (
-          <Badge className="bg-dorado text-azul-profundo">
+          <Badge className="bg-[#16345F] text-[#FFF2E9]">
             <Clock className="h-3 w-3 mr-1" />
             Pendiente
           </Badge>
@@ -153,7 +153,7 @@ export default function OrdersPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <p className="text-tierra-media">Debes iniciar sesión para ver tus pedidos</p>
+          <p className="text-[#16345F]">Debes iniciar sesión para ver tus pedidos</p>
         </div>
       </div>
     );
@@ -163,8 +163,8 @@ export default function OrdersPage() {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-dorado mx-auto"></div>
-          <p className="mt-2 text-tierra-media">Cargando tus pedidos...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#005080] mx-auto"></div>
+          <p className="mt-2 text-[#16345F]">Cargando tus pedidos...</p>
         </div>
       </div>
     );
@@ -175,7 +175,7 @@ export default function OrdersPage() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-azul-profundo">Mis Pedidos</h1>
-        <p className="text-tierra-media">
+        <p className="text-[#16345F]">
           Revisa el estado y detalles de todos tus pedidos
         </p>
       </div>
@@ -187,7 +187,7 @@ export default function OrdersPage() {
             <Button 
               onClick={fetchOrders} 
               variant="outline" 
-              className="mt-2"
+              className="account-secondary mt-2"
             >
               Reintentar
             </Button>
@@ -201,15 +201,15 @@ export default function OrdersPage() {
           className="text-center py-12 shadow-alkimya border-0 overflow-hidden" 
           style={{ 
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardContent>
-            <Package className="h-16 w-16 text-tierra-media mx-auto mb-4" />
+            <Package className="h-16 w-16 text-[#16345F] mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-azul-profundo mb-2">
               Aún no tienes pedidos
             </h3>
-            <p className="text-tierra-media mb-6">
+            <p className="text-[#16345F] mb-6">
               Cuando realices tu primera compra, aparecerá aquí
             </p>
             <Button
@@ -229,7 +229,7 @@ export default function OrdersPage() {
               className="transition-all duration-200 hover:shadow-md shadow-alkimya border-0 overflow-hidden"
               style={{ 
                 borderRadius: '0px 15px',
-                backgroundColor: 'var(--admin-accent-primary)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               <CardHeader>
@@ -238,7 +238,7 @@ export default function OrdersPage() {
                     <CardTitle className="text-lg text-azul-profundo">
                       Pedido #{order.order_number}
                     </CardTitle>
-                    <div className="flex items-center gap-4 text-sm text-tierra-media mt-1">
+                    <div className="flex items-center gap-4 text-sm text-[#16345F] mt-1">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         {formatDate(order.created_at)}
@@ -251,7 +251,7 @@ export default function OrdersPage() {
                   </div>
                   <div className="text-right">
                     {getStatusBadge(order.status)}
-                    <p className="text-xs text-tierra-media mt-1">
+                    <p className="text-xs text-[#16345F] mt-1">
                       {getStatusDescription(order.status)}
                     </p>
                   </div>
@@ -265,19 +265,19 @@ export default function OrdersPage() {
                   {order.order_items.map((item, index) => (
                     <div 
                       key={index} 
-                      className="flex justify-between items-center bg-gray-50 p-3 rounded-lg"
+                      className="flex justify-between items-center bg-[#F5F8FA] p-3 rounded-lg"
                       style={{
-                        backgroundColor: 'var(--admin-bg-tertiary)',
+                        backgroundColor: '#F5F8FA',
                         borderWidth: '1px',
-                        borderColor: 'var(--admin-text-primary)'
+                        borderColor: 'rgba(22, 52, 95, 0.1)'
                       }}
                     >
                       <div>
                         <p className="font-medium text-azul-profundo">{item.product_name}</p>
                         {item.variant_title && (
-                          <p className="text-xs text-tierra-media">Variante: {item.variant_title}</p>
+                          <p className="text-xs text-[#16345F]">Variante: {item.variant_title}</p>
                         )}
-                        <p className="text-sm text-tierra-media">Cantidad: {item.quantity}</p>
+                        <p className="text-sm text-[#16345F]">Cantidad: {item.quantity}</p>
                       </div>
                       <p className="font-semibold text-azul-profundo">
                         {formatPrice(item.unit_price)}
@@ -289,14 +289,14 @@ export default function OrdersPage() {
                 {/* Payment Info */}
                 <div className="space-y-2">
                   <h4 className="font-semibold text-azul-profundo">Pago:</h4>
-                  <div className="flex items-start gap-2 bg-verde-suave/10 p-3 rounded-lg">
-                    <CreditCard className="h-4 w-4 text-verde-suave mt-0.5" />
+                  <div className="flex items-start gap-2 bg-[#005080]/10 p-3 rounded-lg">
+                    <CreditCard className="h-4 w-4 text-[#005080] mt-0.5" />
                     <div className="flex-1">
                       <p className="text-sm text-azul-profundo">
                         Método: {order.payment_method || 'MercadoPago'}
                       </p>
                       {order.mercadopago_payment_id && (
-                        <p className="text-xs text-tierra-media mt-1">
+                        <p className="text-xs text-[#16345F] mt-1">
                           ID de Pago: {order.mercadopago_payment_id}
                         </p>
                       )}
@@ -312,7 +312,7 @@ export default function OrdersPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-0 border-azul-profundo text-azul-profundo hover:bg-[var(--admin-accent-tertiary)] hover:text-[var(--alma-text-inverse)]"
+                    className="account-secondary"
                     onClick={() => setSelectedOrder(selectedOrder === order.id ? null : order.id)}
                   >
                     <Eye className="h-4 w-4 mr-2" />
@@ -323,7 +323,7 @@ export default function OrdersPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-dorado text-dorado hover:bg-dorado hover:text-azul-profundo"
+                      className="account-secondary"
                     >
                       <Download className="h-4 w-4 mr-2" />
                       Factura
@@ -334,7 +334,7 @@ export default function OrdersPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-verde-suave text-verde-suave hover:bg-verde-suave hover:text-white"
+                      className="account-secondary"
                       onClick={() => router.push('/productos')}
                     >
                       <CheckCircle className="h-4 w-4 mr-2" />
@@ -345,24 +345,24 @@ export default function OrdersPage() {
 
                 {/* Expanded Details */}
                 {selectedOrder === order.id && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg space-y-3">
+                  <div className="mt-4 p-4 bg-[#F5F8FA] rounded-lg space-y-3">
                     <h5 className="font-semibold text-azul-profundo">Detalles del Pedido</h5>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                       <div>
-                        <p className="font-medium text-tierra-media">Método de Pago:</p>
+                        <p className="font-medium text-[#16345F]">Método de Pago:</p>
                         <p className="text-azul-profundo">Mercado Pago</p>
                       </div>
                       <div>
-                        <p className="font-medium text-tierra-media">Tipo de Envío:</p>
+                        <p className="font-medium text-[#16345F]">Tipo de Envío:</p>
                         <p className="text-azul-profundo">Envío Standard</p>
                       </div>
                       <div>
-                        <p className="font-medium text-tierra-media">Subtotal:</p>
+                        <p className="font-medium text-[#16345F]">Subtotal:</p>
                         <p className="text-azul-profundo">{formatPrice(order.total_amount)}</p>
                       </div>
                       <div>
-                        <p className="font-medium text-tierra-media">Moneda:</p>
+                        <p className="font-medium text-[#16345F]">Moneda:</p>
                         <p className="text-azul-profundo">{order.currency}</p>
                       </div>
                     </div>
@@ -388,7 +388,7 @@ export default function OrdersPage() {
           className="shadow-alkimya border-0 overflow-hidden"
           style={{ 
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardHeader>
@@ -397,11 +397,11 @@ export default function OrdersPage() {
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-tierra-media">
+                <p className="text-[#16345F]">
                   Explora nuestros productos biocosmecéticos artesanales
                 </p>
               </div>
-              <Button className="bg-dorado hover:bg-dorado/90 text-azul-profundo">
+              <Button className="account-primary">
                 Explorar Productos
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>

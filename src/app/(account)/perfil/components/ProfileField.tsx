@@ -27,13 +27,13 @@ export function ProfileField({
   register,
   className = "",
 }: ProfileFieldProps) {
-  const inputClasses = `font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50 ${
+  const inputClasses = `font-text border-[#16345F]/30 focus:border-[#005080] focus:ring-[#005080]/50 ${
     error ? "border-red-500" : ""
   } ${className}`;
 
   return (
     <div className="space-y-2">
-      <Label htmlFor={id} className="text-text-primary font-text font-medium">
+      <Label htmlFor={id} className="text-[#16345F] font-text font-medium">
         {label}
       </Label>
       {isEditing && register ? (
@@ -45,7 +45,7 @@ export function ProfileField({
           className={inputClasses}
         />
       ) : (
-        <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+        <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
           {value || "No especificado"}
         </div>
       )}

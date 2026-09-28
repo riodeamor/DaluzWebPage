@@ -46,8 +46,8 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center space-y-4">
-            <Loader2 className="h-8 w-8 animate-spin text-dorado mx-auto" />
-            <p className="text-tierra-media">Cargando tu cuenta...</p>
+            <Loader2 className="h-8 w-8 animate-spin text-[#005080] mx-auto" />
+            <p className="text-[#16345F]">Cargando tu cuenta...</p>
           </div>
         </main>
         <Footer />
@@ -106,13 +106,13 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
               {/* Sidebar Navigation */}
               <div className="lg:col-span-1">
                 <Card
-                  className="sticky top-24"
-                  style={{ backgroundColor: "#FFF2E9" }}
+                  className="account-sidebar sticky top-24"
+                  style={{ backgroundColor: "#FAF7F2" }}
                 >
                   <CardContent className="p-6">
                     {/* User Info */}
                     <div className="text-center mb-6">
-                      <div className="w-20 h-20 rounded-full bg-dorado/20 flex items-center justify-center mx-auto mb-4">
+                      <div className="w-20 h-20 rounded-full bg-[#16345F]/10 flex items-center justify-center mx-auto mb-4">
                         {profile?.avatar_url ? (
                           <img
                             src={profile.avatar_url}
@@ -126,9 +126,9 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                       <h2 className="font-semibold text-azul-profundo">
                         {profile?.first_name} {profile?.last_name}
                       </h2>
-                      <p className="text-sm text-tierra-media">{user.email}</p>
+                      <p className="text-sm text-[#16345F]">{user.email}</p>
                       {hasActiveMembership && (
-                        <Badge className="mt-2 bg-dorado text-azul-profundo">
+                        <Badge className="mt-2 bg-[#16345F] text-[#FFF2E9]">
                           <Sparkles className="h-3 w-3 mr-1" />
                           Miembro Activo
                         </Badge>
@@ -141,9 +141,9 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                         <Link
                           key={item.href}
                           href={item.href as any}
-                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-verde-suave/20 transition-colors group"
+                          className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#005080]/10 transition-colors group"
                         >
-                          <item.icon className="h-5 w-5 text-tierra-media group-hover:text-azul-profundo" />
+                          <item.icon className="h-5 w-5 text-[#16345F] group-hover:text-azul-profundo" />
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
                               <span className="font-medium text-azul-profundo group-hover:text-azul-profundo/80">
@@ -152,13 +152,13 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                               {item.badge && (
                                 <Badge
                                   variant="secondary"
-                                  className="text-xs bg-dorado/20 text-azul-profundo"
+                                  className="text-xs bg-[#16345F]/10 text-azul-profundo"
                                 >
                                   {item.badge}
                                 </Badge>
                               )}
                             </div>
-                            <p className="text-xs text-tierra-media">
+                            <p className="text-xs text-[#16345F]">
                               {item.description}
                             </p>
                           </div>
@@ -171,7 +171,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                       <Button
                         onClick={handleSignOut}
                         variant="ghost"
-                        className="w-full justify-start text-tierra-media hover:text-azul-profundo"
+                        className="w-full justify-start text-[#16345F] hover:text-azul-profundo"
                       >
                         <LogOut className="h-4 w-4 mr-3" />
                         Cerrar Sesión
@@ -179,10 +179,10 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                     </div>
 
                     {/* Security Notice */}
-                    <div className="mt-4 p-3 bg-verde-suave/10 rounded-lg">
+                    <div className="mt-4 p-3 bg-[#005080]/10 rounded-lg">
                       <div className="flex items-start gap-2">
-                        <Shield className="h-4 w-4 text-verde-suave mt-0.5" />
-                        <div className="text-xs text-tierra-media">
+                        <Shield className="h-4 w-4 text-[#005080] mt-0.5" />
+                        <div className="text-xs text-[#16345F]">
                           <p className="font-medium text-azul-profundo mb-1">
                             Cuenta Protegida
                           </p>

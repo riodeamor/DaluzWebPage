@@ -43,7 +43,7 @@ export function ProfileCard({
 
   return (
     <Card variant="brand-subtle" className="shadow-alkimya overflow-hidden">
-      <CardContent className="px-5 py-4 bg-bg-light">
+      <CardContent className="px-5 py-4 bg-white">
         <StaggeredContainer
           className="text-center space-y-4"
           staggerDelay={0.1}
@@ -68,7 +68,7 @@ export function ProfileCard({
               <h3 className="text-xl font-title text-[#051341]">
                 {displayName}
               </h3>
-              <p className="text-sm text-text-primary/70 font-text mt-1">
+              <p className="text-sm text-[#16345F]/80 font-text mt-1">
                 {email}
               </p>
             </div>
@@ -99,11 +99,11 @@ export function ProfileCard({
 
           {/* Quick Stats */}
           <StaggeredItem>
-            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-brand-primary/20">
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#16345F]/20">
               <div className="text-center">
                 {isLoadingStats ? (
                   <motion.div
-                    className="h-8 w-8 mx-auto bg-brand-primary/10 rounded animate-pulse"
+                    className="h-8 w-8 mx-auto bg-[#16345F]/10 rounded animate-pulse"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
                   />
@@ -117,7 +117,7 @@ export function ProfileCard({
                     {orderCount}
                   </motion.p>
                 )}
-                <p className="text-xs text-text-primary/70 font-text">
+                <p className="text-xs text-[#16345F]/80 font-text">
                   Pedidos
                 </p>
               </div>
@@ -125,7 +125,7 @@ export function ProfileCard({
                 <p className="text-2xl font-bold text-[#005080]">
                   {membershipTier && membershipTier !== "none" ? "1" : "0"}
                 </p>
-                <p className="text-xs text-text-primary/70 font-text">
+                <p className="text-xs text-[#16345F]/80 font-text">
                   Membresías
                 </p>
               </div>

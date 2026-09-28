@@ -141,24 +141,24 @@ export default function MembershipPage() {
   const getContentIcon = (type: string) => {
     switch (type) {
       case 'video':
-        return <Play className="h-4 w-4 text-azul-profundo" />;
+        return <Play className="h-4 w-4 text-[#12414E]" />;
       case 'exercise':
-        return <Target className="h-4 w-4 text-dorado" />;
+        return <Target className="h-4 w-4 text-[#4F787D]" />;
       case 'reflection':
-        return <Heart className="h-4 w-4 text-coral-suave" />;
+        return <Heart className="h-4 w-4 text-[#4F787D]" />;
       case 'kit':
-        return <Download className="h-4 w-4 text-verde-suave" />;
+        return <Download className="h-4 w-4 text-[#4F787D]" />;
       default:
-        return <BookOpen className="h-4 w-4 text-tierra-media" />;
+        return <BookOpen className="h-4 w-4 text-[#23545D]" />;
     }
   };
 
   if (!mockMembershipData.isActive) {
     return (
-      <div className="space-y-6">
+      <div className="membership-panel space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-azul-profundo">Mi Membresía</h1>
-          <p className="text-tierra-media">
+          <h1 className="text-3xl font-bold text-[#12414E]">Mi Membresía</h1>
+          <p className="text-[#23545D]">
             Accede a tu programa de transformación personal
           </p>
         </div>
@@ -168,29 +168,29 @@ export default function MembershipPage() {
           className="text-center py-16 shadow-alkimya border-0 overflow-hidden"
           style={{ 
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardContent>
-            <Sparkles className="h-8 w-8 text-[#005080] mx-auto mb-6" strokeWidth={1.2} />
-            <h3 className="text-2xl font-bold text-azul-profundo mb-4">
+            <Sparkles className="h-8 w-8 text-[#4F787D] mx-auto mb-6" strokeWidth={1.2} />
+            <h3 className="text-2xl font-bold text-[#12414E] mb-4">
               ¡Inicia tu Transformación!
             </h3>
-            <p className="text-tierra-media mb-8 max-w-md mx-auto">
+            <p className="text-[#23545D] mb-8 max-w-md mx-auto">
               Únete al programa de transformación personal de 7 meses y descubre tu máximo potencial
               con alkimyas para alma y cuerpo.
             </p>
             
             <div className="space-y-4 mb-8">
-              <div className="flex items-center justify-center gap-2 text-sm text-tierra-media">
+              <div className="flex items-center justify-center gap-2 text-sm text-[#23545D]">
                 <Award className="h-4 w-4" />
                 <span>28 semanas de contenido exclusivo</span>
               </div>
-              <div className="flex items-center justify-center gap-2 text-sm text-tierra-media">
+              <div className="flex items-center justify-center gap-2 text-sm text-[#23545D]">
                 <Users className="h-4 w-4" />
                 <span>Acceso a la comunidad privada</span>
               </div>
-              <div className="flex items-center justify-center gap-2 text-sm text-tierra-media">
+              <div className="flex items-center justify-center gap-2 text-sm text-[#23545D]">
                 <Download className="h-4 w-4" />
                 <span>Kits de herramientas descargables</span>
               </div>
@@ -207,23 +207,23 @@ export default function MembershipPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="membership-panel space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-azul-profundo">Mi Membresía</h1>
-          <p className="text-tierra-media">
+          <h1 className="text-3xl font-bold text-[#12414E]">Mi Membresía</h1>
+          <p className="text-[#23545D]">
             Semana {mockMembershipData.currentWeek} de {mockMembershipData.totalWeeks} - {mockMembershipData.plan}
           </p>
         </div>
-        <Badge className="bg-dorado text-azul-profundo">
+        <Badge variant="outline" className="bg-[#23545D] text-[#FFF2E9]">
           <Sparkles className="h-3 w-3 mr-1" />
           Miembro Activo
         </Badge>
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+      <div className="flex space-x-1 bg-[#D1E3DD] p-1 rounded-lg">
         {[
           { id: 'overview', label: 'Resumen', icon: Sparkles },
           { id: 'progress', label: 'Progreso', icon: Target },
@@ -233,7 +233,7 @@ export default function MembershipPage() {
             key={tab.id}
             variant={activeTab === tab.id ? 'default' : 'ghost'}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex-1 ${activeTab === tab.id ? 'bg-dorado text-azul-profundo hover:bg-dorado/90' : ''}`}
+            className={`flex-1 ${activeTab === tab.id ? 'account-primary' : 'text-[#23545D]'}`}
           >
             <tab.icon className="h-4 w-4 mr-2" />
             {tab.label}
@@ -249,32 +249,32 @@ export default function MembershipPage() {
               className="shadow-alkimya border-0 overflow-hidden"
               style={{ 
                 borderRadius: '0px 15px',
-                backgroundColor: 'var(--admin-accent-primary)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               <CardHeader>
-                <CardTitle className="text-azul-profundo">Módulo Actual</CardTitle>
+                <CardTitle className="text-[#12414E]">Módulo Actual</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="text-xl font-semibold text-azul-profundo">
+                      <h3 className="text-xl font-semibold text-[#12414E]">
                         {mockMembershipData.currentModule.title}
                       </h3>
-                      <p className="text-tierra-media mt-1">
+                      <p className="text-[#23545D] mt-1">
                         {mockMembershipData.currentModule.description}
                       </p>
                     </div>
-                    <Badge variant="outline" className="border-dorado text-dorado">
+                    <Badge variant="outline" className="border-[#4F787D] text-[#4F787D]">
                       Semana {mockMembershipData.currentWeek}
                     </Badge>
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-tierra-media">Progreso del módulo</span>
-                      <span className="font-semibold text-azul-profundo">
+                      <span className="text-[#23545D]">Progreso del módulo</span>
+                      <span className="font-semibold text-[#12414E]">
                         {mockMembershipData.currentModule.progress}%
                       </span>
                     </div>
@@ -283,11 +283,11 @@ export default function MembershipPage() {
 
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-tierra-media" />
+                      <Clock className="h-4 w-4 text-[#23545D]" />
                       <span>{mockMembershipData.currentModule.estimatedTime}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4 text-tierra-media" />
+                      <BookOpen className="h-4 w-4 text-[#23545D]" />
                       <span>
                         {mockMembershipData.currentModule.lessonsCompleted}/
                         {mockMembershipData.currentModule.lessonsTotal} lecciones
@@ -296,7 +296,7 @@ export default function MembershipPage() {
                   </div>
                 </div>
 
-                <Button className="w-full bg-dorado hover:bg-dorado/90 text-azul-profundo">
+                <Button className="account-primary w-full">
                   Continuar Módulo
                   <ChevronRight className="h-4 w-4 ml-2" />
                 </Button>
@@ -308,23 +308,23 @@ export default function MembershipPage() {
               className="mt-6 shadow-alkimya border-0 overflow-hidden"
               style={{ 
                 borderRadius: '0px 15px',
-                backgroundColor: 'var(--admin-accent-primary)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               <CardHeader>
-                <CardTitle className="text-azul-profundo">Actividad Reciente</CardTitle>
+                <CardTitle className="text-[#12414E]">Actividad Reciente</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   {mockMembershipData.recentProgress.map((item) => (
-                    <div key={item.id} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
+                    <div key={item.id} className="flex items-center gap-3 p-3 rounded-lg bg-[#F5F8FA]">
                       {getContentIcon(item.type)}
                       <div className="flex-1">
-                        <p className="font-medium text-azul-profundo">{item.title}</p>
-                        <p className="text-sm text-tierra-media">{item.duration}</p>
+                        <p className="font-medium text-[#12414E]">{item.title}</p>
+                        <p className="text-sm text-[#23545D]">{item.duration}</p>
                       </div>
                       {item.completed ? (
-                        <Badge className="bg-verde-suave text-white">Completado</Badge>
+                        <Badge variant="outline" className="bg-[#4F787D] text-white">Completado</Badge>
                       ) : (
                         <Badge variant="outline">Pendiente</Badge>
                       )}
@@ -342,36 +342,36 @@ export default function MembershipPage() {
               className="shadow-alkimya border-0 overflow-hidden"
               style={{ 
                 borderRadius: '0px 15px',
-                backgroundColor: 'var(--admin-accent-primary)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               <CardHeader>
-                <CardTitle className="text-azul-profundo">Tu Progreso</CardTitle>
+                <CardTitle className="text-[#12414E]">Tu Progreso</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-azul-profundo mb-2">
+                  <div className="text-3xl font-bold text-[#12414E] mb-2">
                     {mockMembershipData.overallProgress}%
                   </div>
                   <Progress value={mockMembershipData.overallProgress} className="h-3" />
-                  <p className="text-sm text-tierra-media mt-2">
+                  <p className="text-sm text-[#23545D] mt-2">
                     Progreso general del programa
                   </p>
                 </div>
 
                 <div 
                   className="space-y-3 pt-4 border-t"
-                  style={{ borderTopColor: 'var(--admin-text-primary)' }}
+                  style={{ borderTopColor: 'rgba(22, 52, 95, 0.12)' }}
                 >
                   <div className="flex justify-between">
-                    <span className="text-sm text-tierra-media">Semana actual:</span>
-                    <span className="font-semibold text-azul-profundo">
+                    <span className="text-sm text-[#23545D]">Semana actual:</span>
+                    <span className="font-semibold text-[#12414E]">
                       {mockMembershipData.currentWeek}/{mockMembershipData.totalWeeks}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-sm text-tierra-media">Inicio:</span>
-                    <span className="text-sm text-azul-profundo">
+                    <span className="text-sm text-[#23545D]">Inicio:</span>
+                    <span className="text-sm text-[#12414E]">
                       {formatDate(mockMembershipData.startDate)}
                     </span>
                   </div>
@@ -384,11 +384,11 @@ export default function MembershipPage() {
               className="shadow-alkimya border-0 overflow-hidden"
               style={{ 
                 borderRadius: '0px 15px',
-                backgroundColor: 'var(--admin-accent-primary)'
+                backgroundColor: '#FFFFFF'
               }}
             >
               <CardHeader>
-                <CardTitle className="text-azul-profundo">Próximamente</CardTitle>
+                <CardTitle className="text-[#12414E]">Próximamente</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
@@ -396,15 +396,15 @@ export default function MembershipPage() {
                     <div key={item.id} className="flex items-start gap-3">
                       {getContentIcon(item.type)}
                       <div className="flex-1">
-                        <p className="font-medium text-azul-profundo text-sm">{item.title}</p>
+                        <p className="font-medium text-[#12414E] text-sm">{item.title}</p>
                         <div className="flex items-center gap-1 mt-1">
-                          <Calendar className="h-3 w-3 text-tierra-media" />
-                          <span className="text-xs text-tierra-media">
+                          <Calendar className="h-3 w-3 text-[#23545D]" />
+                          <span className="text-xs text-[#23545D]">
                             {formatDate(item.releaseDate)}
                           </span>
                         </div>
                       </div>
-                      <Lock className="h-4 w-4 text-tierra-media" />
+                      <Lock className="h-4 w-4 text-[#23545D]" />
                     </div>
                   ))}
                 </div>
@@ -432,22 +432,22 @@ export default function MembershipPage() {
             className="shadow-alkimya border-0 overflow-hidden"
             style={{ 
               borderRadius: '0px 15px',
-              backgroundColor: 'var(--admin-accent-primary)'
+              backgroundColor: '#FFFFFF'
             }}
           >
             <CardHeader>
-              <CardTitle className="text-azul-profundo">Biblioteca de Contenido</CardTitle>
-              <p className="text-tierra-media">
+              <CardTitle className="text-[#12414E]">Biblioteca de Contenido</CardTitle>
+              <p className="text-[#23545D]">
                 Accede a todo el material del programa organizado por semanas
               </p>
             </CardHeader>
             <CardContent>
               <div className="text-center py-8">
-                <BookOpen className="h-16 w-16 text-tierra-media mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-azul-profundo mb-2">
+                <BookOpen className="h-16 w-16 text-[#23545D] mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-[#12414E] mb-2">
                   Contenido en Desarrollo
                 </h3>
-                <p className="text-tierra-media">
+                <p className="text-[#23545D]">
                   La biblioteca completa estará disponible próximamente
                 </p>
               </div>

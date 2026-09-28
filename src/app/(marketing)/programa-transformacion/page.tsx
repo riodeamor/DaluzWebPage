@@ -109,7 +109,11 @@ export default function ProgramaTransformacionPage() {
         </div>
 
         <div className="relative z-10 text-center text-white px-6 max-w-6xl mx-auto py-24">
-          <Badge className="mb-8 bg-white/20 text-white border-white/30 backdrop-blur-sm px-4 py-1.5 text-xs tracking-widest uppercase">
+          <Badge
+            variant="outline"
+            className="mb-8 border-white/30 px-4 py-1.5 text-xs uppercase tracking-widest text-[#FFF2E9]"
+            style={{ background: "linear-gradient(135deg, #23545D 0%, #4F787D 100%)" }}
+          >
             Programa Completo
           </Badge>
 

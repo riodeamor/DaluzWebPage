@@ -215,16 +215,16 @@ export default function SettingsPage() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-azul-profundo">Configuración</h1>
-        <p className="text-tierra-media">
+        <p className="text-[#16345F]">
           Administra tu cuenta, seguridad y preferencias
         </p>
       </div>
 
       {/* Success Alert */}
       {passwordSuccess && (
-        <Alert className="border-verde-suave bg-verde-suave/10">
-          <CheckCircle className="h-4 w-4 text-verde-suave" />
-          <AlertDescription className="text-verde-suave">
+        <Alert className="border-[#005080] bg-[#005080]/10">
+          <CheckCircle className="h-4 w-4 text-[#005080]" />
+          <AlertDescription className="text-[#005080]">
             ¡Contraseña actualizada exitosamente!
           </AlertDescription>
         </Alert>
@@ -246,7 +246,7 @@ export default function SettingsPage() {
           className="shadow-alkimya border-0 overflow-hidden"
           style={{
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardHeader>
@@ -264,22 +264,22 @@ export default function SettingsPage() {
               <h4 className="font-semibold text-azul-profundo">Estado de la Cuenta</h4>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-verde-suave" />
+                  <CheckCircle className="h-4 w-4 text-[#005080]" />
                   <span className="text-sm">Email verificado</span>
                 </div>
-                <Badge className="bg-verde-suave" style={{ color: 'var(--admin-bg-secondary)' }}>Activo</Badge>
+                <Badge className="bg-[#005080] text-[#FFF2E9]">Activo</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Lock className="h-4 w-4 text-dorado" />
+                  <Lock className="h-4 w-4 text-[#005080]" />
                   <div>
                     <span className="text-sm">Autenticación de dos factores</span>
-                    <p className="text-xs text-tierra-media">Recibí un email de confirmación al iniciar sesión</p>
+                    <p className="text-xs text-[#16345F]">Recibí un email de confirmación al iniciar sesión</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   {twoFactorEnabled ? (
-                    <Badge className="bg-verde-suave" style={{ color: 'var(--admin-bg-secondary)' }}>Activo</Badge>
+                    <Badge className="bg-[#005080] text-[#FFF2E9]">Activo</Badge>
                   ) : (
                     <Badge variant="outline">Inactivo</Badge>
                   )}
@@ -334,7 +334,7 @@ export default function SettingsPage() {
                       type={showPasswords.current ? "text" : "password"}
                       {...register("currentPassword")}
                       className={errors.currentPassword ? "border-red-500" : ""}
-                      style={!errors.currentPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
+                      style={!errors.currentPassword ? { borderColor: '#16345F' } : undefined}
                     />
                     <Button
                       type="button"
@@ -362,7 +362,7 @@ export default function SettingsPage() {
                       type={showPasswords.new ? "text" : "password"}
                       {...register("newPassword")}
                       className={errors.newPassword ? "border-red-500" : ""}
-                      style={!errors.newPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
+                      style={!errors.newPassword ? { borderColor: '#16345F' } : undefined}
                     />
                     <Button
                       type="button"
@@ -390,7 +390,7 @@ export default function SettingsPage() {
                       type={showPasswords.confirm ? "text" : "password"}
                       {...register("confirmPassword")}
                       className={errors.confirmPassword ? "border-red-500" : ""}
-                      style={!errors.confirmPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
+                      style={!errors.confirmPassword ? { borderColor: '#16345F' } : undefined}
                     />
                     <Button
                       type="button"
@@ -413,12 +413,7 @@ export default function SettingsPage() {
                 <Button
                   type="submit"
                   disabled={isChangingPassword}
-                  className="w-full bg-dorado hover:bg-dorado/90 text-azul-profundo"
-                  style={{
-                    backgroundColor: 'var(--admin-bg-secondary)',
-                    color: 'var(--admin-accent-primary)',
-                    fontWeight: 600
-                  }}
+                  className="account-primary w-full"
                 >
                   {isChangingPassword ? "Cambiando..." : "Cambiar Contraseña"}
                 </Button>
@@ -432,7 +427,7 @@ export default function SettingsPage() {
           className="shadow-alkimya border-0 overflow-hidden"
           style={{
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardHeader>
@@ -456,7 +451,7 @@ export default function SettingsPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium">Pedidos</p>
-                    <p className="text-xs text-tierra-media">Confirmaciones y actualizaciones de envío</p>
+                    <p className="text-xs text-[#16345F]">Confirmaciones y actualizaciones de envío</p>
                   </div>
                   <Switch
                     checked={notifications.orders}
@@ -467,7 +462,7 @@ export default function SettingsPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium">Newsletter</p>
-                    <p className="text-xs text-tierra-media">Noticias, productos y contenido exclusivo</p>
+                    <p className="text-xs text-[#16345F]">Noticias, productos y contenido exclusivo</p>
                   </div>
                   <Switch
                     checked={notifications.newsletter}
@@ -478,7 +473,7 @@ export default function SettingsPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium">Membresía</p>
-                    <p className="text-xs text-tierra-media">Progreso del programa y nuevo contenido</p>
+                    <p className="text-xs text-[#16345F]">Progreso del programa y nuevo contenido</p>
                   </div>
                   <Switch
                     checked={notifications.membership}
@@ -500,7 +495,7 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium">Envíos urgentes</p>
-                  <p className="text-xs text-tierra-media">Solo para actualizaciones críticas de envío</p>
+                  <p className="text-xs text-[#16345F]">Solo para actualizaciones críticas de envío</p>
                 </div>
                 <Switch
                   checked={notifications.sms}
@@ -524,7 +519,7 @@ export default function SettingsPage() {
           className="lg:col-span-2 shadow-alkimya border-0 overflow-hidden"
           style={{
             borderRadius: '0px 15px',
-            backgroundColor: 'var(--admin-accent-primary)'
+            backgroundColor: '#FFFFFF'
           }}
         >
           <CardHeader>
@@ -543,12 +538,12 @@ export default function SettingsPage() {
                 <AlertTriangle className="h-4 w-4" />
                 Zona de Peligro
               </h4>
-              <p className="text-sm text-tierra-media">
+              <p className="text-sm text-[#16345F]">
                 Una vez eliminada tu cuenta, no podrás recuperarla. Esta acción es permanente.
               </p>
               <Button
                 variant="destructive"
-                className="bg-red-600 hover:bg-red-700"
+                className="account-primary"
                 onClick={handleAccountDeletion}
               >
                 <Trash2 className="h-4 w-4 mr-2" />
@@ -560,4 +555,4 @@ export default function SettingsPage() {
       </div>
     </div>
   );
-} 
+}

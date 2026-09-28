@@ -101,16 +101,16 @@ export function ProfileForm({
 }: ProfileFormProps) {
   return (
     <Card variant="brand-subtle" className="shadow-alkimya overflow-hidden">
-      <CardHeader className="bg-bg-light">
+      <CardHeader className="bg-white">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <CardTitle size="lg" theme="elegant" className="text-text-primary">
+            <CardTitle size="lg" theme="elegant" className="text-[#16345F]">
               Información Personal
             </CardTitle>
             <CardDescription
               size="lg"
               theme="elegant"
-              className="text-text-primary/70"
+              className="text-[#16345F]/80"
             >
               Mantén tu información actualizada para una mejor experiencia
             </CardDescription>
@@ -121,7 +121,7 @@ export function ProfileForm({
                 type="button"
                 variant="brand-outline"
                 onClick={onCancel}
-                className="font-title uppercase tracking-wider"
+                className="account-secondary"
               >
                 <X className="h-4 w-4 mr-2" />
                 Cancelar
@@ -130,7 +130,7 @@ export function ProfileForm({
                 type="submit"
                 disabled={isLoading}
                 variant="brand"
-                className="font-title uppercase tracking-wider"
+                className="account-primary"
               >
                 {isLoading ? (
                   <>
@@ -148,7 +148,7 @@ export function ProfileForm({
           )}
         </div>
       </CardHeader>
-      <CardContent className="bg-bg-light p-6">
+      <CardContent className="bg-white p-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={isEditing ? "editing" : "viewing"}
@@ -160,7 +160,7 @@ export function ProfileForm({
           >
             {/* Basic Information */}
             <div className="space-y-4">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+              <h3 className="text-lg font-subtitle text-[#16345F] italic flex items-center gap-2">
                 <User className="h-5 w-5" />
                 Información Básica
               </h3>
@@ -168,7 +168,7 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="firstName"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Nombre
                   </Label>
@@ -176,12 +176,12 @@ export function ProfileForm({
                     <Input
                       id="firstName"
                       {...register("firstName")}
-                      className={`font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50 ${
+                      className={`font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50 ${
                         errors.firstName ? "border-red-500" : ""
                       }`}
                     />
                   ) : (
-                    <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                    <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                       {firstName || "No especificado"}
                     </div>
                   )}
@@ -195,7 +195,7 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="lastName"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Apellido
                   </Label>
@@ -203,12 +203,12 @@ export function ProfileForm({
                     <Input
                       id="lastName"
                       {...register("lastName")}
-                      className={`font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50 ${
+                      className={`font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50 ${
                         errors.lastName ? "border-red-500" : ""
                       }`}
                     />
                   ) : (
-                    <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                    <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                       {lastName || "No especificado"}
                     </div>
                   )}
@@ -222,8 +222,8 @@ export function ProfileForm({
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+            <div className="space-y-4 pt-4 border-t border-[#16345F]/20">
+              <h3 className="text-lg font-subtitle text-[#16345F] italic flex items-center gap-2">
                 <Mail className="h-5 w-5" />
                 Información de Contacto
               </h3>
@@ -231,14 +231,14 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="email"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Email
                   </Label>
-                  <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                  <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                     {email}
                   </div>
-                  <p className="text-xs text-text-primary/60 font-text">
+                  <p className="text-xs text-[#16345F]/60 font-text">
                     El email no se puede modificar
                   </p>
                 </div>
@@ -246,7 +246,7 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="phone"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Teléfono
                   </Label>
@@ -256,12 +256,12 @@ export function ProfileForm({
                       type="tel"
                       placeholder="+54 9 11 1234-5678"
                       {...register("phone")}
-                      className={`font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50 ${
+                      className={`font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50 ${
                         errors.phone ? "border-red-500" : ""
                       }`}
                     />
                   ) : (
-                    <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                    <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                       {phone || "No especificado"}
                     </div>
                   )}
@@ -275,8 +275,8 @@ export function ProfileForm({
             </div>
 
             {/* Personal Details */}
-            <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+            <div className="space-y-4 pt-4 border-t border-[#16345F]/20">
+              <h3 className="text-lg font-subtitle text-[#16345F] italic flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 Detalles Personales
               </h3>
@@ -284,7 +284,7 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="dateOfBirth"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Fecha de Nacimiento
                   </Label>
@@ -293,10 +293,10 @@ export function ProfileForm({
                       id="dateOfBirth"
                       type="date"
                       {...register("dateOfBirth")}
-                      className="font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50"
+                      className="font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50"
                     />
                   ) : (
-                    <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                    <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                       {formatDate(dateOfBirth || undefined)}
                     </div>
                   )}
@@ -305,7 +305,7 @@ export function ProfileForm({
                 <div className="space-y-2">
                   <Label
                     htmlFor="city"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     Ciudad
                   </Label>
@@ -314,10 +314,10 @@ export function ProfileForm({
                       id="city"
                       placeholder="Buenos Aires"
                       {...register("city")}
-                      className="font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50"
+                      className="font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50"
                     />
                   ) : (
-                    <div className="text-text-primary bg-white px-3 py-2 rounded-md border border-brand-primary/20 font-text">
+                    <div className="text-[#16345F] bg-white px-3 py-2 rounded-md border border-[#16345F]/20 font-text">
                       {city || "No especificado"}
                     </div>
                   )}
@@ -327,8 +327,8 @@ export function ProfileForm({
 
             {/* Address - Only show when editing */}
             {isEditing && (
-              <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-                <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+              <div className="space-y-4 pt-4 border-t border-[#16345F]/20">
+                <h3 className="text-lg font-subtitle text-[#16345F] italic flex items-center gap-2">
                   <MapPin className="h-5 w-5" />
                   Dirección
                 </h3>
@@ -336,7 +336,7 @@ export function ProfileForm({
                   <div className="space-y-2">
                     <Label
                       htmlFor="addressLine1"
-                      className="text-text-primary font-text font-medium"
+                      className="text-[#16345F] font-text font-medium"
                     >
                       Dirección
                     </Label>
@@ -344,13 +344,13 @@ export function ProfileForm({
                       id="addressLine1"
                       placeholder="Calle y número"
                       {...register("addressLine1")}
-                      className="font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50"
+                      className="font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label
                       htmlFor="postalCode"
-                      className="text-text-primary font-text font-medium"
+                      className="text-[#16345F] font-text font-medium"
                     >
                       Código Postal
                     </Label>
@@ -358,14 +358,14 @@ export function ProfileForm({
                       id="postalCode"
                       placeholder="1001"
                       {...register("postalCode")}
-                      className="font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50"
+                      className="font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label
                     htmlFor="country"
-                    className="text-text-primary font-text font-medium"
+                    className="text-[#16345F] font-text font-medium"
                   >
                     País
                   </Label>
@@ -373,7 +373,7 @@ export function ProfileForm({
                     id="country"
                     placeholder="Argentina"
                     {...register("country")}
-                    className="font-text border-brand-primary/30 focus:border-brand-primary focus:ring-brand-primary/50"
+                    className="font-text border-[#16345F]/30 focus:border-[#16345F] focus:ring-[#005080]/50"
                   />
                 </div>
               </div>
@@ -381,10 +381,10 @@ export function ProfileForm({
 
             {/* Bio - Only show when editing */}
             {isEditing && (
-              <div className="space-y-2 pt-4 border-t border-brand-primary/20">
+              <div className="space-y-2 pt-4 border-t border-[#16345F]/20">
                 <Label
                   htmlFor="bio"
-                  className="text-text-primary font-text font-medium"
+                  className="text-[#16345F] font-text font-medium"
                 >
                   Biografía
                 </Label>
@@ -392,10 +392,10 @@ export function ProfileForm({
                   id="bio"
                   {...register("bio")}
                   placeholder="Cuéntanos un poco sobre ti..."
-                  className="w-full px-3 py-2 border border-brand-primary/30 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-primary/50 font-text resize-none"
+                  className="w-full px-3 py-2 border border-[#16345F]/30 rounded-md focus:outline-none focus:ring-2 focus:ring-[#005080]/50 font-text resize-none"
                   rows={4}
                 />
-                <p className="text-xs text-text-primary/60 font-text">
+                <p className="text-xs text-[#16345F]/60 font-text">
                   {watch("bio")?.length || 0} / 500 caracteres
                 </p>
                 {errors.bio && (

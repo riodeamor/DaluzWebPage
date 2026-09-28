@@ -58,8 +58,8 @@ export default function MisTesorosPage() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center space-y-4">
-          <Loader2 className="h-8 w-8 animate-spin text-brand-primary mx-auto" />
-          <p className="text-text-primary/70 font-text">
+          <Loader2 className="h-8 w-8 animate-spin text-[#051341] mx-auto" />
+          <p className="text-[#16345F]/80 font-text">
             Cargando tus Tesoros...
           </p>
         </div>
@@ -72,15 +72,15 @@ export default function MisTesorosPage() {
     return (
       <div className="space-y-6">
         <div className="text-center py-12">
-          <Lock className="h-16 w-16 text-text-primary/30 mx-auto mb-4" />
-          <h2 className="text-2xl font-title text-brand-primary mb-2">
+          <Lock className="h-16 w-16 text-[#16345F]/30 mx-auto mb-4" />
+          <h2 className="text-2xl font-title text-[#051341] mb-2">
             Acceso Restringido
           </h2>
-          <p className="text-text-primary/70 font-text mb-6">
+          <p className="text-[#16345F]/80 font-text mb-6">
             Iniciá sesión para ver tus Tesoros Da Luz
           </p>
           <Link href="/login">
-            <Button className="bg-brand-primary hover:bg-brand-secondary text-white">
+            <Button className="account-primary">
               Iniciar Sesión
             </Button>
           </Link>
@@ -95,10 +95,10 @@ export default function MisTesorosPage() {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-title text-brand-primary">
+          <h1 className="text-3xl font-title text-[#051341]">
             Mis Tesoros
           </h1>
-          <p className="text-text-primary/70 font-text mt-1">
+          <p className="text-[#16345F]/80 font-text mt-1">
             Tu contenido exclusivo de transformación
           </p>
         </div>
@@ -109,13 +109,13 @@ export default function MisTesorosPage() {
           style={{ borderRadius: "0px 15px" }}
         >
           <CardContent className="p-12 text-center">
-            <div className="w-20 h-20 rounded-full bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
-              <Gift className="h-10 w-10 text-brand-primary" />
+            <div className="w-20 h-20 rounded-full bg-[#16345F]/10 flex items-center justify-center mx-auto mb-6">
+              <Gift className="h-10 w-10 text-[#051341]" />
             </div>
-            <h2 className="text-2xl font-title text-brand-primary mb-4">
+            <h2 className="text-2xl font-title text-[#051341] mb-4">
               Aún no tienes Tesoros
             </h2>
-            <p className="text-text-primary/70 font-text max-w-md mx-auto mb-8">
+            <p className="text-[#16345F]/80 font-text max-w-md mx-auto mb-8">
               Cuando compres productos Da Luz, recibirás acceso a contenido
               exclusivo como audios rituales, ejercicios somáticos y guías de
               transformación.
@@ -123,7 +123,7 @@ export default function MisTesorosPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/productos">
                 <Button
-                  className="bg-brand-primary hover:bg-brand-secondary text-white font-text"
+                  className="account-primary"
                   style={{ borderRadius: "0px 15px" }}
                 >
                   <ShoppingBag className="h-4 w-4 mr-2" />
@@ -133,7 +133,7 @@ export default function MisTesorosPage() {
               <Link href="/alkimya/tesoros-daluz">
                 <Button
                   variant="outline"
-                  className="font-text"
+                  className="account-secondary"
                   style={{ borderRadius: "0px 15px" }}
                 >
                   <ExternalLink className="h-4 w-4 mr-2" />
@@ -153,14 +153,14 @@ export default function MisTesorosPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-title text-brand-primary">
+          <h1 className="text-3xl font-title text-[#051341]">
             Mis Tesoros
           </h1>
-          <p className="text-text-primary/70 font-text mt-1">
+          <p className="text-[#16345F]/80 font-text mt-1">
             Tu contenido exclusivo de transformación
           </p>
         </div>
-        <Badge className="bg-brand-primary/10 text-brand-primary font-text px-3 py-1">
+        <Badge className="bg-[#16345F]/10 text-[#051341] font-text px-3 py-1">
           <Sparkles className="h-3 w-3 mr-1" />
           {treasures.length} Tesoros activos
         </Badge>
@@ -195,14 +195,14 @@ export default function MisTesorosPage() {
             >
               <CardHeader
                 className="bg-white"
-                style={{ backgroundColor: "var(--admin-accent-primary)" }}
+                style={{ backgroundColor: "#FFFFFF" }}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                    <Sparkles className="h-6 w-6 text-brand-primary" />
+                  <div className="w-12 h-12 rounded-full bg-[#16345F]/10 flex items-center justify-center">
+                    <Sparkles className="h-6 w-6 text-[#051341]" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl font-title text-brand-primary">
+                    <CardTitle className="text-xl font-title text-[#051341]">
                       Portal de Bienvenida
                     </CardTitle>
                     <CardDescription className="font-text">
@@ -211,21 +211,21 @@ export default function MisTesorosPage() {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="bg-bg-light p-6">
+              <CardContent className="bg-white p-6">
                 <div className="prose prose-sm max-w-none">
-                  <h3 className="font-subtitle text-lg text-brand-primary mb-4">
+                  <h3 className="font-subtitle text-lg text-[#051341] mb-4">
                     Bienvenida al Universo Da Luz
                   </h3>
-                  <p className="font-text text-text-primary leading-relaxed mb-4">
+                  <p className="font-text text-[#16345F] leading-relaxed mb-4">
                     Este contenido es tu puerta de entrada a la filosofía Da
                     Luz. Aquí encontrarás las herramientas fundamentales para
                     ritualizar tu autocuidado.
                   </p>
 
-                  <h4 className="font-subtitle text-base text-brand-primary mt-6 mb-3">
+                  <h4 className="font-subtitle text-base text-[#051341] mt-6 mb-3">
                     Tu Ritualización Comienza Aquí
                   </h4>
-                  <p className="font-text text-text-primary leading-relaxed mb-4">
+                  <p className="font-text text-[#16345F] leading-relaxed mb-4">
                     Creemos que la soberanía nace cuando el conocimiento se
                     vuelve cuerpo. No se trata solo de adquirir información,
                     sino de acuerpar las herramientas que ya habitan en vos para
@@ -276,14 +276,14 @@ export default function MisTesorosPage() {
                   >
                     <CardHeader
                       className="bg-white"
-                      style={{ backgroundColor: "var(--admin-accent-primary)" }}
+                      style={{ backgroundColor: "#FFFFFF" }}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-xl">
+                        <div className="w-10 h-10 rounded-full bg-[#16345F]/10 flex items-center justify-center text-xl">
                           {linea.emoji}
                         </div>
                         <div>
-                          <CardTitle className="text-lg font-title text-brand-primary">
+                          <CardTitle className="text-lg font-title text-[#051341]">
                             {linea.name}
                           </CardTitle>
                           <CardDescription className="font-text">
@@ -292,8 +292,8 @@ export default function MisTesorosPage() {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="bg-bg-light p-4">
-                      <p className="font-text text-text-primary text-sm leading-relaxed mb-4">
+                    <CardContent className="bg-white p-4">
+                      <p className="font-text text-[#16345F] text-sm leading-relaxed mb-4">
                         Accedé al portal de inmersión de {linea.name} con
                         rituales, ejercicios y herramientas de transformación.
                       </p>
@@ -325,14 +325,14 @@ export default function MisTesorosPage() {
                   >
                     <CardHeader
                       className="bg-white"
-                      style={{ backgroundColor: "var(--admin-accent-primary)" }}
+                      style={{ backgroundColor: "#FFFFFF" }}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                          <Gift className="h-5 w-5 text-brand-primary" />
+                        <div className="w-10 h-10 rounded-full bg-[#16345F]/10 flex items-center justify-center">
+                          <Gift className="h-5 w-5 text-[#051341]" />
                         </div>
                         <div>
-                          <CardTitle className="text-lg font-title text-brand-primary">
+                          <CardTitle className="text-lg font-title text-[#051341]">
                             {kit.name}
                           </CardTitle>
                           <CardDescription className="font-text">
@@ -341,14 +341,14 @@ export default function MisTesorosPage() {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="bg-bg-light p-4">
-                      <p className="font-text text-text-primary text-sm leading-relaxed mb-4">
+                    <CardContent className="bg-white p-4">
+                      <p className="font-text text-[#16345F] text-sm leading-relaxed mb-4">
                         Accedé al contenido exclusivo del {kit.name}, incluyendo
                         rituales avanzados y herramientas de maestría.
                       </p>
                       <Button
                         size="sm"
-                        className="bg-brand-primary hover:bg-brand-secondary text-white"
+                        className="account-primary"
                         style={{ borderRadius: "0px 15px" }}
                       >
                         <Unlock className="h-4 w-4 mr-2" />
@@ -386,19 +386,19 @@ function ContentCard({
   };
 
   return (
-    <div className="flex items-start gap-3 p-4 rounded-lg bg-white border border-text-primary/10 hover:border-brand-primary/30 transition-colors">
-      <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0">
+    <div className="flex items-start gap-3 p-4 rounded-lg bg-white border border-text-primary/10 hover:border-[#16345F]/30 transition-colors">
+      <div className="w-10 h-10 rounded-full bg-[#16345F]/10 flex items-center justify-center text-[#051341] shrink-0">
         {icons[type]}
       </div>
       <div className="flex-1 min-w-0">
-        <h5 className="font-subtitle text-sm text-brand-primary">{title}</h5>
-        <p className="text-xs text-text-primary/70 font-text mt-0.5">
+        <h5 className="font-subtitle text-sm text-[#051341]">{title}</h5>
+        <p className="text-xs text-[#16345F]/80 font-text mt-0.5">
           {description}
         </p>
         <Button
           size="sm"
           variant="ghost"
-          className="mt-2 text-brand-primary hover:text-brand-secondary p-0 h-auto font-text text-xs"
+          className="mt-2 text-[#051341] hover:text-[#005080] p-0 h-auto font-text text-xs"
         >
           {type === "pdf" ? (
             <Download className="h-3 w-3 mr-1" />
@@ -426,7 +426,7 @@ function ContentBadge({ type }: { type: "audio" | "video" | "pdf" | "text" }) {
       color: "bg-purple-100 text-purple-700",
     },
     pdf: { icon: FileText, label: "PDF", color: "bg-green-100 text-green-700" },
-    text: { icon: FileText, label: "Guía", color: "bg-gray-100 text-gray-700" },
+    text: { icon: FileText, label: "Guía", color: "bg-[#EAF2F6] text-[#16345F]" },
   };
 
   const { icon: Icon, label, color } = config[type];

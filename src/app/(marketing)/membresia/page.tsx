@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Users, BookOpen, Heart, Sparkles, Star, Gift, Video } from "lucide-react";
 import Link from "next/link";
+import "./membresia.css";
 
 export default function MembresiaPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-bg-cream via-bg-light to-bg-lightest">
+    <div className="membership-landing min-h-screen">
       {/* Header */}
       <div className="bg-brand-primary py-16">
         <div className="container mx-auto px-6">

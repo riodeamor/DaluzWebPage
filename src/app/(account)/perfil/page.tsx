@@ -227,8 +227,8 @@ export default function ProfilePage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-title text-text-primary">Mi Perfil</h1>
-          <p className="text-text-primary/70 font-text mt-1">
+          <h1 className="text-3xl font-title text-[#16345F]">Mi Perfil</h1>
+          <p className="text-[#16345F]/80 font-text mt-1">
             Gestiona tu información personal y preferencias
           </p>
         </div>

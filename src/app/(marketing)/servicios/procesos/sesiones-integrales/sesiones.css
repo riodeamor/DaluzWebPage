@@ -73,7 +73,7 @@
   margin-right: auto;
   max-width: 670px;
   margin-top: -1rem;
-  transform: translateX(-2rem);
+  transform: translate(-2.5rem, -0.25rem);
 }
 
 .sesiones-intro-block.sesiones-intro-right {
@@ -293,7 +293,7 @@
   }
   .sesiones-intro-block.sesiones-intro-right {
     max-width: 500px;
-    transform: translate(4rem, 2rem);
+    transform: translate(4.5rem, 2.3rem);
   }
 }
 
