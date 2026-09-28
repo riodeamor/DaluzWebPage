@@ -171,7 +171,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                       <Button
                         onClick={handleSignOut}
                         variant="ghost"
-                        className="w-full justify-start text-[#16345F] hover:text-azul-profundo"
+                        className="account-primary w-full justify-start"
                       >
                         <LogOut className="h-4 w-4 mr-3" />
                         Cerrar Sesión

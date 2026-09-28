@@ -684,74 +684,68 @@ export default function Header() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent
-                    className="w-56 border border-gray-200 shadow-lg"
+                    className="profile-avatar-menu w-56 border border-[#D1E3DD]/35 shadow-lg"
                     align="end"
-                    style={{ backgroundColor: "#fff4e0" }}
+                    style={{ background: "linear-gradient(135deg, #051341 0%, #16345F 50%, #005080 100%)" }}
                   >
                     <DropdownMenuLabel className="font-normal">
                       <div className="flex flex-col space-y-1">
                         <p
                           className="text-sm font-subtitle font-medium leading-none"
-                          style={{ color: "#1C1B1A" }}
+                          style={{ color: "#FFF2E9" }}
                         >
                           {profile?.first_name} {profile?.last_name}
                         </p>
                         <p
                           className="text-xs font-caption leading-none"
-                          style={{ color: "#1C1B1A", opacity: 0.6 }}
+                          style={{ color: "#FFF2E9" }}
                         >
                           {user.email}
                         </p>
                       </div>
                     </DropdownMenuLabel>
-                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
+                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-[#D1E3DD] to-transparent opacity-60" />
                     <DropdownMenuItem asChild>
                       <Link
                         href="/perfil"
-                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        className="flex items-center"
                       >
-                        <User className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <User className="mr-2 h-4 w-4 text-[#D1E3DD]" />
                         <span className="font-text">Perfil</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/mis-pedidos"
-                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        className="flex items-center"
                       >
-                        <Package className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <Package className="mr-2 h-4 w-4 text-[#D1E3DD]" />
                         <span className="font-text">Mis Pedidos</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/mi-membresia"
-                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        className="flex items-center"
                       >
-                        <BookOpen className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <BookOpen className="mr-2 h-4 w-4 text-[#D1E3DD]" />
                         <span className="font-text">Mi Membresía</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/configuracion"
-                        className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        className="flex items-center"
                       >
-                        <Settings className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                        <Settings className="mr-2 h-4 w-4 text-[#D1E3DD]" />
                         <span className="font-text">Configuración</span>
                       </Link>
                     </DropdownMenuItem>
-                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-60" />
+                    <div className="h-px mx-2 my-1 bg-gradient-to-r from-transparent via-[#D1E3DD] to-transparent opacity-60" />
                     <DropdownMenuItem
                       onSelect={handleSignOut}
-                      className="hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                      style={{ color: "#1C1B1A" }}
                     >
-                      <LogOut className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
+                      <LogOut className="mr-2 h-4 w-4 text-[#D1E3DD]" />
                       <span className="font-text">Cerrar Sesión</span>
                     </DropdownMenuItem>
                   </DropdownMenuContent>

@@ -2927,3 +2927,12 @@ footer .footer-social-icon {
   height: 1.25rem !important;
   margin: 0 !important;
 }
+
+.profile-avatar-menu [role="menuitem"] {
+  color: #FFF2E9 !important;
+  transition: background-color 150ms ease;
+}
+.profile-avatar-menu [role="menuitem"]:is(:hover, :focus-visible, [data-highlighted]) {
+  background-color: rgba(255, 242, 233, .14) !important;
+  color: #FFF2E9 !important;
+}
