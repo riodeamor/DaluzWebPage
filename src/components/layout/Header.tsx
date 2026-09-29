@@ -207,7 +207,10 @@ function MobileNavSection({
   );
 }
 
+import { useStoreCategories } from "@/hooks/useStoreCategories";
+
 const isAlkimyaOrTiendaPage = (pathname: string) =>
+  pathname === "/tienda" ||
   pathname === "/productos" ||
   pathname.startsWith("/productos/") ||
   pathname.startsWith("/categorias/") ||
@@ -216,6 +219,7 @@ const isAlkimyaOrTiendaPage = (pathname: string) =>
   pathname.startsWith("/alkimya/");
 
 export default function Header() {
+  const categories = useStoreCategories();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, profile, signOut } = useAuthContext();
   const { itemCount, toggleCart } = useCart();
@@ -316,23 +320,11 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="/categorias/linea-umbral" title="LINEA UMBRAL" textColor="#72111A">
-                        Tonicos, Cremas faciales y corporales, Serums
-                      </ListItem>
-                      <ListItem href="/categorias/linea-ecos" title="LINEA ECOS" textColor="#72111A">
-                        Shampoo´s, Acondicionador, Pasta dental, Limpiadores Faciales, Mascarillas
-                      </ListItem>
-                      <ListItem href="/categorias/linea-alma-terra" title="LINEA ALMA TERRA" textColor="#72111A">
-                        Brumas aromáticas en Spray, Pocimas Roll-On de aromaterapia
-                      </ListItem>
-                    </ul>
-                    <ul className="grid grid-cols-2 gap-3 p-4 pt-0 md:w-[500px] lg:w-[600px]">
-                      <ListItem href="/categorias/linea-jade-ritual" title="LINEA JADE RITUAL" textColor="#72111A">
-                        Tinturas Madre para desequilibrios organicos, Flores de Bach
-                      </ListItem>
-                      <ListItem href="/categorias/linea-prisma" title="LINEA PRISMA" textColor="#72111A">
-                        Sombras en polvo, Barra labial, Iluminadores
-                      </ListItem>
+                      {categories.map((category) => (
+                        <ListItem key={category.id} href={`/categorias/${encodeURIComponent(category.slug)}`} title={category.name} textColor="#72111A">
+                          {category.description}
+                        </ListItem>
+                      ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -825,11 +817,9 @@ export default function Header() {
                     <nav className="mobile-nav-menu flex flex-col space-y-1 mt-6">
                       <MobileNavSection id="tienda" label="Tienda" href="/productos" tone="burgundy" open={openMobileSection === "tienda"} onToggle={() => setOpenMobileSection(openMobileSection === "tienda" ? null : "tienda")} onNavigate={() => setMobileMenuOpen(false)}>
                           <Link href="/productos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Todos los Productos</Link>
-                          <Link href="/categorias/linea-umbral" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Umbral</Link>
-                          <Link href="/categorias/linea-ecos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Ecos</Link>
-                          <Link href="/categorias/linea-alma-terra" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Alma Terra</Link>
-                          <Link href="/categorias/linea-jade-ritual" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Jade Ritual</Link>
-                          <Link href="/categorias/linea-prisma" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Prisma</Link>
+                          {categories.map((category) => (
+                            <Link key={category.id} href={`/categorias/${encodeURIComponent(category.slug)}`} className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>{category.name}</Link>
+                          ))}
                       </MobileNavSection>
 
                       <MobileNavSection id="alkimya" label="Alkimya" href="/alkimya" tone="burgundy" open={openMobileSection === "alkimya"} onToggle={() => setOpenMobileSection(openMobileSection === "alkimya" ? null : "alkimya")} onNavigate={() => setMobileMenuOpen(false)}>

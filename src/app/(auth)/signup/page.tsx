@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useAuth } from "@/hooks/useAuth";
+import { authMessage } from "@/lib/auth/messages";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -66,12 +67,7 @@ export default function SignupPage() {
       setIsSuccess(true);
     } catch (err: any) {
       console.error("Signup error:", err);
-      const rawMessage: string =
-        err?.message || "No pudimos crear la cuenta. Intentá de nuevo en unos minutos.";
-      const normalized = /already registered|already been registered|user already/i.test(rawMessage)
-        ? "Ya existe una cuenta registrada con ese email. Iniciá sesión o recuperá tu contraseña."
-        : rawMessage;
-      setFormError(normalized);
+      setFormError(authMessage(err));
     }
   };
 
@@ -83,14 +79,14 @@ export default function SignupPage() {
       const { error: resendError } = await resendConfirmation(submittedEmail);
       if (resendError) {
         setResendStatus("error");
-        setResendMessage(resendError.message || "No pudimos reenviar el email. Intentá de nuevo en unos minutos.");
+        setResendMessage(authMessage(resendError));
       } else {
         setResendStatus("sent");
         setResendMessage("Te reenviamos el email de confirmación.");
       }
     } catch (err: any) {
       setResendStatus("error");
-      setResendMessage(err?.message || "Error inesperado al reenviar el email.");
+      setResendMessage(authMessage(err));
     }
   };
 
@@ -195,7 +191,7 @@ export default function SignupPage() {
           {(formError || error) && (
             <Alert variant="destructive" className="login-alert">
               <AlertDescription className="login-alert-text">
-                {formError || error?.message}
+                {formError || authMessage(error)}
               </AlertDescription>
             </Alert>
           )}

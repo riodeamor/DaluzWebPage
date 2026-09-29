@@ -8,6 +8,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
+import { useStoreCategories } from "@/hooks/useStoreCategories";
 
 interface Product {
   id: string;
@@ -15,6 +16,7 @@ interface Product {
   slug: string;
   description: string;
   short_description: string;
+  info_frontal?: string | null;
   price: number;
   compare_at_price?: number;
   featured_image: string;
@@ -46,7 +48,8 @@ interface FeaturedLineSectionProps {
   className?: string;
 }
 
-const productLines = [
+// Presentation themes only; category membership and URLs come from Supabase.
+const lineThemes = [
   {
     id: "alma-terra",
     name: "Alma Terra",
@@ -98,161 +101,52 @@ const productLines = [
 export default function FeaturedLineSection({
   className,
 }: FeaturedLineSectionProps) {
-  const [selectedLine, setSelectedLine] = useState(productLines[0]);
+  const categories = useStoreCategories();
+  const availableLines = categories.map(category => {
+    const theme = lineThemes.find(line => category.slug.includes("slug" in line ? line.slug! : line.id));
+    return {
+      color: "text-brand-primary", bgColor: "bg-brand-primary/10",
+      buttonColor: "bg-brand-primary hover:bg-brand-primary/90",
+      ...theme, ...category, description: category.description ?? "",
+      lineTheme: theme?.id ?? "default",
+    };
+  });
+  const [selectedId, setSelectedId] = useState<string>();
+  const selectedLine = availableLines.find(line => line.id === selectedId);
+  const selectedCategoryId = selectedLine?.id;
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [availableLines, setAvailableLines] = useState(productLines);
   const { addItem } = useCart();
 
-  // Find lines that have products available
+  // Keep the existing random featured-line behavior, using actual active categories.
   useEffect(() => {
-    const findAvailableLines = async () => {
-      try {
-        const response = await fetch(`/api/products?limit=100&in_stock=true`);
-        const data = await response.json();
+    if (!categories.length) return;
+    const controller = new AbortController();
+    fetch("/api/products?limit=100&in_stock=true", { signal: controller.signal })
+      .then(async response => {
+        if (!response.ok) return;
+        const { products = [] } = await response.json();
+        const eligible = categories.filter(category => products.some((product: Product) => product.category_id === category.id));
+        setSelectedId(current => eligible.some(category => category.id === current)
+          ? current : eligible[Math.floor(Math.random() * eligible.length)]?.id);
+      })
+      .catch(() => { /* Leave the featured section hidden if unavailable. */ });
+    return () => controller.abort();
+  }, [categories]);
 
-        if (response.ok) {
-          const allProducts = data.products || [];
-          const linesWithProducts = productLines.filter((line) => {
-            const lineName = line.name.toLowerCase();
-            const lineId = line.id.toLowerCase();
-
-            return allProducts.some((product: any) => {
-              const name = product.name?.toLowerCase() || "";
-              const description = product.description?.toLowerCase() || "";
-              const shortDescription =
-                product.short_description?.toLowerCase() || "";
-              const categoryName =
-                product.categories?.name?.toLowerCase() || "";
-              const categorySlug =
-                product.categories?.slug?.toLowerCase() || "";
-
-              return (
-                categoryName.includes(lineName) ||
-                categoryName.includes(lineId) ||
-                categorySlug.includes(lineId) ||
-                name.includes(lineName) ||
-                name.includes(lineId) ||
-                description.includes(lineName) ||
-                description.includes(lineId) ||
-                shortDescription.includes(lineName) ||
-                shortDescription.includes(lineId) ||
-                (product.tags &&
-                  product.tags.some(
-                    (tag: string) =>
-                      tag.toLowerCase().includes(lineName) ||
-                      tag.toLowerCase().includes(lineId),
-                  )) ||
-                (product.collections &&
-                  product.collections.some(
-                    (collection: string) =>
-                      collection.toLowerCase().includes(lineName) ||
-                      collection.toLowerCase().includes(lineId),
-                  ))
-              );
-            });
-          });
-
-          setAvailableLines(linesWithProducts);
-
-          // Select a random line from available lines
-          if (linesWithProducts.length > 0) {
-            const randomIndex = Math.floor(
-              Math.random() * linesWithProducts.length,
-            );
-            setSelectedLine(linesWithProducts[randomIndex]);
-          }
-        }
-      } catch (error) {
-        console.error("Error finding available lines:", error);
-        // Fallback to original behavior
-        const randomIndex = Math.floor(Math.random() * productLines.length);
-        setSelectedLine(productLines[randomIndex]);
-      }
-    };
-
-    findAvailableLines();
-  }, []);
-
-  // Fetch products for the selected line
   useEffect(() => {
-    const fetchProducts = async () => {
-      setLoading(true);
-      try {
-        // First, try to fetch products by category if it exists
-        let response = await fetch(`/api/products?limit=50&in_stock=true`);
-        let data = await response.json();
-
-        if (response.ok) {
-          let filteredProducts: any[] = [];
-
-          // Try to find products by category first
-          const allProducts = data.products || [];
-
-          // Look for products that belong to this specific line
-          filteredProducts = allProducts.filter((product: any) => {
-            const name = product.name?.toLowerCase() || "";
-            const description = product.description?.toLowerCase() || "";
-            const shortDescription =
-              product.short_description?.toLowerCase() || "";
-            const categoryName = product.categories?.name?.toLowerCase() || "";
-            const categorySlug = product.categories?.slug?.toLowerCase() || "";
-            const lineName = selectedLine.name.toLowerCase();
-            const lineId = selectedLine.id.toLowerCase();
-
-            // Check if product belongs to this line by:
-            // 1. Category name/slug matches line
-            // 2. Product name contains line name/id
-            // 3. Product description contains line name/id
-            // 4. Product tags/collections contain line info
-            return (
-              categoryName.includes(lineName) ||
-              categoryName.includes(lineId) ||
-              categorySlug.includes(lineId) ||
-              name.includes(lineName) ||
-              name.includes(lineId) ||
-              description.includes(lineName) ||
-              description.includes(lineId) ||
-              shortDescription.includes(lineName) ||
-              shortDescription.includes(lineId) ||
-              (product.tags &&
-                product.tags.some(
-                  (tag: string) =>
-                    tag.toLowerCase().includes(lineName) ||
-                    tag.toLowerCase().includes(lineId),
-                )) ||
-              (product.collections &&
-                product.collections.some(
-                  (collection: string) =>
-                    collection.toLowerCase().includes(lineName) ||
-                    collection.toLowerCase().includes(lineId),
-                ))
-            );
-          });
-
-          // If we found products, limit to 6
-          if (filteredProducts.length > 0) {
-            setProducts(filteredProducts.slice(0, 4));
-          } else {
-            // If no products found for this line, don't show the section
-            setProducts([]);
-          }
-        } else {
-          console.error("Error fetching featured products:", data);
-          setProducts([]);
-        }
-      } catch (error) {
-        console.error("Error fetching featured products:", error);
-        setProducts([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (selectedLine.id) {
-      fetchProducts();
-    }
-  }, [selectedLine.id]);
+    if (!selectedCategoryId) { setLoading(false); return; }
+    const controller = new AbortController();
+    setLoading(true);
+    fetch(`/api/products?category=${encodeURIComponent(selectedCategoryId)}&limit=4&in_stock=true`, { signal: controller.signal })
+      .then(async response => {
+        if (!response.ok) throw new Error("No se pudieron cargar los productos");
+        setProducts((await response.json()).products ?? []);
+      })
+      .catch(error => { if (error.name !== "AbortError") setProducts([]); })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, [selectedCategoryId]);
 
   const handleAddToCart = (productId: string, quantity: number) => {
     const product = products.find((p) => p.id === productId);
@@ -279,6 +173,8 @@ export default function FeaturedLineSection({
 
     toast.success(`${product.name} agregado al carrito`);
   };
+
+  if (!selectedLine) return null;
 
   if (loading) {
     return (
@@ -344,7 +240,7 @@ export default function FeaturedLineSection({
             cuidadosamente elegidos para tu bienestar.
           </p>
 
-          <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`} className="tienda-line-button inline-flex items-center justify-center px-8 py-3 mt-2">
+          <Link href={`/categorias/${encodeURIComponent(selectedLine.slug)}`} className="tienda-line-button inline-flex items-center justify-center px-8 py-3 mt-2">
             VER TODA LA LÍNEA
           </Link>
         </div>
@@ -358,6 +254,7 @@ export default function FeaturedLineSection({
               slug={product.slug}
               name={product.name}
               description={product.short_description || product.description}
+              infoFrontal={product.info_frontal}
               price={product.price}
               originalPrice={product.compare_at_price}
               category={product.categories?.name || selectedLine.name}
@@ -371,7 +268,7 @@ export default function FeaturedLineSection({
               size={
                 product.product_variants?.find((v) => v.is_default)?.option1
               }
-              lineTheme={selectedLine.id as any}
+              lineTheme={selectedLine.lineTheme as any}
               onAddToCart={handleAddToCart}
               variant="elegant"
               className="p-[0]"
@@ -381,7 +278,7 @@ export default function FeaturedLineSection({
 
         {/* View More Button */}
         <div className="text-center mt-8">
-          <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`}>
+          <Link href={`/categorias/${encodeURIComponent(selectedLine.slug)}`}>
             <Button
               className={cn(
                 "tienda-line-button group relative px-10 py-4 text-lg font-semibold text-white transition-all duration-500 transform hover:scale-105 overflow-hidden",

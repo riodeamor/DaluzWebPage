@@ -47,6 +47,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { toast } from "sonner";
+import { FRONT_INFO_MAX_LENGTH, frontInfoSchema } from "@/lib/products/front-info";
 
 interface Category {
   id: string;
@@ -114,6 +115,7 @@ export default function ProductForm({
     slug: "",
     description: "",
     short_description: "",
+    info_frontal: "",
     price: "",
     compare_at_price: "",
     category_id: "",
@@ -199,6 +201,7 @@ export default function ProductForm({
         name: product.name || "",
         slug: product.slug || "",
         short_description: product.short_description || "",
+        info_frontal: product.info_frontal || "",
         description: product.description || "",
         price: product.price?.toString() || "",
         compare_at_price: product.compare_at_price?.toString() || "",
@@ -314,6 +317,11 @@ export default function ProductForm({
     status: string = "active",
   ) => {
     if (e && e.preventDefault) e.preventDefault();
+    const frontInfo = frontInfoSchema.safeParse(formData.info_frontal);
+    if (!frontInfo.success) {
+      toast.error(frontInfo.error.issues[0].message);
+      return;
+    }
     setLoading(true);
     markAsSaving();
 
@@ -572,6 +580,18 @@ export default function ProductForm({
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="info_frontal">Info Frontal (Activos y Tipo de Piel)</Label>
+                  <Input
+                    id="info_frontal"
+                    value={formData.info_frontal ?? ""}
+                    maxLength={FRONT_INFO_MAX_LENGTH}
+                    aria-describedby="info-frontal-help"
+                    onChange={(e) => handleInputChange("info_frontal", e.target.value)}
+                  />
+                  <p id="info-frontal-help" className="text-sm text-muted-foreground">
+                    Texto breve de portada que se muestra debajo del título. Ej: Jojoba &amp; Neroli • Piel con Manchas o Grasa
+                    {" "}({(formData.info_frontal ?? "").length}/{FRONT_INFO_MAX_LENGTH})
+                  </p>
                   <Label htmlFor="short_description">Descripción Corta</Label>
                   <Textarea
                     id="short_description"

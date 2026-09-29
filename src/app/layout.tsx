@@ -55,12 +55,19 @@ const velista = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://daluzconsciente.com"),
   title: {
     default: "DA LUZ CONSCIENTE - Alkimyas para alma y cuerpo",
     template: "%s | DA LUZ CONSCIENTE",
   },
   icons: {
-    icon: "/LOGO-ALKIMYA-CONSCIENTE.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icon-180.png", sizes: "180x180", type: "image/png" }],
   },
   description:
     'DA LUZ CONSCIENTE presenta "Alkimyas para alma y cuerpo", unificando productos biocosmecéticos artesanales y servicios holísticos para la vida consciente.',
@@ -90,9 +97,11 @@ export const metadata: Metadata = {
     description:
       "Productos biocosmecéticos artesanales y servicios holísticos para la vida consciente.",
     siteName: "DA LUZ CONSCIENTE",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Da Luz Consciente" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og-image.jpg"],
     title: "DA LUZ CONSCIENTE - Alkimyas para alma y cuerpo",
     description:
       "Productos biocosmecéticos artesanales y servicios holísticos para la vida consciente.",
@@ -116,7 +125,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es-AR" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${montserrat.variable} ${cormorant.variable} ${playfair.variable} ${ebGaramond.variable} ${malisha.variable} ${velista.variable} font-text antialiased`}
       >

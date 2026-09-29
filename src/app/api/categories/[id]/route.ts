@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServiceRoleClient } from '@/lib/supabase';
+import { revalidateTag } from 'next/cache';
 
 // PUT - Update category
 export async function PUT(
@@ -73,6 +74,7 @@ export async function PUT(
       );
     }
 
+    revalidateTag('categories');
     return NextResponse.json({
       message: 'Category updated successfully',
       category: data,
@@ -131,6 +133,7 @@ export async function DELETE(
       );
     }
 
+    revalidateTag('categories');
     return NextResponse.json({
       message: 'Category deleted successfully',
     });

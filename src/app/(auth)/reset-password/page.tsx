@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useAuth } from "@/hooks/useAuth";
+import { authMessage } from "@/lib/auth/messages";
 import { createClient } from "@/utils/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -134,7 +135,7 @@ function ResetPasswordContent() {
           <form onSubmit={updateForm.handleSubmit(onUpdateSubmit)} className="space-y-4">
             {error && (
               <Alert variant="destructive">
-                <AlertDescription>{error.message}</AlertDescription>
+                <AlertDescription>{authMessage(error)}</AlertDescription>
               </Alert>
             )}
 
@@ -269,7 +270,7 @@ function ResetPasswordContent() {
         <form onSubmit={requestForm.handleSubmit(onRequestSubmit)} className="space-y-4">
           {error && (
             <Alert variant="destructive">
-              <AlertDescription>{error.message}</AlertDescription>
+              <AlertDescription>{authMessage(error)}</AlertDescription>
             </Alert>
           )}
 

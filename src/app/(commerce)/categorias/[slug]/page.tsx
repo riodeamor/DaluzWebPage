@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ui/brand/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +28,7 @@ interface Product {
   name: string;
   description: string;
   short_description?: string;
+  info_frontal?: string | null;
   price: number;
   compare_at_price?: number;
   featured_image: string;
@@ -58,6 +59,7 @@ interface Category {
 
 export default function CategoryPage() {
   const params = useParams();
+  const router = useRouter();
   const { addItem } = useCart();
 
   const [category, setCategory] = useState<Category | null>(null);
@@ -73,6 +75,8 @@ export default function CategoryPage() {
       if (!params.slug) return;
 
       setLoading(true);
+      setCategory(null);
+      setProducts([]);
       try {
         // Fetch category by slug
         const categoryResponse = await fetch(`/api/categories/by-slug/${params.slug}`);
@@ -82,6 +86,10 @@ export default function CategoryPage() {
         }
 
         const categoryData = await categoryResponse.json();
+        if (categoryData.category.slug !== params.slug) {
+          router.replace(`/categorias/${encodeURIComponent(categoryData.category.slug)}`);
+          return;
+        }
         setCategory(categoryData.category);
 
         // Fetch products for this category
@@ -99,7 +107,7 @@ export default function CategoryPage() {
     }
 
     fetchCategoryAndProducts();
-  }, [params.slug]);
+  }, [params.slug, router]);
 
   const handleAddToCart = (productId: string, quantity: number) => {
     const product = products.find(p => p.id === productId);
@@ -300,6 +308,7 @@ export default function CategoryPage() {
                 slug={product.slug}
                 name={product.name}
                 description={product.short_description || product.description}
+                infoFrontal={product.info_frontal}
                 price={product.price}
                 originalPrice={product.compare_at_price}
                 category={category.name}
@@ -333,4 +342,4 @@ export default function CategoryPage() {
       </div>
     </div>
   );
-} 
+}

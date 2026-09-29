@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import ProductCard from "./ProductCard";
+import { useStoreCategories } from "@/hooks/useStoreCategories";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -30,6 +31,7 @@ interface Product {
   slug?: string;
   name: string;
   description: string;
+  info_frontal?: string | null;
   price: number;
   originalPrice?: number;
   category: string;
@@ -101,11 +103,7 @@ export default function ProductGrid({
   const [gridCols, setGridCols] = useState(initialGridCols);
   const [showFiltersPanel, setShowFiltersPanel] = useState(false);
 
-  // Get unique categories from products
-  const categories = useMemo(() => {
-    const cats = Array.from(new Set(products.map(p => p.category)));
-    return cats.filter(Boolean);
-  }, [products]);
+  const categories = useStoreCategories().map(category => category.name);
 
   // Filter and sort products
   const filteredAndSortedProducts = useMemo(() => {
@@ -404,6 +402,7 @@ export default function ProductGrid({
               slug={product.slug}
               name={product.name}
               description={product.description}
+              infoFrontal={product.info_frontal}
               price={product.price}
               originalPrice={product.originalPrice}
               category={product.category}
@@ -424,4 +423,4 @@ export default function ProductGrid({
       )}
     </div>
   );
-} 
+}

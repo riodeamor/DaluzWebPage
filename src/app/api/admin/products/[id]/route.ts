@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin, getServiceClient } from '@/lib/auth/helpers';
 import { sanitizeProductPayload } from "@/lib/products/sanitize";
+import { ProductFrontInfoError } from "@/lib/products/front-info";
 
 export async function GET(
   request: NextRequest,
@@ -84,6 +85,9 @@ export async function PUT(
 
     return NextResponse.json({ success: true, product: updatedProduct });
   } catch (error) {
+    if (error instanceof ProductFrontInfoError) {
+      return NextResponse.json({ error: error.message, message: error.message }, { status: 400 });
+    }
     console.error("Admin products [id] PUT error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

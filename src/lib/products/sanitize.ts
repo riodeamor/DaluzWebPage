@@ -1,3 +1,5 @@
+import { validateFrontInfo } from "./front-info";
+
 const NUMERIC_FIELDS = [
   "price",
   "compare_at_price",
@@ -65,6 +67,8 @@ export function sanitizeProductPayload(
 ): Record<string, any> {
   const output: Record<string, any> = {};
 
+  if ("info_frontal" in body) validateFrontInfo(body.info_frontal);
+
   for (const [key, value] of Object.entries(body)) {
     if (NON_WRITABLE_FIELDS.includes(key)) continue;
     output[key] = value;
@@ -94,6 +98,9 @@ export function sanitizeProductPayload(
   }
 
   if (output.price === null) output.price = 0;
+  if (typeof output.info_frontal === "string" && output.info_frontal.trim() === "") {
+    output.info_frontal = null;
+  }
   if (output.inventory_quantity === null) output.inventory_quantity = 0;
 
   return output;

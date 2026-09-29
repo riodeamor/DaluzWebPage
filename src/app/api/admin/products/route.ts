@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin, getServiceClient } from '@/lib/auth/helpers';
 import { sanitizeProductPayload } from "@/lib/products/sanitize";
+import { ProductFrontInfoError } from "@/lib/products/front-info";
 
 export async function GET(request: NextRequest) {
   try {
@@ -170,6 +171,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ product: data[0] });
   } catch (error) {
+    if (error instanceof ProductFrontInfoError) {
+      return NextResponse.json({ error: error.message, message: error.message }, { status: 400 });
+    }
     console.error("API error:", error);
     return NextResponse.json(
       { error: "Internal server error" },

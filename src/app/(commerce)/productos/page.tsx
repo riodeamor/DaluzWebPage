@@ -38,6 +38,7 @@ interface Product {
   slug: string;
   description: string;
   short_description: string;
+  info_frontal?: string | null;
   price: number;
   compare_at_price?: number;
   featured_image: string;
@@ -144,7 +145,7 @@ function ProductsContent() {
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const response = await fetch("/api/categories");
+        const response = await fetch("/api/categories?active=true");
         const data = await response.json();
         if (response.ok) {
           setCategories(data.categories);
@@ -694,6 +695,7 @@ function ProductsContent() {
                     id={product.id}
                     slug={product.slug}
                     name={product.name}
+                    infoFrontal={product.info_frontal}
                     description={
                       product.short_description || product.description
                     }

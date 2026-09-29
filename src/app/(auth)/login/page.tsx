@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Eye, EyeOff, Mail, Lock } from "lucide-react";
 import './login.css';
+import { authMessage } from "@/lib/auth/messages";
 
 const loginSchema = z.object({
   email: z.string().email("Ingresa un email válido"),
@@ -106,7 +107,7 @@ export default function LoginPage() {
           {error && (
             <Alert variant="destructive" className="login-alert">
               <AlertDescription className="login-alert-text">
-                {error.message}
+                {authMessage(error)}
               </AlertDescription>
             </Alert>
           )}

@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { usePublicConfig } from "@/hooks/usePublicConfig";
+import { useStoreCategories } from "@/hooks/useStoreCategories";
 
 const DEFAULT_CONTACT_EMAIL = "contacto@daluzconsciente.com";
 const DEFAULT_PHONE = "+54 9 351 234-4580";
@@ -64,12 +65,6 @@ const footerSections: FooterSection[] = [
     title: "Botica",
     links: [
       { name: "Ver toda la tienda", href: "/productos" },
-      { name: "Línea Umbral", href: "/categorias/linea-umbral" },
-      { name: "Línea Ecos", href: "/categorias/linea-ecos" },
-      { name: "Línea Alma Terra", href: "/categorias/linea-alma-terra" },
-      { name: "Línea Jade Ritual", href: "/categorias/linea-jade-ritual" },
-      { name: "Línea Prisma", href: "/categorias/linea-prisma" },
-      { name: "Kits de Cuidado", href: "/categorias/kits-y-experiencia" },
     ],
   },
   {
@@ -152,6 +147,11 @@ function ArrepentimientoLink({ className = "" }: { className?: string }) {
 }
 
 export default function Footer() {
+  const categories = useStoreCategories();
+  const sections = footerSections.map(section => section.title === "Botica" ? {
+    ...section,
+    links: [...section.links, ...categories.map(category => ({ name: category.name, href: `/categorias/${encodeURIComponent(category.slug)}` }))],
+  } : section);
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
   const { config: contactConfig } = usePublicConfig({
@@ -259,7 +259,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Enlaces del pie de página" className="grid min-w-0 grid-cols-2 gap-x-5 gap-y-9 border-t border-[#FFF2E9]/15 pt-8 lg:grid-cols-4 lg:gap-x-6 lg:border-0 lg:pt-0">
-            {footerSections.map((section) => <FooterColumn key={section.title} section={section} />)}
+            {sections.map((section) => <FooterColumn key={section.title} section={section} />)}
           </nav>
         </div>
         <div className="mt-8 flex justify-center lg:hidden">

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { unstable_cache } from 'next/cache';
+import { unstable_cache, revalidateTag } from 'next/cache';
 import { createServiceRoleClient } from '@/lib/supabase';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
@@ -26,10 +26,11 @@ const getCategoriesCached = unstable_cache(
 );
 
 // GET - Fetch all categories (cached)
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const categories = await getCategoriesCached();
-    return NextResponse.json({ categories });
+    const activeOnly = request.nextUrl.searchParams.get('active') === 'true';
+    return NextResponse.json({ categories: activeOnly ? categories.filter((category: any) => category.is_active === true) : categories });
   } catch (error) {
     console.error('Database error:', error);
     return NextResponse.json(
@@ -104,6 +105,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    revalidateTag('categories');
     return NextResponse.json({
       message: 'Category created successfully',
       category: data,

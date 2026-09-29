@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin, getServiceClient } from '@/lib/auth/helpers';
+import { revalidateTag } from 'next/cache';
 
 export async function GET(request: NextRequest) {
   try {
@@ -330,6 +331,7 @@ export async function PUT(request: NextRequest) {
       }
     }
 
+    revalidateTag('config');
     return NextResponse.json({ results });
   } catch (error) {
     console.error("Error in update system config API:", error);

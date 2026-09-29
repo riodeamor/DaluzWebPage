@@ -51,15 +51,6 @@ interface TiendaSidebarProps {
   className?: string;
 }
 
-const productLines = [
-  { id: "alma-terra", name: "Alma Terra" },
-  { id: "ecos", name: "Ecos" },
-  { id: "jade-ritual", name: "Jade Ritual" },
-  { id: "kits-experiencia", slug: "kits-y-experiencia", name: "Kits y Experiencia" },
-  { id: "umbral", name: "Umbral" },
-  { id: "utopica", slug: "prisma", name: "Prisma" },
-];
-
 const skinTypes = [
   { value: "dry", label: "Piel Seca" },
   { value: "oily", label: "Piel Grasa" },
@@ -198,17 +189,14 @@ export default function TiendaSidebar({
           <CardContent className="pt-0">
             <div className="space-y-2 lg:space-y-3">
               {/* Product Lines */}
-              {productLines.map((line) => (
+              {categories.map((line) => (
                 <Button
                   key={line.id}
                   variant={
                     selectedCategory === line.id ? "line-primary" : "line-ghost"
                   }
                   className="tienda-line-button w-full justify-start text-sm h-8 lg:h-9"
-                  onClick={() => {
-                    const lineSlug = "slug" in line ? line.slug : line.id;
-                    window.location.href = `/categorias/linea-${lineSlug}`;
-                  }}
+                  onClick={() => setSelectedCategory(line.id)}
                 >
                   {line.name}
                 </Button>
@@ -454,8 +442,7 @@ export default function TiendaSidebar({
                 {selectedCategory && (
                   <Badge variant="secondary" className="text-xs">
                     Categoría:{" "}
-                    {categories.find((c) => c.id === selectedCategory)?.name ||
-                      productLines.find((p) => p.id === selectedCategory)?.name}
+                    {categories.find((c) => c.id === selectedCategory)?.name}
                   </Badge>
                 )}
                 {selectedSkinType && selectedSkinType !== "all" && (

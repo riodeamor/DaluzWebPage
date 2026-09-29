@@ -12,8 +12,7 @@ import {
   Star,
   Sparkles,
   Eye,
-  Plus,
-  Minus,
+
   CreditCard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,6 +26,7 @@ interface ProductCardProps {
   slug?: string;
   name: string;
   description: string;
+  infoFrontal?: string | null;
   price: number;
   originalPrice?: number;
   category: string;
@@ -149,6 +149,7 @@ export default function ProductCard({
   slug,
   name,
   description,
+  infoFrontal,
   price,
   originalPrice,
   category,
@@ -171,7 +172,7 @@ export default function ProductCard({
   installments6Enabled = false,
 }: ProductCardProps) {
   const productHref = `/productos/${slug || id}`;
-  const [quantity, setQuantity] = useState(1);
+
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -182,11 +183,8 @@ export default function ProductCard({
   const theme = lineThemeClasses[lineTheme];
 
   const handleAddToCart = () => {
-    console.log("Add to cart clicked for product:", id, "quantity:", quantity);
     if (onAddToCart && stock > 0) {
-      onAddToCart(id, quantity);
-      // Reset quantity to 1 after adding to cart
-      setQuantity(1);
+      onAddToCart(id, 1);
     }
   };
 
@@ -436,6 +434,11 @@ export default function ProductCard({
               </Link>
 
               {/* Rating - Hidden on small screens */}
+              {infoFrontal && (
+                <p className="text-xs font-normal text-[#7D1D2B]/80 leading-relaxed break-words">
+                  {infoFrontal}
+                </p>
+              )}
               <div className="hidden sm:flex items-center gap-2">
                 <div className="flex items-center gap-0.5">
                   {renderStars(rating)}
@@ -453,13 +456,13 @@ export default function ProductCard({
                   >
                     {formatPrice(price)}
                   </span>
-                  {originalPrice && originalPrice > price && (
+                  {!!originalPrice && originalPrice > price && (
                     <span className="text-xs text-text-secondary line-through">
                       {formatPrice(originalPrice)}
                     </span>
                   )}
                 </div>
-                {originalPrice && originalPrice > price && (
+                {!!originalPrice && originalPrice > price && (
                   <div className="text-sm text-[#791010] font-semibold bg-transparent px-0 py-1 inline-block">
                     Ahorrás {formatPrice(originalPrice - price)}
                   </div>
@@ -549,68 +552,12 @@ export default function ProductCard({
 
             {/* Bottom Content - Always at bottom */}
             <div className="mt-auto pt-3 lg:pt-4 flex-shrink-0">
-              {/* Desktop Add to Cart */}
-              <div className="w-full">
-                {stock > 0 && (
-                  <div className="flex items-center gap-1 min-w-0">
-                    {/* Desktop: Compact quantity selector */}
-                    <div className="flex h-[44px] items-center border border-border rounded-md lg:rounded-lg bg-white flex-shrink-0">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-[44px] w-8 lg:w-9 p-0 hover:bg-gray-50 rounded-l-md lg:rounded-l-lg disabled:opacity-50"
-                        onClick={() => {
-                          setQuantity(Math.max(1, quantity - 1));
-                        }}
-                        disabled={quantity <= 1}
-                      >
-                        <Minus className="h-3 w-3 lg:h-4 lg:w-4" />
-                      </Button>
-                      <span className="px-2 lg:px-3 py-1 lg:py-2 text-xs lg:text-sm min-w-[2rem] lg:min-w-[2.5rem] text-center font-medium">
-                        {quantity}
-                      </span>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-[44px] w-8 lg:w-9 p-0 hover:bg-gray-50 rounded-r-md lg:rounded-r-lg disabled:opacity-50"
-                        onClick={() => {
-                          setQuantity(Math.min(stock, quantity + 1));
-                        }}
-                        disabled={quantity >= stock}
-                      >
-                        <Plus className="h-3 w-3 lg:h-4 lg:w-4" />
-                      </Button>
-                    </div>
-
-                    {/* Desktop: Add button */}
-                    <Button
-                      onClick={handleAddToCart}
-                      disabled={stock === 0}
-                      className={cn(
-                        "tienda-add-button flex-1 font-semibold shadow-md transition-all duration-300 uppercase tracking-wide",
-                        "hover:shadow-lg hover:scale-105 active:scale-95",
-                        "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                        "text-[9px] lg:text-[10px] h-[44px] px-1 lg:px-2",
-                        theme.button,
-                      )}
-                      size="sm"
-                    >
-                      <ShoppingCart className="h-3 w-3 lg:h-4 lg:w-4 mr-0.5 flex-shrink-0" />
-                      <span className="truncate">Añadir</span>
-                    </Button>
-                  </div>
-                )}
-
-                {stock === 0 && (
-                  <Button
-                    disabled
-                    variant="secondary"
-                    className="w-full opacity-60 h-9"
-                    size="sm"
-                  >
-                    Sin Stock
-                  </Button>
-                )}
+              <div className="flex items-center gap-2 min-w-0">
+                <Link href={productHref} className="inline-flex items-center justify-center flex-1 min-w-0 h-[44px] px-2 text-[10px] rounded-md border border-[#7D1D2B] text-[#7D1D2B] bg-transparent hover:bg-[#7D1D2B]/10">VER ALKIMYA</Link>
+                <Button onClick={handleAddToCart} disabled={stock <= 0} className="flex-1 min-w-0 h-[44px] px-2 text-[10px] bg-[#7D1D2B] hover:bg-[#7D1D2B]/90 text-white">
+                  <ShoppingCart className="h-3 w-3 mr-1 shrink-0" />
+                  {stock > 0 ? "AÑADIR" : "SIN STOCK"}
+                </Button>
               </div>
             </div>
           </div>
@@ -642,6 +589,11 @@ export default function ProductCard({
               </Link>
 
               {/* Rating - Compact, Left aligned */}
+              {infoFrontal && (
+                <p className="text-xs font-normal text-[#7D1D2B]/80 leading-relaxed break-words">
+                  {infoFrontal}
+                </p>
+              )}
               <div className="flex items-center gap-1 text-left">
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }, (_, index) => (
@@ -665,7 +617,7 @@ export default function ProductCard({
                   <span className={cn("text-base font-bold", theme.accent)}>
                     {formatPrice(price)}
                   </span>
-                  {originalPrice && originalPrice > price && (
+                  {!!originalPrice && originalPrice > price && (
                     <span className="text-xs text-text-secondary line-through">
                       {formatPrice(originalPrice)}
                     </span>
@@ -757,32 +709,13 @@ export default function ProductCard({
 
             {/* Bottom Content - Always at bottom */}
             <div className="mt-auto pt-2 flex-shrink-0">
-              {stock > 0 ? (
-                <Button
-                  onClick={handleAddToCart}
-                  disabled={stock === 0}
-                  className={cn(
-                    "tienda-add-button w-full font-semibold shadow-md transition-all duration-300",
-                    "hover:shadow-lg hover:scale-105 active:scale-95",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100",
-                    "text-xs h-[44px]",
-                    theme.button,
-                  )}
-                  size="sm"
-                >
-                  <ShoppingCart className="h-3 w-3 mr-1" />
-                  Agregar
+              <div className="flex items-center gap-2 min-w-0">
+                <Link href={productHref} className="inline-flex items-center justify-center flex-1 min-w-0 h-[44px] px-2 text-[10px] rounded-md border border-[#7D1D2B] text-[#7D1D2B] bg-transparent hover:bg-[#7D1D2B]/10">VER</Link>
+                <Button onClick={handleAddToCart} disabled={stock <= 0} className="flex-1 min-w-0 h-[44px] px-2 text-[10px] bg-[#7D1D2B] hover:bg-[#7D1D2B]/90 text-white">
+                  <ShoppingCart className="h-3 w-3 mr-1 shrink-0" />
+                  {stock > 0 ? "AÑADIR" : "SIN STOCK"}
                 </Button>
-              ) : (
-                <Button
-                  disabled
-                  variant="secondary"
-                  className="w-full opacity-60 h-8"
-                  size="sm"
-                >
-                  Sin Stock
-                </Button>
-              )}
+              </div>
             </div>
           </div>
         </CardContent>

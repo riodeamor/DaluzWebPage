@@ -45,6 +45,7 @@ import { ReviewForm } from "@/components/ui/reviews/ReviewForm";
 import { StarDisplay } from "@/components/ui/reviews/StarRating";
 import { ArrowLeftSVG, ArrowRightSVG } from "@/components/svg/SVGComponents";
 import "./product-detail.css";
+import { useReviewsEnabled } from "@/hooks/useReviewsEnabled";
 
 interface ProductVariant {
   id: string;
@@ -111,6 +112,8 @@ interface Product {
 }
 
 export default function ProductDetailPage() {
+  const reviewsEnabled = useReviewsEnabled();
+  const [activeTab, setActiveTab] = useState("description");
   const params = useParams();
   const { addItem } = useCart();
   const { user } = useAuthContext();
@@ -675,7 +678,7 @@ export default function ProductDetailPage() {
                 </div>
 
                 {/* Badges */}
-                {product.compare_at_price &&
+                {!!product.compare_at_price &&
                   product.compare_at_price > currentPrice && (
                     <Badge className="absolute top-4 left-4 bg-red-500 text-white">
                       -
@@ -850,7 +853,7 @@ export default function ProductDetailPage() {
                                 : ""}
                         </Badge>
                       )}
-                    {product.compare_at_price &&
+                    {!!product.compare_at_price &&
                       product.compare_at_price > currentPrice && (
                         <Badge
                           className="absolute top-4 bg-red-500 text-white"
@@ -920,7 +923,7 @@ export default function ProductDetailPage() {
               </div>
 
               {/* Rating */}
-              <div className="flex items-center gap-2 mt-2">
+              {reviewsEnabled && <div className="flex items-center gap-2 mt-2">
                 <div className="flex">
                   {Array.from({ length: 5 }, (_, i) => {
                     const rating = product?.averageRating || 0;
@@ -942,7 +945,7 @@ export default function ProductDetailPage() {
                   ({product?.reviewCount || 0}{" "}
                   {product?.reviewCount === 1 ? "reseña" : "reseñas"})
                 </span>
-              </div>
+              </div>}
             </div>
 
             {/* Price */}
@@ -951,7 +954,7 @@ export default function ProductDetailPage() {
                 <span className="text-3xl font-bold" style={{ color: "#97000D" }}>
                   ${currentPrice.toLocaleString("es-AR")}
                 </span>
-                {product.compare_at_price &&
+                {!!product.compare_at_price &&
                   product.compare_at_price > currentPrice && (
                     <span className="text-lg text-tierra-media line-through">
                       ${product.compare_at_price.toLocaleString("es-AR")}
@@ -961,8 +964,7 @@ export default function ProductDetailPage() {
               <p className="text-sm text-tierra-media">
                 Precio en pesos argentinos
               </p>
-              {(product.installments_3_enabled ||
-                product.installments_6_enabled) && (
+              {product.installments_3_enabled && (
                 <div className="flex flex-col gap-2 mt-2">
                   {product.installments_3_enabled && (
                     <div
@@ -980,29 +982,14 @@ export default function ProductDetailPage() {
                       </span>
                     </div>
                   )}
-                  {product.installments_6_enabled && (
-                    <div
-                      className="flex items-center gap-3 px-3 py-2 rounded-lg border whitespace-nowrap"
-                      style={{
-                        backgroundColor: "#ECFDF5",
-                        borderColor: "#A7F3D0",
-                        color: "#15803D",
-                      }}
-                    >
-                      <CreditCard className="h-5 w-5 flex-shrink-0" />
-                      <span className="text-sm font-semibold">
-                        6 cuotas sin interés de $
-                        {Math.round(currentPrice / 6).toLocaleString("es-AR")}
-                      </span>
-                    </div>
-                  )}
+
                 </div>
               )}
               {/* Discount prices for transfer/cash payments */}
-              {(product.discount_transfer_percent ||
-                product.discount_cash_percent) && (
+              {((product.discount_transfer_percent ?? 0) > 0 ||
+                (product.discount_cash_percent ?? 0) > 0) && (
                   <div className="flex flex-wrap gap-3 mt-2">
-                    {product.discount_transfer_percent &&
+                    {!!product.discount_transfer_percent &&
                       product.discount_transfer_percent > 0 && (
                         <div
                           className="px-3 py-2 rounded-lg"
@@ -1029,7 +1016,7 @@ export default function ProductDetailPage() {
                           </p>
                         </div>
                       )}
-                    {product.discount_cash_percent &&
+                    {!!product.discount_cash_percent &&
                       product.discount_cash_percent > 0 && (
                         <div
                           className="px-3 py-2 rounded-lg"
@@ -1058,10 +1045,7 @@ export default function ProductDetailPage() {
                       )}
                   </div>
                 )}
-              {/* Installments info */}
-              <p className="text-xs text-tierra-media mt-1">
-                Hasta 12 cuotas con tarjeta
-              </p>
+
             </div>
 
             {/* Variants */}
@@ -1235,7 +1219,7 @@ export default function ProductDetailPage() {
 
         {/* Product Details Tabs */}
         <div className="mt-12">
-          <Tabs defaultValue="description" className="w-full">
+          <Tabs value={!reviewsEnabled && activeTab === "reviews" ? "description" : activeTab} onValueChange={setActiveTab} className="w-full">
             {/* Desktop Tabs */}
             <TabsList
               className="hidden lg:grid w-full grid-cols-5 bg-white/50 backdrop-blur-sm border"
@@ -1297,7 +1281,7 @@ export default function ProductDetailPage() {
               >
                 Detalles
               </TabsTrigger>
-              <TabsTrigger
+              {reviewsEnabled && <TabsTrigger
                 value="reviews"
                 className="data-[state=active]:text-white hover:opacity-80 transition-all duration-300"
                 style={{
@@ -1310,7 +1294,7 @@ export default function ProductDetailPage() {
                 }}
               >
                 Reseñas
-              </TabsTrigger>
+              </TabsTrigger>}
             </TabsList>
 
             {/* Mobile Tabs */}
@@ -1374,7 +1358,7 @@ export default function ProductDetailPage() {
               >
                 Detalles
               </TabsTrigger>
-              <TabsTrigger
+              {reviewsEnabled && <TabsTrigger
                 value="reviews"
                 className="data-[state=active]:text-white hover:opacity-80 transition-all duration-300 flex-shrink-0 whitespace-nowrap"
                 style={{
@@ -1387,7 +1371,7 @@ export default function ProductDetailPage() {
                 }}
               >
                 Reseñas
-              </TabsTrigger>
+              </TabsTrigger>}
             </TabsList>
 
             <TabsContent value="description" className="mt-6">
@@ -1728,7 +1712,7 @@ export default function ProductDetailPage() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="reviews" className="mt-6">
+            {reviewsEnabled && <TabsContent value="reviews" className="mt-6">
               <div className="space-y-6">
                 {/* Review Form */}
                 {currentUserId && (
@@ -1802,7 +1786,7 @@ export default function ProductDetailPage() {
                   onDeleteReview={handleDeleteReview}
                 />
               </div>
-            </TabsContent>
+            </TabsContent>}
           </Tabs>
         </div>
 

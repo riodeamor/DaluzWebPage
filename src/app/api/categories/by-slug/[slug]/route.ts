@@ -13,10 +13,12 @@ export async function GET(
     const supabase = await createClient();
     const { slug } = params;
 
+    // Preserve the old Kits URL while following the current slug of its stable record.
+    const legacyKits = slug === 'linea-kits-y-experiencia';
     const { data: category, error } = await supabase
       .from('categories' as any)
       .select('*')
-      .eq('slug', slug)
+      .eq(legacyKits ? 'id' : 'slug', legacyKits ? '2196c12a-3e6a-42b1-b137-770837530f46' : slug)
       .eq('is_active', true)
       .single();
 
@@ -42,4 +44,4 @@ export async function GET(
       { status: 500 }
     );
   }
-} 
+}

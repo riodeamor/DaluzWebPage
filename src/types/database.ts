@@ -209,6 +209,7 @@ export type Database = {
           name: string;
           description: string | null;
           short_description: string | null;
+          info_frontal: string | null;
           price: number;
           compare_at_price: number | null;
           cost_price: number | null;
@@ -268,6 +269,7 @@ export type Database = {
           name: string;
           description?: string | null;
           short_description?: string | null;
+          info_frontal?: string | null;
           price: number;
           compare_at_price?: number | null;
           cost_price?: number | null;
@@ -326,6 +328,7 @@ export type Database = {
           name?: string;
           description?: string | null;
           short_description?: string | null;
+          info_frontal?: string | null;
           price?: number;
           compare_at_price?: number | null;
           cost_price?: number | null;
