@@ -3393,8 +3393,9 @@ footer .footer-social-icon {
   padding: 8px 12px;
   border: 1px solid rgba(255, 242, 233, .25);
   border-radius: 0 13px;
-  background: rgba(74, 13, 16, .84);
+  background: linear-gradient(120deg, #4A0D10 0%, #7D1D2B 58%, #910A23 100%);
   color: #FFF2E9;
+  box-shadow: 0 5px 12px rgba(48, 4, 12, .28), inset 0 1px 0 rgba(255, 242, 233, .12);
 }
 .tienda-page .tienda-nav-item:hover {
   background: #B3202C;
