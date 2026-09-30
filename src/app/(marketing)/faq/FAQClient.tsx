@@ -84,7 +84,7 @@ function CollapsibleFAQ({
           aria-expanded={isOpen}
         >
           <div className="flex items-center justify-between gap-4">
-            <h3 className="font-heading text-lg font-medium normal-case text-faq-ink md:text-xl">
+            <h3 className="font-heading text-lg font-semibold text-[#051341] md:text-xl">
               {question}
             </h3>
             <motion.div
@@ -108,7 +108,7 @@ function CollapsibleFAQ({
             >
               <CardContent className="px-6 pb-6 pt-0">
                 <div
-                  className="font-body text-faq-ink prose prose-sm max-w-none prose-headings:font-heading prose-headings:text-faq-ocean prose-p:text-faq-ink prose-li:text-faq-ink prose-strong:text-faq-ocean prose-a:text-faq-ocean"
+                  className="font-body text-[#16345F] prose prose-sm max-w-none prose-headings:font-heading prose-headings:text-[#051341] prose-p:text-[#16345F] prose-li:text-[#16345F] prose-strong:text-[#051341] prose-a:text-[#005080]"
                   dangerouslySetInnerHTML={{ __html: answer }}
                 />
               </CardContent>

@@ -41,7 +41,7 @@ export default function AvatarUpload({
   // Size configurations
   const sizeConfig = {
     sm: { container: 'w-16 h-16', button: 'h-6 w-6 p-0', icon: 'h-3 w-3' },
-    md: { container: 'w-24 h-24', button: 'h-8 w-8 p-0', icon: 'h-4 w-4' },
+    md: { container: 'w-20 h-20', button: 'h-8 w-8 p-0', icon: 'h-4 w-4' },
     lg: { container: 'w-32 h-32', button: 'h-10 w-10 p-0', icon: 'h-5 w-5' }
   };
 
@@ -144,7 +144,7 @@ export default function AvatarUpload({
           <img
             src={currentImage}
             alt="Avatar"
-            className={`${config.container} rounded-full object-cover`}
+            className={`${config.container} rounded-full object-cover object-top`}
           />
         ) : (
           <User className={`${size === 'sm' ? 'h-8 w-8' : size === 'md' ? 'h-12 w-12' : 'h-16 w-16'} text-azul-profundo`} />
@@ -219,4 +219,4 @@ export default function AvatarUpload({
       )}
     </div>
   );
-} 
+}

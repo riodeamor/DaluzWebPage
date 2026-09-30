@@ -106,7 +106,7 @@ const PLUS_SINERGIA_ITEMS = [
 
 export default function TesorosDaLuzPage() {
   return (
-    <div className="tesoros-page min-h-screen">
+    <div className="tesoros-page tesoros-watermark min-h-screen">
       <AlkimyaWaveHeader title="Tesoros Da Luz" />
 
       <div className="tesoros-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10 md:space-y-14">

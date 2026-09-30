@@ -102,6 +102,7 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [period, setPeriod] = useState("30");
+  const [compactCustomerAxis, setCompactCustomerAxis] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
 
   // Chart type selectors
@@ -122,6 +123,23 @@ export default function AnalyticsPage() {
   useEffect(() => {
     fetchAnalytics();
   }, [period]);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 640px)");
+    const update = () => setCompactCustomerAxis(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
+
+  const customerDateTicks = analytics?.trends.customers
+    .filter((point, index, points) => {
+      if (points.length <= 7) return true;
+      const day = new Date(point.date).getUTCDate();
+      const step = points.length > 60 ? (compactCustomerAxis ? 30 : 15) : (compactCustomerAxis ? 10 : 5);
+      return day === 1 || day % step === 0;
+    })
+    .map((point) => point.date);
 
   const fetchAnalytics = async () => {
     try {
@@ -430,7 +448,8 @@ export default function AnalyticsPage() {
                       }
                       size="sm"
                       onClick={() => setCustomersChartType("area")}
-                      className="h-7 px-3 text-xs"
+                      aria-pressed={customersChartType === "area"}
+                      className={`customer-chart-toggle h-7 px-3 text-xs ${customersChartType === "area" ? "!bg-[#051341] !text-[#FFF2E9]" : "!border-[#051341]/30 !text-[#051341]"}`}
                       title="Vista de Área"
                     >
                       <Activity className="h-3 w-3 mr-1" />
@@ -442,7 +461,8 @@ export default function AnalyticsPage() {
                       }
                       size="sm"
                       onClick={() => setCustomersChartType("column")}
-                      className="h-7 px-3 text-xs"
+                      aria-pressed={customersChartType === "column"}
+                      className={`customer-chart-toggle h-7 px-3 text-xs ${customersChartType === "column" ? "!bg-[#051341] !text-[#FFF2E9]" : "!border-[#051341]/30 !text-[#051341]"}`}
                       title="Vista de Columnas"
                     >
                       <BarChart3 className="h-3 w-3 mr-1" />
@@ -456,7 +476,8 @@ export default function AnalyticsPage() {
                   <AreaChartRecharts
                     data={analytics.trends.customers}
                     title="Crecimiento de Clientes"
-                    color="#D4A853"
+                    xAxisTicks={customerDateTicks}
+                    color="#0A1D4A"
                     showGrid={true}
                     formatValue={(val: number) => Math.round(val).toString()}
                   />
@@ -464,7 +485,8 @@ export default function AnalyticsPage() {
                   <ColumnChartRecharts
                     data={analytics.trends.customers}
                     title="Nuevos Clientes por Período"
-                    color="#D4A853"
+                    xAxisTicks={customerDateTicks}
+                    color="#0A1D4A"
                     formatValue={(val: number) => Math.round(val).toString()}
                   />
                 )}
@@ -837,7 +859,8 @@ export default function AnalyticsPage() {
                       }
                       size="sm"
                       onClick={() => setCustomersChartType("area")}
-                      className="h-7 px-3 text-xs"
+                      aria-pressed={customersChartType === "area"}
+                      className={`customer-chart-toggle h-7 px-3 text-xs ${customersChartType === "area" ? "!bg-[#051341] !text-[#FFF2E9]" : "!border-[#051341]/30 !text-[#051341]"}`}
                     >
                       <Activity className="h-3 w-3 mr-1" />
                       Área
@@ -848,7 +871,8 @@ export default function AnalyticsPage() {
                       }
                       size="sm"
                       onClick={() => setCustomersChartType("column")}
-                      className="h-7 px-3 text-xs"
+                      aria-pressed={customersChartType === "column"}
+                      className={`customer-chart-toggle h-7 px-3 text-xs ${customersChartType === "column" ? "!bg-[#051341] !text-[#FFF2E9]" : "!border-[#051341]/30 !text-[#051341]"}`}
                     >
                       <BarChart3 className="h-3 w-3 mr-1" />
                       Columnas
@@ -861,7 +885,8 @@ export default function AnalyticsPage() {
                   <AreaChartRecharts
                     data={analytics.trends.customers}
                     title="Crecimiento de Clientes"
-                    color="#D4A853"
+                    xAxisTicks={customerDateTicks}
+                    color="#0A1D4A"
                     showGrid={true}
                     formatValue={(val: number) => Math.round(val).toString()}
                   />
@@ -869,7 +894,8 @@ export default function AnalyticsPage() {
                   <ColumnChartRecharts
                     data={analytics.trends.customers}
                     title="Nuevos Clientes por Período"
-                    color="#D4A853"
+                    xAxisTicks={customerDateTicks}
+                    color="#0A1D4A"
                     formatValue={(val: number) => Math.round(val).toString()}
                   />
                 )}

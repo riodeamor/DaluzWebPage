@@ -1,28 +1,19 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface TiendaSettings {
-  heroImage?: {
-    asset?: {
-      url?: string;
-    };
-    alt?: string;
-  };
+  heroImage?: { asset?: { url?: string }; alt?: string };
   heroTitle?: string;
   heroSubtitle?: string;
 }
 
+const DEFAULT_IMAGE = "/images/hero-botanical-background.jpg";
+
 interface TiendaHeroProps {
   className?: string;
 }
-
-// Default values
-const DEFAULT_IMAGE = "/images/hero-tienda.jpg";
-const DEFAULT_TITLE = "TIENDA DA LUZ ALKIMYA";
-const DEFAULT_SUBTITLE =
-  "Descubre nuestra colección completa de biocosmética artesanal";
 
 export default function TiendaHero({ className }: TiendaHeroProps) {
   const [settings, setSettings] = useState<TiendaSettings>({});
@@ -50,67 +41,45 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
 
   // Use Sanity values or defaults
   const heroImageUrl = settings.heroImage?.asset?.url || DEFAULT_IMAGE;
-  const heroTitle = settings.heroTitle || DEFAULT_TITLE;
-  const heroSubtitle = settings.heroSubtitle || DEFAULT_SUBTITLE;
 
   return (
-    <div
+    <section
       className={cn(
-        "relative h-[350px] md:h-[300px] lg:h-[400px] overflow-hidden",
-        "flex items-center justify-center group",
-        "bg-cover bg-center bg-no-repeat",
+        "relative flex h-[350px] items-center justify-center overflow-hidden bg-[#FAF7F2] px-4 text-center md:h-[300px] lg:h-[400px]",
         className,
       )}
+      aria-labelledby="tienda-title"
     >
-      {/* Background Image with Filter */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-mobile-clip"
-        style={{
-          backgroundImage: `url('${heroImageUrl}')`,
-          filter: "brightness(0.6) saturate(1.1) contrast(1.1)",
-        }}
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url("${heroImageUrl}")` }}
+        aria-hidden="true"
       />
-
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-black/5 hero-mobile-clip" />
-
-      {/* Shimmer Effect */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12"></div>
-      </div>
-
-      {/* Content - Higher z-index to be above filter */}
-      <div className="relative z-20 text-center px-4">
+      <div className="absolute inset-0 bg-[#0A1D4A]/45" aria-hidden="true" />
+      <div className="relative z-10 mx-auto max-w-2xl">
+        <span
+          className="mx-auto mb-3 block h-10 w-10 bg-[#FFF2E9] md:h-12 md:w-12"
+          style={{
+            mask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
+            WebkitMask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
+          }}
+          role="img"
+          aria-label="Isotipo Alkimya Da Luz"
+        />
         <h1
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-none tracking-wider drop-shadow-2xl text-white mb-6 group-hover:drop-shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-all duration-700 group-hover:text-yellow-100"
-          style={{
-            fontFamily: "Playfair Display, var(--font-playfair), serif",
-            fontWeight: 600,
-            fontStyle: "normal",
-          }}
+          id="tienda-title"
+          className="font-title text-3xl font-normal uppercase tracking-[0.15em] text-[#FFF2E9] md:text-5xl"
+          style={{ fontFamily: "var(--font-cormorant), serif" }}
         >
-          {heroTitle}
+          TIENDA
         </h1>
-        <p
-          className="text-lg sm:text-xl md:text-2xl text-white font-body max-w-3xl mx-auto leading-relaxed drop-shadow-lg"
-          style={{
-            fontFamily: "EB Garamond, var(--font-text), serif",
-            fontWeight: "normal",
-            fontStyle: "normal",
-            letterSpacing: "1.25px",
-          }}
-        >
-          {heroSubtitle}
+        <p className="mt-1 mb-4 font-sans text-xs font-medium uppercase tracking-[0.25em] text-[#FFF2E9]/80 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+          Alkimya Da Luz
+        </p>
+        <p className="mx-auto max-w-xl font-sans text-xs leading-relaxed text-[#FFF2E9]/90 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+          Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario. Cada alquimya es un puente hacia la soberanía de tu cuerpo.
         </p>
       </div>
-
-      {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-16 h-16 opacity-10">
-        <div className="w-full h-full bg-azul-profundo rounded-full animate-pulse" />
-      </div>
-      <div className="absolute bottom-4 left-4 w-12 h-12 opacity-10">
-        <div className="w-full h-full bg-dorado rounded-full animate-pulse delay-1000" />
-      </div>
-    </div>
+    </section>
   );
 }

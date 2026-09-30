@@ -3,6 +3,7 @@
 import { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuthContext } from "@/contexts/AuthContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -18,7 +19,6 @@ import {
   LogOut,
   Loader2,
   Shield,
-  Gift,
 } from "lucide-react";
 
 interface AccountLayoutProps {
@@ -72,7 +72,8 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
     {
       href: "/mis-tesoros",
       label: "Mis Tesoros",
-      icon: Gift,
+      icon: null,
+      iconSrc: "/assets/vectores/mandala-experiencias.svg",
       description: "Contenido exclusivo de tus compras",
     },
     {
@@ -83,9 +84,10 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
     },
     {
       href: "/mi-membresia",
-      label: "Mi Membresía",
-      icon: Sparkles,
-      description: "Progreso del programa",
+      label: "Tu Sendero",
+      icon: null,
+      iconSrc: "/assets/vectores/gota-cristal-facetada.svg",
+      description: "Tus experiencias en Da Luz",
       badge: hasActiveMembership ? "Activa" : undefined,
     },
     {
@@ -100,14 +102,21 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <div className="account-area min-h-screen">
+        <div
+          className="account-area min-h-screen"
+          style={{
+            backgroundColor: "var(--admin-bg-tertiary)",
+            background: "#FAF7F2",
+            backgroundImage: "none",
+          }}
+        >
           <div className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
               {/* Sidebar Navigation */}
-              <div className="lg:col-span-1">
+              <div className="hidden lg:block lg:col-span-1">
                 <Card
-                  className="account-sidebar sticky top-24"
-                  style={{ backgroundColor: "#FAF7F2" }}
+                  className="sticky top-24"
+                  style={{ backgroundColor: "#FFFFFF", borderColor: "rgba(10,29,74,0.12)" }}
                 >
                   <CardContent className="p-6">
                     {/* User Info */}
@@ -143,10 +152,10 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                           href={item.href as any}
                           className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#005080]/10 transition-colors group"
                         >
-                          <item.icon className="h-5 w-5 text-[#16345F] group-hover:text-azul-profundo" />
+                          {item.icon ? <item.icon className="h-5 w-5 text-[#0A1D4A]" /> : <Image src={item.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
-                              <span className="font-medium text-azul-profundo group-hover:text-azul-profundo/80">
+                              <span className="font-medium text-[#0A1D4A] text-lg" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                                 {item.label}
                               </span>
                               {item.badge && (
@@ -198,7 +207,17 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
               </div>
 
               {/* Main Content */}
-              <div className="lg:col-span-3">{children}</div>
+              <div className="lg:col-span-3 min-w-0">
+                <nav aria-label="Cuenta" className="lg:hidden flex gap-2 overflow-x-auto pb-4 mb-4">
+                  {navigationItems.map((item) => (
+                    <Link key={item.href} href={item.href as any} className="shrink-0 inline-flex items-center gap-2 border border-[#005080]/20 px-3 py-2 text-xs font-medium text-[#051341] bg-white">
+                      {item.icon ? <item.icon className="h-4 w-4 text-[#0A1D4A]" /> : <Image src={item.iconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain" />}
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+                {children}
+              </div>
             </div>
           </div>
         </div>

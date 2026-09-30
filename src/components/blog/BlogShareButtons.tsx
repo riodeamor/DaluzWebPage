@@ -114,7 +114,7 @@ export function BlogShareButtons({
       <div className="flex justify-center gap-3 flex-wrap">
         <Button
           onClick={handleNativeShare}
-          className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-secondary)] text-white font-caption uppercase tracking-wider px-5 py-2.5"
+          className="dl-button-primary font-caption uppercase tracking-wider px-5 py-2.5"
           style={{ borderRadius: "0 12px" }}
         >
           <Share2 className="h-4 w-4 mr-2" />
@@ -123,7 +123,7 @@ export function BlogShareButtons({
         <Button
           variant="outline"
           onClick={handleCopyLink}
-          className="font-caption uppercase tracking-wider px-5 py-2.5 border-[var(--color-brand-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)] hover:text-white"
+          className="dl-button-primary font-caption uppercase tracking-wider px-5 py-2.5"
           style={{ borderRadius: "0 12px" }}
         >
           <Link2 className="h-4 w-4 mr-2" />
@@ -134,7 +134,7 @@ export function BlogShareButtons({
         <Button
           variant="outline"
           onClick={handleSaveForLater}
-          className={`font-caption uppercase tracking-wider px-6 py-3 transition-colors ${
+          className={`dl-button-primary font-caption uppercase tracking-wider px-6 py-3 transition-colors ${
             isSaved
               ? "border-[var(--color-brand-primary)] bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]"
               : "border-[var(--color-brand-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)] hover:text-white"

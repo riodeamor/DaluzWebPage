@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" width="39.99cm" height="34.08cm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1133.62 966.16">
+  <defs>
+    <filter id="outer-glow-1" x="138.15" y="69.66" width="826.8" height="826.8" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="0"/>
+      <feGaussianBlur result="blur" stdDeviation="68.03"/>
+      <feFlood flood-color="#92c468" flood-opacity=".75"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="Degradado_sin_nombre_19" data-name="Degradado sin nombre 19" x1="870.55" y1="513.05" x2="349.17" y2="350.01" gradientUnits="userSpaceOnUse">
+      <stop offset=".06" stop-color="#0b3123"/>
+      <stop offset=".15" stop-color="#0c412d"/>
+      <stop offset=".42" stop-color="#126e49"/>
+      <stop offset=".66" stop-color="#158f5d"/>
+      <stop offset=".86" stop-color="#18a36a"/>
+      <stop offset="1" stop-color="#19ab6f"/>
+    </linearGradient>
+  </defs>
+  <g style="filter: url(#outer-glow-1);">
+    <polygon points="346.03 483.08 509.97 535.94 551.49 277.62 346.03 483.08" style="fill: #056545; stroke: #cce3c0; stroke-linejoin: round; stroke-width: 7.45px;"/>
+    <polygon points="509.97 535.94 756.95 483.08 551.49 277.62 509.97 535.94" style="fill: url(#Degradado_sin_nombre_19); stroke: #cce3c0; stroke-linejoin: round; stroke-width: 7.45px;"/>
+    <polygon points="509.97 535.94 551.49 688.54 346.03 483.08 509.97 535.94" style="fill: #0b5239; stroke: #cce3c0; stroke-linejoin: round; stroke-width: 7.45px;"/>
+    <polygon points="509.97 535.94 756.95 483.08 551.49 688.54 509.97 535.94" style="fill: #0b3123; stroke: #cce3c0; stroke-linejoin: round; stroke-width: 7.45px;"/>
+  </g>
+</svg>

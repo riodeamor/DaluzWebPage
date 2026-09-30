@@ -156,7 +156,7 @@ export default async function HomePage() {
 
       {/* ✨ ALKIMYA DA LUZ SECTION */}
       <section className="relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-neurocosmetica" style={{ minHeight: "550px", marginTop: "-4px" }}>
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }} />
+        <div className="alkimya-section-background absolute inset-0 xl:hidden" />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.19 / 1080.18" }}>
           <AlkimyaNeurocosmeticaBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
@@ -166,8 +166,8 @@ export default async function HomePage() {
           <div className="lg:mb-4 xl:mb-0"></div>
           <div className="w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
           
-          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
-            ALKIMYA DA LUZ
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] font-normal tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+            Alkimya Da Luz
           </h2>
           
           <div className="w-32 h-0.5 mx-auto mt-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
@@ -242,8 +242,8 @@ export default async function HomePage() {
         <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full py-12 pt-8 sm:pt-10 md:pt-12 lg:pt-6">
           <div className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-8">
             <div className="w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-white uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
-              VALOR Y CONFIANZA DA LUZ
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-white font-normal tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+              Valor y Confianza Da Luz
             </h2>
             <div className="w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           </div>
@@ -414,10 +414,10 @@ export default async function HomePage() {
             style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }}
           />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#FFF2E9" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight font-normal tracking-[0.05em]"
+            style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
           >
-            HONRAMOS NUESTRAS RAÍCES
+            Honramos Nuestras Raíces
           </h2>
           <div
             className="w-32 h-0.5 mx-auto mt-4 sm:mt-5 mb-4 sm:mb-5"
@@ -508,8 +508,8 @@ export default async function HomePage() {
 
   <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
     <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-    <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]" style={{ color: "#FFF2E9" }}>
-      BLOG DA LUZ
+    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight font-normal tracking-[0.05em]" style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+      Blog Da Luz
     </h2>
     <div
       className="w-32 h-0.5 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-5 md:mb-6"
@@ -715,10 +715,10 @@ export default async function HomePage() {
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">
           <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#FFFFFF" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight font-normal tracking-[0.05em]"
+            style={{ color: "#FFFFFF", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
           >
-            GALERÍA
+            Galería
           </h2>
           <div className="w-24 sm:w-32 h-0.5 mx-auto mt-3 mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
         </div>
@@ -764,10 +764,10 @@ export default async function HomePage() {
       <div className="container mx-auto max-w-7xl text-left pl-6 sm:pl-12 md:pl-16 pb-6 sm:pb-8 pt-6 relative z-20">
         <div className="w-24 sm:w-32 h-0.5 mb-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
         <h2
-          className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em] not-italic"
-          style={{ color: "#FFF2E9", fontStyle: "normal" }}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight font-normal tracking-[0.05em]"
+          style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
         >
-          CONTACTO
+          Contacto
         </h2>
         <div className="w-24 sm:w-32 h-0.5 mt-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
       </div>

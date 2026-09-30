@@ -48,68 +48,37 @@ interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-// Admin navigation items - will be populated dynamically
-const createNavigationItems = (ordersCount?: number) => [
+// This navigation is shared by the desktop sidebar and the mobile sheet.
+const createNavigationGroups = (ordersCount?: number) => [
   {
-    href: "/admin",
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    description: "Visión general y KPIs",
+    title: "Tienda",
+    items: [
+      { href: "/admin/orders", label: "Pedidos", icon: ShoppingCart, description: "Gestión de pedidos", badge: ordersCount !== undefined ? ordersCount.toString() : undefined },
+      { href: "/admin/products", label: "Productos", icon: Package, description: "Catálogo e inventario" },
+      { href: "/admin/categories", label: "Categorías", icon: Tag, description: "Gestión de categorías" },
+      { href: "/admin/customers", label: "Clientes", icon: Users, description: "Gestión de clientes" },
+    ],
   },
   {
-    href: "/admin/orders",
-    label: "Pedidos",
-    icon: ShoppingCart,
-    description: "Gestión de pedidos",
-    badge: ordersCount !== undefined ? ordersCount.toString() : undefined,
+    title: "Contenido",
+    items: [
+      { href: "/admin/blogs", label: "Blogs", icon: FileText, description: "Gestión de artículos del blog" },
+      { href: "/admin/reviews", label: "Reseñas", icon: MessageSquare, description: "Moderación de reseñas" },
+    ],
   },
   {
-    href: "/admin/products",
-    label: "Productos",
-    icon: Package,
-    description: "Catálogo e inventario",
+    title: "Métricas",
+    items: [
+      { href: "/admin", label: "Dashboard", icon: LayoutDashboard, description: "Visión general y KPIs" },
+      { href: "/admin/analytics", label: "Analíticas", icon: BarChart3, description: "Reportes y estadísticas" },
+    ],
   },
   {
-    href: "/admin/categories",
-    label: "Categorías",
-    icon: Tag,
-    description: "Gestión de categorías",
-  },
-  {
-    href: "/admin/reviews",
-    label: "Reseñas",
-    icon: MessageSquare,
-    description: "Moderación de reseñas",
-  },
-  {
-    href: "/admin/blogs",
-    label: "Blogs",
-    icon: FileText,
-    description: "Gestión de artículos del blog",
-  },
-  {
-    href: "/admin/customers",
-    label: "Clientes",
-    icon: Users,
-    description: "Gestión de clientes",
-  },
-  {
-    href: "/admin/analytics",
-    label: "Analíticas",
-    icon: BarChart3,
-    description: "Reportes y estadísticas",
-  },
-  {
-    href: "/admin/admin-users",
-    label: "Administradores",
-    icon: Users,
-    description: "Gestión de usuarios admin",
-  },
-  {
-    href: "/admin/system",
-    label: "Sistema",
-    icon: Server,
-    description: "Administración del sistema",
+    title: "Configuración",
+    items: [
+      { href: "/admin/system", label: "Sistema", icon: Server, description: "Administración del sistema" },
+      { href: "/admin/admin-users", label: "Administradores", icon: Users, description: "Gestión de usuarios admin" },
+    ],
   },
 ];
 
@@ -404,7 +373,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <div className="flex items-center space-x-3">
             <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" aria-label="Abrir menú de administración">
                   <Menu
                     className="h-5 w-5"
                     style={{ color: "var(--admin-text-inverse)" }}
@@ -430,7 +399,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
           <div className="admin-header-actions">
             <AdminNotificationDropdown />
-            <Button variant="ghost" size="icon" onClick={handleSignOut}>
+            <Button variant="ghost" size="icon" onClick={handleSignOut} aria-label="Cerrar sesión">
               <LogOut
                 className="h-5 w-5"
                 style={{ color: "var(--admin-text-inverse)" }}
@@ -626,7 +595,7 @@ function AdminSidebar({
                 </span>
                 <span
                   className="font-medium"
-                  style={{ color: "var(--admin-accent-primary)" }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   {formatCurrency(stats.revenue)}
                 </span>
@@ -639,7 +608,7 @@ function AdminSidebar({
                 </span>
                 <span
                   className="font-medium"
-                  style={{ color: "var(--admin-accent-tertiary)" }}
+                  style={{ color: "#F4CBA4" }}
                 >
                   {stats.lowStock}
                 </span>
@@ -661,7 +630,11 @@ function AdminSidebar({
             </Link>
           </li>
 
-          {createNavigationItems(stats.totalOrders).map((item) => {
+          {createNavigationGroups(stats.totalOrders).map((group) => (
+            <li key={group.title} className="admin-sidebar-nav-section">
+              <h2 className="admin-sidebar-nav-section-title">{group.title}</h2>
+              <ul role="list" className="admin-sidebar-nav-items">
+                {group.items.map((item) => {
             const isActive =
               pathname === item.href ||
               (item.href !== "/admin" && pathname.startsWith(item.href));
@@ -671,13 +644,14 @@ function AdminSidebar({
                 <Link
                   href={item.href}
                   onClick={onNavigate}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn("admin-nav-item", isActive && "active")}
                 >
                   <item.icon className="h-5 w-5 shrink-0" />
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
                       <span>{item.label}</span>
-                      {item.badge && (
+                      {"badge" in item && item.badge && (
                         <Badge
                           variant="secondary"
                           className="admin-badge admin-badge-error"
@@ -703,7 +677,10 @@ function AdminSidebar({
                 </Link>
               </li>
             );
-          })}
+                })}
+              </ul>
+            </li>
+          ))}
         </ul>
       </nav>
 

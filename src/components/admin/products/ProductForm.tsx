@@ -19,6 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import RichTextEditor from "@/components/ui/RichTextEditor";
+import ProductVisualEditor from "./ProductVisualEditor";
 import ProductImageUpload from "./ProductImageUpload";
 import {
   Dialog,
@@ -582,27 +583,26 @@ export default function ProductForm({
 
                 <div className="space-y-2">
                   <Label htmlFor="short_description">Descripción Corta</Label>
-                  <Textarea
-                    id="short_description"
+                  <ProductVisualEditor
                     value={formData.short_description}
-                    onChange={(e) =>
-                      handleInputChange("short_description", e.target.value)
+                    onChange={(value) =>
+                      handleInputChange("short_description", value)
                     }
-                    placeholder="Descripción breve para listados (máx. 150 caracteres)"
-                    rows={2}
-                    className="admin-input"
+                    label="Descripción Corta"
+                    id="short_description"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="description">Descripción Detallada</Label>
-                  <RichTextEditor
+                  <ProductVisualEditor
                     value={formData.description}
                     onChange={(value) =>
                       handleInputChange("description", value)
                     }
-                    placeholder="Descripción completa del producto"
-                    rows={4}
+                    label="Descripción Detallada"
+                    id="description"
+                    minHeight={160}
                   />
                 </div>
 

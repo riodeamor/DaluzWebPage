@@ -75,7 +75,7 @@ export function StarRating({
         key={starNumber}
         type="button"
         className={cn(
-          'transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AE000060]',
+          'transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#B98B39]',
           isInteractive && 'cursor-pointer hover:scale-110 transform',
           !isInteractive && 'cursor-default'
         )}
@@ -89,17 +89,17 @@ export function StarRating({
           className={cn(
             sizeClasses[size],
             'transition-colors duration-150',
-            fill === 'fill' && 'text-[#AE000060]',
-            fill === 'half' && 'text-[#AE000060]',
-            fill === 'empty' && 'text-[#AE000060]',
-            isInteractive && 'hover:text-[#AE000060]'
+            fill === 'fill' && 'text-[#B98B39]',
+            fill === 'half' && 'text-[#B98B39]',
+            fill === 'empty' && 'text-[#CBB98F]',
+            isInteractive && 'hover:text-[#B98B39]'
           )}
           fill={fill === 'fill' ? 'currentColor' : 'none'}
         />
         {fill === 'half' && (
           <div className="absolute inset-0 overflow-hidden">
             <Star
-              className={cn(sizeClasses[size], 'text-yellow-400')}
+              className={cn(sizeClasses[size], 'text-[#B98B39]')}
               fill="currentColor"
               style={{ clipPath: 'polygon(0 0, 50% 0, 50% 100%, 0 100%)' }}
             />

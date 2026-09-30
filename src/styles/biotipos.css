@@ -5400,3 +5400,18 @@ div.biotipos-section14-secondary-title-bg[class*="-secondary-title-bg"] {
 @media (min-width: 768px) {
   .biotipos-page .biotipos-section2-body { text-align: justify !important; }
 }
+
+@media (max-width: 767px) {
+  .biotipos-page #section-pieles .biotipos-section3-main-title-wrapper,
+  .biotipos-page #section-pieles .biotipos-section3-main-title {
+    min-height: clamp(10rem, 46vw, 13rem) !important;
+  }
+  .biotipos-page #section-pieles .biotipos-section3-main-title-bg {
+    background-size: auto 100% !important;
+    background-position: center center !important;
+  }
+  .biotipos-page #section-pieles .biotipos-section3-main-title {
+    font-size: clamp(1.55rem, 6vw, 2rem) !important;
+    transform: translateY(-0.35rem) !important;
+  }
+}

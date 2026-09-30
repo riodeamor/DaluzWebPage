@@ -22,7 +22,7 @@
 .account-area label { color: #16345F; }
 .account-area .profile-page .font-subtitle.italic { font-style: normal; }
 
-.account-area .bg-card:not(.account-sidebar) {
+.account-area .bg-card:not(.account-sidebar):not(.profile-personal-card) {
   background: #FFFFFF !important;
   border: 1px solid rgba(22, 52, 95, .1) !important;
   border-radius: 1rem !important;
@@ -100,3 +100,17 @@
   border-color: #23545D !important;
   color: #23545D !important;
 }
+
+.account-area .profile-personal-card {
+  background: linear-gradient(135deg, #16345F 0%, #005080 100%);
+  border: 0;
+  box-shadow: none;
+}
+.account-area .profile-personal-card h2,
+.account-area .profile-personal-card h3,
+.account-area .profile-personal-card .font-subtitle,
+.account-area .sendero-hero h1 { color: #FFF2E9 !important; }
+.account-area .profile-personal-card label { color: #FFF2E9; }
+.account-area .profile-personal-card p,
+.account-area .profile-personal-card span,
+.account-area .sendero-hero p { color: #FFF2E9; }

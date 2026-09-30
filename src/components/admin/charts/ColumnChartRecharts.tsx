@@ -22,6 +22,7 @@ interface ColumnChartRechartsProps {
   title?: string;
   color?: string;
   formatValue?: (value: number) => string;
+  xAxisTicks?: string[];
 }
 
 const CustomTooltip = ({
@@ -39,7 +40,7 @@ const CustomTooltip = ({
     return (
       <div className="bg-white p-3 shadow-lg rounded-lg border border-gray-200">
         <p className="text-xs text-gray-500 mb-1">{label}</p>
-        <p className="text-sm font-semibold text-[#1E3A8A]">
+        <p className="text-sm font-semibold text-[#051341]">
           {formatValue ? formatValue(payload[0].value) : payload[0].value}
         </p>
       </div>
@@ -51,8 +52,9 @@ const CustomTooltip = ({
 export function ColumnChartRecharts({
   data,
   title,
-  color = "#9DC65D",
+  color = "#0A1D4A",
   formatValue = (val: number): string => val.toString(),
+  xAxisTicks,
 }: ColumnChartRechartsProps) {
   if (!data || data.length === 0) {
     return (
@@ -78,6 +80,11 @@ export function ColumnChartRecharts({
   const formatXAxis = (dateStr: string) => {
     try {
       const date = new Date(dateStr);
+      if (xAxisTicks) {
+        return date.toLocaleDateString("es-AR", data.length > 31
+          ? { day: "numeric", month: "short" }
+          : { day: "numeric" });
+      }
       if (data.length > 30) {
         return date.toLocaleDateString("es-AR", { month: "short" });
       }
@@ -88,10 +95,15 @@ export function ColumnChartRecharts({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3" role="group" aria-label={title || "Gráfico de columnas"}>
       {title && (
-        <h4 className="font-medium text-[#1E3A8A] mb-4 text-center">{title}</h4>
+        <h4 className="font-medium text-[#051341] mb-4 text-center">{title}</h4>
       )}
+      <table className="sr-only">
+        <caption>{title || "Datos del gráfico de columnas"}</caption>
+        <thead><tr><th>Fecha</th><th>Valor</th></tr></thead>
+        <tbody>{data.map((point) => <tr key={point.date}><td>{point.date}</td><td>{formatValue(point.value)}</td></tr>)}</tbody>
+      </table>
       <ResponsiveContainer width="100%" height={280}>
         <RechartsBarChart
           data={data}
@@ -104,8 +116,10 @@ export function ColumnChartRecharts({
           />
           <XAxis
             dataKey="date"
+            ticks={xAxisTicks}
+            interval={xAxisTicks ? 0 : "preserveStartEnd"}
             tickFormatter={formatXAxis}
-            tick={{ fontSize: 10, fill: "#8B4513" }}
+            tick={{ fontSize: 10, fill: "#52627C" }}
             axisLine={{ stroke: "#E5E7EB" }}
             tickLine={false}
             angle={-45}
@@ -114,7 +128,7 @@ export function ColumnChartRecharts({
           />
           <YAxis
             tickFormatter={formatYAxis}
-            tick={{ fontSize: 11, fill: "#8B4513" }}
+            tick={{ fontSize: 11, fill: "#52627C" }}
             axisLine={false}
             tickLine={false}
             width={55}

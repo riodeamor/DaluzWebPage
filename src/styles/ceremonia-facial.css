@@ -579,6 +579,115 @@
     height: 240px;
   }
 }
+/* Títulos de pasos: Cormorant en frase; el número queda como etiqueta Montserrat. */
+.ceremonia-facial-step-title-text {
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-cormorant), serif;
+  font-style: normal;
+  text-transform: none;
+}
+
+.ceremonia-facial-step-number {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.ceremonia-facial-step-title-text {
+  color: #FFF2E9 !important;
+}
+
+.ceremonia-facial-step-title-text > span:last-child {
+  display: block;
+  max-width: 100%;
+  padding: 0.15rem 0.6rem;
+  border-radius: 0.35rem;
+  background: #7D1D2B;
+}
+
+.ceremonia-facial-step-number {
+  color: #FFF2E9;
+}
+
+.ceremonia-facial-page .ceremonia-facial-hero-subtitle {
+  color: #FFF2E9 !important;
+}
+
+.ceremonia-facial-page .ceremonia-facial-step-title-text > span {
+  color: #FFF2E9 !important;
+}
+.ceremonia-facial-page .ceremonia-facial-block-title-text {
+  color: #FFFFFF !important;
+}
+
+/* Content-sized rows preserve the zigzag without overlapping longer copy. */
+@media (min-width: 1024px) {
+  .ceremonia-facial-step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    padding-bottom: 3rem;
+  }
+  .ceremonia-facial-step-container > .ceremonia-facial-step-title,
+  .ceremonia-facial-step-container > .ceremonia-facial-block-group[data-order],
+  .ceremonia-facial-step-container > .ceremonia-facial-extra-block {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin: 0;
+  }
+  .ceremonia-facial-step-container > [data-zigzag="left"] { align-self: flex-start; }
+  .ceremonia-facial-step-container > [data-zigzag="right"] { align-self: flex-end; }
+  .ceremonia-facial-step-title {
+    min-height: 150px;
+  }
+  .ceremonia-facial-step-title-text {
+    position: relative;
+    inset: auto;
+    min-height: 118px;
+  }
+}
+
+/* A single heading plaque followed by an unboxed, content-sized paragraph. */
+.ceremonia-facial-block-title {
+  min-height: 0;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #4A0D10;
+  border-radius: 0 24px;
+}
+.ceremonia-facial-block-title-text {
+  padding: 0;
+}
+.ceremonia-facial-page .ceremonia-facial-block-text-content {
+  display: block;
+  width: 100%;
+  margin: 0.75rem 0 0;
+  padding: 0 1.25rem;
+  background: transparent;
+  color: #FFFFFF !important;
+  font-family: var(--font-text, 'EB Garamond', 'Times New Roman', serif);
+  font-style: normal;
+  line-height: 1.6;
+}
+@media (min-width: 1024px) {
+  .ceremonia-facial-step-container > .ceremonia-facial-photo-block[data-zigzag] {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    align-self: center;
+    margin: 0.5rem auto 0;
+    width: 240px;
+    height: 240px;
+  }
+}
 
 /* Jerarquía Alkimya y ritmo compacto de pasos. */
 .ceremonia-facial-hero-title-text {

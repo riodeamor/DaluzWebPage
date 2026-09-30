@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import CartSidebar from "@/components/commerce/CartSidebar";
+import ZenAnnouncementBar from "./ZenAnnouncementBar";
 import { getAllPosts } from "@/lib/sanity/client";
 import {
   Menu,
@@ -49,17 +50,38 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+const DropdownVector = ({ src, color, label }: { src: string; color: string; label: string }) => (
+  <span
+    role="img"
+    aria-label={label}
+    className="mb-3 block h-16 w-16"
+    style={{
+      backgroundColor: color,
+      maskImage: `url("${src}")`,
+      WebkitMaskImage: `url("${src}")`,
+      maskSize: "contain",
+      WebkitMaskSize: "contain",
+      maskPosition: "center",
+      WebkitMaskPosition: "center",
+      maskRepeat: "no-repeat",
+      WebkitMaskRepeat: "no-repeat",
+    }}
+  />
+);
+
 // Component definitions con color dinámico y fondo blanco puro
 const ListItem = ({
   href,
   title,
   children,
   textColor = "#051341", 
+  fullDescription = false,
 }: {
   href: string;
   title: string;
   children: React.ReactNode;
   textColor?: string;
+  fullDescription?: boolean;
 }) => {
   return (
     <li>
@@ -69,14 +91,14 @@ const ListItem = ({
           className="block select-none space-y-1 rounded-md px-3 py-2.5 leading-none no-underline outline-none transition-all duration-150 hover:translate-x-1 hover:bg-[#FFF2E9]/70 focus-visible:bg-[#FFF2E9]/70"
         >
           <div
-            className="text-base font-subtitle font-semibold leading-tight"
-            style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
+            className="text-sm font-subtitle font-medium leading-none"
+            style={{ color: textColor === "#72111A" ? "#4A0D10" : textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
-            className="text-xs font-sans leading-relaxed"
-            style={{ color: textColor === "#72111A" ? "#4A0D10" : "#16345F", opacity: 0.75 }}
+            className={fullDescription ? "text-xs font-text leading-relaxed" : "line-clamp-2 text-sm font-text leading-snug"}
+            style={{ color: textColor === "#72111A" ? "#7D1D2B" : "#16345F", opacity: textColor === "#72111A" ? 0.8 : 0.75 }}
           >
             {children}
           </p>
@@ -247,14 +269,15 @@ export default function Header() {
         className="sticky top-0 z-50 w-full transition-all duration-300"
         style={{ backgroundColor: headerBg }}
       >
+        <ZenAnnouncementBar />
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <div className="flex-shrink-0 hidden xl:block">
+              <div className="flex-shrink-0">
                 <Image
                   src="/svg/logo.svg"
-                  alt="DA LUZ Logo"
+                  alt="Isotipo Da Luz Consciente"
                   width={40}
                   height={40}
                   className="transition-transform duration-300 hover:scale-105"
@@ -262,14 +285,16 @@ export default function Header() {
                 />
               </div>
 
-              <div className="flex flex-col justify-center items-center">
-                <div
-                  className="text-2xl font-display font-normal transition-colors duration-300 leading-tight text-center"
-                  style={{ color: "#FFF4E0" }}
-                >
-                  DA LUZ
-                </div>
-              </div>
+              <span className="flex h-6 items-center overflow-hidden xl:h-7">
+                <Image
+                  src="/assets/logo-header-da-luz.png"
+                  alt="Da Luz Consciente"
+                  width={149}
+                  height={40}
+                  className="h-9 w-auto max-w-none object-contain xl:h-10"
+                  unoptimized
+                />
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -295,26 +320,25 @@ export default function Header() {
                             }}
                             href="/productos"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/Tienda%20Da%20luz.svg"
-                                alt="Tienda Da Luz"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <DropdownVector src="/svg/header/Tienda%20Da%20luz.svg" color="#7D1D2B" label="Alkimya Da Luz" />
                               <div
-                                className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#72111A" }}
+                                className="text-xl font-medium uppercase tracking-[0.2em]"
+                                style={{ color: "#4A0D10", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
-                                TIENDA DA LUZ
+                                TIENDA
+                              </div>
+                              <div
+                                className="mb-2 text-xs font-medium uppercase tracking-[0.2em]"
+                                style={{ color: "#7D1D2B", opacity: 0.8, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+                              >
+                                Alkimya Da Luz
                               </div>
                               <p
-                                className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#4A0D10" }}
+                                className="text-xs leading-relaxed"
+                                style={{ color: "#7D1D2B", opacity: 0.8, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
                               >
-                                Explora todas nuestras líneas de productos y alkimyas.
+                                Explorá nuestras fórmulas botánicas vivas y rituales de cuidado consciente.
                               </p>
                             </div>
                           </Link>
@@ -348,24 +372,17 @@ export default function Header() {
                             }}
                             href="/alkimya"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/manifiesto.svg"
-                                alt="Manifiesto"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <DropdownVector src="/svg/header/Tienda%20Da%20luz.svg" color="#7D1D2B" label="Isotipo Alkimya Da Luz" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#72111A" }}
+                                style={{ color: "#4A0D10", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 MANIFIESTO
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#4A0D10" }}
+                                style={{ color: "#7D1D2B", opacity: 0.8 }}
                               >
                                 El latido, la visión y la filosofía que inspiran cada fórmula.
                               </p>
@@ -412,18 +429,11 @@ export default function Header() {
                             }}
                             href="/raices"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/origen.svg"
-                                alt="Origen Alquímico"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <DropdownVector src="/svg/header/origen.svg" color="#0A1D4A" label="Vórtice solar" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 ORIGEN ALQUÍMICO
                               </div>
@@ -459,7 +469,7 @@ export default function Header() {
                               />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 FILOSOFÍA Y PROPÓSITO
                               </div>
@@ -507,13 +517,13 @@ export default function Header() {
                               />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 PROCESOS
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 Acompañamiento profundo para tu evolución consciente.
                               </p>
@@ -554,24 +564,17 @@ export default function Header() {
                               minHeight: 220,
                             }}
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/Blog.svg"
-                                alt="Blog"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                              <DropdownVector src="/assets/vectores/mandala-experiencias.svg" color="#0A1D4A" label="Mandala de múltiples pétalos" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 BLOG
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 Nuestra bitácora de saberes botánicos, neurocosmética y evolución personal.
                               </p>
@@ -747,7 +750,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="relative hover:bg-white/10 font-text text-base"
+                    className="header-top-link relative hover:bg-white/10"
                     style={{ color: "#FFF4E0" }}
                     type="button"
                     onClick={() => router.push("/login")}
@@ -757,7 +760,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="relative hover:bg-white/10 font-text text-base"
+                    className="header-top-link relative hover:bg-white/10"
                     style={{ color: "#FFF4E0" }}
                     type="button"
                     onClick={() => router.push("/signup")}

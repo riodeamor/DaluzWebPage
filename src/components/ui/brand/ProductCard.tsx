@@ -16,6 +16,7 @@ import {
   CreditCard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ProductRichText from "@/components/ui/ProductRichText";
 import { useLike } from "@/contexts/LikeContext";
 import FlameIcon from "@/components/ui/brand/icons/FlameIcon";
 import StarBurstIcon from "@/components/ui/brand/icons/StarBurstIcon";
@@ -60,6 +61,7 @@ interface ProductCardProps {
   discountCashPercent?: number | null;
   installments3Enabled?: boolean;
   installments6Enabled?: boolean;
+  showReviews?: boolean;
 }
 
 const cardVariants = {
@@ -170,6 +172,7 @@ export default function ProductCard({
   discountCashPercent,
   installments3Enabled = false,
   installments6Enabled = false,
+  showReviews = false,
 }: ProductCardProps) {
   const productHref = `/productos/${slug || id}`;
 
@@ -181,6 +184,7 @@ export default function ProductCard({
   const isFavorite = isLiked(id);
 
   const theme = lineThemeClasses[lineTheme];
+  const isJadeProduct = lineTheme === "jade-ritual" || /jade|tinturas madre/i.test(`${category} ${name} ${description}`);
 
   const handleAddToCart = () => {
     if (onAddToCart && stock > 0) {
@@ -237,14 +241,14 @@ export default function ProductCard({
     descuento: {
       label: discountPercent ? `-${discountPercent}%` : "Descuento",
       icon: null as typeof FlameIcon | null,
-      bgColor: "#920000",
+      bgColor: "#7D1D2B",
       textColor: "#faf7ef",
     },
     ultimas_unidades: {
       label: "Últimas Unidades",
       icon: AlertHexagonIcon,
-      bgColor: "#920000",
-      textColor: "#faf7ef",
+      bgColor: "rgba(245, 158, 11, 0.1)",
+      textColor: "#92400E",
     },
   };
 
@@ -254,12 +258,12 @@ export default function ProductCard({
     return (
       <Badge
         key={key}
-        className="shadow-md text-sm px-2 py-1"
+        className={cn("shadow-sm text-xs px-2 py-1", key === "descuento" && "rounded-full px-3", key === "ultimas_unidades" && "rounded-full text-[10px] px-2 py-0.5")}
         style={{
           backgroundColor: config.bgColor,
           color: config.textColor,
-          fontFamily: "EB Garamond, var(--font-text), serif",
-          fontStyle: "italic",
+          fontFamily: "var(--font-montserrat), sans-serif",
+          fontStyle: "normal",
           fontWeight: 500,
           border: "none",
         }}
@@ -327,6 +331,7 @@ export default function ProductCard({
           {!imageLoaded && (
             <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse" />
           )}
+          <Link href={productHref} aria-label={`Ver ${name}`} className="absolute inset-0 block">
           <Image
             src={
               imageUrl && !imageUrl.startsWith("file://")
@@ -344,6 +349,7 @@ export default function ProductCard({
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageLoaded(true)}
           />
+          </Link>
 
           {/* Top Left Overlay Badges (all promotional tags) */}
           <div className="absolute top-2 left-2 z-20 flex flex-wrap gap-1 max-w-[calc(100%-1rem)]">
@@ -367,7 +373,7 @@ export default function ProductCard({
           {/* Hover Overlay - Ver Producto */}
           <div
             className={cn(
-              "absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center transition-all duration-300 z-10",
+              "pointer-events-none absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center transition-all duration-300 z-10",
               isHovered ? "opacity-100" : "opacity-0",
             )}
           >
@@ -402,321 +408,33 @@ export default function ProductCard({
           )}
         </div>
 
-        {/* Product Info - scrollable content */}
-        <CardContent
-          padding="none"
-          className="p-2 sm:p-3 flex-1 flex flex-col overflow-visible"
-        >
-          {/* Desktop Layout */}
-          <div className="hidden lg:flex lg:flex-col h-full">
-            {/* Top Content - scrollable if too tall */}
-            <div className="space-y-2 lg:space-y-3 overflow-y-auto flex-1 pr-1">
-
-              {/* Name */}
-              <Link href={productHref} className="block group/link">
-                <h3
-                  className="font-semibold text-xl lg:text-2xl text-[#791010] line-clamp-2 group-hover/link:text-brand-primary transition-colors duration-300 leading-tight text-center"
-                  style={{
-                    fontFamily: "Playfair Display, var(--font-playfair), serif",
-                    fontWeight: 600,
-                    fontStyle: "normal",
-                  }}
-                >
-                  {name}
-                </h3>
-                <div
-                  className="mx-auto mt-1.5 h-px w-3/5"
-                  style={{
-                    background:
-                      "linear-gradient(to right, transparent, #920000 50%, transparent)",
-                  }}
-                />
-              </Link>
-
-              {/* Rating - Hidden on small screens */}
-              {infoFrontal && (
-                <p className="text-xs font-normal text-[#7D1D2B]/80 leading-relaxed break-words">
-                  {infoFrontal}
-                </p>
-              )}
-              <div className="hidden sm:flex items-center gap-2">
-                <div className="flex items-center gap-0.5">
-                  {renderStars(rating)}
-                </div>
-                <span className="text-xs text-text-secondary font-medium">
-                  ({reviewCount})
-                </span>
-              </div>
-
-              {/* Price */}
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span
-                    className={cn("text-lg lg:text-xl font-bold", theme.accent)}
-                  >
-                    {formatPrice(price)}
-                  </span>
-                  {!!originalPrice && originalPrice > price && (
-                    <span className="text-xs text-text-secondary line-through">
-                      {formatPrice(originalPrice)}
-                    </span>
-                  )}
-                </div>
-                {!!originalPrice && originalPrice > price && (
-                  <div className="text-sm text-[#791010] font-semibold bg-transparent px-0 py-1 inline-block">
-                    Ahorrás {formatPrice(originalPrice - price)}
-                  </div>
-                )}
-                {(installments3Enabled || installments6Enabled) && (
-                  <div className="flex flex-col gap-1.5">
-                    {installments3Enabled && (
-                      <div
-                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border-0 whitespace-nowrap"
-                        style={{
-                          backgroundColor: "#FAF2EC",
-                          borderColor: "transparent",
-                          color: "#4A0D10",
-                        }}
-                      >
-                        <CreditCard className="h-3.5 w-3.5 flex-shrink-0" />
-                        <span className="text-xs font-semibold">
-                          3 cuotas sin interés de {formatInstallment(price / 3)}
-                        </span>
-                      </div>
-                    )}
-                    {installments6Enabled && (
-                      <div
-                        className="flex items-center gap-2 px-2.5 py-1.5 rounded-md border-0 whitespace-nowrap"
-                        style={{
-                          backgroundColor: "#FAF2EC",
-                          borderColor: "transparent",
-                          color: "#4A0D10",
-                        }}
-                      >
-                        <CreditCard className="h-3.5 w-3.5 flex-shrink-0" />
-                        <span className="text-xs font-semibold">
-                          6 cuotas sin interés de {formatInstallment(price / 6)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-                {/* Discount prices for transfer/cash */}
-                {(transferDiscountPrice || cashDiscountPrice) && (
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    {transferDiscountPrice && (
-                      <div
-                        className="px-2 py-1 rounded-md"
-                        style={{ backgroundColor: "transparent", color: "#791010" }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "EB Garamond, var(--font-text), serif",
-                            fontStyle: "italic",
-                          }}
-                        >
-                          Transferencia: {formatPrice(transferDiscountPrice)}
-                          {discountTransferPercent &&
-                            ` (-${discountTransferPercent}%)`}
-                        </span>
-                      </div>
-                    )}
-                    {cashDiscountPrice && (
-                      <div
-                        className="px-2 py-1 rounded-md"
-                        style={{ backgroundColor: "transparent", color: "#791010" }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "EB Garamond, var(--font-text), serif",
-                            fontStyle: "italic",
-                          }}
-                        >
-                          Efectivo: {formatPrice(cashDiscountPrice)}
-                          {discountCashPercent && ` (-${discountCashPercent}%)`}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* Size */}
-              {size && (
-                <div className="flex items-center text-xs text-text-secondary">
-                  <Sparkles className="h-3 w-3 mr-1 text-gold-500" />
-                  <span className="font-medium">{size}</span>
-                </div>
-              )}
+        <CardContent padding="none" className="flex min-h-0 flex-1 flex-col p-2 sm:p-3">
+          <div className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
+            <Link href={productHref} className="block group/link">
+              <h3 className="line-clamp-2 text-center text-lg font-semibold leading-tight text-[#4A0D10] transition-colors group-hover/link:text-[#7D1D2B] lg:text-2xl" style={{ fontFamily: "var(--font-cormorant), serif" }}>{name}</h3>
+              <div className="mx-auto mt-1.5 h-px w-3/5" style={{ background: "linear-gradient(to right, transparent, #920000 50%, transparent)" }} />
+            </Link>
+            {infoFrontal && <p className="text-xs font-normal leading-relaxed text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{infoFrontal}</p>}
+            {description && <ProductRichText content={description} className="line-clamp-2 text-xs leading-relaxed text-[#7D1D2B]/80" />}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className={cn("text-lg font-bold lg:text-xl", isJadeProduct ? "text-[#0A432B]" : theme.accent)}>{formatPrice(price)}</span>
+              {originalPrice && originalPrice > price && <span className="text-xs text-text-secondary line-through">{formatPrice(originalPrice)}</span>}
             </div>
-
-            {/* Bottom Content - Always at bottom */}
-            <div className="mt-auto pt-3 lg:pt-4 flex-shrink-0">
-              <div className="flex items-center gap-2 min-w-0">
-                <Link href={productHref} className="inline-flex items-center justify-center flex-1 min-w-0 h-[44px] px-2 text-[10px] rounded-md border border-[#7D1D2B] text-[#7D1D2B] bg-transparent hover:bg-[#7D1D2B]/10">VER ALKIMYA</Link>
-                <Button onClick={handleAddToCart} disabled={stock <= 0} className="flex-1 min-w-0 h-[44px] px-2 text-[10px] bg-[#7D1D2B] hover:bg-[#7D1D2B]/90 text-white">
-                  <ShoppingCart className="h-3 w-3 mr-1 shrink-0" />
-                  {stock > 0 ? "AÑADIR" : "SIN STOCK"}
-                </Button>
+            {originalPrice && originalPrice > price && <p className="text-xs font-medium text-[#7D1D2B]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Ahorrás {formatPrice(originalPrice - price)}</p>}
+            {(installments3Enabled || installments6Enabled || transferDiscountPrice || cashDiscountPrice) && (
+              <div className="flex flex-col gap-1 text-xs text-[#7D1D2B]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                {installments3Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>3 cuotas sin interés de {formatInstallment(price / 3)}</span></div>}
+                {installments6Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>6 cuotas sin interés de {formatInstallment(price / 6)}</span></div>}
+                {transferDiscountPrice && <p>Transferencia: {formatPrice(transferDiscountPrice)}{discountTransferPercent ? ` (-${discountTransferPercent}%)` : ""}</p>}
+                {cashDiscountPrice && <p>Efectivo: {formatPrice(cashDiscountPrice)}{discountCashPercent ? ` (-${discountCashPercent}%)` : ""}</p>}
               </div>
-            </div>
+            )}
+            {showReviews && reviewCount > 0 && <div className="flex items-center gap-1.5" aria-label={`${rating} de 5 estrellas, ${reviewCount} reseñas`}><div className="flex items-center gap-0.5">{renderStars(rating)}</div><span className="text-xs text-[#7D1D2B]/80">({reviewCount})</span></div>}
+            {size && <div className="flex items-center text-xs text-text-secondary"><Sparkles className="mr-1 h-3 w-3 text-gold-500" /><span>{size}</span></div>}
           </div>
-
-          {/* Mobile Layout - Flex column with scrollable content */}
-          <div className="lg:hidden flex flex-col h-full">
-            {/* Top Content - scrollable if too tall */}
-            <div className="flex-1 overflow-y-auto space-y-1 pr-1">
-
-              {/* Name - Centered with decorative line */}
-              <Link href={productHref} className="block group/link">
-                <h3
-                  className="font-semibold text-lg text-[#791010] line-clamp-2 group-hover/link:text-brand-primary transition-colors duration-300 leading-tight text-center"
-                  style={{
-                    fontFamily: "Playfair Display, var(--font-playfair), serif",
-                    fontWeight: 600,
-                    fontStyle: "normal",
-                  }}
-                >
-                  {name}
-                </h3>
-                <div
-                  className="mx-auto mt-1 h-px w-3/5"
-                  style={{
-                    background:
-                      "linear-gradient(to right, transparent, #920000 50%, transparent)",
-                  }}
-                />
-              </Link>
-
-              {/* Rating - Compact, Left aligned */}
-              {infoFrontal && (
-                <p className="text-xs font-normal text-[#7D1D2B]/80 leading-relaxed break-words">
-                  {infoFrontal}
-                </p>
-              )}
-              <div className="flex items-center gap-1 text-left">
-                <div className="flex items-center gap-0.5">
-                  {Array.from({ length: 5 }, (_, index) => (
-                    <Star
-                      key={index}
-                      className={`h-2.5 w-2.5 transition-colors ${index < Math.floor(rating)
-                          ? theme.star
-                          : "text-gray-300"
-                        }`}
-                    />
-                  ))}
-                </div>
-                <span className="text-xs text-text-secondary">
-                  ({reviewCount})
-                </span>
-              </div>
-
-              {/* Price - Prominent, Left aligned */}
-              <div className="flex flex-col gap-1 text-left">
-                <div className="flex items-center gap-2">
-                  <span className={cn("text-base font-bold", theme.accent)}>
-                    {formatPrice(price)}
-                  </span>
-                  {!!originalPrice && originalPrice > price && (
-                    <span className="text-xs text-text-secondary line-through">
-                      {formatPrice(originalPrice)}
-                    </span>
-                  )}
-                </div>
-                {(installments3Enabled || installments6Enabled) && (
-                  <div className="flex flex-col gap-1">
-                    {installments3Enabled && (
-                      <div
-                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border-0 whitespace-nowrap"
-                        style={{
-                          backgroundColor: "#FAF2EC",
-                          borderColor: "transparent",
-                          color: "#4A0D10",
-                        }}
-                      >
-                        <CreditCard className="h-3 w-3 flex-shrink-0" />
-                        <span className="text-[10px] font-semibold">
-                          3 cuotas sin interés de {formatInstallment(price / 3)}
-                        </span>
-                      </div>
-                    )}
-                    {installments6Enabled && (
-                      <div
-                        className="flex items-center gap-1.5 px-1.5 py-1 rounded border-0 whitespace-nowrap"
-                        style={{
-                          backgroundColor: "#FAF2EC",
-                          borderColor: "transparent",
-                          color: "#4A0D10",
-                        }}
-                      >
-                        <CreditCard className="h-3 w-3 flex-shrink-0" />
-                        <span className="text-[10px] font-semibold">
-                          6 cuotas sin interés de {formatInstallment(price / 6)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-                {/* Discount prices for transfer/cash - Mobile */}
-                {(transferDiscountPrice || cashDiscountPrice) && (
-                  <div className="flex flex-wrap gap-2 text-[10px]">
-                    {transferDiscountPrice && (
-                      <div
-                        className="px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: "transparent", color: "#791010" }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "EB Garamond, var(--font-text), serif",
-                            fontStyle: "italic",
-                          }}
-                        >
-                          Transf: {formatPrice(transferDiscountPrice)}
-                        </span>
-                      </div>
-                    )}
-                    {cashDiscountPrice && (
-                      <div
-                        className="px-1.5 py-0.5 rounded"
-                        style={{ backgroundColor: "transparent", color: "#791010" }}
-                      >
-                        <span
-                          style={{
-                            fontFamily: "EB Garamond, var(--font-text), serif",
-                            fontStyle: "italic",
-                          }}
-                        >
-                          Efectivo: {formatPrice(cashDiscountPrice)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-
-              {/* Low Stock Alert - Mobile only */}
-              {stock <= 5 && stock > 0 && (
-                <div>
-                  <Badge
-                    variant="outline"
-                    className="bg-orange-50 text-orange-600 border-orange-300 text-[10px] px-1 py-0.5"
-                  >
-                    ¡Solo {stock} disponibles!
-                  </Badge>
-                </div>
-              )}
-            </div>
-
-            {/* Bottom Content - Always at bottom */}
-            <div className="mt-auto pt-2 flex-shrink-0">
-              <div className="flex items-center gap-2 min-w-0">
-                <Link href={productHref} className="inline-flex items-center justify-center flex-1 min-w-0 h-[44px] px-2 text-[10px] rounded-md border border-[#7D1D2B] text-[#7D1D2B] bg-transparent hover:bg-[#7D1D2B]/10">VER</Link>
-                <Button onClick={handleAddToCart} disabled={stock <= 0} className="flex-1 min-w-0 h-[44px] px-2 text-[10px] bg-[#7D1D2B] hover:bg-[#7D1D2B]/90 text-white">
-                  <ShoppingCart className="h-3 w-3 mr-1 shrink-0" />
-                  {stock > 0 ? "AÑADIR" : "SIN STOCK"}
-                </Button>
-              </div>
-            </div>
+          <div className="mt-auto flex shrink-0 gap-2 pt-2">
+            <Link href={productHref} className="flex min-w-0 flex-1 items-center justify-center rounded-md border border-[#4A0D10]/30 px-1 text-[10px] font-medium uppercase tracking-wider text-[#4A0D10] transition-colors hover:bg-[#7D1D2B]/5 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}><span className="sm:hidden">Ver</span><span className="hidden sm:inline">Ver Alkimya</span></Link>
+            <Button onClick={handleAddToCart} disabled={stock === 0} className="h-11 min-w-0 flex-1 rounded-md bg-[#7D1D2B] px-1 text-[10px] font-medium uppercase tracking-wider text-[#FFF2E9] hover:bg-[#4A0D10] disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
           </div>
         </CardContent>
       </div>

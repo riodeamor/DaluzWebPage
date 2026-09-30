@@ -174,7 +174,7 @@ export default function ProgramaTransformacionPage() {
               rel="noopener noreferrer"
             >
               <Button
-                className="group relative px-10 py-4 text-lg font-semibold glass-card text-white hover:bg-white hover:text-gray-900 transition-all duration-500 transform hover:scale-105"
+                className="dl-button-primary group relative px-10 py-4 text-lg font-semibold transition-all duration-500 transform hover:scale-105"
                 style={{ borderRadius: "50px" }}
               >
                 <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
@@ -190,7 +190,7 @@ export default function ProgramaTransformacionPage() {
             >
               <Button
                 variant="ghost"
-                className="group px-8 py-4 text-lg font-medium text-white border-2 border-white/40 hover:bg-white hover:text-gray-900 glass-card transition-all duration-500"
+                className="dl-button-primary group px-8 py-4 text-lg font-medium transition-all duration-500"
                 style={{ borderRadius: "50px" }}
               >
                 <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />
@@ -372,8 +372,7 @@ export default function ProgramaTransformacionPage() {
               rel="noopener noreferrer"
             >
               <Button
-                variant="ghost"
-                className="group bg-gradient-to-br from-[#16345F] to-[#005080] px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:from-[#005080] hover:to-[#16345F]"
+                className="dl-button-primary group px-10 py-4 text-lg font-semibold transition-all duration-500 hover:scale-105"
                 style={{ borderRadius: "0px 15px" }}
               >
                 <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
@@ -388,7 +387,7 @@ export default function ProgramaTransformacionPage() {
             >
               <Button
                 variant="outline"
-                className="group px-8 py-4 text-lg font-medium border-2 border-[#005080] text-[#005080] hover:bg-[#005080] hover:text-white transition-all duration-300"
+                className="dl-button-primary group px-8 py-4 text-lg font-medium transition-all duration-500 hover:scale-105"
                 style={{ borderRadius: "0px 15px" }}
               >
                 <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" />

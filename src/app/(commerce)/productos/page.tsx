@@ -4,6 +4,8 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ui/brand/ProductCard";
 import TiendaHero from "@/components/commerce/TiendaHero";
+import Link from "next/link";
+import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 import TiendaSidebar from "@/components/commerce/TiendaSidebar";
 import FeaturedLineSection from "@/components/commerce/FeaturedLineSection";
 import { Button } from "@/components/ui/button";
@@ -96,6 +98,7 @@ interface ProductsResponse {
 function ProductsContent() {
   const searchParams = useSearchParams();
   const { addItem } = useCart();
+  const showReviews = useReviewsVisibility();
   const { isLiked, likedProducts } = useLike();
 
   // State
@@ -300,19 +303,25 @@ function ProductsContent() {
   const skinTypes = ["seca", "grasa", "mixta", "sensible", "normal"];
 
   return (
-    <div className="tienda-page min-h-screen overflow-hidden">
-      {/* SVG Background */}
-      <div
-        className="fixed inset-0 w-full h-full opacity-100 pointer-events-none z-0"
-        style={{
-          backgroundImage: "url('/svg/backgrounds/tienda-background.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
+    <div className="tienda-page min-h-screen overflow-hidden bg-[#FAF7F2]">
       {/* Hero Section */}
       <TiendaHero />
+      <section className="mx-auto max-w-6xl px-4 pt-7 pb-2 text-center" aria-label="Encontrá tu ritual">
+        <Link href="/alkimya/biotipos-doshas" className="block rounded-[0_18px] border border-[#7D1D2B]/20 bg-[#FFF2E9] px-5 py-5 text-sm font-medium leading-relaxed text-[#4A0D10] shadow-sm transition-colors hover:bg-white" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+          ¿No sabés qué alquimia necesita tu piel en este ciclo? Descubrí tu Biotipo Cutáneo y encontrá tu ritual exacto →
+        </Link>
+        <nav className="mt-5 flex flex-wrap justify-center gap-2" aria-label="Explorar por necesidad de piel">
+          {[
+            ["💧 Brillo & Poros Dilatados", "/categorias/linea-umbral"],
+            ["🌿 Sensibilidad & Rojeces", "/categorias/linea-ecos"],
+            ["🌰 Nutrición & Sequedad", "/categorias/linea-alma-terra"],
+            ["☀️ Luminosidad & Tono Uniforme", "/categorias/linea-prisma"],
+            ["🕯️ Rituales Completos", "/categorias/linea-kits-y-experiencia"],
+          ].map(([label, href]) => (
+            <Link key={href} href={href} className="rounded-full border border-[#7D1D2B]/20 bg-[#FAF7F2] px-4 py-2 text-xs text-[#4A0D10] transition-colors hover:border-[#7D1D2B] hover:bg-[#FFF2E9]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{label}</Link>
+          ))}
+        </nav>
+      </section>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-8 bg-transparent">
@@ -705,6 +714,7 @@ function ProductsContent() {
                     imageUrl={product.featured_image}
                     rating={product.averageRating || 0}
                     reviewCount={product.reviewCount || 0}
+                    showReviews={showReviews}
                     isNatural={true}
                     isNew={false}
                     isOnSale={!!product.compare_at_price}

@@ -643,3 +643,44 @@
     margin-right: 6% !important;
   }
 }
+/* Títulos de pasos: Cormorant en frase; el número queda como etiqueta Montserrat. */
+.ceremonia-corporal-step-title-text {
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: var(--font-cormorant), serif;
+  font-style: normal;
+  text-transform: none;
+}
+
+.ceremonia-corporal-step-number {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.ceremonia-corporal-step-title-text {
+  color: #FFF2E9 !important;
+}
+
+.ceremonia-corporal-step-title-text > span:last-child {
+  display: block;
+  max-width: 100%;
+  padding: 0.15rem 0.6rem;
+  border-radius: 0.35rem;
+  background: #7D1D2B;
+}
+
+.ceremonia-corporal-step-number {
+  color: #FFF2E9;
+}
+
+.ceremonia-corporal-page .ceremonia-corporal-hero-subtitle {
+  color: #FFF2E9 !important;
+}
+
+.ceremonia-corporal-page .ceremonia-corporal-step-title-text > span {
+  color: #FFF2E9 !important;
+}

@@ -9,6 +9,7 @@ import { useCart } from "@/contexts/CartContext";
 import { ArrowLeft, Grid3X3, Grid2X2 } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
+import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 
 // Map category slugs to product line themes
 const getLineThemeFromSlug = (slug: string): 'alma-terra' | 'ecos' | 'jade-ritual' | 'umbral' | 'utopica' | 'kits-experiencia' | 'default' => {
@@ -46,6 +47,9 @@ interface Product {
   }>;
   installments_3_enabled?: boolean;
   installments_6_enabled?: boolean;
+  promotional_tag?: "none" | "lanzamiento" | "descuento" | "ultimas_unidades" | null;
+  discount_transfer_percent?: number | null;
+  discount_cash_percent?: number | null;
 }
 
 interface Category {
@@ -61,6 +65,7 @@ export default function CategoryPage() {
   const params = useParams();
   const router = useRouter();
   const { addItem } = useCart();
+  const showReviews = useReviewsVisibility();
 
   const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
@@ -309,6 +314,12 @@ export default function CategoryPage() {
                 name={product.name}
                 description={product.short_description || product.description}
                 infoFrontal={product.info_frontal}
+                showReviews={showReviews}
+                installments3Enabled={product.installments_3_enabled}
+                installments6Enabled={product.installments_6_enabled}
+                promotionalTag={product.promotional_tag}
+                discountTransferPercent={product.discount_transfer_percent}
+                discountCashPercent={product.discount_cash_percent}
                 price={product.price}
                 originalPrice={product.compare_at_price}
                 category={category.name}

@@ -36,7 +36,7 @@ export default function BlogGuardadosPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-[var(--color-bg-cream)]/30 flex items-center justify-center">
+      <div className="blog-saved-surface min-h-screen flex items-center justify-center">
         <div className="animate-pulse text-[var(--color-text-primary)]/60 font-text">
           Cargando...
         </div>
@@ -45,7 +45,7 @@ export default function BlogGuardadosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg-cream)]/30">
+    <div className="blog-saved-surface min-h-screen">
       <section className="relative py-12 md:py-16 px-6">
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.07]"
@@ -58,7 +58,7 @@ export default function BlogGuardadosPage() {
           }}
         />
         <div className="container mx-auto max-w-2xl relative z-10">
-          <Button variant="ghost" asChild size="sm" className="mb-6 -ml-2">
+          <Button variant="ghost" asChild size="sm" className="dl-button-primary mb-6 -ml-2">
             <Link
               href="/blog"
               className="flex items-center gap-2 text-[var(--color-text-primary)] hover:text-[var(--color-brand-primary)] font-caption"
@@ -71,6 +71,7 @@ export default function BlogGuardadosPage() {
           <div className="flex items-center gap-3 mb-8">
             <div
               className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-brand-primary)]/15 border border-[var(--color-brand-primary)]/30"
+              style={{ color: "#FFF2E9" }}
             >
               <Heart className="w-6 h-6 fill-current" />
             </div>
@@ -93,7 +94,7 @@ export default function BlogGuardadosPage() {
               <p className="font-text text-[var(--color-text-primary)]/70 mb-6">
                 Cuando guardes un artículo para leer después, aparecerá aquí.
               </p>
-              <Button asChild className="bg-[var(--color-brand-primary)] hover:bg-[var(--color-brand-secondary)] text-white font-caption uppercase tracking-wider" style={{ borderRadius: "0 15px" }}>
+              <Button asChild className="dl-button-primary font-caption uppercase tracking-wider" style={{ borderRadius: "0 15px" }}>
                 <Link href="/blog" className="inline-flex items-center gap-2">
                   <BookOpen className="h-4 w-4" />
                   Explorar el blog
@@ -122,7 +123,7 @@ export default function BlogGuardadosPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => removeFromSaved(post.id)}
-                    className="text-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]/10 shrink-0"
+                    className="dl-button-primary shrink-0"
                     aria-label="Quitar de guardados"
                   >
                     <Heart className="h-5 w-5 fill-current" />

@@ -7,6 +7,6 @@ export default function AlkimyaLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return <div className="alkimya-section">{children}</div>
 }
 

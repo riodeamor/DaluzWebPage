@@ -27,7 +27,7 @@ export default function BiotiposDoshasPage() {
     <div className="biotipos-page">
       <div className="biotipos-mesh-bg-global"></div>
       {/* Section 1 */}
-      <section className="relative overflow-hidden flex flex-col section-biotipos-1">
+      <section className="relative overflow-hidden flex flex-col section-biotipos-1 biotipos-intro-redesign">
 
         {/* Content Area - Flexible area for adding text and other elements */}
         <div className="relative z-10 flex-1 section-biotipos-1-content">
@@ -122,14 +122,14 @@ export default function BiotiposDoshasPage() {
         <div className="biotipos-section3-main-title-wrapper">
           <div className="biotipos-section3-main-title-bg"></div>
           <h2 className="biotipos-section3-main-title">
-            Reconocé tu Biotipo Cutáneo
+            Reconocé Tu Biotipo Cutáneo
           </h2>
         </div>
         <BiotiposTablasCarousel tablas={BIOTIPOS_TABLAS} />
       </section>
 
       {/* Section 9 */}
-      <section id="section-cabellos" className="relative overflow-hidden flex flex-col section-biotipos-9">
+      <section id="section-cabellos" className="relative overflow-hidden flex flex-col section-biotipos-9 biotipos-capilar-redesign">
 
         <div className="relative z-10 flex-1 section-biotipos-9-content">
           {/* Main Title */}

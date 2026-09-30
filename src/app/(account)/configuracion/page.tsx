@@ -340,7 +340,7 @@ export default function SettingsPage() {
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('current')}
                     >
                       {showPasswords.current ?
@@ -368,7 +368,7 @@ export default function SettingsPage() {
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('new')}
                     >
                       {showPasswords.new ?
@@ -396,7 +396,7 @@ export default function SettingsPage() {
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('confirm')}
                     >
                       {showPasswords.confirm ?

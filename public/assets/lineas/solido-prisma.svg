@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" width="47.56cm" height="36.1cm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1348.09 1023.32">
+  <defs>
+    <linearGradient id="linear-gradient" x1="2728.4" y1="1251.56" x2="2124.98" y2="916.13" gradientTransform="translate(-1823.43 -519.83)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a67027"/>
+      <stop offset=".02" stop-color="#aa7328"/>
+      <stop offset=".05" stop-color="#b77d2c"/>
+      <stop offset=".06" stop-color="#bf832f"/>
+      <stop offset=".2" stop-color="#fdcd83"/>
+      <stop offset=".21" stop-color="#fccc82"/>
+      <stop offset=".27" stop-color="#f0b765"/>
+      <stop offset=".33" stop-color="#e8aa54"/>
+      <stop offset=".37" stop-color="#e6a64e"/>
+      <stop offset=".43" stop-color="#ebb263"/>
+      <stop offset=".57" stop-color="#f8d19a"/>
+      <stop offset=".64" stop-color="#ffe2b7"/>
+      <stop offset=".72" stop-color="#efc892"/>
+      <stop offset=".84" stop-color="#d7a15b"/>
+      <stop offset="1" stop-color="#bf832f"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_133" data-name="Degradado sin nombre 133" x1="2176.16" y1="1065.19" x2="2435.78" y2="1065.19" gradientTransform="translate(-1823.43 -519.83)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b05d17"/>
+      <stop offset=".66" stop-color="#c48133"/>
+      <stop offset=".87" stop-color="#b5661e"/>
+      <stop offset="1" stop-color="#b05d17"/>
+    </linearGradient>
+  </defs>
+  <g style="isolation: isolate;">
+    <polygon points="612.36 320.31 867.47 715.39 527.08 770.41 612.36 320.31" style="fill: url(#linear-gradient); stroke: #f9be7a; stroke-linejoin: round; stroke-width: 5.44px;"/>
+    <polygon points="527.08 770.41 352.73 661.33 612.36 320.31 527.08 770.41" style="fill: url(#Degradado_sin_nombre_133); stroke: #fee4c7; stroke-linejoin: round; stroke-width: 5.44px;"/>
+  </g>
+</svg>
