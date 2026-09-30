@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useEffect, useState, useRef } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useAuthContext } from "@/contexts/AuthContext";
@@ -96,12 +98,6 @@ const createNavigationItems = (ordersCount?: number) => [
     label: "Analíticas",
     icon: BarChart3,
     description: "Reportes y estadísticas",
-  },
-  {
-    href: "/admin/support",
-    label: "Soporte",
-    icon: MessageSquare,
-    description: "Tickets y atención al cliente",
   },
   {
     href: "/admin/admin-users",
@@ -632,11 +628,7 @@ function AdminSidebar({
                   className="font-medium"
                   style={{ color: "var(--admin-accent-primary)" }}
                 >
-                  $
-                  {stats.revenue.toLocaleString("es-AR", {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0,
-                  })}
+                  {formatCurrency(stats.revenue)}
                 </span>
               </div>
               <div className="flex justify-between text-xs">

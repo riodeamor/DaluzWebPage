@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -33,11 +35,7 @@ export default function OrderItemsList({
   };
 
   const formatPrice = (amount: number): string => {
-    return new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 2,
-    }).format(amount);
+    return formatCurrency(amount);
   };
 
   const handleQuantityChange = (index: number, value: string) => {

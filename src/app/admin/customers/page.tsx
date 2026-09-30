@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -142,11 +144,7 @@ export default function CustomersPage() {
   };
 
   const formatPrice = (amount: number) =>
-    new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 0,
-    }).format(amount);
+    formatCurrency(amount);
 
   const getSegmentBadge = (segment: string) => {
     const variants: Record<string, { variant: any; label: string; icon: any }> =
@@ -178,15 +176,15 @@ export default function CustomersPage() {
   };
 
   const getMembershipBadge = (tier: string, isMember: boolean) => {
-    // If tier is 'none' or empty, show "Sin Membresía"
+    // If tier is 'none' or empty, show "Sin Membresía / El Pulso"
     if (!tier || tier === "none") {
-      return <Badge variant="outline">Sin Membresía</Badge>;
+      return <Badge variant="outline">Sin Membresía / El Pulso</Badge>;
     }
 
     // If tier exists but isMember is false, still show the tier but with different styling
     const config: Record<string, { variant: any; label: string }> = {
-      basic: { variant: "secondary", label: "Básica" },
-      premium: { variant: "default", label: "Premium" },
+      basic: { variant: "secondary", label: "Sintonía" },
+      premium: { variant: "default", label: "Maestría" },
     };
 
     const tierConfig = config[tier] || { variant: "outline", label: tier };
@@ -462,9 +460,9 @@ export default function CustomersPage() {
                 style={{ backgroundColor: "var(--admin-bg-primary)" }}
               >
                 <SelectItem value="all">Todas las membresías</SelectItem>
-                <SelectItem value="none">Sin membresía</SelectItem>
-                <SelectItem value="basic">Básica</SelectItem>
-                <SelectItem value="premium">Premium</SelectItem>
+                <SelectItem value="none">Sin Membresía / El Pulso</SelectItem>
+                <SelectItem value="basic">Sintonía</SelectItem>
+                <SelectItem value="premium">Maestría</SelectItem>
               </SelectContent>
             </Select>
 

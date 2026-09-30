@@ -12,7 +12,10 @@ export async function GET(request: NextRequest) {
     const offset = (page - 1) * limit;
 
     // Filters
-    const category = searchParams.get("category");
+    const category = searchParams.get("category_id") ?? searchParams.get("category");
+    if (searchParams.has("category_id") && !category?.trim()) {
+      return NextResponse.json({ error: "La línea es requerida" }, { status: 400 });
+    }
     const search = searchParams.get("search");
     const skinType = searchParams.get("skin_type");
     const hairType = searchParams.get("hair_type");

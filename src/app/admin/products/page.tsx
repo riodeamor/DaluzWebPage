@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect, useRef } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -478,11 +480,7 @@ export default function ProductsPage() {
 
   // Utility functions
   const formatPrice = (amount: number) =>
-    new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 0,
-    }).format(amount);
+    formatCurrency(amount);
 
   const getStatusBadge = (status: string) => {
     const config: Record<string, { variant: any; label: string }> = {

@@ -50,10 +50,6 @@ export const ADMIN_ROUTES: AdminRouteMetadata[] = [
   { path: '/api/admin/reviews', label: 'Reviews List', category: 'Reviews', methods: ['GET'], description: 'List all product reviews' },
 
   // ── Support ──
-  { path: '/api/admin/support/tickets', label: 'Support Tickets', category: 'Support', methods: ['GET', 'POST'], description: 'List or create support tickets' },
-  { path: '/api/admin/support/tickets/[id]', label: 'Individual Ticket', category: 'Support', methods: ['GET', 'PUT', 'DELETE'], description: 'Get, update or delete a ticket' },
-  { path: '/api/admin/support/categories', label: 'Support Categories', category: 'Support', methods: ['GET', 'POST'], description: 'Support category management' },
-  { path: '/api/admin/support/templates', label: 'Support Templates', category: 'Support', methods: ['GET', 'POST', 'PUT'], description: 'Response templates for tickets' },
 
   // ── System ──
   { path: '/api/admin/system/config', label: 'System Config', category: 'System', methods: ['GET', 'POST', 'PUT'], defaultPayload: { config_key: "test_key", config_value: "test_value", category: "general" }, description: 'Global system configuration' },

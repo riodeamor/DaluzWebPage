@@ -667,9 +667,9 @@ export default function CustomerEditPage() {
                     <SelectContent
                       style={{ backgroundColor: "var(--admin-bg-primary)" }}
                     >
-                      <SelectItem value="none">Sin membresía</SelectItem>
-                      <SelectItem value="basic">Básica</SelectItem>
-                      <SelectItem value="premium">Premium</SelectItem>
+                      <SelectItem value="none">Sin Membresía / El Pulso</SelectItem>
+                      <SelectItem value="basic">Sintonía</SelectItem>
+                      <SelectItem value="premium">Maestría</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

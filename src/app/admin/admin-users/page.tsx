@@ -995,7 +995,7 @@ export default function AdminUsersPage() {
                             className="font-medium"
                             style={{ color: "var(--admin-text-primary)" }}
                           >
-                            {admin.analytics?.fullName || "Sin nombre"}
+                            {admin.analytics?.fullName || admin.email.split("@")[0]}
                           </div>
                           <div
                             className="text-sm"

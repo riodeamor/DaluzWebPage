@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -107,11 +109,7 @@ export default function CustomerDetailPage() {
   };
 
   const formatPrice = (amount: number) =>
-    new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 0,
-    }).format(amount);
+    formatCurrency(amount);
 
   const getSegmentBadge = (segment: string) => {
     const variants: Record<
@@ -163,12 +161,12 @@ export default function CustomerDetailPage() {
 
   const getMembershipBadge = (tier: string, isMember: boolean) => {
     if (!isMember || tier === "none") {
-      return <Badge variant="outline">Sin Membresía</Badge>;
+      return <Badge variant="outline">Sin Membresía / El Pulso</Badge>;
     }
 
     const config: Record<string, { variant: any; label: string }> = {
-      basic: { variant: "secondary", label: "Básica" },
-      premium: { variant: "default", label: "Premium" },
+      basic: { variant: "secondary", label: "Sintonía" },
+      premium: { variant: "default", label: "Maestría" },
     };
 
     const tierConfig = config[tier] || { variant: "outline", label: tier };
@@ -1051,7 +1049,7 @@ export default function CustomerDetailPage() {
                 <div className="text-center py-12">
                   <Crown className="h-12 w-12 text-tierra-media mx-auto mb-4" />
                   <h3 className="text-lg font-semibold text-azul-profundo mb-2">
-                    Sin Membresía
+                    Sin Membresía / El Pulso
                   </h3>
                   <p className="text-tierra-media mb-4">
                     Este cliente no tiene una membresía activa en el programa de

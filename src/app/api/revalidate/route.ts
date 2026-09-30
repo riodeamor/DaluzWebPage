@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath, revalidateTag } from 'next/cache';
-import crypto from 'crypto';
+import { parseBody } from 'next-sanity/webhook';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseAdmin = createClient(
@@ -10,33 +10,18 @@ const supabaseAdmin = createClient(
 
 const SANITY_WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET;
 
-// Function to verify Sanity webhook signature
-function verifySignature(body: string, signature: string): boolean {
-  if (!SANITY_WEBHOOK_SECRET) {
-    console.warn('⚠️ SANITY_WEBHOOK_SECRET not configured, skipping signature verification');
-    return true; // Allow in development if secret not set
-  }
-
-  const computedSignature = crypto
-    .createHmac('sha256', SANITY_WEBHOOK_SECRET)
-    .update(body)
-    .digest('hex');
-
-  return signature === computedSignature;
-}
-
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.text();
-    const signature = request.headers.get('sanity-webhook-signature') || '';
-
-    // Verify webhook signature for security
-    if (process.env.NODE_ENV === 'production' && !verifySignature(body, signature)) {
-      console.error('❌ Invalid Sanity webhook signature');
+    if (!SANITY_WEBHOOK_SECRET) {
+      return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 503 });
+    }
+    const { body: payload, isValidSignature } = await parseBody(request, SANITY_WEBHOOK_SECRET);
+    if (!isValidSignature) {
       return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
     }
-
-    const payload = JSON.parse(body);
+    if (!payload || typeof payload._type !== 'string') {
+      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+    }
     console.log('🎣 Sanity webhook received:', {
       type: payload._type,
       operation: payload.transition,
@@ -59,6 +44,11 @@ export async function POST(request: NextRequest) {
 
     // Handle different document types
     switch (payload._type) {
+      case 'tiendaSettings':
+        revalidateTag('tienda-settings');
+        revalidatePath('/api/sanity/tienda-settings');
+        revalidatePath('/tienda');
+        break;
       case 'post':
         // Revalidate blog pages
         await revalidateBlogPages(payload);

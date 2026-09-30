@@ -103,12 +103,12 @@ export default function ProductForm({
     "Aromático",
   ];
   const certificationOptions = [
-    { value: "organic", label: "Orgánico" },
     { value: "cruelty-free", label: "Libre de Crueldad" },
     { value: "vegan", label: "Vegano" },
-    { value: "natural", label: "Natural" },
     { value: "eco-friendly", label: "Ecológico" },
-  ];
+    { value: "plant-based", label: "100% Vegetal" },
+    { value: "biodegradable", label: "Biodegradable" },
+  ] as const;
 
   const defaultFormData = {
     name: "",
@@ -579,19 +579,8 @@ export default function ProductForm({
                   </div>
                 </div>
 
+
                 <div className="space-y-2">
-                  <Label htmlFor="info_frontal">Info Frontal (Activos y Tipo de Piel)</Label>
-                  <Input
-                    id="info_frontal"
-                    value={formData.info_frontal ?? ""}
-                    maxLength={FRONT_INFO_MAX_LENGTH}
-                    aria-describedby="info-frontal-help"
-                    onChange={(e) => handleInputChange("info_frontal", e.target.value)}
-                  />
-                  <p id="info-frontal-help" className="text-sm text-muted-foreground">
-                    Texto breve de portada que se muestra debajo del título. Ej: Jojoba &amp; Neroli • Piel con Manchas o Grasa
-                    {" "}({(formData.info_frontal ?? "").length}/{FRONT_INFO_MAX_LENGTH})
-                  </p>
                   <Label htmlFor="short_description">Descripción Corta</Label>
                   <Textarea
                     id="short_description"
@@ -1125,9 +1114,9 @@ export default function ProductForm({
                   </Select>
                 </div>
 
-                {/* Certifications */}
+                {/* Product attributes */}
                 <div className="space-y-3">
-                  <Label>Detalles</Label>
+                  <Label>Atributos del Producto</Label>
                   <div className="flex flex-wrap gap-2">
                     {formData.certifications.map((cert: string) => {
                       const certLabel =
@@ -1160,7 +1149,7 @@ export default function ProductForm({
                     }
                   >
                     <SelectTrigger className="w-full admin-select">
-                      <SelectValue placeholder="Agregar certificación" />
+                      <SelectValue placeholder="Agregar atributo" />
                     </SelectTrigger>
                     <SelectContent>
                       {certificationOptions
@@ -1317,6 +1306,21 @@ export default function ProductForm({
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="info_frontal">Info Frontal (Activos y Tipo de Piel)</Label>
+                  <Input
+                    id="info_frontal"
+                    value={formData.info_frontal ?? ""}
+                    maxLength={FRONT_INFO_MAX_LENGTH}
+                    aria-describedby="info-frontal-help"
+                    onChange={(e) => handleInputChange("info_frontal", e.target.value)}
+                  />
+                  <p id="info-frontal-help" className="text-sm text-muted-foreground">
+                    Texto breve de portada que se muestra debajo del título. Ej: Jojoba &amp; Neroli • Piel con Manchas o Grasa
+                    {" "}({(formData.info_frontal ?? "").length}/{FRONT_INFO_MAX_LENGTH})
+                  </p>
+                </div>
+
                 {/* Instructions */}
                 <div className="space-y-2">
                   <Label>Instrucciones de Uso</Label>

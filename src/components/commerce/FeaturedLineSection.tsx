@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { useStoreCategories } from "@/hooks/useStoreCategories";
+import { fetchLineProducts } from "@/lib/products/featured-line";
 
 interface Product {
   id: string;
@@ -114,7 +115,8 @@ export default function FeaturedLineSection({
   const [selectedId, setSelectedId] = useState<string>();
   const selectedLine = availableLines.find(line => line.id === selectedId);
   const selectedCategoryId = selectedLine?.id;
-  const [products, setProducts] = useState<Product[]>([]);
+  const [result, setResult] = useState<{ categoryId: string; products: Product[] }>();
+  const products = result && result.categoryId === selectedCategoryId ? result.products : [];
   const [loading, setLoading] = useState(true);
   const { addItem } = useCart();
 
@@ -122,11 +124,13 @@ export default function FeaturedLineSection({
   useEffect(() => {
     if (!categories.length) return;
     const controller = new AbortController();
-    fetch("/api/products?limit=100&in_stock=true", { signal: controller.signal })
-      .then(async response => {
-        if (!response.ok) return;
-        const { products = [] } = await response.json();
-        const eligible = categories.filter(category => products.some((product: Product) => product.category_id === category.id));
+    Promise.all(categories.map(async category => ({
+      id: category.id,
+      products: await fetchLineProducts<Product>(category.id, 1, controller.signal),
+    })))
+      .then(results => {
+        if (controller.signal.aborted) return;
+        const eligible = results.filter(result => result.products.length > 0);
         setSelectedId(current => eligible.some(category => category.id === current)
           ? current : eligible[Math.floor(Math.random() * eligible.length)]?.id);
       })
@@ -135,15 +139,14 @@ export default function FeaturedLineSection({
   }, [categories]);
 
   useEffect(() => {
-    if (!selectedCategoryId) { setLoading(false); return; }
+    if (!selectedCategoryId) { setResult(undefined); setLoading(false); return; }
     const controller = new AbortController();
     setLoading(true);
-    fetch(`/api/products?category=${encodeURIComponent(selectedCategoryId)}&limit=4&in_stock=true`, { signal: controller.signal })
-      .then(async response => {
-        if (!response.ok) throw new Error("No se pudieron cargar los productos");
-        setProducts((await response.json()).products ?? []);
+    fetchLineProducts<Product>(selectedCategoryId, 4, controller.signal)
+      .then(products => {
+        if (!controller.signal.aborted) setResult({ categoryId: selectedCategoryId, products });
       })
-      .catch(error => { if (error.name !== "AbortError") setProducts([]); })
+      .catch(error => { if (error.name !== "AbortError") setResult(undefined); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
     return () => controller.abort();
   }, [selectedCategoryId]);

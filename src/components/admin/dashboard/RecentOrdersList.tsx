@@ -14,20 +14,13 @@ import {
   Package,
 } from "lucide-react";
 import type { Order } from "@/types/admin";
+import { formatCurrency as formatPrice, getStatusLabel, getStatusColor } from "@/lib/admin-display";
 
 interface RecentOrdersListProps {
   orders: Order[];
   onViewAll?: () => void;
 }
 
-function formatPrice(amount: number): string {
-  return new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(amount);
-}
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("es-AR", {
@@ -36,58 +29,6 @@ function formatDate(dateString: string): string {
     hour: "2-digit",
     minute: "2-digit",
   });
-}
-
-// Función para obtener el color del estado
-function getStatusColor(status: string): {
-  bg: string;
-  text: string;
-  icon: string;
-} {
-  switch (status) {
-    case "completed":
-      return {
-        bg: "rgba(40, 93, 48, 0.1)",
-        text: "var(--admin-success)",
-        icon: "var(--admin-success)",
-      };
-    case "pending":
-      return {
-        bg: "rgba(255, 78, 33, 0.1)",
-        text: "var(--admin-warning)",
-        icon: "var(--admin-warning)",
-      };
-    case "processing":
-      return {
-        bg: "rgba(29, 63, 106, 0.1)",
-        text: "var(--admin-info)",
-        icon: "var(--admin-info)",
-      };
-    case "shipped":
-      return {
-        bg: "rgba(29, 63, 106, 0.1)",
-        text: "var(--admin-info)",
-        icon: "var(--admin-info)",
-      };
-    case "failed":
-      return {
-        bg: "rgba(139, 0, 0, 0.1)",
-        text: "var(--admin-error)",
-        icon: "var(--admin-error)",
-      };
-    case "cancelled":
-      return {
-        bg: "rgba(139, 0, 0, 0.05)",
-        text: "var(--admin-text-tertiary)",
-        icon: "var(--admin-text-tertiary)",
-      };
-    default:
-      return {
-        bg: "rgba(139, 0, 0, 0.05)",
-        text: "var(--admin-text-tertiary)",
-        icon: "var(--admin-text-tertiary)",
-      };
-  }
 }
 
 function getOrderStatusBadge(status: string) {
@@ -102,14 +43,6 @@ function getOrderStatusBadge(status: string) {
     cancelled: <XCircle className="h-3 w-3" />,
   };
 
-  const labelMap: Record<string, string> = {
-    completed: "Completado",
-    pending: "Pendiente",
-    processing: "Procesando",
-    shipped: "Enviado",
-    failed: "Fallido",
-    cancelled: "Cancelado",
-  };
 
   return (
     <span
@@ -120,7 +53,7 @@ function getOrderStatusBadge(status: string) {
       }}
     >
       {iconMap[status] || iconMap.default}
-      {labelMap[status] || status}
+      {getStatusLabel(status)}
     </span>
   );
 }

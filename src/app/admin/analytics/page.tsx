@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -146,11 +148,7 @@ export default function AnalyticsPage() {
   };
 
   const formatPrice = (amount: number) =>
-    new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 0,
-    }).format(amount);
+    formatCurrency(amount);
 
   const formatPercentage = (value: number) =>
     `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;

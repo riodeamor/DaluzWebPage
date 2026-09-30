@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth/helpers';
+import { getOrderCustomerName } from '@/lib/admin-display';
 
 export async function GET(request: NextRequest) {
   try {
@@ -116,9 +117,7 @@ export async function GET(request: NextRequest) {
       .map(o => ({
         id: o.id,
         order_number: o.order_number,
-        customer_name: o.shipping_first_name && o.shipping_last_name 
-          ? `${o.shipping_first_name} ${o.shipping_last_name}`
-          : 'Cliente',
+        customer_name: getOrderCustomerName(o),
         customer_email: o.email,
         total_amount: o.total_amount,
         status: o.status,

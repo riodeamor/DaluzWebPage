@@ -1,5 +1,7 @@
 'use client';
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -461,7 +463,7 @@ export default function CreateManualOrderForm({ onSubmit, onCancel }: CreateManu
                         </div>
                       </div>
                       <div className="text-verde-suave font-semibold">
-                        ${product.price.toFixed(2)}
+                        {formatCurrency(product.price)}
                       </div>
                     </div>
                   </button>
@@ -533,7 +535,7 @@ export default function CreateManualOrderForm({ onSubmit, onCancel }: CreateManu
           <div className="flex justify-between items-center pt-4 border-t">
             <div>
               <div className="text-sm text-gray-600">Subtotal</div>
-              <div className="text-2xl font-bold text-verde-suave">${formData.total_amount.toFixed(2)}</div>
+              <div className="text-2xl font-bold text-verde-suave">{formatCurrency(formData.total_amount)}</div>
             </div>
             <Button
               type="button"

@@ -225,7 +225,6 @@ export default function AdminDiagnosticsPage() {
             '/api/admin/products': 'Individual Product',
             '/api/admin/orders': 'Individual Order',
             '/api/admin/customers': 'Individual Customer',
-            '/api/admin/support/tickets': 'Individual Ticket',
           };
           const targetLabel = autofillMap[route.path];
           if (targetLabel) {

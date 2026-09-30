@@ -1,4 +1,5 @@
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
+import { getOrderCustomerName } from "@/lib/admin-display";
 import type { OrderListFilters } from "@/lib/repositories/orders.repository";
 
 // ============================================
@@ -70,7 +71,7 @@ export class OrdersService {
     const transformedOrders: TransformedOrder[] = (orders || []).map((order: Record<string, unknown>) => ({
       id: order.id as string,
       order_number: order.order_number as string,
-      customer_name: "Cliente",
+      customer_name: getOrderCustomerName(order),
       customer_email: order.email as string,
       total_amount: order.total_amount as number,
       status: order.status as string,
@@ -137,7 +138,7 @@ export class OrdersService {
       recentOrders: (recentOrdersRaw || []).map((order: Record<string, unknown>) => ({
         id: order.id as string,
         order_number: order.order_number as string,
-        customer_name: "Cliente",
+        customer_name: getOrderCustomerName(order),
         customer_email: order.email as string,
         status: order.status as string,
         total_amount: order.total_amount as number,

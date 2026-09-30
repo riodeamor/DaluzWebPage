@@ -70,13 +70,23 @@ export async function GET(request: NextRequest) {
       return acc;
     }, {}) || {};
 
+    const { data: profiles, error: profilesError } = adminUsers?.length
+      ? await supabase.from('profiles').select('id, first_name, last_name')
+          .in('id', adminUsers.map(admin => admin.id))
+      : { data: [], error: null };
+    if (profilesError) {
+      return NextResponse.json({ error: 'No se pudieron cargar los nombres' }, { status: 500 });
+    }
+    const profileMap = new Map((profiles || []).map(profile => [profile.id, profile]));
+
     // Enhance admin users with analytics
     const adminUsersWithStats = adminUsers?.map(admin => ({
       ...admin,
       analytics: {
         activityCount30Days: activityMap[admin.id] || 0,
         lastActivity: admin.last_login,
-        fullName: null // TODO: Get from profiles table when needed
+        fullName: [profileMap.get(admin.id)?.first_name, profileMap.get(admin.id)?.last_name]
+          .filter(Boolean).join(' ').trim() || admin.email.split('@')[0]
       }
     })) || [];
 

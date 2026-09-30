@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -607,9 +609,9 @@ export default function ShippingManager() {
                   const zone = zones.find(z => z.id === rate.zone_id);
                   let priceDisplay = 'N/A';
                   if (rate.rate_type === 'flat') {
-                    priceDisplay = `$${rate.flat_rate?.toLocaleString('es-AR') || '0'}`;
+                    priceDisplay = formatCurrency(rate.flat_rate ?? 0);
                   } else if (rate.rate_type === 'weight') {
-                    priceDisplay = `$${rate.weight_rate_per_kg?.toLocaleString('es-AR') || '0'}/kg`;
+                    priceDisplay = `${formatCurrency(rate.weight_rate_per_kg ?? 0)}/kg`;
                   } else if (rate.rate_type === 'price') {
                     priceDisplay = `${rate.price_rate_percentage || 0}%`;
                   } else {

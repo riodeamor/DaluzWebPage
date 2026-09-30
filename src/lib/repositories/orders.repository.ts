@@ -88,6 +88,10 @@ export class OrdersRepository {
         id,
         order_number,
         email,
+        billing_first_name,
+        billing_last_name,
+        shipping_first_name,
+        shipping_last_name,
         status,
         payment_status,
         total_amount,
@@ -143,7 +147,7 @@ export class OrdersRepository {
   async getRecent(limit: number) {
     const { data, error } = await this.supabase
       .from("orders")
-      .select("id, order_number, email, status, total_amount, created_at")
+      .select("id, order_number, email, billing_first_name, billing_last_name, shipping_first_name, shipping_last_name, status, total_amount, created_at")
       .order("created_at", { ascending: false })
       .limit(limit);
 

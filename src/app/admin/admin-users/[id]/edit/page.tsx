@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -31,6 +30,8 @@ export default function EditAdminUserPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
     is_active: true,
     permissions: {} as Record<string, string[]>,
   });
@@ -56,6 +57,8 @@ export default function EditAdminUserPage() {
       const data = await response.json();
       setAdminUser(data.adminUser);
       setFormData({
+        first_name: data.adminUser.profiles?.first_name || "",
+        last_name: data.adminUser.profiles?.last_name || "",
         is_active: data.adminUser.is_active,
         permissions: data.adminUser.permissions || {},
       });
@@ -80,6 +83,8 @@ export default function EditAdminUserPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          first_name: formData.first_name.trim(),
+          last_name: formData.last_name.trim(),
           is_active: formData.is_active,
           permissions: formData.permissions,
         }),
@@ -186,6 +191,17 @@ export default function EditAdminUserPage() {
             </p>
           </div>
 
+          <div>
+            <Label htmlFor="first_name">Nombre</Label>
+            <Input id="first_name" maxLength={100} value={formData.first_name}
+              onChange={(e) => setFormData({ ...formData, first_name: e.target.value })} />
+          </div>
+          <div>
+            <Label htmlFor="last_name">Apellido</Label>
+            <Input id="last_name" maxLength={100} value={formData.last_name}
+              onChange={(e) => setFormData({ ...formData, last_name: e.target.value })} />
+          </div>
+
           {/* Role (read-only) */}
           <div>
             <Label>Rol</Label>
@@ -217,11 +233,6 @@ export default function EditAdminUserPage() {
                   {formData.is_active ? "Activo" : "Inactivo"}
                 </span>
               </label>
-              {formData.is_active ? (
-                <Badge className="bg-verde-suave text-primary">Activo</Badge>
-              ) : (
-                <Badge variant="destructive">Inactivo</Badge>
-              )}
             </div>
             <p className="text-sm text-tierra-media mt-1">
               Los administradores inactivos no pueden acceder al panel

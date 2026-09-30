@@ -60,8 +60,8 @@ export async function POST(request: NextRequest) {
           title: 'Nueva consulta de contacto',
           message: `${trimmedName} (${trimmedEmail}): ${preview}`,
           related_entity_type: 'contact_form',
-          action_url: '/admin/support',
-          action_label: 'Revisar',
+          action_url: null,
+          action_label: null,
           metadata: {
             source: 'contact_form',
             customer_name: trimmedName,

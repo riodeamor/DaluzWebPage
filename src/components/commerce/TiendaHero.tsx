@@ -31,7 +31,7 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
   useEffect(() => {
     async function fetchSettings() {
       try {
-        const response = await fetch("/api/sanity/tienda-settings");
+        const response = await fetch("/api/sanity/tienda-settings", { cache: "no-store" });
         if (response.ok) {
           const data = await response.json();
           if (data.settings) {

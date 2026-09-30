@@ -38,6 +38,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import type { Order } from "@/types/admin";
+import { formatCurrency as formatPrice, getStatusLabel, getStatusColor } from "@/lib/admin-display";
 
 interface OrderTableProps {
   orders: Order[];
@@ -57,12 +58,6 @@ interface OrderTableProps {
 }
 
 // Helpers
-function formatPrice(amount: number) {
-  return new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-  }).format(amount);
-}
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString("es-AR", {
@@ -75,131 +70,11 @@ function formatDate(dateString: string) {
 }
 
 function getStatusBadge(status: string) {
-  switch (status) {
-    case "delivered":
-    case "completed":
-      return (
-        <Badge
-          style={{ backgroundColor: "var(--admin-success)", color: "white" }}
-        >
-          <CheckCircle className="h-3 w-3 mr-1" aria-hidden="true" />
-          Completado
-        </Badge>
-      );
-    case "pending":
-      return (
-        <Badge
-          style={{ backgroundColor: "var(--admin-warning)", color: "white" }}
-        >
-          <Clock className="h-3 w-3 mr-1" aria-hidden="true" />
-          Pendiente
-        </Badge>
-      );
-    case "processing":
-      return (
-        <Badge style={{ backgroundColor: "var(--admin-info)", color: "white" }}>
-          <Package className="h-3 w-3 mr-1" aria-hidden="true" />
-          Procesando
-        </Badge>
-      );
-    case "shipped":
-      return (
-        <Badge style={{ backgroundColor: "var(--admin-info)", color: "white" }}>
-          <Truck className="h-3 w-3 mr-1" aria-hidden="true" />
-          Enviado
-        </Badge>
-      );
-    case "cancelled":
-      return (
-        <Badge
-          style={{
-            backgroundColor: "var(--admin-text-tertiary)",
-            color: "white",
-          }}
-        >
-          <XCircle className="h-3 w-3 mr-1" aria-hidden="true" />
-          Cancelado
-        </Badge>
-      );
-    case "refunded":
-      return (
-        <Badge
-          style={{
-            backgroundColor: "var(--admin-text-tertiary)",
-            color: "white",
-          }}
-        >
-          Reembolsado
-        </Badge>
-      );
-    default:
-      return (
-        <Badge
-          style={{
-            backgroundColor: "var(--admin-text-tertiary)",
-            color: "white",
-          }}
-        >
-          {status}
-        </Badge>
-      );
-  }
+  const colors = getStatusColor(status);
+  return <Badge style={{ backgroundColor: colors.bg, color: colors.text }}>{getStatusLabel(status)}</Badge>;
 }
 
-function getPaymentBadge(status: string) {
-  switch (status) {
-    case "paid":
-      return (
-        <Badge
-          style={{
-            borderColor: "var(--admin-success)",
-            color: "var(--admin-success)",
-            backgroundColor: "transparent",
-          }}
-        >
-          Pagado
-        </Badge>
-      );
-    case "pending":
-      return (
-        <Badge
-          style={{
-            borderColor: "var(--admin-warning)",
-            color: "var(--admin-warning)",
-            backgroundColor: "transparent",
-          }}
-        >
-          Pendiente
-        </Badge>
-      );
-    case "failed":
-      return (
-        <Badge
-          style={{
-            borderColor: "var(--admin-error)",
-            color: "var(--admin-error)",
-            backgroundColor: "transparent",
-          }}
-        >
-          Fallido
-        </Badge>
-      );
-    case "refunded":
-      return (
-        <Badge
-          style={{
-            borderColor: "var(--admin-text-tertiary)",
-            color: "var(--admin-text-tertiary)",
-            backgroundColor: "transparent",
-          }}
-        >
-          Reembolsado
-        </Badge>
-      );
-    default:
-      return <Badge variant="outline">{status}</Badge>;
-  }
-}
+const getPaymentBadge = getStatusBadge;
 
 function OrderActions({
   order,
@@ -328,49 +203,9 @@ function OrderActions({
   );
 }
 
-// Función para obtener colores del estado - versiones con más contraste
-function getStatusColor(status: string): { bg: string; text: string } {
-  switch (status) {
-    case "completed":
-    case "delivered":
-      return { bg: "rgba(40, 93, 48, 0.15)", text: "#1e5629" }; // Verde más oscuro
-    case "pending":
-      return { bg: "rgba(255, 78, 33, 0.15)", text: "#cc5500" }; // Naranja más oscuro
-    case "processing":
-    case "shipped":
-      return { bg: "rgba(29, 63, 106, 0.15)", text: "#0d3a6e" }; // Azul más oscuro
-    case "failed":
-    case "cancelled":
-      return { bg: "rgba(139, 0, 0, 0.15)", text: "#8b0000" }; // Rojo más oscuro
-    case "paid":
-      return { bg: "rgba(40, 93, 48, 0.15)", text: "#1e5629" }; // Verde más oscuro
-    case "refunded":
-      return { bg: "rgba(107, 114, 128, 0.15)", text: "#4b5563" }; // Gris más oscuro
-    default:
-      return { bg: "rgba(107, 114, 128, 0.15)", text: "#4b5563" }; // Gris más oscuro
-  }
-}
-
 function StatusSelector({ value, onValueChange, disabled, type }: any) {
   const statusColor = getStatusColor(value);
 
-  const statusLabels: Record<string, Record<string, string>> = {
-    order: {
-      pending: "Pendiente",
-      processing: "Procesando",
-      shipped: "Enviado",
-      delivered: "Completado",
-      completed: "Completado",
-      cancelled: "Cancelado",
-      refunded: "Reembolsado",
-    },
-    payment: {
-      pending: "Pendiente",
-      paid: "Pagado",
-      failed: "Fallido",
-      refunded: "Reembolsado",
-    },
-  };
 
   const opts =
     type === "order"
@@ -385,7 +220,7 @@ function StatusSelector({ value, onValueChange, disabled, type }: any) {
         ]
       : ["pending", "paid", "failed", "refunded"];
 
-  const label = statusLabels[type]?.[value] || value;
+  const label = getStatusLabel(value);
 
   return (
     <Select value={value} onValueChange={onValueChange} disabled={disabled}>
@@ -393,6 +228,7 @@ function StatusSelector({ value, onValueChange, disabled, type }: any) {
         className="w-[120px] h-8 px-2 border-0 bg-transparent focus:ring-0 shadow-none hover:bg-opacity-80 transition-all cursor-pointer"
         style={{
           padding: "4px 8px",
+          backgroundColor: statusColor.bg,
         }}
       >
         <SelectValue>
@@ -431,7 +267,7 @@ function StatusSelector({ value, onValueChange, disabled, type }: any) {
       >
         {opts.map((status) => {
           const optColor = getStatusColor(status);
-          const optLabel = statusLabels[type]?.[status] || status;
+          const optLabel = getStatusLabel(status);
           return (
             <SelectItem
               key={status}

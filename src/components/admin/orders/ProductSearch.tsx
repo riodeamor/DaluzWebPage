@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency } from "@/lib/admin-display";
+
 import { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -113,7 +115,7 @@ export default function ProductSearch({ onSelect }: ProductSearchProps) {
                   </div>
                 </div>
                 <div className="text-verde-suave font-semibold">
-                  ${product.price.toFixed(2)}
+                  {formatCurrency(product.price)}
                 </div>
               </div>
             </button>

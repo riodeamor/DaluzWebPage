@@ -128,7 +128,7 @@ export async function PUT(
   try {
     const adminUserId = params.id;
     const body = await request.json();
-    const { role, permissions, is_active } = body;
+    const { role, permissions, is_active, first_name, last_name } = body;
 
     const auth = await requireAdmin();
     if (!auth.ok) return auth.response;
@@ -173,6 +173,22 @@ export async function PUT(
     }
 
     // Prepare update data
+    const profileUpdate: Record<string, string> = {};
+    for (const [key, value] of Object.entries({ first_name, last_name })) {
+      if (value === undefined) continue;
+      if (typeof value !== 'string' || value.trim().length > 100) {
+        return NextResponse.json({ error: 'Nombre o apellido inválido (máximo 100 caracteres)' }, { status: 400 });
+      }
+      profileUpdate[key] = value.trim();
+    }
+    if (Object.keys(profileUpdate).length) {
+      const { data: profile, error: profileError } = await supabase.from('profiles')
+        .update(profileUpdate).eq('id', adminUserId).select('id').single();
+      if (profileError || !profile) {
+        return NextResponse.json({ error: 'No se pudo guardar el nombre del administrador' }, { status: 500 });
+      }
+    }
+
     const updateData: any = {
       updated_at: new Date().toISOString()
     };

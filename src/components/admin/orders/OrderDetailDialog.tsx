@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCurrency, getPaymentMethodLabel } from "@/lib/admin-display";
+
 import {
   Dialog,
   DialogContent,
@@ -17,10 +19,7 @@ interface OrderDetailDialogProps {
 }
 
 function formatPrice(amount: number): string {
-  return new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-  }).format(amount);
+  return formatCurrency(amount);
 }
 
 export default function OrderDetailDialog({
@@ -73,7 +72,7 @@ export default function OrderDetailDialog({
               <div className="space-y-1">
                 <p className="flex items-center text-sm">
                   <CreditCard className="h-4 w-4 mr-2 text-tierra-media" />
-                  {order.mp_payment_method || "MercadoPago"}
+                  {getPaymentMethodLabel(order.mp_payment_method || order.payment_method || "mercadopago")}
                 </p>
                 {order.mp_payment_id && (
                   <p className="text-xs text-tierra-media">

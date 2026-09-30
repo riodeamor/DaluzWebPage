@@ -272,5 +272,7 @@ export async function getAllAuthors(usePreview = false) {
 
 export async function getTiendaSettings(usePreview = false) {
   const client = getClient(usePreview);
-  return await client.fetch(queries.tiendaSettings);
+  return await client.fetch(queries.tiendaSettings, {}, usePreview
+    ? { cache: "no-store" }
+    : { next: { tags: ["tienda-settings", "sanity-content"], revalidate: 60 } });
 }
