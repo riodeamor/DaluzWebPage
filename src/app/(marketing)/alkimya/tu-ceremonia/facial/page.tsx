@@ -49,54 +49,40 @@ type Paso = {
 
 const PASOS: readonly Paso[] = [
   {
-    num: 1,
-    titulo: 'Limpieza Facial',
-    proposito:
-      'Elimina suciedad, sebo, maquillaje y toxinas. Prepara la piel para absorber tratamientos.',
-    intencion:
-      'Con el agua, liberá la piel de lo que ya no necesita y conectate con la pureza para recibir el nuevo día .',
-    consejos:
-      'Usá tu Agua Micelar para desmaquillar y tu limpiador facial en Gel como segundo paso.',
+    "num": 1,
+    "titulo": "Limpieza facial: el vaciado",
+    "proposito": "La piel es tu órgano de contacto más extenso y permeable: durante el día acumula polución, restos de protector solar, maquillaje y sebo oxidado. Si solo te enjuagás con agua o esperás al momento de la ducha, el agua no disuelve las grasas: los contaminantes quedan atrapados dentro del poro, generando puntos negros, opacidad e inflamación silenciosa. Por su parte, los sulfatos artificiales barren los lípidos de barrera, forzando a la piel a un efecto rebote de grasa o sensibilidad extrema. La doble limpieza botánica disuelve primero lo oleoso y luego retira las impurezas solubles en agua, permitiendo que los poros respiren en equilibrio y sin tirantez.",
+    "intencion": "A través del fluir del agua, liberá tu piel de lo estancado y conectá con la claridad para recibir el nuevo ciclo.",
+    "consejos": "Iniciá aplicando tu Limpiador Ilumina masajeando suavemente sobre el rostro seco para fundir impurezas y protector solar sin tironear. Continuá aplicando tu Limpiador Facial en Gel sobre la piel humedecida: realizá círculos lentos y ascendentes, tomándote un minuto para soltar la pesadez del día. Enjuagá con agua templada y secá con suaves toques de toalla limpia."
   },
   {
-    num: 2,
-    titulo: 'Exfoliación (Complementaria)',
-    proposito:
-      'Renueva el cutis, desobstruye poros y elimina la piel muerta. Mejora la absorción.',
-    intencion:
-      'Liberá las capas de lo viejo (células muertas) y prepará tu ser para la nueva recepción.',
-    consejos:
-      'Aplicar de 1 a 3 veces por semana, según el biotipo. Utilizar el Gel exfoliante Renace.',
+    "num": 2,
+    "titulo": "Exfoliación: la renovación (complementaria)",
+    "proposito": "La epidermis se renueva naturalmente cada mes, pero el cansancio, el estrés y el clima enlentecen ese ciclo. Las células envejecidas forman una capa superficial opaca que engrosa el tejido y actúa como un muro que impide que tus sueros penetren. Una exfoliación botánica suave y sin microplásticos libera los poros, empareja la textura y despierta la circulación profunda sin provocar microlesiones en la piel.",
+    "intencion": "Soltá las capas del pasado y prepará tu superficie para una receptividad absoluta.",
+    "consejos": "De 1 a 2 veces por semana (respetando los tiempos de tu biotipo), colocá una pequeña cantidad del Gel Exfoliante Renace sobre la piel limpia y húmeda. Deslizá las yemas de tus dedos con movimientos circulares suaves en frente, nariz y mentón, sin presionar. Notá cómo la piel se afina y vuelve a respirar liviana; enjuagá con abundante agua fresca."
   },
   {
-    num: 3,
-    titulo: 'Tonificación',
-    proposito:
-      'Equilibra el pH de la piel tras la limpieza y prepara la barrera cutánea.',
-    intencion: 'Tonificá tu intención y tu campo energético.',
-    consejos:
-      'Aplicá el Tónico Hidratante con toques suaves o brumizando el rostro, mañana y noche.',
+    "num": 3,
+    "titulo": "Tonificación: la frecuencia",
+    "proposito": "El agua de red suele tener un pH alcalino que altera la barrera protectora de la piel. Además, un tejido deshidratado se contrae y pierde permeabilidad. El tónico botánico es un extracto celular vivo que devuelve el pH a su nivel ácido fisiológico exacto (alrededor de 5.5) y satura el tejido de agua pura, funcionando como una esponja fértil que multiplica la absorción de los nutrientes que vienen después.",
+    "intencion": "Tonificá tu foco y tu campo energético con cada vaporización.",
+    "consejos": "Cerrá los ojos y brumizá tu Tónico Hidratante a unos 20 cm del rostro y cuello, inhalando su rocío herbal para calmar el ritmo interno. Con la piel todavía húmeda y receptiva, realizá un suave tecleo con la punta de los dedos para despertar la microcirculación y preparar el tejido para el sérum."
   },
   {
-    num: 4,
-    titulo: 'Nutrición (Sérum)',
-    proposito:
-      'Aporta la alta concentración de activos específicos (Vitaminas, Ácido Hialurónico) que tu piel necesita.',
-    intencion:
-      'Nutrí tu Ser con lo más vital que necesita. Conectá con la intención detrás de la Alkimya elegida.',
-    consejos:
-      'Aplicá tu Sérum específico (Vitamina C, Niacinamida, etc.) con masajes suaves.',
+    "num": 4,
+    "titulo": "Nutrición: el sérum",
+    "proposito": "A diferencia de una crema espesa que trabaja en la superficie, el sérum es un concentrado botánico de moléculas pequeñas diseñado para penetrar las capas profundas de la piel. Ya sea para calmar rojeces, unificar el tono o acompañar la firmeza celular, este paso le entrega a tus células vivas dosis puras de antioxidantes y activos bioasimilables en el momento de mayor receptividad dérmica.",
+    "intencion": "Nutrí tu Ser con lo esencial. Conectá conscientemente con la frecuencia de la Alkimya elegida.",
+    "consejos": "Colocá de 3 a 4 gotas de tu Sérum específico (Claridad, Serena o Soy) en la palma de tu mano o directamente sobre el rostro. Distribuilo con suaves presiones con toda la palma, desde el centro hacia afuera y en el cuello en sentido ascendente. Sostené cada presión con una respiración lenta, permitiendo que la fórmula se funda con la temperatura de tu piel."
   },
   {
-    num: 5,
-    titulo: 'Humectación y Protección (Hidratación)',
-    proposito:
-      'Sella los activos, previene la pérdida de agua y restaura el confort.',
-    intencion:
-      'Sellá la gratitud por tu Ser. Que tu piel se sienta mimada y cuidada.',
-    consejos:
-      'Usá la Emulsión o Crema específica para tu biotipo. Aplicá después del sérum.',
-  },
+    "num": 5,
+    "titulo": "Humectación y protección: el sello",
+    "proposito": "Toda el agua y los activos botánicos que acabás de incorporar se evaporarían en pocos minutos por pérdida transepidérmica de agua si no existiera una barrera que los retenga. La crema o emulsión aporta lípidos vegetales biocompatibles que crean un manto protector flexible: sella los nutrientes en el interior, frena la deshidratación y defiende tu tejido de las agresiones ambientales.",
+    "intencion": "Sellá el cuidado hacia tu templo físico. Permití que tu piel descanse abrigada y protegida.",
+    "consejos": "Tomá una porción de tu Crema o Emulsión facial y entibiala entre los dedos. Aplicá con movimientos ascendentes y envolventes sobre rostro, cuello y escote, abrazando el contorno con un toque firme y suave. Sentí cómo tu piel queda nutrida, elástica y protegida para habitar el día o entregarse al descanso nocturno."
+  }
 ];
 
 export default function CeremoniaFacialPage() {
@@ -112,9 +98,17 @@ export default function CeremoniaFacialPage() {
               CEREMONIA FACIAL
             </span>
           </h1>
-          <h3 className="font-subtitle mt-4 text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-facial-hero-subtitle">
+          <h2 className="font-subtitle text-center text-xl italic sm:text-2xl md:text-3xl ceremonia-facial-hero-subtitle">
             El Rostro: Activación del Escudo Protector
-          </h3>
+          </h2>
+        </section>
+
+        {/* Carrusel de biotipos */}
+        <section className="px-4 pb-8 sm:px-6 sm:pb-12 md:px-8 md:pb-16 lg:px-12 lg:pb-20">
+          <CeremoniaCarousel
+            banners={BANNERS}
+            label="Ceremonias faciales según tu biotipo"
+          />
         </section>
 
         {/* Paso a Paso */}
@@ -144,28 +138,24 @@ export default function CeremoniaFacialPage() {
                   >
                     <div className="ceremonia-facial-step-title-bg" aria-hidden="true" />
                     <h4 className="ceremonia-facial-step-title-text pb-4 lg:pb-6">
-                      {paso.num}. {paso.titulo}
+                      <span className="ceremonia-facial-step-number">PASO {paso.num}</span><span>{paso.titulo}</span>
                     </h4>
                   </div>
 
-                  {/* Propósito y Beneficio */}
+                  {/* Por qué tu piel lo necesita */}
                   <div
                     className="ceremonia-facial-block-group"
                     data-zigzag={zigzag.proposito}
                     data-order="1"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
-                        Propósito y Beneficio
+                        Por qué tu piel lo necesita
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content">
-                        {paso.proposito}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content">
+                      {paso.proposito}
+                    </p>
                   </div>
 
                   {/* Intención de la Ceremonia */}
@@ -175,37 +165,29 @@ export default function CeremoniaFacialPage() {
                     data-order="2"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
                         Intención de la Ceremonia
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content">
-                        {paso.intencion}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content">
+                      {paso.intencion}
+                    </p>
                   </div>
 
-                  {/* Consejos de Aplicación */}
+                  {/* Uso Consciente */}
                   <div
                     className="ceremonia-facial-block-group"
                     data-zigzag={zigzag.consejos}
                     data-order="3"
                   >
                     <div className="ceremonia-facial-block-title">
-                      <div className="ceremonia-facial-block-title-bg" aria-hidden="true" />
                       <span className="ceremonia-facial-block-title-text">
-                        Consejos de Aplicación
+                        Uso Consciente
                       </span>
                     </div>
-                    <div className="ceremonia-facial-block-text">
-                      <div className="ceremonia-facial-block-text-bg" aria-hidden="true" />
-                      <p className="ceremonia-facial-block-text-content whitespace-pre-line">
-                        {paso.consejos}
-                      </p>
-                    </div>
+                    <p className="ceremonia-facial-block-text-content whitespace-pre-line">
+                      {paso.consejos}
+                    </p>
                   </div>
 
                   {/* Texto extra (solo si aplica) */}
@@ -250,13 +232,9 @@ export default function CeremoniaFacialPage() {
           </div>
         </section>
 
-        {/* Elegí tu Ceremonia - Carrusel de biotipos */}
-        <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32 -mt-4 sm:-mt-8 lg:-mt-16">
-          <CeremoniaCarousel
-            banners={BANNERS}
-            label="Ceremonias faciales según tu biotipo"
-          />
-          <div className="mt-8 flex justify-center sm:mt-10">
+        {/* Elegí tu Ceremonia */}
+        <section className="px-4 pb-16 sm:px-6 sm:pb-20 md:px-8 md:pb-24 lg:px-12 lg:pb-32">
+          <div className="mt-8 flex justify-center">
             <Link
               href="/productos"
               className="font-title inline-flex justify-center rounded-r-[15px] border-2 border-[var(--color-brand-primary)] bg-[var(--color-bg-light)] px-8 py-4 text-sm font-medium uppercase tracking-[1px] text-[var(--color-brand-primary)] transition-colors hover:bg-[var(--color-brand-primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand-primary)] focus-visible:ring-offset-2 sm:text-base"

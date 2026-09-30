@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1919.66 305.22">
   <defs>
-    <style>
-      .cls-1 {
-        fill: #fff2db;
-      }
-    </style>
+    <linearGradient id="bordoWave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4A0D10"/>
+      <stop offset="50%" stop-color="#8A0000"/>
+      <stop offset="100%" stop-color="#C53B34"/>
+    </linearGradient>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
-    <path class="cls-1" d="M1919.66,0c-43.09,31.19-110.8,74.81-202.21,112.17-301.01,123.01-588.03,67.33-800.68,51.77-220.41-16.13-515.75,2.38-916.77,141.28V0h1919.66Z"/>
+    <path fill="url(#bordoWave)" d="M1919.66,0c-43.09,31.19-110.8,74.81-202.21,112.17-301.01,123.01-588.03,67.33-800.68,51.77-220.41-16.13-515.75,2.38-916.77,141.28V0h1919.66Z"/>
   </g>
 </svg>

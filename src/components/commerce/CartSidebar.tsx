@@ -70,7 +70,7 @@ export default function CartSidebar() {
           {items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center py-12 px-6">
               <div className="relative mb-6">
-                <ShoppingBag className="h-20 w-20 text-text-primary/20" />
+                <ShoppingBag className="h-8 w-8 text-[#16345F]/60" strokeWidth={1.2} />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Package className="h-8 w-8 text-text-primary/30" />
                 </div>

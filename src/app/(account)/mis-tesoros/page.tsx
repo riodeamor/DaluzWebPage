@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { useTreasures } from "@/hooks/useTreasures";
 import {
@@ -16,7 +17,6 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Loader2,
-  Gift,
   Play,
   Headphones,
   FileText,
@@ -70,7 +70,7 @@ export default function MisTesorosPage() {
   // User not authenticated (should not happen due to layout auth check)
   if (!user) {
     return (
-      <div className="space-y-6">
+      <div className="tesoros-watermark space-y-6">
         <div className="text-center py-12">
           <Lock className="h-16 w-16 text-text-primary/30 mx-auto mb-4" />
           <h2 className="text-2xl font-title text-brand-primary mb-2">
@@ -80,7 +80,7 @@ export default function MisTesorosPage() {
             Iniciá sesión para ver tus Tesoros Da Luz
           </p>
           <Link href="/login">
-            <Button className="bg-brand-primary hover:bg-brand-secondary text-white">
+            <Button className="account-action">
               Iniciar Sesión
             </Button>
           </Link>
@@ -92,7 +92,7 @@ export default function MisTesorosPage() {
   // No treasures yet - empty state
   if (treasures.length === 0) {
     return (
-      <div className="space-y-6">
+      <div className="tesoros-watermark space-y-6">
         {/* Header */}
         <div>
           <h1 className="text-3xl font-title text-brand-primary">
@@ -109,8 +109,8 @@ export default function MisTesorosPage() {
           style={{ borderRadius: "0px 15px" }}
         >
           <CardContent className="p-12 text-center">
-            <div className="w-20 h-20 rounded-full bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
-              <Gift className="h-10 w-10 text-brand-primary" />
+            <div className="w-20 h-20 rounded-full bg-[#0A1D4A]/10 flex items-center justify-center mx-auto mb-6">
+              <Image src="/assets/vectores/mandala-experiencias.svg" alt="" width={40} height={40} className="h-10 w-10" />
             </div>
             <h2 className="text-2xl font-title text-brand-primary mb-4">
               Aún no tienes Tesoros
@@ -123,7 +123,7 @@ export default function MisTesorosPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/productos">
                 <Button
-                  className="bg-brand-primary hover:bg-brand-secondary text-white font-text"
+                  className="account-action"
                   style={{ borderRadius: "0px 15px" }}
                 >
                   <ShoppingBag className="h-4 w-4 mr-2" />
@@ -149,7 +149,7 @@ export default function MisTesorosPage() {
 
   // User has treasures - show content
   return (
-    <div className="space-y-6">
+    <div className="tesoros-watermark space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -329,7 +329,7 @@ export default function MisTesorosPage() {
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                          <Gift className="h-5 w-5 text-brand-primary" />
+                          <Image src="/assets/vectores/mandala-experiencias.svg" alt="" width={20} height={20} className="h-5 w-5" />
                         </div>
                         <div>
                           <CardTitle className="text-lg font-title text-brand-primary">

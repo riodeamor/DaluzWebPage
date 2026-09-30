@@ -174,7 +174,7 @@ export default function OrdersPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-azul-profundo">Mis Pedidos</h1>
+        <h1 className="text-3xl font-normal text-[#051341]">Mis Pedidos</h1>
         <p className="text-tierra-media">
           Revisa el estado y detalles de todos tus pedidos
         </p>
@@ -213,7 +213,7 @@ export default function OrdersPage() {
               Cuando realices tu primera compra, aparecerá aquí
             </p>
             <Button
-              className="bg-dorado hover:bg-dorado/90 text-azul-profundo"
+              className="account-action"
               onClick={() => router.push('/productos')}
             >
               Explorar Productos
@@ -411,4 +411,4 @@ export default function OrdersPage() {
       )}
     </div>
   );
-} 
+}

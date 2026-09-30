@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" width="30.41cm" height="28.06cm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 862.04 795.29">
+  <defs>
+    <linearGradient id="Degradado_sin_nombre_1662" data-name="Degradado sin nombre 1662" x1="6953.79" y1="1329.21" x2="6819.63" y2="1593.13" gradientTransform="translate(3902.82 6499.17) rotate(-133.08)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6e150d"/>
+      <stop offset=".14" stop-color="#7b190f"/>
+      <stop offset=".45" stop-color="#952113"/>
+      <stop offset=".73" stop-color="#a42616"/>
+      <stop offset=".96" stop-color="#aa2817"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_1654" data-name="Degradado sin nombre 1654" x1="4472.17" y1="-1015.72" x2="4839.56" y2="-1015.72" gradientTransform="translate(204.31 5051.19) rotate(-75.9)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c02e19"/>
+      <stop offset=".1" stop-color="#b62b17"/>
+      <stop offset=".71" stop-color="#821b0f"/>
+      <stop offset="1" stop-color="#6e150d"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_1661" data-name="Degradado sin nombre 1661" x1="6629.11" y1="1649.51" x2="6844.39" y2="1555.33" gradientTransform="translate(3902.82 6499.17) rotate(-133.08)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6e150d"/>
+      <stop offset=".3" stop-color="#7d190f"/>
+      <stop offset=".89" stop-color="#a42616"/>
+      <stop offset=".96" stop-color="#aa2817"/>
+    </linearGradient>
+  </defs>
+  <polygon points="114.5 484.71 111.61 276.92 350.86 477.05 353.74 684.84 114.5 484.71" style="fill: url(#Degradado_sin_nombre_1662); stroke: #fff5e0; stroke-linecap: round; stroke-linejoin: round; stroke-width: 14.69px;"/>
+  <polygon points="111.61 276.92 344.76 96.74 597.51 287.52 350.86 477.05 111.61 276.92" style="fill: url(#Degradado_sin_nombre_1654); stroke: #fff5e0; stroke-linecap: round; stroke-linejoin: round; stroke-width: 14.69px;"/>
+  <polygon points="350.86 477.05 597.51 287.52 582.7 507.76 353.74 684.84 350.86 477.05" style="fill: url(#Degradado_sin_nombre_1661); stroke: #fff5e0; stroke-linecap: round; stroke-linejoin: round; stroke-width: 14.69px;"/>
+</svg>

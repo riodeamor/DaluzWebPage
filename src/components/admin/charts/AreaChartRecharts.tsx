@@ -23,6 +23,7 @@ interface AreaChartRechartsProps {
   color?: string;
   formatValue?: (value: number) => string;
   showGrid?: boolean;
+  xAxisTicks?: string[];
 }
 
 const CustomTooltip = ({
@@ -40,7 +41,7 @@ const CustomTooltip = ({
     return (
       <div className="bg-white p-3 shadow-lg rounded-lg border border-gray-200">
         <p className="text-xs text-gray-500 mb-1">{label}</p>
-        <p className="text-sm font-semibold text-[#1E3A8A]">
+        <p className="text-sm font-semibold text-[#051341]">
           {formatValue ? formatValue(payload[0].value) : payload[0].value}
         </p>
       </div>
@@ -52,9 +53,10 @@ const CustomTooltip = ({
 export function AreaChartRecharts({
   data,
   title,
-  color = "#9DC65D",
+  color = "#0A1D4A",
   formatValue = (val) => val.toString(),
   showGrid = true,
+  xAxisTicks,
 }: AreaChartRechartsProps) {
   if (!data || data.length === 0) {
     return (
@@ -101,10 +103,16 @@ export function AreaChartRecharts({
   const avg = data.reduce((sum, item) => sum + item.value, 0) / data.length;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" role="group" aria-label={title || "Gráfico de área"}>
       {title && (
-        <h4 className="font-medium text-[#1E3A8A] text-center">{title}</h4>
+        <h4 className="font-medium text-[#051341] text-center">{title}</h4>
       )}
+
+      <table className="sr-only">
+        <caption>{title || "Datos del gráfico de área"}</caption>
+        <thead><tr><th>Fecha</th><th>Valor</th></tr></thead>
+        <tbody>{data.map((point) => <tr key={point.date}><td>{point.date}</td><td>{formatValue(point.value)}</td></tr>)}</tbody>
+      </table>
 
       <ResponsiveContainer width="100%" height={280}>
         <RechartsAreaChart
@@ -133,15 +141,16 @@ export function AreaChartRecharts({
           )}
           <XAxis
             dataKey="date"
+            ticks={xAxisTicks}
             tickFormatter={formatXAxis}
-            tick={{ fontSize: 11, fill: "#8B4513" }}
+            tick={{ fontSize: 11, fill: "#52627C" }}
             axisLine={{ stroke: "#E5E7EB" }}
             tickLine={false}
-            interval="preserveStartEnd"
+            interval={xAxisTicks ? 0 : "preserveStartEnd"}
           />
           <YAxis
             tickFormatter={formatYAxis}
-            tick={{ fontSize: 11, fill: "#8B4513" }}
+            tick={{ fontSize: 11, fill: "#52627C" }}
             axisLine={false}
             tickLine={false}
             width={60}
@@ -170,8 +179,8 @@ export function AreaChartRecharts({
       {/* Summary stats */}
       <div className="grid grid-cols-3 gap-3 pt-3 border-t border-gray-100">
         <div className="text-center p-2 bg-gray-50 rounded-lg">
-          <p className="text-xs text-[#8B4513] mb-1">Promedio</p>
-          <p className="font-bold text-sm text-[#1E3A8A]">
+          <p className="text-xs text-[#52627C] mb-1">Promedio</p>
+          <p className="font-bold text-sm text-[#051341]">
             {formatValue(
               Math.round(
                 data.reduce((sum, item) => sum + item.value, 0) / data.length,
@@ -180,13 +189,13 @@ export function AreaChartRecharts({
           </p>
         </div>
         <div className="text-center p-2 bg-[#9DC65D]/10 rounded-lg border border-[#9DC65D]/20">
-          <p className="text-xs text-[#8B4513] mb-1">Máximo</p>
+          <p className="text-xs text-[#52627C] mb-1">Máximo</p>
           <p className="font-bold text-sm text-[#9DC65D]">
             {formatValue(Math.max(...data.map((d) => d.value)))}
           </p>
         </div>
         <div className="text-center p-2 bg-red-50 rounded-lg border border-red-100">
-          <p className="text-xs text-[#8B4513] mb-1">Mínimo</p>
+          <p className="text-xs text-[#52627C] mb-1">Mínimo</p>
           <p className="font-bold text-sm text-red-600">
             {formatValue(Math.min(...data.map((d) => d.value)))}
           </p>

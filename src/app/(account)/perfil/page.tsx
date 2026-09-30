@@ -227,8 +227,8 @@ export default function ProfilePage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-title text-text-primary">Mi Perfil</h1>
-          <p className="text-text-primary/70 font-text mt-1">
+          <h1 className="text-3xl font-normal text-[#051341] tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif" }}>Mi Perfil</h1>
+          <p className="text-sm text-[#16345F]/70 mt-1" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
             Gestiona tu información personal y preferencias
           </p>
         </div>
@@ -236,7 +236,7 @@ export default function ProfilePage() {
           <Button
             onClick={() => setIsEditing(true)}
             variant="brand"
-            className="font-title uppercase tracking-wider"
+            className="account-action tracking-wider not-italic"
           >
             <Edit3 className="h-4 w-4 mr-2" />
             Editar Perfil
@@ -246,10 +246,10 @@ export default function ProfilePage() {
 
       <AnimatedEntry
         delay={0.2}
-        className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+        className="grid grid-cols-1 gap-6"
       >
         {/* Profile Summary Card */}
-        <div className="lg:col-span-1">
+        <div className="lg:hidden">
           <ProfileCard
             avatarUrl={displayProfile.avatar_url}
             firstName={displayProfile.first_name}
@@ -267,7 +267,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Profile Details Card */}
-        <div className="lg:col-span-2">
+        <div>
           <form id="profile-form" onSubmit={handleSubmit(onSubmit)}>
             <ProfileForm
               isEditing={isEditing}

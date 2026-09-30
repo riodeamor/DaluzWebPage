@@ -23,7 +23,6 @@ import {
 import KPICard from "@/components/admin/dashboard/KPICard";
 import ChartCard from "@/components/admin/dashboard/ChartCard";
 import RecentOrdersList from "@/components/admin/dashboard/RecentOrdersList";
-import QuickActions from "@/components/admin/dashboard/QuickActions";
 import type { DashboardData, Order, Product } from "@/types/admin";
 import {
   DollarSign,
@@ -37,23 +36,23 @@ import {
 
 // Colores del sistema admin
 const COLORS = {
-  primary: "#6A1111", // Burdeos Oscuro
-  secondary: "#8B0000", // Rojo Sangre
-  accent: "#285D30", // Verde Alkimya
-  success: "#285D30", // Verde Alkimya
-  warning: "#FF4E21", // Naranja Alkimya
-  danger: "#8B0000", // Rojo Sangre
-  info: "#1D3F6A", // Azul Acero
-  cream: "#FDF3E3", // Crema
+  primary: "#051341",
+  secondary: "#0A1D4A",
+  accent: "#16345F",
+  success: "#285D30",
+  warning: "#B8860B",
+  danger: "#7D1D2B",
+  info: "#005080",
+  cream: "#FAF7F2",
 };
 
 // Colores para gráficos - paleta coherente con el admin
 const CHART_COLORS = [
-  "#285D30", // Verde - Completado
-  "#FF4E21", // Naranja - Pendiente
-  "#1D3F6A", // Azul - Procesando
-  "#6A1111", // Burdeos - Enviado
-  "#8B0000", // Rojo - Fallido
+  "#285D30", // Completado
+  "#B8860B", // Pendiente
+  "#005080", // Procesando
+  "#16345F", // Enviado
+  "#7D1D2B", // Fallido
 ];
 
 const defaultDashboardData: DashboardData = {
@@ -202,18 +201,18 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* Stock Alert Banner */}
+      {/* Single compact stock alert */}
       {data.lowStockProducts.length > 0 && (
         <Card
-          className="admin-card"
+          className="admin-card rounded-full"
           style={{ border: "1px solid var(--admin-border-secondary)" }}
         >
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
+          <CardContent className="px-4 py-2.5">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-3">
                 <AlertTriangle
                   className="h-5 w-5"
-                  style={{ color: "var(--admin-error)" }}
+                  style={{ color: "#8C6205" }}
                 />
                 <div>
                   <p
@@ -224,25 +223,14 @@ export default function AdminDashboard() {
                     {data.lowStockProducts.length !== 1 ? "s" : ""} con stock
                     bajo
                   </p>
-                  <p
-                    className="text-xs"
-                    style={{ color: "var(--admin-text-secondary)" }}
-                  >
-                    {data.lowStockProducts
-                      .slice(0, 2)
-                      .map((p) => p.name)
-                      .join(", ")}
-                    {data.lowStockProducts.length > 2 &&
-                      ` y ${data.lowStockProducts.length - 2} más`}
-                  </p>
                 </div>
               </div>
               <Link href="/admin/products?filter=low_stock">
                 <Button
                   size="sm"
                   style={{
-                    borderColor: "var(--admin-error)",
-                    color: "var(--admin-error)",
+                    borderColor: "#8C6205",
+                    color: "#8C6205",
                     backgroundColor: "transparent",
                   }}
                 >
@@ -301,7 +289,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         <ChartCard
           title="Ingresos Últimos 7 Días"
           description="Evolución de ingresos diarios"
@@ -492,13 +480,7 @@ export default function AdminDashboard() {
         </ChartCard>
       )}
 
-      {/* Recent Orders & Quick Actions */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-        <div className="lg:col-span-2">
-          <RecentOrdersList orders={data.recentOrders} onViewAll={() => {}} />
-        </div>
-        <QuickActions lowStockProducts={data.lowStockProducts} />
-      </div>
+      <RecentOrdersList orders={data.recentOrders} onViewAll={() => {}} />
     </div>
   );
 }

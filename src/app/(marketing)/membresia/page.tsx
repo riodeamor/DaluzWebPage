@@ -144,7 +144,7 @@ export default function MembresiaPage() {
                     Descuentos del 10%
                   </li>
                 </ul>
-                <Button variant="outline" className="w-full">
+                <Button variant="outline" className="dl-button-primary w-full">
                   Elegir Plan Básico
                 </Button>
               </div>
@@ -180,7 +180,7 @@ export default function MembresiaPage() {
                     Soporte prioritario
                   </li>
                 </ul>
-                <Button className="w-full btn-enhanced">
+                <Button className="dl-button-primary w-full">
                   Elegir Plan Premium
                 </Button>
               </div>
@@ -197,11 +197,11 @@ export default function MembresiaPage() {
               diseñadas especialmente para tu crecimiento personal.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-enhanced px-8 py-4 text-lg font-semibold">
+              <Button className="dl-button-primary px-8 py-4 text-lg font-semibold">
                 <Users className="w-5 h-5 mr-2" />
                 Unirse Ahora
               </Button>
-              <Button variant="outline" className="px-8 py-4 text-lg">
+              <Button variant="outline" className="dl-button-primary px-8 py-4 text-lg">
                 <Heart className="w-5 h-5 mr-2" />
                 Más Información
               </Button>

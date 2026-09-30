@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import ProductCard from "@/components/ui/brand/ProductCard";
+import { productRichTextPlainText } from "@/lib/products/rich-text";
+import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
@@ -40,6 +42,9 @@ interface Product {
   }>;
   installments_3_enabled?: boolean;
   installments_6_enabled?: boolean;
+  promotional_tag?: "none" | "lanzamiento" | "descuento" | "ultimas_unidades" | null;
+  discount_transfer_percent?: number | null;
+  discount_cash_percent?: number | null;
 }
 
 interface FeaturedLineSectionProps {
@@ -103,6 +108,7 @@ export default function FeaturedLineSection({
   const [loading, setLoading] = useState(true);
   const [availableLines, setAvailableLines] = useState(productLines);
   const { addItem } = useCart();
+  const showReviews = useReviewsVisibility();
 
   // Find lines that have products available
   useEffect(() => {
@@ -119,9 +125,9 @@ export default function FeaturedLineSection({
 
             return allProducts.some((product: any) => {
               const name = product.name?.toLowerCase() || "";
-              const description = product.description?.toLowerCase() || "";
+              const description = productRichTextPlainText(product.description || "").toLowerCase();
               const shortDescription =
-                product.short_description?.toLowerCase() || "";
+                productRichTextPlainText(product.short_description || "").toLowerCase();
               const categoryName =
                 product.categories?.name?.toLowerCase() || "";
               const categorySlug =
@@ -192,9 +198,9 @@ export default function FeaturedLineSection({
           // Look for products that belong to this specific line
           filteredProducts = allProducts.filter((product: any) => {
             const name = product.name?.toLowerCase() || "";
-            const description = product.description?.toLowerCase() || "";
+            const description = productRichTextPlainText(product.description || "").toLowerCase();
             const shortDescription =
-              product.short_description?.toLowerCase() || "";
+              productRichTextPlainText(product.short_description || "").toLowerCase();
             const categoryName = product.categories?.name?.toLowerCase() || "";
             const categorySlug = product.categories?.slug?.toLowerCase() || "";
             const lineName = selectedLine.name.toLowerCase();
@@ -311,12 +317,7 @@ export default function FeaturedLineSection({
   }
 
   return (
-    <div
-      className={cn("py-12 relative overflow-hidden", className)}
-      style={{
-        background: `linear-gradient(135deg, ${selectedLine.bgColor.replace("bg-", "")} 0%, ${selectedLine.bgColor.replace("bg-", "")}CC 100%)`,
-      }}
-    >
+    <div className={cn("bg-[#FAF7F2] py-12 relative overflow-hidden", className)}>
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8">
@@ -328,12 +329,12 @@ export default function FeaturedLineSection({
               selectedLine.color,
             )}
             style={{
-              fontFamily: "Playfair Display, var(--font-playfair), serif",
-              fontWeight: 600,
+              fontFamily: "var(--font-cormorant), serif",
+              fontWeight: 500,
               fontStyle: "normal",
             }}
           >
-            Descubri la línea {selectedLine.name}
+            Descubrí la Línea {selectedLine.name}
           </h2>
 
           <p
@@ -344,9 +345,6 @@ export default function FeaturedLineSection({
             cuidadosamente elegidos para tu bienestar.
           </p>
 
-          <Link href={`/categorias/linea-${"slug" in selectedLine ? selectedLine.slug : selectedLine.id}`}>
-
-          </Link>
         </div>
 
         {/* Products Grid */}
@@ -357,13 +355,14 @@ export default function FeaturedLineSection({
               id={product.id}
               slug={product.slug}
               name={product.name}
-              description={product.short_description || product.description}
+              description={product.short_description || ""}
               price={product.price}
               originalPrice={product.compare_at_price}
               category={product.categories?.name || selectedLine.name}
               imageUrl={product.featured_image}
               rating={product.averageRating || 0}
               reviewCount={product.reviewCount || 0}
+              showReviews={showReviews}
               isNatural={true}
               isNew={false}
               isOnSale={!!product.compare_at_price}
@@ -373,6 +372,11 @@ export default function FeaturedLineSection({
               }
               lineTheme={selectedLine.id as any}
               onAddToCart={handleAddToCart}
+              promotionalTag={product.promotional_tag}
+              discountTransferPercent={product.discount_transfer_percent}
+              discountCashPercent={product.discount_cash_percent}
+              installments3Enabled={product.installments_3_enabled}
+              installments6Enabled={product.installments_6_enabled}
               variant="elegant"
               className="p-[0]"
             />
@@ -392,7 +396,7 @@ export default function FeaturedLineSection({
               }}
             >
               <span className="relative z-10">
-                Ver más productos de {selectedLine.name}
+                Explorar toda la Línea {selectedLine.name} →
               </span>
               <div className="absolute inset-0 -top-1 -left-1 w-[calc(100%+8px)] h-[calc(100%+8px)] bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
             </Button>

@@ -334,13 +334,12 @@ export default function SettingsPage() {
                       type={showPasswords.current ? "text" : "password"}
                       {...register("currentPassword")}
                       className={errors.currentPassword ? "border-red-500" : ""}
-                      style={!errors.currentPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
                     />
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('current')}
                     >
                       {showPasswords.current ?
@@ -362,13 +361,12 @@ export default function SettingsPage() {
                       type={showPasswords.new ? "text" : "password"}
                       {...register("newPassword")}
                       className={errors.newPassword ? "border-red-500" : ""}
-                      style={!errors.newPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
                     />
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('new')}
                     >
                       {showPasswords.new ?
@@ -390,13 +388,12 @@ export default function SettingsPage() {
                       type={showPasswords.confirm ? "text" : "password"}
                       {...register("confirmPassword")}
                       className={errors.confirmPassword ? "border-red-500" : ""}
-                      style={!errors.confirmPassword ? { borderColor: 'var(--admin-text-primary)' } : undefined}
                     />
                     <Button
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3"
+                      className="absolute right-0 top-0 h-full px-3 bg-transparent hover:bg-transparent"
                       onClick={() => togglePasswordVisibility('confirm')}
                     >
                       {showPasswords.confirm ?
@@ -413,12 +410,7 @@ export default function SettingsPage() {
                 <Button
                   type="submit"
                   disabled={isChangingPassword}
-                  className="w-full bg-dorado hover:bg-dorado/90 text-azul-profundo"
-                  style={{
-                    backgroundColor: 'var(--admin-bg-secondary)',
-                    color: 'var(--admin-accent-primary)',
-                    fontWeight: 600
-                  }}
+                  className="account-action w-full"
                 >
                   {isChangingPassword ? "Cambiando..." : "Cambiar Contraseña"}
                 </Button>
@@ -560,4 +552,4 @@ export default function SettingsPage() {
       </div>
     </div>
   );
-} 
+}

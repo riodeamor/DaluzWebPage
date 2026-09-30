@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { ArrowLeftSVG, ArrowRightSVG } from "@/components/svg/SVGComponents";
-import { Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import {
   Dialog,
@@ -50,7 +49,7 @@ export default function InteractiveGallery() {
       `}} />
       {/* Navigation Arrows */}
       <button 
-        className="gallery-arrow-left absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-30 transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="gallery-arrow-left absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 z-30 transition-all duration-300 hover:scale-110 cursor-pointer text-[#16345F] hover:text-[#005080]"
         onClick={() => {
           const carousel = document.getElementById('gallery-carousel');
           if (carousel) {
@@ -58,14 +57,14 @@ export default function InteractiveGallery() {
             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
           }
         }}
-        style={{ color: '#AE0000', background: 'none', border: 'none', padding: 0 }}
+        style={{ background: 'none', border: 'none', padding: 0 }}
         aria-label="Previous image"
       >
-        <ArrowLeftSVG className="" color="#AE0000" />
+        <ArrowLeft aria-hidden="true" />
       </button>
       
       <button 
-        className="gallery-arrow-right absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-30 transition-all duration-300 hover:scale-110 cursor-pointer"
+        className="gallery-arrow-right absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 z-30 transition-all duration-300 hover:scale-110 cursor-pointer text-[#16345F] hover:text-[#005080]"
         onClick={() => {
           const carousel = document.getElementById('gallery-carousel');
           if (carousel) {
@@ -73,10 +72,10 @@ export default function InteractiveGallery() {
             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
           }
         }}
-        style={{ color: '#AE0000', background: 'none', border: 'none', padding: 0 }}
+        style={{ background: 'none', border: 'none', padding: 0 }}
         aria-label="Next image"
       >
-        <ArrowRightSVG className="" color="#AE0000" />
+        <ArrowRight aria-hidden="true" />
       </button>
 
       {/* Gallery Container with Interactive Scroll */}

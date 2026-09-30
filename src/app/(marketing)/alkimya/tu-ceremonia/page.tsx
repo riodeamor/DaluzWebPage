@@ -37,25 +37,22 @@ export default function TuCeremoniaPage() {
       {/* Page Content */}
       <div className="tu-ceremonia-content">
         {/* Title + Subtitle wrapped in a single card on mobile/tablet */}
-        {/* Le quitamos el margen de abajo para que no empuje */}
-        <div className="tu-ceremonia-title-card" style={{ marginBottom: '0px' }}>
+        <div className="tu-ceremonia-title-card">
           <h1 className="tu-ceremonia-main-title">
             CONOCÉ TU CEREMONIA DIARIA
           </h1>
 
           {/* Subtítulo blanco */}
-          <h2 className="tu-ceremonia-secondary-title" style={{ color: '#FFFFFF' }}>
+          <h2 className="tu-ceremonia-secondary-title">
             ¡Transformá tu Rutina en un Ritual Consciente!
           </h2>
         </div>
 
         {/* Text Card 1 */}
-        {/* Margen negativo para subir el cuadro y acercarlo al subtítulo */}
-        <div className="tu-ceremonia-text-card tu-ceremonia-text-card-1" style={{ marginTop: '-20px' }}>
+        <div className="tu-ceremonia-text-card tu-ceremonia-text-card-1">
           <div className="tu-ceremonia-text-card-bg"></div>
           <div className="tu-ceremonia-text-card-content">
-            {/* Texto en bordó oscuro directo */}
-            <p className="tu-ceremonia-text-card-text" style={{ color: '#4A0D10' }}>
+            <p className="tu-ceremonia-text-card-text">
               Tu cuidado personal es el reflejo directo de tu bienestar interno. En DA LUZ Alkimya no solo formulamos cosmética consciente, sino que proponemos una Ceremonia para entrelazar la intención pura, tu templo físico y tu consciencia superior.
             </p>
           </div>
@@ -65,8 +62,7 @@ export default function TuCeremoniaPage() {
         <div className="tu-ceremonia-text-card tu-ceremonia-text-card-2">
           <div className="tu-ceremonia-text-card-bg"></div>
           <div className="tu-ceremonia-text-card-content">
-            {/* Texto en bordó oscuro directo */}
-            <p className="tu-ceremonia-text-card-text" style={{ color: '#4A0D10' }}>
+            <p className="tu-ceremonia-text-card-text">
               Cada ritual es un acto de consagración hacia vos misma. 
               <br /><br />
               Antes de comenzar el paso a paso, hacé una pausa: la constancia en tu rutina no solo embellece tu materia, sino que ancla tu frecuencia más elevada en el día a día.

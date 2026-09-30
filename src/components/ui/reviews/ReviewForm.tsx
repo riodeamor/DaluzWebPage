@@ -187,6 +187,7 @@ export function ReviewForm({
               placeholder="Resume tu experiencia con este producto"
               maxLength={255}
               disabled={isSubmitting}
+              className="border border-[#D9C9BE] bg-white text-[#30343A] placeholder:text-[#697078] focus-visible:border-[#7D1D2B] focus-visible:ring-1 focus-visible:ring-[#7D1D2B]/30 focus-visible:ring-offset-0"
             />
             <p className="text-xs text-gray-500">
               {title.length}/255 caracteres
@@ -206,6 +207,7 @@ export function ReviewForm({
               rows={4}
               maxLength={1000}
               disabled={isSubmitting}
+              className="border border-[#D9C9BE] bg-white text-[#30343A] placeholder:text-[#697078] focus-visible:border-[#7D1D2B] focus-visible:ring-1 focus-visible:ring-[#7D1D2B]/30 focus-visible:ring-offset-0"
             />
             <p className="text-xs text-gray-500">
               {comment.length}/1000 caracteres
@@ -217,7 +219,8 @@ export function ReviewForm({
             <Button
               type="submit"
               disabled={isSubmitting || rating === 0 || !title.trim() || !comment.trim()}
-              className="flex-1"
+              className="flex-1 rounded-lg border-0 bg-gradient-to-r from-[#7D1D2B] to-[#4A0D10] font-medium uppercase tracking-wide text-white hover:from-[#8E2635] hover:to-[#5B141A] disabled:opacity-50"
+              style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
             >
               {isSubmitting ? (
                 <>

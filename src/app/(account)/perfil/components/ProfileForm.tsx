@@ -100,17 +100,17 @@ export function ProfileForm({
   onCancel,
 }: ProfileFormProps) {
   return (
-    <Card variant="brand-subtle" className="shadow-alkimya overflow-hidden">
-      <CardHeader className="bg-bg-light">
+    <Card className="profile-personal-card overflow-hidden border-0 shadow-none">
+      <CardHeader className="bg-transparent">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <CardTitle size="lg" theme="elegant" className="text-text-primary">
+            <CardTitle size="lg" theme="elegant" className="text-[#FFF2E9]" style={{ fontFamily: "var(--font-cormorant), serif", fontStyle: "normal" }}>
               Información Personal
             </CardTitle>
             <CardDescription
               size="lg"
               theme="elegant"
-              className="text-text-primary/70"
+              className="text-[#FFF2E9]/85"
             >
               Mantén tu información actualizada para una mejor experiencia
             </CardDescription>
@@ -148,7 +148,7 @@ export function ProfileForm({
           )}
         </div>
       </CardHeader>
-      <CardContent className="bg-bg-light p-6">
+      <CardContent className="bg-transparent p-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={isEditing ? "editing" : "viewing"}
@@ -160,7 +160,7 @@ export function ProfileForm({
           >
             {/* Basic Information */}
             <div className="space-y-4">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+              <h3 className="text-lg font-subtitle text-text-primary flex items-center gap-2">
                 <User className="h-5 w-5" />
                 Información Básica
               </h3>
@@ -223,7 +223,7 @@ export function ProfileForm({
 
             {/* Contact Information */}
             <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+              <h3 className="text-lg font-subtitle text-text-primary flex items-center gap-2">
                 <Mail className="h-5 w-5" />
                 Información de Contacto
               </h3>
@@ -276,7 +276,7 @@ export function ProfileForm({
 
             {/* Personal Details */}
             <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-              <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+              <h3 className="text-lg font-subtitle text-text-primary flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 Detalles Personales
               </h3>
@@ -328,7 +328,7 @@ export function ProfileForm({
             {/* Address - Only show when editing */}
             {isEditing && (
               <div className="space-y-4 pt-4 border-t border-brand-primary/20">
-                <h3 className="text-lg font-subtitle text-text-primary italic flex items-center gap-2">
+                <h3 className="text-lg font-subtitle text-text-primary flex items-center gap-2">
                   <MapPin className="h-5 w-5" />
                   Dirección
                 </h3>

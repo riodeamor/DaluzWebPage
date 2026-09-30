@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" width="55.99cm" height="49.71cm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1587.06 1409.19">
+  <defs>
+    <linearGradient id="Degradado_sin_nombre_454" data-name="Degradado sin nombre 454" x1="1198.72" y1="2499.39" x2="1644.75" y2="2499.39" gradientTransform="translate(1028 -2247.61) rotate(40.29)" gradientUnits="userSpaceOnUse">
+      <stop offset=".03" stop-color="#ea5735"/>
+      <stop offset=".28" stop-color="#c94322"/>
+      <stop offset=".64" stop-color="#da4515"/>
+      <stop offset=".93" stop-color="#e75532"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_454-2" data-name="Degradado sin nombre 454" x1="1517.62" x2="2080.15" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-3" data-name="Degradado sin nombre 454" x1="1517.62" y1="2153.33" x2="2080.15" y2="2153.33" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-4" data-name="Degradado sin nombre 454" x1="1899.48" y1="2153.33" x2="2271.19" y2="2153.33" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-5" data-name="Degradado sin nombre 454" x1="1351.14" y1="2057.54" x2="1899.48" y2="2057.54" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-6" data-name="Degradado sin nombre 454" y1="2733.4" y2="2733.4" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-7" data-name="Degradado sin nombre 454" y1="2263.85" x2="1517.62" y2="2263.85" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-8" data-name="Degradado sin nombre 454" x1="1644.75" y1="2617.07" x2="2093.48" y2="2617.07" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-9" data-name="Degradado sin nombre 454" x1="2080.15" y1="2555.2" x2="2271.19" y2="2555.2" xlink:href="#Degradado_sin_nombre_454"/>
+    <linearGradient id="Degradado_sin_nombre_454-10" data-name="Degradado sin nombre 454" x1="1548.14" y1="2857.88" x2="2093.48" y2="2857.88" xlink:href="#Degradado_sin_nombre_454"/>
+  </defs>
+  <polygon points="754.49 421.68 301.66 462.65 480.86 940.98 754.49 421.68" style="fill: url(#Degradado_sin_nombre_454); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="1059.67 931.59 754.49 421.68 480.86 940.98 1059.67 931.59" style="fill: url(#Degradado_sin_nombre_454-2); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="1246.64 431.7 754.49 421.68 1059.67 931.59 1246.64 431.7" style="fill: url(#Degradado_sin_nombre_454-3); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="1285.41 960.75 1059.67 931.59 1246.64 431.7 1285.41 960.75" style="fill: url(#Degradado_sin_nombre_454-4); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="771.15 144.6 754.49 421.68 1246.64 431.7 771.15 144.6" style="fill: url(#Degradado_sin_nombre_454-5); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="314.09 988.3 480.86 940.98 301.66 462.65 314.09 988.3" style="fill: url(#Degradado_sin_nombre_454-6); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="301.66 462.65 771.15 144.6 754.49 421.68 301.66 462.65" style="fill: url(#Degradado_sin_nombre_454-7); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="1059.67 931.59 794.8 1264.59 480.86 940.98 1059.67 931.59" style="fill: url(#Degradado_sin_nombre_454-8); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="1285.41 960.75 1059.67 931.59 794.8 1264.59 1285.41 960.75" style="fill: url(#Degradado_sin_nombre_454-9); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+  <polygon points="480.86 940.98 314.09 988.3 794.8 1264.59 480.86 940.98" style="fill: url(#Degradado_sin_nombre_454-10); stroke: #fff2dc; stroke-miterlimit: 10; stroke-width: 3.4px;"/>
+</svg>

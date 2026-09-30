@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import TesorosPortalCarousel from '@/components/TesorosPortalCarousel'
 
 export const metadata: Metadata = {
   title: 'Tesoros Da Luz | ALKIMYA | DA LUZ CONSCIENTE',
@@ -12,53 +13,58 @@ export const metadata: Metadata = {
 
 const PORTAL_CARDS = [
   {
-    title: 'ALMA TERRA | Portal de Enraizamiento',
+    title: 'ALMA TERRA | El Ancla del Presente',
+    subtitle: 'Portal de Enraizamiento · Hexaedro / Elemento Tierra',
     items: [
-      'Audio Ritual: "El Retorno al Origen".',
-      'Herramienta Somática: Mudra de Tierra y Contacto de Peso.',
-      'Juego de Intención: Anclaje y Sostén.',
+      'Sesión inmersiva guiada para descender la velocidad mental y frenar la rumiación del sistema nervioso.',
+      'Maniobra física de descarga y arraigo corporal para indicarle a tus células que están seguras y sostenidas.',
+      'Secuencia verbal de integración para anclar presencia biológica en el aquí y ahora.',
     ],
-    frequency: 'Hexaedro',
+    effect: 'Disuelve la sensación de vértigo y la fatiga por sobreexigencia; te devuelve el suelo firme para habitar tu día sin dispersión.',
     variant: 'alma' as const,
   },
   {
-    title: 'ECOS | Portal de Purificación',
+    title: 'ECOS | El Susurro Sagrado',
+    subtitle: 'Portal de Purificación & Claridad · Dodecaedro / Elemento Éter',
     items: [
-      'Audio Ritual: "El Silencio Fértil".',
-      'Herramienta Somática: Diapasón Humano y Liberación Craneal.',
-      'Juego de Intención: Limpieza y Verdad.',
+      'Viaje sonoro de vacío fértil para disolver la sobrecarga electromagnética de la mente.',
+      'Descompresión fascial del canal laríngeo y de la base del cráneo para liberar la tensión acumulada por el control.',
+      'Protocolo de depuración del eje palabra-pensamiento para conectar con tu verdad interna.',
     ],
-    frequency: 'DODECAEDRO',
+    effect: 'Drena la carga en cuello y hombros, disuelve los nudos de lo no dicho y despeja la cabeza para que tu voz recupere su cauce natural.',
     variant: 'ecos' as const,
   },
   {
-    title: 'UMBRAL SENS | Portal de la Sacralidad',
+    title: 'UMBRAL SENS | La Memoria Líquida',
+    subtitle: 'Portal de la Sacralidad & el Goce · Icosaedro / Elemento Agua',
     items: [
-      'Audio Ritual: "Habitar la Memoria Líquida".',
-      'Herramienta Somática: Mapa del Goce y Movilidad Sacra.',
-      'Juego de Intención: Nutrir y Gozar.',
+      'Inmersión somática en tu red hídrica para ablandar la armadura del estrés y entrar en estado receptivo.',
+      'Masaje miofascial de descompresión en el eje rostro-sacro (la conexión biológica directa entre la boca y tu pelvis).',
+      'Apertura celular para disolver la rigidez y rehabilitar la capacidad biológica de placer.',
     ],
-    frequency: 'ICOSAEDRO',
+    effect: 'Descongela la coraza corporal, relaja las facciones del rostro desde la raíz y despierta tu vitalidad sensorial y creativa.',
     variant: 'umbral' as const,
   },
   {
-    title: 'PRISMA | Portal de la Identidad',
+    title: 'PRISMA | La Fragua Solar',
+    subtitle: 'Portal de la Identidad & la Voluntad · Tetraedro / Elemento Fuego',
     items: [
-      'Audio Ritual: "Encender la Propia Luz".',
-      'Herramienta Somática: Ejercicio de Palming y Eje de Poder.',
-      'Juego de Intención: Explorar y Manifestar.',
+      'Activación bioenergética de la mirada y el fuego propio frente al espejo.',
+      'Restauración del eje térmico y foco del Plexo Solar para alinear tu postura y tu centro de poder.',
+      'Decreto de autoridad para desarmar la timidez y reclamar tu soberanía sin disculpas.',
     ],
-    frequency: 'TETRAEDRO',
+    effect: 'Transforma el momento de maquillarte o cuidar tu piel en un acto de afirmación; enciende tu determinación y te impulsa a hacerte visible con magnetismo.',
     variant: 'utopica' as const,
   },
   {
-    title: 'JADE RITUAL | Portal del Corazón',
+    title: 'JADE RITUAL | El Latido Coherente',
+    subtitle: 'Portal del Corazón & la Coherencia · Octaedro / Elemento Aire',
     items: [
-      'Audio Ritual: "Coherencia y Sincronía".',
-      'Herramienta Somática: Sostén de Pecho y Anjali Mudra.',
-      'Juego de Intención: Sanar y Alinear.',
+      'Calibración inmersiva para sincronizar tu pulso orgánico con la frecuencia armónica de la Tierra.',
+      'Maniobra de sostén térmico y contención física de los centros cardiorrespiratorios.',
+      'Secuencia rítmica de autorregulación para enviar una señal biológica de descanso a cada órgano.',
     ],
-    frequency: 'OCTAEDRO',
+    effect: 'Calma la opresión en el pecho y las palpitaciones por estrés; restablece la paz celular y te devuelve a un estado de profunda compasión y orden interno.',
     variant: 'jade' as const,
   },
 ]
@@ -95,12 +101,15 @@ const PLUS_SINERGIA_ITEMS = [
 
 export default function TesorosDaLuzPage() {
   return (
-    <div className="tesoros-page min-h-screen">
+    <div className="tesoros-page tesoros-watermark min-h-screen">
       {/* Full-width title band */}
       <section className="tesoros-header-band">
         <div className="tesoros-header-band-inner">
-          <h1 className="tesoros-page-title">Tesoros Da Luz</h1>
+          <h1 className="tesoros-page-title">tesoros da luz</h1>
         </div>
+        <svg className="tesoros-header-wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 0H1440V10C1250 110 1080 130 900 95C690 55 580 35 390 70C220 100 130 135 0 155Z" fill="white" />
+        </svg>
       </section>
 
       <div className="tesoros-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10 md:space-y-14">
@@ -110,13 +119,7 @@ export default function TesorosDaLuzPage() {
             Tu Ritualización Comienza Aquí: Dos Llaves de Transformación
           </h2>
           <p className="font-text text-lg md:text-xl text-text-primary leading-relaxed max-w-3xl mx-auto">
-            Creemos que la soberanía nace cuando el conocimiento se vuelve cuerpo. No se trata solo de adquirir información, sino de acuerpar las herramientas que ya habitan en vos para transformar tu realidad biológica y vibracional.
-          </p>
-          <p className="font-text text-lg text-text-primary leading-relaxed max-w-3xl mx-auto">
-            Dentro nuestro tenemos infinitos recursos de regulación; los <strong>Tesoros Da Luz</strong> son el ecosistema diseñado para que vuelvas a ese equilibrio.
-          </p>
-          <p className="font-text text-lg text-text-primary leading-relaxed max-w-3xl mx-auto">
-            Con cada producto, no solo nutrís tu piel, también recibís dos llaves de transformación diseñadas para anclar la Presencia en tu Ser.
+            Con cada Alkimya física que recibís, desbloqueás el acceso a su Tesoro digital privado: un portal interactivo diseñado con audios inmersivos, mudras y decretos biológicos para que tu cuidado diario no quede en la superficie, sino que ordene tu sistema nervioso y tu terreno interno.
           </p>
         </section>
 
@@ -205,28 +208,7 @@ export default function TesorosDaLuzPage() {
             <p className="font-text text-lg text-text-primary leading-relaxed">
               Según la Alkimya que elijas, desbloqueás un Portal de Inmersión diseñado para transformar tu rutina en un acto de poder:
             </p>
-            {/* Bento grid: 5 cards - 2 large, 3 small or similar layout */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 tesoros-bento-grid">
-              {PORTAL_CARDS.map((card) => (
-                <Card key={card.title} variant={card.variant} padding="default" className="h-full">
-                  <CardHeader>
-                    <CardTitle className="font-subtitle text-base md:text-lg text-brand-primary italic">
-                      {card.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 pt-0">
-                    <ul className="font-text text-base text-text-primary space-y-1 list-none">
-                      {card.items.map((item) => (
-                        <li key={item}>• {item}</li>
-                      ))}
-                    </ul>
-                    <p className="font-caption text-sm text-text-primary mt-2">
-                      Sincronizados con la frecuencia del <strong>{card.frequency}</strong>.
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <TesorosPortalCarousel cards={PORTAL_CARDS} />
           </div>
         </section>
 

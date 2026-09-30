@@ -89,7 +89,7 @@ h1.auth-title,
 .login-input {
   padding-left: 2.5rem;
   background-color: #ffffff;
-  border-color: #051341;
+  border: 1px solid rgba(22, 52, 95, 0.2);
   color: #051341;
 }
 
@@ -102,7 +102,7 @@ h1.auth-title,
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   background-color: #ffffff;
-  border-color: #051341;
+  border: 1px solid rgba(22, 52, 95, 0.2);
   color: #051341;
 }
 
@@ -119,6 +119,17 @@ h1.auth-title,
   padding: 0.5rem 0.75rem;
   opacity: 0.6;
   color: #051341;
+  background: transparent !important;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.login-input:focus-visible,
+.login-input--with-toggle:focus-visible {
+  border-color: #005080;
+  box-shadow: 0 0 0 1px rgba(0, 80, 128, 0.2);
+  outline: none;
 }
 
 .login-toggle-password:hover {
@@ -143,7 +154,7 @@ h1.auth-title,
 
 .login-forgot-link {
   font-size: 0.875rem;
-  text-decoration: underline;
+  text-decoration: none;
   transition: color 0.2s;
   text-align: center;
   color: #16345F;
@@ -152,6 +163,7 @@ h1.auth-title,
 
 .login-forgot-link:hover {
   color: #005080;
+  text-decoration: underline;
 }
 
 /* ── Submit Button ── */

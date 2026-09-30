@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import ProductCard from "@/components/ui/brand/ProductCard";
+import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
@@ -45,6 +46,9 @@ interface Product {
   }>;
   installments_3_enabled?: boolean;
   installments_6_enabled?: boolean;
+  promotional_tag?: "none" | "lanzamiento" | "descuento" | "ultimas_unidades" | null;
+  discount_transfer_percent?: number | null;
+  discount_cash_percent?: number | null;
 }
 
 interface Category {
@@ -59,6 +63,7 @@ interface Category {
 export default function CategoryPage() {
   const params = useParams();
   const { addItem } = useCart();
+  const showReviews = useReviewsVisibility();
 
   const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
@@ -155,41 +160,20 @@ export default function CategoryPage() {
     );
   }
 
-  // Get line-specific colors
-  const getLineColors = () => {
-    switch (lineTheme) {
-      case 'alma-terra':
-        return { primary: '#9B201A', secondary: '#BD311C', light: '#FFE58D', lightest: '#FFEFC6', dark: '#4E100D' };
-      case 'ecos':
-        return { primary: '#12406F', secondary: '#005180', light: '#81CCD7', lightest: '#B7DFE5', dark: '#092038' };
-      case 'jade-ritual':
-        return { primary: '#04412D', secondary: '#286939', light: '#7BC38E', lightest: '#D3E1BE', dark: '#022116' };
-      case 'kits-experiencia':
-        return { primary: '#AE0000', secondary: '#C70000', light: '#F0EACE', lightest: '#F6FBD6', dark: '#570000' };
-      case 'umbral':
-        return { primary: '#EA4F12', secondary: '#F17E06', light: '#FFD18A', lightest: '#FFF2DB', dark: '#752809' };
-      case 'utopica':
-        return { primary: '#392E13', secondary: '#72571C', light: '#F8EE76', lightest: '#F9F5C5', dark: '#1D170A' };
-      default:
-        return { primary: '#AE0000', secondary: '#C70000', light: '#F0EACE', lightest: '#F6FBD6', dark: '#570000' };
-    }
+  const lineConfig: Record<string, { eyebrow: string; title: string; eyebrowColor: string; titleColor: string; vector: string }> = {
+    umbral: { eyebrow: "AGUA • MEMORIA LÍQUIDA & GOCE", title: "LÍNEA UMBRAL SENS", eyebrowColor: "#C85A32", titleColor: "#4A0D10", vector: "/assets/lineas/solido-umbral.svg" },
+    ecos: { eyebrow: "ÉTER • PURIFICACIÓN & CLARIDAD", title: "LÍNEA ECOS", eyebrowColor: "#005080", titleColor: "#16345F", vector: "/assets/lineas/solido-ecos.svg" },
+    "alma-terra": { eyebrow: "TIERRA • ENRAIZAMIENTO & MATERIA", title: "LÍNEA ALMA TERRA", eyebrowColor: "#6E3B2B", titleColor: "#4A1E13", vector: "/assets/lineas/solido-almaterra.svg" },
+    "jade-ritual": { eyebrow: "AIRE • COHERENCIA & LATIDO", title: "LÍNEA JADE RITUAL", eyebrowColor: "#1B4D3E", titleColor: "#1B4D3E", vector: "/assets/lineas/solido-jaderitual.svg" },
+    utopica: { eyebrow: "FUEGO • SOBERANÍA & LUZ PROPIA", title: "LÍNEA PRISMA", eyebrowColor: "#B8860B", titleColor: "#8C6205", vector: "/assets/lineas/solido-prisma.svg" },
+    "kits-experiencia": { eyebrow: "SINERGIA BOTÁNICA • RITUALES COMPLETOS", title: "KITS & CEREMONIAS", eyebrowColor: "#7D1D2B", titleColor: "#4A0D10", vector: "/assets/lineas/solido-kits.svg" },
   };
-
-  const lineColors = getLineColors();
-  const isCenteredDarkTheme = lineTheme !== 'default';
+  const currentLine = lineConfig[lineTheme];
+  const lineColors = { primary: currentLine?.titleColor || "#4A0D10" };
+  const isCenteredDarkTheme = Boolean(currentLine);
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: lineColors.lightest }}>
-      {/* Background Image with 60% opacity */}
-      <div
-        className="fixed inset-0 w-full h-full opacity-60 pointer-events-none z-0"
-        style={{
-          backgroundImage: "url('/svg/backgrounds/tienda-background.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      />
+    <div className="min-h-screen overflow-hidden bg-[#FAF7F2]">
       <div className="container mx-auto px-4 py-8 relative z-10">
         {/* Breadcrumb */}
         <nav className="mb-6">
@@ -205,21 +189,11 @@ export default function CategoryPage() {
         {/* Category Header */}
         <div className="mb-8">
           <div className={`flex ${isCenteredDarkTheme ? 'flex-col justify-center items-center text-center gap-6' : 'items-center justify-between'} mb-4`}>
-            <div className={isCenteredDarkTheme ? 'flex flex-col items-center w-full' : ''}>
-              <h1
-                className={`text-3xl mb-2 ${isCenteredDarkTheme ? 'font-normal' : 'font-title font-bold'}`}
-                style={isCenteredDarkTheme ? { color: lineColors.primary, fontFamily: 'Velista, serif' } : { color: lineColors.primary }}
-              >
-                {category.name}
-              </h1>
-              {category.description && (
-                <p
-                  className={`max-w-2xl ${isCenteredDarkTheme ? 'mx-auto' : ''}`}
-                  style={isCenteredDarkTheme ? { color: lineColors.dark, fontFamily: '"EB Garamond", serif', fontSize: '18px', lineHeight: '1.6', fontWeight: 500 } : { color: lineColors.primary, opacity: 0.8 }}
-                >
-                  {category.description}
-                </p>
-              )}
+            <div className={isCenteredDarkTheme ? "flex w-full flex-col items-center" : ""}>
+              {currentLine && <img src={currentLine.vector} alt="" aria-hidden="true" className="mx-auto mb-2 h-12 w-12 object-contain md:h-14 md:w-14" />}
+              {currentLine && <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.2em]" style={{ color: currentLine.eyebrowColor, fontFamily: "var(--font-montserrat), sans-serif" }}>{currentLine.eyebrow}</p>}
+              <h1 className="mb-2 text-3xl font-medium md:text-4xl" style={{ color: lineColors.primary, fontFamily: "var(--font-cormorant), serif" }}>{currentLine?.title || category.name}</h1>
+              {category.description && <p className="mx-auto max-w-2xl text-xs font-normal leading-relaxed md:text-sm" style={{ color: lineColors.primary, opacity: 0.8, fontFamily: "var(--font-montserrat), sans-serif" }}>{category.description}</p>}
             </div>
 
             {/* Grid Controls */}
@@ -256,18 +230,10 @@ export default function CategoryPage() {
           </div>
         </div>
 
-        {/* Category Image */}
-        {(category.image_url || params.slug === 'linea-prisma' || (params.slug as string).includes('kits')) && (
-          <div className="mb-8 aspect-[3/1] relative overflow-hidden rounded-lg" style={{ borderRadius: '0px 15px' }}>
-            <img
-              src={
-                params.slug === 'linea-prisma' ? '/images/lineas/utopica/prisma-banner.png' : 
-                (params.slug as string).includes('kits') ? '/images/lineas/kits-experiencia-banner.png' : 
-                category.image_url
-              }
-              alt={category.name}
-              className="object-cover w-full h-full"
-            />
+        {/* Botanical banner, preserving the existing 3:1 frame */}
+        {currentLine && (
+          <div className="relative mb-8 aspect-[3/1] overflow-hidden rounded-lg" style={{ borderRadius: "0px 15px" }}>
+            <img src="/images/hero-botanical-background.jpg" alt="Textura botánica con luz natural" className="h-full w-full object-cover" />
             <div className="absolute inset-0" style={{ backgroundColor: `${lineColors.primary}20` }} />
           </div>
         )}
@@ -299,13 +265,14 @@ export default function CategoryPage() {
                 id={product.id}
                 slug={product.slug}
                 name={product.name}
-                description={product.short_description || product.description}
+                description={product.short_description || ""}
                 price={product.price}
                 originalPrice={product.compare_at_price}
                 category={category.name}
                 imageUrl={product.featured_image}
                 rating={product.averageRating || 0}
                 reviewCount={product.reviewCount || 0}
+                showReviews={showReviews}
                 isNatural={true}
                 isNew={false}
                 isOnSale={!!product.compare_at_price}
@@ -313,6 +280,11 @@ export default function CategoryPage() {
                 size={product.product_variants?.find(v => v.is_default)?.option1}
                 onAddToCart={handleAddToCart}
                 lineTheme={lineTheme}
+                promotionalTag={product.promotional_tag}
+                discountTransferPercent={product.discount_transfer_percent}
+                discountCashPercent={product.discount_cash_percent}
+                installments3Enabled={product.installments_3_enabled}
+                installments6Enabled={product.installments_6_enabled}
               />
             ))}
           </div>

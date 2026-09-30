@@ -142,11 +142,11 @@ export default async function HomePage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link href="/productos">
                 <Button
-                  className="group relative px-10 py-4 text-lg font-semibold bg-[#16345F] text-[#FFF2E9] hover:bg-[#005080] transition-all duration-500 transform hover:scale-105 uppercase tracking-[0.18em] border-none"
-                  style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif" }}
+                  className="group relative px-8 py-4 text-xs sm:text-sm font-medium text-[#FFF2E9] hover:text-[#FFF2E9] transition-all duration-300 hover:scale-105 uppercase tracking-widest border-none"
+                  style={{ borderRadius: "0 15px", fontFamily: "var(--font-montserrat), sans-serif", background: "linear-gradient(135deg, #16345F 0%, #005080 100%)", boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)" }}
                 >
                   <Sparkles className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                  Descubre Nuestras Alkimyas
+                  DESCUBRÍ NUESTRAS ALKIMYAS
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </Link>
@@ -157,7 +157,7 @@ export default async function HomePage() {
 
       {/* ✨ ALKIMYA DA LUZ SECTION */}
       <section className="relative px-6 overflow-hidden flex flex-col py-12 md:py-16 lg:py-0 section-neurocosmetica" style={{ minHeight: "550px", marginTop: "-4px" }}>
-        <div className="absolute inset-0 xl:hidden" style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }} />
+        <div className="alkimya-section-background absolute inset-0 xl:hidden" />
         <div className="hidden xl:block absolute inset-0" style={{ aspectRatio: "1920.19 / 1080.18" }}>
           <AlkimyaNeurocosmeticaBackground bgColor="#FFF2E9" waveColor="#051341" className="opacity-100" />
         </div>
@@ -167,8 +167,8 @@ export default async function HomePage() {
           <div className="lg:mb-4 xl:mb-0"></div>
           <div className="w-32 h-0.5 mx-auto mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
           
-          <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
-            ALKIMYA DA LUZ
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl 2xl:text-6xl leading-tight text-[#051341] xl:text-[#FFF2E9] font-normal tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+            Alkimya Da Luz
           </h2>
           
           <div className="w-32 h-0.5 mx-auto mt-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
@@ -243,8 +243,8 @@ export default async function HomePage() {
         <div className="container mx-auto max-w-7xl relative z-20 flex flex-col justify-center h-full py-12 pt-8 sm:pt-10 md:pt-12 lg:pt-6">
           <div className="text-center mb-4 sm:mb-5 md:mb-6 lg:mb-8">
             <div className="w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-white uppercase tracking-[0.12em] not-italic" style={{ fontStyle: "normal" }}>
-              VALOR Y CONFIANZA DA LUZ
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight text-white font-normal tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+              Valor y Confianza Da Luz
             </h2>
             <div className="w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           </div>
@@ -297,8 +297,8 @@ export default async function HomePage() {
           <div className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12">
             <div className="xl:hidden w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mb-4 sm:mb-5" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-            <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] uppercase tracking-[0.12em]">
-              PROCESOS VIVOS
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-3 sm:mb-4 leading-tight text-[#051341] xl:text-[#FFF2E9] font-normal tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+              Procesos Vivos
             </h2>
             <div className="xl:hidden w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #051341, transparent)" }} />
             <div className="hidden xl:block w-32 h-0.5 mx-auto mt-3 sm:mt-4" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
@@ -307,7 +307,7 @@ export default async function HomePage() {
           <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-7 pt-2 sm:pt-4 md:pt-6 lg:pt-8">
             
            {/* CICLOS ALQUÍMICOS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <ProcesosIntegrativosIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -322,7 +322,7 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR CICLOS</span>
@@ -334,7 +334,7 @@ export default async function HomePage() {
             </div>
 
             {/* SESIONES INTEGRALES */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <SesionesIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -349,7 +349,7 @@ export default async function HomePage() {
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">RESERVAR SESIÓN</span>
@@ -361,7 +361,7 @@ export default async function HomePage() {
             </div>
 
             {/* EXPERIENCIAS */}
-            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col" style={{ borderTop: "3px solid #16345F" }}>
+            <div className="group card-enhanced p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
                 <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
                   <MembresiaIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
@@ -376,7 +376,7 @@ export default async function HomePage() {
                   <Link href="/programa-transformacion" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn w-full text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-synthese), sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">VER EXPERIENCIAS</span>
@@ -415,10 +415,10 @@ export default async function HomePage() {
             style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }}
           />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#FFF2E9" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-6xl mb-4 sm:mb-5 md:mb-6 leading-tight font-normal tracking-[0.05em]"
+            style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
           >
-            HONRAMOS NUESTRAS RAÍCES
+            Honramos Nuestras Raíces
           </h2>
           <div
             className="w-32 h-0.5 mx-auto mt-4 sm:mt-5 mb-4 sm:mb-5"
@@ -509,8 +509,8 @@ export default async function HomePage() {
 
   <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
     <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFF2E9, transparent)" }} />
-    <h2 className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]" style={{ color: "#FFF2E9" }}>
-      BLOG DA LUZ
+    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight font-normal tracking-[0.05em]" style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}>
+      Blog Da Luz
     </h2>
     <div
       className="w-32 h-0.5 mx-auto mt-3 sm:mt-4 mb-4 sm:mb-5 md:mb-6"
@@ -687,14 +687,16 @@ export default async function HomePage() {
     <div className="flex flex-col items-center gap-4 mt-8 sm:mt-10 md:mt-12">
       <Link
         href="/blog"
-        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 bg-[#16345F] hover:bg-[#005080]"
+        className="group inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-widest transition-all duration-300"
         style={{ 
           borderRadius: "0 15px", 
-          fontFamily: "var(--font-synthese), sans-serif"
+          fontFamily: "var(--font-montserrat), sans-serif",
+          background: "linear-gradient(135deg, #16345F 0%, #005080 100%)",
+          boxShadow: "0 4px 14px rgba(0, 0, 0, 0.25)"
         }}
       >
         <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
-        <span className="text-sm sm:text-base font-semibold text-white">Ir al blog</span>
+        <span className="text-xs sm:text-sm font-medium text-[#FFF2E9]">IR AL BLOG</span>
       </Link>
     </div>
   </div>
@@ -714,10 +716,10 @@ export default async function HomePage() {
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">
           <div className="w-24 sm:w-32 h-0.5 mx-auto mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
           <h2
-            className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight uppercase tracking-[0.12em]"
-            style={{ color: "#FFFFFF" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight font-normal tracking-[0.05em]"
+            style={{ color: "#FFFFFF", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
           >
-            GALERÍA
+            Galería
           </h2>
           <div className="w-24 sm:w-32 h-0.5 mx-auto mt-3 mb-3" style={{ background: "linear-gradient(to right, transparent, #FFFFFF, transparent)" }} />
         </div>
@@ -732,11 +734,12 @@ export default async function HomePage() {
             </p>
               <a href="https://instagram.com/daluzconsciente" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  className="group px-8 py-4 text-lg text-white uppercase tracking-[0.18em] transition-all duration-300 bg-[#051341] hover:bg-[#005080]" 
+                  className="group px-8 py-4 text-lg text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 bg-[#051341] hover:bg-[#005080] active:bg-[#16345F] focus:ring-0 focus:outline-none"
                   style={{ 
                     borderRadius: "0px 15px", 
                     fontFamily: "var(--font-synthese), sans-serif",
-                    border: "none"
+                    border: "none",
+                    WebkitTapHighlightColor: "transparent"
                   }}
                 >
                   <Heart className="w-5 h-5 mr-2 text-white group-hover:scale-110 transition-transform duration-300" />
@@ -763,10 +766,10 @@ export default async function HomePage() {
       <div className="container mx-auto max-w-7xl text-left pl-6 sm:pl-12 md:pl-16 pb-6 sm:pb-8 pt-6 relative z-20">
         <div className="w-24 sm:w-32 h-0.5 mb-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
         <h2
-          className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight uppercase tracking-[0.12em] not-italic"
-          style={{ color: "#FFF2E9", fontStyle: "normal" }}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl leading-tight font-normal tracking-[0.05em]"
+          style={{ color: "#FFF2E9", fontFamily: "var(--font-cormorant), serif", textShadow: "0 2px 10px rgba(0, 0, 0, 0.15)" }}
         >
-          CONTACTO
+          Contacto
         </h2>
         <div className="w-24 sm:w-32 h-0.5 mt-2" style={{ background: "linear-gradient(to right, #FFF2E9, transparent)" }} />
       </div>

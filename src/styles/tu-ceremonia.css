@@ -367,3 +367,105 @@
 }
 
 
+
+/* Keep the hero cards in normal flow: their backgrounds never cover the page. */
+.tu-ceremonia-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  min-height: auto;
+  padding: 4rem 1rem;
+}
+.tu-ceremonia-title-card {
+  display: contents;
+}
+.tu-ceremonia-main-title,
+.tu-ceremonia-secondary-title {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+.tu-ceremonia-main-title {
+  order: 1;
+  color: #4A0D10 !important;
+  background-color: transparent !important;
+}
+.tu-ceremonia-secondary-title {
+  order: 2;
+  margin-top: -10px;
+  z-index: 10;
+  color: #FFFFFF !important;
+}
+.tu-ceremonia-text-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  height: auto;
+  max-width: 850px;
+  order: 3;
+}
+.tu-ceremonia-text-card-2 { order: 4; }
+.tu-ceremonia-text-card-bg { display: none; }
+.tu-ceremonia-text-card-content {
+  position: relative;
+  inset: auto;
+  background-color: #4A0D10 !important;
+  border-radius: 0 24px;
+}
+.tu-ceremonia-text-card-content,
+.tu-ceremonia-text-card-content p {
+  color: #FFFFFF !important;
+}
+.tu-ceremonia-buttons {
+  order: 5;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: auto;
+}
+.tu-ceremonia-button {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+}
+.tu-ceremonia-button:hover { transform: translateY(-2px); }
+@media (max-width: 1279px) {
+  .tu-ceremonia-main-title {
+    background-color: #FFF2DB !important;
+    border-radius: 0 18px;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Override the inherited Alkimya heading palette only in this hero. */
+.tu-ceremonia-page h1.tu-ceremonia-main-title { color: #4A0D10 !important; }
+.tu-ceremonia-page h2.tu-ceremonia-secondary-title { color: #FFFFFF !important; }
+
+/* Texto editorial sobre el fondo degradado */
+.tu-ceremonia-text-card,
+.tu-ceremonia-text-card-1,
+.tu-ceremonia-text-card-2 {
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  width: min(100%, 56rem) !important;
+  height: auto !important;
+  margin-inline: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.tu-ceremonia-text-card-bg { display: none !important; }
+.tu-ceremonia-text-card-content {
+  position: relative !important;
+  inset: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0.5rem 1rem !important;
+}
+.tu-ceremonia-text-card-text { text-align: center !important; color: #FFF2E9 !important; }

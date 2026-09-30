@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import CartSidebar from "@/components/commerce/CartSidebar";
+import ZenAnnouncementBar from "./ZenAnnouncementBar";
 import { getAllPosts } from "@/lib/sanity/client";
 import {
   Menu,
@@ -58,17 +59,38 @@ interface BlogPost {
   publishedAt: string;
 }
 
+const DropdownVector = ({ src, color, label }: { src: string; color: string; label: string }) => (
+  <span
+    role="img"
+    aria-label={label}
+    className="mb-3 block h-16 w-16"
+    style={{
+      backgroundColor: color,
+      maskImage: `url("${src}")`,
+      WebkitMaskImage: `url("${src}")`,
+      maskSize: "contain",
+      WebkitMaskSize: "contain",
+      maskPosition: "center",
+      WebkitMaskPosition: "center",
+      maskRepeat: "no-repeat",
+      WebkitMaskRepeat: "no-repeat",
+    }}
+  />
+);
+
 // Component definitions con color dinámico y fondo blanco puro
 const ListItem = ({
   href,
   title,
   children,
   textColor = "#051341", 
+  fullDescription = false,
 }: {
   href: string;
   title: string;
   children: React.ReactNode;
   textColor?: string;
+  fullDescription?: boolean;
 }) => {
   return (
     <li>
@@ -79,13 +101,13 @@ const ListItem = ({
         >
           <div
             className="text-sm font-subtitle font-medium leading-none"
-            style={{ color: textColor, fontFamily: "var(--font-cormorant), serif" }}
+            style={{ color: textColor === "#72111A" ? "#4A0D10" : textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
-            className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#1C1B1A", opacity: 0.8 }}
+            className={fullDescription ? "text-xs font-text leading-relaxed" : "line-clamp-2 text-sm font-text leading-snug"}
+            style={{ color: textColor === "#72111A" ? "#7D1D2B" : "#16345F", opacity: textColor === "#72111A" ? 0.8 : 0.75 }}
           >
             {children}
           </p>
@@ -121,7 +143,7 @@ const BlogListItem = ({
           </div>
           <p
             className="line-clamp-2 text-sm font-text leading-snug"
-            style={{ color: "#1C1B1A", opacity: 0.8 }}
+            style={{ color: "#16345F", opacity: 0.75 }}
           >
             {subtitle}
           </p>
@@ -139,6 +161,7 @@ const AZUL_PROFUNDO = "#051341"; // Para Raíces, Procesos, FAQ, Legales, Landin
 
 const isAlkimyaOrTiendaPage = (pathname: string) =>
   pathname === "/productos" ||
+  pathname.startsWith("/productos/") ||
   pathname.startsWith("/categorias/") ||
   pathname.startsWith("/producto/") ||
   pathname === "/alkimya" ||
@@ -192,14 +215,15 @@ export default function Header() {
         className="sticky top-0 z-50 w-full transition-all duration-300"
         style={{ backgroundColor: headerBg }}
       >
+        <ZenAnnouncementBar />
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <div className="flex-shrink-0 hidden xl:block">
+              <div className="flex-shrink-0">
                 <Image
                   src="/svg/logo.svg"
-                  alt="DA LUZ Logo"
+                  alt="Isotipo Da Luz Consciente"
                   width={40}
                   height={40}
                   className="transition-transform duration-300 hover:scale-105"
@@ -207,18 +231,20 @@ export default function Header() {
                 />
               </div>
 
-              <div className="flex flex-col justify-center items-center">
-                <div
-                  className="text-2xl font-display font-normal transition-colors duration-300 leading-tight text-center"
-                  style={{ color: "#FFF4E0" }}
-                >
-                  DA LUZ
-                </div>
-              </div>
+              <span className="flex h-6 items-center overflow-hidden xl:h-7">
+                <Image
+                  src="/assets/logo-header-da-luz.png"
+                  alt="Da Luz Consciente"
+                  width={149}
+                  height={40}
+                  className="h-9 w-auto max-w-none object-contain xl:h-10"
+                  unoptimized
+                />
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className="hidden xl:flex">
+            <NavigationMenu className="header-main-nav hidden xl:flex">
               <NavigationMenuList className="space-x-1">
                 
                 {/* 1. TIENDA (Bordó al abrir) */}
@@ -250,25 +276,24 @@ export default function Header() {
                             href="/productos"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/Tienda%20Da%20luz.svg"
-                                alt="Tienda Da Luz"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/header/Tienda%20Da%20luz.svg" color="#7D1D2B" label="Alkimya Da Luz" />
                               <div
-                                className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#72111A" }}
+                                className="text-xl font-medium uppercase tracking-[0.2em]"
+                                style={{ color: "#4A0D10", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
-                                TIENDA DA LUZ
+                                TIENDA
+                              </div>
+                              <div
+                                className="mb-2 text-xs font-medium uppercase tracking-[0.2em]"
+                                style={{ color: "#7D1D2B", opacity: 0.8, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
+                              >
+                                Alkimya Da Luz
                               </div>
                               <p
-                                className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                className="text-xs leading-relaxed"
+                                style={{ color: "#7D1D2B", opacity: 0.8, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
                               >
-                                Explora todas nuestras líneas de productos y alkimyas.
+                                Explorá nuestras fórmulas botánicas vivas y rituales de cuidado consciente.
                               </p>
                             </div>
                           </Link>
@@ -324,23 +349,16 @@ export default function Header() {
                             href="/alkimya"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/manifiesto.svg"
-                                alt="Manifiesto"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/header/Tienda%20Da%20luz.svg" color="#7D1D2B" label="Isotipo Alkimya Da Luz" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#72111A" }}
+                                style={{ color: "#4A0D10", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 MANIFIESTO
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#7D1D2B", opacity: 0.8 }}
                               >
                                 Nuestra visión y propósito fundamental.
                               </p>
@@ -395,23 +413,16 @@ export default function Header() {
                             href="/raices"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/origen.svg"
-                                alt="Origen Alquímico"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/header/origen.svg" color="#0A1D4A" label="Vórtice solar" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 ORIGEN ALQUÍMICO
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 De la sombra a la alkimia: el viaje.
                               </p>
@@ -435,23 +446,16 @@ export default function Header() {
                             href="/filosofia-proposito"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/Filosofia%20y%20proposito.svg"
-                                alt="Filosofía y Propósito"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/logo.svg" color="#0A1D4A" label="Isotipo Da Luz Consciente" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 FILOSOFÍA Y PROPÓSITO
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 Nuestra visión y valores.
                               </p>
@@ -492,23 +496,16 @@ export default function Header() {
                             href="/servicios/procesos"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/Procesos%20holisticos.svg"
-                                alt="Procesos Holísticos"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/header/Procesos%20holisticos.svg" color="#0A1D4A" label="Procesos holísticos" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 PROCESOS
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 Terapias para el bienestar integral.
                               </p>
@@ -557,23 +554,16 @@ export default function Header() {
                             }}
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/Blog.svg"
-                                alt="Blog"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/assets/vectores/mandala-experiencias.svg" color="#0A1D4A" label="Mandala de múltiples pétalos" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: "#051341" }}
+                                style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
                                 BLOG
                               </div>
                               <p
                                 className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
                                 Lee nuestras últimas publicaciones.
                               </p>
@@ -603,13 +593,13 @@ export default function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* 6. MEMBRESÍA (Celeste al abrir) */}
+                {/* 6. EXPERIENCIAS (Azul al abrir) */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className="bg-transparent hover:!bg-[#0085B1]/40 focus:!bg-[#0085B1] data-[active]:!bg-[#0085B1] data-[state=open]:!bg-[#0085B1] text-sm lg:text-base px-3 py-1.5 normal-case tracking-wide shadow-none transition-colors duration-200"
                     style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
                   >
-                    Membresía
+                    Experiencias
                   </NavigationMenuTrigger>
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
@@ -632,37 +622,47 @@ export default function Header() {
                             href="/programa-transformacion"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <Image
-                                src="/svg/header/Programa7.svg"
-                                alt="Programa de 7 Meses"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/assets/vectores/gota-cristal-facetada.svg" color="#0A1D4A" label="Gota de cristal facetada" />
                               <div
-                                className="mb-2 text-xl font-title font-semibold uppercase"
-                                style={{ color: AZUL_PROFUNDO }}
+                                className="mb-2 text-xl font-title font-semibold"
+                                style={{ color: AZUL_PROFUNDO, fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
                               >
-                                PROGRAMA DE 7 MESES
+                                Portal de Experiencias
                               </div>
                               <p
-                                className="text-base font-text font-medium leading-tight"
-                                style={{ color: "#1C1B1A", opacity: 0.8 }}
+                                className="text-xs font-text font-medium leading-relaxed"
+                                style={{ color: "#16345F", opacity: 0.75 }}
                               >
-                                Transformación integral para alma y cuerpo
+                                Caminos vivos para habitar la soberanía de tu cuerpo y tu energía. Una mirada integral para acompañar el ritmo de tu biología.
                               </p>
+                              <span className="mt-4 text-xs font-medium" style={{ color: "#16345F" }}>
+                                Explorar todas las experiencias →
+                              </span>
+                              <span className="mt-1 text-[10px] uppercase tracking-wider" style={{ color: "#16345F", opacity: 0.75 }}>
+                                PRÓXIMAMENTE
+                              </span>
                             </div>
                           </Link>
                         </NavigationMenuLink>
                       </div>
                       <div className="flex flex-col justify-evenly space-y-2">
-                        <ListItem href="/programa-transformacion" title="Conocé el Programa" textColor="#051341">
-                          Detalles del programa de transformación
+                        <ListItem href="/programa-transformacion" title="Génesis | Tecnología del Ser" textColor="#051341" fullDescription>
+                          El viaje de 8 meses hacia la soberanía biológica: transformá tu terreno y desprogramá el estrés de raíz.
                         </ListItem>
-                        <ListItem href="/mi-membresia" title="Mi Membresía" textColor="#051341">
-                          Accede a tu progreso y contenido
+                        <ListItem href="/mi-membresia" title="El Pulso | Membresía" textColor="#051341" fullDescription>
+                          Tu mantenimiento de soberanía: sintonización mensual de tu eje biológico, contenidos vivos y beneficios en red.
                         </ListItem>
+                        <div className="select-none space-y-1 rounded-md p-3 leading-none">
+                          <div className="text-sm font-medium leading-none" style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>
+                            Sintropía | Recalibración
+                          </div>
+                          <p className="text-xs leading-relaxed" style={{ color: "#16345F", opacity: 0.75 }}>
+                            Intervención intensiva de 33 días: desactivá la señal de alarma interna y pasá del ruido al orden funcional.
+                          </p>
+                          <span className="text-[10px] uppercase tracking-wider" style={{ color: "#16345F", opacity: 0.75 }}>
+                            PRÓXIMAMENTE
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </NavigationMenuContent>
@@ -674,7 +674,7 @@ export default function Header() {
             {/* FAQ Link - Desktop */}
             <Link
               href="/faq"
-              className="hidden xl:flex items-center px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
+              className="header-top-link hidden xl:flex items-center px-3 py-2 hover:bg-white/10 transition-colors rounded-md shadow-none"
               style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
             >
               <HelpCircle className="h-5 w-5 mr-2" />
@@ -733,13 +733,13 @@ export default function Header() {
                       <div className="flex flex-col space-y-1">
                         <p
                           className="text-sm font-subtitle font-medium leading-none"
-                          style={{ color: "#1C1B1A" }}
+                          style={{ color: "#16345F" }}
                         >
                           {profile?.first_name} {profile?.last_name}
                         </p>
                         <p
                           className="text-xs font-caption leading-none"
-                          style={{ color: "#1C1B1A", opacity: 0.6 }}
+                          style={{ color: "#16345F", opacity: 0.6 }}
                         >
                           {user.email}
                         </p>
@@ -750,7 +750,7 @@ export default function Header() {
                       <Link
                         href="/perfil"
                         className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        style={{ color: "#16345F" }}
                       >
                         <User className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
                         <span className="font-text">Perfil</span>
@@ -760,7 +760,7 @@ export default function Header() {
                       <Link
                         href="/mis-pedidos"
                         className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        style={{ color: "#16345F" }}
                       >
                         <Package className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
                         <span className="font-text">Mis Pedidos</span>
@@ -770,17 +770,17 @@ export default function Header() {
                       <Link
                         href="/mi-membresia"
                         className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        style={{ color: "#16345F" }}
                       >
                         <BookOpen className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
-                        <span className="font-text">Mi Membresía</span>
+                        <span className="font-text">Tu Sendero</span>
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/configuracion"
                         className="flex items-center hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                        style={{ color: "#1C1B1A" }}
+                        style={{ color: "#16345F" }}
                       >
                         <Settings className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
                         <span className="font-text">Configuración</span>
@@ -790,7 +790,7 @@ export default function Header() {
                     <DropdownMenuItem
                       onSelect={handleSignOut}
                       className="hover:bg-bg-light hover:text-brand-primary focus:bg-bg-light focus:text-brand-primary"
-                      style={{ color: "#1C1B1A" }}
+                      style={{ color: "#16345F" }}
                     >
                       <LogOut className="mr-2 h-4 w-4" style={{ color: "#2A2543" }} />
                       <span className="font-text">Cerrar Sesión</span>
@@ -802,7 +802,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="relative hover:bg-white/10 font-text text-base"
+                    className="header-top-link relative hover:bg-white/10"
                     style={{ color: "#FFF4E0" }}
                     type="button"
                     onClick={() => router.push("/login")}
@@ -812,7 +812,7 @@ export default function Header() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="relative hover:bg-white/10 font-text text-base"
+                    className="header-top-link relative hover:bg-white/10"
                     style={{ color: "#FFF4E0" }}
                     type="button"
                     onClick={() => router.push("/signup")}
@@ -875,12 +875,12 @@ export default function Header() {
                           Tienda
                         </div>
                         <div className="ml-4 space-y-2">
-                          <Link href="/productos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Todos los Productos</Link>
-                          <Link href="/categorias/linea-umbral" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Umbral</Link>
-                          <Link href="/categorias/linea-ecos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Ecos</Link>
-                          <Link href="/categorias/linea-alma-terra" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Alma Terra</Link>
-                          <Link href="/categorias/linea-jade-ritual" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Jade Ritual</Link>
-                          <Link href="/categorias/linea-prisma" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Línea Prisma</Link>
+                          <Link href="/productos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Todos los Productos</Link>
+                          <Link href="/categorias/linea-umbral" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Línea Umbral</Link>
+                          <Link href="/categorias/linea-ecos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Línea Ecos</Link>
+                          <Link href="/categorias/linea-alma-terra" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Línea Alma Terra</Link>
+                          <Link href="/categorias/linea-jade-ritual" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Línea Jade Ritual</Link>
+                          <Link href="/categorias/linea-prisma" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Línea Prisma</Link>
                         </div>
                       </div>
 
@@ -889,59 +889,59 @@ export default function Header() {
                           Alkimya
                         </div>
                         <div className="ml-4 space-y-2">
-                          <Link href="/alkimya" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Manifiesto</Link>
-                          <Link href="/alkimya/activos-origen" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Activos y Origen</Link>
-                          <Link href="/alkimya/biotipos-doshas" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Biotipos y Doshas</Link>
-                          <Link href="/alkimya/tu-ceremonia" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Tu Ceremonia</Link>
-                          <Link href="/alkimya/tesoros-daluz" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Tesoros Da Luz</Link>
+                          <Link href="/alkimya" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Manifiesto</Link>
+                          <Link href="/alkimya/activos-origen" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Activos y Origen</Link>
+                          <Link href="/alkimya/biotipos-doshas" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Biotipos y Doshas</Link>
+                          <Link href="/alkimya/tu-ceremonia" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Tu Ceremonia</Link>
+                          <Link href="/alkimya/tesoros-daluz" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#7D1D2B" }} onClick={() => setMobileMenuOpen(false)}>Tesoros Da Luz</Link>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>
                           Raíces Da Luz
                         </div>
                         <div className="ml-4 space-y-2">
-                          <Link href="/filosofia-proposito" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
-                          <Link href="/raices" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Raíces</Link>
+                          <Link href="/filosofia-proposito" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
+                          <Link href="/raices" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Raíces</Link>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>
                           Procesos
                         </div>
                         <div className="ml-4 space-y-2">
-                          <Link href="/servicios/procesos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Procesos</Link>
-                          <Link href="/servicios/procesos/ciclos-alquimicos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Ciclos Alquímicos</Link>
-                          <Link href="/servicios/procesos/sesiones-integrales" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Sesiones Integrales</Link>
+                          <Link href="/servicios/procesos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Procesos</Link>
+                          <Link href="/servicios/procesos/ciclos-alquimicos" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Ciclos Alquímicos</Link>
+                          <Link href="/servicios/procesos/sesiones-integrales" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Sesiones Integrales</Link>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341" }}>
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>
                           Blog
                         </div>
                         <div className="ml-4 flex items-center gap-3">
-                          <Link href="/blog" className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-brand-primary)]/15 hover:bg-[var(--color-brand-primary)]/25 transition-colors border border-[var(--color-brand-primary)]/30 shrink-0" style={{ color: "#051341" }} onClick={() => setMobileMenuOpen(false)} aria-label="Ir al blog">
+                          <Link href="/blog" className="flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-brand-primary)]/15 hover:bg-[var(--color-brand-primary)]/25 transition-colors border border-[var(--color-brand-primary)]/30 shrink-0" style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }} onClick={() => setMobileMenuOpen(false)} aria-label="Ir al blog">
                             <BookOpen className="w-6 h-6" />
                           </Link>
-                          <Link href="/blog" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
+                          <Link href="/blog" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Artículos y novedades</Link>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#2A2543" }}>
+                        <div className="text-lg font-title font-medium mb-3" style={{ color: "#16345F" }}>
                           Membresía
                         </div>
                         <div className="ml-4 space-y-2">
-                          <Link href="/programa-transformacion" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
-                          <Link href="/programa-transformacion" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>Mi Membresía</Link>
+                          <Link href="/programa-transformacion" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Programa de 7 Meses</Link>
+                          <Link href="/mi-membresia" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>Tu Sendero</Link>
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <Link href="/faq" className="flex items-center gap-3 py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#2A2543" }} onClick={() => setMobileMenuOpen(false)}>
+                        <Link href="/faq" className="flex items-center gap-3 py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#16345F" }} onClick={() => setMobileMenuOpen(false)}>
                           <HelpCircle className="h-5 w-5" />
                           Preguntas Frecuentes
                         </Link>

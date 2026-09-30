@@ -43,9 +43,9 @@ export function ProfileCard({
 
   return (
     <Card variant="brand-subtle" className="shadow-alkimya overflow-hidden">
-      <CardContent className="p-6 bg-bg-light">
+      <CardContent className="p-4 sm:p-5 bg-bg-light">
         <StaggeredContainer
-          className="text-center space-y-5"
+          className="text-center space-y-3"
           staggerDelay={0.1}
         >
           {/* Avatar with Upload */}
@@ -56,7 +56,7 @@ export function ProfileCard({
                 onUploadSuccess={onAvatarUpload}
                 onUploadError={onAvatarError}
                 isEditing={isEditing}
-                size="lg"
+                size="md"
               />
             </div>
           </StaggeredItem>
@@ -64,7 +64,7 @@ export function ProfileCard({
           {/* User Info */}
           <StaggeredItem>
             <div>
-              <h3 className="text-xl font-title text-text-primary uppercase">
+              <h3 className="text-xl font-normal text-[#051341]" style={{ fontFamily: "var(--font-cormorant), serif" }}>
                 {displayName}
               </h3>
               <p className="text-sm text-text-primary/70 font-text mt-1">
@@ -76,19 +76,19 @@ export function ProfileCard({
           {/* Badges */}
           <StaggeredItem>
             <div className="flex flex-wrap gap-2 justify-center">
-              <Badge className="bg-brand-primary text-text-inverse font-text">
+              <Badge className="bg-[#16345F] text-[#FFF2E9] font-text">
                 <Heart className="h-3 w-3 mr-1" />
                 Cliente Activo
               </Badge>
               {isMember && (
-                <Badge className="bg-brand-highlight text-text-primary font-text">
+                <Badge className="border border-[#005080] bg-[#005080]/10 text-[#051341] font-text">
                   <Sparkles className="h-3 w-3 mr-1" />
                   Miembro
                 </Badge>
               )}
               <Badge
                 variant="outline"
-                className="border-brand-primary text-brand-primary font-text"
+                className="border-[#16345F]/20 text-[#16345F]/70 font-text"
               >
                 <Award className="h-3 w-3 mr-1" />
                 Desde {memberSince}
@@ -108,7 +108,7 @@ export function ProfileCard({
                   />
                 ) : (
                   <motion.p
-                    className="text-2xl font-bold text-brand-primary"
+                    className="text-2xl font-bold text-[#005080]"
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200 }}
@@ -121,7 +121,7 @@ export function ProfileCard({
                 </p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-brand-primary">
+                <p className="text-2xl font-bold text-[#005080]">
                   {membershipTier && membershipTier !== "none" ? "1" : "0"}
                 </p>
                 <p className="text-xs text-text-primary/70 font-text">

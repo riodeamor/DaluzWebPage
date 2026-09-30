@@ -241,3 +241,13 @@
   height: 8px;
 }
 
+
+.alkimya-section .tabla-biotipo-header .tabla-biotipo-title {
+  color: #FFF2E9 !important;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+  font-weight: 500 !important;
+}
+
+.alkimya-section .tabla-biotipo-table tbody td {
+  color: #4A0D10 !important;
+}

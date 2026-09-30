@@ -39,6 +39,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import RichTextDisplay from "@/components/ui/RichTextDisplay";
+import ProductRichText from "@/components/ui/ProductRichText";
+import { productRichTextPlainText } from "@/lib/products/rich-text";
 import ProductCard from "@/components/ui/brand/ProductCard";
 import { ReviewList } from "@/components/ui/reviews/ReviewList";
 import { ReviewForm } from "@/components/ui/reviews/ReviewForm";
@@ -203,9 +205,9 @@ export default function ProductDetailPage() {
               if (product.id === currentProduct.id) return false;
 
               const name = product.name?.toLowerCase() || "";
-              const description = product.description?.toLowerCase() || "";
+              const description = productRichTextPlainText(product.description || "").toLowerCase();
               const shortDescription =
-                product.short_description?.toLowerCase() || "";
+                productRichTextPlainText(product.short_description || "").toLowerCase();
               const categoryName =
                 product.categories?.name?.toLowerCase() || "";
               const categorySlug =
@@ -429,8 +431,8 @@ export default function ProductDetailPage() {
     const shareData = {
       title: product.name,
       text:
-        product.short_description ||
-        product.description ||
+        productRichTextPlainText(product.short_description || "") ||
+        productRichTextPlainText(product.description || "") ||
         "Descubre este increíble producto de DA LUZ",
       url: window.location.href,
     };
@@ -676,7 +678,7 @@ export default function ProductDetailPage() {
                 {/* Badges */}
                 {product.compare_at_price &&
                   product.compare_at_price > currentPrice && (
-                    <Badge className="absolute top-4 left-4 bg-red-500 text-white">
+                    <Badge variant="outline" className="absolute top-4 left-4 rounded-full border-0 bg-[#7D1D2B] px-3 py-1 font-medium text-[#FFF2E9] shadow-md">
                       -
                       {Math.round(
                         ((product.compare_at_price - currentPrice) /
@@ -686,14 +688,6 @@ export default function ProductDetailPage() {
                       %
                     </Badge>
                   )}
-                {product.is_featured && (
-                  <Badge
-                    variant="outline"
-                    className="tienda-badge absolute top-4 right-4"
-                  >
-                    Destacado
-                  </Badge>
-                )}
               </div>
             </div>
 
@@ -829,7 +823,8 @@ export default function ProductDetailPage() {
                       product.promotional_tag !== "none" && (
                         <Badge
                           variant="outline"
-                          className="tienda-badge absolute top-4 left-4 shadow-md"
+                          className={`tienda-badge absolute top-4 left-4 shadow-md ${product.promotional_tag === "ultimas_unidades" ? "text-[10px] uppercase tracking-wider" : ""}`}
+                          style={product.promotional_tag === "ultimas_unidades" ? { fontFamily: "var(--font-montserrat), Montserrat, sans-serif", fontStyle: "normal" } : undefined}
                         >
                           {product.promotional_tag === "lanzamiento" && (
                             <Sparkles className="h-3 w-3 mr-1" />
@@ -852,7 +847,8 @@ export default function ProductDetailPage() {
                     {product.compare_at_price &&
                       product.compare_at_price > currentPrice && (
                         <Badge
-                          className="absolute top-4 bg-red-500 text-white"
+                          variant="outline"
+                          className="absolute top-4 rounded-full border-0 bg-[#7D1D2B] px-3 py-1 font-medium text-[#FFF2E9] shadow-md"
                           style={
                             product.promotional_tag &&
                               product.promotional_tag !== "none"
@@ -869,15 +865,6 @@ export default function ProductDetailPage() {
                           %
                         </Badge>
                       )}
-                    {product.is_featured && (
-                      <Badge
-                        variant="outline"
-                        className="tienda-badge absolute top-4 right-4"
-                      >
-                        <Sparkles className="h-3 w-3 mr-1" />
-                        Destacado
-                      </Badge>
-                    )}
                   </div>
                 </div>
               </div>
@@ -894,7 +881,7 @@ export default function ProductDetailPage() {
 
               {product.short_description && (
                 <div className="text-tierra-media text-lg leading-relaxed">
-                  <RichTextDisplay content={product.short_description} />
+                  <ProductRichText content={product.short_description} />
                 </div>
               )}
 
@@ -947,7 +934,7 @@ export default function ProductDetailPage() {
             {/* Price */}
             <div className="space-y-2">
               <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-bold" style={{ color: "#97000D" }}>
+                <span className="text-3xl font-bold" style={{ color: determineProductLine(product)?.id === "jade-ritual" || /jade|tinturas madre/i.test(`${product.categories?.name || ""} ${product.name}`) ? "#0A432B" : "#97000D" }}>
                   ${currentPrice.toLocaleString("es-AR")}
                 </span>
                 {product.compare_at_price &&
@@ -967,9 +954,9 @@ export default function ProductDetailPage() {
                     <div
                       className="flex items-center gap-3 px-3 py-2 rounded-lg border whitespace-nowrap"
                       style={{
-                        backgroundColor: "#ECFDF5",
-                        borderColor: "#A7F3D0",
-                        color: "#15803D",
+                        backgroundColor: "#FFF2E9",
+                        borderColor: "#7D1D2B33",
+                        color: "#4A0D10",
                       }}
                     >
                       <CreditCard className="h-5 w-5 flex-shrink-0" />
@@ -983,9 +970,9 @@ export default function ProductDetailPage() {
                     <div
                       className="flex items-center gap-3 px-3 py-2 rounded-lg border whitespace-nowrap"
                       style={{
-                        backgroundColor: "#ECFDF5",
-                        borderColor: "#A7F3D0",
-                        color: "#15803D",
+                        backgroundColor: "#FFF2E9",
+                        borderColor: "#7D1D2B33",
+                        color: "#4A0D10",
                       }}
                     >
                       <CreditCard className="h-5 w-5 flex-shrink-0" />
@@ -1004,15 +991,11 @@ export default function ProductDetailPage() {
                     {product.discount_transfer_percent &&
                       product.discount_transfer_percent > 0 && (
                         <div
-                          className="px-3 py-2 rounded-lg"
-                          style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                          className="px-0 py-2"
+                          style={{ color: "#791010" }}
                         >
                           <p
-                            className="text-sm font-medium"
-                            style={{
-                              fontFamily: "EB Garamond, var(--font-text), serif",
-                              fontStyle: "italic",
-                            }}
+                            className="text-sm font-semibold not-italic"
                           >
                             Transferencia / Débit{" "}
                             <span className="font-bold">
@@ -1031,15 +1014,11 @@ export default function ProductDetailPage() {
                     {product.discount_cash_percent &&
                       product.discount_cash_percent > 0 && (
                         <div
-                          className="px-3 py-2 rounded-lg"
-                          style={{ backgroundColor: "#FFF2DB", color: "#791010" }}
+                          className="px-0 py-2"
+                          style={{ color: "#791010" }}
                         >
                           <p
-                            className="text-sm font-medium"
-                            style={{
-                              fontFamily: "EB Garamond, var(--font-text), serif",
-                              fontStyle: "italic",
-                            }}
+                            className="text-sm font-semibold not-italic"
                           >
                             Efectivo{" "}
                             <span className="font-bold">
@@ -1185,18 +1164,19 @@ export default function ProductDetailPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setIsFavorite(!isFavorite)}
-                    className={`flex-1 ${getColorPalette().outlineColor} ${isFavorite ? "bg-red-50 border-red-200 text-red-600" : ""
-                      }`}
+                    className="flex-1 min-h-10 text-xs font-medium uppercase tracking-wider text-[#722F37] hover:text-[#722F37] border-[#722F37]/30 hover:-translate-y-0.5 hover:shadow-md"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif", background: "linear-gradient(180deg, #FBF9F5 0%, #EFE9E0 100%)" }}
                   >
                     <Heart
-                      className={`h-4 w-4 mr-2 ${isFavorite ? "fill-current text-red-500" : ""}`}
+                      className={`h-4 w-4 mr-2 ${isFavorite ? "fill-current" : ""}`}
                     />
                     {isFavorite ? "En favoritos" : "Agregar a favoritos"}
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
-                    className={getColorPalette().outlineColor}
+                    className="min-h-10 text-xs font-medium uppercase tracking-wider text-[#722F37] hover:text-[#722F37] border-[#722F37]/30 hover:-translate-y-0.5 hover:shadow-md"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif", background: "linear-gradient(180deg, #FBF9F5 0%, #EFE9E0 100%)" }}
                     onClick={handleShare}
                   >
                     <Share2 className="h-4 w-4 mr-2" />
@@ -1234,7 +1214,7 @@ export default function ProductDetailPage() {
         </div>
 
         {/* Product Details Tabs */}
-        <div className="mt-12">
+        <div className="mt-12 product-detail-tabs">
           <Tabs defaultValue="description" className="w-full">
             {/* Desktop Tabs */}
             <TabsList
@@ -1401,7 +1381,7 @@ export default function ProductDetailPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <RichTextDisplay content={product.description} />
+                  <ProductRichText content={product.description} />
 
                   {product.benefits && product.benefits.length > 0 && (
                     <div className="mt-4">
@@ -1443,6 +1423,8 @@ export default function ProductDetailPage() {
                           const translatedType =
                             skinTypeTranslations[type.toLowerCase()] ||
                             type.charAt(0).toUpperCase() + type.slice(1);
+                          const isHairProduct = /capilar|cabell/i.test(`${product.categories?.name || ""} ${product.name}`);
+                          const fullType = `${isHairProduct ? "Cabello" : "Piel"} ${isHairProduct && translatedType === "Seca" ? "Seco" : translatedType}`;
 
                           return (
                             <Badge
@@ -1453,7 +1435,7 @@ export default function ProductDetailPage() {
                                 color: getColorPalette().primaryColor,
                               }}
                             >
-                              {translatedType}
+                              {fullType}
                             </Badge>
                           );
                         })}
@@ -1513,12 +1495,6 @@ export default function ProductDetailPage() {
                           borderColor: `${getColorPalette().primaryColor}10`,
                         }}
                       >
-                        <h4
-                          className="font-semibold mb-2"
-                          style={{ color: getColorPalette().primaryColor }}
-                        >
-                          Certificaciones:
-                        </h4>
                         <div className="flex flex-wrap gap-2">
                           {product.certifications.map((cert, index) => {
                             // Translate certification names to Spanish
@@ -1548,7 +1524,7 @@ export default function ProductDetailPage() {
                               <Badge
                                 key={index}
                                 variant="secondary"
-                                className="bg-verde-suave/20 text-verde-suave border-verde-suave/30"
+                                className="bg-[#FBF9F5] text-[#722F37] border border-[#722F37]/20"
                               >
                                 {translatedCert}
                               </Badge>
@@ -1581,11 +1557,11 @@ export default function ProductDetailPage() {
                   )}
 
                   {product.precautions && (
-                    <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                      <h4 className="font-semibold text-amber-800 mb-2">
+                    <div className="mt-4 p-4 bg-[#F8F5F0] border-l-4 border-[#722F37]">
+                      <h4 className="font-semibold text-[#6B1724] mb-2">
                         Precauciones:
                       </h4>
-                      <div className="text-amber-700 text-sm">
+                      <div className="text-[#231F20] text-sm">
                         <RichTextDisplay content={product.precautions} />
                       </div>
                     </div>
@@ -1768,7 +1744,8 @@ export default function ProductDetailPage() {
                             </p>
                             <Button
                               onClick={() => setShowReviewForm(true)}
-                              className={`${getColorPalette().buttonColor} transition-all duration-300 hover:scale-105`}
+                              className="text-[#FFF2E9] hover:text-[#FFF2E9] text-xs font-medium uppercase tracking-wider transition-all duration-300 hover:scale-105"
+                              style={{ fontFamily: "var(--font-montserrat), sans-serif", background: "linear-gradient(135deg, #7D1D2B 0%, #54101A 100%)" }}
                             >
                               <Star className="w-4 h-4 mr-2" />
                               Escribir Reseña

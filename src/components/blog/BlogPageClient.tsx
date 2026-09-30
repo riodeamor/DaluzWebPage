@@ -148,7 +148,8 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                 <Button
                   variant="outline"
                   onClick={() => setSelectedCategory(null)}
-                  className={`font-caption uppercase tracking-wider ${
+                  aria-pressed={selectedCategory === null}
+                  className={`dl-button-primary font-caption uppercase tracking-wider ${
                     selectedCategory === null
                       ? "bg-[var(--color-brand-primary)] text-white border-[var(--color-brand-primary)]"
                       : "border-[var(--color-brand-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)] hover:text-white"
@@ -165,19 +166,12 @@ export function BlogPageClient({ posts, categories }: BlogPageClientProps) {
                       onClick={() =>
                         setSelectedCategory(isSelected ? null : category.title)
                       }
-                      className={`font-caption ${
+                      aria-pressed={isSelected}
+                      className={`dl-button-primary font-caption ${
                         isSelected
                           ? "bg-[var(--color-brand-primary)] text-white border-[var(--color-brand-primary)]"
                           : "border-[var(--color-bg-light)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-light)]/80"
                       }`}
-                      style={
-                        !isSelected && category.color
-                          ? {
-                              borderColor: category.color,
-                              color: category.color,
-                            }
-                          : undefined
-                    }
                     >
                       {category.title}
                     </Button>

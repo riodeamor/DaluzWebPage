@@ -252,7 +252,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="absolute inset-0 flex flex-col justify-end">
             <div className="container mx-auto px-6 pb-8 md:pb-12 max-w-4xl">
               <div className="mb-6 w-fit">
-                <Button variant="ghost" asChild size="sm" className="-ml-2 w-fit">
+                <Button variant="ghost" asChild size="sm" className="dl-button-primary -ml-2 w-fit">
                   <Link
                     href="/blog"
                     className="inline-flex items-center gap-2 text-white font-caption uppercase tracking-wider transition-colors rounded-lg px-3 py-2 bg-white/10 hover:bg-white/15"
@@ -391,7 +391,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         variant="outline"
                         size="sm"
                         asChild
-                        className="border-[var(--color-brand-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)] hover:text-white font-caption uppercase tracking-wider"
+                        className="dl-button-primary font-caption uppercase tracking-wider"
                       >
                         <a
                           href={post.author.socialLinks.instagram}
@@ -407,7 +407,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         variant="outline"
                         size="sm"
                         asChild
-                        className="border-[var(--color-brand-primary)] text-[var(--color-text-primary)] hover:bg-[var(--color-brand-primary)] hover:text-white font-caption uppercase tracking-wider"
+                        className="dl-button-primary font-caption uppercase tracking-wider"
                       >
                         <a
                           href={post.author.socialLinks.website}

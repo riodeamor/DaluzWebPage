@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="168.44mm" height="162.52mm" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 477.46 460.69">
+  <defs>
+    <linearGradient id="Degradado_sin_nombre_20" data-name="Degradado sin nombre 20" x1="327.18" y1="321.52" x2="474.44" y2="321.52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7ac7d1"/>
+      <stop offset=".99" stop-color="#2f3657"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_20-2" data-name="Degradado sin nombre 20" x1="226.94" y1="165.39" x2="474.33" y2="165.39" xlink:href="#Degradado_sin_nombre_20"/>
+    <linearGradient id="Degradado_sin_nombre_20-3" data-name="Degradado sin nombre 20" x1="89.41" y1="60.89" x2="391.68" y2="60.89" xlink:href="#Degradado_sin_nombre_20"/>
+    <linearGradient id="Degradado_sin_nombre_20-4" data-name="Degradado sin nombre 20" x1="3.05" y1="166.76" x2="226.94" y2="166.76" xlink:href="#Degradado_sin_nombre_20"/>
+    <linearGradient id="Degradado_sin_nombre_20-5" data-name="Degradado sin nombre 20" x1="3.05" y1="316.62" x2="151.1" y2="316.62" xlink:href="#Degradado_sin_nombre_20"/>
+    <linearGradient id="Degradado_sin_nombre_20-6" data-name="Degradado sin nombre 20" x1="2.71" y1="229.53" x2="474.77" y2="229.53" xlink:href="#Degradado_sin_nombre_20"/>
+  </defs>
+  <g style="isolation: isolate;">
+    <g id="Capa_2" data-name="Capa 2">
+      <g id="Capa_1-2" data-name="Capa 1">
+        <g style="mix-blend-mode: luminosity; opacity: .96;">
+          <polyline points="474.33 186.71 474.44 268 397.85 412.96 327.18 456.32 331.99 291.04 474.33 186.71" style="fill: url(#Degradado_sin_nombre_20); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+          <polyline points="391.68 39.75 474.33 186.71 331.99 291.04 226.94 238.06 226.94 119.04 391.68 39.75" style="fill: url(#Degradado_sin_nombre_20-2); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+          <polyline points="391.68 39.75 226.94 119.04 89.41 39.75 157.27 2.73 329.99 2.73 391.68 39.75" style="fill: url(#Degradado_sin_nombre_20-3); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+          <polyline points="226.94 119.04 226.94 238.06 119.17 293.76 3.05 180.18 89.41 39.75 226.94 119.04" style="fill: url(#Degradado_sin_nombre_20-4); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+          <polyline points="119.17 293.76 151.1 453.06 89.41 416.05 3.05 271.08 3.05 180.18 119.17 293.76" style="fill: url(#Degradado_sin_nombre_20-5); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+          <path d="M474.66,186.71v-.09l-.04-.08-82.64-146.96-.04-.08-.08-.05L330.17,2.45l-.08-.05h-172.9l-.08.04-67.86,37.02-.08.04-.05.08L2.76,180.01l-.05.08v91.09l.05.08,86.36,144.97.04.07.07.04,61.69,37.01.08.05h.09s176.08,3.27,176.08,3.27h.1s.08-.05.08-.05l70.67-43.36.08-.05.04-.08,76.59-144.97.04-.07v-.08l-.11-81.28h0ZM473.89,186.62l-141.93,104.03-104.68-52.79v-118.6l164.27-79.06,82.34,146.43h0ZM157.35,3.07h172.55l61.08,36.65-164.02,78.95L90.1,39.76,157.35,3.07h0ZM89.53,40.2l137.08,79.03v118.62l-107.38,55.5L3.47,180.13,89.53,40.2h0ZM89.66,415.81L3.38,270.99v-90.01l115.48,112.95,31.76,158.46-60.97-36.58h0ZM397.6,412.73l-70.06,42.99,4.78-164.5,141.67-103.84.11,80.54-76.51,144.81" style="fill: url(#Degradado_sin_nombre_20-6); stroke: #7ac7d1; stroke-miterlimit: 10; stroke-width: 4.8px;"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
