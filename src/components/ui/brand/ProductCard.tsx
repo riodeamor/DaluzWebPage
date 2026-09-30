@@ -433,8 +433,8 @@ export default function ProductCard({
               <div className="flex flex-col gap-1 text-xs text-[#7D1D2B]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 {installments3Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>3 cuotas sin interés de {formatInstallment(price / 3)}</span></div>}
                 {installments6Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>6 cuotas sin interés de {formatInstallment(price / 6)}</span></div>}
-                {transferDiscountPrice && <p>Transferencia: {formatPrice(transferDiscountPrice)}{discountTransferPercent ? ` (-${discountTransferPercent}%)` : ""}</p>}
-                {cashDiscountPrice && <p>Efectivo: {formatPrice(cashDiscountPrice)}{discountCashPercent ? ` (-${discountCashPercent}%)` : ""}</p>}
+                {transferDiscountPrice && <p className="text-xs font-normal leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: "0.75rem" }}>Transferencia: {formatPrice(transferDiscountPrice)}{discountTransferPercent ? ` (-${discountTransferPercent}%)` : ""}</p>}
+                {cashDiscountPrice && <p className="text-xs font-normal leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: "0.75rem" }}>Efectivo: {formatPrice(cashDiscountPrice)}{discountCashPercent ? ` (-${discountCashPercent}%)` : ""}</p>}
               </div>
             )}
             {showReviews && reviewCount > 0 && <div className="flex items-center gap-1.5" aria-label={`${rating} de 5 estrellas, ${reviewCount} reseñas`}><div className="flex items-center gap-0.5">{renderStars(rating)}</div><span className="text-xs text-[#7D1D2B]/80">({reviewCount})</span></div>}

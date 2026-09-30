@@ -12,6 +12,7 @@ import { useCart } from "@/contexts/CartContext";
 import { toast } from "sonner";
 import { useStoreCategories } from "@/hooks/useStoreCategories";
 import { fetchLineProducts } from "@/lib/products/featured-line";
+import LineSolid, { getLinePresentation } from "@/components/commerce/LineSolid";
 
 interface Product {
   id: string;
@@ -102,6 +103,16 @@ const lineThemes = [
     borderColor: "border-utopica-primary/20",
     buttonColor: "bg-utopica-primary hover:bg-utopica-primary/90",
   },
+  {
+    id: "kits-experiencia",
+    slug: "kits-y-experiencia",
+    name: "Kits & Ceremonias",
+    description: "Rituales completos",
+    color: "text-[#7D1D2B]",
+    bgColor: "bg-[#7D1D2B]/10",
+    borderColor: "border-[#7D1D2B]/20",
+    buttonColor: "bg-[#7D1D2B] hover:bg-[#4A0D10]",
+  },
 ];
 
 export default function FeaturedLineSection({
@@ -119,6 +130,7 @@ export default function FeaturedLineSection({
   });
   const [selectedId, setSelectedId] = useState<string>();
   const selectedLine = availableLines.find(line => line.id === selectedId);
+  const presentation = getLinePresentation(selectedLine?.lineTheme ?? "default");
   const selectedCategoryId = selectedLine?.id;
   const [result, setResult] = useState<{ categoryId: string; products: Product[] }>();
   const products = result && result.categoryId === selectedCategoryId ? result.products : [];
@@ -220,27 +232,22 @@ export default function FeaturedLineSection({
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8">
-
-
+          <LineSolid theme={selectedLine.lineTheme} />
           <h2
-            className={cn(
-              "text-3xl md:text-4xl font-semibold mb-4 leading-tight tracking-wider text-center",
-              selectedLine.color,
-            )}
+            className="mb-4 text-center text-3xl font-medium uppercase leading-tight md:text-5xl"
             style={{
-              fontFamily: "var(--font-cormorant), serif",
-              fontWeight: 500,
-              fontStyle: "normal",
+              fontFamily: "var(--font-cormorant), Cormorant Garamond, serif",
+              color: presentation?.color || "#7D1D2B",
             }}
           >
-            Descubrí la Línea {selectedLine.name}
+            {presentation?.title || selectedLine.name}
           </h2>
 
           <p
-            className="text-lg text-tierra-media max-w-2xl mx-auto mb-6 text-center"
-            style={{ fontFamily: "EB Garamond, var(--font-text), serif" }}
+            className="mx-auto mb-6 min-h-[1.5rem] max-w-2xl text-center text-sm leading-relaxed text-[#7D1D2B]/80 md:text-base"
+            style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >
-            {selectedLine.description}.
+            {selectedLine.description}
           </p>
 
         </div>
@@ -292,7 +299,7 @@ export default function FeaturedLineSection({
               }}
             >
               <span className="relative z-10">
-                Explorar toda la Línea {selectedLine.name} →
+                Explorar toda la Línea {selectedLine.name.replace(/^Línea\s+/i, "")} →
               </span>
               <div className="absolute inset-0 -top-1 -left-1 w-[calc(100%+8px)] h-[calc(100%+8px)] bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>
             </Button>

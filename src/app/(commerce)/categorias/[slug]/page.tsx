@@ -10,6 +10,7 @@ import { ArrowLeft, Grid3X3, Grid2X2 } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
+import LineSolid, { getLinePresentation } from "@/components/commerce/LineSolid";
 
 // Map category slugs to product line themes
 const getLineThemeFromSlug = (slug: string): 'alma-terra' | 'ecos' | 'jade-ritual' | 'umbral' | 'utopica' | 'kits-experiencia' | 'default' => {
@@ -83,15 +84,16 @@ export default function CategoryPage() {
       setCategory(null);
       setProducts([]);
       try {
-        // Fetch category by slug
-        const categoryResponse = await fetch(`/api/categories/by-slug/${params.slug}`);
+        // Both public Kits URLs resolve to the same existing category.
+        const lookupSlug = params.slug === 'kits-ceremonias' ? 'linea-kits-y-experiencia' : params.slug;
+        const categoryResponse = await fetch(`/api/categories/by-slug/${lookupSlug}`);
         if (!categoryResponse.ok) {
           toast.error('Categoría no encontrada');
           return;
         }
 
         const categoryData = await categoryResponse.json();
-        if (categoryData.category.slug !== params.slug) {
+        if (categoryData.category.slug !== lookupSlug) {
           router.replace(`/categorias/${encodeURIComponent(categoryData.category.slug)}`);
           return;
         }
@@ -189,7 +191,7 @@ export default function CategoryPage() {
   };
 
   const lineColors = getLineColors();
-  const isCenteredDarkTheme = lineTheme !== 'default';
+  const presentation = getLinePresentation(lineTheme);
 
   return (
     <div className="min-h-screen overflow-hidden" style={{ backgroundColor: lineColors.lightest }}>
@@ -216,27 +218,26 @@ export default function CategoryPage() {
         </nav>
 
         {/* Category Header */}
-        <div className="mb-8">
-          <div className={`flex ${isCenteredDarkTheme ? 'flex-col justify-center items-center text-center gap-6' : 'items-center justify-between'} mb-4`}>
-            <div className={isCenteredDarkTheme ? 'flex flex-col items-center w-full' : ''}>
-              <h1
-                className={`text-3xl mb-2 ${isCenteredDarkTheme ? 'font-normal' : 'font-title font-bold'}`}
-                style={isCenteredDarkTheme ? { color: lineColors.primary, fontFamily: 'Velista, serif' } : { color: lineColors.primary }}
-              >
-                {category.name}
-              </h1>
-              {category.description && (
-                <p
-                  className={`max-w-2xl ${isCenteredDarkTheme ? 'mx-auto' : ''}`}
-                  style={isCenteredDarkTheme ? { color: lineColors.dark, fontFamily: '"EB Garamond", serif', fontSize: '18px', lineHeight: '1.6', fontWeight: 500 } : { color: lineColors.primary, opacity: 0.8 }}
-                >
-                  {category.description}
-                </p>
-              )}
-            </div>
+        <div className="mb-8 rounded-[0_18px] border border-[#4A0D10]/10 bg-[#FAF7F2] px-5 py-7 md:px-10 md:py-9">
+          <div className="text-center">
+            <LineSolid theme={lineTheme} />
+            <h1
+              className="mb-2 text-3xl font-medium uppercase leading-tight md:text-5xl"
+              style={{ color: presentation?.color || lineColors.primary, fontFamily: 'var(--font-cormorant), Cormorant Garamond, serif' }}
+            >
+              {presentation?.title || category.name}
+            </h1>
+            <p
+              className="mx-auto min-h-[1.5rem] max-w-2xl text-sm leading-relaxed md:text-base"
+              style={{ color: lineColors.dark, fontFamily: 'var(--font-montserrat), Montserrat, sans-serif' }}
+            >
+              {category.description || ''}
+            </p>
+          </div>
 
-            {/* Grid Controls */}
-            <div className={`flex border rounded-md ${isCenteredDarkTheme ? 'self-end' : ''}`}>
+          {/* Grid Controls */}
+          <div className="mt-5 flex justify-end">
+            <div className="flex rounded-md border">
               <Button
                 variant={gridCols === 2 ? "default" : "ghost"}
                 size="sm"
@@ -257,7 +258,7 @@ export default function CategoryPage() {
           </div>
 
           {/* Category Stats */}
-          <div className={`flex items-center gap-4 ${isCenteredDarkTheme ? 'justify-center w-full' : ''}`}>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
             <Badge variant="outline" style={{ borderColor: lineColors.primary, color: lineColors.primary }}>
               {products.length} productos
             </Badge>
