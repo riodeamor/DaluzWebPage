@@ -3381,10 +3381,11 @@ footer .footer-social-icon {
   min-height: 34px;
   padding: 5px 6px;
   border-radius: 0 10px;
-  color: #4A0D10;
+  color: #FFF2E9;
 }
 .tienda-page .tienda-nav-tab[aria-pressed="true"] {
   background: #FFF2E9;
+  color: #4A0D10;
   box-shadow: 0 2px 7px rgba(74, 13, 16, .12);
 }
 .tienda-page .tienda-nav-item {
@@ -3422,7 +3423,25 @@ footer .footer-social-icon {
 }
 
 .alkimya-synergy-row { flex-wrap: wrap; overflow: visible; gap: .35rem; }
-.alkimya-synergy-button { min-height: 32px; padding: .35rem .65rem; font-size: 10px; }
+.tienda-page .alkimya-synergy-button {
+  min-height: 30px;
+  padding: .3rem .6rem;
+  border: 1px solid rgba(125, 29, 43, .28);
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none !important;
+}
+.tienda-page .alkimya-synergy-button:not(:hover):not([aria-pressed="true"]) {
+  background: #FFFFFF;
+  color: #4A0D10;
+  box-shadow: none;
+}
+.tienda-page .alkimya-synergy-button:hover,
+.tienda-page .alkimya-synergy-button[aria-pressed="true"] {
+  border-radius: 0 15px;
+}
 
 .account-tesoros-vector {
   display: inline-block;
