@@ -2859,6 +2859,108 @@ main a.tu-ceremonia-button:hover {
   transform: translateY(-2px);
 }
 
+/* Botones y cards de tienda */
+.alkimya-cta,
+.alkimya-card-add,
+.alkimya-pagination {
+  background: linear-gradient(105deg, #4A0D10 0%, #7D1D2B 58%, #980C22 100%) !important;
+  color: #fff !important;
+  border: 1px solid #7D1D2B !important;
+  box-shadow: 0 5px 12px rgba(74, 13, 16, .18);
+  font-family: Montserrat, var(--font-text), sans-serif !important;
+  transition: filter .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.alkimya-cta:hover,
+.alkimya-card-add:hover,
+.alkimya-pagination:hover:not(:disabled) {
+  filter: brightness(1.12);
+  box-shadow: 0 7px 16px rgba(74, 13, 16, .26);
+  transform: translateY(-1px);
+}
+.alkimya-cta-outline,
+.alkimya-card-view {
+  background: #fff2e9 !important;
+  color: #4A0D10 !important;
+  border: 1px solid #7D1D2B !important;
+  font-family: Montserrat, var(--font-text), sans-serif !important;
+}
+.alkimya-cta-outline:hover,
+.alkimya-card-view:hover {
+  background: #7D1D2B !important;
+  color: #fff !important;
+}
+.alkimya-pagination:disabled { opacity: .45 !important; box-shadow: none; }
+.alkimya-card-description {
+  color: #8C4A50;
+  font: 500 11px/1.35 Montserrat, var(--font-text), sans-serif;
+  text-align: left;
+}
+.alkimya-product-card [class*="text-"] { overflow-wrap: anywhere; }
+
+.alkimya-announcement {
+  overflow: hidden;
+  background: #FAF7F2;
+  border-bottom: 1px solid rgba(74, 13, 16, .14);
+  color: #0A1D4A;
+  font: 600 11px/1.5 Montserrat, var(--font-text), sans-serif;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.alkimya-announcement-track {
+  display: flex;
+  width: max-content;
+  animation: alkimya-announcement-scroll 28s linear infinite;
+}
+.alkimya-announcement:hover .alkimya-announcement-track,
+.alkimya-announcement:active .alkimya-announcement-track,
+.alkimya-announcement:focus-within .alkimya-announcement-track {
+  animation-play-state: paused;
+}
+.alkimya-announcement-group { display: flex; align-items: center; gap: 1.5rem; flex: none; padding: .25rem .75rem; }
+.alkimya-announcement-separator { color: #7D1D2B; }
+.alkimya-announcement a:hover { color: #7D1D2B; text-decoration: underline; }
+@keyframes alkimya-announcement-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .alkimya-announcement-track { animation: none; }
+  .alkimya-announcement { overflow-x: auto; }
+}
+.alkimya-synergy-ribbons {
+  display: grid;
+  gap: .5rem;
+}
+.alkimya-synergy-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  overflow-x: auto;
+  padding: .3rem 0 .6rem;
+  scrollbar-width: thin;
+}
+.alkimya-synergy-heading {
+  flex: none;
+  color: #4A0D10;
+  font: 600 1rem/1.2 var(--font-cormorant), Cormorant Garamond, serif;
+  margin-right: .25rem;
+}
+.alkimya-synergy-button {
+  flex: none;
+  min-height: 2.5rem;
+  padding: .5rem .85rem;
+  border: 1px solid rgba(125, 29, 43, .45);
+  border-radius: 0 15px;
+  background: #fff2e9;
+  color: #4A0D10;
+  font: 600 11px/1.2 Montserrat, var(--font-text), sans-serif;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.alkimya-synergy-button:hover,
+.alkimya-synergy-button[aria-pressed="true"] {
+  background: linear-gradient(105deg, #4A0D10, #7D1D2B 58%, #980C22);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(74, 13, 16, .18);
+}
+
 /* Botones de compra en la paleta del filtro de Tienda. */
 .tienda-add-button {
   font-family: var(--font-montserrat), Montserrat, sans-serif !important;
@@ -3236,3 +3338,32 @@ footer .footer-social-icon {
   .dl-card { background: #fff; border: 1px solid rgba(10, 29, 74, 0.12); border-radius: 1rem; }
   .dl-input { background: #fff; border: 1px solid rgba(10, 29, 74, 0.2); border-radius: 0.5rem; color: #051341; font-family: var(--font-montserrat), sans-serif; }
 }
+
+.alkimya-cta,
+.alkimya-card-add,
+.alkimya-pagination {
+  background: linear-gradient(105deg, #4A0D10 0%, #7D1D2B 58%, #980C22 100%) !important;
+  color: #fff !important;
+  border-color: #7D1D2B !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+}
+.alkimya-cta:hover,
+.alkimya-card-add:hover,
+.alkimya-pagination:hover:not(:disabled) { filter: brightness(1.12); transform: translateY(-1px); }
+.alkimya-cta-outline {
+  background: #fff2e9 !important;
+  color: #4A0D10 !important;
+  border: 1px solid #7D1D2B !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+}
+.alkimya-cta-outline:hover { background: #7D1D2B !important; color: #fff !important; }
+.alkimya-pagination[aria-current="page"] { outline: 2px solid #4A0D10; outline-offset: 2px; }
+.tienda-line-cta {
+  background: linear-gradient(105deg, #4A0D10, #7D1D2B 58%, #980C22) !important;
+  color: #fff !important;
+  border-color: #7D1D2B !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  box-shadow: 0 5px 12px rgba(74, 13, 16, .18);
+}
+.tienda-line-cta:hover { filter: brightness(1.12); transform: translateY(-1px); }
+.alkimya-synergy-button { font-family: var(--font-montserrat), Montserrat, sans-serif !important; }

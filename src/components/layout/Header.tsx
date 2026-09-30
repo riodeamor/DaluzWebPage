@@ -75,13 +75,13 @@ const ListItem = ({
   title,
   children,
   textColor = "#051341", 
-  fullDescription = false,
+  singleLine = false,
 }: {
   href: string;
   title: string;
   children: React.ReactNode;
   textColor?: string;
-  fullDescription?: boolean;
+  singleLine?: boolean;
 }) => {
   return (
     <li>
@@ -91,14 +91,14 @@ const ListItem = ({
           className="block select-none space-y-1 rounded-md px-3 py-2.5 leading-none no-underline outline-none transition-all duration-150 hover:translate-x-1 hover:bg-[#FFF2E9]/70 focus-visible:bg-[#FFF2E9]/70"
         >
           <div
-            className="text-sm font-subtitle font-medium leading-none"
+            className="text-[17px] font-subtitle font-medium leading-tight"
             style={{ color: textColor === "#72111A" ? "#4A0D10" : textColor, fontFamily: "var(--font-cormorant), serif" }}
           >
             {title}
           </div>
           <p
-            className={fullDescription ? "text-xs font-text leading-relaxed" : "line-clamp-2 text-sm font-text leading-snug"}
-            style={{ color: textColor === "#72111A" ? "#7D1D2B" : "#16345F", opacity: textColor === "#72111A" ? 0.8 : 0.75 }}
+            className={`text-[11px] leading-snug ${singleLine ? "whitespace-nowrap" : ""}`}
+            style={{ color: textColor === "#72111A" ? "#7D1D2B" : "#16345F", opacity: textColor === "#72111A" ? 0.8 : 0.75, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >
             {children}
           </p>
@@ -308,7 +308,7 @@ export default function Header() {
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
                   >
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ul className="grid w-[960px] grid-cols-[220px_repeat(2,minmax(0,1fr))] grid-rows-3 gap-2 p-4">
                       <li className="row-span-3 min-h-[220px] flex">
                         <NavigationMenuLink asChild>
                           <Link
@@ -344,11 +344,12 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      {categories.map((category) => (
-                        <ListItem key={category.id} href={`/categorias/${encodeURIComponent(category.slug)}`} title={category.name} textColor="#72111A">
-                          {category.description}
-                        </ListItem>
-                      ))}
+                      <ListItem href="/categorias/linea-umbral" title="LÍNEA UMBRAL SENS" textColor="#72111A" singleLine>Nutrición dérmica, sérums y elixires faciales.</ListItem>
+                      <ListItem href="/categorias/linea-ecos" title="LÍNEA ECOS" textColor="#72111A" singleLine>Limpieza consciente de rostro, cabello y cuerpo.</ListItem>
+                      <ListItem href="/categorias/linea-alma-terra" title="LÍNEA ALMA TERRA" textColor="#72111A" singleLine>Aromaterapia, brumas herbales y calma.</ListItem>
+                      <ListItem href="/categorias/linea-jade-ritual" title="LÍNEA JADE RITUAL" textColor="#72111A" singleLine>Fitoterapia viva, tinturas madre y extractos.</ListItem>
+                      <ListItem href="/categorias/linea-prisma" title="LÍNEA PRISMA" textColor="#72111A" singleLine>Maquillaje de la tierra y pigmentos botánicos.</ListItem>
+                      <ListItem href="/categorias/linea-kits-y-experiencia" title="KITS & CEREMONIAS" textColor="#72111A" singleLine>Sinergias integrales y rituales completos.</ListItem>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>

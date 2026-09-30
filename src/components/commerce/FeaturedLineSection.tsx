@@ -240,8 +240,7 @@ export default function FeaturedLineSection({
             className="text-lg text-tierra-media max-w-2xl mx-auto mb-6 text-center"
             style={{ fontFamily: "EB Garamond, var(--font-text), serif" }}
           >
-            {selectedLine.description}. Una selección especial de productos
-            cuidadosamente elegidos para tu bienestar.
+            {selectedLine.description}.
           </p>
 
         </div>
@@ -287,10 +286,7 @@ export default function FeaturedLineSection({
         <div className="text-center mt-8">
           <Link href={`/categorias/${encodeURIComponent(selectedLine.slug)}`}>
             <Button
-              className={cn(
-                "tienda-line-button group relative px-10 py-4 text-lg font-semibold text-white transition-all duration-500 transform hover:scale-105 overflow-hidden",
-                selectedLine.buttonColor,
-              )}
+              className="alkimya-cta group relative overflow-hidden px-8 py-4 text-sm font-semibold uppercase tracking-wide"
               style={{
                 borderRadius: "0 15px",
               }}

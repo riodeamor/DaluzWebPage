@@ -142,7 +142,8 @@ export default function CartSidebar() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-8 w-8 p-0 hover:bg-admin-bg-tertiary"
+                            className="h-8 w-8 p-0 text-[#4A0D10] hover:bg-[#7D1D2B] hover:text-white"
+                            aria-label={`Quitar una unidad de ${item.name}`}
                             onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
                             style={{ borderRadius: 0 }}
                           >
@@ -154,7 +155,8 @@ export default function CartSidebar() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-8 w-8 p-0 hover:bg-admin-bg-tertiary"
+                            className="h-8 w-8 p-0 text-[#4A0D10] hover:bg-[#7D1D2B] hover:text-white"
+                            aria-label={`Agregar una unidad de ${item.name}`}
                             onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                             disabled={item.quantity >= item.stock}
                             style={{ borderRadius: 0 }}
@@ -257,7 +259,7 @@ export default function CartSidebar() {
                 <div className="space-y-3">
                   <Link href="/checkout" className="block" onClick={() => setCartOpen(false)}>
                     <Button
-                      className="w-full bg-[#FFF2E9] hover:bg-white text-[#4A0D10] hover:text-[#4A0D10] font-text font-semibold py-6 text-base"
+                      className="alkimya-cta w-full font-text font-semibold py-6 text-base"
                       style={{ borderRadius: '0px 15px' }}
                     >
                       Finalizar Compra
@@ -269,7 +271,7 @@ export default function CartSidebar() {
                       variant="outline"
                       size="sm"
                       onClick={() => setCartOpen(false)}
-                      className="flex-1 border-[#FFF2E9]/50 bg-transparent font-text text-[#FFF2E9] hover:bg-[#FFF2E9]/10 hover:text-white"
+                      className="alkimya-cta-outline flex-1 font-text font-semibold"
                       style={{ borderRadius: '0px 15px' }}
                     >
                       Seguir Comprando

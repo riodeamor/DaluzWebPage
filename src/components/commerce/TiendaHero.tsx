@@ -58,7 +58,7 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
       <div className="absolute inset-0 bg-[#0A1D4A]/45" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-2xl">
         <span
-          className="mx-auto mb-3 block h-10 w-10 bg-[#FFF2E9] md:h-12 md:w-12"
+          className="mx-auto mb-3 block h-14 w-14 bg-[#FFF2E9] md:h-16 md:w-16"
           style={{
             mask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
             WebkitMask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
@@ -77,7 +77,7 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
           Alkimya Da Luz
         </p>
         <p className="mx-auto max-w-xl font-sans text-xs leading-relaxed text-[#FFF2E9]/90 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-          Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario. Cada alquimya es un puente hacia la soberanía de tu cuerpo.
+          Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario. Cada alquimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.
         </p>
       </div>
     </section>

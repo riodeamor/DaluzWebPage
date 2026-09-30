@@ -25,6 +25,7 @@ import {
   Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BODY_CATEGORIES } from "@/components/commerce/storeFilters";
 
 interface TiendaSidebarProps {
   searchTerm: string;
@@ -188,17 +189,16 @@ export default function TiendaSidebar({
         {expandedSections.categories && (
           <CardContent className="pt-0">
             <div className="space-y-2 lg:space-y-3">
-              {/* Product Lines */}
-              {categories.map((line) => (
+              {BODY_CATEGORIES.map((line) => (
                 <Button
                   key={line.id}
                   variant={
-                    selectedCategory === line.id ? "line-primary" : "line-ghost"
+                    (selectedCategory || "all") === line.id ? "line-primary" : "line-ghost"
                   }
-                  className="tienda-line-button w-full justify-start text-sm h-8 lg:h-9"
-                  onClick={() => setSelectedCategory(line.id)}
+                  className="tienda-line-button w-full justify-start text-sm min-h-9 h-auto py-1.5"
+                  onClick={() => setSelectedCategory(line.id === "all" ? "" : line.id)}
                 >
-                  {line.name}
+                  {line.label}
                 </Button>
               ))}
             </div>
@@ -442,7 +442,7 @@ export default function TiendaSidebar({
                 {selectedCategory && (
                   <Badge variant="secondary" className="text-xs">
                     Categoría:{" "}
-                    {categories.find((c) => c.id === selectedCategory)?.name}
+                    {BODY_CATEGORIES.find((c) => c.id === selectedCategory)?.label || categories.find((c) => c.id === selectedCategory)?.name}
                   </Badge>
                 )}
                 {selectedSkinType && selectedSkinType !== "all" && (

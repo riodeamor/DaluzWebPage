@@ -33,6 +33,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { useLike } from "@/contexts/LikeContext";
 import { toast } from "sonner";
+import { BODY_CATEGORIES, matchesBodyCategory, matchesSynergy, type BodyCategory, type Synergy } from "@/components/commerce/storeFilters";
 
 interface Product {
   id: string;
@@ -143,6 +144,17 @@ function ProductsContent() {
   const [showFilters, setShowFilters] = useState(false);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [showOnlySale, setShowOnlySale] = useState(false);
+  const [selectedSynergy, setSelectedSynergy] = useState<Synergy | null>(null);
+  const selectCategory = (category: string) => {
+    setSelectedCategory(category);
+    setSelectedSynergy(null);
+    setCurrentPage(1);
+  };
+  const selectSynergy = (synergy: Synergy) => {
+    setSelectedSynergy((current) => current === synergy ? null : synergy);
+    setSelectedCategory(synergy.startsWith("facial") ? "rostro" : "cabello");
+    setCurrentPage(1);
+  };
 
   // Fetch categories
   useEffect(() => {
@@ -168,7 +180,9 @@ function ProductsContent() {
         const params = new URLSearchParams();
 
         if (searchTerm) params.append("search", searchTerm);
-        if (selectedCategory) params.append("category", selectedCategory);
+        const bodyCategory = BODY_CATEGORIES.find((c) => c.id === selectedCategory)?.id as BodyCategory | undefined;
+        const clientFilter = Boolean(bodyCategory && bodyCategory !== "all") || Boolean(selectedSynergy);
+        if (selectedCategory && !bodyCategory) params.append("category", selectedCategory);
         if (selectedSkinType && selectedSkinType !== "all")
           params.append("skin_type", selectedSkinType);
         if (selectedHairType && selectedHairType !== "all")
@@ -179,16 +193,24 @@ function ProductsContent() {
         if (sortBy) params.append("sort_by", getSortField(sortBy));
         if (getSortOrder(sortBy))
           params.append("sort_order", getSortOrder(sortBy));
-        params.append("page", currentPage.toString());
-        params.append("limit", "9"); // Desktop: 3x3 grid, Mobile: 2x5 grid
+        params.append("page", clientFilter ? "1" : currentPage.toString());
+        params.append("limit", clientFilter ? "1000" : "9");
         params.append("in_stock", "true");
 
         const response = await fetch(`/api/products?${params.toString()}`);
         const data: ProductsResponse = await response.json();
 
         if (response.ok) {
-          setProducts(data.products);
-          setPagination(data.pagination);
+          if (clientFilter) {
+            const matches = data.products.filter((product) =>
+              matchesBodyCategory(product, bodyCategory || "all") && matchesSynergy(product, selectedSynergy),
+            );
+            setProducts(matches.slice((currentPage - 1) * 9, currentPage * 9));
+            setPagination({ page: currentPage, limit: 9, total: matches.length, totalPages: Math.ceil(matches.length / 9), hasMore: currentPage * 9 < matches.length });
+          } else {
+            setProducts(data.products);
+            setPagination(data.pagination);
+          }
         } else {
           console.error("API Error:", data);
           toast.error("Error al cargar productos");
@@ -205,6 +227,7 @@ function ProductsContent() {
   }, [
     searchTerm,
     selectedCategory,
+    selectedSynergy,
     selectedSkinType,
     selectedHairType,
     priceRange,
@@ -276,6 +299,7 @@ function ProductsContent() {
   const clearFilters = () => {
     setSearchTerm("");
     setSelectedCategory("");
+    setSelectedSynergy(null);
     setSelectedSkinType("");
     setSelectedHairType("");
     setPriceRange({ min: "", max: "" });
@@ -288,6 +312,7 @@ function ProductsContent() {
   const hasActiveFilters = Boolean(
     searchTerm ||
     selectedCategory ||
+    selectedSynergy ||
     (selectedSkinType && selectedSkinType !== "all") ||
     (selectedHairType && selectedHairType !== "all") ||
     priceRange.min ||
@@ -307,20 +332,9 @@ function ProductsContent() {
       {/* Hero Section */}
       <TiendaHero />
       <section className="mx-auto max-w-6xl px-4 pt-7 pb-2 text-center" aria-label="Encontrá tu ritual">
-        <Link href="/alkimya/biotipos-doshas" className="block rounded-[0_18px] border border-[#7D1D2B]/20 bg-[#FFF2E9] px-5 py-5 text-sm font-medium leading-relaxed text-[#4A0D10] shadow-sm transition-colors hover:bg-white" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-          ¿No sabés qué alquimia necesita tu piel en este ciclo? Descubrí tu Biotipo Cutáneo y encontrá tu ritual exacto →
+        <Link href="/alkimya/biotipos" className="block rounded-[0_18px] border border-[#7D1D2B]/20 bg-[#FFF2E9] px-5 py-5 text-sm font-medium leading-relaxed text-[#4A0D10] shadow-sm transition-colors hover:bg-white" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+          ¿No sabés qué Alkimya necesita tu piel en este ciclo? Descubrí tu Biotipo Cutáneo y encontrá tu ritual exacto →
         </Link>
-        <nav className="mt-5 flex flex-wrap justify-center gap-2" aria-label="Explorar por necesidad de piel">
-          {[
-            ["💧 Brillo & Poros Dilatados", "/categorias/linea-umbral"],
-            ["🌿 Sensibilidad & Rojeces", "/categorias/linea-ecos"],
-            ["🌰 Nutrición & Sequedad", "/categorias/linea-alma-terra"],
-            ["☀️ Luminosidad & Tono Uniforme", "/categorias/linea-prisma"],
-            ["🕯️ Rituales Completos", "/categorias/linea-kits-y-experiencia"],
-          ].map(([label, href]) => (
-            <Link key={href} href={href} className="rounded-full border border-[#7D1D2B]/20 bg-[#FAF7F2] px-4 py-2 text-xs text-[#4A0D10] transition-colors hover:border-[#7D1D2B] hover:bg-[#FFF2E9]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{label}</Link>
-          ))}
-        </nav>
       </section>
 
       {/* Main Content */}
@@ -389,14 +403,14 @@ function ProductsContent() {
                         selectedCategory === "" ? "line-primary" : "line-ghost"
                       }
                       className={cn(
-                        "w-full justify-start text-xs h-6",
+                        "w-full justify-start text-xs min-h-6 h-auto py-1",
                         selectedCategory === "" ? "tienda-button" : "tienda-line-button",
                       )}
-                      onClick={() => setSelectedCategory("")}
+                      onClick={() => selectCategory("")}
                     >
-                      Todas
+                      Todos los productos
                     </Button>
-                    {categories.map((category) => (
+                    {BODY_CATEGORIES.filter((category) => category.id !== "all").map((category) => (
                       <Button
                         key={category.id}
                         variant={
@@ -405,14 +419,14 @@ function ProductsContent() {
                             : "line-ghost"
                         }
                         className={cn(
-                          "w-full justify-start text-xs h-6",
+                          "w-full justify-start text-xs min-h-6 h-auto py-1",
                           selectedCategory === category.id
                             ? "tienda-button"
                             : "tienda-line-button",
                         )}
-                        onClick={() => setSelectedCategory(category.id)}
+                        onClick={() => selectCategory(category.id)}
                       >
-                        {category.name}
+                        {category.label}
                       </Button>
                     ))}
                   </div>
@@ -614,7 +628,7 @@ function ProductsContent() {
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
               selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
+              setSelectedCategory={selectCategory}
               selectedSkinType={selectedSkinType}
               setSelectedSkinType={setSelectedSkinType}
               selectedHairType={selectedHairType}
@@ -639,7 +653,33 @@ function ProductsContent() {
           </div>
 
           {/* Main Content Area */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
+            <div className="alkimya-synergy-ribbons mb-6" aria-label="Filtrar por sinergia">
+              <div className="alkimya-synergy-row">
+                <span className="alkimya-synergy-heading">Cuidado facial</span>
+                {([
+                  ["facial-serena", "💧 Serena • Poros & Brillo"],
+                  ["facial-ilumina", "🌰 Ilumina • Nutrición & Sequedad"],
+                  ["facial-soy", "✨ Soy • Firmeza & Regeneración"],
+                  ["facial-claridad", "🌿 Claridad • Tono Uniforme & Calma"],
+                  ["facial-rituales", "🕯️ Rituales Faciales Completos"],
+                ] as const).map(([id, label]) => (
+                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
+                ))}
+              </div>
+              <div className="alkimya-synergy-row">
+                <span className="alkimya-synergy-heading">Cuidado capilar</span>
+                {([
+                  ["capilar-raiz", "🌱 Raíz • Fuerza & Densidad"],
+                  ["capilar-serena", "💧 Serena • Equilibrio & Cuero Cabelludo"],
+                  ["capilar-ilumina", "🌰 Ilumina • Nutrición & Brillo"],
+                  ["capilar-pureza", "✨ Pureza • Desenredo & Suavidad"],
+                  ["capilar-ceremonia", "🕯️ Ceremonia Capilar Completa"],
+                ] as const).map(([id, label]) => (
+                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
+                ))}
+              </div>
+            </div>
             {/* Results Info */}
             <div className="mb-6 flex justify-between items-center"></div>
 
@@ -746,8 +786,7 @@ function ProductsContent() {
                     setCurrentPage(currentPage - 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="bg-white hover:bg-gray-100"
-                  style={{ opacity: 1, backgroundColor: "#ffffff" }}
+                  className="alkimya-pagination"
                 >
                   Anterior
                 </Button>
@@ -776,14 +815,8 @@ function ProductsContent() {
                             setCurrentPage(page);
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
-                          className={
-                            currentPage === page
-                              ? "bg-[#791010] text-white border-[#791010] hover:bg-[#5a0c0c] hover:text-white"
-                              : "bg-white hover:bg-gray-100 text-gray-700"
-                          }
-                          style={{
-                            opacity: 1,
-                          }}
+                          className="alkimya-pagination"
+                          aria-current={currentPage === page ? "page" : undefined}
                         >
                           {page}
                         </Button>
@@ -816,15 +849,8 @@ function ProductsContent() {
                             setCurrentPage(page);
                             window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
-                          className={cn(
-                            "text-xs px-2 py-1 h-8 min-w-[2rem]",
-                            currentPage === page
-                              ? "bg-[#791010] text-white border-[#791010] hover:bg-[#5a0c0c] hover:text-white"
-                              : "bg-white hover:bg-gray-100 text-gray-700",
-                          )}
-                          style={{
-                            opacity: 1,
-                          }}
+                          className="alkimya-pagination text-xs px-2 py-1 h-8 min-w-[2rem]"
+                          aria-current={currentPage === page ? "page" : undefined}
                         >
                           {page}
                         </Button>
@@ -844,8 +870,7 @@ function ProductsContent() {
                     setCurrentPage(currentPage + 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="bg-white hover:bg-gray-100"
-                  style={{ opacity: 1, backgroundColor: "#ffffff" }}
+                  className="alkimya-pagination"
                 >
                   Siguiente
                 </Button>

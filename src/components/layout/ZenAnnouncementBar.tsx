@@ -1,67 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Link from "next/link";
 
-const defaultNotice = "Da Luz Consciente · Alkimyas para alma y cuerpo";
-
-function readNotices(value: unknown): string[] {
-  if (typeof value === "string") return value.trim() ? [value.trim()] : [];
-  if (Array.isArray(value)) return value.flatMap(readNotices);
-  if (!value || typeof value !== "object") return [];
-
-  const notice = value as Record<string, unknown>;
-  if (notice.active === false || notice.is_active === false || notice.enabled === false) return [];
-
-  const items = notice.messages ?? notice.notices ?? notice.items;
-  if (items !== undefined) return readNotices(items);
-
-  const label = notice.text ?? notice.message ?? notice.title;
-  return typeof label === "string" && label.trim() ? [label.trim()] : [];
-}
+const officialNotices = [
+  "ENVÍO GRATIS A TODO EL PAÍS EN COMPRAS SUPERIORES A $ 77.000",
+  "10% OFF POR TRANSFERENCIA BANCARIA • 3 CUOTAS SIN INTERÉS",
+  "TESORO RITUAL DE REGALO EN CADA COMPRA PARA ACTIVAR EL GOCE EN EL COTIDIANO ✨",
+  "¿NO SABÉS QUÉ ALQUIMIA NECESITA TU PIEL? AGENDÁ TU SESIÓN UMBRAL 1 A 1 →",
+];
 
 export default function ZenAnnouncementBar() {
-  const [notices, setNotices] = useState<string[]>([defaultNotice]);
   const [pressed, setPressed] = useState(false);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const loadNotices = async () => {
-      try {
-        const response = await fetch("/api/public/config", { signal: controller.signal });
-        if (!response.ok) return;
-
-        const data = await response.json();
-        const configs = data.configs as Record<string, unknown> | undefined;
-        if (!configs) return;
-
-        const active = Object.entries(configs)
-          .filter(([key]) => /announcement|anuncio|zen/i.test(key))
-          .flatMap(([, value]) => readNotices(value));
-
-        const threshold = Number(configs.free_shipping_threshold);
-        if (Number.isFinite(threshold) && threshold > 0) {
-          active.unshift(`Envío gratis desde $ ${new Intl.NumberFormat("es-AR").format(threshold)}`);
-        }
-
-        setNotices(active.length ? Array.from(new Set(active)) : [defaultNotice]);
-      } catch (error) {
-        if (!controller.signal.aborted) console.error("Error loading announcements:", error);
-      }
-    };
-
-    loadNotices();
-    const interval = window.setInterval(loadNotices, 300000);
-    return () => {
-      controller.abort();
-      window.clearInterval(interval);
-    };
-  }, []);
 
   const group = (key: string) => (
     <div key={key} className="zen-announcement-group" aria-hidden={key === "copy"}>
-      {notices.map((notice, index) => (
-        <span key={`${index}-${notice}`} className="zen-announcement-item">{notice}</span>
+      {officialNotices.map((notice, index) => (
+        <span key={`${index}-${notice}`} className="zen-announcement-item">
+          {index === 3 ? <Link href="/servicios/consultas" tabIndex={key === "copy" ? -1 : 0}>{notice}</Link> : notice}
+          <span className="zen-announcement-separator" aria-hidden="true">•</span>
+        </span>
       ))}
     </div>
   );
@@ -90,7 +48,7 @@ export default function ZenAnnouncementBar() {
         .zen-announcement-track {
           display: flex;
           width: max-content;
-          animation: zen-scroll 45s linear infinite;
+          animation: zen-scroll 28s linear infinite;
         }
         .zen-announcement-bar:hover .zen-announcement-track,
         .zen-announcement-paused {
@@ -103,11 +61,14 @@ export default function ZenAnnouncementBar() {
           justify-content: space-around;
           min-width: 100vw;
           min-height: 32px;
-          gap: 4rem;
-          padding: 0 2rem;
+          gap: 1.5rem;
+          padding: 0 1rem;
         }
         .zen-announcement-item {
           flex: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 1.5rem;
           font-family: var(--font-montserrat), Montserrat, sans-serif;
           font-size: 0.75rem;
           line-height: 1.25rem;
@@ -116,6 +77,8 @@ export default function ZenAnnouncementBar() {
           text-transform: uppercase;
           white-space: nowrap;
         }
+        .zen-announcement-separator { color: #7d1d2b; }
+        .zen-announcement-item a:hover { color: #7d1d2b; text-decoration: underline; }
         @keyframes zen-scroll {
           to { transform: translateX(-50%); }
         }

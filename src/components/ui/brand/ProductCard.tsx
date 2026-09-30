@@ -16,7 +16,6 @@ import {
   CreditCard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ProductRichText from "@/components/ui/ProductRichText";
 import { useLike } from "@/contexts/LikeContext";
 import FlameIcon from "@/components/ui/brand/icons/FlameIcon";
 import StarBurstIcon from "@/components/ui/brand/icons/StarBurstIcon";
@@ -175,6 +174,7 @@ export default function ProductCard({
   showReviews = false,
 }: ProductCardProps) {
   const productHref = `/productos/${slug || id}`;
+  const cardSummary = description.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(/(?<=[.!?])\s+/)[0]?.slice(0, 115) || "";
 
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -184,7 +184,6 @@ export default function ProductCard({
   const isFavorite = isLiked(id);
 
   const theme = lineThemeClasses[lineTheme];
-  const isJadeProduct = lineTheme === "jade-ritual" || /jade|tinturas madre/i.test(`${category} ${name} ${description}`);
 
   const handleAddToCart = () => {
     if (onAddToCart && stock > 0) {
@@ -229,26 +228,26 @@ export default function ProductCard({
     lanzamiento: {
       label: "Lanzamiento",
       icon: FlameIcon,
-      bgColor: "#faf7ef",
-      textColor: "#97000d",
+      bgColor: "#7D1D2B",
+      textColor: "#ffffff",
     },
     destacado: {
       label: "Destacado",
       icon: StarBurstIcon,
       bgColor: "#97000d",
-      textColor: "#fff2db",
+      textColor: "#ffffff",
     },
     descuento: {
       label: discountPercent ? `-${discountPercent}%` : "Descuento",
       icon: null as typeof FlameIcon | null,
       bgColor: "#7D1D2B",
-      textColor: "#faf7ef",
+      textColor: "#ffffff",
     },
     ultimas_unidades: {
       label: "Últimas Unidades",
       icon: AlertHexagonIcon,
-      bgColor: "rgba(245, 158, 11, 0.1)",
-      textColor: "#92400E",
+      bgColor: "#7D1D2B",
+      textColor: "#ffffff",
     },
   };
 
@@ -409,15 +408,15 @@ export default function ProductCard({
         </div>
 
         <CardContent padding="none" className="flex min-h-0 flex-1 flex-col p-2 sm:p-3">
-          <div className="min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">
+          <div className="min-h-0 flex-1 space-y-1.5 overflow-hidden">
             <Link href={productHref} className="block group/link">
               <h3 className="line-clamp-2 text-center text-lg font-semibold leading-tight text-[#4A0D10] transition-colors group-hover/link:text-[#7D1D2B] lg:text-2xl" style={{ fontFamily: "var(--font-cormorant), serif" }}>{name}</h3>
               <div className="mx-auto mt-1.5 h-px w-3/5" style={{ background: "linear-gradient(to right, transparent, #920000 50%, transparent)" }} />
             </Link>
-            {infoFrontal && <p className="text-xs font-normal leading-relaxed text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{infoFrontal}</p>}
-            {description && <ProductRichText content={description} className="line-clamp-2 text-xs leading-relaxed text-[#7D1D2B]/80" />}
+            {infoFrontal && <p className="line-clamp-2 text-[11px] font-medium leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{infoFrontal}</p>}
+            {cardSummary && <p className="line-clamp-2 text-[11px] leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{cardSummary}</p>}
             <div className="flex flex-wrap items-center gap-2">
-              <span className={cn("text-lg font-bold lg:text-xl", isJadeProduct ? "text-[#0A432B]" : theme.accent)}>{formatPrice(price)}</span>
+              <span className="text-lg font-bold text-[#4A0D10] lg:text-xl">{formatPrice(price)}</span>
               {originalPrice && originalPrice > price && <span className="text-xs text-text-secondary line-through">{formatPrice(originalPrice)}</span>}
             </div>
             {originalPrice && originalPrice > price && <p className="text-xs font-medium text-[#7D1D2B]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Ahorrás {formatPrice(originalPrice - price)}</p>}
@@ -433,8 +432,8 @@ export default function ProductCard({
             {size && <div className="flex items-center text-xs text-text-secondary"><Sparkles className="mr-1 h-3 w-3 text-gold-500" /><span>{size}</span></div>}
           </div>
           <div className="mt-auto flex shrink-0 gap-2 pt-2">
-            <Link href={productHref} className="flex min-w-0 flex-1 items-center justify-center rounded-md border border-[#4A0D10]/30 px-1 text-[10px] font-medium uppercase tracking-wider text-[#4A0D10] transition-colors hover:bg-[#7D1D2B]/5 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}><span className="sm:hidden">Ver</span><span className="hidden sm:inline">Ver Alkimya</span></Link>
-            <Button onClick={handleAddToCart} disabled={stock === 0} className="h-11 min-w-0 flex-1 rounded-md bg-[#7D1D2B] px-1 text-[10px] font-medium uppercase tracking-wider text-[#FFF2E9] hover:bg-[#4A0D10] disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
+            <Link href={productHref} className="alkimya-cta-outline flex h-11 min-w-0 flex-1 items-center justify-center rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}><span className="sm:hidden">Ver</span><span className="hidden sm:inline">Ver Alkimya</span></Link>
+            <Button onClick={handleAddToCart} disabled={stock === 0} className="alkimya-card-add h-11 min-w-0 flex-1 rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
           </div>
         </CardContent>
       </div>
