@@ -58,7 +58,7 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
       <div className="absolute inset-0 bg-[#0A1D4A]/45" aria-hidden="true" />
       <div className="relative z-10 mx-auto max-w-2xl">
         <span
-          className="mx-auto mb-3 block h-14 w-14 bg-[#FFF2E9] md:h-16 md:w-16"
+          className="mx-auto mb-3 block h-16 w-16 bg-[#FFF2E9] md:h-20 md:w-20"
           style={{
             mask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
             WebkitMask: "url('/svg/header/Tienda%20Da%20luz.svg') center / contain no-repeat",
@@ -68,16 +68,17 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
         />
         <h1
           id="tienda-title"
-          className="font-title text-3xl font-normal uppercase tracking-[0.15em] text-[#FFF2E9] md:text-5xl"
+          className="font-title text-2xl font-normal uppercase tracking-[0.15em] text-[#FFF2E9] md:text-4xl"
           style={{ fontFamily: "var(--font-cormorant), serif" }}
         >
           TIENDA
         </h1>
-        <p className="mt-1 mb-4 font-sans text-xs font-medium uppercase tracking-[0.25em] text-[#FFF2E9]/80 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+        <p className="mt-1 mb-4 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-[#FFF2E9]/80 md:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
           Alkimya Da Luz
         </p>
         <p className="mx-auto max-w-xl font-sans text-xs leading-relaxed text-[#FFF2E9]/90 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-          Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario. Cada alquimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.
+          <span className="block">Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario.</span>
+          <span className="mt-2 block">Cada alquimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.</span>
         </p>
       </div>
     </section>

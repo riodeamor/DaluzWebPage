@@ -10,7 +10,17 @@ export const BODY_CATEGORIES = [
   { id: "kits", label: "Kits & Ceremonias" },
 ] as const;
 
+export const BOTANICAL_LINES = [
+  { id: "umbral", label: "Línea Umbral Sens", slug: "linea-umbral" },
+  { id: "ecos", label: "Línea Ecos", slug: "linea-ecos" },
+  { id: "alma-terra", label: "Línea Alma Terra", slug: "linea-alma-terra" },
+  { id: "jade-ritual", label: "Línea Jade Ritual", slug: "linea-jade-ritual" },
+  { id: "prisma", label: "Línea Prisma", slug: "linea-prisma" },
+  { id: "kits", label: "Kits & Ceremonias", slug: "linea-kits-y-experiencia" },
+] as const;
+
 export type BodyCategory = (typeof BODY_CATEGORIES)[number]["id"];
+export type BotanicalLine = (typeof BOTANICAL_LINES)[number]["id"];
 export type Synergy = "facial-serena" | "facial-ilumina" | "facial-soy" | "facial-claridad" | "facial-rituales" | "capilar-raiz" | "capilar-serena" | "capilar-ilumina" | "capilar-pureza" | "capilar-ceremonia";
 
 type FilterableProduct = {
@@ -38,6 +48,14 @@ const patterns: Record<Exclude<BodyCategory, "all">, RegExp> = {
 
 export function matchesBodyCategory(product: FilterableProduct, category: BodyCategory) {
   return category === "all" || patterns[category].test(contentOf(product));
+}
+
+export function matchesBotanicalLine(product: FilterableProduct, line: BotanicalLine) {
+  const category = normalize(`${product.categories?.slug || ""} ${product.categories?.name || ""}`);
+  const name = normalize(product.name);
+  if (line === "kits") return /kit|ceremonia|experiencia/.test(category) || /\bkit\b/.test(name);
+  if (line === "prisma") return /prisma|utopica/.test(category);
+  return category.replace(/[-_]/g, " ").includes(line.replace(/-/g, " "));
 }
 
 export function matchesSynergy(product: FilterableProduct, synergy: Synergy | null) {

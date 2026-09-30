@@ -73,7 +73,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
       href: "/mis-tesoros",
       label: "Mis Tesoros",
       icon: null,
-      iconSrc: "/assets/vectores/mandala-experiencias.svg",
+      iconSrc: "/svg/header/Filosofia%20y%20proposito.svg",
       description: "Contenido exclusivo de tus compras",
     },
     {
@@ -152,7 +152,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                           href={item.href as any}
                           className="flex items-center gap-3 p-3 rounded-lg hover:bg-[#005080]/10 transition-colors group"
                         >
-                          {item.icon ? <item.icon className="h-5 w-5 text-[#0A1D4A]" /> : <Image src={item.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />}
+                          {item.icon ? <item.icon className="h-5 w-5 text-[#0A1D4A]" /> : item.href === "/mis-tesoros" ? <span className="account-tesoros-vector h-5 w-5" aria-hidden="true" /> : <Image src={item.iconSrc} alt="" width={20} height={20} className="h-5 w-5 object-contain" />}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
                               <span className="font-medium text-[#0A1D4A] text-lg" style={{ fontFamily: "var(--font-cormorant), serif" }}>
@@ -211,7 +211,7 @@ export default function AccountLayout({ children }: AccountLayoutProps) {
                 <nav aria-label="Cuenta" className="lg:hidden flex gap-2 overflow-x-auto pb-4 mb-4">
                   {navigationItems.map((item) => (
                     <Link key={item.href} href={item.href as any} className="shrink-0 inline-flex items-center gap-2 border border-[#005080]/20 px-3 py-2 text-xs font-medium text-[#051341] bg-white">
-                      {item.icon ? <item.icon className="h-4 w-4 text-[#0A1D4A]" /> : <Image src={item.iconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain" />}
+                      {item.icon ? <item.icon className="h-4 w-4 text-[#0A1D4A]" /> : item.href === "/mis-tesoros" ? <span className="account-tesoros-vector h-4 w-4" aria-hidden="true" /> : <Image src={item.iconSrc} alt="" width={16} height={16} className="h-4 w-4 object-contain" />}
                       {item.label}
                     </Link>
                   ))}

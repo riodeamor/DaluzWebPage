@@ -75,13 +75,11 @@ const ListItem = ({
   title,
   children,
   textColor = "#051341", 
-  singleLine = false,
 }: {
   href: string;
   title: string;
   children: React.ReactNode;
   textColor?: string;
-  singleLine?: boolean;
 }) => {
   return (
     <li>
@@ -97,7 +95,7 @@ const ListItem = ({
             {title}
           </div>
           <p
-            className={`text-[11px] leading-snug ${singleLine ? "whitespace-nowrap" : ""}`}
+            className="text-[11px] leading-snug"
             style={{ color: textColor === "#72111A" ? "#7D1D2B" : "#16345F", opacity: textColor === "#72111A" ? 0.8 : 0.75, fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}
           >
             {children}
@@ -278,9 +276,9 @@ export default function Header() {
                 <Image
                   src="/svg/logo.svg"
                   alt="Isotipo Da Luz Consciente"
-                  width={40}
-                  height={40}
-                  className="transition-transform duration-300 hover:scale-105"
+                  width={52}
+                  height={52}
+                  className="h-[52px] w-[52px] transition-transform duration-300 hover:scale-105"
                   style={{}}
                 />
               </div>
@@ -308,19 +306,19 @@ export default function Header() {
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
                   >
-                    <ul className="grid w-[960px] grid-cols-[220px_repeat(2,minmax(0,1fr))] grid-rows-3 gap-2 p-4">
-                      <li className="row-span-3 min-h-[220px] flex">
+                    <ul className="grid w-[660px] max-w-[calc(100vw-2rem)] grid-cols-[180px_repeat(2,minmax(0,1fr))] grid-rows-3 gap-x-1 gap-y-2 p-3">
+                      <li className="row-span-3 min-h-[250px] flex">
                         <NavigationMenuLink asChild>
                           <Link
                             className="flex h-full min-h-full w-full select-none flex-col items-center justify-center no-underline outline-none shadow-md hover:shadow-lg transition-all relative overflow-hidden"
                             style={{
                               borderRadius: "0px 15px",
                               ...featuredCardBackground,
-                              minHeight: 220,
+                              minHeight: 250,
                             }}
                             href="/productos"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-4 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <DropdownVector src="/svg/header/Tienda%20Da%20luz.svg" color="#7D1D2B" label="Alkimya Da Luz" />
                               <div
                                 className="text-xl font-medium uppercase tracking-[0.2em]"
@@ -344,12 +342,12 @@ export default function Header() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <ListItem href="/categorias/linea-umbral" title="LÍNEA UMBRAL SENS" textColor="#72111A" singleLine>Nutrición dérmica, sérums y elixires faciales.</ListItem>
-                      <ListItem href="/categorias/linea-ecos" title="LÍNEA ECOS" textColor="#72111A" singleLine>Limpieza consciente de rostro, cabello y cuerpo.</ListItem>
-                      <ListItem href="/categorias/linea-alma-terra" title="LÍNEA ALMA TERRA" textColor="#72111A" singleLine>Aromaterapia, brumas herbales y calma.</ListItem>
-                      <ListItem href="/categorias/linea-jade-ritual" title="LÍNEA JADE RITUAL" textColor="#72111A" singleLine>Fitoterapia viva, tinturas madre y extractos.</ListItem>
-                      <ListItem href="/categorias/linea-prisma" title="LÍNEA PRISMA" textColor="#72111A" singleLine>Maquillaje de la tierra y pigmentos botánicos.</ListItem>
-                      <ListItem href="/categorias/linea-kits-y-experiencia" title="KITS & CEREMONIAS" textColor="#72111A" singleLine>Sinergias integrales y rituales completos.</ListItem>
+                      <ListItem href="/categorias/linea-umbral" title="LÍNEA UMBRAL SENS" textColor="#72111A">Nutrición dérmica, sérums y elixires faciales.</ListItem>
+                      <ListItem href="/categorias/linea-ecos" title="LÍNEA ECOS" textColor="#72111A">Limpieza consciente de rostro, cabello y cuerpo.</ListItem>
+                      <ListItem href="/categorias/linea-alma-terra" title="LÍNEA ALMA TERRA" textColor="#72111A">Aromaterapia, brumas herbales y calma.</ListItem>
+                      <ListItem href="/categorias/linea-jade-ritual" title="LÍNEA JADE RITUAL" textColor="#72111A">Fitoterapia viva, tinturas madre y extractos.</ListItem>
+                      <ListItem href="/categorias/linea-prisma" title="LÍNEA PRISMA" textColor="#72111A">Maquillaje de la tierra y pigmentos botánicos.</ListItem>
+                      <ListItem href="/categorias/linea-kits-y-experiencia" title="KITS & CEREMONIAS" textColor="#72111A">Sinergias integrales y rituales completos.</ListItem>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -460,14 +458,7 @@ export default function Header() {
                             href="/filosofia-proposito"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/Filosofia%20y%20proposito.svg"
-                                alt="Filosofía y Propósito"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/logo.svg" color="#0A1D4A" label="Isotipo Da Luz" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
                                 style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
@@ -508,14 +499,7 @@ export default function Header() {
                             href="/servicios/procesos"
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
-                              <Image
-                                src="/svg/header/Procesos%20holisticos.svg"
-                                alt="Procesos Holísticos"
-                                width={64}
-                                height={64}
-                                className="mb-3"
-                                unoptimized
-                              />
+                              <DropdownVector src="/svg/header/Procesos%20holisticos.svg" color="#0A1D4A" label="Procesos Holísticos" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
                                 style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
@@ -566,7 +550,7 @@ export default function Header() {
                             }}
                           >
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
-                              <DropdownVector src="/assets/vectores/mandala-experiencias.svg" color="#0A1D4A" label="Mandala de múltiples pétalos" />
+                              <DropdownVector src="/svg/header/Programa7.svg" color="#0A1D4A" label="Mandala del Portal de Experiencias" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
                                 style={{ color: "#051341", fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}
@@ -596,7 +580,7 @@ export default function Header() {
                   >
                     <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[680px]">
                       <div className="relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden p-6 text-center shadow-md" style={{ borderRadius: "0px 15px", ...featuredCardBackground }}>
-                        <Image src="/svg/header/Programa7.svg" alt="" width={64} height={64} className="mb-3" unoptimized />
+                        <DropdownVector src="/assets/vectores/experiencias-portal.svg" color="#0A1D4A" label="Portal de Experiencias" />
                         <div className="font-serif text-xl font-semibold leading-tight text-[#051341]">Portal de Experiencias</div>
                         <p className="mt-3 font-sans text-xs leading-relaxed text-[#16345F]/80">
                           Caminos vivos para habitar la soberanía de tu cuerpo y tu energía. Una mirada integral para acompañar el ritmo de tu biología.

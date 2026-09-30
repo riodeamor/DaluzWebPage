@@ -7,6 +7,7 @@ import TiendaHero from "@/components/commerce/TiendaHero";
 import Link from "next/link";
 import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 import TiendaSidebar from "@/components/commerce/TiendaSidebar";
+import StoreCategoryNavigation from "@/components/commerce/StoreCategoryNavigation";
 import FeaturedLineSection from "@/components/commerce/FeaturedLineSection";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -33,7 +34,7 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { useLike } from "@/contexts/LikeContext";
 import { toast } from "sonner";
-import { BODY_CATEGORIES, matchesBodyCategory, matchesSynergy, type BodyCategory, type Synergy } from "@/components/commerce/storeFilters";
+import { BODY_CATEGORIES, BOTANICAL_LINES, matchesBodyCategory, matchesBotanicalLine, matchesSynergy, type BodyCategory, type Synergy } from "@/components/commerce/storeFilters";
 
 interface Product {
   id: string;
@@ -181,8 +182,11 @@ function ProductsContent() {
 
         if (searchTerm) params.append("search", searchTerm);
         const bodyCategory = BODY_CATEGORIES.find((c) => c.id === selectedCategory)?.id as BodyCategory | undefined;
-        const clientFilter = Boolean(bodyCategory && bodyCategory !== "all") || Boolean(selectedSynergy);
-        if (selectedCategory && !bodyCategory) params.append("category", selectedCategory);
+        const botanicalLine = selectedCategory.startsWith("line:")
+          ? BOTANICAL_LINES.find((line) => line.id === selectedCategory.slice(5))?.id
+          : undefined;
+        const clientFilter = Boolean(bodyCategory && bodyCategory !== "all") || Boolean(botanicalLine) || Boolean(selectedSynergy);
+        if (selectedCategory && !bodyCategory && !botanicalLine) params.append("category", selectedCategory);
         if (selectedSkinType && selectedSkinType !== "all")
           params.append("skin_type", selectedSkinType);
         if (selectedHairType && selectedHairType !== "all")
@@ -203,7 +207,9 @@ function ProductsContent() {
         if (response.ok) {
           if (clientFilter) {
             const matches = data.products.filter((product) =>
-              matchesBodyCategory(product, bodyCategory || "all") && matchesSynergy(product, selectedSynergy),
+              matchesBodyCategory(product, bodyCategory || "all") &&
+              (!botanicalLine || matchesBotanicalLine(product, botanicalLine)) &&
+              matchesSynergy(product, selectedSynergy),
             );
             setProducts(matches.slice((currentPage - 1) * 9, currentPage * 9));
             setPagination({ page: currentPage, limit: 9, total: matches.length, totalPages: Math.ceil(matches.length / 9), hasMore: currentPage * 9 < matches.length });
@@ -394,41 +400,8 @@ function ProductsContent() {
                   )}
                 </div>
                 {expandedSections.categories && (
-                  <div className="mt-2 space-y-1 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                    {/* El token va solo en reposo: la variante line-primary del
-                        item seleccionado trae texto blanco sobre fondo solido y
-                        el rojo del token lo dejaria ilegible. */}
-                    <Button
-                      variant={
-                        selectedCategory === "" ? "line-primary" : "line-ghost"
-                      }
-                      className={cn(
-                        "w-full justify-start text-xs min-h-6 h-auto py-1",
-                        selectedCategory === "" ? "tienda-button" : "tienda-line-button",
-                      )}
-                      onClick={() => selectCategory("")}
-                    >
-                      Todos los productos
-                    </Button>
-                    {BODY_CATEGORIES.filter((category) => category.id !== "all").map((category) => (
-                      <Button
-                        key={category.id}
-                        variant={
-                          selectedCategory === category.id
-                            ? "line-primary"
-                            : "line-ghost"
-                        }
-                        className={cn(
-                          "w-full justify-start text-xs min-h-6 h-auto py-1",
-                          selectedCategory === category.id
-                            ? "tienda-button"
-                            : "tienda-line-button",
-                        )}
-                        onClick={() => selectCategory(category.id)}
-                      >
-                        {category.label}
-                      </Button>
-                    ))}
+                  <div className="mt-2">
+                    <StoreCategoryNavigation selectedCategory={selectedCategory} onSelect={selectCategory} compact />
                   </div>
                 )}
               </Card>
@@ -658,11 +631,11 @@ function ProductsContent() {
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado facial</span>
                 {([
-                  ["facial-serena", "💧 Serena • Poros & Brillo"],
-                  ["facial-ilumina", "🌰 Ilumina • Nutrición & Sequedad"],
-                  ["facial-soy", "✨ Soy • Firmeza & Regeneración"],
-                  ["facial-claridad", "🌿 Claridad • Tono Uniforme & Calma"],
-                  ["facial-rituales", "🕯️ Rituales Faciales Completos"],
+                  ["facial-serena", "Serena • Poros & Brillo"],
+                  ["facial-ilumina", "Ilumina • Nutrición & Sequedad"],
+                  ["facial-soy", "Soy • Firmeza & Regeneración"],
+                  ["facial-claridad", "Claridad • Tono Uniforme & Calma"],
+                  ["facial-rituales", "Rituales Faciales Completos"],
                 ] as const).map(([id, label]) => (
                   <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
                 ))}
@@ -670,11 +643,11 @@ function ProductsContent() {
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado capilar</span>
                 {([
-                  ["capilar-raiz", "🌱 Raíz • Fuerza & Densidad"],
-                  ["capilar-serena", "💧 Serena • Equilibrio & Cuero Cabelludo"],
-                  ["capilar-ilumina", "🌰 Ilumina • Nutrición & Brillo"],
-                  ["capilar-pureza", "✨ Pureza • Desenredo & Suavidad"],
-                  ["capilar-ceremonia", "🕯️ Ceremonia Capilar Completa"],
+                  ["capilar-raiz", "Raíz • Fuerza & Densidad"],
+                  ["capilar-serena", "Serena • Equilibrio & Cuero Cabelludo"],
+                  ["capilar-ilumina", "Ilumina • Nutrición & Brillo"],
+                  ["capilar-pureza", "Pureza • Desenredo & Suavidad"],
+                  ["capilar-ceremonia", "Ceremonia Capilar Completa"],
                 ] as const).map(([id, label]) => (
                   <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
                 ))}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
@@ -178,6 +178,12 @@ export default function ProductCard({
 
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
+  const addedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => () => {
+    if (addedTimer.current) clearTimeout(addedTimer.current);
+  }, []);
 
   // Use LikeContext for like functionality
   const { toggleLike, isLiked, isLoading: likeLoading } = useLike();
@@ -188,6 +194,9 @@ export default function ProductCard({
   const handleAddToCart = () => {
     if (onAddToCart && stock > 0) {
       onAddToCart(id, 1);
+      setIsAdded(true);
+      if (addedTimer.current) clearTimeout(addedTimer.current);
+      addedTimer.current = setTimeout(() => setIsAdded(false), 1500);
     }
   };
 
@@ -433,7 +442,7 @@ export default function ProductCard({
           </div>
           <div className="mt-auto flex shrink-0 gap-2 pt-2">
             <Link href={productHref} className="alkimya-cta-outline flex h-11 min-w-0 flex-1 items-center justify-center rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}><span className="sm:hidden">Ver</span><span className="hidden sm:inline">Ver Alkimya</span></Link>
-            <Button onClick={handleAddToCart} disabled={stock === 0} className="alkimya-card-add h-11 min-w-0 flex-1 rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
+            <Button onClick={handleAddToCart} disabled={stock === 0} data-added={isAdded} className="alkimya-card-add h-11 min-w-0 flex-1 rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? isAdded ? "✓ ¡AÑADIDO!" : <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
           </div>
         </CardContent>
       </div>

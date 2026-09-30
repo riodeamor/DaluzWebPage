@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useAuthContext } from "@/contexts/AuthContext";
 import { useTreasures } from "@/hooks/useTreasures";
 import {
@@ -110,7 +109,7 @@ export default function MisTesorosPage() {
         >
           <CardContent className="p-12 text-center">
             <div className="w-20 h-20 rounded-full bg-[#0A1D4A]/10 flex items-center justify-center mx-auto mb-6">
-              <Image src="/assets/vectores/mandala-experiencias.svg" alt="" width={40} height={40} className="h-10 w-10" />
+              <span className="account-tesoros-vector h-10 w-10" aria-hidden="true" />
             </div>
             <h2 className="text-2xl font-title text-[#051341] mb-4">
               Aún no tienes Tesoros
@@ -329,7 +328,7 @@ export default function MisTesorosPage() {
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
-                          <Image src="/assets/vectores/mandala-experiencias.svg" alt="" width={20} height={20} className="h-5 w-5" />
+                          <span className="account-tesoros-vector h-5 w-5" aria-hidden="true" />
                         </div>
                         <div>
                           <CardTitle className="text-lg font-title text-[#051341]">
