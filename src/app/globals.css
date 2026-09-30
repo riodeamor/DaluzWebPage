@@ -3451,3 +3451,7 @@ footer .footer-social-icon {
   mask: url("/svg/header/Filosofia%20y%20proposito.svg") center / contain no-repeat;
   -webkit-mask: url("/svg/header/Filosofia%20y%20proposito.svg") center / contain no-repeat;
 }
+
+.product-card-title { color: #4A0D10 !important; }
+a:hover .product-card-title,
+a:focus-visible .product-card-title { color: #97000D !important; }

@@ -457,7 +457,7 @@ export default function Header() {
                             }}
                             href="/filosofia-proposito"
                           >
-                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full">
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center p-6 w-full h-full bg-white/40 backdrop-blur-[2px]">
                               <DropdownVector src="/svg/logo.svg" color="#0A1D4A" label="Isotipo Da Luz" />
                               <div
                                 className="mb-2 text-xl font-title font-semibold uppercase"
@@ -806,7 +806,7 @@ export default function Header() {
                       <MobileNavSection id="tienda" label="Tienda" href="/productos" tone="burgundy" open={openMobileSection === "tienda"} onToggle={() => setOpenMobileSection(openMobileSection === "tienda" ? null : "tienda")} onNavigate={() => setMobileMenuOpen(false)}>
                           <Link href="/productos" className="block py-2 text-base font-text hover:text-brand-primary transition-colors" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Todos los Productos</Link>
                           {categories.map((category) => (
-                            <Link key={category.id} href={`/categorias/${encodeURIComponent(category.slug)}`} className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>{category.name}</Link>
+                            <Link key={category.id} href={`/categorias/${encodeURIComponent(category.slug)}`} className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>{category.slug.includes("jade-ritual") ? "Línea Jade Ritual" : category.name}</Link>
                           ))}
                       </MobileNavSection>
 

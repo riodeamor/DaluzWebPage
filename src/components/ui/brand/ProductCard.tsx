@@ -419,7 +419,7 @@ export default function ProductCard({
         <CardContent padding="none" className="flex min-h-0 flex-1 flex-col p-2 sm:p-3">
           <div className="min-h-0 flex-1 space-y-1.5 overflow-hidden">
             <Link href={productHref} className="block group/link">
-              <h3 className="line-clamp-2 text-center text-lg font-semibold leading-tight text-[#4A0D10] transition-colors group-hover/link:text-[#7D1D2B] lg:text-2xl" style={{ fontFamily: "var(--font-cormorant), serif" }}>{name}</h3>
+              <h3 className="product-card-title line-clamp-2 text-center text-lg font-semibold leading-tight transition-colors lg:text-2xl" style={{ fontFamily: "var(--font-cormorant), serif" }}>{name}</h3>
               <div className="mx-auto mt-1.5 h-px w-3/5" style={{ background: "linear-gradient(to right, transparent, #920000 50%, transparent)" }} />
             </Link>
             {infoFrontal && <p className="line-clamp-2 text-[11px] font-medium leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{infoFrontal}</p>}
