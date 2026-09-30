@@ -3454,4 +3454,5 @@ footer .footer-social-icon {
 
 .product-card-title { color: #4A0D10 !important; }
 a:hover .product-card-title,
+a:active .product-card-title,
 a:focus-visible .product-card-title { color: #97000D !important; }
