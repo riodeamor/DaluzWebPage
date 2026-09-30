@@ -92,15 +92,15 @@ export default function ContactForm() {
 
   if (isSubmitted) {
     return (
-      <div className="card-enhanced p-4 sm:p-6 lg:p-6 xl:p-8 rounded-2xl">
+      <div className="card-enhanced homepage-contact-card p-4 sm:p-6 lg:p-6 xl:p-8 rounded-2xl">
         <div className="text-center py-8">
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Check className="w-8 h-8 text-green-600" />
           </div>
-          <h3 className="font-subtitle text-xl text-gray-800 mb-2">
+          <h3 className="font-subtitle text-xl text-white mb-2">
             ¡Mensaje Enviado!
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-white mb-6">
             Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos dentro de las próximas 24 horas.
           </p>
           <Button
@@ -121,10 +121,10 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="card-enhanced p-4 sm:p-6 lg:p-6 xl:p-8 rounded-2xl">
+    <div className="card-enhanced homepage-contact-card p-4 sm:p-6 lg:p-6 xl:p-8 rounded-2xl">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-subtitle font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-subtitle font-medium text-white mb-3">
             Nombre Completo
           </label>
           <input
@@ -146,7 +146,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-subtitle font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-subtitle font-medium text-white mb-3">
             Correo Electrónico
           </label>
           <input
@@ -168,7 +168,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-sm font-subtitle font-medium text-gray-700 mb-3">
+          <label className="block text-sm font-subtitle font-medium text-white mb-3">
             ¿En qué podemos ayudarte?
           </label>
           <textarea

@@ -308,20 +308,20 @@ export default async function HomePage() {
            {/* CICLOS ALQUÍMICOS */}
             <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-white transition-all duration-300 mx-auto">
                   <ProcesosIntegrativosIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-white not-italic font-semibold">
                   Ciclos Alquímicos
                 </h3>
-                <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
+                <div className="font-text text-white text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed space-y-2 sm:space-y-3 flex-1">
                   <p>Programas de acompañamiento individual diseñados para limpiar tus filtros orgánicos, restaurar tu bioequilibrio y reconectar tu biología con tu esencia vital a través de la medicina herbal y la guía holística.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/servicios/procesos/ciclos-alquimicos" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">EXPLORAR CICLOS</span>
@@ -335,20 +335,20 @@ export default async function HomePage() {
             {/* SESIONES INTEGRALES */}
             <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-white transition-all duration-300 mx-auto">
                   <SesionesIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-white not-italic font-semibold">
                   Sesiones Integrales
                 </h3>
-                <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
+                <div className="font-text text-white text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed space-y-2 sm:space-y-3 flex-1">
                   <p>Espacios individuales de abordaje personalizado (en vivo o diferido). Integramos fitoterapia, lectura vibracional y hábitos conscientes para brindarte un mapa claro de salud integral en tu momento presente.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/servicios/procesos/sesiones-integrales" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">RESERVAR SESIÓN</span>
@@ -362,20 +362,20 @@ export default async function HomePage() {
             {/* EXPERIENCIAS */}
             <div className="group card-enhanced process-card p-5 sm:p-6 md:p-7 lg:p-8 text-center flex flex-col">
               <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6 flex-1 flex flex-col">
-                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-[#16345F] transition-all duration-300 mx-auto">
+                <div className="inline-flex items-center justify-center w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 text-white transition-all duration-300 mx-auto">
                   <MembresiaIcon size={48} className="sm:w-14 sm:h-14 md:w-16 md:h-16" />
                 </div>
-                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-[#051341] group-hover:text-[#16345F] transition-colors duration-300 not-italic font-semibold">
+                <h3 className="font-subtitle text-lg sm:text-xl md:text-xl lg:text-xl text-white not-italic font-semibold">
                   Experiencias
                 </h3>
-                <div className="font-text text-gray-800 text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed transition-colors duration-300 space-y-2 sm:space-y-3 flex-1">
+                <div className="font-text text-white text-sm sm:text-sm md:text-[0.95rem] text-left leading-relaxed space-y-2 sm:space-y-3 flex-1">
                   <p>Contenedores de transformación en red con inicio y fin explícitos. Clases virtuales, ejercicios reflexivos y dinámicas grupales para habitar la sincronicidad lunar y los portales de transformación en tribu.</p>
                 </div>
                 <div className="flex justify-center mt-6 w-full">
                   <Link href="/programa-transformacion" className="w-full">
                     <Button
                       variant="outline"
-                      className="group/btn process-card-button w-full text-[#FFF2E9] hover:text-[#FFF2E9] uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2 bg-[#16345F] hover:bg-[#005080]"
+                      className="group/btn process-card-button w-full uppercase tracking-[0.18em] transition-all duration-300 whitespace-normal break-words h-auto py-2 px-4 flex items-center justify-center gap-2"
                       style={{ borderRadius: "0px 15px", fontFamily: "var(--font-montserrat), Montserrat, sans-serif", border: "none" }}
                     >
                       <span className="text-center text-sm leading-tight flex-1">VER EXPERIENCIAS</span>

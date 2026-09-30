@@ -1013,6 +1013,46 @@ input[type="submit"]:not(.btn-no-radius) {
   box-shadow: 0 12px 30px -5px rgba(0, 80, 128, 0.15);
 }
 
+/* Procesos Vivos y Contacto comparten el azul de los botones de Sesiones Integrales. */
+.section-servicios .process-card,
+.homepage-contact-card {
+  background: linear-gradient(135deg, #005080 0%, #0085B1 100%);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 28px rgba(5, 19, 65, 0.2);
+}
+
+.section-servicios .process-card:hover,
+.homepage-contact-card:hover {
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 16px 34px rgba(5, 19, 65, 0.28);
+}
+
+.section-servicios .process-card .service-icon img {
+  filter: brightness(0) invert(1) !important;
+}
+
+.section-servicios .process-card-button {
+  background: #FFF2E9;
+  color: #051341;
+  border: 1px solid #FFF2E9 !important;
+}
+
+.section-servicios .process-card-button:hover,
+.section-servicios .process-card-button:focus-visible {
+  background: #FFFFFF;
+  color: #005080;
+  box-shadow: 0 6px 18px rgba(5, 19, 65, 0.3);
+}
+
+.homepage-contact-card::before {
+  content: none;
+}
+
+.homepage-contact-card .form-enhanced {
+  background-color: #FFFFFF;
+  color: #051341;
+}
+
 .product-detail-tabs [role="tablist"] {
   height: auto;
   min-height: 2.75rem;
