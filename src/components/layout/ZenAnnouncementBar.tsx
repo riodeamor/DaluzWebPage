@@ -58,17 +58,17 @@ export default function ZenAnnouncementBar() {
           display: flex;
           flex: none;
           align-items: center;
-          justify-content: space-around;
+          justify-content: flex-start;
           min-width: 100vw;
           min-height: 32px;
-          gap: 1.5rem;
-          padding: 0 1rem;
+          gap: 0;
+          padding: 0 .5rem;
         }
         .zen-announcement-item {
           flex: none;
           display: inline-flex;
           align-items: center;
-          gap: 1.5rem;
+          gap: 0;
           font-family: var(--font-montserrat), Montserrat, sans-serif;
           font-size: 0.75rem;
           line-height: 1.25rem;
@@ -77,7 +77,7 @@ export default function ZenAnnouncementBar() {
           text-transform: uppercase;
           white-space: nowrap;
         }
-        .zen-announcement-separator { color: #7d1d2b; }
+        .zen-announcement-separator { color: #7d1d2b; margin-inline: 2rem; }
         .zen-announcement-item a:hover { color: #7d1d2b; text-decoration: underline; }
         @keyframes zen-scroll {
           to { transform: translateX(-50%); }
