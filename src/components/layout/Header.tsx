@@ -264,7 +264,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="sticky top-0 z-50 w-full transition-all duration-300"
+        className="sticky top-0 z-[100] w-full shrink-0 transition-all duration-300"
         style={{ backgroundColor: headerBg }}
       >
         <ZenAnnouncementBar />

@@ -4,13 +4,22 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ui/brand/ProductCard";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 import { ArrowLeft, Grid3X3, Grid2X2 } from "lucide-react";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useReviewsVisibility } from "@/hooks/useReviewsVisibility";
 import LineSolid, { getLinePresentation } from "@/components/commerce/LineSolid";
+import CategoryBannerCarousel from "@/components/commerce/CategoryBannerCarousel";
+
+const fallbackBannerByTheme: Record<string, string> = {
+  umbral: "/images/lineas/umbral/umbral-producto-1.jpg",
+  ecos: "/images/lineas/ecos/ecos-producto-1.jpg",
+  "alma-terra": "/images/lineas/alma-terra/alma-terra-producto-1.jpg",
+  "jade-ritual": "/images/lineas/jade-ritual/jade-producto-1.jpg",
+  utopica: "/images/lineas/utopica/prisma-banner.png",
+  "kits-experiencia": "/images/lineas/kits-experiencia-banner.png",
+};
 
 // Map category slugs to product line themes
 const getLineThemeFromSlug = (slug: string): 'alma-terra' | 'ecos' | 'jade-ritual' | 'umbral' | 'utopica' | 'kits-experiencia' | 'default' => {
@@ -59,6 +68,7 @@ interface Category {
   slug: string;
   description?: string;
   image_url?: string;
+  banner_urls?: string[];
   products?: Product[];
 }
 
@@ -192,22 +202,17 @@ export default function CategoryPage() {
 
   const lineColors = getLineColors();
   const presentation = getLinePresentation(lineTheme);
+  const primaryBanner = lineTheme === "utopica" || lineTheme === "kits-experiencia"
+    ? fallbackBannerByTheme[lineTheme]
+    : category.image_url || fallbackBannerByTheme[lineTheme];
+  const bannerSources = [primaryBanner, ...(category.banner_urls || [])].filter((src): src is string => Boolean(src));
+  const banners = Array.from(new Set(bannerSources)).map((src) => ({ src, alt: category.name }));
 
   return (
-    <div className="min-h-screen overflow-hidden" style={{ backgroundColor: lineColors.lightest }}>
-      {/* Background Image with 60% opacity */}
-      <div
-        className="fixed inset-0 w-full h-full opacity-60 pointer-events-none z-0"
-        style={{
-          backgroundImage: "url('/svg/backgrounds/tienda-background.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      />
-      <div className="container mx-auto px-4 py-8 relative z-10">
+    <div className="min-h-screen bg-[#FAF7F2]">
+      <div className="container relative mx-auto px-4 pb-8 pt-3">
         {/* Breadcrumb */}
-        <nav className="mb-6">
+        <nav className="mb-3">
           <ol className="flex items-center space-x-2 text-sm" style={{ color: lineColors.primary }}>
             <li><Link href="/" className="hover:opacity-80 transition-opacity">Inicio</Link></li>
             <li>/</li>
@@ -218,8 +223,7 @@ export default function CategoryPage() {
         </nav>
 
         {/* Category Header */}
-        <div className="mb-8 rounded-[0_18px] border border-[#4A0D10]/10 bg-[#FAF7F2] px-5 py-7 md:px-10 md:py-9">
-          <div className="text-center">
+        <div className="mb-5 pt-1 text-center">
             <LineSolid theme={lineTheme} />
             <h1
               className="mb-2 text-3xl font-medium uppercase leading-tight md:text-5xl"
@@ -233,10 +237,12 @@ export default function CategoryPage() {
             >
               {category.description || ''}
             </p>
-          </div>
+        </div>
 
-          {/* Grid Controls */}
-          <div className="mt-5 flex justify-end">
+        <CategoryBannerCarousel banners={banners} label={`Banners de ${category.name}`} />
+
+        {/* Grid Controls */}
+        <div className="mb-5 flex justify-end">
             <div className="flex rounded-md border">
               <Button
                 variant={gridCols === 2 ? "default" : "ghost"}
@@ -255,36 +261,7 @@ export default function CategoryPage() {
                 <Grid3X3 className="h-4 w-4" />
               </Button>
             </div>
-          </div>
-
-          {/* Category Stats */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
-            <Badge variant="outline" style={{ borderColor: lineColors.primary, color: lineColors.primary }}>
-              {products.length} productos
-            </Badge>
-            {products.some(p => p.is_featured) && (
-              <Badge variant="secondary" style={{ backgroundColor: `${lineColors.primary}20`, color: lineColors.primary, borderColor: `${lineColors.primary}40` }}>
-                Incluye productos destacados
-              </Badge>
-            )}
-          </div>
         </div>
-
-        {/* Category Image */}
-        {(category.image_url || params.slug === 'linea-prisma' || (params.slug as string).includes('kits')) && (
-          <div className="mb-8 aspect-[3/1] relative overflow-hidden rounded-lg" style={{ borderRadius: '0px 15px' }}>
-            <img
-              src={
-                params.slug === 'linea-prisma' ? '/images/lineas/utopica/prisma-banner.png' : 
-                (params.slug as string).includes('kits') ? '/images/lineas/kits-experiencia-banner.png' : 
-                category.image_url
-              }
-              alt={category.name}
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute inset-0" style={{ backgroundColor: `${lineColors.primary}20` }} />
-          </div>
-        )}
 
         {/* Products Grid */}
         {products.length === 0 ? (

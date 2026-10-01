@@ -319,7 +319,7 @@ export default function ProductCard({
   return (
     <Card
       className={cn(
-        "group relative overflow-hidden transition-all duration-500 flex flex-col box-border",
+        "product-card group relative overflow-hidden transition-all duration-500 flex flex-col box-border",
         "hover:shadow-xl h-[480px] sm:h-[520px] lg:h-[540px]",
         className,
       )}
@@ -433,16 +433,16 @@ export default function ProductCard({
               <div className="flex flex-col gap-1 text-xs text-[#7D1D2B]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 {installments3Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>3 cuotas sin interés de {formatInstallment(price / 3)}</span></div>}
                 {installments6Enabled && <div className="flex items-center gap-1.5 rounded-md border border-[#4A0D10]/15 bg-[#FFF2E9] px-2 py-1"><CreditCard className="h-3.5 w-3.5 shrink-0" /><span>6 cuotas sin interés de {formatInstallment(price / 6)}</span></div>}
-                {transferDiscountPrice && <p className="text-xs font-normal leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: "0.75rem" }}>Transferencia: {formatPrice(transferDiscountPrice)}{discountTransferPercent ? ` (-${discountTransferPercent}%)` : ""}</p>}
-                {cashDiscountPrice && <p className="text-xs font-normal leading-snug text-[#7D1D2B]/80" style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: "0.75rem" }}>Efectivo: {formatPrice(cashDiscountPrice)}{discountCashPercent ? ` (-${discountCashPercent}%)` : ""}</p>}
+                {transferDiscountPrice && <p className="product-card-payment-detail text-xs font-normal leading-snug text-[#7D1D2B]/80">Transferencia: {formatPrice(transferDiscountPrice)}{discountTransferPercent ? ` (-${discountTransferPercent}%)` : ""}</p>}
+                {cashDiscountPrice && <p className="product-card-payment-detail text-xs font-normal leading-snug text-[#7D1D2B]/80">Efectivo: {formatPrice(cashDiscountPrice)}{discountCashPercent ? ` (-${discountCashPercent}%)` : ""}</p>}
               </div>
             )}
             {showReviews && reviewCount > 0 && <div className="flex items-center gap-1.5" aria-label={`${rating} de 5 estrellas, ${reviewCount} reseñas`}><div className="flex items-center gap-0.5">{renderStars(rating)}</div><span className="text-xs text-[#7D1D2B]/80">({reviewCount})</span></div>}
             {size && <div className="flex items-center text-xs text-text-secondary"><Sparkles className="mr-1 h-3 w-3 text-gold-500" /><span>{size}</span></div>}
           </div>
           <div className="mt-auto flex shrink-0 gap-2 pt-2">
-            <Link href={productHref} className="alkimya-cta-outline flex h-11 min-w-0 flex-1 items-center justify-center rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}><span className="sm:hidden">Ver</span><span className="hidden sm:inline">Ver Alkimya</span></Link>
-            <Button onClick={handleAddToCart} disabled={stock === 0} data-added={isAdded} className="alkimya-card-add h-11 min-w-0 flex-1 rounded-md px-1 text-[10px] font-semibold uppercase tracking-wider disabled:opacity-50 sm:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>{stock > 0 ? isAdded ? "✓ ¡AÑADIDO!" : <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
+            <Link href={productHref} className="alkimya-cta-outline flex h-11 min-w-0 flex-1 items-center justify-center rounded-[0_15px] px-2 text-center text-xs font-bold uppercase tracking-wider shadow-[0_4px_10px_rgba(74,13,16,0.18)]" style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}>Ver Alkimya</Link>
+            <Button onClick={handleAddToCart} disabled={stock === 0} data-added={isAdded} className="alkimya-card-add h-11 min-w-0 flex-1 rounded-[0_15px] px-2 text-xs font-bold uppercase tracking-wider shadow-[0_4px_10px_rgba(74,13,16,0.18)] disabled:opacity-50" style={{ fontFamily: "var(--font-montserrat), Montserrat, sans-serif" }}>{stock > 0 ? isAdded ? "✓ ¡AÑADIDO!" : <><ShoppingCart className="mr-1 h-3.5 w-3.5 shrink-0" />Añadir</> : "Sin stock"}</Button>
           </div>
         </CardContent>
       </div>

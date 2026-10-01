@@ -3496,3 +3496,21 @@ footer .footer-social-icon {
 a:hover .product-card-title,
 a:active .product-card-title,
 a:focus-visible .product-card-title { color: #97000D !important; }
+
+.product-card-payment-detail {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .75rem !important;
+  font-weight: 400 !important;
+  color: rgba(125, 29, 43, .8) !important;
+}
+
+.product-card .alkimya-cta-outline,
+.product-card .alkimya-card-add {
+  border-radius: 0 15px !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(74, 13, 16, .18);
+}

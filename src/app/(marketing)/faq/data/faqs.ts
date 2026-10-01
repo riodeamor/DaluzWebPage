@@ -86,9 +86,8 @@ export const FAQ_DATA: FAQCategory[] = [
     icon: "Gift",
     items: [
       {
-        question: '¿Qué es el "Tesoro de Regalo" que recibo con mi compra?',
-        answer: `Creemos que la medicina botánica se completa con el conocimiento. Por eso, con cada una de tus Alquimias, recibís un <strong>Tesoro de Regalo</strong>: una pieza informativa diseñada para guiarte en tu ritual, explicando desde el modo de uso hasta la energía de las plantas que te acompañan.<br><br>
-        Podés conocer más sobre este intercambio en nuestra sección <a href="/alkimya/tesoros-daluz" class="text-faq-ocean font-semibold underline hover:opacity-80">TESORO DA LUZ</a>.`,
+        question: "¿Qué es el «Tesoro Ritual» que recibo de regalo con mi compra?",
+        answer: `En Da Luz no entregamos muestras descartables. Cada compra incluye un <strong>Tesoro Alquímico</strong>: una llave de acceso a nuestra biblioteca privada con meditaciones guiadas, técnicas somáticas de aplicación, el mapa de tu biotipo y papel semilla plantable para sembrar vida en tu hogar.`,
       },
       {
         question: "¿Puedo realizar mi pedido por fuera de la web?",
@@ -171,11 +170,24 @@ export const FAQ_DATA: FAQCategory[] = [
         <strong>Confirmación:</strong> Una vez que sumes tus productos al carrito, envianos el pedido. Te llegará un mail o mensaje para coordinar los detalles finales.`,
       },
       {
-        question: "¿Cuándo recibo mi pedido?",
-        answer: `<ul class="list-disc pl-5 space-y-2">
-          <li><strong>Córdoba Capital:</strong> Entre 48 hs y 5 días hábiles.</li>
-          <li><strong>Envíos Nacionales:</strong> Dependerá del transporte elegido (Correo Argentino/Andreani), coordinamos una vez realizado el pago.</li>
-        </ul>`,
+        question: "¿Hacen envíos a todo el país?",
+        answer: `Sí, despachamos nuestras alquimias botánicas a todas las provincias de Argentina, ya sea con entrega a domicilio o retiro en la sucursal de correo más cercana a tu localidad.`,
+      },
+      {
+        question: "¿A partir de qué monto el envío es gratis?",
+        answer: `Contás con Envío Gratis bonificado a todo el país en todas las compras a partir de <strong>$ 77.000</strong>. El descuento en el flete se aplica de forma automática al superar ese total en tu carrito.`,
+      },
+      {
+        question: "¿Cuánto tarda en llegar mi pedido desde que compro?",
+        answer: `El tiempo total se compone de la preparación en botica (24 a 48 hs hábiles) más los días de tránsito del correo (habitualmente entre 2 y 5 días hábiles según tu provincia). Ni bien despachamos, recibís tu código de seguimiento por correo para monitorear el viaje.`,
+      },
+      {
+        question: "¿Puedo retirar mi pedido personalmente en Córdoba?",
+        answer: `Sí. Podés seleccionar la opción «Retiro en Punto Da Luz» sin costo de envío. Las entregas se realizan en Zona Norte de Córdoba Capital los días miércoles y viernes con cita previa coordinada vía WhatsApp.`,
+      },
+      {
+        question: "¿Qué sucede si un producto de vidrio llega dañado por el correo?",
+        answer: `Cuidamos minuciosamente el embalaje para que viaje blindado. No obstante, si el correo provocara alguna rotura, te pedimos que nos envíes una foto del paquete dentro de las 24 horas de haberlo recibido a nuestro WhatsApp o email oficial, y gestionamos la reposición inmediata de tu fórmula.`,
       },
       {
         question: "¿Cuáles son los métodos de pago?",
@@ -183,14 +195,6 @@ export const FAQ_DATA: FAQCategory[] = [
           <li><strong>Transferencia Bancaria:</strong> Al finalizar la compra, recibirás los datos (Alias/CBU).</li>
           <li><strong>Efectivo:</strong> Disponible exclusivamente para retiros y entregas coordinadas en Córdoba.</li>
           <li><strong>Mercado Pago:</strong> Aceptamos todas las tarjetas de débito, crédito y dinero en cuenta.</li>
-        </ul>`,
-      },
-      {
-        question: "¿Cuáles son las opciones de envío y retiro?",
-        answer: `<ul class="list-disc pl-5 space-y-2">
-          <li><strong>Córdoba Capital:</strong> Retiros en Zona Norte coordinados o cadetería (Miércoles y Viernes).</li>
-          <li><strong>Envíos Nacionales:</strong> Correo Argentino / Andreani (coordinamos tras el pago).</li>
-          <li><strong>Terceros:</strong> Puede retirar un tercero con nombre completo y número de orden.</li>
         </ul>`,
       },
     ],

@@ -1,398 +1,73 @@
-"use client";
-
-import {
-  Truck,
-  Clock,
-  MapPin,
-  Package,
-  Shield,
-  Phone,
-  Mail,
-  ChevronRight,
-  ChevronDown,
-  ArrowRight,
-  MapPinned,
-} from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
-// Estilo de botón azul (aplicado directo al Link; el componente Button con
-// asChild no propaga clases sobre un Fragment de icono + texto).
-const btnSolid =
-  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
-const btnOutline =
-  "inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]";
-
-// Acentos monocromáticos azules para las zonas (sobre tarjeta clara)
-const zoneColor: Record<
-  string,
-  { bar: string; chip: string; text: string }
-> = {
-  jade: { bar: "bg-faq-mid", chip: "bg-faq-mid/10", text: "text-faq-mid" },
-  ecos: { bar: "bg-faq-ocean", chip: "bg-faq-ocean/10", text: "text-faq-ocean" },
-  umbral: { bar: "bg-faq-deep", chip: "bg-faq-deep/10", text: "text-faq-deep" },
-  alma: {
-    bar: "bg-faq-bright",
-    chip: "bg-faq-bright/10",
-    text: "text-faq-bright",
-  },
-};
-
-const shippingZones = [
-  {
-    zone: "Córdoba Capital",
-    description: "Zona Norte",
-    time: "24-48 hs",
-    price: "Coordinamos entrega",
-    icon: MapPin,
-    color: "jade",
-  },
-  {
-    zone: "Gran Córdoba",
-    description: "Zonas aledañas",
-    time: "48-72 hs",
-    price: "Cadetería ($1.800)",
-    icon: MapPinned,
-    color: "ecos",
-  },
-  {
-    zone: "Interior Córdoba",
-    description: "Resto de la provincia",
-    time: "3-5 días hábiles",
-    price: "Desde $2.000",
-    icon: Truck,
-    color: "umbral",
-  },
-  {
-    zone: "Nacional",
-    description: "Todo el país",
-    time: "3-7 días hábiles",
-    price: "Desde $2.500",
-    icon: Package,
-    color: "alma",
-  },
-];
-
-const faqShipping = [
-  {
-    question: "¿Cuál es el costo de envío?",
-    answer:
-      "Los costos varían según tu ubicación. Para CABA y GBA: $1.200-$1.800. Interior: $2.500-$4.000. ¡Envío gratis en compras mayores a $15.000!",
-  },
-  {
-    question: "¿Cuánto tarda en llegar mi pedido?",
-    answer:
-      "Córdoba Capital: 24-48hs. Interior de Córdoba: 3-5 días. Nacional: 3-7 días hábiles. Los tiempos pueden extenderse en zonas remotas.",
-  },
-  {
-    question: "¿Puedo retirar mi pedido?",
-    answer:
-      "Sí, podés retirar en Zona Norte de Córdoba los días Miércoles y Viernes coordinando previamente por WhatsApp.",
-  },
-  {
-    question: "¿Cómo hago el seguimiento?",
-    answer:
-      "Una vez despachado tu pedido, recibirás un email con el número de seguimiento para monitorear tu envío.",
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
-
-function CollapsibleShippingFAQ({
-  index,
-  question,
-  answer,
-  isOpen,
-  onToggle,
-}: {
-  index: number;
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <motion.div variants={itemVariants}>
-      <div className="overflow-hidden rounded-none border-l-4 border-l-faq-ocean bg-faq-surface shadow-soft">
-        <button
-          onClick={onToggle}
-          aria-expanded={isOpen}
-          className="w-full p-6 text-left transition-colors duration-300 hover:bg-faq-surface-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-faq-ocean/50"
-        >
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-faq-ocean text-sm font-bold text-white">
-                {index + 1}
-              </span>
-              <h3 className="font-heading text-lg font-semibold text-faq-ink">
-                {question}
-              </h3>
-            </div>
-            <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex-shrink-0"
-            >
-              <ChevronDown className="h-5 w-5 text-faq-ocean" />
-            </motion.div>
-          </div>
-        </button>
-
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <p className="px-6 pb-6 pl-[3.75rem] font-body text-[#051341]">
-                {answer}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function PoliticasEnvioPage() {
-  const [openItems, setOpenItems] = useState<number[]>([]);
-
-  const toggleItem = (index: number) => {
-    setOpenItems((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index],
-    );
-  };
-
   return (
-    <div className="min-h-screen bg-faq-gradient">
+    <main className="min-h-screen bg-[#FAF7F2] px-5 py-12 text-[#0A1D4A] md:py-16">
+      <article className="mx-auto max-w-4xl">
+        <header className="mb-12 text-center">
+          <h1 className="font-title text-3xl font-semibold uppercase leading-tight text-[#0A1D4A] md:text-5xl">
+            Políticas de Envío, Despacho y Logística Viva
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl font-text text-sm leading-relaxed md:text-base">
+            En Da Luz Consciente tratamos cada envío como la entrega de un objeto sagrado. Nuestras alquimias se elaboran en lotes pequeños y se envasan artesanalmente en vidrio ámbar. Para asegurar que lleguen a tus manos con su fuerza vital intacta, contamos con un circuito de despacho cuidado y embalaje 100% libre de plástico innecesario.
+          </p>
+        </header>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <div className="pointer-events-none absolute inset-0 opacity-40">
-          <div className="absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-[#0085B1]/20 blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-[#2A2543]/40 blur-3xl" />
-        </div>
-        <div className="pointer-events-none absolute inset-0 opacity-10">
-          <div className="absolute left-1/4 top-20 h-40 w-40 rounded-full border border-white/30" />
-          <div className="absolute bottom-10 right-20 h-24 w-24 rounded-full border border-white/20" />
-        </div>
+        <div className="space-y-8">
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">1. Tiempos de Preparación y Despacho</h2>
+            <ul className="list-disc space-y-3 pl-5 font-text text-sm leading-relaxed md:text-base">
+              <li><strong>Elaboración y Armado:</strong> Cada pedido ingresa a nuestro laboratorio botánico y se despacha dentro de las <strong>24 a 48 horas hábiles</strong> posteriores a la acreditación del pago.</li>
+              <li><strong>Días de Despacho:</strong> Realizamos salidas de encomiendas los días <strong>martes y jueves</strong> para optimizar los tiempos de viaje y evitar que los preparados queden estancados en depósitos logísticos durante los fines de semana.</li>
+            </ul>
+          </section>
 
-        <div className="container relative mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">2. Tiempos de Entrega Estimados</h2>
+            <p className="mb-3 font-text text-sm leading-relaxed md:text-base">Una vez despachado el paquete por el correo, los plazos habituales de tránsito son:</p>
+            <ul className="list-disc space-y-3 pl-5 font-text text-sm leading-relaxed md:text-base">
+              <li><strong>Córdoba Capital y Alrededores:</strong> 24 a 48 horas hábiles.</li>
+              <li><strong>Interior de Córdoba y Provincias Centrales (CABA, GBA, Santa Fe):</strong> 2 a 4 días hábiles.</li>
+              <li><strong>Resto del País (Noroeste, Cuyo, Litoral y Patagonia):</strong> 3 a 6 días hábiles.</li>
+            </ul>
+            <p className="mt-4 font-text text-sm italic leading-relaxed">(En localidades remotas o rurales los tiempos pueden extenderse según la frecuencia de distribución del correo).</p>
+          </section>
 
-            <h1 className="mb-6 font-heading text-4xl font-bold tracking-wide text-text-inverse md:text-6xl lg:text-7xl">
-              Políticas de Envío
-            </h1>
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">3. Costos y Beneficio de Envío Gratis</h2>
+            <ul className="list-disc space-y-3 pl-5 font-text text-sm leading-relaxed md:text-base">
+              <li><strong>Calculador en Carrito:</strong> El costo exacto se calcula automáticamente al ingresar tu Código Postal antes de abonar.</li>
+              <li><strong>ENVÍO GRATIS:</strong> Brindamos <strong>Envío Bonificado a todo el país</strong> en compras que superen el umbral oficial vigente (<strong>$ 77.000</strong>). Este beneficio se aplica de forma automática al momento de confirmar tu carrito.</li>
+            </ul>
+          </section>
 
-            <p className="mx-auto mb-8 max-w-3xl font-subtitle text-xl italic text-white/90 md:text-2xl">
-              Todo lo que necesitás saber sobre nuestros envíos y entregas
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">4. Seguimiento de tu Encomienda</h2>
+            <p className="font-text text-sm leading-relaxed md:text-base">
+              En cuanto tu paquete es admitido por el correo, el sistema te envía un correo electrónico automático con tu <strong>Código de Seguimiento (Tracking)</strong> y el enlace directo para monitorear el recorrido en tiempo real hasta tu domicilio o sucursal seleccionada.
             </p>
+          </section>
 
-            <div className="flex items-center justify-center gap-4">
-              <div className="h-px w-12 bg-faq-light/50" />
-              <div className="h-2 w-2 rounded-full bg-faq-light" />
-              <div className="h-px w-12 bg-faq-light/50" />
-            </div>
-          </motion.div>
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">5. Punto de Retiro en Córdoba (Pick-up Gratuito)</h2>
+            <p className="mb-3 font-text text-sm leading-relaxed md:text-base">Si residís en Córdoba o estás de paso, podés retirar tu pedido sin costo de envío:</p>
+            <ul className="list-disc space-y-3 pl-5 font-text text-sm leading-relaxed md:text-base">
+              <li><strong>Ubicación:</strong> Zona Norte de Córdoba Capital.</li>
+              <li><strong>Días de Entrega:</strong> Miércoles y Viernes.</li>
+              <li><strong>Dinámica:</strong> Una vez que tu pedido esté preparado, te contactamos vía WhatsApp para coordinar la franja horaria exacta de retiro.</li>
+            </ul>
+          </section>
+
+          <section className="rounded-[0_20px] bg-white p-6 shadow-md md:p-8">
+            <h2 className="mb-4 font-subtitle text-2xl font-semibold">6. Compromiso de Llegada y Cuidado del Vidrio</h2>
+            <p className="mb-3 font-text text-sm leading-relaxed md:text-base">Embalamos cada frasco con protectores acolchados biodegradables diseñados para resistir el impacto del transporte.</p>
+            <ul className="list-disc space-y-3 pl-5 font-text text-sm leading-relaxed md:text-base">
+              <li><strong>Garantía de Reposición:</strong> Si por alguna eventualidad del transporte tu paquete sufriera daños o rotura durante el viaje, simplemente envianos una foto del paquete dentro de las <strong>primeras 24 horas de haberlo recibido</strong> por WhatsApp o a <Link href="mailto:hola@daluzconsciente.com" className="underline underline-offset-2">hola@daluzconsciente.com</Link>, y te reponemos la alquimia de inmediato sin costo adicional.</li>
+            </ul>
+          </section>
         </div>
-      </section>
-      {/* Shipping Zones */}
-      <section className="relative overflow-hidden px-6 py-20">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
-              Zonas de Envío
-            </h2>
-            <p className="mx-auto max-w-2xl font-body text-lg text-white/80">
-              Llegamos a toda Argentina con diferentes opciones según tu
-              ubicación
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
-          >
-            {shippingZones.map((zone) => {
-              const colors = zoneColor[zone.color];
-              const IconComponent = zone.icon;
-
-              return (
-                <motion.div key={zone.zone} variants={itemVariants}>
-                  <div className="relative h-full overflow-hidden rounded-2xl bg-faq-surface text-center shadow-soft">
-                    <div className={`h-1 ${colors.bar}`} />
-                    <div className="p-6">
-                      <div
-                        className={`mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full ${colors.chip} ${colors.text}`}
-                      >
-                        <IconComponent className="h-7 w-7" />
-                      </div>
-                      <h3 className="mb-1 font-heading text-lg font-bold text-faq-ink">
-                        {zone.zone}
-                      </h3>
-                      <p className="mb-4 font-body text-sm text-[#051341]">
-                        {zone.description}
-                      </p>
-                      <div className="space-y-2">
-                        <div className="flex items-center justify-center gap-2">
-                          <Clock className="h-4 w-4 text-faq-ocean" />
-                          <span className="font-body text-sm font-semibold text-faq-ocean">
-                            {zone.time}
-                          </span>
-                        </div>
-                        <div className="font-body text-sm text-faq-ink">
-                          {zone.price}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section — Consultas sobre Envíos (desplegables) */}
-      <section className="px-6 py-20">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
-              Consultas sobre Envíos
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {faqShipping.map((item, index) => (
-              <CollapsibleShippingFAQ
-                key={index}
-                index={index}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openItems.includes(index)}
-                onToggle={() => toggleItem(index)}
-              />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Important Info */}
-      <section className="px-6 py-12">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="rounded-2xl bg-faq-surface p-8 text-center shadow-soft">
-              <div className="mb-4 flex items-center justify-center gap-3">
-                <Shield className="h-6 w-6 text-faq-ocean" />
-                <h3 className="font-heading text-xl font-bold text-faq-ink">
-                  Compromiso con tu Experiencia
-                </h3>
-              </div>
-              <p className="mx-auto mb-6 max-w-2xl font-body text-[#051341]">
-                Todos tus pedidos son preparados con sumo cuidado y enviados en
-                packaging protector para asegurar que lleguen en perfectas
-                condiciones. Si tenés alguna consulta sobre tu envío, no dudes
-                en contactarnos.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Link href="/faq" className={btnSolid}>
-                  Ver FAQ
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/ayuda"
-                  className="inline-flex items-center justify-center gap-2 h-12 rounded-[0_15px] px-6 text-sm font-btn uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#005080] to-[#0085B1] shadow-[0_4px_14px_rgba(0,0,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-none hover:bg-[#16345F] hover:shadow-[0_8px_20px_rgba(0,0,0,0.35)]"
-                >
-                  Centro de Ayuda
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="relative overflow-hidden border-t border-white/10 px-6 py-20">
-        <div className="pointer-events-none absolute inset-0 opacity-30">
-          <div className="absolute right-1/4 top-0 h-64 w-64 rounded-full bg-[#0085B1]/20 blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 h-48 w-48 rounded-full bg-[#2A2543]/40 blur-3xl" />
-        </div>
-
-        <div className="container relative mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-faq-light/30 bg-white/10 px-4 py-1.5 font-caption text-xs font-semibold uppercase tracking-wider text-faq-light backdrop-blur-sm">
-              <Phone className="h-4 w-4" />
-              ¿Necesitás ayuda?
-            </span>
-            <h2 className="mb-4 font-heading text-3xl font-bold text-text-inverse md:text-4xl">
-              Contactanos por cualquier consulta
-            </h2>
-            <p className="mx-auto mb-8 max-w-2xl font-body text-lg text-white/80">
-              Estamos disponibles para ayudarte con cualquier duda sobre tus
-              envíos
-            </p>
-
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="mailto:daluzalkimya@gmail.com" className={btnSolid}>
-                <Mail className="h-5 w-5" />
-                daluzalkimya@gmail.com
-              </Link>
-              <Link href="https://wa.me/5493512344580" className={btnOutline}>
-                <Phone className="h-5 w-5" />
-                WhatsApp
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </div>
+      </article>
+    </main>
   );
 }
+

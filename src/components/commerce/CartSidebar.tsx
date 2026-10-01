@@ -283,7 +283,7 @@ export default function CartSidebar() {
                       className="shrink-0 border border-[#FFF2E9]/40 bg-transparent px-3 text-xs font-semibold uppercase tracking-wider text-[#FFF2E9] transition-colors hover:border-[#FFF2E9] hover:bg-[#FFF2E9]/10 hover:text-white"
                       style={{ borderRadius: '0px 15px', fontFamily: 'var(--font-montserrat), Montserrat, sans-serif' }}
                     >
-                      Vaciar
+                      VACIAR
                     </Button>
                   </div>
                 </div>

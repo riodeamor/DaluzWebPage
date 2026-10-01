@@ -15,7 +15,7 @@ export default function MarketingLayout({ children }: MarketingLayoutProps) {
 
   return (
     <div
-      className={`flex flex-col min-h-screen w-full ${!isFullBleedPage ? "overflow-x-hidden" : ""}`}
+      className={`flex flex-col min-h-screen w-full ${!isFullBleedPage ? "overflow-x-clip" : ""}`}
     >
       <Header />
       <main className="flex-grow w-full min-w-0">{children}</main>
