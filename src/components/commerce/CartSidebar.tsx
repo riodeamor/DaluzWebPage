@@ -1,11 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Plus, Minus, ShoppingBag, Trash2, Package, Info } from "lucide-react";
+import { Plus, Minus, ShoppingBag, Trash2, Package, Info, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
-import { Badge } from "@/components/ui/badge";
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/contexts/CartContext";
 import "./cart-sidebar.css";
@@ -21,6 +21,15 @@ export default function CartSidebar() {
     removeItem,
     clearCart,
   } = useCart();
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('es-AR', {
@@ -42,27 +51,29 @@ export default function CartSidebar() {
   return (
     <Sheet open={isOpen} onOpenChange={setCartOpen}>
       <SheetContent
-        className="cart-sidebar w-full sm:max-w-lg overflow-hidden flex flex-col p-0 text-[#FFF2E9]"
-        style={{ borderRadius: '0px 15px 0 0' }}
+        side="right"
+        overlayClassName="!z-[150] !bg-black/40 backdrop-blur-[2px]"
+        showCloseButton={false}
+        className="cart-sidebar !fixed !inset-y-0 !right-0 !z-[151] !h-[100dvh] w-full sm:max-w-lg overflow-hidden flex flex-col gap-0 p-0 text-[#FFF2E9]"
+        style={{ borderRadius: 0 }}
       >
         {/* Header */}
         <SheetHeader
-          className="border-b border-[#FFF2E9]/10 px-6 pb-4 pt-6 pr-16"
+          className="shrink-0 border-b border-[#FFF2E9]/20 px-5 py-4 sm:px-6"
         >
-          <div className="flex items-center justify-between">
-            <SheetTitle className="flex items-center gap-2 font-title text-2xl font-medium text-[#FFF2E9]">
-              <ShoppingBag className="h-6 w-6" strokeWidth={1.2} />
-              Carrito de Compras
-              {itemCount > 0 && (
-                <Badge className="bg-[#FFF2E9] text-[#4A0D10] font-text font-semibold">
-                  {itemCount}
-                </Badge>
-              )}
+          <div className="flex min-h-11 items-center justify-between gap-4">
+            <SheetTitle className="font-title text-2xl font-medium text-[#FFF2E9]">
+              Tu Carrito ({itemCount})
             </SheetTitle>
+            <SheetClose asChild>
+              <button type="button" className="cart-sidebar__close" aria-label="Cerrar carrito">
+                <X className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
+              </button>
+            </SheetClose>
           </div>
         </SheetHeader>
 
-        <div className="flex flex-col h-full overflow-hidden">
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
           {items.length === 0 ? (
             <div className="flex-1 flex flex-col items-center justify-center py-12 px-6">
               <ShoppingBag className="mb-6 h-12 w-12 text-[#FFF2E9]/60" strokeWidth={1.2} aria-hidden="true" />

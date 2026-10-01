@@ -621,15 +621,16 @@ export default function Header() {
             </Link>
 
             {/* User Menu / Auth Buttons - DESKTOP ONLY */}
-            <div className="site-header-auth hidden xl:flex items-center space-x-4">
+            <div className="site-header-auth hidden xl:flex items-center gap-4">
               <Button
                 variant="ghost"
                 size="sm"
-                className="relative hover:bg-white/10"
+                className="relative h-11 w-11 shrink-0 p-0 hover:bg-white/10"
                 style={{ color: "#FFF4E0" }}
                 onClick={toggleCart}
+                aria-label={`Abrir carrito, ${itemCount} productos`}
               >
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingBag className="h-6 w-6" />
                 {itemCount > 0 && (
                   <Badge
                     variant="secondary"
@@ -757,15 +758,16 @@ export default function Header() {
             </div>
 
             {/* MOBILE/TABLET MENU */}
-            <div className="flex xl:hidden items-center space-x-3">
+            <div className="flex xl:hidden items-center gap-4">
               <Button
                 variant="ghost"
                 size="sm"
-                className="relative hover:bg-white/10"
+                className="relative h-11 w-11 shrink-0 p-0 hover:bg-white/10"
                 style={{ color: "#FFF4E0" }}
                 onClick={toggleCart}
+                aria-label={`Abrir carrito, ${itemCount} productos`}
               >
-                <ShoppingBag className="h-5 w-5" />
+                <ShoppingBag className="h-6 w-6" />
                 {itemCount > 0 && (
                   <Badge
                     variant="secondary"
