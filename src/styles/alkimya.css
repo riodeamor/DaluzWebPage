@@ -3499,8 +3499,12 @@ h1, h2, h3, h4, h5, h6,
   font-size: clamp(2rem, 6vw, 3.75rem) !important;
 }
 
+.tesoros-page .alkimya-wave-header {
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem) !important;
+}
+
 .tesoros-page .tesoros-container {
-  padding-top: clamp(9rem, 14vw, 13rem) !important;
+  padding-top: clamp(1rem, 2vw, 1.5rem) !important;
 }
 
 .tesoros-page .tesoros-subtitle,
