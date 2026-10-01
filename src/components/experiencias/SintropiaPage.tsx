@@ -77,7 +77,7 @@ export default function SintropiaPage() {
           <div className="experience-section-heading"><span className="experience-section-kicker">Tu punto de partida</span><h2 id="sintropia-filtro">El Bio-Filtro: ¿Es para vos?</h2></div>
           <div className="experience-grid">
             <article className="experience-panel"><h3>Este viaje es para vos si</h3><ul><li>Vivís con cansancio crónico, digestión pesada o la mente acelerada en bucle.</li><li>Estás harta de parches temporales y buscás herramientas somáticas y biológicas concretas.</li><li>Querés que la calma y el goce sean un hecho fisiológico y no una frase hecha de redes.</li></ul></article>
-            <article className="experience-panel experience-panel--dark"><h3>No es para vos si</h3><ul><li>Buscás una píldora mágica que resuelva tu vida sin tu presencia ni compromiso diario.</li><li>Preferís permanecer en la queja antes que asumir la responsabilidad de tu propia energía.</li></ul></article>
+            <article className="experience-panel experience-panel--dark experience-panel--outline"><h3>No es para vos si</h3><ul><li>Buscás una píldora mágica que resuelva tu vida sin tu presencia ni compromiso diario.</li><li>Preferís permanecer en la queja antes que asumir la responsabilidad de tu propia energía.</li></ul></article>
           </div>
         </div>
       </section>

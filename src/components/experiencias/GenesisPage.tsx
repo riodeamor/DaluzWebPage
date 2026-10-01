@@ -126,7 +126,7 @@ export default function GenesisPage() {
           <div className="experience-section-heading"><span className="experience-section-kicker">VIII · El Bio-Filtro</span><h2>Tu Postulación</h2></div>
           <div className="experience-grid">
             <article className="experience-panel"><h3>Es para vos si</h3><ul><li>Buscás una transformación biológica real y sostenible.</li><li>Asumís que tu cuerpo es tu laboratorio.</li><li>Sentís que tu vitalidad está bloqueada por sobreexigencia y querés recuperar tu soberanía.</li></ul></article>
-            <article className="experience-panel experience-panel--dark"><h3>No es para vos si</h3><ul><li>Esperás recetas instantáneas sin poner el cuerpo.</li><li>Preferís delegar tu salud en terceros.</li></ul></article>
+            <article className="experience-panel experience-panel--dark experience-panel--outline"><h3>No es para vos si</h3><ul><li>Esperás recetas instantáneas sin poner el cuerpo.</li><li>Preferís delegar tu salud en terceros.</li></ul></article>
           </div>
           <div className="experience-actions"><a className="experience-cta experience-cta--light" href={INSCRIPCION_URL} target="_blank" rel="noopener noreferrer">Completar ficha de postulación</a></div>
         </div>
