@@ -199,9 +199,8 @@
 }
 .experience-page--ecosystem .experience-door { display: flex; min-height: 17rem; flex-direction: column; }
 .experience-page--ecosystem .experience-door__action { align-self: flex-start; margin-top: auto; padding-top: 1rem; }
-.experience-page--hub .experience-manifesto-band { padding-top: clamp(2.5rem, 4vw, 4rem); padding-bottom: clamp(2.5rem, 4vw, 4rem); }
-.experience-page--hub .experience-manifesto { max-width: 65rem; margin-inline: auto; color: #fff; text-align: center; }
-.experience-page--hub .experience-manifesto h2 { margin: 0 0 .6rem; color: #fff; font-size: clamp(1.15rem, 1.5vw, 1.25rem); font-weight: 600; line-height: 1.25; white-space: nowrap; }
+.experience-page--hub .experience-manifesto-band { padding-top: 0; padding-bottom: clamp(2.5rem, 4vw, 4rem); }
+.experience-page--hub .experience-manifesto { max-width: 65rem; margin: 0 auto clamp(-3rem, -2.5vw, -1rem); color: #fff; text-align: center; transform: translateY(clamp(-3rem, -2.5vw, -1rem)); }
 .experience-page--hub .experience-manifesto p { margin: 0; color: #fff; font-size: clamp(1rem, 1.35vw, 1.12rem); line-height: 1.75; }
 .experience-page--hub .experience-doors-band { padding-top: clamp(3rem, 5vw, 5rem); background: radial-gradient(circle at 85% 65%, rgba(209,227,221,.42), transparent 55%), #faf7f2; }
 .experience-page--hub .experience-doors-grid { max-width: 75rem; margin-inline: auto; }
@@ -236,5 +235,6 @@
 .experience-page--ecosystem .experience-closing__statement { max-width: 52rem; margin: 0 auto; font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.6; text-align: center; }
 
 @media (max-width: 640px) {
-  .experience-page--hub .experience-manifesto h2 { white-space: normal; }
+  .experience-page--hub .experience-manifesto-band { padding-top: 1.5rem; }
+  .experience-page--hub .experience-manifesto { margin-bottom: 0; transform: none; }
 }

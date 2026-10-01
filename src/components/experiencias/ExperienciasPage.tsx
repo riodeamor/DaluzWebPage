@@ -26,10 +26,9 @@ export default function ExperienciasPage() {
         </div>
       </header>
 
-      <section className="experience-band experience-manifesto-band" aria-labelledby="experiencias-manifiesto">
+      <section className="experience-band experience-manifesto-band" aria-label="Manifiesto de Experiencias Da Luz">
         <div className="experience-wrap">
           <div className="experience-manifesto">
-            <h2 id="experiencias-manifiesto">Intervenciones sobre la materia viva</h2>
             <p>En Da Luz no ofrecemos cursos teóricos para llenar la mente de conceptos. Diseñamos intervenciones sobre la materia viva: desinflamar el terreno, regular el sistema nervioso y desarmar los patrones de estrés que traban tu vitalidad. Elegí la puerta de entrada según la profundidad que tu biología pide hoy.</p>
           </div>
         </div>
