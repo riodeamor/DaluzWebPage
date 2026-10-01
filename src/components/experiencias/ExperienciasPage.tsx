@@ -12,6 +12,7 @@ const compass = [
 const doors = [
   { label: "33 Días", title: "SINTROPÍA | Recalibración Biográfica", description: "Intervención intensiva para descongestionar tus 3 filtros biológicos y pasar del ruido mental al orden funcional.", action: "Conocer Sintropía →", href: "/sintropia" },
   { label: "8 Meses", title: "GÉNESIS | La Tecnología del Ser", description: "Nuestro viaje insignia de reestructuración profunda al ritmo del recambio celular (Factor 888) para graduarte como la arquitecta de tu biología.", action: "Explorar Génesis →", href: "/programa-transformacion" },
+  { label: "Membresía Mensual", title: "EL PULSO | Membresía Mensual", description: "Tu mantenimiento rítmico de soberanía: sintonización de tu eje biológico mes a mes, contenidos vivos y beneficios exclusivos en botica.", action: "Ingresar al Pulso →", href: "/membresia" },
 ];
 
 export default function ExperienciasPage() {
@@ -37,7 +38,7 @@ export default function ExperienciasPage() {
       <section className="experience-band experience-band--light experience-doors-band" aria-labelledby="experiencias-caminos">
         <div className="experience-wrap">
           <div className="experience-section-heading"><h2 id="experiencias-caminos">Elegí tu puerta: tres caminos, tu propio ritmo</h2></div>
-          <div className="experience-grid experience-doors-grid">
+          <div className="experience-grid experience-grid--three experience-doors-grid">
             {doors.map((door) => (
               <article className="experience-card experience-door" key={door.href}>
                 <span className="experience-card__label">{door.label}</span>
@@ -57,7 +58,7 @@ export default function ExperienciasPage() {
           <div className="experience-grid experience-compass-grid">
             {compass.map((item) => (
               <article className="experience-compass" key={item.answer}>
-                <h3>{item.question}</h3>
+                <h3><Link href={item.href} className="experience-compass__question">{item.question}</Link></h3>
                 <Link href={item.href} className="experience-compass__answer">{item.answer} <span aria-hidden="true">→</span></Link>
               </article>
             ))}
