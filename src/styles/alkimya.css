@@ -3440,6 +3440,7 @@ h1, h2, h3, h4, h5, h6,
 .activos-origen-page .ayo-band-title {
   position: relative;
   z-index: 1;
+  color: #FFFFFF;
 }
 .ceremony-steps-section--before-notice { padding-bottom: 0 !important; }
 .activos-origen-page .ayo-transparency-card,

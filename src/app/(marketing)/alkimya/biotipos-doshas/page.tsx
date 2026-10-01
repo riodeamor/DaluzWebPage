@@ -171,8 +171,8 @@ export default function BiotiposDoshasPage() {
 
               {/* Main Text */}
               <div className="biotipos-section15-main-text">
-                <p className="biotipos-section15-main-text-paragraph"><strong>¿Aún tienes dudas? ¡Te ayudamos a elegir!</strong></p>
-                <p className="biotipos-section15-main-text-paragraph">Si después de identificar tu biotipo todavía tienes dudas sobre cuál es el mejor producto para ti, contáctanos. ¡Estamos para guiarte en tu camino de bienestar!</p>
+                <p className="biotipos-section15-main-text-paragraph"><strong>¿Dudas sobre qué Alkimya pide tu piel en este ciclo?</strong></p>
+                <p className="biotipos-section15-main-text-paragraph">Si después de explorar tu biotipo no tenés la certeza de cuál es la fórmula exacta para tu momento actual, escribinos. Estamos del otro lado para acompañarte a sintonizar tu ritual.</p>
               </div>
 
               {/* Buttons Container */}
