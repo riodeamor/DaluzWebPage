@@ -146,12 +146,12 @@ function HeaderNavControl({
     >
       {href ? (
         <NavigationMenuLink asChild>
-          <Link href={href} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          <Link href={href} className="inline-flex h-9 items-center whitespace-nowrap pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             {label}
           </Link>
         </NavigationMenuLink>
       ) : (
-        <button type="button" onClick={onHover} aria-expanded={isOpen} className="inline-flex h-9 items-center pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+        <button type="button" onClick={onHover} aria-expanded={isOpen} className="inline-flex h-9 items-center whitespace-nowrap pl-3 pr-1 text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
           {label}
         </button>
       )}
@@ -192,7 +192,7 @@ function MobileNavSection({
           <Link
             href={href}
             onClick={onNavigate}
-            className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
+            className="flex min-h-11 min-w-0 flex-1 items-center whitespace-nowrap px-3 py-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
           >
             {label}
           </Link>
@@ -202,7 +202,7 @@ function MobileNavSection({
             onClick={onToggle}
             aria-expanded={open}
             aria-controls={`mobile-nav-${id}`}
-            className="flex min-h-11 min-w-0 flex-1 items-center px-3 py-2 text-left font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
+            className="flex min-h-11 min-w-0 flex-1 items-center whitespace-nowrap px-3 py-2 text-left font-sans text-xs font-medium uppercase tracking-[0.18em] text-[#FFF2E9] transition-colors hover:bg-white/10"
           >
             {label}
           </button>
@@ -271,7 +271,7 @@ export default function Header() {
         <div className="container mx-auto px-4">
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center space-x-3 xl:-translate-x-3">
               <div className="flex-shrink-0">
                 <Image
                   src="/svg/logo.svg"
@@ -409,9 +409,9 @@ export default function Header() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* 3. RAÍCES DA LUZ (Celeste al abrir) */}
+                {/* 3. RAÍCES (Celeste al abrir) */}
                 <NavigationMenuItem value="raices">
-                  <HeaderNavControl label="Raíces Da Luz" href="/raices" tone="blue" isOpen={openMenu === "raices"} onHover={() => setOpenMenu("raices")} />
+                  <HeaderNavControl label="Raíces" href="/raices" tone="blue" isOpen={openMenu === "raices"} onHover={() => setOpenMenu("raices")} />
                   <NavigationMenuContent
                     className="border border-gray-200 shadow-xl"
                     style={{ backgroundColor: "#FFFFFF" }}
@@ -613,7 +613,7 @@ export default function Header() {
             {/* FAQ Link - Desktop */}
             <Link
               href="/faq"
-              className="site-header-faq hidden xl:flex items-center px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
+              className="site-header-faq hidden xl:flex items-center whitespace-nowrap px-3 py-2 text-sm lg:text-base hover:bg-white/10 transition-colors rounded-md shadow-none normal-case"
               style={{ color: "#FFF4E0", fontFamily: "var(--font-synthese), sans-serif", textShadow: "none" }}
             >
               <HelpCircle className="h-5 w-5 mr-2" />
@@ -818,7 +818,7 @@ export default function Header() {
                           <Link href="/alkimya/tesoros-daluz" className="block py-1 text-sm font-text hover:text-brand-primary transition-colors opacity-80" style={{ color: "#1C1B1A" }} onClick={() => setMobileMenuOpen(false)}>Tesoros Da Luz</Link>
                       </MobileNavSection>
 
-                      <MobileNavSection id="raices" label="Raíces Da Luz" href="/raices" tone="blue" open={openMobileSection === "raices"} onToggle={() => setOpenMobileSection(openMobileSection === "raices" ? null : "raices")} onNavigate={() => setMobileMenuOpen(false)}>
+                      <MobileNavSection id="raices" label="Raíces" href="/raices" tone="blue" open={openMobileSection === "raices"} onToggle={() => setOpenMobileSection(openMobileSection === "raices" ? null : "raices")} onNavigate={() => setMobileMenuOpen(false)}>
                           <Link href="/filosofia-proposito" className="block py-2 text-base font-text text-[#051341] hover:text-[#005080] transition-colors" onClick={() => setMobileMenuOpen(false)}>Filosofía y propósito</Link>
                           <Link href="/raices" className="block py-1 text-sm font-text text-[#051341] hover:text-[#005080] transition-colors opacity-80" onClick={() => setMobileMenuOpen(false)}>Raíces</Link>
                       </MobileNavSection>

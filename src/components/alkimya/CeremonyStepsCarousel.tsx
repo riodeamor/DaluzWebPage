@@ -14,9 +14,18 @@ type CeremonyStepsCarouselProps = {
   steps: readonly CeremonyStep[];
   imagePrefix: string;
   imageAltPrefix: string;
+  reasonLabel: string;
 };
 
-export default function CeremonyStepsCarousel({ steps, imagePrefix, imageAltPrefix }: CeremonyStepsCarouselProps) {
+function EmphasizedCopy({ text }: { text: string }) {
+  return <>{text.split(/(\*\*[^*]+\*\*)/g).map((part, index) =>
+    part.startsWith('**') && part.endsWith('**')
+      ? <strong key={index}>{part.slice(2, -2)}</strong>
+      : part
+  )}</>;
+}
+
+export default function CeremonyStepsCarousel({ steps, imagePrefix, imageAltPrefix, reasonLabel }: CeremonyStepsCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = steps[activeIndex];
   const goTo = (index: number) => setActiveIndex((index + steps.length) % steps.length);
@@ -42,13 +51,12 @@ export default function CeremonyStepsCarousel({ steps, imagePrefix, imageAltPref
 
       <article id={`ceremony-step-${active.num}`} className="ceremony-steps__card" role="tabpanel">
         <div className="ceremony-steps__copy">
-          <p className="ceremony-steps__eyebrow">paso {active.num}</p>
+          <p className="ceremony-steps__eyebrow">PASO {active.num}</p>
           <h3>{active.titulo}</h3>
-          <dl>
-            <div><dt>Propósito y beneficio</dt><dd>{active.proposito}</dd></div>
-            <div><dt>Intención de la ceremonia</dt><dd>{active.intencion}</dd></div>
-            <div><dt>Consejos de aplicación</dt><dd>{active.consejos}</dd></div>
-          </dl>
+          <ul className="ceremony-steps__details">
+            <li><strong className="ceremony-steps__detail-label">{reasonLabel}</strong><p><EmphasizedCopy text={active.proposito} /></p></li>
+            <li><strong className="ceremony-steps__detail-label">Uso Consciente:</strong><p><EmphasizedCopy text={active.consejos} /></p></li>
+          </ul>
         </div>
         <figure className="ceremony-steps__media">
           <span className="ceremony-steps__organic-ring" aria-hidden="true" />

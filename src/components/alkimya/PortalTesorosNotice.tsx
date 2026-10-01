@@ -1,6 +1,6 @@
 export default function PortalTesorosNotice() {
   return (
-    <div className="mx-auto mb-6 mt-8 max-w-2xl rounded-2xl border border-[#FFF2E9]/40 bg-[#FFF2E9] p-6 text-center text-[#4A0D10] shadow-xl md:p-8">
+    <div className="ceremony-portal-notice mx-auto mb-6 mt-8 max-w-2xl rounded-2xl border border-[#FFF2E9]/40 bg-[#FFF2E9] p-6 text-center text-[#4A0D10] shadow-xl md:p-8">
       <p className="mb-3 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-[#860119]">
         ✦ El Portal de los Tesoros
       </p>

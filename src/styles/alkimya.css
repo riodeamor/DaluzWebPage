@@ -3660,3 +3660,67 @@ h1, h2, h3, h4, h5, h6,
   .tesoros-portal-arrow { width: 2rem; height: 3rem; }
   .tesoros-page .tesoros-portal-card { padding: 1.5rem; }
 }
+
+/* Ajustes compartidos de las tres ceremonias. */
+.ceremony-steps__tab strong,
+.ceremony-steps__copy h3 {
+  text-transform: none !important;
+}
+
+.ceremony-steps__tab span,
+.ceremony-steps__eyebrow {
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.ceremony-steps__details {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  color: #FFF2E9;
+}
+
+.ceremony-steps__details li {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 242, 233, .22);
+}
+
+.ceremony-steps__detail-label {
+  display: block;
+  margin-bottom: .3rem;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.ceremony-steps__details p {
+  margin: 0;
+  font-family: var(--font-eb-garamond), "EB Garamond", serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  line-height: 1.55;
+}
+
+.ceremony-steps__details p strong { font-weight: 700; }
+
+.ceremony-portal-notice,
+.ceremony-portal-notice p,
+.ceremony-portal-notice strong {
+  color: #4A0D10 !important;
+}
+
+.ceremony-portal-notice > p:first-child { color: #7D1D2B !important; }
+
+.ceremonia-facial-page .ceremonia-back-button:hover,
+.ceremonia-capilar-page .ceremonia-back-button:hover,
+.ceremonia-corporal-page .ceremonia-back-button:hover,
+.ceremonia-facial-page .ceremonia-back-button:focus-visible,
+.ceremonia-capilar-page .ceremonia-back-button:focus-visible,
+.ceremonia-corporal-page .ceremonia-back-button:focus-visible {
+  background: linear-gradient(135deg, #B3202C, #7D1D2B) !important;
+  border-color: #7D1D2B !important;
+  color: #FFFFFF !important;
+}

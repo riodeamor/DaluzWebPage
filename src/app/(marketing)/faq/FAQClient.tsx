@@ -76,15 +76,15 @@ function CollapsibleFAQ({
     >
       <Card
         variant="brand-subtle"
-        className="overflow-hidden rounded-none border-l-4 border-l-faq-ocean !bg-faq-surface shadow-soft"
+        className="overflow-hidden rounded-xl !border-0 !bg-white shadow-soft"
       >
         <button
           onClick={onToggle}
-          className="w-full p-6 text-left hover:bg-faq-surface-hover transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-faq-ocean/50"
+          className="w-full bg-[#16345F] p-6 text-left text-white transition-colors duration-300 hover:bg-[#0A1D4A] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0085B1]"
           aria-expanded={isOpen}
         >
           <div className="flex items-center justify-between gap-4">
-            <h3 className="font-heading text-lg font-semibold text-[#051341] md:text-xl">
+            <h3 className="font-heading text-lg font-semibold !normal-case !text-white md:text-xl">
               {question}
             </h3>
             <motion.div
@@ -92,7 +92,7 @@ function CollapsibleFAQ({
               transition={{ duration: 0.3 }}
               className="flex-shrink-0"
             >
-              <ChevronDown className="w-5 h-5 text-faq-ocean" />
+              <ChevronDown className="w-5 h-5 text-white" />
             </motion.div>
           </div>
         </button>
@@ -106,7 +106,7 @@ function CollapsibleFAQ({
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <CardContent className="px-6 pb-6 pt-0">
+              <CardContent className="bg-white px-6 py-6">
                 <div
                   className="font-body text-[#16345F] prose prose-sm max-w-none prose-headings:font-heading prose-headings:text-[#051341] prose-p:text-[#16345F] prose-li:text-[#16345F] prose-strong:text-[#051341] prose-a:text-[#005080]"
                   dangerouslySetInnerHTML={{ __html: answer }}
