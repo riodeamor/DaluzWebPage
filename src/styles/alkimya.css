@@ -117,11 +117,7 @@
    =========================== */
 
 .tesoros-page {
-  background-image: url("/svg/alkimia/tesoros/BgTesoros.webp");
-  background-repeat: repeat-y;
-  background-position: top center;
-  background-size: 100% auto;
-  background-attachment: scroll;
+  background: #7D1D2B;
 }
 
 /* Ensure content legibility over background */
@@ -3481,7 +3477,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .tesoros-page {
-  background: linear-gradient(90deg, #860119 0%, #971027 35%, #a51f35 65%, #b72f47 100%) !important;
+  background: #7D1D2B !important;
 }
 
 .tesoros-page .tesoros-header-band {
