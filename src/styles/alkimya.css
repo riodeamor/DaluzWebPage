@@ -3706,6 +3706,20 @@ h1, h2, h3, h4, h5, h6,
 
 .ceremony-steps__details p strong { font-weight: 700; }
 
+.ceremony-steps__card .ceremony-steps__copy .ceremony-steps__eyebrow,
+.ceremony-steps__card .ceremony-steps__details,
+.ceremony-steps__card .ceremony-steps__details li,
+.ceremony-steps__card .ceremony-steps__details .ceremony-steps__detail-label,
+.ceremony-steps__card .ceremony-steps__details p,
+.ceremony-steps__card .ceremony-steps__details p strong {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.ceremony-steps__card .ceremony-steps__details li::marker {
+  color: #FFFFFF;
+}
+
 .ceremony-portal-notice,
 .ceremony-portal-notice p,
 .ceremony-portal-notice strong {
