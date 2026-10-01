@@ -76,9 +76,9 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
         <p className="mt-1 mb-4 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-[#FFF2E9]/80 md:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
           Alkimya Da Luz
         </p>
-        <p className="mx-auto max-w-xl font-sans text-xs leading-relaxed text-[#FFF2E9]/90 md:text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+        <p className="mx-auto max-w-xl font-sans text-[13px] leading-relaxed text-[#FFF2E9]/90 md:text-[15px]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
           <span className="block">Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario.</span>
-          <span className="mt-2 block">Cada alquimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.</span>
+          <span className="mt-2 block">Cada Alkimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.</span>
         </p>
       </div>
     </section>
