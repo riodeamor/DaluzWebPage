@@ -156,3 +156,58 @@
   .experience-actions { display: grid; }
   .experience-cta { width: 100%; }
 }
+
+/* New routes extend the shared Génesis and El Pulso visual system. */
+.experience-page--ecosystem .experience-hero__anchor,
+.experience-page--ecosystem .experience-manifesto-quote { font-family: var(--font-cormorant), "Cormorant Garamond", serif; }
+.experience-page--ecosystem .experience-hero__anchor {
+  margin: 1.4rem auto 0;
+  color: #23545d;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-style: italic;
+}
+.experience-page--ecosystem .experience-hero__description {
+  max-width: 52rem;
+  margin: 1rem auto 0;
+  font-size: clamp(.95rem, 1.3vw, 1.05rem);
+  line-height: 1.75;
+}
+.experience-page--ecosystem .experience-manifesto-quote {
+  max-width: 53rem;
+  margin: 2rem auto 0;
+  padding: 1rem 1.5rem;
+  border-left: 2px solid #d1e3dd;
+  color: #d1e3dd;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.35;
+}
+.experience-page--ecosystem .experience-golden-rule {
+  max-width: 53rem;
+  margin: 1.5rem auto 0;
+  font-size: .93rem;
+  line-height: 1.7;
+}
+.experience-page--ecosystem .experience-compass { display: flex; flex-direction: column; }
+.experience-page--ecosystem .experience-compass h3 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
+.experience-page--ecosystem .experience-compass__answer {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 1.2rem;
+  color: #12414e;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-underline-offset: .3em;
+  transition: color .2s ease;
+}
+.experience-page--ecosystem .experience-compass__answer:hover,
+.experience-page--ecosystem .experience-compass__answer:focus-visible { color: #39666d; }
+.experience-page--ecosystem .experience-door { display: flex; flex-direction: column; min-height: 17rem; }
+.experience-page--ecosystem .experience-door__action { align-self: flex-start; margin-top: auto; padding-top: 1rem; }
+.experience-page--ecosystem .experience-card__title-detail { font-size: .72em; }
+.experience-page--ecosystem .experience-closing__statement { max-width: 52rem; margin: 0 auto; font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.6; text-align: center; }

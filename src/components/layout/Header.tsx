@@ -579,7 +579,7 @@ export default function Header() {
                     style={{ backgroundColor: "#FFFFFF" }}
                   >
                     <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[680px]">
-                      <div className="relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden p-6 text-center shadow-md" style={{ borderRadius: "0px 15px", ...featuredCardBackground }}>
+                      <Link href="/experiencias" className="relative flex min-h-[260px] flex-col items-center justify-center overflow-hidden p-6 text-center shadow-md transition-shadow hover:shadow-lg" style={{ borderRadius: "0px 15px", ...featuredCardBackground }}>
                         <DropdownVector src="/assets/vectores/experiencias-portal.svg" color="#0A1D4A" label="Portal de Experiencias" />
                         <div className="text-xl font-normal leading-tight text-[#0A1D4A]" style={{ fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>Portal de Experiencias</div>
                         <p className="mt-3 font-sans text-xs leading-relaxed text-[#16345F]/80">
@@ -588,8 +588,7 @@ export default function Header() {
                         <span className="mt-4 inline-flex items-center gap-1 font-sans text-xs font-semibold text-[#16345F]/70">
                           Explorar todas las experiencias <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                         </span>
-                        <span className="mt-1 font-sans text-[10px] uppercase tracking-widest text-[#16345F]/60">Próximamente</span>
-                      </div>
+                      </Link>
                       <ul className="flex flex-col justify-center gap-2 list-none">
                         <ListItem href="/programa-transformacion" title="Génesis | Tecnología del Ser" textColor="#051341">
                           El viaje de 8 meses hacia la soberanía biológica: transformá tu terreno y desprogramá el estrés de raíz.
@@ -597,11 +596,9 @@ export default function Header() {
                         <ListItem href="/membresia" title="El Pulso | Membresía" textColor="#051341">
                           Tu mantenimiento de soberanía: sintonización mensual de tu eje biológico, contenidos vivos y beneficios en red.
                         </ListItem>
-                        <li className="px-3 py-2.5" aria-label="Sintropía, próximamente">
-                          <div className="text-base font-normal leading-tight text-[#0A1D4A]" style={{ fontFamily: "var(--font-cormorant), Cormorant Garamond, serif" }}>Sintropía | Recalibración</div>
-                          <p className="mt-1 font-sans text-xs leading-relaxed text-[#16345F]/75">Intervención intensiva de 33 días: desactivá la señal de alarma interna y pasá del ruido al orden funcional.</p>
-                          <span className="mt-1 block font-sans text-[10px] uppercase tracking-widest text-[#16345F]/60">Próximamente</span>
-                        </li>
+                        <ListItem href="/sintropia" title="Sintropía | Recalibración" textColor="#051341">
+                          Intervención intensiva de 33 días: desactivá la señal de alarma interna y pasá del ruido al orden funcional.
+                        </ListItem>
                       </ul>
                     </div>
                   </NavigationMenuContent>
@@ -836,10 +833,10 @@ export default function Header() {
                       </MobileNavSection>
 
                       <MobileNavSection id="experiencias" label="Experiencias" href={null} tone="blue" open={openMobileSection === "experiencias"} onToggle={() => setOpenMobileSection(openMobileSection === "experiencias" ? null : "experiencias")} onNavigate={() => setMobileMenuOpen(false)}>
-                          <span className="block px-3 py-2 text-xs font-semibold text-[#16345F]/70">Portal de Experiencias · Próximamente</span>
+                          <Link href="/experiencias" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>Portal de Experiencias</Link>
                           <Link href="/programa-transformacion" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>Génesis | Tecnología del Ser</Link>
                           <Link href="/membresia" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>El Pulso | Membresía</Link>
-                          <span className="block px-3 py-2 text-sm font-text text-[#16345F]/70">Sintropía | Recalibración · Próximamente</span>
+                          <Link href="/sintropia" className="block rounded-md px-3 py-2 text-sm font-text text-[#051341] transition-colors hover:bg-[#FFF2E9]/70" onClick={() => setMobileMenuOpen(false)}>Sintropía | Recalibración</Link>
                       </MobileNavSection>
 
                       <div className="mb-4">
