@@ -74,10 +74,10 @@
   z-index: -1;
   inset: 0;
   background: url("/assets/experiencias/panel-claro.svg") center / 100% 100% no-repeat;
-  filter: drop-shadow(0 12px 14px rgba(7,32,39,.18));
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.65)) drop-shadow(0 11px 8px rgba(7,32,39,.3));
 }
 .experience-panel--dark { color: var(--experience-soft); }
-.experience-panel--dark::before { background-image: url("/assets/experiencias/panel-oscuro.svg"); }
+.experience-panel--dark::before { background-image: url("/assets/experiencias/panel-oscuro.svg"); filter: drop-shadow(0 1px 0 rgba(209,227,221,.38)) drop-shadow(0 11px 8px rgba(7,32,39,.38)); }
 .experience-panel h3 { margin: 0 0 1rem; color: inherit; font-size: clamp(1.65rem, 2.7vw, 2.3rem); font-weight: 500; line-height: 1.12; }
 .experience-panel h4 { margin: 0 0 .65rem; color: inherit; font-size: clamp(1.35rem, 2vw, 1.7rem); font-weight: 500; }
 .experience-panel p { margin: 0; font-size: .94rem; line-height: 1.7; }
@@ -105,10 +105,10 @@
   z-index: -1;
   inset: 0;
   background: url("/assets/experiencias/tarjeta-oscura.svg") center / 100% 100% no-repeat;
-  filter: drop-shadow(0 7px 10px rgba(8,37,44,.2));
+  filter: drop-shadow(0 1px 0 rgba(209,227,221,.45)) drop-shadow(0 9px 7px rgba(8,37,44,.36));
 }
 .experience-card--light { color: var(--experience-ink); }
-.experience-card--light::before { background-image: url("/assets/experiencias/tarjeta-clara.svg"); }
+.experience-card--light::before { background-image: url("/assets/experiencias/tarjeta-clara.svg"); filter: drop-shadow(0 1px 0 rgba(255,255,255,.7)) drop-shadow(0 9px 7px rgba(8,37,44,.3)); }
 .experience-card h3 { margin: 0 0 .65rem; color: inherit; font-size: clamp(1.55rem, 2.5vw, 2rem); font-weight: 500; line-height: 1.1; }
 .experience-card p { margin: 0; font-size: .88rem; line-height: 1.65; }
 .experience-card p + p { margin-top: .8rem; }
@@ -130,7 +130,7 @@
 .experience-step:nth-child(3) { grid-column: 3; grid-row: 1; }
 .experience-step:nth-child(4) { grid-column: 1; grid-row: 2; }
 .experience-step:nth-child(5) { grid-column: 3; grid-row: 2; }
-.experience-step::before { content: ""; position: absolute; z-index: -1; inset: 0; background: url("/assets/experiencias/hexagono-oscuro.svg") center / 100% 100% no-repeat; filter: drop-shadow(0 8px 10px rgba(8,37,44,.25)); }
+.experience-step::before { content: ""; position: absolute; z-index: -1; inset: 0; background: url("/assets/experiencias/hexagono-oscuro.svg") center / 100% 100% no-repeat; filter: drop-shadow(0 1px 0 rgba(209,227,221,.42)) drop-shadow(0 9px 7px rgba(8,37,44,.36)); }
 .experience-step__number { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; margin-bottom: .8rem; border-radius: 50%; background: var(--experience-soft); color: var(--experience-ink); font-family: var(--font-cormorant), serif; font-size: 1.3rem; }
 .experience-step h3 { margin: 0 0 .7rem; color: inherit; font-size: 1.45rem; font-weight: 500; line-height: 1.12; }
 .experience-step p { margin: 0; font-size: .8rem; line-height: 1.55; }
