@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
   let cancelled = 0;
 
   for (const order of expired ?? []) {
-    const { error: updateError } = await service
+    const { data: cancelledOrder, error: updateError } = await service
       .from("orders")
       .update({
         status: "cancelled",
@@ -39,13 +39,18 @@ export async function GET(req: NextRequest) {
       .eq("id", order.id)
       // Relee la condicion para no pisar un pedido que se confirmo entre la
       // consulta y este update.
-      .eq("payment_status", "awaiting_transfer");
+      .eq("payment_status", "awaiting_transfer")
+      .lt("transfer_expires_at", new Date().toISOString())
+      .select("id")
+      .maybeSingle();
 
     if (updateError) {
       console.error(`No se pudo cancelar ${order.order_number}:`, updateError);
       continue;
     }
 
+    // Another worker or the administrator may have processed it meanwhile.
+    if (!cancelledOrder) continue;
     cancelled++;
 
     try {

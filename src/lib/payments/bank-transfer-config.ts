@@ -3,6 +3,8 @@ export interface BankTransferConfig {
   alias: string;
   holder: string;
   bank: string;
+  cuit?: string;
+  whatsapp?: string;
 }
 
 export const BANK_TRANSFER_CONFIG_KEYS = [
@@ -10,6 +12,8 @@ export const BANK_TRANSFER_CONFIG_KEYS = [
   "bank_transfer_alias",
   "bank_transfer_holder",
   "bank_transfer_bank",
+  "bank_transfer_cuit",
+  "whatsapp_phone",
 ] as const;
 
 /** config_value guarda JSON; los valores viejos pueden estar en texto plano. */
@@ -39,5 +43,7 @@ export function parseBankTransferConfig(
 
   if (!cbu || !alias || !holder || !bank) return null;
 
-  return { cbu, alias, holder, bank };
+  const cuit = map.get("bank_transfer_cuit") || undefined;
+  const whatsapp = map.get("whatsapp_phone")?.replace(/\D/g, "") || undefined;
+  return { cbu, alias, holder, bank, ...(cuit ? { cuit } : {}), ...(whatsapp ? { whatsapp } : {}) };
 }

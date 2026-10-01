@@ -9,6 +9,14 @@ const full = [
 ];
 
 describe("parseBankTransferConfig", () => {
+  it("incluye CUIT y normaliza el WhatsApp configurado", () => {
+    const config = parseBankTransferConfig([...full,
+      {config_key:'bank_transfer_cuit',config_value:'"20123456789"'},
+      {config_key:'whatsapp_phone',config_value:'"+54 9 351 2344580"'},
+    ]);
+    expect(config?.cuit).toBe('20123456789');
+    expect(config?.whatsapp).toBe('5493512344580');
+  });
   it("arma la config cuando estan las cuatro claves", () => {
     expect(parseBankTransferConfig(full)).toEqual({
       cbu: "0000003100010000000001",

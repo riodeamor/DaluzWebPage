@@ -10,6 +10,22 @@ export interface OrderListFilters {
   offset: number;
 }
 
+export interface PaymentOrderSnapshot {
+  id: string;
+  status: string;
+  payment_status: string | null;
+  mercadopago_payment_id: string | number | null;
+  total_amount: number;
+  currency: string;
+  updated_at: string;
+}
+
+export class PaymentConflictError extends Error {
+  constructor() {
+    super("El pedido cambio mientras se procesaba el pago. Volve a intentarlo.");
+  }
+}
+
 // ============================================
 // Repository
 // ============================================
@@ -68,6 +84,32 @@ export class OrdersRepository {
     if (error) throw error;
   }
 
+  /** A single conditional UPDATE elects one winner across server instances. */
+  async updatePaymentIfUnchanged(
+    order: PaymentOrderSnapshot,
+    changes: Record<string, unknown>,
+  ): Promise<boolean> {
+    let query = this.supabase
+      .from("orders")
+      .update(changes)
+      .eq("id", order.id)
+      .eq("status", order.status)
+      .eq("updated_at", order.updated_at)
+      .eq("total_amount", order.total_amount)
+      .eq("currency", order.currency);
+
+    query = order.payment_status === null
+      ? query.is("payment_status", null)
+      : query.eq("payment_status", order.payment_status);
+    query = order.mercadopago_payment_id === null
+      ? query.is("mercadopago_payment_id", null)
+      : query.eq("mercadopago_payment_id", order.mercadopago_payment_id);
+
+    const { data, error } = await query.select("id").maybeSingle();
+    if (error) throw error;
+    return data !== null;
+  }
+
   async remove(id: string): Promise<void> {
     const { error } = await this.supabase
       .from("orders")
@@ -75,6 +117,17 @@ export class OrdersRepository {
       .eq("id", id);
 
     if (error) throw error;
+  }
+
+  async confirmPayment(order: PaymentOrderSnapshot, payment: Record<string, unknown>): Promise<boolean> {
+    const { data, error } = await this.supabase.rpc("confirm_order_payment_once", {
+      p_order_id: order.id, p_expected: order, p_payment: payment,
+    });
+    if (error) {
+      if (error.code === "40001") throw new PaymentConflictError();
+      throw error;
+    }
+    return data === true;
   }
 
   async list(filters: OrderListFilters): Promise<{

@@ -12,6 +12,10 @@ import {
   BANK_TRANSFER_CONFIG_KEYS,
 } from "@/lib/payments/bank-transfer-config";
 import { calculateTransferDiscount } from "@/lib/payments/transfer-discount";
+import {
+  CheckoutCatalogError,
+  resolveCheckoutItems,
+} from "@/lib/payments/checkout-catalog";
 import { EmailNotificationService } from "@/lib/email/notifications";
 import { logger } from "@/lib/logger";
 
@@ -66,21 +70,25 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { items, customerInfo, paymentMethod } = parsed.data;
+    const { items: requestedItems, customerInfo, paymentMethod } = parsed.data;
 
     logger.info("Checkout request received", {
       source: "checkout",
-      itemsCount: items.length,
+      itemsCount: requestedItems.length,
     });
 
     // === Instantiate service chain (service client bypasses RLS) ===
     const serviceClient = getServiceClient();
+    const productsRepo = new ProductsRepository(serviceClient);
+    const products = await productsRepo.findManyByIds(
+      requestedItems.map((item) => item.productId),
+    );
+    const items = resolveCheckoutItems(requestedItems, products);
     const ordersRepo = new OrdersRepository(serviceClient);
     const checkoutService = new CheckoutService(ordersRepo);
 
     if (paymentMethod === "bank_transfer") {
       const systemRepo = new SystemRepository(serviceClient);
-      const productsRepo = new ProductsRepository(serviceClient);
 
       // Sin datos bancarios cargados no se puede cobrar por transferencia.
       const configRows = await systemRepo.getConfigs([...BANK_TRANSFER_CONFIG_KEYS]);
@@ -94,7 +102,6 @@ export async function POST(req: NextRequest) {
 
       // Los porcentajes se leen de la base, nunca del cliente: aceptar un total
       // calculado en el navegador permitiria pedirse cualquier descuento.
-      const products = await productsRepo.findManyByIds(items.map((i) => i.productId));
       const percentByProductId: Record<string, number> = {};
       for (const p of products) {
         if (p.discount_transfer_percent) {
@@ -167,6 +174,9 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (error) {
+    if (error instanceof CheckoutCatalogError) {
+      return NextResponse.json({ error: error.message }, { status: 409 });
+    }
     logger.error("Checkout API error", error instanceof Error ? error : undefined, { source: "checkout" });
     return NextResponse.json(
       {

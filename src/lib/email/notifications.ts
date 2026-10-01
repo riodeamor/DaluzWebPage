@@ -1,4 +1,6 @@
-import { sendEmail, SUPPORT_ADMIN_EMAIL } from './client'
+import { sendEmail, SUPPORT_ADMIN_EMAIL, emailConfig } from './client'
+import type { PreparedEmail } from './durable-delivery'
+import type { BankTransferConfig } from '@/lib/payments/bank-transfer-config'
 import { 
   loadEmailTemplate, 
   incrementTemplateUsage
@@ -110,16 +112,26 @@ export class EmailNotificationService {
   // Send order confirmation email using DB template
   static async sendOrderConfirmation(order: Order): Promise<{ success: boolean; error?: string }> {
     try {
+      const prepared = await this.prepareOrderConfirmation(order);
+      const result = await sendEmail({ ...prepared.message, replyTo: prepared.message.reply_to });
+      if (result.success) await incrementTemplateUsage(prepared.templateId);
+      return result;
+    } catch (error) {
+      return { success: false, error: error instanceof Error ? error.message : "Email preparation failed" };
+    }
+  }
+
+  static async prepareOrderConfirmation(order: Order): Promise<PreparedEmail> {
       const template = await loadEmailTemplate('order_confirmation', true);
       
       if (!template) {
         console.warn('⚠️ No active order_confirmation template found, skipping email');
-        return { success: false, error: 'No active template found' };
+        throw new Error('No active template found');
       }
 
       const customerEmail = order.user_email || order.email;
       if (!customerEmail) {
-        return { success: false, error: 'No customer email found' };
+        throw new Error('No customer email found');
       }
 
       const customerName = resolveCustomerName(order);
@@ -227,26 +239,10 @@ export class EmailNotificationService {
         .filter((line) => line !== null)
         .join("\n");
 
-      const result = await sendEmail({
-        to: customerEmail,
-        subject,
-        html,
-        text
-      });
-
-      if (result.success) {
-        await incrementTemplateUsage(template.id);
-      }
-
-      return result;
-      
-    } catch (error) {
-      console.error('Error sending order confirmation:', error)
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Unknown error' 
-      }
-    }
+      return {
+        message: { from: emailConfig.from, to: customerEmail, subject, html, text, reply_to: emailConfig.replyTo },
+        templateId: template.id,
+      };
   }
 
   // Send shipping notification using DB template
@@ -255,7 +251,7 @@ export class EmailNotificationService {
   // bancarios; este mail es una copia de respaldo.
   static async sendBankTransferInstructions(
     order: Order & { transfer_expires_at?: string | null },
-    bank: { cbu: string; alias: string; holder: string; bank: string },
+    bank: BankTransferConfig,
   ): Promise<{ success: boolean; error?: string }> {
     try {
       const template = await loadEmailTemplate('bank_transfer_instructions', true);
@@ -289,6 +285,7 @@ export class EmailNotificationService {
       const deadline = order.transfer_expires_at
         ? new Date(order.transfer_expires_at).toLocaleDateString('es-AR', {
             day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit',
+            timeZone: 'America/Argentina/Buenos_Aires',
           })
         : '';
 
@@ -299,6 +296,8 @@ export class EmailNotificationService {
             <div><strong>Alias:</strong> ${bank.alias}</div>
             <div><strong>Titular:</strong> ${bank.holder}</div>
             <div><strong>Banco:</strong> ${bank.bank}</div>
+            ${bank.cuit ? `<div><strong>CUIT:</strong> ${bank.cuit}</div>` : ''}
+            ${bank.whatsapp ? `<div><a href="https://wa.me/${bank.whatsapp}?text=${encodeURIComponent(`Hola, quiero enviar el comprobante del pedido ${order.order_number}.`)}">Enviar comprobante por WhatsApp</a></div>` : ''}
           </td></tr>
         </table>`;
 
@@ -327,6 +326,8 @@ export class EmailNotificationService {
         `Alias: ${bank.alias}`,
         `Titular: ${bank.holder}`,
         `Banco: ${bank.bank}`,
+        ...(bank.cuit ? [`CUIT: ${bank.cuit}`] : []),
+        ...(bank.whatsapp ? [`Enviar comprobante: https://wa.me/${bank.whatsapp}?text=${encodeURIComponent(`Hola, quiero enviar el comprobante del pedido ${order.order_number}.`)}`] : []),
         ``,
         `Nuestro alias es siempre ${bank.alias} y nunca lo cambiamos.`,
       ].join('\n');

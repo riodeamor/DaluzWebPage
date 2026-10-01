@@ -1,4 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
+import type { CheckoutProduct } from "@/lib/payments/checkout-catalog";
 
 // ============================================
 // Repository
@@ -19,19 +20,22 @@ export class ProductsRepository {
   }
 
   /**
-   * Consulta en lote. Existe para no hacer una query por producto al calcular
-   * el descuento por transferencia de un carrito.
+   * Catalogo de checkout en lote: precios, variantes y descuentos del servidor.
    */
   async findManyByIds(ids: string[]) {
     if (ids.length === 0) return [];
 
     const { data, error } = await this.supabase
       .from("products")
-      .select("id, discount_transfer_percent")
-      .in("id", ids);
+      .select(`
+        id, name, status, currency, price, sku, featured_image,
+        discount_transfer_percent,
+        product_variants (id, price, sku, option1, image_url)
+      `)
+      .in("id", Array.from(new Set(ids)));
 
     if (error) throw error;
-    return (data || []) as { id: string; discount_transfer_percent: number | null }[];
+    return (data || []) as CheckoutProduct[];
   }
 
   async update(id: string, data: Record<string, unknown>): Promise<void> {

@@ -103,5 +103,8 @@ pids
 # srs directory
 srs/
 
+# Local verification snapshots can contain configuration data.
+.local-verification/
+
 # .env.example
 .env.example

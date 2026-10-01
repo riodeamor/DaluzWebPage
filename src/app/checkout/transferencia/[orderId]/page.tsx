@@ -89,11 +89,14 @@ export default async function TransferPage({
       alias={config.alias}
       holder={config.holder}
       bank={config.bank}
+      cuit={config.cuit}
+      whatsapp={config.whatsapp}
       expiresAt={new Date(order.transfer_expires_at!).toLocaleDateString("es-AR", {
         day: "numeric",
         month: "long",
         hour: "2-digit",
         minute: "2-digit",
+        timeZone: "America/Argentina/Buenos_Aires",
       })}
     />
   );

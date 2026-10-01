@@ -12,6 +12,14 @@
   },
   "crons": [
     {
+      "path": "/api/cron/payment-effects",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron/payment-effects-retry",
+      "schedule": "0 14 * * *"
+    },
+    {
       "path": "/api/cron/expire-transfers",
       "schedule": "0 3 * * *"
     }
