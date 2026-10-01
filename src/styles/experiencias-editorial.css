@@ -26,8 +26,9 @@
 }
 .experience-hero::after {
   content: "";
+  display: block;
   position: absolute;
-  inset: auto 0 -1px;
+  inset: auto 0 -2px;
   height: clamp(5rem, 11vw, 10rem);
   background: url("/assets/experiencias/ola-oscura.svg") center bottom / 100% 100% no-repeat;
   transform: rotate(180deg);
@@ -42,10 +43,11 @@
 .experience-band {
   position: relative;
   padding: clamp(4rem, 7vw, 7rem) 1.25rem;
-  background:
+  background-color: var(--experience-deep);
+  background-image:
+    linear-gradient(to bottom, var(--experience-deep) 0, var(--experience-deep) 1.5rem, transparent 5rem),
     radial-gradient(circle at 95% 0%, rgba(209,227,221,.16), transparent 36%),
-    radial-gradient(circle at 0% 90%, rgba(79,120,125,.34), transparent 34%),
-    var(--experience-deep);
+    radial-gradient(circle at 0% 90%, rgba(79,120,125,.34), transparent 34%);
   color: var(--experience-soft);
 }
 .experience-band--light {
@@ -194,8 +196,19 @@
   font-size: .93rem;
   line-height: 1.7;
 }
-.experience-page--ecosystem .experience-compass { display: flex; flex-direction: column; }
-.experience-page--ecosystem .experience-compass h3 { font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
+.experience-page--ecosystem .experience-door { display: flex; min-height: 17rem; flex-direction: column; }
+.experience-page--ecosystem .experience-door__action { align-self: flex-start; margin-top: auto; padding-top: 1rem; }
+.experience-page--hub .experience-manifesto-band { padding-top: clamp(2.5rem, 4vw, 4rem); padding-bottom: clamp(2.5rem, 4vw, 4rem); }
+.experience-page--hub .experience-manifesto { max-width: 65rem; margin-inline: auto; color: #fff; text-align: center; }
+.experience-page--hub .experience-manifesto h2 { margin: 0 0 .6rem; color: #fff; font-size: clamp(1.15rem, 1.5vw, 1.25rem); font-weight: 600; line-height: 1.25; white-space: nowrap; }
+.experience-page--hub .experience-manifesto p { margin: 0; color: #fff; font-size: clamp(1rem, 1.35vw, 1.12rem); line-height: 1.75; }
+.experience-page--hub .experience-doors-band { padding-top: clamp(3rem, 5vw, 5rem); background: radial-gradient(circle at 85% 65%, rgba(209,227,221,.42), transparent 55%), #faf7f2; }
+.experience-page--hub .experience-doors-grid { max-width: 60rem; margin-inline: auto; }
+.experience-page--hub .experience-door { min-height: 21rem; padding: clamp(1.6rem, 3vw, 2.25rem); }
+.experience-page--hub .experience-compass-band { padding-top: clamp(3.5rem, 5vw, 5rem); }
+.experience-page--hub .experience-compass-band .experience-section-heading h2 { font-size: clamp(2rem, 3.8vw, 3.2rem); }
+.experience-page--ecosystem .experience-compass { display: flex; min-width: 0; flex-direction: column; padding: 1.25rem .5rem 1.5rem; border-bottom: 1px solid rgba(18,65,78,.28); }
+.experience-page--ecosystem .experience-compass h3 { margin: 0; color: #23545d; font-size: clamp(1.35rem, 2.2vw, 1.8rem); font-style: italic; font-weight: 400; line-height: 1.25; }
 .experience-page--ecosystem .experience-compass__answer {
   display: inline-flex;
   align-items: center;
@@ -207,13 +220,15 @@
   font-size: .78rem;
   font-weight: 700;
   line-height: 1.5;
-  text-decoration: underline;
+  text-decoration: none;
   text-underline-offset: .3em;
   transition: color .2s ease;
 }
 .experience-page--ecosystem .experience-compass__answer:hover,
-.experience-page--ecosystem .experience-compass__answer:focus-visible { color: #39666d; }
-.experience-page--ecosystem .experience-door { display: flex; flex-direction: column; min-height: 17rem; }
-.experience-page--ecosystem .experience-door__action { align-self: flex-start; margin-top: auto; padding-top: 1rem; }
+.experience-page--ecosystem .experience-compass__answer:focus-visible { color: #39666d; text-decoration: underline; }
 .experience-page--ecosystem .experience-card__title-detail { font-size: .72em; }
 .experience-page--ecosystem .experience-closing__statement { max-width: 52rem; margin: 0 auto; font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.6; text-align: center; }
+
+@media (max-width: 640px) {
+  .experience-page--hub .experience-manifesto h2 { white-space: normal; }
+}
