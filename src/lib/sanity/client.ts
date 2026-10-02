@@ -215,7 +215,8 @@ export const queries = {
       alt
     },
     heroTitle,
-    heroSubtitle
+    heroSubtitle,
+    linkOpcional
   }`,
 };
 

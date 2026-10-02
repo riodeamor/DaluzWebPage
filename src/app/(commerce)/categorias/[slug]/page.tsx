@@ -78,6 +78,7 @@ export default function CategoryPage() {
   const { addItem } = useCart();
   const showReviews = useReviewsVisibility();
 
+  const [header, setHeader] = useState<{src:string;alt:string;href?:string} | null>(null);
   const [category, setCategory] = useState<Category | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
@@ -108,6 +109,8 @@ export default function CategoryPage() {
           return;
         }
         setCategory(categoryData.category);
+        const headerData = await fetch(`/api/sanity/line-header?id=${categoryData.category.id}`).then(r => r.json());
+        setHeader(headerData.settings?.heroBanner || null);
 
         // Fetch products for this category
         const productsResponse = await fetch(`/api/products?category=${categoryData.category.id}&limit=50`);
@@ -206,8 +209,9 @@ export default function CategoryPage() {
     ? fallbackBannerByTheme[lineTheme]
     : category.image_url || fallbackBannerByTheme[lineTheme];
   const bannerSources = [primaryBanner, ...(category.banner_urls || [])].filter((src): src is string => Boolean(src));
-  const banners = Array.from(new Set(bannerSources)).map((src) => ({ src, alt: category.name }));
+  const legacyBanners = Array.from(new Set(bannerSources)).map((src) => ({ src, alt: category.name }));
 
+  const banners = header?.src ? [header] : legacyBanners;
   return (
     <div className="min-h-screen bg-[#FAF7F2]">
       <div className="container relative mx-auto px-4 pb-8 pt-3">

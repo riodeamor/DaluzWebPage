@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/auth/helpers";
-export function commerceCrud(table: "coupons" | "announcements", schema: z.ZodTypeAny) {
+export function commerceCrud(table: "coupons" | "announcements" | "catalog_terms", schema: z.ZodTypeAny) {
   const fail = () => NextResponse.json({ error: "No pudimos guardar los datos. Revisá el código único y la configuración." }, { status: 500 });
   const invalid = () => NextResponse.json({ error: "Datos inválidos." }, { status: 400 });
   return {

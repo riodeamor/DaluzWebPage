@@ -7,6 +7,7 @@ interface TiendaSettings {
   heroImage?: { asset?: { url?: string }; alt?: string };
   heroTitle?: string;
   heroSubtitle?: string;
+  linkOpcional?: string;
 }
 
 const DEFAULT_IMAGE = "/images/hero-botanical-background.jpg";
@@ -71,14 +72,14 @@ export default function TiendaHero({ className }: TiendaHeroProps) {
           className="font-title text-2xl font-normal uppercase tracking-[0.15em] text-[#FFF2E9] md:text-4xl"
           style={{ fontFamily: "var(--font-cormorant), serif" }}
         >
-          TIENDA
+          {settings.heroTitle || "TIENDA"}
         </h1>
         <p className="mt-1 mb-4 font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-[#FFF2E9]/80 md:text-xs" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
           Alkimya Da Luz
         </p>
         <p className="mx-auto max-w-xl font-sans text-[13px] leading-relaxed text-[#FFF2E9]/90 md:text-[15px]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-          <span className="block">Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario.</span>
-          <span className="mt-2 block">Cada Alkimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.</span>
+          <span className="block">{settings.linkOpcional ? <a href={settings.linkOpcional}>{settings.heroSubtitle || "Conocé nuestras Alkimyas"}</a> : settings.heroSubtitle || "Fórmulas vivas de cosmética consciente, maceraciones botánicas y rituales de cuidado diario."}</span>
+          {!settings.heroSubtitle && <span className="mt-2 block">Cada Alkimya es un puente hacia la soberanía de tu cuerpo y la conexión con tu Ser.</span>}
         </p>
       </div>
     </section>

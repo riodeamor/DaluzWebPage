@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { searchTokens } from "@/lib/catalog/search";
 import { createClient } from "@/utils/supabase/server";
 
 export async function GET(request: NextRequest) {
@@ -7,8 +8,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
 
     // Pagination
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "9"); // Changed default from 12 to 9
+    const page = Math.max(1, Number(searchParams.get("page")) || 1);
+    const limit = Math.min(100, Math.max(1, Number(searchParams.get("limit")) || 9)); // Changed default from 12 to 9
     const offset = (page - 1) * limit;
 
     // Filters
@@ -59,8 +60,21 @@ export async function GET(request: NextRequest) {
       query = query.eq("category_id", category);
     }
 
-    if (search) {
-      query = query.or(`name.ilike.%${search}%,description.ilike.%${search}%`);
+    let tokens: string[];
+    try { tokens = searchTokens(search || ""); } catch (error) { return NextResponse.json({ error: (error as Error).message }, { status: 400 }); }
+    for (const token of tokens) query = query.ilike("name_search", `%${token}%`);
+    for (const key of ["anatomy", "need"]) {
+      const slug = searchParams.get(key);
+      if (!slug) continue;
+      const { data: term } = await supabase.from("catalog_terms").select("id").eq("slug", slug).eq("kind", key === "anatomy" ? "anatomy" : "need").eq("is_active", true).maybeSingle();
+      if (!term) return NextResponse.json({ products: [], pagination: { page, limit, total: 0, totalPages: 0, hasMore: false } });
+      query = query.contains("catalog_term_ids", [term.id]);
+    }
+    const lineSlug = searchParams.get("line");
+    if (lineSlug) {
+      const { data: line } = await supabase.from("categories").select("id").eq("slug", lineSlug).maybeSingle();
+      if (!line) return NextResponse.json({ products: [], pagination: { page, limit, total: 0, totalPages: 0, hasMore: false } });
+      query = query.eq("category_id", line.id);
     }
 
     if (skinType) {
@@ -91,18 +105,7 @@ export async function GET(request: NextRequest) {
       query = query.eq("is_on_sale", true);
     }
 
-    // Status filtering - only show active products for public consumption
-    if (status) {
-      query = query.eq("status", status);
-    } else {
-      // For public consumption, only show active products
-      query = query.eq("status", "active");
-    }
-
-    // Apply sorting
-    const sortColumn = getSortColumn(sortBy);
-    const order = getSortOrder(sortBy);
-    query = query.order(sortColumn, { ascending: order === "asc" });
+    query = query.eq("status", "active").order("is_kit", { ascending: true }).order("created_at", { ascending: false });
 
     // Execute query with pagination and get count
     const {

@@ -1,5 +1,7 @@
 "use client";
 
+import { compressImage } from "@/lib/media/compress-image";
+
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,9 +52,9 @@ export default function ProductImageUpload({
       return;
     }
 
-    // Validate file size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error("La imagen debe ser menor a 5MB");
+    // Validate file size (max 30MB)
+    if (file.size > 30 * 1024 * 1024) {
+      toast.error("La imagen debe ser menor a 30MB");
       return;
     }
 
@@ -60,7 +62,7 @@ export default function ProductImageUpload({
 
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", await compressImage(file));
       formData.append("folder", "products");
 
       const response = await fetch("/api/upload", {
@@ -103,8 +105,8 @@ export default function ProductImageUpload({
       return;
     }
 
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error("La imagen debe ser menor a 5MB");
+    if (file.size > 30 * 1024 * 1024) {
+      toast.error("La imagen debe ser menor a 30MB");
       return;
     }
 
@@ -112,7 +114,7 @@ export default function ProductImageUpload({
 
     try {
       const formData = new FormData();
-      formData.append("file", file);
+      formData.append("file", await compressImage(file));
       formData.append("folder", "products");
 
       const response = await fetch("/api/upload", {
@@ -292,7 +294,7 @@ export default function ProductImageUpload({
                   Arrastra una imagen o haz clic para seleccionar
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
-                  JPG, PNG o WebP. Máximo 5MB.
+                  JPG, PNG o WebP. Máximo 30MB.
                 </p>
               </div>
             </div>

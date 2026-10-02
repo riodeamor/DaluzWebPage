@@ -6,6 +6,7 @@ export const tiendaSettingsSchema = defineType({
   type: "document",
   icon: () => "🛍️",
   fields: [
+    defineField({ name: "linkOpcional", title: "Enlace opcional", type: "url", validation: r => r.uri({ allowRelative: true, scheme: ["https"] }) }),
     defineField({
       name: "heroImage",
       title: "Imagen del Hero",

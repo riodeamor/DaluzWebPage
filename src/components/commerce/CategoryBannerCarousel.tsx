@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-type CategoryBanner = { src: string; alt: string };
+type CategoryBanner = { src: string; alt: string; href?:string };
 
 export default function CategoryBannerCarousel({
   banners,
@@ -37,7 +37,7 @@ export default function CategoryBannerCarousel({
       <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
         {banners.map((banner, index) => (
           <div key={`${banner.src}-${index}`} className="w-full shrink-0" aria-hidden={index !== currentIndex}>
-            <img src={banner.src} alt={banner.alt} className="aspect-[3/1] w-full object-cover" loading={index === 0 ? "eager" : "lazy"} />
+            <a href={banner.href || undefined}><img src={banner.src} alt={banner.alt} className="aspect-[3/1] w-full object-cover" loading={index === 0 ? "eager" : "lazy"} /></a>
           </div>
         ))}
       </div>

@@ -44,10 +44,15 @@ export async function POST(request: NextRequest) {
 
     // Handle different document types
     switch (payload._type) {
+      case 'homeSettings':
+        revalidateTag('home-headers'); revalidatePath('/'); break;
+      case 'lineSettings':
+        revalidateTag('line-headers'); revalidatePath('/categorias/[slug]', 'page'); break;
       case 'tiendaSettings':
         revalidateTag('tienda-settings');
         revalidatePath('/api/sanity/tienda-settings');
         revalidatePath('/tienda');
+        revalidatePath('/productos');
         break;
       case 'post':
         // Revalidate blog pages
