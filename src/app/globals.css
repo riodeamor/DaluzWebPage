@@ -237,19 +237,19 @@
     --admin-bg-secondary: #051341;
     /* Rojo Sangre - Sidebar/Header */
     --admin-bg-tertiary: #faf7f2;
-    /* Crema Beige - Fondos alternativos */
+    /* Lino Marfil - Fondos alternativos */
 
     /* Sidebar States */
     --admin-sidebar-hover: #0a1d4a;
-    /* Burdeos Oscuro - Hover */
+    /* Azul oscuro - Hover */
     --admin-sidebar-active: #16345f;
-    /* Marrón Rojizo - Activo */
+    /* Azul institucional - Activo */
 
     /* Bordes */
-    --admin-border-primary: #e7e5e2;
-    /* Crema */
-    --admin-border-secondary: #0a1d4a24;
-    /* Rojo con opacidad */
+    --admin-border-primary: #e5e0d8;
+    /* Borde neutro */
+    --admin-border-secondary: #e5e0d8;
+    /* Borde neutro */
 
     /* Texto */
     --admin-text-primary: #051341;
@@ -258,8 +258,8 @@
     /* Burdeos Oscuro - Texto secundario */
     --admin-text-tertiary: #52627c;
     /* Rojo con opacidad - Texto muted */
-    --admin-text-inverse: #fff2e9;
-    /* Crema - Texto en fondos oscuros */
+    --admin-text-inverse: #ffffff;
+    /* Blanco puro - Texto en fondos oscuros */
 
     /* Acentos */
     --admin-accent-primary: #051341;
@@ -3141,13 +3141,14 @@ footer .footer-social-icon {
 }
 .admin-layout {
   --primary: 226 86% 14%;
-  --primary-foreground: 24 100% 96%;
+  --primary-foreground: 0 0% 100%;
   --ring: 226 86% 14%;
 }
 .admin-sidebar,
 .admin-sidebar-header {
   background: #051341;
 }
+.admin-sidebar { border-right-color: rgba(255, 255, 255, 0.18); }
 .admin-header {
   background: #051341;
   border-bottom-color: rgba(255, 242, 233, 0.16);
@@ -3162,7 +3163,7 @@ footer .footer-social-icon {
   margin: 0 0 1.2rem;
 }
 .admin-sidebar-nav-section-title {
-  color: rgba(255, 242, 233, 0.65);
+  color: #ffffff;
   font: 600 0.65rem var(--font-montserrat), sans-serif;
   letter-spacing: 0.2em;
   padding: 0 1.5rem;
@@ -3172,7 +3173,7 @@ footer .footer-social-icon {
 }
 .admin-nav-item.active {
   background: #16345f;
-  border-left: 3px solid #7d1d2b;
+  border-left: 3px solid #d1e3dd;
   box-shadow: none;
 }
 .admin-nav-item:hover {
@@ -3239,7 +3240,7 @@ footer .footer-social-icon {
   font-family: var(--font-montserrat), sans-serif;
 }
 .admin-layout .inline-flex.bg-azul-profundo {
-  color: #fff2e9 !important;
+  color: #ffffff !important;
 }
 .admin-layout .bg-azul-profundo { background-color: #051341; }
 .admin-layout .text-azul-profundo { color: #051341; }
@@ -3273,10 +3274,55 @@ footer .footer-social-icon {
 .admin-content .customer-chart-toggle[data-state="active"],
 .admin-content .customer-chart-toggle.bg-primary {
   background: #051341;
-  color: #fff2e9;
+  color: #ffffff;
   border-color: #051341;
 }
 .admin-content .customer-chart-toggle:hover { border-color: #051341; }
+
+/* Admin controls: clean neutral surfaces and readable text on dark actions. */
+.admin-layout .admin-nav-item,
+.admin-layout .admin-nav-item:hover,
+.admin-layout .admin-nav-item.active,
+.admin-layout .admin-header,
+.admin-layout .admin-sidebar-nav-section-title {
+  color: #ffffff;
+}
+.admin-layout .admin-nav-item p,
+.admin-layout .admin-sidebar .admin-card,
+.admin-layout .admin-sidebar .admin-card span,
+.admin-layout .admin-sidebar .admin-card h3 {
+  color: #ffffff;
+}
+.admin-content button:not([class*="bg-destructive"]):not(.admin-btn-danger):not([data-destructive="true"])[class*="bg-primary"],
+.admin-content .admin-btn-primary,
+.admin-content .admin-action-button.primary,
+.admin-content .admin-pagination-button.active {
+  color: #ffffff;
+}
+.admin-content button[class*="bg-primary"] svg,
+.admin-content .admin-btn-primary svg {
+  color: currentColor;
+}
+.admin-content button[class*="border-input"],
+.admin-content button[class*="bg-secondary"],
+.admin-content [role="combobox"],
+.admin-content select,
+.admin-content .admin-btn-secondary,
+.admin-content .admin-btn-outline {
+  background-color: #ffffff;
+  border-color: #e5e0d8;
+  color: #051341;
+}
+.admin-content button[class*="border-input"]:hover,
+.admin-content button[class*="bg-secondary"]:hover,
+.admin-content [role="combobox"]:hover,
+.admin-content select:hover,
+.admin-content .admin-btn-secondary:hover,
+.admin-content .admin-btn-outline:hover {
+  background-color: #faf7f2;
+  border-color: #c8d0d3;
+  color: #051341;
+}
 
 /* Private account UI */
 .profile-personal-card {

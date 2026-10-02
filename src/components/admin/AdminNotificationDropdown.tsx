@@ -306,7 +306,7 @@ export default function AdminNotificationDropdown() {
                             </p>
                           </div>
                           {isUnread && (
-                            <div className="w-2 h-2 bg-[#AE0000] rounded-full flex-shrink-0 mt-1" />
+                            <div className="w-2 h-2 bg-[#16345F] rounded-full flex-shrink-0 mt-1" />
                           )}
                         </div>
 
@@ -316,7 +316,7 @@ export default function AdminNotificationDropdown() {
                             {getTimeSince(notification.created_at)}
                           </span>
                           {notification.action_label && (
-                            <span className="text-xs font-medium text-[#AE0000]">
+                            <span className="text-xs font-medium text-[#16345F]">
                               {notification.action_label} →
                             </span>
                           )}
@@ -333,11 +333,11 @@ export default function AdminNotificationDropdown() {
         {/* Footer */}
         {notifications.length > 0 && (
           <>
-            <DropdownMenuSeparator className="bg-[#AE0000]/10" />
+            <DropdownMenuSeparator className="bg-[#E5E0D8]" />
             <div className="p-2">
               <Button
                 variant="ghost"
-                className="w-full justify-center text-xs text-[#AE0000] hover:bg-[#AE000020]"
+                className="w-full justify-center text-xs text-[#051341] hover:bg-[#FAF7F2]"
                 onClick={() => {
                   setIsOpen(false);
                   router.push("/admin/notifications");

@@ -295,7 +295,7 @@ export default function AdminBlogsPage() {
                               ? "transparent"
                               : "var(--admin-bg-tertiary)",
                         }}
-                        className="hover:bg-[#AE000025] transition-colors"
+                        className="hover:bg-[#FAF7F2] transition-colors"
                       >
                         <TableCell>
                           <p

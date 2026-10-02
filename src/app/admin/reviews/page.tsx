@@ -388,7 +388,7 @@ export default function AdminReviewsPage() {
                             ? "transparent"
                             : "var(--admin-bg-tertiary)",
                       }}
-                      className="hover:bg-[#AE000025] transition-colors"
+                      className="hover:bg-[#F3F6F6] transition-colors"
                     >
                       <TableCell>
                         <div>
@@ -511,9 +511,10 @@ export default function AdminReviewsPage() {
                             variant="outline"
                             onClick={() => handleDeleteReview(review.id)}
                             title="Eliminar reseña"
+                            className="bg-white hover:bg-[#FAF7F2]"
                             style={{
-                              borderColor: "var(--admin-border-secondary)",
-                              color: "var(--admin-error)",
+                              borderColor: "var(--admin-border-primary)",
+                              color: "var(--admin-text-primary)",
                             }}
                           >
                             <Trash2 className="w-4 h-4" />

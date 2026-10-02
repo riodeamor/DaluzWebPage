@@ -74,8 +74,8 @@ export default function NotificationItem({
   return (
     <div
       className={cn(
-        "p-4 hover:bg-[#AE000010] transition-colors cursor-pointer",
-        isUnread && "bg-[#AE000005]",
+        "p-4 hover:bg-[#FAF7F2] transition-colors cursor-pointer",
+        isUnread && "bg-[#F3F6F6]",
       )}
       onClick={() => onClick?.(notification)}
     >
@@ -107,7 +107,7 @@ export default function NotificationItem({
               </p>
             </div>
             {isUnread && (
-              <div className="w-2 h-2 bg-[#AE0000] rounded-full flex-shrink-0 mt-1" />
+              <div className="w-2 h-2 bg-[#16345F] rounded-full flex-shrink-0 mt-1" />
             )}
           </div>
 
@@ -117,7 +117,7 @@ export default function NotificationItem({
               {getTimeSince(notification.created_at)}
             </span>
             {notification.action_label && (
-              <span className="text-xs font-medium text-[#AE0000]">
+              <span className="text-xs font-medium text-[#16345F]">
                 {notification.action_label} →
               </span>
             )}

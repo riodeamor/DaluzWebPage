@@ -557,8 +557,9 @@ export default function ShippingManager() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleDeleteZone(zone)}
+                          className="bg-white border border-[#E5E0D8] hover:bg-[#FAF7F2]"
                         >
-                          <Trash2 className="h-4 w-4 text-red-500" />
+                          <Trash2 className="h-4 w-4 text-[#051341]" />
                         </Button>
                       </div>
                     </TableCell>
@@ -654,8 +655,9 @@ export default function ShippingManager() {
                             variant="ghost"
                             size="sm"
                             onClick={() => handleDeleteRate(rate)}
+                            className="bg-white border border-[#E5E0D8] hover:bg-[#FAF7F2]"
                           >
-                            <Trash2 className="h-4 w-4 text-red-500" />
+                            <Trash2 className="h-4 w-4 text-[#051341]" />
                           </Button>
                         </div>
                       </TableCell>
@@ -729,8 +731,9 @@ export default function ShippingManager() {
                           variant="ghost"
                           size="sm"
                           onClick={() => handleDeleteCarrier(carrier)}
+                          className="bg-white border border-[#E5E0D8] hover:bg-[#FAF7F2]"
                         >
-                          <Trash2 className="h-4 w-4 text-red-500" />
+                          <Trash2 className="h-4 w-4 text-[#051341]" />
                         </Button>
                       </div>
                     </TableCell>

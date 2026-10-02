@@ -537,7 +537,7 @@ export default function AdminDiagnosticsPage() {
                           size="sm"
                           onClick={() => runTest(index)}
                           disabled={isTestRunning || (res.method !== 'GET' && !allowMutations)}
-                          className={res.method !== 'GET' ? 'bg-orange-600 hover:bg-orange-700' : 'bg-rose-600 hover:bg-rose-700'}
+                          className="bg-[#051341] text-white hover:bg-[#16345F]"
                         >
                           Test
                         </Button>

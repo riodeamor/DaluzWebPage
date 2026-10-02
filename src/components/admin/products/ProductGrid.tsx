@@ -159,13 +159,13 @@ function ProductGridView({
                 </Link>
               </Button>
               <Button
-                className="btn-daluz-outline group/btn hover:bg-red-50 hover:border-red-300 transition-colors"
+                className="btn-daluz-outline group/btn bg-white border-[#E5E0D8] hover:bg-[#FAF7F2] hover:border-[#C8D0D3] transition-colors"
                 size="sm"
                 onClick={() => onDeleteProduct(product)}
                 aria-label={`Eliminar producto ${product.name}`}
               >
                 <Trash2
-                  className="h-4 w-4 group-hover/btn:text-red-500"
+                  className="h-4 w-4 group-hover/btn:text-[#051341]"
                   aria-hidden="true"
                 />
               </Button>

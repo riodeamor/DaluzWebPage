@@ -487,7 +487,11 @@ export default function CustomerDetailPage() {
                     Pedidos Recientes
                   </div>
                   <Link href={`/admin/customers/${customer.id}?tab=orders`}>
-                    <Button variant="outline" size="sm">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="bg-white border-[#E5E0D8] text-[#051341] hover:bg-[#FAF7F2] hover:border-[#16345F] hover:text-[#16345F]"
+                    >
                       Ver todos
                     </Button>
                   </Link>
@@ -558,7 +562,7 @@ export default function CustomerDetailPage() {
                       <>
                         <TableRow
                           key={order.id}
-                          className="hover:bg-[#AE000010]"
+                          className="hover:bg-[#FAF7F2]"
                         >
                           <TableCell>
                             <div className="flex items-center space-x-2">
@@ -746,7 +750,7 @@ export default function CustomerDetailPage() {
                               .map((item: any, index: number) => (
                                 <div
                                   key={index}
-                                  className="flex items-center justify-between p-3 border rounded-lg hover:bg-[#AE000010] transition-colors"
+                                  className="flex items-center justify-between p-3 border rounded-lg hover:bg-[#FAF7F2] transition-colors"
                                 >
                                   <div className="flex items-center space-x-3">
                                     {item.product?.featured_image ? (

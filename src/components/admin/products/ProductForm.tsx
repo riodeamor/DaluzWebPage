@@ -1000,7 +1000,7 @@ export default function ProductForm({
                         >
                           {skinTypeLabel}
                           <X
-                            className="h-3 w-3 cursor-pointer hover:text-red-200"
+                            className="h-3 w-3 cursor-pointer hover:text-white"
                             onClick={() => removeFromArray("skin_type", type)}
                           />
                         </Badge>
@@ -1046,7 +1046,7 @@ export default function ProductForm({
                         >
                           {hairTypeLabel}
                           <X
-                            className="h-3 w-3 cursor-pointer hover:text-red-200"
+                            className="h-3 w-3 cursor-pointer hover:text-white"
                             onClick={() => removeFromArray("hair_type", type)}
                           />
                         </Badge>
@@ -1088,7 +1088,7 @@ export default function ProductForm({
                       >
                         {benefit}
                         <X
-                          className="h-3 w-3 cursor-pointer hover:text-red-200"
+                          className="h-3 w-3 cursor-pointer hover:text-white"
                           onClick={() => removeFromArray("benefits", benefit)}
                         />
                       </Badge>
@@ -1134,7 +1134,7 @@ export default function ProductForm({
                         >
                           {certLabel}
                           <X
-                            className="h-3 w-3 cursor-pointer hover:text-red-500"
+                            className="h-3 w-3 cursor-pointer hover:text-[#051341]"
                             onClick={() =>
                               removeFromArray("certifications", cert)
                             }
@@ -1249,7 +1249,7 @@ export default function ProductForm({
                             variant="ghost"
                             size="icon"
                             onClick={() => removeIngredient(index)}
-                            className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                            className="text-[#051341] hover:text-[#16345F] hover:bg-[#FAF7F2]"
                           >
                             <X className="h-4 w-4" />
                           </Button>

@@ -429,7 +429,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
                 </h1>
                 <p
                   className="admin-header-subtitle font-caption"
-                  style={{ color: "var(--admin-text-inverse)", opacity: 0.8 }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   Panel de Administración
                 </p>
@@ -576,7 +576,7 @@ function AdminSidebar({
             <div className="space-y-2">
               <div className="flex justify-between text-xs">
                 <span
-                  style={{ color: "var(--admin-text-inverse)", opacity: 0.7 }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   Pedidos Hoy
                 </span>
@@ -589,7 +589,7 @@ function AdminSidebar({
               </div>
               <div className="flex justify-between text-xs">
                 <span
-                  style={{ color: "var(--admin-text-inverse)", opacity: 0.7 }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   Ventas
                 </span>
@@ -602,13 +602,13 @@ function AdminSidebar({
               </div>
               <div className="flex justify-between text-xs">
                 <span
-                  style={{ color: "var(--admin-text-inverse)", opacity: 0.7 }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   Stock Bajo
                 </span>
                 <span
                   className="font-medium"
-                  style={{ color: "#F4CBA4" }}
+                  style={{ color: "var(--admin-text-inverse)" }}
                 >
                   {stats.lowStock}
                 </span>
@@ -654,10 +654,11 @@ function AdminSidebar({
                       {"badge" in item && item.badge && (
                         <Badge
                           variant="secondary"
-                          className="admin-badge admin-badge-error"
+                          className="admin-badge"
                           style={{
-                            backgroundColor: "var(--admin-accent-tertiary)",
+                            backgroundColor: "var(--admin-sidebar-active)",
                             color: "white",
+                            border: "1px solid rgba(255,255,255,0.35)",
                           }}
                         >
                           {item.badge}
@@ -668,7 +669,6 @@ function AdminSidebar({
                       className="text-xs mt-1"
                       style={{
                         color: "var(--admin-text-inverse)",
-                        opacity: 0.6,
                       }}
                     >
                       {item.description}
@@ -692,13 +692,13 @@ function AdminSidebar({
         <div className="text-center">
           <p
             className="text-[10px]"
-            style={{ color: "var(--admin-text-inverse)", opacity: 0.6 }}
+            style={{ color: "var(--admin-text-inverse)" }}
           >
             DA LUZ CONSCIENTE v2.0
           </p>
           <p
             className="text-[10px] mt-1"
-            style={{ color: "var(--admin-text-inverse)", opacity: 0.6 }}
+            style={{ color: "var(--admin-text-inverse)" }}
           >
             Admin Panel
           </p>

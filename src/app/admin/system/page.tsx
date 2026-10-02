@@ -1875,7 +1875,7 @@ export default function SystemAdministrationPage() {
                             Restaurar
                           </Button>
                           <Button
-                            className="text-xs text-[#AE0000] hover:text-admin-error-text hover:bg-red-50 dark:hover:bg-red-900/20 border-red-200 dark:border-red-800 btn-daluz-outline"
+                            className="text-xs bg-white text-[#051341] hover:bg-[#FAF7F2] hover:text-[#16345F] border-[#E5E0D8] btn-daluz-outline"
                             size="sm"
                             onClick={() => handleDeleteBackup(backup)}
                             disabled={restoringBackup || deletingBackup}

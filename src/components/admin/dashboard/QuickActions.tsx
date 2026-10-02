@@ -136,12 +136,12 @@ export default function QuickActions({
               )}
               <Link href="/admin/products?filter=low_stock">
                 <Button
-                  className="w-full mt-3"
+                  variant="outline"
+                  className="w-full mt-3 bg-white hover:bg-[#FAF7F2] hover:border-[#16345F] hover:text-[#16345F]"
                   size="sm"
                   style={{
-                    borderColor: "var(--admin-error)",
-                    color: "var(--admin-error)",
-                    backgroundColor: "transparent",
+                    borderColor: "var(--admin-border-primary)",
+                    color: "var(--admin-text-primary)",
                   }}
                 >
                   Ver Todos
