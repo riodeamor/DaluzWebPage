@@ -1,3 +1,4 @@
+import ResidualWorkerCleanup from "@/components/infra/ResidualWorkerCleanup";
 import type { Metadata } from "next";
 import { Inter, Playfair_Display, EB_Garamond, Montserrat, Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
@@ -136,7 +137,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ProductLineThemeProvider>
-            <AuthProvider>
+            <ResidualWorkerCleanup />
+        <AuthProvider>
               <CartProvider>
                 <LikeProvider>
                   {children}

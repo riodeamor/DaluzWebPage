@@ -452,7 +452,7 @@ export function useAuth() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${siteUrl}/auth/callback?type=recovery&next=/reset-password`,
+        redirectTo: `${siteUrl}/auth/callback?type=recovery&next=/restablecer-password`,
       });
 
       if (error) {
@@ -510,7 +510,7 @@ export function useAuth() {
     return { error };
   };
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = async (next = "/perfil") => {
     const supabase = supabaseRef.current || getSupabaseClient();
     setAuthState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -518,7 +518,7 @@ export function useAuth() {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next.startsWith("/") && !next.startsWith("//") ? next : "/perfil")}`,
           queryParams: {
             access_type: "offline",
             prompt: "consent",

@@ -1,3 +1,4 @@
+import {unlockedTreasures} from "@/lib/treasures/access";
 // =====================================================
 // API Route: /api/treasures/content
 // Purpose: Get Sanity content filtered by user's treasure access
@@ -13,10 +14,11 @@ const sanityClient = createSanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2024-01-01",
-  useCdn: process.env.NODE_ENV === "production",
+  useCdn: false,
 });
 
-export const runtime = "edge";
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 /**
  * GET /api/treasures/content
@@ -42,24 +44,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 2. Get user's treasures
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("treasures")
-      .eq("id", user.id)
-      .single();
-
-    const userTreasures = profile?.treasures || [];
-
-    // Always include general access
-    const accessIds =
-      userTreasures.length > 0
-        ? [
-            "tesoro-gral",
-            ...userTreasures.filter((t: string) => t !== "tesoro-gral"),
-          ]
-        : [];
-
+    const accessIds = await unlockedTreasures(supabase, user.id);
+    if(accessIds.includes("kit-alquimia")) accessIds.push("kit-alkimya");
     if (accessIds.length === 0) {
       return NextResponse.json({
         success: true,
@@ -163,7 +149,7 @@ export async function GET(request: NextRequest) {
         linea: lineaFilter || null,
         type: typeFilter || null,
       },
-    });
+    }, {headers:{"Cache-Control":"private, no-store"}});
   } catch (error) {
     console.error("Treasures content API error:", error);
     return NextResponse.json(

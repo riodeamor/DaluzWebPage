@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch email templates' }, { status: 500 });
     }
 
-    return NextResponse.json({ templates: templates || [] });
+    return NextResponse.json({ templates: templates || [] },{headers:{"Cache-Control":"private, no-store"}});
 
   } catch (error) {
     console.error('Error in email templates API:', error);
@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
         type,
         subject,
         content,
-        variables: JSON.stringify(variables),
+        variables: Array.isArray(variables) ? variables : [],
         is_active,
         is_system: false,
         usage_count: 0,

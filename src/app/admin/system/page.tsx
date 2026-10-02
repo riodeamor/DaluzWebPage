@@ -1,4 +1,5 @@
 "use client";
+import {obsoleteConfig} from "@/lib/config/obsolete";
 
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -200,7 +201,7 @@ export default function SystemAdministrationPage() {
       }
 
       const data = await response.json();
-      setConfigs(data.configs || []);
+      setConfigs((data.configs || []).filter((c:SystemConfig)=>!obsoleteConfig(c.config_key)));
     } catch (error) {
       console.error("Error fetching configs:", error);
       throw error;

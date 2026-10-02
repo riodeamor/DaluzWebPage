@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAdmin } from "@/lib/auth/helpers";
+import { requireAdmin, getServiceClient } from "@/lib/auth/helpers";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
 import { OrdersService } from "@/lib/services/orders.service";
 import { adminOrderActionSchema } from "@/lib/validations/orders.schema";
@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     const auth = await requireAdmin();
     if (!auth.ok) return auth.response;
 
-    const ordersRepo = new OrdersRepository(auth.supabase);
+    const ordersRepo = new OrdersRepository(getServiceClient());
     const service = new OrdersService(ordersRepo);
     const url = new URL(request.url);
 
@@ -54,7 +54,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (parsed.data.action === "create_manual_order") {
-      const newOrder = await service.createManualOrder(parsed.data.orderData);
+      const {data:buyer}=await getServiceClient().from("profiles").select("id").eq("email",parsed.data.orderData.email.trim().toLowerCase()).maybeSingle();
+      const newOrder = await service.createManualOrder(parsed.data.orderData, buyer?.id);
       return NextResponse.json({ success: true, order: newOrder });
     }
 

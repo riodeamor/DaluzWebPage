@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { commerceCrud } from "@/lib/commerce/admin-crud";
 import { announcementSchema } from "@/lib/commerce/schemas";
 const handlers = commerceCrud("announcements", announcementSchema);

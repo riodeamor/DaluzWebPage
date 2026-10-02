@@ -25,12 +25,6 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get("featured");
     const inStock = searchParams.get("in_stock");
     const onSale = searchParams.get("on_sale");
-    const status = searchParams.get("status"); // For admin use
-    const includeArchived = searchParams.get("include_archived") === "true"; // For admin use
-
-    // Sort
-    const sortBy = searchParams.get("sort_by") || "created_at";
-    const sortOrder = searchParams.get("sort_order") || "desc";
 
     // Build query with count option
     let query = supabase.from("products").select(
@@ -63,8 +57,7 @@ export async function GET(request: NextRequest) {
     let tokens: string[];
     try { tokens = searchTokens(search || ""); } catch (error) { return NextResponse.json({ error: (error as Error).message }, { status: 400 }); }
     for (const token of tokens) query = query.ilike("name_search", `%${token}%`);
-    for (const key of ["anatomy", "need"]) {
-      const slug = searchParams.get(key);
+    for (const [key, slug] of [["anatomy",searchParams.get("anatomy")], ...[...searchParams.getAll("need"), skinType, hairType].map(slug=>["need",slug])]) {
       if (!slug) continue;
       const { data: term } = await supabase.from("catalog_terms").select("id").eq("slug", slug).eq("kind", key === "anatomy" ? "anatomy" : "need").eq("is_active", true).maybeSingle();
       if (!term) return NextResponse.json({ products: [], pagination: { page, limit, total: 0, totalPages: 0, hasMore: false } });
@@ -77,13 +70,7 @@ export async function GET(request: NextRequest) {
       query = query.eq("category_id", line.id);
     }
 
-    if (skinType) {
-      query = query.contains("skin_type", [skinType]);
-    }
 
-    if (hairType) {
-      query = query.contains("hair_type", [hairType]);
-    }
 
     if (minPrice) {
       query = query.gte("price", parseFloat(minPrice));
@@ -182,153 +169,5 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST method for creating products
-export async function POST(request: NextRequest) {
-  try {
-    const supabase = await createClient();
-    const productData = await request.json();
-
-    // Validate required fields
-    if (!productData.name || !productData.price) {
-      return NextResponse.json(
-        { error: "Name and price are required" },
-        { status: 400 },
-      );
-    }
-
-    // Generate slug if not provided
-    if (!productData.slug) {
-      productData.slug = productData.name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9\s-]/g, "")
-        .replace(/\s+/g, "-")
-        .replace(/-+/g, "-")
-        .trim();
-    }
-
-    // Set default values
-    const product = {
-      name: productData.name,
-      slug: productData.slug,
-      description: productData.description || "",
-      short_description: productData.short_description || "",
-      price: parseFloat(productData.price),
-      compare_at_price: productData.compare_at_price
-        ? parseFloat(productData.compare_at_price)
-        : null,
-      category_id: productData.category_id || null,
-      featured_image: productData.featured_image || "",
-      gallery: productData.gallery || [],
-      skin_type: productData.skin_type || [],
-      hair_type: productData.hair_type || [],
-      benefits: productData.benefits || [],
-      usage_instructions: productData.usage_instructions || "",
-      precautions: productData.precautions || "",
-      certifications: productData.certifications || [],
-      ingredients: productData.ingredients || [],
-      weight: productData.weight ? parseFloat(productData.weight) : null,
-      dimensions: productData.dimensions || "",
-      package_characteristics: productData.package_characteristics || "",
-      inventory_quantity: parseInt(productData.inventory_quantity) || 0,
-      status: productData.status || "active",
-      is_featured: productData.is_featured || false,
-      installments_3_enabled: productData.installments_3_enabled || false,
-      installments_6_enabled: productData.installments_6_enabled || false,
-      published_at: productData.published_at || new Date().toISOString(),
-      vendor: "ALKIMYA DA LUZ",
-      currency: "ARS",
-      requires_shipping: true,
-      track_inventory: true,
-      inventory_policy: "deny",
-      low_stock_threshold: 5,
-      // Nuevos campos de la migración
-      promotional_tag: productData.promotional_tag || "none",
-      discount_transfer_percent: productData.discount_transfer_percent
-        ? parseFloat(productData.discount_transfer_percent)
-        : null,
-      discount_cash_percent: productData.discount_cash_percent
-        ? parseFloat(productData.discount_cash_percent)
-        : null,
-      access_id: productData.access_id || null,
-    };
-
-    // Insert product
-    const { data, error } = await supabase
-      .from("products")
-      .insert([product])
-      .select()
-      .single();
-
-    if (error) {
-      console.error("Database error:", error);
-
-      // Handle unique constraint violations
-      if (error.code === "23505") {
-        if (error.message.includes("slug")) {
-          return NextResponse.json(
-            { error: "A product with this URL already exists" },
-            { status: 400 },
-          );
-        }
-        return NextResponse.json(
-          { error: "Product already exists" },
-          { status: 400 },
-        );
-      }
-
-      return NextResponse.json(
-        { error: "Failed to create product" },
-        { status: 500 },
-      );
-    }
-
-    return NextResponse.json(
-      {
-        message: "Product created successfully",
-        product: data,
-      },
-      { status: 201 },
-    );
-  } catch (error) {
-    console.error("API error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 },
-    );
-  }
-}
-
-function getSortColumn(sortBy: string): string {
-  switch (sortBy) {
-    case "price_asc":
-    case "price_desc":
-      return "price";
-    case "name":
-      return "name";
-    case "newest":
-      return "created_at";
-    case "featured":
-      return "is_featured";
-    default:
-      return "created_at";
-  }
-}
-
-function getSortOrder(sort: string) {
-  switch (sort) {
-    case "price_asc":
-      return "asc";
-    case "price_desc":
-      return "desc";
-    case "name":
-      return "asc";
-    case "newest":
-      return "desc";
-    case "featured":
-      return "desc";
-    default:
-      return "desc";
-  }
-}
+// Compatibility endpoint shares the authenticated Admin writer.
+export { POST } from "@/app/api/admin/products/route";

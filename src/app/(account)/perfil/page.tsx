@@ -1,5 +1,6 @@
 "use client";
 
+import TuSendero from "@/components/account/TuSendero";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -227,7 +228,7 @@ export default function ProfilePage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-normal text-[#051341] tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif" }}>Mi Perfil</h1>
+          <h1 className="text-3xl font-normal text-[#051341] tracking-[0.05em]" style={{ fontFamily: "var(--font-cormorant), serif" }}>Tu Sendero</h1>
           <p className="text-sm text-[#16345F]/70 mt-1" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
             Gestiona tu información personal y preferencias
           </p>
@@ -291,6 +292,7 @@ export default function ProfilePage() {
           </form>
         </div>
       </AnimatedEntry>
+      <TuSendero />
     </div>
   );
 }

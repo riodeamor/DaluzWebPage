@@ -54,6 +54,7 @@ export async function requireAuth(): Promise<AuthResult> {
 
     return { ok: true, user, supabase };
   } catch (error) {
+    if (error && typeof error === "object" && "digest" in error && error.digest === "DYNAMIC_SERVER_USAGE") throw error;
     console.error("[Auth] Unexpected error in requireAuth:", error);
     return {
       ok: false,
@@ -117,6 +118,7 @@ export async function requireAdmin(): Promise<AdminAuthResult> {
 
     return { ok: true, user, supabase };
   } catch (error) {
+    if (error && typeof error === "object" && "digest" in error && error.digest === "DYNAMIC_SERVER_USAGE") throw error;
     console.error("[Auth] Unexpected error in requireAdmin:", error);
     return {
       ok: false,

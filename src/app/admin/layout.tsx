@@ -56,6 +56,8 @@ const createNavigationGroups = (ordersCount?: number) => [
       { href: "/admin/orders", label: "Pedidos", icon: ShoppingCart, description: "Gestión de pedidos", badge: ordersCount !== undefined ? ordersCount.toString() : undefined },
       { href: "/admin/products", label: "Productos", icon: Package, description: "Catálogo e inventario" },
       { href: "/admin/cupones", label: "Cupones", icon: Tag, description: "Descuentos y campañas" },
+      { href: "/admin/taxonomia", label: "Taxonomía", icon: Tag, description: "Categorías anatómicas y necesidades" },
+      { href: "/admin/contrataciones", label: "Contrataciones", icon: Users, description: "Tu Sendero" },
       { href: "/admin/categories", label: "Categorías", icon: Tag, description: "Gestión de categorías" },
       { href: "/admin/customers", label: "Clientes", icon: Users, description: "Gestión de clientes" },
     ],
@@ -63,6 +65,7 @@ const createNavigationGroups = (ordersCount?: number) => [
   {
     title: "Contenido",
     items: [
+      { href: "/admin/tesoros-config", label: "Tesoros", icon: FileText, description: "Archivos externos" },
       { href: "/admin/announcements", label: "Avisos", icon: Bell, description: "Barrita superior" },
       { href: "/admin/blogs", label: "Blogs", icon: FileText, description: "Gestión de artículos del blog" },
       { href: "/admin/reviews", label: "Reseñas", icon: MessageSquare, description: "Moderación de reseñas" },

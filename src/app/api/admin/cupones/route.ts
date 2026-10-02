@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { commerceCrud } from "@/lib/commerce/admin-crud";
 import { couponSchema } from "@/lib/commerce/schemas";
 const handlers = commerceCrud("coupons", couponSchema);

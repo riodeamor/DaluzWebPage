@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Loader2, Eye, EyeOff, Mail, Lock } from "lucide-react";
 import './login.css';
+import {safeReturn} from "@/lib/treasures/catalog";
 import { authMessage } from "@/lib/auth/messages";
 
 const loginSchema = z.object({
@@ -67,12 +68,13 @@ export default function LoginPage() {
         }
         sessionStorage.setItem("pending_2fa_password", data.password);
         sessionStorage.setItem("pending_2fa_email", data.email);
+        sessionStorage.setItem("auth_return", safeReturn(new URLSearchParams(window.location.search).get("redirect")));
         router.push("/verify-2fa");
         return;
       }
 
       setTimeout(() => {
-        router.push("/");
+        router.push(safeReturn(new URLSearchParams(window.location.search).get("redirect")));
         router.refresh();
       }, 100);
     } catch (err) {
@@ -83,7 +85,7 @@ export default function LoginPage() {
   const handleGoogleSignIn = async () => {
     try {
       setGoogleLoading(true);
-      await signInWithGoogle();
+      await signInWithGoogle(safeReturn(new URLSearchParams(window.location.search).get("redirect")));
       // The redirect will happen automatically via OAuth flow
     } catch (err) {
       console.error("Google sign in error:", err);
@@ -103,6 +105,7 @@ export default function LoginPage() {
       </CardHeader>
 
       <CardContent className="login-content space-y-5">
+        <p>Ingresá con tu cuenta para continuar a tus espacios y Tesoros.</p>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           {error && (
             <Alert variant="destructive" className="login-alert">
@@ -168,7 +171,7 @@ export default function LoginPage() {
           {/* Forgot Password */}
           <div className="login-forgot-row">
             <Link
-              href="/reset-password"
+              href="/restablecer-password"
               className="login-forgot-link text-brand-primary hover:text-brand-secondary font-text"
             >
               ¿Olvidaste tu contraseña?

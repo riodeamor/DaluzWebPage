@@ -703,7 +703,7 @@ export default function Header() {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
-                        href="/mi-membresia"
+                        href="/perfil"
                         className="flex items-center"
                       >
                         <BookOpen className="mr-2 h-4 w-4 text-[#D1E3DD]" />

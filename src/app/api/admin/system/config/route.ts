@@ -1,3 +1,4 @@
+import {obsoleteConfig} from "@/lib/config/obsolete";
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin, getServiceClient } from '@/lib/auth/helpers';
 import { revalidateTag } from 'next/cache';
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
 
     // Parse JSON values safely
     const parsedConfigs =
-      configs?.map((config) => {
+      configs?.filter(config=>!obsoleteConfig(config.config_key)).map((config) => {
         let parsedValue = config.config_value;
 
         // Try to parse as JSON if it's a string
@@ -85,6 +86,7 @@ export async function POST(request: NextRequest) {
     if (!auth.ok) return auth.response;
     const { user, supabase } = auth;
 
+    if(obsoleteConfig(config_key))return NextResponse.json({error:"Campo retirado"},{status:400});
     // Validate input
     if (!config_key || config_value === undefined) {
       return NextResponse.json(
@@ -175,6 +177,7 @@ export async function PUT(request: NextRequest) {
     for (const update of updates) {
       const { config_key, config_value } = update;
 
+      if(obsoleteConfig(config_key)){results.push({config_key,error:"Campo retirado"});continue;}
       if (!config_key || config_value === undefined) {
         results.push({ config_key, error: "Key and value are required" });
         continue;

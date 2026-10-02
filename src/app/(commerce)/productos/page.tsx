@@ -173,6 +173,10 @@ function ProductsContent() {
     setDebouncedSearch(searchParams.get("search") || "");
     setSearchTerm(searchParams.get("search") || "");
     setSelectedCategory(searchParams.get("category") || "");
+    setSelectedSkinType(searchParams.get("skin_type") || "");
+    setSelectedHairType(searchParams.get("hair_type") || "");
+    setPriceRange({min:searchParams.get("min_price") || "",max:searchParams.get("max_price") || ""});
+    setShowOnlySale(searchParams.get("on_sale") === "true");
     setSelectedSynergy(searchParams.get("need"));
     setCurrentPage(Math.max(1, Number(searchParams.get("page")) || 1));
   }, [searchParams]);
@@ -261,7 +265,6 @@ function ProductsContent() {
     ? products.filter((p) => isLiked(p.id))
     : products;
 
-  const skinTypes = ["seca", "grasa", "mixta", "sensible", "normal"];
 
   return (
     <div className="tienda-page min-h-screen overflow-hidden bg-[#FAF7F2]">
@@ -370,12 +373,7 @@ function ProductsContent() {
                       </SelectTrigger>
                       <SelectContent className="tienda-select-panel">
                         <SelectItem value="all">Todos los tipos</SelectItem>
-                        <SelectItem value="dry">Piel Seca</SelectItem>
-                        <SelectItem value="oily">Piel Grasa</SelectItem>
-                        <SelectItem value="combination">Piel Mixta</SelectItem>
-                        <SelectItem value="sensitive">Piel Sensible</SelectItem>
-                        <SelectItem value="normal">Piel Normal</SelectItem>
-                        <SelectItem value="mature">Piel Madura</SelectItem>
+                        {terms.filter(t => t.kind === "need" && t.group_name === "facial").map(t => <SelectItem key={t.id} value={t.slug}>{t.label}</SelectItem>)}
                       </SelectContent>
                     </Select>
 
@@ -388,12 +386,7 @@ function ProductsContent() {
                       </SelectTrigger>
                       <SelectContent className="tienda-select-panel">
                         <SelectItem value="all">Todos</SelectItem>
-                        <SelectItem value="oily">Graso</SelectItem>
-                        <SelectItem value="dry">Seco</SelectItem>
-                        <SelectItem value="normal">Normal</SelectItem>
-                        <SelectItem value="combination">Mixto</SelectItem>
-                        <SelectItem value="curly">Rizado</SelectItem>
-                        <SelectItem value="straight">Lacio</SelectItem>
+                        {terms.filter(t => t.kind === "need" && t.group_name === "capilar").map(t => <SelectItem key={t.id} value={t.slug}>{t.label}</SelectItem>)}
                       </SelectContent>
                     </Select>
 
@@ -499,17 +492,7 @@ function ProductsContent() {
                       <SelectContent className="tienda-select-panel">
                         {/* Etiquetas sin "á" ni ":": Synthese.otf no trae esos
                             glifos y el panel usa esa tipografía */}
-                        <SelectItem value="featured">Destacados</SelectItem>
-                        <SelectItem value="price_asc">
-                          Precio menor a mayor
-                        </SelectItem>
-                        <SelectItem value="price_desc">
-                          Precio mayor a menor
-                        </SelectItem>
-                        <SelectItem value="name_asc">Nombre A-Z</SelectItem>
-                        <SelectItem value="name_desc">Nombre Z-A</SelectItem>
-                        <SelectItem value="newest">Recientes</SelectItem>
-                        <SelectItem value="rating">Mejor Valorados</SelectItem>
+                        <SelectItem value="featured">Fórmulas primero · Más recientes</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
