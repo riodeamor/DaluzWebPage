@@ -1,0 +1,16 @@
+{
+  "project": "pdxgpfnxsewulpieqdrf",
+  "verifiedAt": "2026-10-02T00:05:01.730Z",
+  "checkout": "authenticated real Supabase Auth + repositories",
+  "discount": "10% per product, total 900 ARS",
+  "expiryHours": 72,
+  "concurrentConfirmations": 8,
+  "successfulConfirmations": 1,
+  "concurrentClaims": 8,
+  "activeClaims": 1,
+  "stock": 8,
+  "auditMovements": 1,
+  "effects": 1,
+  "recovery": "failed provider -> retry -> success, same payload and idempotency key",
+  "externalEmails": "stubbed; no real messages sent"
+}
