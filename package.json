@@ -10,9 +10,9 @@
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "studio": "node -r dotenv/config node_modules/sanity/bin/sanity dev dotenv_config_path=.env.local",
-    "studio:build": "node -r dotenv/config node_modules/sanity/bin/sanity build dotenv_config_path=.env.local",
-    "studio:deploy": "node -r dotenv/config node_modules/sanity/bin/sanity deploy dotenv_config_path=.env.local",
+    "studio": "node scripts/sanity-cli.cjs dev",
+    "studio:build": "node scripts/sanity-cli.cjs build .sanity/build --yes",
+    "studio:deploy": "node scripts/sanity-cli.cjs deploy .sanity/build",
     "supabase": "npx supabase",
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
@@ -113,6 +113,6 @@
     "vite": "^6.4.1"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "24.x"
   }
 }
