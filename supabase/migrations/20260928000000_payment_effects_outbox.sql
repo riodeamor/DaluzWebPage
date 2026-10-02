@@ -1,5 +1,5 @@
 -- Apply before deploying the payment worker. No historical orders are replayed.
-CREATE TABLE public.payment_effects (
+CREATE TABLE IF NOT EXISTS public.payment_effects (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   order_id uuid NOT NULL REFERENCES public.orders(id) ON DELETE RESTRICT,
   kind text NOT NULL CHECK (kind = 'order_confirmation'),
@@ -17,13 +17,13 @@ CREATE TABLE public.payment_effects (
   created_at timestamptz NOT NULL DEFAULT now(),
   UNIQUE (order_id, kind)
 );
-CREATE INDEX payment_effects_pending_idx ON public.payment_effects (available_at, created_at)
+CREATE INDEX IF NOT EXISTS payment_effects_pending_idx ON public.payment_effects (available_at, created_at)
   WHERE state IN ('pending', 'processing');
 ALTER TABLE public.payment_effects ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON public.payment_effects FROM PUBLIC, anon, authenticated;
 GRANT SELECT ON public.payment_effects TO service_role;
 
-CREATE FUNCTION public.confirm_order_payment_once(
+CREATE OR REPLACE FUNCTION public.confirm_order_payment_once(
   p_order_id uuid, p_expected jsonb, p_payment jsonb DEFAULT '{}'::jsonb
 ) RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 DECLARE
@@ -98,7 +98,7 @@ BEGIN
 END;
 $$;
 
-CREATE FUNCTION public.claim_payment_effect(p_order_id uuid DEFAULT NULL)
+CREATE OR REPLACE FUNCTION public.claim_payment_effect(p_order_id uuid DEFAULT NULL)
 RETURNS SETOF public.payment_effects LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 DECLARE v_id uuid;
 BEGIN
@@ -121,7 +121,7 @@ BEGIN
 END;
 $$;
 
-CREATE FUNCTION public.prepare_payment_email(p_id uuid, p_token uuid, p_payload jsonb)
+CREATE OR REPLACE FUNCTION public.prepare_payment_email(p_id uuid, p_token uuid, p_payload jsonb)
 RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 DECLARE v_payload jsonb;
 BEGIN
@@ -134,7 +134,7 @@ BEGIN
 END;
 $$;
 
-CREATE FUNCTION public.begin_payment_email_send(p_id uuid, p_token uuid)
+CREATE OR REPLACE FUNCTION public.begin_payment_email_send(p_id uuid, p_token uuid)
 RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$
 BEGIN
   UPDATE public.payment_effects SET first_send_at = coalesce(first_send_at, now())
@@ -145,7 +145,7 @@ BEGIN
 END;
 $$;
 
-CREATE FUNCTION public.finish_payment_effect(
+CREATE OR REPLACE FUNCTION public.finish_payment_effect(
   p_id uuid, p_token uuid, p_success boolean, p_error text DEFAULT NULL,
   p_manual boolean DEFAULT false, p_provider_id text DEFAULT NULL
 ) RETURNS boolean LANGUAGE plpgsql SECURITY DEFINER SET search_path = public AS $$

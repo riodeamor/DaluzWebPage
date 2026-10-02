@@ -15,7 +15,7 @@ VALUES
   ('Zona de respaldo','CP fuera de los rangos regionales','respaldo',5)
 ON CONFLICT (region_key) DO NOTHING;
 
-CREATE TABLE public.coupons (
+CREATE TABLE IF NOT EXISTS public.coupons (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   code text UNIQUE NOT NULL CHECK (code ~ '^[A-Z0-9_-]{1,40}$'),
   type text NOT NULL CHECK (type IN ('percent','fixed')),
@@ -29,10 +29,11 @@ CREATE TABLE public.coupons (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+DROP TRIGGER IF EXISTS coupons_updated ON public.coupons;
 CREATE TRIGGER coupons_updated BEFORE UPDATE ON public.coupons
 FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
 
-CREATE TABLE public.announcements (
+CREATE TABLE IF NOT EXISTS public.announcements (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   message text NOT NULL CHECK (length(trim(message)) BETWEEN 1 AND 500),
   link text CHECK (link IS NULL OR (length(link) <= 2000 AND (link ~ '^/[^/]' OR link = '/' OR link ~ '^https://'))),
@@ -41,15 +42,16 @@ CREATE TABLE public.announcements (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+DROP TRIGGER IF EXISTS announcements_updated ON public.announcements;
 CREATE TRIGGER announcements_updated BEFORE UPDATE ON public.announcements
 FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
-CREATE INDEX announcements_active_order ON public.announcements(sort_order, id) WHERE is_active;
+CREATE INDEX IF NOT EXISTS announcements_active_order ON public.announcements(sort_order, id) WHERE is_active;
 
-INSERT INTO public.announcements (message,link,sort_order) VALUES
+INSERT INTO public.announcements (message,link,sort_order) SELECT seed.message,seed.link,seed.sort_order FROM (VALUES
  ('ENVÍO GRATIS A TODO EL PAÍS CON SUBTOTAL POST-CUPÓN SUPERIOR A {{free_shipping_threshold}}',NULL,0),
  ('10% OFF POR TRANSFERENCIA BANCARIA • 3 CUOTAS SIN INTERÉS',NULL,1),
  ('TESORO RITUAL DE REGALO EN CADA COMPRA PARA ACTIVAR EL GOCE EN EL COTIDIANO ✨',NULL,2),
- ('¿NO SABÉS QUÉ ALQUIMIA NECESITA TU PIEL? AGENDÁ TU SESIÓN UMBRAL 1 A 1 →','/servicios/consultas',3);
+ ('¿NO SABÉS QUÉ ALQUIMIA NECESITA TU PIEL? AGENDÁ TU SESIÓN UMBRAL 1 A 1 →','/servicios/consultas',3)) AS seed(message,link,sort_order) WHERE NOT EXISTS(SELECT 1 FROM public.announcements);
 
 ALTER TABLE public.orders
   ADD COLUMN IF NOT EXISTS coupon_id uuid REFERENCES public.coupons(id),
@@ -61,23 +63,27 @@ ALTER TABLE public.orders
   ADD COLUMN IF NOT EXISTS checkout_request_id uuid,
   ADD COLUMN IF NOT EXISTS checkout_ready boolean NOT NULL DEFAULT false,
   ADD COLUMN IF NOT EXISTS checkout_fingerprint text;
-CREATE UNIQUE INDEX orders_checkout_request ON public.orders(user_id, checkout_request_id) WHERE checkout_request_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS orders_checkout_request ON public.orders(user_id, checkout_request_id) WHERE checkout_request_id IS NOT NULL;
 
-CREATE TABLE public.coupon_redemptions (
+CREATE TABLE IF NOT EXISTS public.coupon_redemptions (
   order_id uuid PRIMARY KEY REFERENCES public.orders(id) ON DELETE CASCADE,
   coupon_id uuid NOT NULL REFERENCES public.coupons(id),
   created_at timestamptz NOT NULL DEFAULT now()
 );
-CREATE INDEX coupon_redemptions_coupon ON public.coupon_redemptions(coupon_id);
+CREATE INDEX IF NOT EXISTS coupon_redemptions_coupon ON public.coupon_redemptions(coupon_id);
 
 ALTER TABLE public.coupons ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.announcements ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.coupon_redemptions ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS coupons_admin ON public.coupons;
 CREATE POLICY coupons_admin ON public.coupons FOR ALL TO authenticated
 USING (public.is_admin(auth.uid())) WITH CHECK (public.is_admin(auth.uid()));
+DROP POLICY IF EXISTS announcements_admin ON public.announcements;
 CREATE POLICY announcements_admin ON public.announcements FOR ALL TO authenticated
 USING (public.is_admin(auth.uid())) WITH CHECK (public.is_admin(auth.uid()));
+DROP POLICY IF EXISTS announcements_public ON public.announcements;
 CREATE POLICY announcements_public ON public.announcements FOR SELECT TO anon, authenticated USING (is_active);
+DROP POLICY IF EXISTS coupon_redemptions_admin ON public.coupon_redemptions;
 CREATE POLICY coupon_redemptions_admin ON public.coupon_redemptions FOR SELECT TO authenticated USING (public.is_admin(auth.uid()));
 GRANT ALL ON public.coupons, public.announcements TO authenticated, service_role;
 GRANT SELECT ON public.announcements TO anon;
@@ -86,7 +92,7 @@ GRANT ALL ON public.coupon_redemptions TO service_role;
 
 -- Pedidos cancelados/fallidos liberan el cupo. Los pendientes lo reservan;
 -- así el último uso no puede venderse a dos compradoras simultáneas.
-CREATE FUNCTION public.coupon_available(p_coupon_id uuid) RETURNS boolean
+CREATE OR REPLACE FUNCTION public.coupon_available(p_coupon_id uuid) RETURNS boolean
 LANGUAGE sql VOLATILE SECURITY DEFINER SET search_path = public, pg_temp AS $$
   SELECT EXISTS (
     SELECT 1 FROM public.coupons c WHERE c.id = p_coupon_id AND c.is_active AND NOT c.archived
@@ -98,7 +104,7 @@ LANGUAGE sql VOLATILE SECURITY DEFINER SET search_path = public, pg_temp AS $$
   );
 $$;
 
-CREATE FUNCTION public.reserve_order_coupon(p_order_id uuid, p_coupon_id uuid, p_updated_at timestamptz)
+CREATE OR REPLACE FUNCTION public.reserve_order_coupon(p_order_id uuid, p_coupon_id uuid, p_updated_at timestamptz)
 RETURNS void LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, pg_temp AS $$
 DECLARE c public.coupons; o public.orders; expected_discount numeric;
 BEGIN
@@ -123,7 +129,7 @@ GRANT EXECUTE ON FUNCTION public.coupon_available(uuid), public.reserve_order_co
 
 -- Un pedido interrumpido antes de reservar no puede confirmarse con cupón.
 -- No cambia la confirmación ni la cola de efectos de los pedidos de Tirada 3.
-CREATE FUNCTION public.ensure_order_coupon_reserved() RETURNS trigger
+CREATE OR REPLACE FUNCTION public.ensure_order_coupon_reserved() RETURNS trigger
 LANGUAGE plpgsql SET search_path = public, pg_temp AS $$
 BEGIN
   IF NEW.coupon_id IS NOT NULL AND NEW.payment_status = 'paid'
@@ -134,6 +140,7 @@ BEGIN
   RETURN NEW;
 END;
 $$;
+DROP TRIGGER IF EXISTS order_coupon_reserved ON public.orders;
 CREATE TRIGGER order_coupon_reserved BEFORE UPDATE OF payment_status ON public.orders
 FOR EACH ROW EXECUTE FUNCTION public.ensure_order_coupon_reserved();
 
