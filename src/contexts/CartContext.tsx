@@ -4,6 +4,7 @@ import React, {
   createContext,
   useContext,
   useReducer,
+  useState,
   useEffect,
   useRef,
   ReactNode,
@@ -46,6 +47,10 @@ type CartAction =
   | { type: "LOAD_CART"; payload: CartItem[] };
 
 interface CartContextType extends CartState {
+  postalCode: string;
+  setPostalCode: (value: string) => void;
+  couponCode: string;
+  setCouponCode: (value: string) => void;
   addItem: (
     item: Omit<CartItem, "id" | "quantity"> & { quantity?: number },
   ) => void;
@@ -324,6 +329,8 @@ interface CartProviderProps {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [postalCode, setPostalCode] = useState("");
+  const [couponCode, setCouponCode] = useState("");
   const lastCartRef = useRef<CartState>(initialState);
 
   // Load cart from localStorage on mount
@@ -370,6 +377,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
+    setCouponCode("");
   };
 
   const toggleCart = () => {
@@ -382,6 +390,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   const value: CartContextType = {
     ...state,
+    postalCode, setPostalCode, couponCode, setCouponCode,
     addItem,
     removeItem,
     updateQuantity,

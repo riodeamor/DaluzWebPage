@@ -68,6 +68,7 @@ import {
 import { toast } from "sonner";
 import PaymentConfig from "@/components/admin/PaymentConfig";
 import EmailTemplatesManager from "@/components/admin/EmailTemplatesManager";
+import RegionalShippingManager from "@/components/admin/RegionalShippingManager";
 import ShippingManager from "@/components/admin/ShippingManager";
 import WebhookMonitor from "@/components/admin/WebhookMonitor";
 import SEOManager from "@/components/admin/SEOManager";
@@ -1361,6 +1362,7 @@ export default function SystemAdministrationPage() {
         </TabsContent>
 
         <TabsContent value="envios" className="space-y-6">
+          <RegionalShippingManager />
           <ShippingManager />
         </TabsContent>
 

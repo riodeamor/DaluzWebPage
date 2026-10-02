@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import CommerceControls from "@/components/commerce/CommerceControls";
+import { useCommerceQuote } from "@/hooks/useCommerceQuote";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -43,7 +45,7 @@ interface CheckoutForm {
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const { items, total, clearCart } = useCart();
+  const { items, total, clearCart, postalCode, setPostalCode, couponCode } = useCart();
   const { user } = useAuthContext();
 
   const [loading, setLoading] = useState(false);
@@ -63,9 +65,12 @@ export default function CheckoutPage() {
     addressNumber: "", // Added for street number
     city: "",
     state: "",
-    zipCode: "",
+    zipCode: postalCode,
     notes: "",
   });
+
+  const { quote, error: quoteError, pending: quotePending } = useCommerceQuote(items, form.zipCode, couponCode, paymentMethod);
+  const requestRef = useRef<{ signature: string; id: string } | null>(null);
 
   // Cambiar de metodo invalida la preferencia de MercadoPago ya creada.
   //
@@ -75,7 +80,7 @@ export default function CheckoutPage() {
   // SDK de MercadoPago agrega un segundo boton en vez de reemplazar el primero.
   useEffect(() => {
     setPreferenceId(null);
-  }, [paymentMethod]);
+  }, [paymentMethod, items, form.zipCode, couponCode]);
 
   // Si faltan los datos bancarios, la opcion transferencia no se ofrece:
   // es preferible a mandar al cliente a transferir a ninguna parte.
@@ -149,6 +154,7 @@ export default function CheckoutPage() {
 
   const handleInputChange = (field: keyof CheckoutForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
+    if (field === "zipCode") setPostalCode(value);
   };
 
   const validateForm = () => {
@@ -190,6 +196,7 @@ export default function CheckoutPage() {
     e.preventDefault();
 
     if (!validateForm()) return;
+    if (quotePending || quoteError || !quote || quote.total === null) { toast.error(quoteError || "Esperá el cálculo de envío antes de continuar."); return; }
     if (!user) {
       toast.error("Debes iniciar sesión para continuar");
       router.push("/login");
@@ -220,19 +227,23 @@ export default function CheckoutPage() {
         );
       }
 
+      const signature = JSON.stringify({ items, form, paymentMethod, couponCode, expectedTotal: quote.total });
+      if (requestRef.current?.signature !== signature) requestRef.current = { signature, id: crypto.randomUUID() };
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers,
         body: JSON.stringify({
           items: items,
-          customerInfo: form,
-          paymentMethod,
+          customerInfo: { ...form, postalCode: form.zipCode },
+          paymentMethod, couponCode, checkoutRequestId: requestRef.current.id, expectedTotal: quote.total,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
+        window.dispatchEvent(new Event("daluz-quote-refresh"));
+        if (data.needsNewRequest) requestRef.current = null;
         // Log detailed error information
         console.error("Checkout API error response:", {
           status: response.status,
@@ -767,6 +778,8 @@ export default function CheckoutPage() {
                   );
                 })()}
 
+                <CommerceControls quote={quote} error={quoteError} pending={quotePending} />
+
                 {/* Totals */}
                 <div className="space-y-2">
                   <div
@@ -782,13 +795,13 @@ export default function CheckoutPage() {
                     style={{ color: "#AE0000" }}
                   >
                     <span>Total:</span>
-                    <span>${total.toLocaleString("es-AR")}</span>
+                    <span>{quote?.total != null ? "$" + quote.total.toLocaleString("es-AR") : "Por calcular"}</span>
                   </div>
                   <p
                     className="text-xs pt-1"
                     style={{ color: "#AE0000", opacity: 0.7 }}
                   >
-                    El costo de envío se coordina por separado.
+                    El total final incluye envío y descuentos aplicados.
                   </p>
                 </div>
               </CardContent>
