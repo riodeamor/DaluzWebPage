@@ -49,7 +49,7 @@ export function useTreasures(
       if (requiredId === "tesoro-gral") {
         return treasures.includes("tesoro-gral");
       }
-      return treasures.includes(requiredId);
+      return treasures.includes(requiredId === "kit-alkimya" ? "kit-alquimia" : requiredId);
     },
     [treasures],
   );
@@ -71,29 +71,10 @@ export function useTreasures(
         return;
       }
 
-      // Get treasures from profile (denormalized for speed)
-      const { data: profile, error: profileError } = await supabase
-        .from("profiles")
-        .select("treasures")
-        .eq("id", user.id)
-        .single();
-
-      if (profileError && profileError.code !== "PGRST116") {
-        throw profileError;
-      }
-
-      const userTreasures = profile?.treasures || [];
-
-      // Ensure general access is included if user has any treasures
-      const treasuresWithGeneral =
-        includeGeneral && userTreasures.length > 0
-          ? [
-              "tesoro-gral",
-              ...userTreasures.filter((t: string) => t !== "tesoro-gral"),
-            ]
-          : userTreasures;
-
-      setTreasures(treasuresWithGeneral);
+      const response=await fetch("/api/treasures",{cache:"no-store"});
+      const data=await response.json();
+      if(!response.ok)throw Error(data.error);
+      setTreasures(includeGeneral?data.treasures:data.treasures.filter((id:string)=>id!=="tesoro-gral"));
     } catch (err) {
       console.error("Error fetching treasures:", err);
       setError(
@@ -176,10 +157,10 @@ export function useHasAccess(accessId: string): {
   hasAccess: boolean;
   loading: boolean;
 } {
-  const { treasures, loading } = useTreasures();
+  const { hasAccess, loading } = useTreasures();
 
   return {
-    hasAccess: treasures.includes(accessId),
+    hasAccess: hasAccess(accessId),
     loading,
   };
 }

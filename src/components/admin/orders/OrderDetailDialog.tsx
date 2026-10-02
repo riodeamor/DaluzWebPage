@@ -1,5 +1,6 @@
 "use client";
 
+import OrderRectifier from "./OrderRectifier";
 import { formatCurrency, getPaymentMethodLabel } from "@/lib/admin-display";
 
 import {
@@ -45,6 +46,7 @@ export default function OrderDetailDialog({
         </DialogHeader>
 
         <div className="space-y-6">
+          <OrderRectifier id={order.id} />
           {/* Customer Info */}
           <div className="grid grid-cols-2 gap-4">
             <div>

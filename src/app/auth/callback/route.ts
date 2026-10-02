@@ -1,3 +1,4 @@
+import {safeReturn} from "@/lib/treasures/catalog";
 import { createClient } from '@/utils/supabase/server'
 import { NextResponse } from 'next/server'
 import type { EmailOtpType } from '@supabase/supabase-js'
@@ -12,7 +13,7 @@ export async function GET(request: Request) {
   const code = requestUrl.searchParams.get('code')
   const tokenHash = requestUrl.searchParams.get('token_hash')
   const type = requestUrl.searchParams.get('type') as EmailOtpType | null
-  const next = requestUrl.searchParams.get('next') || '/'
+  const next = safeReturn(requestUrl.searchParams.get('next'))
 
   const supabase = await createClient()
 
@@ -22,7 +23,7 @@ export async function GET(request: Request) {
     if (error) {
       console.error('OAuth/PKCE callback error:', error)
       return NextResponse.redirect(
-        new URL(`/login?error=${encodeURIComponent(error.message)}`, requestUrl.origin),
+        new URL(`/login?error=${encodeURIComponent("No pudimos confirmar el acceso. El enlace puede haber expirado.")}`, requestUrl.origin),
       )
     }
 
@@ -30,7 +31,7 @@ export async function GET(request: Request) {
     // away from raw token_hash links). Send the user to the reset page with
     // the flag so the page renders the new-password form.
     if (type === 'recovery') {
-      return NextResponse.redirect(new URL('/reset-password?recovery=1', requestUrl.origin))
+      return NextResponse.redirect(new URL('/restablecer-password?recovery=1', requestUrl.origin))
     }
 
     return NextResponse.redirect(new URL(next, requestUrl.origin))
@@ -57,7 +58,7 @@ export async function GET(request: Request) {
     // "request reset email" form. We can't rely on the PASSWORD_RECOVERY
     // event here because verifyOtp ran on the server, not the client.
     if (type === 'recovery') {
-      return NextResponse.redirect(new URL('/reset-password?recovery=1', requestUrl.origin))
+      return NextResponse.redirect(new URL('/restablecer-password?recovery=1', requestUrl.origin))
     }
 
     // For signup/invite/email_change, send to the next param or profile

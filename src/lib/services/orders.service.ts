@@ -150,7 +150,7 @@ export class OrdersService {
   /**
    * Create a manual order from the admin panel.
    */
-  async createManualOrder(orderData: ManualOrderData): Promise<Record<string, unknown>> {
+  async createManualOrder(orderData: ManualOrderData, purchaserId?: string): Promise<Record<string, unknown>> {
     // Map status values (frontend uses 'completed', DB uses 'delivered')
     let dbStatus = orderData.status || "pending";
     if (dbStatus === "completed") {
@@ -163,6 +163,7 @@ export class OrdersService {
     try {
       newOrder = await this.ordersRepo.insert({
         order_number: orderNumber,
+        ...(purchaserId ? {user_id:purchaserId} : {}),
         email: orderData.email,
         status: dbStatus,
         payment_status: orderData.payment_status || "paid",
@@ -218,6 +219,7 @@ export class OrdersService {
       throw new Error("Order not found");
     }
 
+    if (["paid","partially_refunded","refunded"].includes(existingOrder.payment_status)) throw new Error("El pedido aprobado conserva su historial; usá rectificación o reembolso");
     // Delete order items first
     try {
       await this.ordersRepo.removeItemsByOrderId(orderId);

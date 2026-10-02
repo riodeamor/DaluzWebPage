@@ -12,6 +12,7 @@ import { membershipContentSchema } from "./src/sanity/schemas/membershipContent"
 import { testimonialSchema } from "./src/sanity/schemas/testimonial";
 import { tesoroContentSchema } from "./src/sanity/schemas/tesoroContent";
 import { dynamicLinksSchema } from "./src/sanity/schemas/dynamicLinks";
+import { homeSettingsSchema, lineSettingsSchema } from "./src/sanity/schemas/navigationHeaders";
 import { tiendaSettingsSchema } from "./src/sanity/schemas/tiendaSettings";
 
 export default defineConfig({
@@ -97,6 +98,8 @@ export default defineConfig({
               .schemaType("page")
               .child(S.documentTypeList("page").title("Páginas")),
 
+            S.listItem().title("Carrusel Home").child(S.documentTypeList("homeSettings")),
+            S.listItem().title("Cabeceras de líneas").child(S.documentTypeList("lineSettings")),
             // Tienda Settings section
             S.listItem()
               .title("🛍️ Configuración Tienda")
@@ -217,6 +220,8 @@ export default defineConfig({
 
       // Tienda settings
       tiendaSettingsSchema,
+      homeSettingsSchema,
+      lineSettingsSchema,
     ],
   },
 });

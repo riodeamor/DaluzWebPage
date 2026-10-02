@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 
 interface Order {
+  payment_status: string;
   id: string;
   order_number: string;
   created_at: string;
@@ -319,14 +320,14 @@ export default function OrdersPage() {
                     Ver Detalles
                   </Button>
                   
-                  {order.status === 'delivered' && (
+                  {['paid','partially_refunded','refunded'].includes(order.payment_status) && (
                     <Button
                       variant="outline"
                       size="sm"
                       className="account-secondary"
+                      asChild
                     >
-                      <Download className="h-4 w-4 mr-2" />
-                      Factura
+                      <a href={`/api/orders/${order.id}/invoice`}><Download className="h-4 w-4 mr-2" />DESCARGAR FACTURA</a>
                     </Button>
                   )}
                   

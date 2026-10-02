@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import RichTextEditor from "@/components/ui/RichTextEditor";
 import ProductVisualEditor from "./ProductVisualEditor";
+import CatalogFields from "./CatalogFields";
 import ProductImageUpload from "./ProductImageUpload";
 import {
   Dialog,
@@ -120,6 +121,11 @@ export default function ProductForm({
     price: "",
     compare_at_price: "",
     category_id: "",
+    catalog_term_ids: [] as string[],
+    treasure_access_ids: [] as string[],
+    is_kit: false,
+    audio_url: "",
+    pdf_url: "",
     featured_image: "",
     gallery: [] as string[],
     inventory_quantity: "0",
@@ -207,6 +213,11 @@ export default function ProductForm({
         price: product.price?.toString() || "",
         compare_at_price: product.compare_at_price?.toString() || "",
         category_id: product.category_id || "",
+        catalog_term_ids: product.catalog_term_ids || [],
+        treasure_access_ids: product.treasure_access_ids || [],
+        is_kit: product.is_kit === true,
+        audio_url: product.audio_url || "",
+        pdf_url: product.pdf_url || "",
         featured_image: product.featured_image || "",
         gallery: product.gallery || [],
         inventory_quantity: product.inventory_quantity?.toString() || "",
@@ -947,6 +958,7 @@ export default function ProductForm({
 
           {/* TAB 4: Características */}
           <TabsContent value="features" className="mt-6">
+            <CatalogFields value={formData} onChange={updateFormData} />
             <Card className="admin-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">

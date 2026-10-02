@@ -1,23 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const officialNotices = [
-  "ENVÍO GRATIS A TODO EL PAÍS EN COMPRAS SUPERIORES A $ 77.000",
-  "10% OFF POR TRANSFERENCIA BANCARIA • 3 CUOTAS SIN INTERÉS",
-  "TESORO RITUAL DE REGALO EN CADA COMPRA PARA ACTIVAR EL GOCE EN EL COTIDIANO ✨",
-  "¿NO SABÉS QUÉ ALQUIMIA NECESITA TU PIEL? AGENDÁ TU SESIÓN UMBRAL 1 A 1 →",
-];
+type Notice = { id: string; message: string; link: string | null };
 
 export default function ZenAnnouncementBar() {
   const [pressed, setPressed] = useState(false);
+  const [notices, setNotices] = useState<Notice[]>([]);
+  const [threshold, setThreshold] = useState<number | null>(null);
+  useEffect(() => {
+    let active = true;
+    const load = async () => {
+      try {
+        const [ar, cr] = await Promise.all([fetch("/api/public/announcements", { cache: "no-store" }), fetch("/api/public/config?keys=free_shipping_threshold")]);
+        if (!ar.ok || !cr.ok) throw new Error("Avisos no disponibles");
+        const [a, c] = await Promise.all([ar.json(), cr.json()]);
+        const amount = c.configs?.free_shipping_threshold;
+        if (active) { setNotices(a.announcements); setThreshold(typeof amount === "number" && Number.isFinite(amount) && amount >= 0 ? amount : null); }
+      } catch { if (active) setNotices([]); }
+    };
+    void load();
+    const timer = setInterval(load, 60000);
+    window.addEventListener("focus", load);
+    return () => { active = false; clearInterval(timer); window.removeEventListener("focus", load); };
+  }, []);
+  const visibleNotices = notices.filter(notice => threshold !== null || !notice.message.includes("{{free_shipping_threshold}}"));
+  const text = (notice: Notice) => notice.message.split("{{free_shipping_threshold}}").join( threshold === null ? "" : new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 2 }).format(threshold));
 
   const group = (key: string) => (
     <div key={key} className="zen-announcement-group" aria-hidden={key === "copy"}>
-      {officialNotices.map((notice, index) => (
-        <span key={`${index}-${notice}`} className="zen-announcement-item">
-          {index === 3 ? <Link href="/servicios/consultas" tabIndex={key === "copy" ? -1 : 0}>{notice}</Link> : notice}
+      {visibleNotices.map((notice) => (
+        <span key={notice.id} className="zen-announcement-item">
+          {notice.link ? <Link href={notice.link} tabIndex={key === "copy" ? -1 : 0}>{text(notice)}</Link> : text(notice)}
           <span className="zen-announcement-separator" aria-hidden="true">•</span>
         </span>
       ))}

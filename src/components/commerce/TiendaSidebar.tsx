@@ -25,7 +25,7 @@ import {
   Tag,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BOTANICAL_LINES, BODY_CATEGORIES } from "@/components/commerce/storeFilters";
+import {useCatalogTerms} from "@/hooks/useCatalogTerms";
 import StoreCategoryNavigation from "@/components/commerce/StoreCategoryNavigation";
 
 interface TiendaSidebarProps {
@@ -53,34 +53,9 @@ interface TiendaSidebarProps {
   className?: string;
 }
 
-const skinTypes = [
-  { value: "dry", label: "Piel Seca" },
-  { value: "oily", label: "Piel Grasa" },
-  { value: "combination", label: "Piel Mixta" },
-  { value: "sensitive", label: "Piel Sensible" },
-  { value: "normal", label: "Piel Normal" },
-  { value: "mature", label: "Piel Madura" },
-];
-
-const hairTypes = [
-  { value: "oily", label: "Graso" },
-  { value: "dry", label: "Seco" },
-  { value: "normal", label: "Normal" },
-  { value: "sensitive", label: "Sensible" },
-  { value: "combination", label: "Mixto" },
-  { value: "curly", label: "Rizado" },
-  { value: "straight", label: "Lacio" },
-];
-
 // Las etiquetas evitan "á" y ":": Synthese.otf no incluye esos glifos y el
 // panel del Select se renderiza con esa tipografía.
-const sortOptions = [
-  { value: "featured", label: "Destacados" },
-  { value: "newest", label: "Recientes" },
-  { value: "price_asc", label: "Precio menor a mayor" },
-  { value: "price_desc", label: "Precio mayor a menor" },
-  { value: "name", label: "Nombre A-Z" },
-];
+const sortOptions = [{value:"featured",label:"Fórmulas primero · Más recientes"}];
 
 export default function TiendaSidebar({
   searchTerm,
@@ -106,6 +81,9 @@ export default function TiendaSidebar({
   setShowOnlySale,
   className,
 }: TiendaSidebarProps) {
+  const terms=useCatalogTerms();
+  const skinTypes=terms.filter(t=>t.kind==="need"&&t.group_name==="facial").map(t=>({value:t.slug,label:t.label}));
+  const hairTypes=terms.filter(t=>t.kind==="need"&&t.group_name==="capilar").map(t=>({value:t.slug,label:t.label}));
   const [expandedSections, setExpandedSections] = useState({
     categories: true,
     filters: true,
@@ -430,7 +408,7 @@ export default function TiendaSidebar({
                 {selectedCategory && (
                   <Badge variant="secondary" className="text-xs">
                     Categoría:{" "}
-                    {BOTANICAL_LINES.find((line) => `line:${line.id}` === selectedCategory)?.label || BODY_CATEGORIES.find((c) => c.id === selectedCategory)?.label || categories.find((c) => c.id === selectedCategory)?.name}
+                    {terms.find(t => t.slug === selectedCategory)?.label || categories.find(c => c.id === selectedCategory || `line:${c.slug}` === selectedCategory)?.name}
                   </Badge>
                 )}
                 {selectedSkinType && selectedSkinType !== "all" && (

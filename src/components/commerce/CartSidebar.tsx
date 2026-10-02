@@ -1,5 +1,7 @@
 "use client";
 
+import CommerceControls from "@/components/commerce/CommerceControls";
+import { useCommerceQuote } from "@/hooks/useCommerceQuote";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +15,7 @@ import "./cart-sidebar.css";
 export default function CartSidebar() {
   const {
     items,
+    postalCode, couponCode,
     total,
     itemCount,
     isOpen,
@@ -21,6 +24,8 @@ export default function CartSidebar() {
     removeItem,
     clearCart,
   } = useCart();
+
+  const { quote, error, pending } = useCommerceQuote(items, postalCode, couponCode);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -252,6 +257,7 @@ export default function CartSidebar() {
                     border: '1px solid rgba(74, 13, 16, 0.12)'
                   }}
                 >
+                  <CommerceControls quote={quote} error={error} pending={pending} includePostal />
                   <div className="flex justify-between text-sm font-text">
                     <span className="text-[#4A0D10]/70">Subtotal:</span>
                     <span className="text-[#4A0D10] font-medium">{formatPrice(total)}</span>
@@ -259,10 +265,10 @@ export default function CartSidebar() {
                   <Separator className="my-2 bg-[#4A0D10]/20" />
                   <div className="flex justify-between font-title text-lg">
                     <span className="text-[#4A0D10] font-bold">Total:</span>
-                    <span className="text-[#4A0D10] font-bold">{formatPrice(total)}</span>
+                    <span className="text-[#4A0D10] font-bold">{quote?.total != null ? formatPrice(quote.total) : "Por calcular"}</span>
                   </div>
                   <p className="text-xs text-[#4A0D10]/70 font-text pt-1">
-                    El costo de envío se coordina por separado.
+                    El total final incluye envío y descuentos aplicados.
                   </p>
                 </div>
 

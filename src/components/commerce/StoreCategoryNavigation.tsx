@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BODY_CATEGORIES, BOTANICAL_LINES } from "@/components/commerce/storeFilters";
+import { useCatalogTerms } from "@/hooks/useCatalogTerms";
 
 interface StoreCategoryNavigationProps {
   selectedCategory: string;
@@ -10,13 +10,16 @@ interface StoreCategoryNavigationProps {
 }
 
 export default function StoreCategoryNavigation({ selectedCategory, onSelect, compact = false }: StoreCategoryNavigationProps) {
+  const terms = useCatalogTerms();
+  const [lines, setLines] = useState<Array<{id:string;name:string;slug:string}>>([]);
+  useEffect(() => { const controller = new AbortController(); fetch("/api/categories?active=true", { signal: controller.signal }).then(r => r.json()).then(data => setLines(data.categories || [])).catch(() => {}); return () => controller.abort(); }, []);
   const [view, setView] = useState<"lines" | "categories">(!selectedCategory || selectedCategory.startsWith("line:") ? "lines" : "categories");
   useEffect(() => {
     if (selectedCategory) setView(selectedCategory.startsWith("line:") ? "lines" : "categories");
   }, [selectedCategory]);
   const items = view === "lines"
-    ? [{ id: "", label: "Todas" }, ...BOTANICAL_LINES.map((line) => ({ id: `line:${line.id}`, label: line.label }))]
-    : BODY_CATEGORIES.map((category) => ({ id: category.id === "all" ? "" : category.id, label: category.label }));
+    ? [{ id: "", label: "Todas" }, ...lines.map((line) => ({ id: `line:${line.slug}`, label: line.name }))]
+    : [{ id: "", label: "Todas" }, ...terms.filter(term => term.kind === "anatomy").map(term => ({id: term.slug, label: term.label}))];
 
   return (
     <div className={compact ? "space-y-2" : "space-y-3"}>

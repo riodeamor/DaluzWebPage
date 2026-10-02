@@ -19,6 +19,8 @@ const NULLABLE_TEXT_FIELDS = [
   "barcode",
   "featured_image",
   "video_url",
+  "audio_url",
+  "pdf_url",
   "usage_instructions",
   "precautions",
   "package_characteristics",
@@ -39,6 +41,7 @@ const NON_WRITABLE_FIELDS = [
   "updated_at",
   "categories",
   "product_variants",
+  "name_search",
 ];
 
 const toNumberOrNull = (value: unknown): number | null => {
@@ -103,5 +106,11 @@ export function sanitizeProductPayload(
   }
   if (output.inventory_quantity === null) output.inventory_quantity = 0;
 
+  for (const field of ["audio_url", "pdf_url"]) {
+    if (output[field] && (typeof output[field] !== "string" || !/^https:\/\//i.test(output[field]) || (() => { try { const u = new URL(output[field]); return !!u.username || !!u.password; } catch { return true; } })())) throw new Error("La URL externa debe ser HTTPS válida");
+  }
+  if ("catalog_term_ids" in output && (!Array.isArray(output.catalog_term_ids) || output.catalog_term_ids.some((id: unknown) => typeof id !== "string" || !/^[0-9a-f-]{36}$/i.test(id)))) throw new Error("Taxonomía inválida");
+  if ("treasure_access_ids" in output && (!Array.isArray(output.treasure_access_ids) || output.treasure_access_ids.some((id:unknown)=>typeof id !== "string" || !/^(tesoro-gral|linea-(ecos|umbral|alma-terra|jade|prisma)|kit-(antena|templo|alquimia|aura))$/.test(id)))) throw new Error("Tesoro inválido");
+  if ("is_kit" in output && typeof output.is_kit !== "boolean") throw new Error("Indicador de kit inválido");
   return output;
 }

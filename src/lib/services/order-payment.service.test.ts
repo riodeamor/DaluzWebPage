@@ -1,60 +1,59 @@
 import { describe, it, expect, vi } from "vitest";
 import { OrderPaymentService } from "./order-payment.service";
+import { PaymentConflictError } from "@/lib/repositories/orders.repository";
 
-function makeDeps(paymentStatus: string) {
-  const ordersRepo = {
-    findById: vi.fn().mockResolvedValue({
-      id: "o1",
-      user_id: "u1",
-      payment_status: paymentStatus,
-    }),
-    findByIdWithItems: vi.fn().mockResolvedValue({
-      id: "o1",
-      email: "cliente@test.com",
-      order_number: "DL-1",
-      total_amount: 1000,
-      payment_status: paymentStatus,
-    }),
-    getItemsByOrderId: vi.fn().mockResolvedValue([{ product_id: "p1", quantity: 2 }]),
-    update: vi.fn().mockResolvedValue(undefined),
-  };
-  const productsRepo = {
-    decreaseStock: vi.fn().mockResolvedValue(undefined),
-    findById: vi.fn(),
-    update: vi.fn(),
-  };
-  return { ordersRepo, productsRepo };
+function setup() {
+  const order = { id: "o1", status: "pending", payment_status: "awaiting_transfer" };
+  const orders = { findById: vi.fn().mockResolvedValue(order), confirmPayment: vi.fn().mockResolvedValue(true) };
+  const effects = { drain: vi.fn().mockResolvedValue({ succeeded: 2, failed: 0 }) };
+  return { order, orders, effects, service: new OrderPaymentService(orders as never, effects as never) };
 }
 
-describe("confirmOrderPayment", () => {
-  it("descuenta stock y marca el pedido como pagado", async () => {
-    const { ordersRepo, productsRepo } = makeDeps("awaiting_transfer");
-    const svc = new OrderPaymentService(ordersRepo as never, productsRepo as never);
-
-    await svc.confirmOrderPayment("o1");
-
-    expect(productsRepo.decreaseStock).toHaveBeenCalledWith("p1", 2);
-    expect(ordersRepo.update).toHaveBeenCalledWith(
-      "o1",
-      expect.objectContaining({ payment_status: "paid", status: "paid" }),
-    );
+describe("transactional payment confirmation", () => {
+  it("confirms before draining the durable work", async () => {
+    const { service, order, orders, effects } = setup();
+    expect(await service.confirmOrderPayment("o1", { fees: 50 })).toBe(true);
+    expect(orders.confirmPayment).toHaveBeenCalledExactlyOnceWith(order, { fees: 50 });
+    expect(effects.drain).toHaveBeenCalledExactlyOnceWith("o1", 2);
+    expect(orders.confirmPayment.mock.invocationCallOrder[0]).toBeLessThan(effects.drain.mock.invocationCallOrder[0]);
   });
 
-  it("no vuelve a descontar stock si el pedido ya estaba pagado", async () => {
-    const { ordersRepo, productsRepo } = makeDeps("paid");
-    const svc = new OrderPaymentService(ordersRepo as never, productsRepo as never);
-
-    await svc.confirmOrderPayment("o1");
-
-    expect(productsRepo.decreaseStock).not.toHaveBeenCalled();
-    expect(ordersRepo.update).not.toHaveBeenCalled();
+  it("resumes queued work even if a previous request already confirmed the order", async () => {
+    const { service, orders, effects } = setup();
+    orders.confirmPayment.mockResolvedValue(false);
+    expect(await service.confirmOrderPayment("o1")).toBe(false);
+    expect(effects.drain).toHaveBeenCalledWith("o1", 2);
   });
 
-  it("no explota si el pedido no existe", async () => {
-    const { ordersRepo, productsRepo } = makeDeps("paid");
-    ordersRepo.findById = vi.fn().mockResolvedValue(null);
-    const svc = new OrderPaymentService(ordersRepo as never, productsRepo as never);
+  it("uses the verified snapshot without a second read", async () => {
+    const { service, order, orders } = setup();
+    await service.confirmOrderPayment("o1", {}, order as never);
+    expect(orders.findById).not.toHaveBeenCalled();
+    expect(orders.confirmPayment).toHaveBeenCalledWith(order, {});
+  });
 
-    await expect(svc.confirmOrderPayment("noexiste")).resolves.toBeUndefined();
+  it("rejects missing orders", async () => {
+    const { service, orders, effects } = setup();
+    orders.findById.mockResolvedValue(null as never);
+    await expect(service.confirmOrderPayment("o1")).rejects.toThrow("Pedido no encontrado");
+    expect(orders.confirmPayment).not.toHaveBeenCalled();
+    expect(effects.drain).not.toHaveBeenCalled();
+  });
+
+  it("does not process effects if the transaction fails", async () => {
+    const { service, orders, effects } = setup();
+    orders.confirmPayment.mockRejectedValue(new PaymentConflictError());
+    await expect(service.confirmOrderPayment("o1")).rejects.toBeInstanceOf(PaymentConflictError);
+    expect(effects.drain).not.toHaveBeenCalled();
+  });
+
+  it("leaves durable work for recovery if the immediate worker is unavailable", async () => {
+    const { service, effects } = setup();
+    effects.drain.mockRejectedValue(new Error("Database unavailable"));
+    const log = vi.spyOn(console, "error").mockImplementation(() => {});
+    try {
+      expect(await service.confirmOrderPayment("o1")).toBe(true);
+      expect(log).toHaveBeenCalled();
+    } finally { log.mockRestore(); }
   });
 });

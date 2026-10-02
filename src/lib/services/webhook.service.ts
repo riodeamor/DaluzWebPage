@@ -1,7 +1,6 @@
 import { MercadoPagoConfig, Payment } from "mercadopago";
 import { getMercadoPagoAccessToken } from "@/lib/mercadopago/config";
-import { OrdersRepository } from "@/lib/repositories/orders.repository";
-import { ProductsRepository } from "@/lib/repositories/products.repository";
+import { OrdersRepository, PaymentConflictError } from "@/lib/repositories/orders.repository";
 import { SystemRepository } from "@/lib/repositories/system.repository";
 import { OrderPaymentService } from "./order-payment.service";
 
@@ -39,6 +38,7 @@ type MercadoPagoStatus =
 
 interface OrderUpdateData {
   status: string;
+  payment_status?: string;
   mercadopago_payment_id: string | number;
   payment_method: string | undefined;
   installments: number;
@@ -46,7 +46,6 @@ interface OrderUpdateData {
   transaction_amount?: number;
   net_received_amount?: number;
   fees?: number;
-  total_amount?: number;
 }
 
 // ============================================
@@ -70,8 +69,8 @@ const STATUS_MAPPING: Record<MercadoPagoStatus, string> = {
 export class WebhookService {
   constructor(
     private ordersRepo: OrdersRepository,
-    private productsRepo: ProductsRepository,
     private systemRepo: SystemRepository,
+    private paymentService: OrderPaymentService,
   ) {}
 
   /**
@@ -81,9 +80,9 @@ export class WebhookService {
     body: WebhookPayload,
     status: "pending" | "success" | "failed",
     options?: { responseCode?: number; errorMessage?: string },
-  ): Promise<void> {
+  ): Promise<string | undefined> {
     try {
-      await this.systemRepo.insertWebhookLog({
+      return await this.systemRepo.insertWebhookLog({
         webhook_type: "mercadopago",
         event_type: body?.type || "unknown",
         payload: status === "failed" && options?.errorMessage
@@ -100,14 +99,16 @@ export class WebhookService {
   }
 
   /**
-   * Update the latest pending webhook log to a final status.
+   * Update this request's log; concurrent requests own different rows.
    */
   async updateWebhookLog(
+    logId: string | undefined,
     status: "success" | "failed",
     options?: { responseCode?: number; errorMessage?: string },
   ): Promise<void> {
+    if (!logId) return;
     try {
-      await this.systemRepo.updateLatestPendingWebhookLog({
+      await this.systemRepo.updateWebhookLog(logId, {
         status,
         response_code: options?.responseCode || (status === "success" ? 200 : 500),
         error_message: options?.errorMessage,
@@ -120,7 +121,7 @@ export class WebhookService {
 
   /**
    * Process a payment notification from MercadoPago.
-   * Fetches payment info, updates the order, sends emails, updates inventory, and grants treasures.
+   * Fetches payment info and confirms payment, inventory and recoverable email work.
    */
   async processPayment(paymentId: string | number): Promise<void> {
     const accessToken = await getMercadoPagoAccessToken();
@@ -132,24 +133,50 @@ export class WebhookService {
 
     const paymentInfo = await payment.get({ id: paymentId as number });
 
-    if (!paymentInfo || !paymentInfo.external_reference) {
-      console.warn("Payment info missing or no external_reference");
-      return;
+    if (!paymentInfo?.external_reference || String(paymentInfo.id) !== String(paymentId)) {
+      throw new Error("Payment response missing a matching id or order reference");
     }
 
     const orderId = paymentInfo.external_reference;
-    const mpStatus = (paymentInfo.status || "pending") as MercadoPagoStatus;
-    const orderStatus = STATUS_MAPPING[mpStatus] || "pending";
-
-    // Idempotency: if this payment was already processed for this order, skip
-    // post-approval side-effects (email, inventory, treasures) to avoid duplicates
+    const mpStatus = paymentInfo.status as MercadoPagoStatus;
+    if (!Object.prototype.hasOwnProperty.call(STATUS_MAPPING, mpStatus)) {
+      throw new Error(`Unsupported MercadoPago payment status: ${paymentInfo.status}`);
+    }
+    const orderStatus = STATUS_MAPPING[mpStatus];
     const existingOrder = await this.ordersRepo.findById(orderId);
-    const alreadyApproved =
-      existingOrder &&
-      String(existingOrder.mercadopago_payment_id) === String(paymentId) &&
-      ["paid", "completed", "processing", "shipped", "delivered"].includes(existingOrder.status);
+    if (!existingOrder) throw new Error("Payment references an unknown order");
+    if (existingOrder.payment_method === "bank_transfer") {
+      throw new Error("MercadoPago payment cannot confirm a bank transfer order");
+    }
 
-    // Build update data
+    const amount = paymentInfo.transaction_amount;
+    if (
+      typeof amount !== "number" || !Number.isFinite(amount) || amount <= 0 ||
+      amount !== Number(existingOrder.total_amount) ||
+      paymentInfo.currency_id !== existingOrder.currency
+    ) {
+      throw new Error("Payment amount or currency does not match the order");
+    }
+
+    const samePayment = String(existingOrder.mercadopago_payment_id) === String(paymentId);
+    const settled =
+      ["paid", "refunded", "partially_refunded"].includes(existingOrder.payment_status) ||
+      ["paid", "completed", "shipped", "delivered", "refunded"].includes(existingOrder.status);
+    if (settled && !samePayment) {
+      throw new Error("Order already settled by another payment; manual reconciliation required");
+    }
+    // A late approval must never resurrect a refund or repeat fulfillment.
+    if (existingOrder.payment_status === "refunded" || existingOrder.status === "refunded") return;
+    if (settled && ["pending", "in_process", "rejected", "cancelled"].includes(mpStatus)) return;
+    if (existingOrder.status === "cancelled" && mpStatus !== "cancelled") {
+      throw new Error("Cancelled order requires manual payment reconciliation");
+    }
+    if (
+      samePayment &&
+      (existingOrder.payment_status === "failed" || existingOrder.status === "failed") &&
+      ["pending", "in_process"].includes(mpStatus)
+    ) return;
+
     const updateData: OrderUpdateData = {
       status: orderStatus,
       mercadopago_payment_id: paymentId,
@@ -158,72 +185,46 @@ export class WebhookService {
       updated_at: new Date().toISOString(),
     };
 
-    if (paymentInfo.status === "approved" && paymentInfo.transaction_amount) {
-      updateData.transaction_amount = paymentInfo.transaction_amount;
-      const paymentData = paymentInfo as unknown as Record<string, unknown>;
+    if (mpStatus === "approved") {
+      updateData.transaction_amount = amount;
       updateData.net_received_amount =
-        (paymentData.net_received_amount as number) || paymentInfo.transaction_amount;
+        paymentInfo.transaction_details?.net_received_amount ?? amount;
 
       const feeDetails = paymentInfo.fee_details as FeeDetail[] | undefined;
       updateData.fees = feeDetails
         ? feeDetails.reduce((sum: number, fee: FeeDetail) => sum + fee.amount, 0)
         : 0;
 
-      if (!updateData.total_amount) {
-        updateData.total_amount = paymentInfo.transaction_amount;
+      if (settled) {
+        // Only a resolved dispute changes an already paid order on approval.
+        if (existingOrder.status !== "disputed") {
+          await this.paymentService.resumeEffects(orderId);
+          return;
+        }
+        updateData.payment_status = existingOrder.payment_status;
+      } else {
+        await this.paymentService.confirmOrderPayment(
+          orderId,
+          { ...updateData },
+          existingOrder,
+        );
+        return;
       }
+    } else if (mpStatus === "refunded") {
+      updateData.payment_status = "refunded";
+    } else if (mpStatus === "rejected" || mpStatus === "cancelled") {
+      updateData.payment_status = "failed";
+    } else if (mpStatus !== "in_mediation") {
+      updateData.payment_status = "pending";
     }
 
-    // Update order
-    try {
-      await this.ordersRepo.update(orderId, updateData as unknown as Record<string, unknown>);
-    } catch (error) {
-      console.error("Error updating order status:", error);
-      throw new Error("Failed to update order");
-    }
-
-    // Post-approval actions — skip if already processed (idempotency)
-    if (paymentInfo.status === "approved" && !alreadyApproved) {
-      // Los efectos del cobro viven en OrderPaymentService porque tambien los
-      // usa la confirmacion manual de transferencias desde el panel.
-      const paymentService = new OrderPaymentService(
-        this.ordersRepo,
-        this.productsRepo,
-      );
-      await paymentService.confirmOrderPayment(orderId);
-      await this.grantTreasures(orderId);
-    }
+    const updated = await this.ordersRepo.updatePaymentIfUnchanged(existingOrder, { ...updateData });
+    if (!updated) throw new PaymentConflictError();
+    if (mpStatus === "approved") await this.paymentService.resumeEffects(orderId);
 
     console.log(
       `Order ${orderId} updated to status: ${orderStatus} (MP status: ${paymentInfo.status})`,
     );
-  }
-
-  // sendConfirmationEmail y updateInventory se movieron a
-  // OrderPaymentService.confirmOrderPayment: tener dos copias garantizaba que
-  // el camino de MercadoPago y el de transferencia se desincronizaran.
-
-  /**
-   * Grant treasure access to user based on products purchased.
-   */
-  async grantTreasures(orderId: string): Promise<void> {
-    try {
-      const orderData = await this.ordersRepo.findById(orderId);
-
-      if (!orderData?.user_id) return;
-
-      const treasureResults = await this.systemRepo.grantTreasures(
-        orderData.user_id,
-        orderId,
-      );
-
-      console.log(
-        `Treasures granted to user ${orderData.user_id}:`,
-        treasureResults,
-      );
-    } catch (treasureError) {
-      console.error("Error in tesoro grant process:", treasureError);
-    }
   }
 
   /**

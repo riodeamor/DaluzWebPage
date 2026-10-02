@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { requireAdmin } from '@/lib/auth/helpers';
+import { requireAdmin, getServiceClient } from '@/lib/auth/helpers';
 
 export async function GET(
   request: NextRequest,
@@ -195,8 +195,13 @@ export async function PUT(
 
     // Get request body
     const body = await request.json();
-    console.log('📝 Update data received:', body);
 
+
+    if (body.email !== undefined) {
+      if (typeof body.email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) return NextResponse.json({error:"Email inválido"},{status:400});
+      const {error:emailError}=await getServiceClient().auth.admin.updateUserById(params.id,{email:body.email.trim().toLowerCase(),email_confirm:true});
+      if(emailError)return NextResponse.json({error:"No pudimos actualizar el email de la cuenta"},{status:400});
+    }
     // Prepare update data
     const updateData = {
       first_name: body.first_name || null,

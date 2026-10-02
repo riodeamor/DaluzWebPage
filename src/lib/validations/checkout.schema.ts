@@ -23,6 +23,7 @@ export const customerInfoSchema = z.object({
   city: z.string().optional(),
   state: z.string().optional(),
   postalCode: z.string().optional(),
+  zipCode: z.string().optional(),
   country: z.string().optional(),
   notes: z.string().optional(),
 });
@@ -33,6 +34,9 @@ export const checkoutPayloadSchema = z.object({
   // .default protege a clientes cacheados que todavia no mandan el campo:
   // siguen funcionando por MercadoPago en vez de romper.
   paymentMethod: z.enum(["mercadopago", "bank_transfer"]).default("mercadopago"),
+  couponCode: z.string().trim().toUpperCase().max(40).optional(),
+  checkoutRequestId: z.string().uuid().optional(),
+  expectedTotal: z.number().finite().nonnegative().optional(),
 });
 
 export type CheckoutPayload = z.infer<typeof checkoutPayloadSchema>;

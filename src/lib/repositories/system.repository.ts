@@ -17,22 +17,22 @@ export class SystemRepository {
     return (data || []) as { config_key: string; config_value: string }[];
   }
 
-  async insertWebhookLog(data: Record<string, unknown>): Promise<void> {
-    const { error } = await this.supabase
+  async insertWebhookLog(data: Record<string, unknown>): Promise<string> {
+    const { data: log, error } = await this.supabase
       .from("webhook_logs")
-      .insert(data);
+      .insert(data)
+      .select("id")
+      .single();
 
     if (error) throw error;
+    return log.id;
   }
 
-  async updateLatestPendingWebhookLog(data: Record<string, unknown>): Promise<void> {
+  async updateWebhookLog(id: string, data: Record<string, unknown>): Promise<void> {
     const { error } = await this.supabase
       .from("webhook_logs")
       .update(data)
-      .eq("webhook_type", "mercadopago")
-      .eq("status", "pending")
-      .order("created_at", { ascending: false })
-      .limit(1);
+      .eq("id", id);
 
     if (error) throw error;
   }

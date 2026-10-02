@@ -339,18 +339,6 @@ export default function SEOManager() {
               <CardDescription>Configuración para compartir en Twitter/X</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="twitter_handle">Twitter Handle</Label>
-                <Input
-                  id="twitter_handle"
-                  value={config.seo_twitter_handle || ''}
-                  onChange={(e) => handleUpdate('seo_twitter_handle', e.target.value)}
-                  placeholder="@daluzconsciente"
-                />
-                <p className="text-xs text-tierra-media">
-                  Tu nombre de usuario de Twitter (incluye el @)
-                </p>
-              </div>
 
               <div className="space-y-2">
                 <Label htmlFor="twitter_card_type">Tipo de Tarjeta</Label>

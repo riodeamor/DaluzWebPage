@@ -1,4 +1,5 @@
 "use client";
+import {safeReturn} from "@/lib/treasures/catalog";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -49,7 +50,8 @@ export default function VerifyTwoFactorPage() {
       }
 
       sessionStorage.removeItem("pending_2fa_password");
-      router.push("/");
+      router.push(safeReturn(sessionStorage.getItem("auth_return")));
+      sessionStorage.removeItem("auth_return");
       router.refresh();
     } catch (err) {
       console.error("2FA verify error:", err);

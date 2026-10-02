@@ -1,0 +1,234 @@
+.tesoro-layout {
+  --tesoro-primary: #7d1d2b;
+  --tesoro-accent: #c9a974;
+  --tesoro-pale: #f4e8dc;
+  color: var(--tesoro-primary);
+  background: #faf7f2;
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.tesoro-shell {
+  width: min(100% - 2.5rem, 1120px);
+  margin-inline: auto;
+}
+
+.tesoro-hero {
+  background: var(--tesoro-primary);
+  color: #fff;
+  text-align: center;
+}
+
+.tesoro-hero-inner {
+  padding-block: clamp(4rem, 8vw, 7rem) clamp(4.5rem, 8vw, 7rem);
+}
+
+.tesoro-eyebrow,
+.tesoro-card-label,
+.tesoro-section-heading > span,
+.tesoro-anchor-number {
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+}
+
+.tesoro-eyebrow {
+  margin-bottom: 1.1rem;
+  color: var(--tesoro-accent);
+}
+
+.tesoro-hero h1,
+.tesoro-section h2,
+.tesoro-section h3 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+}
+
+.tesoro-hero h1 {
+  margin: 0;
+  font-size: clamp(3.7rem, 8vw, 7.4rem);
+  line-height: 0.95;
+}
+
+.tesoro-association {
+  margin-top: 1.5rem;
+  color: var(--tesoro-pale);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tesoro-hero-ornament {
+  display: block;
+  width: min(220px, 45vw);
+  height: auto;
+  margin: 1rem auto 0.5rem;
+}
+
+.tesoro-manifesto {
+  max-width: 760px;
+  margin: 1rem auto 0;
+  color: #fff;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.48;
+}
+
+.tesoro-content {
+  padding-block: clamp(3.5rem, 7vw, 6rem) 7rem;
+}
+
+.tesoro-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 2.25rem;
+  text-align: center;
+}
+
+.tesoro-section-heading > span {
+  color: var(--tesoro-primary);
+  opacity: 0.7;
+}
+
+.tesoro-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1;
+}
+
+.tesoro-section-heading img {
+  display: block;
+  width: 130px;
+  height: auto;
+  margin-top: 0.15rem;
+}
+
+.tesoro-section-intro {
+  max-width: 650px;
+  margin: -0.5rem auto 2.2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.tesoro-audio-card,
+.tesoro-breath-card,
+.tesoro-anchor,
+.tesoro-media-card,
+.tesoro-closing-content {
+  border-radius: 36px 12px 36px 12px;
+  box-shadow: -6px 14px 28px -4px rgba(34, 13, 16, 0.17), 0 6px 12px -2px rgba(34, 13, 16, 0.08);
+}
+
+.tesoro-audio-card {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+  width: min(100%, 810px);
+  max-width: 810px;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  background: #fff;
+}
+
+.tesoro-audio-list { display: grid; gap: 1.2rem; }
+
+.tesoro-audio-toggle {
+  display: grid;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--tesoro-primary);
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.tesoro-audio-toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tesoro-audio-toggle:focus-visible,
+.tesoro-audio-details input:focus-visible {
+  outline: 2px solid var(--tesoro-accent);
+  outline-offset: 3px;
+}
+
+.tesoro-audio-details { flex: 1; min-width: 0; }
+.tesoro-audio-title-row { display: flex; justify-content: space-between; gap: 1rem; align-items: end; }
+.tesoro-card-label { margin: 0 0 0.4rem; color: var(--tesoro-primary); opacity: 0.72; }
+.tesoro-audio-title-row h3 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.1; }
+.tesoro-audio-title-row > span { white-space: nowrap; font-size: 0.8rem; }
+.tesoro-audio-details input { width: 100%; margin-top: 1.4rem; accent-color: var(--tesoro-primary); cursor: pointer; }
+.tesoro-audio-details input:disabled { cursor: not-allowed; }
+.tesoro-audio-times { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.68rem; letter-spacing: 0.07em; }
+
+.tesoro-media-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.tesoro-media-single { grid-template-columns: minmax(0, 650px); justify-content: center; }
+.tesoro-media-multi { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tesoro-media-card { overflow: hidden; background: #fff; }
+.tesoro-media-frame { position: relative; aspect-ratio: 16 / 9; background: var(--tesoro-primary); }
+.tesoro-media-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.tesoro-media-pending { display: flex; height: 100%; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; color: #fff; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; }
+.tesoro-media-play { display: grid; width: 56px; height: 56px; place-items: center; border: 1px solid var(--tesoro-accent); border-radius: 50%; color: var(--tesoro-accent); font-size: 1.6rem; }
+.tesoro-media-caption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.65rem; padding: 1.3rem 1.6rem 1.6rem; }
+.tesoro-media-caption > span { color: var(--tesoro-primary); font-size: 0.7rem; font-weight: 700; }
+.tesoro-media-caption h3 { margin: 0; font-size: 1.75rem; line-height: 1; }
+.tesoro-media-caption p { width: 100%; margin: 0.2rem 0 0 1.65rem; font-size: 0.8rem; line-height: 1.5; }
+
+.tesoro-practice { max-width: 830px; margin: 2.5rem auto 0; }
+.tesoro-practice h3 { margin: 0 0 1rem; text-align: center; font-size: 2rem; }
+.tesoro-practice ol { display: grid; gap: 0.65rem; margin: 0; padding-left: 1.5rem; line-height: 1.65; }
+.tesoro-practice li::marker { color: var(--tesoro-primary); font-weight: 700; }
+
+.tesoro-breath-card { max-width: 860px; margin-inline: auto; padding: clamp(2rem, 5vw, 4rem); background: var(--tesoro-primary); color: #fff; text-align: center; }
+.tesoro-breath-card .tesoro-card-label { color: var(--tesoro-accent); opacity: 1; }
+.tesoro-breath-card h3 { margin: 0.3rem 0 1.15rem; color: #fff; font-size: clamp(2rem, 4vw, 3.3rem); }
+.tesoro-breath-card p:not(.tesoro-card-label) { max-width: 610px; margin: 0 auto; line-height: 1.8; }
+.tesoro-breath-effect { padding-top: 1rem; color: var(--tesoro-pale); font-size: 0.85rem; }
+
+.tesoro-divider {
+  width: min(100%, 1040px);
+  aspect-ratio: 1920 / 110;
+  margin: clamp(2.5rem, 5vw, 4.5rem) auto;
+  background: var(--tesoro-primary);
+  -webkit-mask: url('/svg/linea-separadora.svg') center / contain no-repeat;
+  mask: url('/svg/linea-separadora.svg') center / contain no-repeat;
+}
+
+.tesoro-anchors { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; }
+.tesoro-anchor { min-height: 235px; padding: 1.5rem; background: #fff; }
+.tesoro-anchor-number { color: var(--tesoro-accent); }
+.tesoro-anchor h3 { margin: 1.5rem 0 0.6rem; font-size: 2rem; line-height: 1; }
+.tesoro-anchor p { margin: 0; font-size: 0.82rem; line-height: 1.65; }
+
+.tesoro-closing-content { display: grid; grid-template-columns: minmax(190px, 0.8fr) 1.2fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: center; max-width: 900px; margin-inline: auto; padding: clamp(1.8rem, 5vw, 4rem); background: #fff; }
+.tesoro-geometry-frame { display: grid; place-items: center; min-height: 230px; border-radius: 50%; background: var(--tesoro-pale); }
+.tesoro-geometry-frame img { display: block; width: min(65%, 185px); max-height: 185px; height: auto; object-fit: contain; }
+.tesoro-geometry-frame img + img { width: min(45%, 130px); margin-top: -2.5rem; margin-left: 5rem; }
+.tesoro-closing-content h3 { margin: 0.4rem 0 1rem; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
+.tesoro-closing-content p:last-child { margin: 0; line-height: 1.75; }
+
+@media (max-width: 760px) {
+  .tesoro-media-grid, .tesoro-closing-content { grid-template-columns: 1fr; }
+  .tesoro-anchors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tesoro-geometry-frame { min-height: 200px; }
+}
+
+@media (max-width: 520px) {
+  .tesoro-shell { width: min(100% - 1.5rem, 1120px); }
+  .tesoro-audio-card { align-items: flex-start; }
+  .tesoro-audio-toggle { flex-basis: 50px; width: 50px; height: 50px; }
+  .tesoro-audio-title-row { align-items: flex-start; }
+  .tesoro-audio-title-row > span { display: none; }
+  .tesoro-anchors { grid-template-columns: 1fr; }
+  .tesoro-anchor { min-height: 0; }
+}

@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { getServiceClient } from "@/lib/auth/helpers";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
-import { ProductsRepository } from "@/lib/repositories/products.repository";
+import { PaymentEffectsRepository } from "@/lib/repositories/payment-effects.repository";
+import { PaymentEffectsService } from "@/lib/services/payment-effects.service";
+import { OrderPaymentService } from "@/lib/services/order-payment.service";
 import { SystemRepository } from "@/lib/repositories/system.repository";
 import { WebhookService } from "@/lib/services/webhook.service";
 import { webhookPayloadSchema } from "@/lib/validations/webhook.schema";
@@ -106,9 +108,9 @@ export async function POST(req: NextRequest) {
   // Instantiate service chain (service client bypasses RLS)
   const supabaseService = getServiceClient();
   const ordersRepo = new OrdersRepository(supabaseService);
-  const productsRepo = new ProductsRepository(supabaseService);
   const systemRepo = new SystemRepository(supabaseService);
-  const webhookService = new WebhookService(ordersRepo, productsRepo, systemRepo);
+  const effects = new PaymentEffectsService(new PaymentEffectsRepository(supabaseService), ordersRepo);
+  const webhookService = new WebhookService(ordersRepo, systemRepo, new OrderPaymentService(ordersRepo, effects));
 
   // Verify signature in production
   if (process.env.NODE_ENV === "production") {
@@ -128,16 +130,15 @@ export async function POST(req: NextRequest) {
   }
 
   // Log receipt
-  await webhookService.logWebhook(body, "pending");
+  const logId = await webhookService.logWebhook(body, "pending");
 
   // Process payment events
   if (body.type === "payment") {
     try {
       await webhookService.processPayment(body.data.id);
-      await webhookService.updateWebhookLog("success", { responseCode: 200 });
     } catch (error) {
       logger.error("Error processing payment webhook", error instanceof Error ? error : undefined, { source: "webhook/mp" });
-      await webhookService.updateWebhookLog("failed", {
+      await webhookService.updateWebhookLog(logId, "failed", {
         responseCode: 500,
         errorMessage: error instanceof Error ? error.message : "Unknown error",
       });
@@ -148,6 +149,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
+  await webhookService.updateWebhookLog(logId, "success", { responseCode: 200 });
   return NextResponse.json({ received: true });
 }
 

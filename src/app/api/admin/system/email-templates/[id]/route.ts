@@ -68,6 +68,8 @@ export async function PUT(
       updated_at: new Date().toISOString()
     };
 
+    if (body.type !== undefined) updateData.type = body.type;
+    if (content !== undefined && (typeof content !== "string" || !content.trim())) return NextResponse.json({error:"Contenido requerido"},{status:400});
     if (name !== undefined) updateData.name = name;
     if (subject !== undefined) updateData.subject = subject;
     if (content !== undefined) updateData.content = content;

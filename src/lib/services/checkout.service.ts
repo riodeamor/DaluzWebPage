@@ -66,15 +66,15 @@ export class CheckoutService {
     customerInfo: CustomerInfo,
     items: CartItem[],
     paymentMethod: "mercadopago" | "bank_transfer" = "mercadopago",
-    totals?: { subtotal: number; discount: number; total: number },
+    totals?: { subtotal: number; discount: number; total: number; shipping?: number },
+    metadata: Record<string, unknown> = {},
   ): Promise<OrderRecord> {
     const fallbackTotal = items.reduce(
       (acc, item) => acc + item.price * item.quantity,
       0,
     );
 
-    // Los totales llegan ya calculados en el flujo de transferencia, que aplica
-    // el descuento por producto. MercadoPago usa el total de lista.
+    // Cupón, transferencia y envío llegan calculados por el servidor.
     const subtotal = totals?.subtotal ?? fallbackTotal;
     const discount = totals?.discount ?? 0;
     const totalAmount = totals?.total ?? fallbackTotal;
@@ -101,6 +101,7 @@ export class CheckoutService {
         status: "pending",
         subtotal,
         discount_amount: discount,
+        shipping_amount: totals?.shipping ?? 0,
         total_amount: totalAmount,
         currency: "ARS",
         payment_method: isTransfer ? "bank_transfer" : null,
@@ -117,6 +118,7 @@ export class CheckoutService {
         shipping_postal_code: customerInfo.postalCode || null,
         shipping_country: customerInfo.country || "Argentina",
         customer_notes: customerInfo.notes || null,
+        ...metadata,
       });
 
       return order as OrderRecord;
@@ -178,13 +180,13 @@ export class CheckoutService {
       accessToken,
       options: {
         timeout: 5000,
-        idempotencyKey: `checkout-${order.id}-${Date.now()}`,
+        idempotencyKey: `checkout-${order.id}`,
       },
     });
 
     const preference = new Preference(mpClientConfig);
 
-    const preferenceItems = items.map((item) => ({
+    let preferenceItems = items.map((item) => ({
       id: item.productId,
       title: item.name,
       description: item.size || "",
@@ -193,6 +195,14 @@ export class CheckoutService {
       unit_price: item.price,
       currency_id: "ARS",
     }));
+
+    // El pedido conserva las líneas originales del catálogo. El proveedor cobra
+    // un concepto consolidado cuando hay cupón/envío, para coincidir al centavo.
+    const catalogTotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    if (typeof order.total_amount === "number" && order.total_amount !== catalogTotal) {
+      if (order.total_amount <= 0) throw new Error("El total debe ser mayor a cero para pagar con Mercado Pago.");
+      preferenceItems = [{ id: order.id, title: `Pedido ${order.order_number}`, description: "Productos con descuentos y envío incluidos", picture_url: undefined, quantity: 1, unit_price: order.total_amount, currency_id: "ARS" }];
+    }
 
     // Build payment methods configuration
     const paymentMethodsConfig: PaymentMethodsConfig = {};

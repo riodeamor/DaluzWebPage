@@ -42,6 +42,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    if (!/^[a-zA-Z0-9_-]+$/.test(folder)) return NextResponse.json({ error: "Carpeta inválida" }, { status: 400 });
+    if (folder === "products" && (file.type !== "image/webp" || file.size >= 800 * 1024)) return NextResponse.json({ error: "La imagen debe ser WebP inferior a 800 KB" }, { status: 400 });
     // Validate file type
     if (!file.type.startsWith("image/")) {
       return NextResponse.json(
@@ -70,6 +72,7 @@ export async function POST(request: NextRequest) {
     // Convert file to buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
+    if (folder === "products" && (buffer.toString("ascii", 0, 4) !== "RIFF" || buffer.toString("ascii", 8, 12) !== "WEBP")) return NextResponse.json({ error: "WebP inválido" }, { status: 400 });
 
     // Try different bucket names in order of preference
     const bucketNames = ["product-images", "images", "uploads", "public"];

@@ -10,6 +10,8 @@ interface Props {
   alias: string;
   holder: string;
   bank: string;
+  cuit?: string;
+  whatsapp?: string;
   expiresAt: string;
 }
 
@@ -98,12 +100,17 @@ export default function TransferInstructions(props: Props) {
           <span className="text-gray-600">Banco:</span>{" "}
           <span className="font-medium">{props.bank}</span>
         </p>
+        {props.cuit && <p><span className="text-gray-600">CUIT:</span> {props.cuit}</p>}
       </div>
 
       <p className="text-sm text-gray-700">
         Cuando recibamos la transferencia te confirmamos el pedido por mail. Si no
         transferís antes de la fecha límite, el pedido se cancela solo.
       </p>
+      {props.whatsapp && <a
+        href={`https://wa.me/${props.whatsapp}?text=${encodeURIComponent(`Hola, quiero enviar el comprobante del pedido ${props.orderNumber}, por ${props.amount}.`)}`}
+        target="_blank" rel="noopener noreferrer" className="underline"
+      >Enviar comprobante por WhatsApp</a>}
 
       <p
         className="text-xs p-3"

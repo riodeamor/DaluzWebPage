@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
     const { data: zones, error } = await supabase
       .from('shipping_zones')
       .select('*')
+      .is('region_key', null)
       .order('sort_order', { ascending: true })
       .order('name', { ascending: true });
 

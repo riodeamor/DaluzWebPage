@@ -1,3 +1,4 @@
+import {safeReturn} from "@/lib/treasures/catalog";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
@@ -26,7 +27,7 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Check if this is a protected route
-  const isProtectedRoute = protectedRoutes.some((route) =>
+  const isProtectedRoute = pathname.startsWith("/tesoro-") || protectedRoutes.some((route) =>
     pathname.startsWith(route),
   );
   const isAdminRoute = adminRoutes.some((route) => pathname.startsWith(route));
@@ -61,11 +62,11 @@ export async function middleware(request: NextRequest) {
 
   // Get session - this will also refresh the token if needed
   const {
-    data: { session },
+    data: { user },
     error,
-  } = await supabase.auth.getSession();
+  } = await supabase.auth.getUser();
 
-  const isAuthenticated = !!session && !error;
+  const isAuthenticated = !!user && !error;
 
   // Debug log in development
   if (process.env.NODE_ENV === "development") {
@@ -76,13 +77,13 @@ export async function middleware(request: NextRequest) {
 
   // Redirect authenticated users away from auth routes
   if (isAuthRoute && isAuthenticated) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL(safeReturn(request.nextUrl.searchParams.get("redirect")), request.url));
   }
 
   // Redirect unauthenticated users to login for protected routes
   if (isProtectedRoute && !isAuthenticated) {
     const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
+    loginUrl.searchParams.set("redirect", safeReturn(pathname + request.nextUrl.search));
     return NextResponse.redirect(loginUrl);
   }
 
@@ -93,6 +94,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
+  const privatePage = isProtectedRoute || isAdminRoute || pathname === "/carrito" || pathname.startsWith("/api/");
+  response.headers.set("Cache-Control", privatePage ? "private, no-store" : "public, max-age=0, must-revalidate");
+  if(privatePage) response.headers.set("X-Robots-Tag", "noindex, nofollow");
   // Add security headers to all responses
   response.headers.set("X-Frame-Options", "DENY");
   response.headers.set("X-Content-Type-Options", "nosniff");

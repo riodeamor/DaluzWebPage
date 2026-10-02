@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServiceClient, requireAdmin } from "@/lib/auth/helpers";
-import { OrdersRepository } from "@/lib/repositories/orders.repository";
-import { ProductsRepository } from "@/lib/repositories/products.repository";
+import { OrdersRepository, PaymentConflictError } from "@/lib/repositories/orders.repository";
+import { PaymentEffectsRepository } from "@/lib/repositories/payment-effects.repository";
+import { PaymentEffectsService } from "@/lib/services/payment-effects.service";
 import { OrderPaymentService } from "@/lib/services/order-payment.service";
 
 export async function POST(
@@ -27,7 +28,7 @@ export async function POST(
     );
   }
 
-  if (order.payment_status !== "awaiting_transfer") {
+  if (!["awaiting_transfer", "paid"].includes(order.payment_status)) {
     return NextResponse.json(
       { error: "Este pedido no esta esperando transferencia" },
       { status: 409 },
@@ -36,9 +37,16 @@ export async function POST(
 
   const paymentService = new OrderPaymentService(
     ordersRepo,
-    new ProductsRepository(service),
+    new PaymentEffectsService(new PaymentEffectsRepository(service), ordersRepo),
   );
-  await paymentService.confirmOrderPayment(params.id);
+  try {
+    await paymentService.confirmOrderPayment(params.id, {}, order);
+  } catch (error) {
+    if (error instanceof PaymentConflictError) {
+      return NextResponse.json({ error: error.message }, { status: 409 });
+    }
+    throw error;
+  }
 
   return NextResponse.json({ success: true });
 }

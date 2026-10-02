@@ -13,6 +13,7 @@ export async function PATCH(
 
     const body = await request.json();
     const { status, payment_status, tracking_number, carrier } = body;
+    if (payment_status === "paid" || status === "paid" || status === "completed") return NextResponse.json({error:"Aprobá el pago mediante su pasarela o confirmación de transferencia"},{status:400});
 
     console.log('📝 Updating order with:', { status, payment_status, tracking_number, carrier });
 
@@ -53,7 +54,7 @@ export async function PATCH(
     }
 
     // Update the order
-    const { data: updatedOrder, error: updateError } = await supabase
+    const { data: updatedOrder, error: updateError } = await getServiceClient()
       .from('orders')
       .update(updateData)
       .eq('id', params.id)
@@ -61,6 +62,8 @@ export async function PATCH(
         *,
         order_items (
           id,
+          product_id,
+          variant_id,
           product_name,
           variant_title,
           quantity,
@@ -198,10 +201,12 @@ export async function GET(
       );
     }
 
+    const {data:revisions,error:historyError}=await getServiceClient().from("order_revisions").select("version,reason,created_at").eq("order_id",params.id).order("version");
+    if(historyError)return NextResponse.json({error:"No pudimos cargar el historial"},{status:503});
     return NextResponse.json({
       success: true,
-      order
-    });
+      order, revisions
+    },{headers:{"Cache-Control":"private, no-store"}});
 
   } catch (error) {
     console.error('❌ Admin order fetch error:', error);
@@ -221,9 +226,12 @@ export async function DELETE(
     if (!auth.ok) return auth.response;
     const { user, supabase } = auth;
 
+    const {data:deleting}=await getServiceClient().from('orders').select('payment_status,revision_version').eq('id',params.id).single();
+    if(!deleting)return NextResponse.json({error:'Pedido inexistente'},{status:404});
+    if(['paid','partially_refunded','refunded'].includes(deleting.payment_status)||deleting.revision_version>0)return NextResponse.json({error:'Conservá el pedido aprobado y su historial; usá rectificación o reembolso'},{status:409});
     // First, delete all order items for this order
     console.log('🗑️ Deleting order items for order:', params.id);
-    const { error: itemsError } = await supabase
+    const { error: itemsError } = await getServiceClient()
       .from('order_items')
       .delete()
       .eq('order_id', params.id);
@@ -238,7 +246,7 @@ export async function DELETE(
 
     // Then, delete the order
     console.log('🗑️ Deleting order:', params.id);
-    const { error: orderError } = await supabase
+    const { error: orderError } = await getServiceClient()
       .from('orders')
       .delete()
       .eq('id', params.id);

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import ProductCard from "@/components/ui/brand/ProductCard";
 import TiendaHero from "@/components/commerce/TiendaHero";
 import Link from "next/link";
@@ -10,9 +10,7 @@ import TiendaSidebar from "@/components/commerce/TiendaSidebar";
 import StoreCategoryNavigation from "@/components/commerce/StoreCategoryNavigation";
 import FeaturedLineSection from "@/components/commerce/FeaturedLineSection";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -34,7 +32,8 @@ import {
 import { useCart } from "@/contexts/CartContext";
 import { useLike } from "@/contexts/LikeContext";
 import { toast } from "sonner";
-import { BODY_CATEGORIES, BOTANICAL_LINES, matchesBodyCategory, matchesBotanicalLine, matchesSynergy, type BodyCategory, type Synergy } from "@/components/commerce/storeFilters";
+import { useCatalogTerms } from "@/hooks/useCatalogTerms";
+import { searchTokens } from "@/lib/catalog/search";
 
 interface Product {
   id: string;
@@ -86,19 +85,14 @@ interface Category {
   description?: string;
 }
 
-interface ProductsResponse {
-  products: Product[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-    hasMore: boolean;
-  };
-}
-
 function ProductsContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const terms = useCatalogTerms();
+  const requestRef = useRef<AbortController | null>(null);
+  const sequence = useRef(0);
+  const ownUrl = useRef<string | null>(null);
+  const [debouncedSearch, setDebouncedSearch] = useState(searchParams.get("search") || "");
   const { addItem } = useCart();
   const showReviews = useReviewsVisibility();
   const { isLiked, likedProducts } = useLike();
@@ -145,15 +139,15 @@ function ProductsContent() {
   const [showFilters, setShowFilters] = useState(false);
   const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
   const [showOnlySale, setShowOnlySale] = useState(false);
-  const [selectedSynergy, setSelectedSynergy] = useState<Synergy | null>(null);
+  const [selectedSynergy, setSelectedSynergy] = useState<string | null>(searchParams.get("need"));
   const selectCategory = (category: string) => {
     setSelectedCategory(category);
     setSelectedSynergy(null);
     setCurrentPage(1);
   };
-  const selectSynergy = (synergy: Synergy) => {
+  const selectSynergy = (synergy: string) => {
     setSelectedSynergy((current) => current === synergy ? null : synergy);
-    setSelectedCategory(synergy.startsWith("facial") ? "rostro" : "cabello");
+
     setCurrentPage(1);
   };
 
@@ -173,108 +167,48 @@ function ProductsContent() {
     fetchCategories();
   }, []);
 
-  // Fetch products
+  useEffect(() => { const timer = setTimeout(() => { setDebouncedSearch(searchTerm); }, 400); return () => clearTimeout(timer); }, [searchTerm]);
   useEffect(() => {
-    async function fetchProducts() {
-      setLoading(true);
-      try {
-        const params = new URLSearchParams();
-
-        if (searchTerm) params.append("search", searchTerm);
-        const bodyCategory = BODY_CATEGORIES.find((c) => c.id === selectedCategory)?.id as BodyCategory | undefined;
-        const botanicalLine = selectedCategory.startsWith("line:")
-          ? BOTANICAL_LINES.find((line) => line.id === selectedCategory.slice(5))?.id
-          : undefined;
-        const clientFilter = Boolean(bodyCategory && bodyCategory !== "all") || Boolean(botanicalLine) || Boolean(selectedSynergy);
-        if (selectedCategory && !bodyCategory && !botanicalLine) params.append("category", selectedCategory);
-        if (selectedSkinType && selectedSkinType !== "all")
-          params.append("skin_type", selectedSkinType);
-        if (selectedHairType && selectedHairType !== "all")
-          params.append("hair_type", selectedHairType);
-        if (priceRange.min) params.append("min_price", priceRange.min);
-        if (priceRange.max) params.append("max_price", priceRange.max);
-        if (showOnlySale) params.append("on_sale", "true");
-        if (sortBy) params.append("sort_by", getSortField(sortBy));
-        if (getSortOrder(sortBy))
-          params.append("sort_order", getSortOrder(sortBy));
-        params.append("page", clientFilter ? "1" : currentPage.toString());
-        params.append("limit", clientFilter ? "1000" : "9");
-        params.append("in_stock", "true");
-
-        const response = await fetch(`/api/products?${params.toString()}`);
-        const data: ProductsResponse = await response.json();
-
-        if (response.ok) {
-          if (clientFilter) {
-            const matches = data.products.filter((product) =>
-              matchesBodyCategory(product, bodyCategory || "all") &&
-              (!botanicalLine || matchesBotanicalLine(product, botanicalLine)) &&
-              matchesSynergy(product, selectedSynergy),
-            );
-            setProducts(matches.slice((currentPage - 1) * 9, currentPage * 9));
-            setPagination({ page: currentPage, limit: 9, total: matches.length, totalPages: Math.ceil(matches.length / 9), hasMore: currentPage * 9 < matches.length });
-          } else {
-            setProducts(data.products);
-            setPagination(data.pagination);
-          }
-        } else {
-          console.error("API Error:", data);
-          toast.error("Error al cargar productos");
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-        toast.error("Error al cargar productos");
-      } finally {
-        setLoading(false);
-      }
+    if (ownUrl.current === searchParams.toString()) { ownUrl.current = null; return; }
+    setDebouncedSearch(searchParams.get("search") || "");
+    setSearchTerm(searchParams.get("search") || "");
+    setSelectedCategory(searchParams.get("category") || "");
+    setSelectedSkinType(searchParams.get("skin_type") || "");
+    setSelectedHairType(searchParams.get("hair_type") || "");
+    setPriceRange({min:searchParams.get("min_price") || "",max:searchParams.get("max_price") || ""});
+    setShowOnlySale(searchParams.get("on_sale") === "true");
+    setSelectedSynergy(searchParams.get("need"));
+    setCurrentPage(Math.max(1, Number(searchParams.get("page")) || 1));
+  }, [searchParams]);
+  useEffect(() => {
+    requestRef.current?.abort();
+    const controller = new AbortController(); requestRef.current = controller;
+    const requestId = ++sequence.current;
+    const params = new URLSearchParams();
+    try { searchTokens(debouncedSearch); } catch (error) { toast.error((error as Error).message); setLoading(false); return; }
+    if (debouncedSearch) params.set("search", debouncedSearch);
+    if (selectedCategory.startsWith("line:")) params.set("line", selectedCategory.slice(5));
+    else if (selectedCategory && selectedCategory !== "all") {
+      if (/^[0-9a-f-]{36}$/i.test(selectedCategory)) params.set("category_id", selectedCategory);
+      else params.set("anatomy", selectedCategory);
     }
-
-    fetchProducts();
-  }, [
-    searchTerm,
-    selectedCategory,
-    selectedSynergy,
-    selectedSkinType,
-    selectedHairType,
-    priceRange,
-    sortBy,
-    currentPage,
-    showOnlySale,
-  ]);
-
-  const getSortField = (sort: string) => {
-    switch (sort) {
-      case "price_asc":
-        return "price";
-      case "price_desc":
-        return "price";
-      case "name":
-        return "name";
-      case "newest":
-        return "created_at";
-      case "featured":
-        return "is_featured";
-      default:
-        return "created_at";
-    }
-  };
-
-  const getSortOrder = (sort: string) => {
-    switch (sort) {
-      case "price_asc":
-        return "asc";
-      case "price_desc":
-        return "desc";
-      case "name":
-        return "asc";
-      case "newest":
-        return "desc";
-      case "featured":
-        return "desc";
-      default:
-        return "desc";
-    }
-  };
+    if (selectedSynergy) params.set("need", selectedSynergy);
+    if (selectedSkinType && selectedSkinType !== "all") params.set("skin_type", selectedSkinType);
+    if (selectedHairType && selectedHairType !== "all") params.set("hair_type", selectedHairType);
+    if (priceRange.min) params.set("min_price", priceRange.min);
+    if (priceRange.max) params.set("max_price", priceRange.max);
+    if (showOnlySale) params.set("on_sale", "true");
+    params.set("page", String(currentPage)); params.set("limit", "9"); params.set("in_stock", "true");
+    const url = new URLSearchParams(params); url.delete("line"); url.delete("anatomy"); url.delete("category_id"); url.delete("limit"); url.delete("in_stock");
+    if (selectedCategory) url.set("category", selectedCategory);
+    if (url.toString() !== searchParams.toString()) { ownUrl.current = url.toString(); router.replace("/productos?" + url, { scroll: false }); }
+    setLoading(true);
+    fetch("/api/products?" + params, { signal: controller.signal }).then(async response => {
+      const data = await response.json(); if (!response.ok) throw new Error(data.error || "Error al cargar productos");
+      if (requestId === sequence.current && !controller.signal.aborted) { setProducts(data.products); setPagination(data.pagination); }
+    }).catch(error => { if (!controller.signal.aborted) toast.error(error.message); }).finally(() => { if (requestId === sequence.current && !controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, [debouncedSearch, selectedCategory, selectedSynergy, selectedSkinType, selectedHairType, priceRange, currentPage, showOnlySale, router]);
 
   const handleAddToCart = (productId: string, quantity: number) => {
     const product = products.find((p) => p.id === productId);
@@ -331,7 +265,6 @@ function ProductsContent() {
     ? products.filter((p) => isLiked(p.id))
     : products;
 
-  const skinTypes = ["seca", "grasa", "mixta", "sensible", "normal"];
 
   return (
     <div className="tienda-page min-h-screen overflow-hidden bg-[#FAF7F2]">
@@ -440,12 +373,7 @@ function ProductsContent() {
                       </SelectTrigger>
                       <SelectContent className="tienda-select-panel">
                         <SelectItem value="all">Todos los tipos</SelectItem>
-                        <SelectItem value="dry">Piel Seca</SelectItem>
-                        <SelectItem value="oily">Piel Grasa</SelectItem>
-                        <SelectItem value="combination">Piel Mixta</SelectItem>
-                        <SelectItem value="sensitive">Piel Sensible</SelectItem>
-                        <SelectItem value="normal">Piel Normal</SelectItem>
-                        <SelectItem value="mature">Piel Madura</SelectItem>
+                        {terms.filter(t => t.kind === "need" && t.group_name === "facial").map(t => <SelectItem key={t.id} value={t.slug}>{t.label}</SelectItem>)}
                       </SelectContent>
                     </Select>
 
@@ -458,12 +386,7 @@ function ProductsContent() {
                       </SelectTrigger>
                       <SelectContent className="tienda-select-panel">
                         <SelectItem value="all">Todos</SelectItem>
-                        <SelectItem value="oily">Graso</SelectItem>
-                        <SelectItem value="dry">Seco</SelectItem>
-                        <SelectItem value="normal">Normal</SelectItem>
-                        <SelectItem value="combination">Mixto</SelectItem>
-                        <SelectItem value="curly">Rizado</SelectItem>
-                        <SelectItem value="straight">Lacio</SelectItem>
+                        {terms.filter(t => t.kind === "need" && t.group_name === "capilar").map(t => <SelectItem key={t.id} value={t.slug}>{t.label}</SelectItem>)}
                       </SelectContent>
                     </Select>
 
@@ -569,17 +492,7 @@ function ProductsContent() {
                       <SelectContent className="tienda-select-panel">
                         {/* Etiquetas sin "á" ni ":": Synthese.otf no trae esos
                             glifos y el panel usa esa tipografía */}
-                        <SelectItem value="featured">Destacados</SelectItem>
-                        <SelectItem value="price_asc">
-                          Precio menor a mayor
-                        </SelectItem>
-                        <SelectItem value="price_desc">
-                          Precio mayor a menor
-                        </SelectItem>
-                        <SelectItem value="name_asc">Nombre A-Z</SelectItem>
-                        <SelectItem value="name_desc">Nombre Z-A</SelectItem>
-                        <SelectItem value="newest">Recientes</SelectItem>
-                        <SelectItem value="rating">Mejor Valorados</SelectItem>
+                        <SelectItem value="featured">Fórmulas primero · Más recientes</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -630,25 +543,13 @@ function ProductsContent() {
             <div className="alkimya-synergy-ribbons mb-6" aria-label="Filtrar por sinergia">
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado facial</span>
-                {([
-                  ["facial-serena", "Serena • Poros & Brillo"],
-                  ["facial-ilumina", "Ilumina • Nutrición & Sequedad"],
-                  ["facial-soy", "Soy • Firmeza & Regeneración"],
-                  ["facial-claridad", "Claridad • Tono Uniforme & Calma"],
-                  ["facial-rituales", "Rituales Faciales Completos"],
-                ] as const).map(([id, label]) => (
+                {terms.filter(term => term.kind === "need" && term.group_name === "facial").map(({slug: id, label}) => (
                   <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
                 ))}
               </div>
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado capilar</span>
-                {([
-                  ["capilar-raiz", "Raíz • Fuerza & Densidad"],
-                  ["capilar-serena", "Serena • Equilibrio & Cuero Cabelludo"],
-                  ["capilar-ilumina", "Ilumina • Nutrición & Brillo"],
-                  ["capilar-pureza", "Pureza • Desenredo & Suavidad"],
-                  ["capilar-ceremonia", "Ceremonia Capilar Completa"],
-                ] as const).map(([id, label]) => (
+                {terms.filter(term => term.kind === "need" && term.group_name === "capilar").map(({slug: id, label}) => (
                   <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
                 ))}
               </div>

@@ -3,7 +3,6 @@ import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { getServiceClient } from "@/lib/auth/helpers";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
-import { ProductsRepository } from "@/lib/repositories/products.repository";
 import { SystemRepository } from "@/lib/repositories/system.repository";
 import { CheckoutService } from "@/lib/services/checkout.service";
 import { checkoutPayloadSchema } from "@/lib/validations/checkout.schema";
@@ -11,11 +10,18 @@ import {
   parseBankTransferConfig,
   BANK_TRANSFER_CONFIG_KEYS,
 } from "@/lib/payments/bank-transfer-config";
-import { calculateTransferDiscount } from "@/lib/payments/transfer-discount";
+import { quoteCart } from "@/lib/commerce/quote";
+import { QuoteError } from "@/lib/commerce/pricing";
+import { createHash, randomUUID } from "node:crypto";
+import {
+  CheckoutCatalogError,
+} from "@/lib/payments/checkout-catalog";
 import { EmailNotificationService } from "@/lib/email/notifications";
 import { logger } from "@/lib/logger";
 
 export async function POST(req: NextRequest) {
+  let createdOrderId: string | null = null;
+  let db: ReturnType<typeof getServiceClient> | null = null;
   try {
     // Authentication
     const authHeader = req.headers.get("authorization");
@@ -66,21 +72,48 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { items, customerInfo, paymentMethod } = parsed.data;
+    const { items: requestedItems, customerInfo, paymentMethod, couponCode, checkoutRequestId, expectedTotal } = parsed.data;
+    customerInfo.postalCode = customerInfo.postalCode || customerInfo.zipCode;
 
     logger.info("Checkout request received", {
       source: "checkout",
-      itemsCount: items.length,
+      itemsCount: requestedItems.length,
     });
 
     // === Instantiate service chain (service client bypasses RLS) ===
     const serviceClient = getServiceClient();
+    db = serviceClient;
+    const requestId = checkoutRequestId || randomUUID();
+    const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal })).digest("hex");
+    const { data: existing, error: existingError } = await serviceClient.from("orders").select("id,checkout_fingerprint,checkout_ready,status,payment_method,mercadopago_preference_id").eq("user_id", user.id).eq("checkout_request_id", requestId).maybeSingle();
+    if (existingError) throw existingError;
+    if (existing) {
+      if (existing.checkout_fingerprint !== fingerprint) return NextResponse.json({ error: "Este intento corresponde a otro carrito." }, { status: 409 });
+      if (existing.status === "failed" || existing.status === "cancelled") return NextResponse.json({ error: "El intento anterior no está disponible. Volvé a iniciar la compra.", needsNewRequest: true }, { status: 409 });
+      if (!existing.checkout_ready && !existing.mercadopago_preference_id) return NextResponse.json({ error: "La compra sigue procesándose. Intentá nuevamente en unos segundos." }, { status: 409 });
+      if (existing.payment_method === "bank_transfer") return NextResponse.json({ method: "bank_transfer", redirectUrl: `/checkout/transferencia/${existing.id}` });
+      return NextResponse.json({ method: "mercadopago", id: existing.mercadopago_preference_id });
+    }
+    const { items, coupon, quote } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, couponCode, paymentMethod });
+    if (quote.total === null || quote.shipping === null) throw new QuoteError("Ingresá el código postal para calcular el envío.");
+    if (quote.total <= 0) throw new QuoteError("El total de la compra debe ser mayor a cero.");
+    if (expectedTotal !== undefined && expectedTotal !== quote.total) throw new QuoteError("El total cambió. Revisá el cálculo actualizado antes de continuar.");
+    const totals = { subtotal: quote.subtotal, discount: quote.discount, shipping: quote.shipping, total: quote.total };
     const ordersRepo = new OrdersRepository(serviceClient);
     const checkoutService = new CheckoutService(ordersRepo);
+    const metadata = { coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
+    const reserveCoupon = async (orderId: string) => {
+      if (!coupon) return;
+      const { error } = await serviceClient.rpc("reserve_order_coupon", { p_order_id: orderId, p_coupon_id: coupon.id, p_updated_at: coupon.updated_at });
+      if (error) throw new QuoteError("El cupón cambió o agotó sus usos. Volvé a aplicarlo.");
+    };
+    const ready = async (orderId: string) => {
+      const { error } = await serviceClient.from("orders").update({ checkout_ready: true }).eq("id", orderId);
+      if (error) throw error;
+    };
 
     if (paymentMethod === "bank_transfer") {
       const systemRepo = new SystemRepository(serviceClient);
-      const productsRepo = new ProductsRepository(serviceClient);
 
       // Sin datos bancarios cargados no se puede cobrar por transferencia.
       const configRows = await systemRepo.getConfigs([...BANK_TRANSFER_CONFIG_KEYS]);
@@ -92,26 +125,18 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // Los porcentajes se leen de la base, nunca del cliente: aceptar un total
-      // calculado en el navegador permitiria pedirse cualquier descuento.
-      const products = await productsRepo.findManyByIds(items.map((i) => i.productId));
-      const percentByProductId: Record<string, number> = {};
-      for (const p of products) {
-        if (p.discount_transfer_percent) {
-          percentByProductId[p.id] = p.discount_transfer_percent;
-        }
-      }
-
-      const totals = calculateTransferDiscount(items, percentByProductId);
-
       const order = await checkoutService.createOrder(
         user.id,
         customerInfo,
         items,
         "bank_transfer",
         totals,
+        metadata,
       );
+      createdOrderId = order.id;
       await checkoutService.createOrderItems(order.id, items);
+      await reserveCoupon(order.id);
+      await ready(order.id);
 
       // Un fallo de mail no puede romper la compra: la pantalla de
       // instrucciones es la fuente de verdad, el mail es respaldo.
@@ -138,11 +163,16 @@ export async function POST(req: NextRequest) {
     }
 
     // === Business Logic via Service ===
-    const order = await checkoutService.createOrder(user.id, customerInfo, items);
+    const order = await checkoutService.createOrder(user.id, customerInfo, items, "mercadopago", totals, metadata);
+    createdOrderId = order.id;
     await checkoutService.createOrderItems(order.id, items);
+    await reserveCoupon(order.id);
 
+    let preferenceCreated = false;
     try {
       const result = await checkoutService.createMercadoPagoPreference(order, items, customerInfo);
+      preferenceCreated = true;
+      await ready(order.id);
       return NextResponse.json({
         method: "mercadopago",
         id: result.preferenceId,
@@ -155,11 +185,12 @@ export async function POST(req: NextRequest) {
       const errorMessage = error?.message || "Error creating MercadoPago preference";
 
       // Rollback: mark order as failed
-      await checkoutService.markOrderFailed(order.id, errorMessage);
+      if (!preferenceCreated) await checkoutService.markOrderFailed(order.id, errorMessage);
 
       const errorStatus = error?.status || 500;
       return NextResponse.json(
         {
+          needsNewRequest: !preferenceCreated,
           error: "Failed to create payment preference",
           details: errorMessage,
         },
@@ -167,6 +198,14 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (error) {
+    if (createdOrderId && db) {
+      const { error: cleanupError } = await db.from("orders").update({ status: "failed" }).eq("id", createdOrderId).eq("status", "pending");
+      if (cleanupError) logger.error("Checkout cleanup failed", undefined, { source: "checkout" });
+    }
+    if (error instanceof QuoteError) return NextResponse.json({ error: error.message, needsNewRequest: Boolean(createdOrderId) }, { status: 409 });
+    if (error instanceof CheckoutCatalogError) {
+      return NextResponse.json({ error: error.message }, { status: 409 });
+    }
     logger.error("Checkout API error", error instanceof Error ? error : undefined, { source: "checkout" });
     return NextResponse.json(
       {
