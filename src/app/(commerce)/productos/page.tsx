@@ -85,6 +85,19 @@ interface Category {
   description?: string;
 }
 
+const officialNeedLabels: Record<string, string> = {
+  "facial-serena": "Poros & Brillo • Serena",
+  "facial-ilumina": "Nutrición & Sequedad • Ilumina",
+  "facial-soy": "Firmeza & Regeneración • Soy",
+  "facial-claridad": "Tono Uniforme & Calma • Claridad",
+  "facial-rituales": "Rituales Faciales Completos",
+  "capilar-raiz": "Fuerza & Densidad • Raíz",
+  "capilar-serena": "Equilibrio & Cuero Cabelludo • Serena",
+  "capilar-ilumina": "Nutrición & Brillo • Ilumina",
+  "capilar-pureza": "Desenredo & Suavidad • Pureza",
+  "capilar-ceremonia": "Ceremonia Capilar Completa",
+};
+
 function ProductsContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -544,13 +557,13 @@ function ProductsContent() {
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado facial</span>
                 {terms.filter(term => term.kind === "need" && term.group_name === "facial").map(({slug: id, label}) => (
-                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
+                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{officialNeedLabels[id] ?? label}</button>
                 ))}
               </div>
               <div className="alkimya-synergy-row">
                 <span className="alkimya-synergy-heading">Cuidado capilar</span>
                 {terms.filter(term => term.kind === "need" && term.group_name === "capilar").map(({slug: id, label}) => (
-                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{label}</button>
+                  <button key={id} type="button" className="alkimya-synergy-button" aria-pressed={selectedSynergy === id} onClick={() => selectSynergy(id)}>{officialNeedLabels[id] ?? label}</button>
                 ))}
               </div>
             </div>

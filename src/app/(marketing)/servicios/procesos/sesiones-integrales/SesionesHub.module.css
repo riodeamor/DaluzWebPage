@@ -1,0 +1,41 @@
+.hub :global(main) { width:min(76rem,calc(100% - 2rem)); }
+.introduction { max-width:55rem; margin:0 auto 3rem; }
+.doors { scroll-margin-top:7rem; }
+.grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; margin-top:2rem; }
+.card { display:flex; flex-direction:column; min-width:0; padding:clamp(1.25rem,2vw,2rem); background:#fff; border:1px solid rgb(22 52 95 / 15%); border-radius:0 24px; box-shadow:0 8px 24px rgb(22 52 95 / 6%); }
+.number { color:#005080; font-size:.8rem; font-weight:600; letter-spacing:.2em; }
+.hub .card h3 { font-size:1.1rem; font-style:normal!important; margin:1rem 0 .5rem; }
+.hub .card .subtitle { font-size:.875rem; line-height:1.5!important; color:#005080; margin-bottom:1.5rem; }
+.card dl { margin:0 0 2rem; font-size:.875rem; }
+.card dl > div + div { margin-top:1rem; padding-top:1rem; border-top:1px solid rgb(22 52 95 / 12%); }
+.card dt { font-weight:600; color:#16345f; margin-bottom:.4rem; }
+.card dd { margin:0; }
+.button { display:flex; align-items:center; justify-content:center; margin-top:auto; min-height:48px; padding:1rem; border-radius:999px; background:linear-gradient(90deg,#16345f,#005080); color:#fff; text-decoration:none; text-align:center; font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.7rem; font-weight:600; line-height:1.5; letter-spacing:.06em; transition:box-shadow .2s ease,transform .2s ease; }
+.button:hover { color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgb(22 52 95 / 25%); }
+.tableScroll { max-width:100%; overflow-x:auto; border:1px solid rgb(22 52 95 / 15%); border-radius:0 20px; }
+.tableScroll table { width:100%; min-width:42rem; border-collapse:collapse; text-align:left; font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.85rem; }
+.tableScroll th,.tableScroll td { padding:1rem; vertical-align:top; border-bottom:1px solid rgb(22 52 95 / 12%); }
+.tableScroll thead { background:#16345f; color:#fff; }
+.tableScroll tbody th { color:#16345f; font-weight:600; }
+.tableScroll tbody tr:nth-child(even) { background:rgb(152 215 228 / 12%); }
+.caption { text-align:left; padding:1rem; color:#005080; }
+.hub .scrollHint { font-size:.75rem; color:#005080; }
+.closing { text-align:center; max-width:45rem; margin-inline:auto; }
+.button:focus-visible,.tableScroll:focus-visible { outline:3px solid #2da2bb; outline-offset:4px; }
+@media(max-width:1000px) { .grid { grid-template-columns:1fr; } }
+@media(prefers-reduced-motion:reduce) { .button { transition:none; } .button:hover { transform:none; } }
+/* Added content uses the original page frame and cards. */
+.addition,.appendix { position:relative; z-index:10; max-width:1072px; margin:0 auto 3rem; padding:clamp(1.5rem,3vw,2.5rem); background:var(--procesos-cream,#fff2e9); color:#16345f; border-radius:0 15px; box-shadow:0 4px 12px rgb(0 0 0 / 15%); font-family:var(--font-montserrat),Montserrat,sans-serif; font-size:.875rem; line-height:1.8; }
+.addition h2,.appendix h2,.doorsHeading { font-family:var(--font-cormorant),'Cormorant Garamond',serif!important; font-size:clamp(1.8rem,3vw,2.5rem); font-style:normal!important; line-height:1.2; margin:0 0 1.5rem; }
+.addition p + p { margin-top:1rem; }
+.doorsHeading { position:relative; z-index:10; text-align:center; color:#fff2e9; margin:0 1rem 2rem; }
+.appendix section + section { margin-top:3rem; }
+.appendix p { margin-bottom:1.25rem; }
+.appendix details { margin-bottom:1rem; padding:1.25rem; border:1px solid rgb(22 52 95 / 15%); border-radius:0 15px; }
+.appendix summary { cursor:pointer; font-weight:600; }
+.appendix details[open] summary { margin-bottom:1rem; }
+.appendix summary:focus-visible { outline:3px solid #2da2bb; outline-offset:4px; }
+.appendix .button { max-width:100%; }
+.cardSubtitle { margin-top:-.5rem; margin-bottom:1.25rem; font-family:var(--font-montserrat),Montserrat,sans-serif!important; font-size:.875rem; }
+@media(max-width:1120px) { .addition,.appendix { margin-inline:1.5rem; } }
+@media(max-width:600px) { .addition,.appendix { margin-inline:.75rem; } }

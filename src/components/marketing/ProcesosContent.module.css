@@ -1,0 +1,85 @@
+.badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 3rem !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+.badges li {
+  margin: 0 !important;
+  padding: 1rem 1.1rem;
+  border: 1px solid #98d7e4;
+  border-radius: 0 12px;
+  background: rgb(152 215 228 / 20%);
+  color: #16345f;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+.tableRegion {
+  max-width: 100%;
+  margin: 1.5rem 0 2rem;
+  overflow-x: auto;
+  border-radius: 0 12px;
+  border: 1px solid #98d7e4;
+}
+.tableRegion:focus-visible {
+  outline: 3px solid #2da2bb;
+  outline-offset: 3px;
+}
+.table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.table caption {
+  padding: 0.9rem 1rem;
+  color: #16345f;
+  text-align: left;
+  font-weight: 600;
+  background: rgb(152 215 228 / 20%);
+}
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgb(22 52 95 / 12%);
+  white-space: pre-line;
+}
+.table thead {
+  background: #16345f;
+  color: #fdfbf7;
+}
+.table tbody th {
+  min-width: 110px;
+  background: rgb(152 215 228 / 12%);
+  font-weight: 600;
+}
+.table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.quote {
+  margin: 1.75rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid #2da2bb;
+  border-radius: 0 12px;
+  background: rgb(152 215 228 / 20%);
+}
+.quote blockquote {
+  line-height: 1.8;
+}
+.quote blockquote {
+  font-style: italic;
+}
+.quote figcaption {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  .badges {
+    grid-template-columns: 1fr;
+  }
+}

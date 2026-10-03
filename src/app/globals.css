@@ -3075,6 +3075,21 @@ main a.tu-ceremonia-button:hover {
   left: auto;
   right: 0;
 }
+.site-header-nav--tienda-open {
+  z-index: 101;
+}
+.site-header-nav--tienda-open > div:last-child {
+  /* 180px first column + half of the next 232px column under Tienda. */
+  left: -250px;
+  z-index: 100;
+}
+.site-header-nav--tienda-open > div:last-child::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 15px;
+  background: transparent;
+}
 .mobile-nav-section > div[id] a {
   display: block;
   border: 0;

@@ -296,7 +296,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className={`site-header-nav hidden xl:flex ${openMenu === "blog" ? "site-header-nav--blog-open" : ""}`} value={openMenu} onValueChange={setOpenMenu}>
+            <NavigationMenu className={`site-header-nav hidden xl:flex ${openMenu === "blog" ? "site-header-nav--blog-open" : ""} ${openMenu === "tienda" ? "site-header-nav--tienda-open" : ""}`} value={openMenu} onValueChange={setOpenMenu}>
               <NavigationMenuList className="space-x-1">
                 
                 {/* 1. TIENDA (Bordó al abrir) */}

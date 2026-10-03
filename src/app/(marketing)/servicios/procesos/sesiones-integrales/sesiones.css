@@ -303,3 +303,10 @@
     line-height: 1.08;
   }
 }
+/* Match the requested current card body typography without changing the original layout. */
+.procesos-pages .sesiones-card-body,
+.procesos-pages .sesiones-card-body :is(p, strong) {
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: .875rem !important;
+  line-height: 1.8 !important;
+}

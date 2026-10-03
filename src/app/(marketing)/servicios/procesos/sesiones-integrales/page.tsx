@@ -1,21 +1,23 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import styles from './SesionesHub.module.css';
 import { ProcesosBackground } from '@/components/svg/ProcesosPageComponents';
 import '../procesos-pages.css';
 import './sesiones.css';
 
 const PROCESOS_WRAPPER = 'procesos-pages';
 
+const canonical = 'https://www.daluzconsciente.com/servicios/procesos/sesiones-integrales';
+const title = 'Sesiones Integrales 1:1 en Córdoba & Online | Da Luz Consciente';
+const description = 'Espacios individuales de diagnóstico somático, regulación del sistema nervioso y alquimia vibracional. Mapeá tu terreno biológico y recuperá tu soberanía.';
+const whatsapp = `https://wa.me/5493512344580?text=${encodeURIComponent('Hola Gala, quiero consultar mi caso y conocer qué Sesión Integral es afín a mi momento.')}`;
+
 export const metadata: Metadata = {
-  title: 'Sesiones Integrales | DA LUZ CONSCIENTE',
-  description:
-    'Encuentros de alta potencia: Pausa Vital, Reprogramación Consciente y Visión y Presencia. Reiki, Chamanismo, Cuencos Sonoros y más.',
-  openGraph: {
-    title: 'Sesiones Integrales - DA LUZ CONSCIENTE',
-    description:
-      'Pausa Vital, Reprogramación Consciente y Visión y Presencia. Claridad y armonía para tu energía.',
-    type: 'website',
-  },
+  title: { absolute: title },
+  description,
+  keywords: ['sesiones holísticas córdoba', 'regulación sistema nervioso', 'terapia somática individual', 'reiki y cuencos presencial', 'diagnóstico bioenergético'],
+  alternates: { canonical },
+  openGraph: { title, description, url: canonical, type: 'website', locale: 'es_AR' },
 };
 
 export default function SesionesIntegralesPage() {
@@ -41,6 +43,14 @@ export default function SesionesIntegralesPage() {
           </p>
         </section>
 
+
+        <section className={styles.addition} aria-labelledby="dialogo-title">
+          <h2 id="dialogo-title">Recuperá el Diálogo con tu Propio Templo</h2>
+          <p><strong>Espacios individuales de escucha clínica, biofísica somática y medicina vibracional diseñados para desarmar la coraza del estrés, diagnosticar el terreno biológico y restaurar tu coherencia vital sin generar dependencia.</strong></p>
+          <p><strong>Nos enseñaron a tratar el síntoma como un enemigo a silenciar con parches rápidos o discursos edulcorados de autoayuda. En Da Luz Consciente operamos bajo una certeza biológica: tu cuerpo no está roto; está respondiendo con absoluta precisión a los niveles de tensión, memorias y sobreexigencia a los que fue sometido. Aquí no venimos a decirte qué hacer ni a infantilizarte: sostenemos una estructura quirúrgica para que tu sistema nervioso recuerde que ya está a salvo.</strong></p>
+        </section>
+        <h2 className={styles.doorsHeading}>Tres Puertas de Entrada</h2>
+
         {/* 3. Grilla de sesiones */}
         <section className="sesiones-grid">
           {/* Columna 1: SESIÓN UMBRAL */}
@@ -51,6 +61,9 @@ export default function SesionesIntegralesPage() {
               <p><strong>Sesión Umbral:</strong> Mapeo de Terreno &amp; Asesoría Botánica.</p>
               <p><strong>La puerta de entrada:</strong> Tu GPS biológico y frecuencial (60 min — Virtual o Presencial).</p>
               <p><strong>Tecnologías:</strong> Escaneo Biológico y Circadiano, Radiestesia de Terreno, Fitoterapia Aplicada y Mapeo Emocional.</p>
+              <p><strong>Estado:</strong> Te sentís desorientada con tus síntomas (piel, digestión, fatiga) o querés ingresar a la botica y programas sin comprar a ciegas.</p>
+              <p><strong>Dinámica:</strong> Diagnóstico 360°, cruce astrológico y diseño de tu Botiquín Soberano.</p>
+              <p><strong>Formato:</strong> 45 a 60 min · Online (Zoom) o Presencial.</p>
               </div>
               <div className="sesiones-card-details">
               <p><strong>Para qué sirve:</strong> Comprar alquimias o iniciar protocolos a ciegas es poner parches superficiales sobre un terreno que pide ser comprendido. En la Sesión Umbral escaneamos la salud de tu barrera cutánea, el eje digestivo y el tono neurovegetativo basal para estructurar un Botiquín Soberano con precisión milimétrica y definir la hoja de ruta que tu cuerpo realmente necesita.</p>
@@ -60,9 +73,7 @@ export default function SesionesIntegralesPage() {
               </div>
             </div>
             <div className="sesiones-card-cta">
-              <Link href="#" className="procesos-btn-blue">
-                RESERVAR SESIÓN UMBRAL
-              </Link>
+              <Link href="/servicios/procesos/sesiones-integrales/sesion-umbral" className="procesos-btn-blue">EXPLORAR SESIÓN UMBRAL →</Link>
             </div>
           </article>
 
@@ -74,6 +85,9 @@ export default function SesionesIntegralesPage() {
               <p><strong>Pausa Vital:</strong> Reseteo Somático &amp; Regulación Vibracional.</p>
               <p>Rendición sensorial y desactivación del sistema simpático (75 min — Exclusivamente en Camilla).</p>
               <p><strong>Tecnologías:</strong> Sonoterapia (Cuencos Tibetanos), Reiki Usui, Aromaterapia Límbica y Gemoterapia.</p>
+              <p><strong>Estado:</strong> Agotamiento crónico, rumiación mental incesante, bruxismo o corazas musculares.</p>
+              <p><strong>Dinámica:</strong> Rendición pasiva en camilla. Reiki, cuencos tibetanos, aromaterapia y gemas. Cero exigencia mental, cero tareas obligatorias.</p>
+              <p><strong>Formato:</strong> 75 min · Exclusivamente Presencial (Consultorio en Córdoba).</p>
               </div>
               <div className="sesiones-card-details">
               <p><strong>Para qué sirve:</strong> El organismo no regenera en hiperalerta. Pausa Vital es una experiencia de descanso celular profundo donde no venís a analizar mentalmente, ni a hablar de heridas, ni a rendir cuentas: venís a que el sonido puro de cuencos en frecuencias Alfa/Theta, el Reiki Usui y la botica aromática le recuerden a tus células que ya estás a salvo.</p>
@@ -82,20 +96,21 @@ export default function SesionesIntegralesPage() {
               </div>
             </div>
             <div className="sesiones-card-cta">
-              <Link href="#" className="procesos-btn-blue">
-                RESERVAR MI PAUSA VITAL
-              </Link>
+              <Link href="/servicios/procesos/sesiones-integrales/pausa-vital" className="procesos-btn-blue">RESERVAR PAUSA VITAL →</Link>
             </div>
           </article>
 
           {/* Columna 3: ALQUIMIA CHAMÁNICA & ACCIÓN */}
           <article className="sesiones-card">
-            <h2 className="sesiones-card-title">ALQUIMIA CHAMÁNICA &amp; ACCIÓN</h2>
+            <h2 className="sesiones-card-title">ALQUIMIA CHAMÁNICA &amp; ACCIÓN</h2><p className={styles.cardSubtitle}><strong>Desbloqueo Fisiológico &amp; Reprogramación</strong></p>
             <div className="sesiones-card-body">
               <div className="sesiones-card-summary">
               <p><strong>Alquimia Chamánica &amp; Acción:</strong> Diagnóstico Subconsciente &amp; Reprogramación.</p>
               <p>Intervención activa sobre la memoria celular y la fascia (75 a 90 min — Virtual o Presencial).</p>
               <p><strong>Tecnologías:</strong> Péndulo Evolutivo (Radiestesia), Inmersión con Tambor Chamánico (7.5 Hz), Liberación Somática y Fitoterapia Viva.</p>
+              <p><strong>Estado:</strong> Parálisis por análisis, nudos emocionales ciegos, patrones repetitivos o fuga vital.</p>
+              <p><strong>Dinámica:</strong> Intervención activa y quirúrgica con Péndulo Evolutivo, tambor chamánico (7.5 Hz), descarga somática y prescripción de Medicina Viva.</p>
+              <p><strong>Formato:</strong> 75 a 90 min · Presencial u Online a todo el mundo.</p>
               </div>
               <div className="sesiones-card-details">
               <p><strong>Para qué sirve:</strong> Podés pasar años entendiendo un bloqueo en la cabeza, pero si tu diafragma permanece contraído y el campo retiene lealtades arcaicas, la materia no se mueve. Esta sesión es una cirugía vibracional: rastreamos la raíz invisible del estancamiento, entramos en trance ligero con tambor para recuperar fuerza vital y bajamos al cuerpo un plan de acción concreto para que retomes el timón.</p>
@@ -105,12 +120,30 @@ export default function SesionesIntegralesPage() {
               </div>
             </div>
             <div className="sesiones-card-cta">
-              <Link href="#" className="procesos-btn-blue">
-                RESERVAR ALQUIMIA CHAMÁNICA
-              </Link>
+              <Link href="/servicios/procesos/sesiones-integrales/alquimia-chamanica" className="procesos-btn-blue">ENTRAR A ALQUIMIA CHAMÁNICA →</Link>
             </div>
           </article>
         </section>
+
+        <div className={styles.appendix}>
+          <section aria-labelledby="comparacion-title">
+            <h2 id="comparacion-title">Encontrá el espacio afín a tu momento</h2>
+            <p><strong>Deslizá la tabla horizontalmente para comparar las tres sesiones.</strong></p>
+            <div className={styles.tableScroll} role="region" aria-label="Comparativa de Sesiones Integrales" tabIndex={0}>
+              <table><caption className={styles.caption}>Roles, modalidades y entregables de cada sesión</caption><thead><tr><th scope="col">Parámetro</th><th scope="col">Sesión Umbral</th><th scope="col">Pausa Vital</th><th scope="col">Alquimia Chamánica</th></tr></thead>
+              <tbody><tr><th scope="row">Rol en el Ecosistema</th><td>Diagnóstico &amp; Brújula Inicial</td><td>Rendición Somática Pasiva</td><td>Intervención Activa &amp; Cirugía</td></tr>
+<tr><th scope="row">Nivel de Acción</th><td>Verbal, Metacognitivo y Botánico</td><td>Reposo Total en Camilla</td><td>Corporal, Energético y Subconsciente</td></tr>
+<tr><th scope="row">Tu Tarea en Sesión</th><td>Responder y Recibir tu Mapa</td><td>Apagar la mente y Recibir</td><td>Explorar la raíz y Mover el cuerpo</td></tr>
+<tr><th scope="row">Modalidad</th><td>Presencial / Virtual</td><td>100% Presencial</td><td>Presencial / Virtual</td></tr>
+<tr><th scope="row">Entregable</th><td>Receta de Botica + Ejercicio</td><td>Elixir Ritual + Playlist Sutil</td><td>Medicina Viva + Plan de 7-21 días</td></tr></tbody></table>
+            </div>
+          </section>
+          <section aria-labelledby="faq-title"><h2 id="faq-title">Preguntas frecuentes</h2>
+            <details><summary>¿Puedo tomar una sesión individual si nunca hice terapia holística?</summary><p>Totalmente. Cada abordaje parte de tu estado actual sin requerir conocimientos previos.</p></details>
+            <details><summary>¿Qué diferencia hay entre estas sesiones y los programas largos como Sintropía o Génesis?</summary><p>Las sesiones integrales atienden una necesidad puntual o actúan como diagnóstico. Los programas largos (33 días a 8 meses) son recorridos de recambio biológico y metabólico estructural.</p></details>
+          </section>
+          <section className={styles.closing} aria-labelledby="contact-title"><h2 id="contact-title">¿Dudas sobre por dónde comenzar?</h2><p><strong>Escribinos directamente para que nuestro equipo escanee tu consulta y te indique la opción afín a tu momento.</strong></p><Link href={whatsapp} className={styles.button}>CONSULTAR MI CASO VÍA WHATSAPP →</Link></section>
+        </div>
 
       </div>
     </div>

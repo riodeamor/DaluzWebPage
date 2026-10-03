@@ -112,3 +112,6 @@ srs/
 
 # .env.example
 .env.example
+
+# Local isolated Git checkouts
+/.worktrees/

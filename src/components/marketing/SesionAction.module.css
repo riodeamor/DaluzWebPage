@@ -1,0 +1,41 @@
+.action {
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  text-align: center;
+}
+.button {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #16345f, #005080);
+  color: white;
+  box-shadow: 0 4px 10px rgb(22 52 95 / 25%);
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.button:hover {
+  background: linear-gradient(90deg, #005080, #2da2bb);
+  color: white;
+  box-shadow: 0 6px 16px rgb(0 80 128 / 40%);
+  transform: translateY(-2px);
+}
+.button:focus-visible {
+  outline: 3px solid #2da2bb;
+  outline-offset: 3px;
+}
+.note {
+  margin-top: 1rem !important;
+  color: #005080;
+}
