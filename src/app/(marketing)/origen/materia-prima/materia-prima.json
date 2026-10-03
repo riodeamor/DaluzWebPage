@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "tab-1-1",
+    "tab": 0,
+    "title": "ACEITES ESENCIALES (El Alma Concentrada de la Planta)",
+    "description": "Obtenidos por destilación al vapor o prensado en frío de cáscaras. Cero fragancias sintéticas.",
+    "columns": [
+      "Ingrediente & Parte Usada",
+      "Principios Activos Claves",
+      "Beneficio Biológico / Celular",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro / Precauciones"
+    ],
+    "rows": [
+      [
+        "Árbol de Té (Melaleuca alternifolia)\n[Destilación de hojas]",
+        "Terpenos, Cineol (Terpinen-4-ol)",
+        "Potente antibacteriano, antifúngico y seborregulador. Purifica folículos.",
+        "Línea Ecos (Shampoo Serena), Sérum Claridad",
+        "No aplicar el aceite esencial puro sobre piel o mucosas. Usar únicamente en fórmulas terminadas y según su etiqueta."
+      ],
+      [
+        "Bergamota (Citrus bergamia)\n[Prensado de cáscara]",
+        "Limoneno, Linalool",
+        "Perfil aromático cítrico; utilizada en fórmulas para piel con brillo y experiencias sensoriales.",
+        "Bruma Ecos, Pócimas Alma Terra",
+        "Fotosensible: No exponerse al sol directo tras su aplicación."
+      ],
+      [
+        "Benjuí (Styrax benzoin)\n[Extracción de resina]",
+        "Ácido benzoico, Vainillina",
+        "Resina balsámica utilizada para aportar aroma y acompañar fórmulas emolientes.",
+        "Bálsamo Umbral, Óleos Corporales",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Canela (Cinnamomum verum)\n[Destilación corteza/hojas]",
+        "Aldehído cinámico, Eugenol",
+        "Nota aromática cálida; puede producir sensación de calor según concentración.",
+        "Línea Prisma, Pócimas de Activación",
+        "Puede causar irritación o sensibilización. No usar el aceite esencial puro; respetá las indicaciones de la fórmula."
+      ],
+      [
+        "Cedrón (Aloysia citrodora)\n[Destilación de hojas]",
+        "Citral, Limoneno",
+        "Perfil aromático fresco, asociado a rituales de calma.",
+        "Brumas Alma Terra, Tisanas Rituales",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Ciprés (Cupressus sempervirens)\n[Destilación de ramas]",
+        "Alfa-pineno, Canfeno",
+        "Perfil aromático resinoso, presente en fórmulas corporales y tónicos.",
+        "Óleo Piernas Ligeras, Tónicos Ecos",
+        "Gran aliado en pesadez de piernas y drenaje."
+      ],
+      [
+        "Citronela (Cymbopogon winterianus)\n[Destilación de hojas]",
+        "Citronelal, Geraniol",
+        "Purificante dérmico, antiséptico y protector ambiental.",
+        "Línea Ecos, Brumas Protectoras",
+        "Evitar contacto directo con ojos."
+      ],
+      [
+        "Clavo de Olor (Syzygium aromaticum)\n[Destilación botones florales]",
+        "Eugenol puro (>80%)",
+        "Nota aromática cálida; utilizado en fórmulas de higiene bucal según su concentración.",
+        "Pasta Dental Ecos, Fórmulas Bucales",
+        "Usar en dosis exactas. No ingerir en concentraciones de AE puro."
+      ],
+      [
+        "Enebro (Juniperus communis)\n[Destilación de bayas]",
+        "Alfa-pineno, Sabineno",
+        "Perfil aromático fresco y resinoso para fórmulas corporales y de limpieza.",
+        "Óleo Drenante Jade, Sales Ecos",
+        "Contraindicado en embarazo y patologías renales agudas."
+      ],
+      [
+        "Eucalipto (Eucalyptus globulus)\n[Destilación de hojas]",
+        "1,8-Cineol (Eucaliptol), Globulol",
+        "Perfil aromático refrescante, utilizado en brumas y fórmulas capilares.",
+        "Tónico Capilar Raíz, Bruma Despeje",
+        "No aplicar aceites esenciales cerca de nariz o boca de bebés. Para uso infantil, consultá al pediatra y respetá la edad indicada."
+      ],
+      [
+        "Geranio (Pelargonium graveolens)\n[Destilación hojas y flores]",
+        "Citronelol, Geraniol, Linalol",
+        "Perfil floral, utilizado en fórmulas de cuidado de la piel y equilibrio del brillo.",
+        "Sérum Soy, Crema Ilumina",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Hinojo (Foeniculum vulgare)\n[Destilación de semillas]",
+        "Anetol",
+        "Perfil aromático anisado, utilizado en fórmulas corporales.",
+        "Línea Jade, Elixires Corporales",
+        "Evitar en personas con cuadros oncológicos estrógeno-dependientes."
+      ],
+      [
+        "Incienso (Boswellia carterii)\n[Destilación de resina]",
+        "Alfa-pineno, Limoneno",
+        "Perfil resinoso y balsámico, utilizado en el cuidado facial y rituales meditativos.",
+        "Sérum Soy, Elixires Faciales",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Lavanda (Lavandula angustifolia)\n[Destilación de flores]",
+        "Linalol, Acetato de linalilo",
+        "Perfil floral, utilizado en rutinas de calma y cuidado de la piel.",
+        "Crema Pureza, Bruma Alma Terra, Ecos",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Limón (Citrus limon)\n[Prensado de cáscara]",
+        "Limoneno (>65%)",
+        "Perfil cítrico, utilizado en tónicos y brumas. No sustituye un tratamiento para manchas.",
+        "Tónicos Claridad, Brumas Ecos",
+        "Fotosensible: Uso estrictamente nocturno si se aplica en piel expuesta."
+      ],
+      [
+        "Menta Piperita (Mentha piperita)\n[Destilación de planta]",
+        "Mentol natural, Mentona",
+        "Crioactivo estimulante, analgésico local y activador del folículo capilar.",
+        "Pasta Dental Ecos, Tónico Raíz",
+        "Sensación de frío intensa. Mantener alejado de los ojos."
+      ],
+      [
+        "Naranja Dulce (Citrus sinensis)\n[Prensado de cáscara]",
+        "Limoneno",
+        "Tónico anímico, relajante de tensiones faciales e iluminador.",
+        "Brumas Alma Terra, Bálsamos",
+        "La fototoxicidad depende del aceite y su extracción; no todos los cítricos tienen el mismo riesgo. Revisá las indicaciones de la fórmula."
+      ],
+      [
+        "Neroli / Azahar (Citrus aurantium)\n[Destilación flores azahar]",
+        "Linalol, Acetato de linalilo",
+        "Perfil floral delicado para fórmulas faciales y experiencias sensoriales.",
+        "Sérum Umbral, Elixires de Rescate",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Orégano (Origanum vulgare)\n[Destilación de planta]",
+        "Carvacrol, Timol",
+        "Antiséptico y antifúngico de máxima potencia vegetal.",
+        "Fórmulas de Cuidado Puntual Ecos",
+        "Puede ser muy irritante. No utilizar puro ni ingerir aceites esenciales; seguí la etiqueta de la fórmula terminada."
+      ],
+      [
+        "Pachulí (Pogostemon cablin)\n[Destilación de hojas secas]",
+        "Pachulol, Alfa-bulneseno",
+        "Perfil terroso y persistente, utilizado en desodorantes y fórmulas corporales.",
+        "Línea Alma Terra, Desodorantes Ecos",
+        "Excelente anclaje a tierra y cicatrización de grietas."
+      ],
+      [
+        "Palo de Rosa (Aniba rosaeodora)\n[Destilación madera ética]",
+        "Linalol natural puro",
+        "Perfil aromático suave, utilizado en fórmulas de cuidado facial.",
+        "Crema Ilumina, Sérum Umbral",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Petitgrain (Citrus aurantium amara)\n[Destilación hojas y ramas]",
+        "Linalol, Acetato de linalilo",
+        "Perfil verde y floral, utilizado en brumas y fórmulas para piel con brillo.",
+        "Sérum Serena, Brumas de Calma",
+        "Equilibra el sebo mientras apaga la ansiedad mental."
+      ],
+      [
+        "Pino Silvestre (Pinus sylvestris)\n[Destilación de agujas]",
+        "Alfa y beta-pineno",
+        "Perfil resinoso y fresco, utilizado en brumas y productos de baño.",
+        "Brumas Ecos, Jabones de Baño",
+        "Aporta aire y espacio a la mente embotada."
+      ],
+      [
+        "Romero (Rosmarinus officinalis)\n[Destilación hojas y flores]",
+        "Cineol, Alcanfor, Pineno",
+        "Perfil herbal, utilizado en fórmulas capilares y rutinas de cuidado.",
+        "Tónico Capilar Raíz, Shampoo Ecos",
+        "Contraindicado en embarazo y en personas con epilepsia o hipertensión severa."
+      ],
+      [
+        "Salvia Oficial (Salvia officinalis)\n[Destilación de hojas]",
+        "Tuiona, Cineol",
+        "Perfil herbal, utilizado en tónicos capilares y fórmulas de higiene.",
+        "Línea Ecos, Tónicos Capilares",
+        "Contraindicado en embarazo y lactancia (frena la producción láctea)."
+      ],
+      [
+        "Sándalo (Santalum album)\n[Destilación madera ética]",
+        "Santaloles",
+        "Hidratante profundo, balsámico, antiinflamatorio y meditativo.",
+        "Línea Prisma, Elixires Faciales",
+        "Nutrición sublime para pieles desvitalizadas y sabias."
+      ],
+      [
+        "Tomillo (Thymus vulgaris)\n[Destilación de planta]",
+        "Timol, Carvacrol",
+        "Perfil herbal intenso; utilizado en fórmulas de higiene a concentraciones controladas.",
+        "Línea Ecos, Tratamientos Purificantes",
+        "Usar en dilución controlada para evitar enrojecimiento."
+      ],
+      [
+        "Ylang Ylang (Cananga odorata)\n[Destilación de flores]",
+        "Germacreno, Linalol",
+        "Perfil floral, utilizado en acondicionamiento capilar y rituales de calma.",
+        "Acondicionador Pureza, Óleos Faciales",
+        "Equilibra tanto el cuero cabelludo graso como las puntas secas."
+      ]
+    ]
+  },
+  {
+    "id": "tab-1-2",
+    "tab": 0,
+    "title": "HIDROLATOS PURÍSIMOS (Aguas Florales Vivas)",
+    "description": "Cero agua corriente desionizada. 100% agua biológica destilada rica en micro-fracciones hidrosolubles.",
+    "columns": [
+      "Hidrolato Puro",
+      "Principios Activos Disueltos",
+      "Acción Dérmica & Sensorial",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro"
+    ],
+    "rows": [
+      [
+        "Agua de Rosas (Rosa damascena)",
+        "Trazas de feniletanol, taninos suaves",
+        "Tonificante noble, astringente suave, hidratante y anti-rojeces.",
+        "Agua Micelar Ecos, Tónico Umbral",
+        "No rociar directamente en los ojos. La tolerancia en piel reactiva debe evaluarse con una prueba de parche."
+      ],
+      [
+        "Ciprés",
+        "Monoterpenos hidrosolubles",
+        "Sensación refrescante y tonificante en rutinas corporales.",
+        "Tónicos Ecos, Brumas Drenantes",
+        "Excelente post-ducha para activar la linfa."
+      ],
+      [
+        "Enebro",
+        "Fracciones depurativas de bayas",
+        "Purificante dérmico, astringente y equilibrador de impurezas.",
+        "Tónicos Purificantes Claridad",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Eucalipto",
+        "Cineol hidrosoluble",
+        "Perfil aromático refrescante para brumas y cuidado capilar.",
+        "Bruma Respiratoria, Tónico Capilar",
+        "Ideal para purificar ambientes cargados y cuero cabelludo."
+      ],
+      [
+        "Geranio",
+        "Citronelol, Geraniol",
+        "Reafirmante dérmico, equilibra zonas de brillo y aporta luminosidad.",
+        "Tónicos Ilumina, Brumas Faciales",
+        "Excelente bruma de fijación de maquillaje Prisma."
+      ],
+      [
+        "Hamamelis",
+        "Taninos astringentes, flavonoides",
+        "Acción astringente y sensación tonificante. La tolerancia en piel con rosácea debe evaluarse individualmente.",
+        "Tónico Serena, Sérum Claridad",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Lavanda",
+        "Ésteres de linalilo hidrosolubles",
+        "Bruma refrescante para rutinas de cuidado y calma. No aplicar sobre quemaduras sin evaluación profesional.",
+        "Bruma Alma Terra, Tónico Pureza",
+        "Fórmulas suaves para piel delicada. En bebés e infancia, verificá la edad de uso y consultá al pediatra antes de la prueba de parche y la aplicación."
+      ],
+      [
+        "Manzanilla",
+        "Camazuleno suave, Bisabolol",
+        "Bruma suave para el cuidado de la piel. No sustituye el tratamiento de eccemas ni afecciones oculares.",
+        "Crema Pureza, Agua Micelar",
+        "Fórmulas suaves para piel delicada. En bebés e infancia, verificá la edad de uso y consultá al pediatra antes de la prueba de parche y la aplicación."
+      ],
+      [
+        "Menta",
+        "Mentol hidrosoluble",
+        "Shock de frescura crioactiva, despierta la mente y reactiva la circulación.",
+        "Bruma Ecos, Tónico Desfatigante",
+        "Evitar rociar directo con los ojos abiertos."
+      ],
+      [
+        "Romero",
+        "Pineno, trazas de alcanfor",
+        "Perfil herbal utilizado en tónicos para el cuidado capilar.",
+        "Tónico Capilar Raíz, Loción Ecos",
+        "Excelente para rociar en sienes y nuca durante el estudio o trabajo."
+      ]
+    ]
+  },
+  {
+    "id": "tab-1-3",
+    "tab": 0,
+    "title": "TINTURAS MADRE (Extractos Hidroalcohólicos de Precisión)",
+    "description": "Extractos botánicos en vehículo hidroalcohólico. El uso tópico y el uso interno requieren indicaciones diferentes; una ficha no equivale a una prescripción.",
+    "columns": [
+      "Tintura Madre",
+      "Principios Activos Claves",
+      "Beneficio Tópico (Piel/Cabello)",
+      "Beneficio Vía Interna (Sesión 1:1)",
+      "Saber Seguro / Contraindicaciones"
+    ],
+    "rows": [
+      [
+        "Aloe Vera",
+        "Polisacáridos, Mucílagos",
+        "Cicatrizante celular, emoliente y calmante.",
+        "Uso tradicional en el ámbito digestivo. La parte de la planta y la presencia de aloína cambian su seguridad; no equivale a una indicación de uso oral.",
+        "Vía oral prolongada no recomendada por aloína."
+      ],
+      [
+        "Barba de Piedra (Usnea)",
+        "Ácido úsnico",
+        "Potente antibiótico vegetal y antifúngico local.",
+        "No recomendar uso interno: los preparados con ácido úsnico se han asociado a lesión hepática.",
+        "No ingerir ni considerar un período corto como garantía de seguridad. Consultá al profesional de salud."
+      ],
+      [
+        "Caléndula",
+        "Flavonoides, Carotenoides",
+        "Reparador dérmico, antiinflamatorio de heridas.",
+        "Uso tradicional en bienestar digestivo. Evaluar preparación y contraindicaciones antes de considerar la vía interna.",
+        "Evitar vía oral en embarazo sin indicación profesional. La vía tópica también puede causar alergia; realizá prueba de parche."
+      ],
+      [
+        "Centella Asiática",
+        "Triterpenos (Asiaticósido)",
+        "Estimula colágeno, reafirma y reduce estrías/marcas.",
+        "Interés tradicional en el bienestar circulatorio y el retorno venoso. Requiere evaluación individual.",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Cola de Caballo",
+        "Silicio orgánico biodisponible",
+        "Remineraliza el cabello y tonifica la dermis.",
+        "Uso tradicional por su acción diurética. Requiere evaluación, especialmente con enfermedad renal, cardíaca o medicación.",
+        "Precaución en insuficiencia renal o cardíaca severa."
+      ],
+      [
+        "Diente de León",
+        "Inulina, Taraxacina, Amargos",
+        "Antioxidante, aclara la piel asfixiada.",
+        "Uso tradicional en el bienestar digestivo y hepatobiliar. No utilizar ante obstrucción biliar ni como tratamiento de cálculos por cuenta propia.",
+        "Contraindicado en oclusión de vías biliares (cálculos)."
+      ],
+      [
+        "Ginkgo Biloba",
+        "Flavonoides, Terpenoides",
+        "Estimula la microcirculación capilar y facial.",
+        "Interés en circulación y función cognitiva. No garantiza mejora de memoria y requiere revisar interacciones con medicación.",
+        "Interfiere con anticoagulantes (riesgo de hemorragia)."
+      ],
+      [
+        "Hamamelis",
+        "Taninos, Flavonoides",
+        "Astringente, descongestiona arañitas y ojeras.",
+        "Uso tradicional vinculado al bienestar venoso. La preparación y la vía de administración requieren evaluación profesional.",
+        "Respetar dosificación indicada en ficha clínica."
+      ],
+      [
+        "Hipérico / San Juan",
+        "Hipericina, Hiperforina",
+        "Cicatrizante noble y analgésico de golpes.",
+        "Utilizado en preparados específicos para síntomas depresivos. Puede tener interacciones graves; no iniciar ni reemplazar tratamientos sin evaluación médica.",
+        "Puede aumentar sensibilidad al sol y presentar interacciones importantes con medicamentos. Consultá antes de usarlo, especialmente por vía oral."
+      ],
+      [
+        "Jarilla",
+        "Taninos, Resinas antibacterianas",
+        "Antiséptico folicular, frena la caída capilar.",
+        "Usos tradicionales locales. No se recomienda la ingestión por cuenta propia; deben evaluarse preparación y toxicidad.",
+        "No ingerir ni usar como tratamiento por cuenta propia; respetá la etiqueta de la fórmula tópica."
+      ],
+      [
+        "Llantén",
+        "Alantoína vegetal, Mucílagos",
+        "Utilizado en fórmulas emolientes para el cuidado de la piel.",
+        "Uso tradicional para el bienestar respiratorio y de las mucosas. Requiere identificar la preparación y evaluar el cuadro.",
+        "La tolerancia depende de la fórmula completa. Realizá una prueba de parche según la etiqueta; ante ardor o enrojecimiento persistente, suspendé y consultá."
+      ],
+      [
+        "Melisa",
+        "Flavonoides, Aceite esencial",
+        "Calma el eritema y la picazón por estrés.",
+        "Uso tradicional en calma y bienestar digestivo. Revisar medicación y condiciones de salud antes del uso interno.",
+        "Precaución en hipotiroidismo (uso oral prolongado)."
+      ],
+      [
+        "Milenrama",
+        "Azuleno natural, Aquilina",
+        "Detiene sangrados menores, astringente fino.",
+        "Uso tradicional digestivo y menstrual. Evaluar embarazo, alergias e interacciones antes de considerar su uso.",
+        "Fotosensible leve en uso tópico. Alergia a Asteráceas."
+      ],
+      [
+        "Ortiga",
+        "Hierro, Clorofila, Silicio",
+        "Shock fortificante capilar; engrosa la hebra.",
+        "Uso tradicional diurético y aporte de componentes vegetales. No reemplaza el diagnóstico ni el tratamiento de anemia.",
+        "Excelente tónico anticaída de raíz."
+      ],
+      [
+        "Paico",
+        "Ascaridol natural",
+        "Desinfectante local en afecciones rebeldes.",
+        "No utilizar como antiparasitario por cuenta propia. Requiere evaluación médica por su potencial toxicidad.",
+        "No usar durante embarazo ni en infancia. No automedicarse ni ingerir el aceite esencial."
+      ],
+      [
+        "Romero",
+        "Ácidos fenólicos, Ácido carnósico",
+        "Reactivador folicular y protector antioxidante.",
+        "Uso tradicional digestivo y aromático. El uso interno requiere revisar preparación y contraindicaciones.",
+        "Evitar vía oral en hipertensión o epilepsia."
+      ],
+      [
+        "Rompepiedra (Phyllanthus)",
+        "Lignanos, Flavonoides",
+        "Astringente dérmico y purificante.",
+        "Uso tradicional en el ámbito urinario. No garantiza disolver cálculos ni sustituye su diagnóstico o tratamiento médico.",
+        "Monitorear presión arterial si se toma medicación."
+      ],
+      [
+        "Salvia",
+        "Principios amargos, Ácido rosmarínico",
+        "Seborregulador y reductor de transpiración excesiva.",
+        "Uso tradicional digestivo y en molestias de la menopausia. Revisar embarazo, lactancia y medicación.",
+        "Contraindicado en embarazo y lactancia."
+      ],
+      [
+        "Valeriana",
+        "Ácidos valerénicos",
+        "Calma tensiones musculares reflejas en rostro.",
+        "Uso tradicional para descanso y sueño. Puede causar somnolencia; revisar combinaciones con sedantes y alcohol.",
+        "No combinar con psicofármacos o alcohol."
+      ]
+    ]
+  },
+  {
+    "id": "tab-1-4",
+    "tab": 0,
+    "title": "OLEATOS (Maceraciones Lipídicas en Aceite Virgen)",
+    "description": "La medicina de la hierba transferida lentamente a un aceite vehicular virgen sin calor agresivo.",
+    "columns": [
+      "Planta en Maceración",
+      "Vehículo de Reposo",
+      "Principios Transferidos",
+      "Beneficio en Piel / Tejido",
+      "Alkimya Da Luz"
+    ],
+    "rows": [
+      [
+        "Caléndula",
+        "Aceite de Girasol Alto Oleico",
+        "Ésteres de faradiol, carotenoides",
+        "Regenera piel irritada, aporta emoliencia a zonas secas.",
+        "Crema Pureza, Bálsamo Umbral"
+      ],
+      [
+        "Centella Asiática",
+        "Aceite de Almendras Dulces",
+        "Triterpenos liposolubles",
+        "Reafirma el tejido, acompaña la elasticidad superficial y estimula elastina.",
+        "Óleo Reafirmante Soy"
+      ],
+      [
+        "Ginkgo Biloba",
+        "Aceite de Jojoba Virgen",
+        "Flavonoides protectores",
+        "Activa el drenaje de ojeras oscuras y rojeces por estancamiento.",
+        "Contorno de Ojos Ilumina"
+      ],
+      [
+        "Hipérico (Aceite Rojo)",
+        "Aceite de Oliva Virgen",
+        "Hipericina",
+        "Maceración utilizada en bálsamos de cuidado corporal. No aplicar sobre quemaduras sin evaluación.",
+        "Bálsamo Rescate Alma Terra (Uso nocturno)"
+      ],
+      [
+        "Jarilla",
+        "Aceite de Girasol Virgen",
+        "Resinas antimicrobianas",
+        "Fortalece la raíz capilar y desinflama dermatitis localizadas.",
+        "Óleo Capilar Raíz"
+      ],
+      [
+        "Manzanilla",
+        "Aceite de Jojoba Virgen",
+        "Bisabolol puro",
+        "Alivia la tirantez de párpados hinchados y piel con ardor.",
+        "Óleo Serena, Desmaquillante"
+      ],
+      [
+        "Zanahoria",
+        "Aceite de Sésamo Virgen",
+        "Betacarotenos (Provitamina A)",
+        "Regenera el manto lipídico y aporta tono dorado natural.",
+        "Óleo Prisma, Crema Ilumina"
+      ]
+    ]
+  },
+  {
+    "id": "tab-1-5",
+    "tab": 0,
+    "title": "ARCILLAS & MINERALES PUROS (El Magnetismo de la Tierra)",
+    "description": "Minerales puros sin refinar ni blanquear con cloro. Extraídos de canteras limpias.",
+    "columns": [
+      "Mineral / Arcilla",
+      "Composición Química",
+      "Acción Tópica & Mecanismo",
+      "Alkimyas Da Luz",
+      "Saber Seguro (Regla de Oro)"
+    ],
+    "rows": [
+      [
+        "Caolín (Arcilla Blanca)",
+        "Silicato de aluminio hidratado",
+        "Limpieza ultrasuave, remineralizante y no deshidrata.",
+        "Limpiador Ecos, Mascarilla Serena",
+        "La más noble. Apta piel sensible y seca."
+      ],
+      [
+        "Arcilla Roja",
+        "Silicato de aluminio con óxidos de hierro",
+        "Arcilla rica en óxidos de hierro para limpieza y cuidado superficial.",
+        "Mascarilla Revitalizante Soy",
+        "El enrojecimiento puede indicar irritación. Retirá si arde; no dejar secar hasta cuartear. Ante síntomas persistentes, suspendé y consultá."
+      ],
+      [
+        "Arcilla Verde (Montmorillonita)",
+        "Silicato de magnesio, hierro y calcio",
+        "Potente imán sebáceo: absorbe impurezas y drena el poro.",
+        "Mascarilla Detox Claridad",
+        "Piel mixta/grasa. No dejar secar hasta cuartear."
+      ],
+      [
+        "Bentonita Volcánica",
+        "Ceniza volcánica pura purificada",
+        "Arcilla con capacidad de adsorción, utilizada en fórmulas de limpieza.",
+        "Emulsiones Purificantes Ecos",
+        "Preparar con utensilios limpios y compatibles con la etiqueta. El contacto con metal no anula automáticamente su eficacia."
+      ],
+      [
+        "Tierra de Diatomeas",
+        "Sílice orgánico amorfo de algas",
+        "Exfoliación mecánica micro-pulida sin rayar el estrato córneo.",
+        "Exfoliantes Corporales y Dentales",
+        "Micro-pulido biodegradable superior a los microplásticos."
+      ]
+    ]
+  },
+  {
+    "id": "tab-2-1",
+    "tab": 1,
+    "title": "ÁCIDOS RENOVADORES & EXFOLIANTES (AHAs, BHAs & PHAs)",
+    "description": "Moléculas de renovación celular purificadas. Calibradas a pH fisiológico según concentración, pH y tolerancia de la piel.",
+    "columns": [
+      "Activo Cosmético",
+      "Origen / Proceso Verde",
+      "Acción Celular & Beneficio Biológico",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro / Precauciones"
+    ],
+    "rows": [
+      [
+        "Ácido Mandélico (AHA)",
+        "Hidrólisis de almendras amargas.",
+        "Molécula de gran tamaño que penetra lentamente. Antibacteriano contra acné, aclara hiperpigmentación y afina la textura según concentración y tolerancia.",
+        "Sérum Renovador Claridad, Sérum Serena",
+        "Uso estrictamente nocturno. Protector solar obligatorio al día siguiente. No combinar con retinol la misma noche. Usá fotoprotección durante el tratamiento y hasta una semana después de suspenderlo."
+      ],
+      [
+        "Ácido Málico (AHA)",
+        "Manzanas y frutas ácidas.",
+        "Exfoliante natural y humectante. Acelera el recambio de células muertas y devuelve la luminosidad a pieles engrosadas.",
+        "Tónicos Exfoliantes Umbral",
+        "Apto para piel mixta o con falta de vitalidad. Evitar en piel con eccema activo. Usá fotoprotección durante el tratamiento y hasta una semana después de suspenderlo."
+      ],
+      [
+        "Ácido Láctico (AHA)",
+        "Biofermentación de azúcares vegetales.",
+        "Exfoliación suave e hidratación profunda. Forma parte del Factor de Hidratación Natural (FHN) de la piel, reteniendo agua.",
+        "Sérum Soy, Emulsión Renovadora",
+        "Ideal para piel madura, seca o sensible. Usar en concentraciones fisiológicas. Usá fotoprotección durante el tratamiento y hasta una semana después de suspenderlo."
+      ],
+      [
+        "Gluconolactona (PHA)",
+        "Fermentación de la glucosa del maíz.",
+        "Polihidroxiácido de última generación. Exfoliación ultrasuave que refuerza la barrera, neutraliza radicales libres y requiere respetar las indicaciones de fotoprotección.",
+        "Tónico Suave Pureza, Sérum Serena",
+        "El ácido de rescate: Apto para pieles con rosácea o que no toleran AHAs tradicionales."
+      ],
+      [
+        "Ácido Azelaico",
+        "Granos de trigo, cebada y centeno.",
+        "Ácido dicarboxílico multifunción. Antiinflamatorio potente, frena la bacteria del acné y desvanece el enrojecimiento vascular de la rosácea.",
+        "Sérum Claridad Facial",
+        "Seguí las indicaciones del producto. Ante ardor o enrojecimiento persistente, suspendé y consultá; no lo atribuyas automáticamente a adaptación."
+      ],
+      [
+        "Ácido Ferúlico",
+        "Paredes celulares vegetales (arroz/maíz).",
+        "Antioxidante superior. Estabiliza las vitaminas C y E, neutraliza el daño por radiación solar y previene la degradación de colágeno.",
+        "Sérum Antioxidante Ilumina",
+        "Potencia la eficacia de los protectores solares. Uso diurno y nocturno."
+      ]
+    ]
+  },
+  {
+    "id": "tab-2-2",
+    "tab": 1,
+    "title": "VITAMINAS, PREBIÓTICOS & COMPLEJOS CELULARES",
+    "description": "Nutrientes de grado clínico y biofermentos de alta pureza para la arquitectura de la barrera cutánea.",
+    "columns": [
+      "Activo Cosmético",
+      "Origen / Proceso Verde",
+      "Acción Celular & Beneficio Biológico",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro / Precauciones"
+    ],
+    "rows": [
+      [
+        "Niacinamida al 99% (Vitamina B3)",
+        "Síntesis biológica pura idéntica a la naturaleza.",
+        "La vitamina todoterreno: regula el sebo, achica la apariencia de poros dilatados, estimula la síntesis de ceramidas y unifica el tono.",
+        "Sérum Serena, Crema Facial Soy, Crema Ilumina",
+        "La tolerancia depende de la fórmula y la piel. Compatible con todos los tipos de piel y combinable con casi cualquier activo."
+      ],
+      [
+        "D-Pantenol (Provitamina B5)",
+        "Derivado bio-compatible de ácido pantoténico.",
+        "Se transforma en vitamina B5 en el tejido. Humectante profundo, cicatrizante dérmico y calmante de quemaduras. En cabello sella cutículas.",
+        "Crema Pureza, Acondicionador Ecos, Tónico Raíz",
+        "La tolerancia depende de la fórmula completa. En embarazo y lactancia, revisá los ingredientes y consultá ante dudas."
+      ],
+      [
+        "Ácido Hialurónico APM (Alto Peso)",
+        "Biofermentación bacteriana vegetal.",
+        "Forma una película elástica transpirable sobre la epidermis que retiene 1.000 veces su peso en agua, rellenando líneas finas de expresión.",
+        "Sérum Ilumina, Crema Facial Soy",
+        "Puede aplicarse sobre piel ligeramente húmeda si así lo indica la fórmula; seguí su modo de uso."
+      ],
+      [
+        "Ácido Hialurónico BPM (Bajo Peso)",
+        "Biofermentación fraccionada limpia.",
+        "Humectante de menor peso molecular, utilizado para mejorar la hidratación superficial. La penetración depende de su tamaño y la fórmula.",
+        "Sérum Soy, Elixires Faciales",
+        "Firmeza y turgencia profunda para pieles que sienten pérdida de elasticidad."
+      ],
+      [
+        "Coenzima Q10 (Ubiquinona)",
+        "Fermentación de microorganismos.",
+        "Combustible celular mitocondrial. Antioxidante liposoluble que energiza la piel cansada y combate el envejecimiento inducido por radiación UV.",
+        "Crema Soy, Óleo Facial Ilumina",
+        "De tono anaranjado natural. Uso seguro de día y de noche."
+      ],
+      [
+        "Vitamina C (Fosfato Ascorbilo Sódico)",
+        "Sal estable de Vitamina C pura.",
+        "Iluminador clínico. Bloquea la tirosinasa (frena la creación de manchas), activa colágeno y no se oxida fácilmente como el ácido ascórbico crudo.",
+        "Sérum Claridad, Tónico Ilumina",
+        "Forma estable de vitamina C. Puede usarse de día según la etiqueta, acompañada de protector solar; no garantiza ausencia de irritación."
+      ],
+      [
+        "Vitamina E (Tocoferol Acetato)",
+        "Concentrado lipídico de girasol / soja no-OGM.",
+        "El escudo antioxidante de las grasas. Protege la barrera cutánea de la peroxidación lipídica y evita que los aceites de la fórmula se pongan rancios.",
+        "Presente en todos los Óleos y Cremas Da Luz",
+        "Antioxidante de la fase lipídica. No reemplaza un sistema conservante eficaz para productos con agua."
+      ],
+      [
+        "Alantoína Vegetal",
+        "Aislada y purificada de la raíz de Consuelda.",
+        "Proliferador celular y queratolítico suave. Suaviza asperezas, calma rojeces al instante y permite renovar el tejido sin inflamación.",
+        "Crema Pureza, Sérum Serena, Bálsamo Umbral",
+        "No garantiza ausencia de alergias. No arrastra los alcaloides tóxicos de la planta cruda."
+      ],
+      [
+        "Inulina Prebiótica",
+        "Raíz de Achicoria pura.",
+        "Alimento selectivo para la microbiota benéfica. Restaura el ecosistema bacteriano de la piel para que el manto defensivo se mantenga fuerte.",
+        "Limpiador Ecos, Crema Pureza, Tónicos",
+        "Ideal para pieles dañadas por el uso abusivo de jabones antibacterianos o corticoides."
+      ],
+      [
+        "Xilitol Vegetal",
+        "Polialcohol de fibras de corteza de abedul y maíz.",
+        "Agente anti-biofilm bacteriano y superhumectante. Evita que bacterias nocivas se adhieran a la piel; previene brotes y retiene reservas de agua.",
+        "Pasta Dental Ecos, Tónico Serena",
+        "Clave en higiene bucal botánica (remineraliza esmalte) y en piel con tendencia al acné."
+      ],
+      [
+        "Cafeína Pura + Vitamina E",
+        "Semillas de café descafeinado y extractos.",
+        "Estimulante de la microcirculación y drenante linfático. Descongestiona bolsas perioculares y colabora en la compactación dérmica.",
+        "Contorno de Ojos Despertar, Óleos Corporales",
+        "No aplicar dentro del ojo. Uso en contorno óseo periorbital."
+      ],
+      [
+        "Fitoescualeno Vegetal",
+        "Fraccionamiento de aceite de oliva virgen.",
+        "Escualano vegetal idéntico a una de las grasas que produce nuestra propia piel. Se absorbe en segundos sin dejar brillo y repara grietas.",
+        "Sérums Umbral, Crema Ilumina",
+        "Índice comedogénico 0. Apto incluso para pieles grasas deshidratadas."
+      ],
+      [
+        "Colágeno & Queratina Vegetal",
+        "Proteínas hidrolizadas de trigo y maíz.",
+        "Complejo biomimético de aminoácidos vegetales. Aporta elasticidad superficial a la piel y rellena las fisuras de la cutícula capilar dañada.",
+        "Acondicionador Pureza, Tónico Capilar Raíz",
+        "Reconstruye la fibra del cabello sin el peso sintético de las siliconas."
+      ]
+    ]
+  },
+  {
+    "id": "tab-2-3",
+    "tab": 1,
+    "title": "TENSIOACTIVOS VERDES & EMULSIONANTES (La Limpieza y la Textura)",
+    "description": "El esqueleto de las emulsiones y la espuma consciente. Limpian y estabilizan sin sulfatos ni derivados petroquímicos.",
+    "columns": [
+      "Ingrediente / Emulsionante",
+      "Origen / Familia Química",
+      "Función en la Fórmula & Sensación en Piel",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro"
+    ],
+    "rows": [
+      [
+        "SCI (Sodium Cocoyl Isethionate)",
+        "Ácidos grasos del aceite de coco.",
+        "Tensioactivo aniónico libre de sulfatos. Genera una espuma densa, aterciopelada y cremosa que limpia sin agredir el manto ácido.",
+        "Shampoos Sólidos Ecos, Limpiadores",
+        "Mucho más suave y biodegradable que el SLS/SLES industrial."
+      ],
+      [
+        "Betaína de Coco (Cocoamidopropil)",
+        "Derivado anfótero del aceite de coco.",
+        "Co-tensioactivo suave. Reduce la agresividad de cualquier agente de limpieza, espesa la espuma y acondiciona la piel sensible.",
+        "Gel Limpiador Facial, Jabones Líquidos",
+        "Puede causar sensibilización en algunas personas. No aplicar en mucosas salvo indicación específica del producto."
+      ],
+      [
+        "Decyl Glucoside",
+        "Azúcares vegetales y alcoholes grasos de coco.",
+        "Tensioactivo no iónico de origen vegetal, utilizado en fórmulas de limpieza suave.",
+        "Agua Micelar Ecos, Higiene Fina",
+        "Fórmulas suaves para piel delicada. En bebés e infancia, verificá la edad de uso y consultá al pediatra antes de la prueba de parche y la aplicación."
+      ],
+      [
+        "Olivem 1000",
+        "Ésteres de cera del aceite de oliva virgen.",
+        "Emulsionante no iónico que crea cristales líquidos que imitan la membrana de las células dérmicas. Brinda absorción rápida y toque seco.",
+        "Cremas Faciales Umbral, Emulsiones",
+        "Emulsión biomimética de máxima afinidad con la piel humana."
+      ],
+      [
+        "Alcohol Cetílico & Cetearílico",
+        "Alcoholes grasos vegetales (coco / palma ética).",
+        "Co-emulsionantes emolientes y espesantes naturales. No tienen nada que ver con el alcohol etílico desecante: aportan sedosidad y cuerpo.",
+        "Cremas Corporales y Capilares",
+        "No resecan; forman una barrera lipídica transpirable."
+      ],
+      [
+        "BTMS (Behentrimonium Methosulfate)",
+        "Aceite de colza vegetal purificado.",
+        "Emulsionante catiónico acondicionador. Neutraliza la carga negativa del pelo dañado, desenreda en húmedo y elimina el frizz.",
+        "Acondicionador Pureza Ecos",
+        "La tolerancia depende de la fórmula; excelente sustituto de las siliconas insolubles."
+      ],
+      [
+        "Goma Xantana & Goma Guar",
+        "Biofermentación de azúcares y semillas.",
+        "Espesantes botánicos de fase acuosa. Estabilizan los sérums y les otorgan deslizamiento sedoso sin dejar película pegajosa.",
+        "Presente en todos los Sérums Acuosos",
+        "100% naturales, comestibles y biodegradables."
+      ],
+      [
+        "Glicerina Vegetal Pura",
+        "Subproducto de la saponificación de aceites vegetales.",
+        "Humectante osmótico mayor. Atrae la humedad atmosférica hacia el estrato córneo para mantener la piel turgente y elástica.",
+        "Tónicos, Sérums, Tinturas Madre",
+        "Siempre formulada en equilibrio con agua para evitar el efecto rebote."
+      ]
+    ]
+  },
+  {
+    "id": "tab-2-4",
+    "tab": 1,
+    "title": "ESTABILIZADORES, REGULADORES DE pH & CONSERVANTES SEGUROS",
+    "description": "Ingredientes que ayudan a conservar y estabilizar las fórmulas. Su eficacia depende del sistema completo y sus controles de calidad.",
+    "columns": [
+      "Activo / Conservante",
+      "Certificación / Origen",
+      "Beneficio & Por Qué es Indispensable",
+      "Alkimyas Da Luz",
+      "Saber Seguro"
+    ],
+    "rows": [
+      [
+        "Lactato de Sodio",
+        "Sal sódica natural del ácido láctico.",
+        "Humectante superior (dos veces más potente que la glicerina) y regulador buffer de pH fisiológico.",
+        "Tónicos Umbral, Sérums Faciales",
+        "Forma parte de los factores naturales de hidratación de nuestra piel."
+      ],
+      [
+        "Ácido Cítrico / Citrato de Sodio",
+        "Frutas cítricas fermentadas.",
+        "Sistema buffer para ajustar y mantener el pH de la fórmula. El pH por sí solo no garantiza la conservación microbiológica.",
+        "Fórmulas acuosas y geles",
+        "Respetá las instrucciones de uso; el pH adecuado no descarta irritación individual."
+      ],
+      [
+        "Geogard 221 (Cosgard)",
+        "Aprobado por ECOCERT / COSMOS.",
+        "Conservante suave de amplio espectro para fases acuosas (Benzyl alcohol + Dehydroacetic acid). Libre de parabenos.",
+        "Cremas Faciales, Tónicos, Sérums",
+        "Evita la formación de hongos y bacterias en cosmética con agua. Apto orgánico."
+      ],
+      [
+        "Euxyl K 903",
+        "Estándar de Cosmética Natural Europea.",
+        "Mezcla líquida de ácidos orgánicos y tocoferol. Libre de formaldehído, isotiazolinonas y halógenos.",
+        "Emulsiones fluidas y geles",
+        "Muy baja tasa de sensibilización; alta seguridad microbiológica."
+      ],
+      [
+        "Cosphagard POL X",
+        "100% origen natural biofermentado.",
+        "Conservante multifuncional de última generación. Además de proteger contra microorganismos, aporta humectación secundaria.",
+        "Fórmulas de Rescate Pureza",
+        "Cumple los estándares más exigentes de cosmética verde global."
+      ]
+    ]
+  },
+  {
+    "id": "tab-3-1",
+    "tab": 2,
+    "title": "ACEITES VEGETALES VÍRGENES (Primera Prensada en Frío)",
+    "description": "Lípidos crudos sin refinar, sin blanquear y sin desodorizar.",
+    "columns": [
+      "Aceite Vegetal & Semilla",
+      "Perfil Lipídico & Activos Claves",
+      "Acción Celular & Beneficio Biológico",
+      "Grado Comedogénico",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro & Biotipo Ideal"
+    ],
+    "rows": [
+      [
+        "Jojoba Virgen (Simmondsia chinensis)\n[Prensado de semilla]",
+        "Ésteres de cera líquida (>97%), Vitamina E, Ceramidas vegetales.",
+        "Cera líquida emoliente que acompaña la barrera cutánea y aporta suavidad.",
+        "0 - 2 (Efectivo: 1)",
+        "Sérum Serena, Óleo Limpiador Ecos, Crema Pureza",
+        "Textura ligera; la tolerancia en piel con acné depende de la fórmula y del uso."
+      ],
+      [
+        "Rosa Mosqueta (Rosa rubiginosa)\n[Prensado de semillas]",
+        "Ácidos grasos linoleico y alfa-linolénico, componentes antioxidantes. No equivale a un tratamiento con tretinoína.",
+        "Regenerador tisular maestro. Estimula los fibroblastos, atenúa marcas oscuras, cicatrices post-brote y líneas de expresión.",
+        "1",
+        "Sérum Claridad, Sérum Soy, Crema Ilumina",
+        "Gran regenerador para piel seca o madura. Al ser rico en Vit A, mejor uso nocturno."
+      ],
+      [
+        "Argán Puro (Argania spinosa)\n[Prensado de semilla del fruto]",
+        "Ácido Oleico (Omega 9), Linoleico, Escualeno, Vitamina E pura.",
+        "El oro del desierto: restaura la elasticidad del estrato córneo, neutraliza radicales libres y aporta brillo sin peso al cabello.",
+        "0",
+        "Sérum Facial Soy, Acondicionador Pureza Ecos",
+        "Cero comedogénico. Excelente para piel madura, desnutrida y puntas secas."
+      ],
+      [
+        "Semillas de Uva (Vitis vinifera)\n[Prensado de semillas de uva]",
+        "Ácido Linoleico (>70%), Polifenoles, Resveratrol, Vitamina E.",
+        "Ultraligero y de tacto seco. Astringente suave, antiinflamatorio y protector de la degradación de elastina.",
+        "1",
+        "Óleo Facial Serena, Emulsiones Ligeras",
+        "Maravilloso para pieles que no toleran texturas pesadas o con tendencia a poros dilatados."
+      ],
+      [
+        "Girasol Alto Oleico (Helianthus annuus)\n[Prensado en frío]",
+        "Perfil rico en ácido oleico, con vitamina E; la proporción de ácidos grasos depende de la variedad.",
+        "Fortalecedor de la barrera cutánea. Calma rojeces, reduce la pérdida de agua transepidérmica y sirve como vehículo suave para maceraciones.",
+        "0 - 1",
+        "Oleatos de Caléndula y Manzanilla, Crema Pureza",
+        "Fórmulas suaves para piel delicada. En bebés e infancia, verificá la edad de uso y consultá al pediatra antes de la prueba de parche y la aplicación."
+      ],
+      [
+        "Almendras Dulces (Prunus amygdalus dulcis)\n[Prensado de la almendra]",
+        "Ácido Oleico (65%), Linoleico, Fitoesteroles, Vitaminas A y B.",
+        "Emoliente clásico superior. Calma picazón, suaviza asperezas y aporta elasticidad duradera al tejido.",
+        "2",
+        "Bálsamo Umbral, Óleo Corporal Alma Terra",
+        "Emoliente para piel seca y uso corporal. Evitá si tenés alergia conocida; en embarazo, consultá ante dudas. No garantiza prevención de estrías."
+      ],
+      [
+        "Triglicérido Caprílico (MCT de Coco)\n[Fraccionamiento vegetal limpio]",
+        "Ácidos grasos de cadena media (Caprílico y Cáprico).",
+        "El toque de seda: otorga absorción inmediata, mejora la penetración de activos y disuelve el maquillaje sin taponar poros.",
+        "0 - 1",
+        "Óleo Desmaquillante Ecos, Pigmentos Prisma",
+        "No tiene nada que ver con el aceite de coco crudo (que es comedogénico 4). Este es ligero y no tapa poros."
+      ],
+      [
+        "Oliva Virgen Extra (Olea europaea)\n[Prensado en frío de aceitunas]",
+        "Ácido Oleico (75%), Escualeno vegetal, Polifenoles antioxidantes.",
+        "Nutrición densa y envolvente. Repara tejidos extremadamente secos y actúa como escudo protector ante el viento y el frío.",
+        "2",
+        "Jabones Tradicionales Ecos, Bálsamo de Rescate",
+        "Excelente para zonas corporales secas (codos, rodillas) y piel facial muy castigada."
+      ],
+      [
+        "Sésamo Virgen (Sesamum indicum)\n[Prensado de semillas crudas]",
+        "Ácido Linoleico, Oleico, Sesamol (antioxidante térmico).",
+        "Aceite emoliente de tradición ayurvédica, utilizado en masajes y cuidado corporal.",
+        "1 - 3",
+        "Óleo Corporal Calma Jade, Maceraciones",
+        "Sensación envolvente y cálida. Ideal para masajes somáticos y días fríos."
+      ],
+      [
+        "Palta / Aguacate (Persea gratissima)\n[Prensado de pulpa fresca]",
+        "Ácido Oleico, Vitaminas A, D, E y Lecitina natural.",
+        "Shock de nutrición celular. Penetra hasta capas profundas, repara pieles agrietadas y devuelve la densidad al tejido desnutrido.",
+        "3",
+        "Crema Facial Noche Soy, Bálsamo Labial",
+        "Textura densa y verde. Exclusivo para pieles muy secas, maduras o cuidado nocturno."
+      ],
+      [
+        "Ricino (Ricinus communis)\n[Prensado de semillas]",
+        "Ácido Ricinoleico (>85%), Ácidos grasos densos.",
+        "Acción antimicrobiana y fortalecedora folicular. Estimula el riego sanguíneo en la raíz de pestañas, cejas y cuero cabelludo.",
+        "1",
+        "Sérum Fortalecedor de Pestañas, Labiales Prisma",
+        "Textura viscosa y adhesiva. Aporta brillo espejo en labiales y engrosa la fibra capilar."
+      ],
+      [
+        "Lino Dorado (Linum usitatissimum)\n[Prensado de semillas de lino]",
+        "Ácido Alfa-Linolénico (>50% Omega 3 vegetal).",
+        "Aceite rico en omega 3 para fórmulas emolientes. No sustituye el tratamiento de eccema u otras afecciones.",
+        "4",
+        "Emulsiones Corporales Calmantes, Mascarillas",
+        "Por su riqueza en Omega 3 se oxida rápido; mantener el envase bien cerrado y al abrigo de la luz."
+      ],
+      [
+        "Neem Puro (Azadirachta indica)\n[Prensado de semillas de neem]",
+        "Azadiractina, Triterpenos amargos, Ácidos grasos.",
+        "Ingrediente de aroma herbáceo utilizado en fórmulas de cuidado puntual; no sustituye tratamientos antimicrobianos o antiparasitarios.",
+        "1 - 2 (Uso puntual)",
+        "Tratamientos Localizados Ecos / Claridad",
+        "No ingerir. Para uso infantil o en embarazo, consultá antes de usar. Seguí la etiqueta y realizá prueba de parche."
+      ]
+    ]
+  },
+  {
+    "id": "tab-3-2",
+    "tab": 2,
+    "title": "MANTECAS PURAS & CERAS VEGETALES (El Manto Protector)",
+    "description": "Lípidos sólidos a temperatura ambiente. Estructuran bálsamos, labiales y cremas sin recurrir a parafinas ni cera de abejas.",
+    "columns": [
+      "Ingrediente & Origen",
+      "Principios Activos & Composición",
+      "Función en la Fórmula & Sensación en Piel",
+      "Grado Comedogénico",
+      "Alkimyas Da Luz donde vive",
+      "Saber Seguro & Beneficio"
+    ],
+    "rows": [
+      [
+        "Manteca de Karité Pura (Vitellaria paradoxa)\n[Nuez del árbol de Karité]",
+        "Vitaminas A, D, E y F, Ácido Esteárico y Oleico, Alantoína natural.",
+        "El bálsamo regenerador: Nutre profundamente, repara la descamación y crea un film protector transpirable que evita la pérdida de agua.",
+        "0 - 2",
+        "Crema Facial Soy, Crema Corporal Umbral, Bálsamos",
+        "A pesar de ser rica y espesa, su índice de poro ocluido es casi nulo. Apta piel sensible."
+      ],
+      [
+        "Manteca de Cacao Pura (Theobroma cacao)\n[Semillas del fruto de Cacao]",
+        "Polifenoles antioxidantes, Ácido Esteárico, Palmítico y Vitamina E.",
+        "Firmeza y emoliencia protectora. Se funde exactamente a la temperatura corporal (35°C), dejando un aroma chocolatoso puro y protección extrema.",
+        "4",
+        "Bálsamos Labiales Prisma, Mantecas Corporales",
+        "Comedogénica en rostro graso; en labios y cuerpo es el mejor escudo contra el viento y la resequedad."
+      ],
+      [
+        "Cera de Candelilla (Euphorbia antisyphilitica)\n[Hojas del arbusto silvestre]",
+        "Ésteres de cera natural (hidrocarburos de alto peso molecular).",
+        "La alternativa 100% vegana a la cera de abejas: Aporta dureza, fijación y brillo natural a los labiales sin dejar sensación pegajosa.",
+        "1",
+        "Labiales y Rubores en Barra Línea Prisma",
+        "Cero crueldad animal. Forma una barrera contra la deshidratación labial."
+      ],
+      [
+        "Cera de Soja No-OGM (Glycine max)\n[Aceite de soja hidrogenado]",
+        "Triglicéridos vegetales de bajo punto de fusión.",
+        "Se derrite a baja temperatura (alrededor de 45°C), transformándose en un aceite tibio y sedoso para masajes corporales profundos.",
+        "1 - 2",
+        "Velas de Masaje Botánicas & Ceremonias",
+        "Biodegradable, requiere comprobar la temperatura antes de aplicar y nutre el tejido durante el ritual de camilla."
+      ]
+    ]
+  }
+]

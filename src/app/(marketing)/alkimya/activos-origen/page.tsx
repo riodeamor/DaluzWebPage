@@ -70,7 +70,7 @@ export default function ActivosOrigenPage() {
             <p className="ayo-card-desc">
               Descubrí nuestra clasificación técnica: desde el Corazón Botánico hasta la Pureza Clínica. Entendé el origen y el sustento de esos nombres científicos que a veces intimidan, pero que representan el estándar más alto de eficacia celular.
             </p>
-            <Link href="#" className="ayo-card-button">
+            <Link href="/origen/ciencia-verde" className="ayo-card-button">
               EXPLORAR CIENCIA VERDE
             </Link>
           </div>
@@ -80,7 +80,7 @@ export default function ActivosOrigenPage() {
             <p className="ayo-card-desc">
               Para una práctica certera y consciente, consultá nuestras recomendaciones galénicas sobre fotosensibilidad de activos, adaptabilidad según tu terreno, compatibilidades y tiempos de asimilación de las plantas.
             </p>
-            <Link href="#" className="ayo-card-button">
+            <Link href="/origen/saber-seguro" className="ayo-card-button">
               VER GUÍA DE SEGURIDAD
             </Link>
           </div>
@@ -90,7 +90,7 @@ export default function ActivosOrigenPage() {
             <p className="ayo-card-desc">
               El mapa detallado de nuestro Botiquín Alquímico. Un espacio abierto para conocer las propiedades terapéuticas, el origen botánico y la afinidad fisiológica de cada extracto, manteca y activo según las necesidades de tu piel.
             </p>
-            <Link href="#" className="ayo-card-button">
+            <Link href="/origen/materia-prima" className="ayo-card-button">
               ABRIR BITÁCORA
             </Link>
           </div>
@@ -104,4 +104,3 @@ export default function ActivosOrigenPage() {
     </div>
   );
 }
-

@@ -1,0 +1,22 @@
+.navigation { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; font-size: .875rem; }
+.navigation a, .sources a { color: #7d1d2b; text-underline-offset: .25em; }
+.hygieneGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+.icon { color: #c5a880; margin-block: 1rem; }
+.note { margin-top: 1.5rem; font-size: .875rem; }
+.maternity { padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid rgb(197 168 128 / 40%); border-radius: 0 15px; background: #faf7f2; }
+.badge { display: inline-block; padding: .35rem .75rem; background: #f4efeb; border: 1px solid rgb(197 168 128 / 40%); border-radius: 999px; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #7d1d2b; }
+.maternity h3 { font-size: 1.75rem; color: #7d1d2b; margin-block: 1.5rem .75rem; }
+.maternity ul { padding-left: 1.5rem; list-style: disc; }
+.reactions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 1.5rem; }
+.reaction { padding: 1.5rem; color: #faf7f2; background: linear-gradient(145deg, #4a0d10, #54101a 50%, #7d1d2b); border: 1px solid rgb(197 168 128 / 40%); border-radius: 0 15px; box-shadow: 0 4px 12px rgb(0 0 0 / 20%); }
+.reaction summary { position: relative; cursor: pointer; padding-right: 2rem; font-family: var(--font-cormorant), 'Cormorant Garamond', serif; font-size: 1.65rem; line-height: 1.2; }
+.reaction strong { color: #c5a880; }
+.plus { position: absolute; right: 0; color: #c5a880; transition: transform .2s ease; }
+.reaction[open] .plus { transform: rotate(45deg); }
+.anchor { scroll-margin-top: 8rem; }
+.sources { display: flex; flex-direction: column; gap: .5rem; padding-top: 1.5rem; margin-top: 2rem; border-top: 1px solid rgb(197 168 128 / 40%); font-size: .8rem; }
+.sources p { margin: 0; font-weight: 600; }
+.navigation a:focus-visible, .sources a:focus-visible, .reaction summary:focus-visible { outline: 3px solid #c5a880; outline-offset: 5px; }
+@media (max-width: 900px) { .hygieneGrid { grid-template-columns: 1fr; } }
+@media (max-width: 639px) { .reactions { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .plus { transition: none; } }

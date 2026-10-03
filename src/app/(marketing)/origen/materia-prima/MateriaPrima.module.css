@@ -1,0 +1,44 @@
+.explorer { min-width: 0; }
+.navigation { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; font-size: .875rem; }
+.navigation a { color: #7d1d2b; text-underline-offset: .25em; }
+.filters { background: #fff; border: 1px solid rgb(197 168 128 / 25%); border-radius: 0 15px; padding: clamp(1rem, 3vw, 2rem); box-shadow: 0 8px 32px rgb(74 13 16 / 6%); }
+.searchLabel { display: block; margin-bottom: .75rem; color: #4a0d10; font-size: .875rem; font-weight: 600; }
+.searchField { display: flex; align-items: center; gap: .75rem; padding: .75rem 1rem; background: #faf7f2; border: 1px solid rgb(197 168 128 / 60%); border-radius: 8px; color: #7d1d2b; }
+.searchField input { width: 100%; min-width: 0; min-height: 2rem; border: 0; outline: 0; background: transparent; font: inherit; font-size: .875rem; color: #2c2523; }
+.searchField input::-webkit-search-cancel-button { display: none; }
+.searchField button { display: grid; place-items: center; flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 6px; }
+.searchField:focus-within { outline: 2px solid #7d1d2b; outline-offset: 3px; }
+.help { margin: .75rem 0 1.5rem; font-size: .75rem; line-height: 1.6; }
+.tabs { display: flex; gap: .75rem; overflow-x: auto; padding: 4px; }
+.tabs button { display: flex; align-items: center; justify-content: center; gap: .75rem; flex: 1 0 14rem; min-height: 4rem; padding: .75rem 1rem; border: 1px solid rgb(197 168 128 / 40%); border-radius: 0 12px; background: #faf7f2; color: #4a0d10; font-family: var(--font-montserrat), Montserrat, sans-serif; font-size: .8rem; line-height: 1.5; text-align: left; cursor: pointer; transition: background .2s ease; }
+.tabs button[aria-selected='true'] { background: #4a0d10; color: #faf7f2; border-color: #c5a880; }
+.count { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 2rem; padding: .25rem; flex-shrink: 0; border: 1px solid rgb(197 168 128 / 40%); border-radius: 50%; font-size: .75rem; }
+.resultCount { margin: 1rem 0 0; color: #7d1d2b; font-size: .8rem; }
+.panel { min-width: 0; scroll-margin-top: 6rem; }
+.group { margin-block: 3rem; }
+.group h2, .lipidGuide h2, .empty h2 { color: #4a0d10; font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 0 0 1rem; }
+.group > p { font-size: .9rem; }
+.group table { min-width: 65rem; }
+.group :is(th, td) { white-space: pre-line; font-family: var(--font-montserrat), Montserrat, sans-serif; font-size: .8rem; line-height: 1.7; }
+.group tbody th { background: #f4efeb; color: #4a0d10; font-weight: 600; width: 18%; }
+.group tbody td { min-width: 12rem; }
+.tableCaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.scrollHint { color: #7d1d2b; font-size: .75rem !important; }
+.safetyNote { margin-top: 2rem; padding: 1.25rem 1.5rem; background: #f4efeb; border-left: 2px solid #c5a880; font-size: .8rem; }
+.safetyNote strong { display: block; margin-bottom: .4rem; }
+.lipidGuide { padding: clamp(1.5rem, 3vw, 2.5rem); margin-top: 2rem; background: #faf7f2; border: 1px solid rgb(197 168 128 / 40%); border-radius: 0 15px; text-align: center; }
+.eyebrow { color: #7d1d2b; font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; }
+.scale { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; text-align: left; }
+.scale div { padding: 1rem; border-top: 1px solid #c5a880; background: #fff; }
+.scale dt { font-weight: 600; color: #7d1d2b; }
+.scale dd { margin-top: .5rem; font-size: .8rem; }
+.empty { padding: 3rem 1.5rem; text-align: center; }
+.empty button { padding: .75rem 1.5rem; background: #4a0d10; color: #faf7f2; border-radius: 0 12px; min-height: 44px; }
+.provenance { font-size: .75rem; padding-top: 1.5rem; border-top: 1px solid rgb(197 168 128 / 40%); }
+.explorer :is(button, a):focus-visible, .panel:focus-visible { outline: 3px solid #c5a880; outline-offset: 3px; }
+@media (max-width: 900px) { .scale { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 639px) { .tabs button { flex-basis: 13rem; } .scale { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .tabs button { transition: none; } }
+
+.explorer .tabs button { text-transform: none; letter-spacing: normal; transition: border-color .2s ease; }
+@media (prefers-reduced-motion: reduce) { .explorer .tabs button { transition: none; } }
