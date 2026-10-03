@@ -3553,6 +3553,14 @@ footer .footer-social-icon {
   -webkit-mask: url("/svg/header/Filosofia%20y%20proposito.svg") center / contain no-repeat;
 }
 
+.product-card-badge-icon {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  min-width: 0.75rem !important;
+  min-height: 0.75rem !important;
+  flex-shrink: 0;
+}
+
 .product-card-title { color: #4A0D10 !important; }
 a:hover .product-card-title,
 a:active .product-card-title,

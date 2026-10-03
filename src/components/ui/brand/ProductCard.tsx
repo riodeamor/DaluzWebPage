@@ -276,7 +276,7 @@ export default function ProductCard({
           border: "none",
         }}
       >
-        {Icon && <Icon className="h-3 w-3 mr-1" />}
+        {Icon && <Icon className="product-card-badge-icon h-3 w-3 mr-1" />}
         {config.label}
       </Badge>
     );
