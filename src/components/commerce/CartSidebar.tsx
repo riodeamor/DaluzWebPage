@@ -99,8 +99,9 @@ export default function CartSidebar() {
             </div>
           ) : (
             <>
+              <div className="cart-sidebar__scroll min-h-0 flex-1 overflow-y-auto">
               {/* Cart Items - Scrollable */}
-              <div className="flex-1 overflow-y-auto py-6 px-6 space-y-4">
+              <div className="py-6 px-6 space-y-4">
                 {items.map((item) => (
                   <div
                     key={item.id}
@@ -213,9 +214,9 @@ export default function CartSidebar() {
                 ))}
               </div>
 
-              {/* Footer - Fixed */}
+              {/* Summary shares the scroll area with products. */}
               <div
-                className="space-y-4 border-t border-[#FFF2E9]/10 px-6 pb-6 pt-4"
+                className="space-y-4 border-t border-[#FFF2E9]/10 px-6 pb-4 pt-4"
               >
                 {/* Order Summary */}
                 {(() => {
@@ -250,12 +251,7 @@ export default function CartSidebar() {
                 })()}
 
                 <div
-                  className="space-y-3 p-4 rounded-lg"
-                  style={{
-                    backgroundColor: '#FFF2E9',
-                    borderRadius: '0px 15px',
-                    border: '1px solid rgba(74, 13, 16, 0.12)'
-                  }}
+                  className="cart-sidebar__summary space-y-3 p-4 rounded-lg"
                 >
                   <CommerceControls quote={quote} error={error} pending={pending} includePostal />
                   <div className="flex justify-between text-sm font-text">
@@ -272,8 +268,11 @@ export default function CartSidebar() {
                   </p>
                 </div>
 
-                {/* Action Buttons */}
-                <div className="space-y-3">
+              </div>
+              </div>
+
+                {/* Actions remain visible while the cart content scrolls. */}
+                <div className="shrink-0 space-y-3 border-t border-[#FFF2E9]/10 px-6 pb-6 pt-4">
                   <Link href="/checkout" className="block" onClick={() => setCartOpen(false)}>
                     <Button
                       className="alkimya-cta w-full font-text font-semibold py-6 text-base"
@@ -304,7 +303,6 @@ export default function CartSidebar() {
                     </Button>
                   </div>
                 </div>
-              </div>
             </>
           )}
         </div>

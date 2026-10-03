@@ -3,6 +3,63 @@
   border-color: rgba(255, 242, 233, 0.12);
 }
 
+.cart-sidebar__summary {
+  background: linear-gradient(135deg, #4A0D10 0%, #7D1D2B 58%, #97000D 100%);
+  border: 1px solid rgba(255, 242, 233, 0.25);
+  border-radius: 0 15px;
+  color: #FFFFFF;
+}
+
+.cart-sidebar .cart-sidebar__summary p,
+.cart-sidebar .cart-sidebar__summary span {
+  color: #FFFFFF !important;
+}
+
+.cart-sidebar__summary [role="separator"] {
+  background: rgba(255, 242, 233, 0.3);
+}
+
+.cart-sidebar .commerce-controls {
+  color: #FFFFFF;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+}
+
+.cart-sidebar .commerce-controls label,
+.cart-sidebar .commerce-controls p {
+  color: #FFFFFF !important;
+  font-family: var(--font-montserrat), Montserrat, sans-serif !important;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.cart-sidebar .commerce-controls input {
+  color: #FFFFFF;
+  background: rgba(74, 13, 16, 0.5);
+  border-color: rgba(255, 242, 233, 0.45);
+}
+
+.cart-sidebar .commerce-controls input::placeholder {
+  color: #FFF2E9;
+}
+
+.cart-sidebar .commerce-controls button {
+  min-height: 2.5rem;
+  background: #97000D;
+  color: #FFFFFF;
+  font-family: var(--font-montserrat), Montserrat, sans-serif;
+}
+
+.commerce-controls__coupon summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.commerce-controls__coupon summary:focus-visible {
+  outline: 2px solid #FFF2E9;
+  outline-offset: 4px;
+}
+
 .cart-sidebar.cart-sidebar h2,
 .cart-sidebar.cart-sidebar h3 {
   color: #FFF2E9 !important;

@@ -2820,6 +2820,8 @@ main button:not(:disabled):not([role="tab"]):not([data-radix-select-trigger]):ho
   color: #4A0D10;
 }
 .tienda-select-panel {
+  /* Radix renders this menu outside the mobile drawer (z-index: 60). */
+  z-index: 70 !important;
   background: #FFF2E9 !important;
   color: #4A0D10 !important;
   border: 0 !important;

@@ -278,6 +278,7 @@ export default function Header() {
                   alt="Isotipo Da Luz Consciente"
                   width={52}
                   height={52}
+                  unoptimized
                   className="h-[52px] w-[52px] transition-transform duration-300 hover:scale-105"
                   style={{}}
                 />

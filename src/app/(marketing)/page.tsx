@@ -412,7 +412,7 @@ export default async function HomePage() {
            {/* 📖 BLOG DA LUZ SECTION */}
 <section className="section-enhanced relative py-12 md:py-16 lg:py-24 px-6 overflow-hidden" style={{ backgroundColor: "#051341" }}>
   <div className="absolute inset-0">
-    <BlogBackground bgColor="#051341" waveColor="#16345F" className="opacity-100" />
+    <BlogBackground bgColor="#051341" waveColor="#16345F" blueGradient className="opacity-100" />
   </div>
 
   <div className="text-center pb-5 mb-[3rem] relative z-20 px-4">
@@ -618,7 +618,7 @@ export default async function HomePage() {
           style={{ background: "linear-gradient(135deg, #FFF2E9 0%, #FFF2E9 25%, #FFF2E9 50%, rgba(5, 19, 65, 0.05) 75%, #FFF2E9 100%)" }}
         />
         <div className="hidden xl:block absolute inset-0">
-          <GaleriaBackground bgColor="#051341" waveColor="#16345F" className="opacity-100" />
+          <GaleriaBackground bgColor="#051341" waveColor="#16345F" blueGradient className="opacity-100" />
         </div>
 
         <div className="text-center pb-5 mt-[-2rem] mb-[3rem] relative z-20 px-4">

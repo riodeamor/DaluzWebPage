@@ -1,5 +1,14 @@
 import React from 'react';
 
+const DaLuzBlueGradient = ({ id }: { id: string }) => (
+  <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stopColor="#051341" />
+    <stop offset="30%" stopColor="#16345F" />
+    <stop offset="66%" stopColor="#005080" />
+    <stop offset="100%" stopColor="#0085B1" />
+  </linearGradient>
+);
+
 // SVG Component Interfaces
 interface SVGProps {
   size?: number;
@@ -364,12 +373,15 @@ export const ServiciosHolisticosBackground: React.FC<{
 export const BlogBackground: React.FC<{
   bgColor?: string;
   waveColor?: string;
+  blueGradient?: boolean;
   className?: string;
 }> = ({ 
   bgColor = "#051341", // Fondo ancla azul oscuro por defecto
   waveColor = "#16345F", // Onda en azul acción por defecto
+  blueGradient = false,
   className = ""
 }) => {
+  const gradientId = `blog-blue-${React.useId().replace(/:/g, '')}`;
   return (
     <div
       className={`absolute inset-0 w-full h-full ${className}`}
@@ -400,6 +412,7 @@ export const BlogBackground: React.FC<{
         }}
       >
         <defs>
+          {blueGradient && <DaLuzBlueGradient id={gradientId} />}
           <style>{`
             .wave-fill { fill: var(--wave-color, #16345F); }
           `}</style>
@@ -409,6 +422,7 @@ export const BlogBackground: React.FC<{
           <path 
             className="wave-fill" 
             d="M0,778.84l1920,.23V2c-490.89,0-992.34-35.52-960,193.14,23,162.62,19.74,318.94,0,394.91-17.11,65.85-147.23,129.75-323.4,140.94C227.72,756.95,0,778.84,0,778.84Z"
+            style={blueGradient ? { fill: `url(#${gradientId})` } : undefined}
           />
         </g>
       </svg>
@@ -770,12 +784,15 @@ export const BlogComunidadBackground: React.FC<{
 export const GaleriaBackground: React.FC<{
   bgColor?: string;
   waveColor?: string;
+  blueGradient?: boolean;
   className?: string;
 }> = ({ 
   bgColor = "#FFF2E9", 
   waveColor = "#051341", 
+  blueGradient = false,
   className = ""
 }) => {
+  const gradientId = `gallery-blue-${React.useId().replace(/:/g, '')}`;
   return (
     <div
       className={`absolute inset-0 w-full h-full ${className}`}
@@ -797,6 +814,7 @@ export const GaleriaBackground: React.FC<{
         }}
       >
         <defs>
+          {blueGradient && <DaLuzBlueGradient id={gradientId} />}
           <style>
             {`
               .galeria-bg-fill { fill: var(--bg-color, #FFF2E9); }
@@ -809,15 +827,15 @@ export const GaleriaBackground: React.FC<{
         
         {/* Onda superior en azul ancla */}
         <path 
-          fill="#051341" 
+          fill={blueGradient ? `url(#${gradientId})` : "#051341"}
           d="M0,300 Q480,200 960,300 T1920,300 L1920,0 L0,0 Z"
           opacity="0.9"
         />
         {/* Onda inferior en azul acción */}
         <path 
-          fill="#16345F" 
+          fill={blueGradient ? `url(#${gradientId})` : "#16345F"}
           d="M0,400 Q480,300 960,400 T1920,400 L1920,0 L0,0 Z"
-          opacity="0.8"
+          opacity={blueGradient ? 1 : 0.8}
         />
       </svg>
     </div>
