@@ -1,13 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest, NextResponse } from "next/server";
-const m = vi.hoisted(() => ({ auth: vi.fn(), service: vi.fn(), update: vi.fn(), eq: vi.fn(), single: vi.fn(), delivery: vi.fn(), shipping: vi.fn() }));
+const m = vi.hoisted(() => ({ auth: vi.fn(), service: vi.fn(), update: vi.fn(), eq: vi.fn(), single: vi.fn(), select: vi.fn(), profile: vi.fn(), delivery: vi.fn(), shipping: vi.fn() }));
 vi.mock("@/lib/auth/helpers", () => ({ requireAdmin: m.auth, getServiceClient: m.service }));
 vi.mock("@/lib/email/notifications", () => ({ EmailNotificationService: { sendDeliveryConfirmation: m.delivery, sendShippingNotification: m.shipping } }));
 import { PATCH } from "./route";
 const call = (body: unknown) => PATCH(new NextRequest("http://localhost/api/admin/orders/o1", { method: "PATCH", body: JSON.stringify(body) }), { params: { id: "o1" } });
 beforeEach(() => {
   vi.clearAllMocks(); m.single.mockReset();
-  const chain = { select: vi.fn().mockReturnThis(), eq: m.eq, single: m.single, update: m.update };
+  const chain = { select: m.select, eq: m.eq, single: m.single, maybeSingle: m.profile, update: m.update };
+  m.select.mockReturnValue(chain);m.profile.mockResolvedValue({data:{full_name:'Cliente ficticio',email:'daluzalkimya@gmail.com'},error:null});
   m.eq.mockReturnValue(chain); m.update.mockReturnValue(chain); m.service.mockReturnValue({ from: () => chain });
   m.auth.mockResolvedValue({ ok: true, supabase: { from: () => chain } });
   m.single.mockResolvedValueOnce({ data: { status: "shipped", payment_status: "paid", delivered_at: null }, error: null })
@@ -15,6 +16,15 @@ beforeEach(() => {
     .mockResolvedValueOnce({ data: null, error: null });
 });
 describe("entrega separada del pago", () => {
+  it("prepara el correo sin una relación inexistente entre orders y profiles",async()=>{
+    m.single.mockReset().mockResolvedValueOnce({data:{status:'processing',payment_status:'paid'},error:null})
+      .mockResolvedValueOnce({data:{id:'o1',status:'delivered',payment_status:'paid'},error:null})
+      .mockResolvedValueOnce({data:{id:'o1',user_id:'u1',email:'daluzalkimya@gmail.com',status:'delivered',order_items:[]},error:null});
+    expect((await call({status:'delivered'})).status).toBe(200);
+    expect(m.select.mock.calls.every(([s])=>!String(s).includes('profiles ('))).toBe(true);
+    expect(m.eq).toHaveBeenCalledWith('id','u1');
+    expect(m.delivery).toHaveBeenCalledWith(expect.objectContaining({user_email:'daluzalkimya@gmail.com',customer_name:'Cliente ficticio'}));
+  });
   it("actualiza entrega y fecha sin escribir pago ni ejecutar stock/pago RPC", async () => {
     expect((await call({ status: "delivered" })).status).toBe(200);
     const update = m.update.mock.calls[0][0]; expect(update.status).toBe("delivered"); expect(update.delivered_at).toEqual(expect.any(String)); expect(update).not.toHaveProperty("payment_status");

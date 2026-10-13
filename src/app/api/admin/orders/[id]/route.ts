@@ -114,16 +114,22 @@ export async function PATCH(
               quantity,
               unit_price,
               total_price
-            ),
-            profiles (
-              full_name,
-              email
             )
           `)
           .eq('id', params.id)
           .single();
 
         if (fullOrder) {
+          // orders and profiles both reference auth.users; they have no direct FK.
+          // Read the existing profile separately without requiring a migration.
+          if (fullOrder.user_id) {
+            const { data: profile } = await supabaseAdmin
+              .from('profiles')
+              .select('full_name, email')
+              .eq('id', fullOrder.user_id)
+              .maybeSingle();
+            fullOrder.profiles = profile;
+          }
           // Prepare order data for email service
           const emailOrder = {
             id: fullOrder.id,
