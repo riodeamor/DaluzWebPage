@@ -102,7 +102,7 @@ export default function OrdersPage() {
           customer_name: "Carlos Ruiz",
           customer_email: "carlos@example.com",
           total_amount: 8900,
-          status: "completed" as OrderStatus,
+          status: "delivered" as OrderStatus,
           payment_status: "paid" as PaymentStatus,
           created_at: "2024-01-20T09:15:00Z",
           mp_payment_id: "123456788",
@@ -425,13 +425,13 @@ export default function OrdersPage() {
                     Enviado
                   </span>
                 </SelectItem>
-                <SelectItem value="completed">
+                <SelectItem value="delivered">
                   <span className="flex items-center gap-2">
                     <span
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: "var(--admin-success)" }}
                     ></span>
-                    Completado
+                    Entregado
                   </span>
                 </SelectItem>
                 <SelectItem value="cancelled">

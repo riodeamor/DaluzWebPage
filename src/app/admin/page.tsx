@@ -50,7 +50,7 @@ const COLORS = {
 
 // Colores para gráficos - paleta coherente con el admin
 const CHART_COLORS = [
-  "#285D30", // Completado
+  "#285D30", // Entregado
   "#B8860B", // Pendiente
   "#005080", // Procesando
   "#16345F", // Enviado
@@ -60,7 +60,7 @@ const CHART_COLORS = [
 const defaultDashboardData: DashboardData = {
   kpis: {
     revenue: { current: 0, previous: 0, change: 0, currency: "ARS" },
-    orders: { total: 0, pending: 0, processing: 0, completed: 0, failed: 0 },
+    orders: { total: 0, pending: 0, processing: 0, delivered: 0, failed: 0 },
     products: { total: 0, lowStock: 0, outOfStock: 0 },
     customers: { total: 0, new: 0, returning: 0 },
   },
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
     ? [
         { name: "Pendiente", value: data.charts.ordersStatus.pending || 0 },
         { name: "Procesando", value: data.charts.ordersStatus.processing || 0 },
-        { name: "Completado", value: data.charts.ordersStatus.completed || 0 },
+        { name: "Entregado", value: data.charts.ordersStatus.delivered || 0 },
         { name: "Enviado", value: data.charts.ordersStatus.shipped || 0 },
         { name: "Fallido", value: data.charts.ordersStatus.failed || 0 },
       ].filter((item) => item.value > 0)
@@ -243,20 +243,20 @@ export default function AdminDashboard() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         <KPICard
-          title="Ingresos del Mes"
+          title="Pedidos pagados del mes"
           value={formatPrice(data.kpis.revenue.current)}
           icon={DollarSign}
           change={data.kpis.revenue.change}
           changeLabel="vs anterior"
-          subtitle="Solo completados/pagados"
-          href="/admin/orders?filter=completed"
-          description="Ver pedidos completados"
+          subtitle="Total con envío, por fecha de creación"
+          href="/admin/orders"
+          description="Ver pedidos y sus pagos"
         />
         <KPICard
           title="Pedidos"
           value={data.kpis.orders.total}
           icon={ShoppingCart}
-          subtitle={`${data.kpis.orders.pending} pend. • ${data.kpis.orders.completed} comp. • ${data.kpis.orders.processing} en proceso`}
+          subtitle={`${data.kpis.orders.pending} pend. • ${data.kpis.orders.delivered} entreg. • ${data.kpis.orders.processing} en proceso`}
           href="/admin/orders"
           description="Gestionar pedidos"
         />
@@ -288,8 +288,8 @@ export default function AdminDashboard() {
       {/* Charts Section */}
       <div className="grid grid-cols-1 gap-6">
         <ChartCard
-          title="Ingresos Últimos 7 Días"
-          description="Evolución de ingresos diarios"
+          title="Pedidos pagados: últimos 7 días"
+          description="Totales de pedidos pagados según fecha de creación"
         >
           {data.charts.revenueTrend.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
@@ -322,7 +322,7 @@ export default function AdminDashboard() {
                 <Tooltip
                   formatter={(value: number) => [
                     formatPrice(value),
-                    "Ingresos",
+                    "Total de pedidos pagados",
                   ]}
                   labelFormatter={(date) =>
                     new Date(date).toLocaleDateString("es-AR", {
@@ -342,7 +342,7 @@ export default function AdminDashboard() {
                 <Line
                   type="monotone"
                   dataKey="revenue"
-                  name="Ingresos"
+                  name="Total de pedidos pagados"
                   stroke={COLORS.success}
                   strokeWidth={3}
                   dot={{ fill: COLORS.success, strokeWidth: 2, r: 4 }}
@@ -425,7 +425,7 @@ export default function AdminDashboard() {
       {data.charts.topProducts.length > 0 && (
         <ChartCard
           title="Productos Más Vendidos"
-          description="Top 5 por ingresos"
+          description="Top 5 por importe de productos en pedidos pagados, antes de descuentos"
         >
           <ResponsiveContainer width="100%" height={300}>
             <BarChart
@@ -455,7 +455,7 @@ export default function AdminDashboard() {
               <Tooltip
                 formatter={(value: number, name: string) => {
                   if (name === "revenue")
-                    return [formatPrice(value), "Ingresos"];
+                    return [formatPrice(value), "Importe de productos"];
                   return [value, "Cantidad"];
                 }}
                 contentStyle={{
@@ -468,7 +468,7 @@ export default function AdminDashboard() {
               <Legend wrapperStyle={{ paddingTop: "10px" }} />
               <Bar
                 dataKey="revenue"
-                name="Ingresos"
+                name="Importe de productos"
                 fill={COLORS.primary}
                 radius={[0, 4, 4, 0]}
               />

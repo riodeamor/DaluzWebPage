@@ -67,8 +67,8 @@ export default function SEOManager() {
       if (response.ok) {
         toast.success('Configuración SEO guardada exitosamente');
         setHasChanges(false);
-        // Refresh to get updated values
-        await fetchConfig();
+        const data = await response.json();
+        setConfig(data.config || config);
       } else {
         const error = await response.json();
         toast.error(error.error || 'Error al guardar configuración');
@@ -124,15 +124,16 @@ export default function SEOManager() {
         </div>
         <Button onClick={handleSave} disabled={saving || !hasChanges}>
           <Save className="h-4 w-4 mr-2" />
-          {saving ? 'Guardando...' : 'Guardar Cambios'}
+          {saving ? 'Guardando...' : 'Guardar configuración SEO'}
         </Button>
       </div>
 
+      <fieldset disabled={saving}>
       <Tabs defaultValue="general" className="space-y-6">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="general">General</TabsTrigger>
           <TabsTrigger value="social">Redes Sociales</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsTrigger value="analytics">Analíticas</TabsTrigger>
           <TabsTrigger value="tools">Herramientas</TabsTrigger>
         </TabsList>
 
@@ -203,10 +204,7 @@ export default function SEOManager() {
                   value={Array.isArray(config.seo_default_keywords) 
                     ? config.seo_default_keywords.join(', ') 
                     : config.seo_default_keywords || ''}
-                  onChange={(e) => {
-                    const keywords = e.target.value.split(',').map(k => k.trim()).filter(k => k);
-                    handleUpdate('seo_default_keywords', keywords);
-                  }}
+                  onChange={(e) => handleUpdate('seo_default_keywords', e.target.value)}
                   placeholder="productos naturales, bienestar, salud, consciente"
                 />
                 <p className="text-xs text-tierra-media">
@@ -214,6 +212,13 @@ export default function SEOManager() {
                 </p>
               </div>
 
+              <div className="space-y-2">
+                <Label htmlFor="google_site_verification">Verificación de Google Search Console</Label>
+                <Input id="google_site_verification" value={config.seo_google_site_verification || ""}
+                  onChange={(e) => handleUpdate("seo_google_site_verification", e.target.value)}
+                  placeholder="Código google-site-verification" />
+                <p className="text-xs text-tierra-media">Pegá solo el código del atributo content, sin la etiqueta HTML.</p>
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="canonical_url">URL Canónica</Label>
                 <Input
@@ -317,14 +322,9 @@ export default function SEOManager() {
 
               <div className="space-y-2">
                 <Label htmlFor="og_type">Tipo Open Graph</Label>
-                <Input
-                  id="og_type"
-                  value={config.seo_og_type || 'website'}
-                  onChange={(e) => handleUpdate('seo_og_type', e.target.value)}
-                  placeholder="website"
-                />
+                <select id="og_type" className="w-full rounded-md border p-2" value={config.seo_og_type || 'website'} onChange={(e) => handleUpdate('seo_og_type', e.target.value)}><option value="website">Sitio web</option><option value="article">Artículo</option></select>
                 <p className="text-xs text-tierra-media">
-                  Tipos comunes: website, article, product
+                  Tipos disponibles: sitio web o artículo
                 </p>
               </div>
             </CardContent>
@@ -334,7 +334,7 @@ export default function SEOManager() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Twitter className="h-5 w-5" />
-                Twitter Cards
+                Tarjetas para compartir
               </CardTitle>
               <CardDescription>Configuración para compartir en Twitter/X</CardDescription>
             </CardHeader>
@@ -342,14 +342,9 @@ export default function SEOManager() {
 
               <div className="space-y-2">
                 <Label htmlFor="twitter_card_type">Tipo de Tarjeta</Label>
-                <Input
-                  id="twitter_card_type"
-                  value={config.seo_twitter_card_type || 'summary_large_image'}
-                  onChange={(e) => handleUpdate('seo_twitter_card_type', e.target.value)}
-                  placeholder="summary_large_image"
-                />
+                <select id="twitter_card_type" className="w-full rounded-md border p-2" value={config.seo_twitter_card_type || 'summary_large_image'} onChange={(e) => handleUpdate('seo_twitter_card_type', e.target.value)}><option value="summary">Resumen</option><option value="summary_large_image">Resumen con imagen grande</option></select>
                 <p className="text-xs text-tierra-media">
-                  Tipos: summary, summary_large_image
+                  Elegí cómo se muestra la vista previa al compartir.
                 </p>
               </div>
             </CardContent>
@@ -412,9 +407,9 @@ export default function SEOManager() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="h-5 w-5" />
-                Analytics y Tracking
+                Analíticas y seguimiento
               </CardTitle>
-              <CardDescription>Configura códigos de seguimiento y analytics</CardDescription>
+              <CardDescription>Configurá los códigos de seguimiento y analíticas</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -587,6 +582,7 @@ export default function SEOManager() {
           </Card>
         </TabsContent>
       </Tabs>
+      </fieldset>
     </div>
   );
 }

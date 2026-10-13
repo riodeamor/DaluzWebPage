@@ -143,20 +143,20 @@ function OrderActions({
         {order.status === "processing" && onUpdateStatus && (
           <DropdownMenuItem
             onClick={() => onUpdateStatus(order.id, "shipped")}
-            disabled={isU}
+            disabled={isU || order.payment_status !== "paid"}
           >
             <Truck className="h-4 w-4 mr-2" />
             Enviado
           </DropdownMenuItem>
         )}
-        {(order.status === "shipped" || order.status === "delivered") &&
+        {order.status === "shipped" &&
           onUpdateStatus && (
             <DropdownMenuItem
-              onClick={() => onUpdateStatus(order.id, "completed")}
-              disabled={isU}
+              onClick={() => onUpdateStatus(order.id, "delivered")}
+              disabled={isU || order.payment_status !== "paid"}
             >
               <CheckCircle className="h-4 w-4 mr-2" />
-              Completado
+              Marcar entregado
             </DropdownMenuItem>
           )}
         <DropdownMenuSeparator />
@@ -203,7 +203,7 @@ function OrderActions({
   );
 }
 
-function StatusSelector({ value, onValueChange, disabled, type }: any) {
+function StatusSelector({ value, onValueChange, disabled, type, paymentStatus }: any) {
   const statusColor = getStatusColor(value);
 
 
@@ -214,7 +214,6 @@ function StatusSelector({ value, onValueChange, disabled, type }: any) {
           "processing",
           "shipped",
           "delivered",
-          "completed",
           "cancelled",
           "refunded",
         ]
@@ -272,6 +271,7 @@ function StatusSelector({ value, onValueChange, disabled, type }: any) {
             <SelectItem
               key={status}
               value={status}
+              disabled={type === "order" && ["shipped", "delivered"].includes(status) && status !== value && paymentStatus !== "paid"}
               className="text-xs py-2 cursor-pointer"
               style={{
                 color:
@@ -421,6 +421,7 @@ const OrderTable = memo(function OrderTable(props: OrderTableProps) {
                   {onUpdateStatus ? (
                     <StatusSelector
                       type="order"
+                      paymentStatus={order.payment_status}
                       value={order.status}
                       onValueChange={(v: string) => onUpdateStatus(order.id, v)}
                       disabled={isUpdating(order.id)}
@@ -428,6 +429,7 @@ const OrderTable = memo(function OrderTable(props: OrderTableProps) {
                   ) : (
                     getStatusBadge(order.status)
                   )}
+                  {order.payment_status !== "paid" && <p className="mt-1 text-xs">Pago no confirmado: no se habilita un nuevo envío o entrega.</p>}
                 </TableCell>
                 <TableCell className="py-4">
                   {onUpdatePaymentStatus ? (

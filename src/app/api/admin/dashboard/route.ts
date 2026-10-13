@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
     const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
     const startOfLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
-    const endOfLastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+    const startOfNextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
 
     // === PRODUCTS METRICS ===
     const activeProducts = products.filter(p => p.status === 'active');
@@ -79,15 +79,15 @@ export async function GET(request: NextRequest) {
     // === ORDERS METRICS ===
     const pendingOrders = orders.filter(o => o.status === 'pending').length;
     const processingOrders = orders.filter(o => o.status === 'processing').length;
-    const completedOrders = orders.filter(o => o.status === 'completed').length;
+    const deliveredOrders = orders.filter(o => o.status === 'delivered').length;
     const failedOrders = orders.filter(o => o.status === 'failed').length;
 
     // === REVENUE METRICS ===
-    // Current month revenue (from completed or paid orders)
+    // Paid order totals grouped by order creation date, not settlement date
     const currentMonthOrders = orders.filter(o => {
       const orderDate = new Date(o.created_at);
-      return orderDate >= startOfMonth && 
-             (o.status === 'completed' || o.payment_status === 'paid');
+      return orderDate >= startOfMonth && orderDate < startOfNextMonth &&
+             o.payment_status === 'paid';
     });
     const currentMonthRevenue = currentMonthOrders.reduce((sum, o) => sum + (o.total_amount || 0), 0);
 
@@ -95,8 +95,8 @@ export async function GET(request: NextRequest) {
     const lastMonthOrders = orders.filter(o => {
       const orderDate = new Date(o.created_at);
       return orderDate >= startOfLastMonth && 
-             orderDate <= endOfLastMonth &&
-             (o.status === 'completed' || o.payment_status === 'paid');
+             orderDate < startOfMonth &&
+             o.payment_status === 'paid';
     });
     const lastMonthRevenue = lastMonthOrders.reduce((sum, o) => sum + (o.total_amount || 0), 0);
 
@@ -140,7 +140,7 @@ export async function GET(request: NextRequest) {
         const orderDate = new Date(o.created_at);
         return orderDate >= date && 
                orderDate < nextDate && 
-               (o.status === 'completed' || o.payment_status === 'paid');
+               o.payment_status === 'paid';
       });
       
       const dayRevenue = dayOrders.reduce((sum, o) => sum + (o.total_amount || 0), 0);
@@ -160,7 +160,7 @@ export async function GET(request: NextRequest) {
     const statusDistribution = {
       pending: last30DaysOrders.filter(o => o.status === 'pending').length,
       processing: last30DaysOrders.filter(o => o.status === 'processing').length,
-      completed: last30DaysOrders.filter(o => o.status === 'completed').length,
+      delivered: last30DaysOrders.filter(o => o.status === 'delivered').length,
       failed: last30DaysOrders.filter(o => o.status === 'failed').length,
       shipped: last30DaysOrders.filter(o => o.status === 'shipped').length
     };
@@ -169,7 +169,7 @@ export async function GET(request: NextRequest) {
     const productRevenue = new Map();
     
     orders
-      .filter(o => o.status === 'completed' || o.payment_status === 'paid')
+      .filter(o => o.payment_status === 'paid')
       .forEach(order => {
         order.order_items?.forEach((item: any) => {
           const current = productRevenue.get(item.product_name) || { revenue: 0, quantity: 0 };
@@ -198,7 +198,7 @@ export async function GET(request: NextRequest) {
           total: orders.length,
           pending: pendingOrders,
           processing: processingOrders,
-          completed: completedOrders,
+          delivered: deliveredOrders,
           failed: failedOrders
         },
         revenue: {

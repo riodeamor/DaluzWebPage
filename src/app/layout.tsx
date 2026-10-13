@@ -1,5 +1,7 @@
 import ResidualWorkerCleanup from "@/components/infra/ResidualWorkerCleanup";
 import type { Metadata } from "next";
+import { getSeoConfig } from "@/lib/seo/server";
+import { applySeoConfig } from "@/lib/seo/metadata";
 import { Inter, Playfair_Display, EB_Garamond, Montserrat, Cormorant_Garamond } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider as NextThemeProvider } from "@/components/theme-provider";
@@ -55,7 +57,7 @@ const velista = localFont({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+const defaultMetadata: Metadata = {
   metadataBase: new URL("https://daluzconsciente.com"),
   title: {
     default: "DA LUZ CONSCIENTE - Alkimyas para alma y cuerpo",
@@ -119,6 +121,11 @@ export const metadata: Metadata = {
     },
   },
 };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = await getSeoConfig().catch(() => ({}));
+  return applySeoConfig(defaultMetadata, seo);
+}
 
 export default function RootLayout({
   children,

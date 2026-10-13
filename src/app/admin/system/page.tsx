@@ -73,6 +73,7 @@ import RegionalShippingManager from "@/components/admin/RegionalShippingManager"
 import ShippingManager from "@/components/admin/ShippingManager";
 import WebhookMonitor from "@/components/admin/WebhookMonitor";
 import SEOManager from "@/components/admin/SEOManager";
+import ConfigValueEditor from "@/components/admin/ConfigValueEditor";
 
 interface SystemConfig {
   id: string;
@@ -224,7 +225,7 @@ export default function SystemAdministrationPage() {
     }
   };
 
-  const handleUpdateConfig = async (configKey: string, newValue: any) => {
+  const handleUpdateConfig = async (configKey: string, newValue: unknown, propagateError = false) => {
     try {
       const response = await fetch("/api/admin/system/config", {
         method: "PUT",
@@ -237,17 +238,20 @@ export default function SystemAdministrationPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update config");
+        throw new Error("No se pudo guardar la configuración.");
       }
 
       const data = await response.json();
-      const result = data.results[0];
+      const result = data.results?.[0];
 
-      if (result.success) {
+      if (result?.success && result.config) {
         toast.success("Configuración actualizada exitosamente");
-        fetchConfigs();
+        setConfigs(previous => previous.some(config => config.config_key === configKey)
+          ? previous.map(config => config.config_key === configKey ? { ...config, ...result.config } : config)
+          : [...previous, result.config],
+        );
       } else {
-        throw new Error(result.error);
+        throw new Error("No se pudo guardar la configuración. Intentá nuevamente.");
       }
     } catch (error) {
       console.error("Error updating config:", error);
@@ -256,6 +260,7 @@ export default function SystemAdministrationPage() {
           ? error.message
           : "Error al actualizar configuración",
       );
+      if (propagateError) throw error;
     }
   };
 
@@ -1266,55 +1271,13 @@ export default function SystemAdministrationPage() {
                                   >
                                     Valor
                                   </Label>
-                                  {config.value_type === "boolean" ? (
-                                    <Select
-                                      value={config.config_value.toString()}
-                                      onValueChange={(value) =>
-                                        handleUpdateConfig(
-                                          config.config_key,
-                                          value === "true",
-                                        )
-                                      }
-                                    >
-                                      <SelectTrigger className="w-full md:w-[180px]">
-                                        <SelectValue />
-                                      </SelectTrigger>
-                                      <SelectContent>
-                                        <SelectItem value="true">
-                                          Verdadero
-                                        </SelectItem>
-                                        <SelectItem value="false">
-                                          Falso
-                                        </SelectItem>
-                                      </SelectContent>
-                                    </Select>
-                                  ) : config.value_type === "number" ? (
-                                    <Input
-                                      type="number"
-                                      value={config.config_value}
-                                      onChange={(e) => {
-                                        const value =
-                                          parseFloat(e.target.value) || 0;
-                                        handleUpdateConfig(
-                                          config.config_key,
-                                          value,
-                                        );
-                                      }}
-                                      className="w-full md:w-[200px]"
-                                    />
-                                  ) : (
-                                    <Input
-                                      type="text"
-                                      value={config.config_value}
-                                      onChange={(e) => {
-                                        handleUpdateConfig(
-                                          config.config_key,
-                                          e.target.value,
-                                        );
-                                      }}
-                                      className="w-full md:w-[400px]"
-                                    />
-                                  )}
+                                  <ConfigValueEditor
+                                    configKey={config.config_key}
+                                    value={config.config_value}
+                                    valueType={config.value_type}
+                                    label={translateConfigKey(config.config_key)}
+                                    onSave={(key, value) => handleUpdateConfig(key, value, true)}
+                                  />
                                 </div>
 
                                 <div className="text-right">

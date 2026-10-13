@@ -70,7 +70,6 @@ export type OrderStatus =
   | "processing"
   | "shipped"
   | "delivered"
-  | "completed"
   | "cancelled"
   | "refunded";
 export type PaymentStatus =
@@ -289,7 +288,7 @@ export interface OrdersKPIs {
   total: number;
   pending: number;
   processing: number;
-  completed: number;
+  delivered: number;
   failed: number;
 }
 

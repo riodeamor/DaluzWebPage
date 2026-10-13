@@ -35,7 +35,7 @@ function getOrderStatusBadge(status: string) {
   const colors = getStatusColor(status);
 
   const iconMap: Record<string, React.ReactNode> = {
-    completed: <CheckCircle className="h-3 w-3" />,
+    delivered: <CheckCircle className="h-3 w-3" />,
     pending: <Clock className="h-3 w-3" />,
     processing: <Package className="h-3 w-3" />,
     shipped: <Package className="h-3 w-3" />,

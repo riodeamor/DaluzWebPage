@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
         .from('orders')
         .select('user_id, total_amount, created_at')
         .in('user_id', customerIds)
-        .in('status', ['completed', 'delivered', 'shipped', 'processing', 'paid']);
+        .eq('payment_status', 'paid');
 
       if (orderAggs) {
         for (const row of orderAggs) {
