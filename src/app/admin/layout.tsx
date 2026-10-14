@@ -546,19 +546,21 @@ function AdminSidebar({
           <div className="admin-sidebar-logo-icon">
             <Image
               src="/svg/logo.svg"
-              alt="DA LUZ Logo"
-              width={60}
-              height={60}
-              className="transition-transform duration-300 hover:scale-105"
-              style={{ filter: "brightness(0) invert(1)" }}
+              alt="Isotipo Da Luz Consciente"
+              width={32}
+              height={32}
+              unoptimized
+              className="h-8 w-8 shrink-0 transition-transform duration-300 hover:scale-105"
             />
           </div>
-          <span
-            className="font-title"
-            style={{ color: "var(--admin-text-inverse)" }}
-          >
-            DA LUZ
-          </span>
+          <Image
+            src="/assets/logo-header-da-luz.png"
+            alt="Da Luz Consciente"
+            width={149}
+            height={40}
+            unoptimized
+            className="h-10 w-[149px] object-contain"
+          />
         </Link>
       </div>
 
