@@ -1,6 +1,7 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { DISABLED_IN_REHEARSAL, isDeliveryRehearsal } from '@/lib/preview-isolation';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
@@ -22,7 +23,8 @@ export const previewClient = createClient({
   dataset,
   apiVersion,
   useCdn: false,
-  token: process.env.SANITY_API_READ_TOKEN,
+  token: isDeliveryRehearsal() || process.env.SANITY_API_READ_TOKEN === DISABLED_IN_REHEARSAL
+    ? undefined : process.env.SANITY_API_READ_TOKEN,
 });
 
 // Write client for server-side mutations (admin operations).

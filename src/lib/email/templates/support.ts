@@ -1,4 +1,4 @@
-import { sendEmail, SUPPORT_ADMIN_EMAIL } from '../client';
+import { sendEmail, SUPPORT_ADMIN_EMAIL, emailConfig } from '../client';
 
 interface SupportTicket {
   id: string;
@@ -162,7 +162,7 @@ Ver ticket: ${process.env.NEXT_PUBLIC_APP_URL || 'https://daluzconsciente.com'}/
     subject,
     html,
     text,
-    replyTo: 'soporte@daluzconsciente.com'
+    replyTo: emailConfig.replyTo
   });
 }
 
@@ -290,7 +290,7 @@ Ver ticket completo: ${process.env.NEXT_PUBLIC_APP_URL || 'https://daluzconscien
     subject,
     html,
     text,
-    replyTo: 'soporte@daluzconsciente.com'
+    replyTo: emailConfig.replyTo
   });
 }
 
@@ -433,7 +433,7 @@ Ver ticket: ${process.env.NEXT_PUBLIC_APP_URL || 'https://daluzconsciente.com'}/
     subject,
     html,
     text,
-    replyTo: 'soporte@daluzconsciente.com'
+    replyTo: emailConfig.replyTo
   });
 }
 

@@ -14,6 +14,12 @@ beforeEach(() => {
 afterEach(() => vi.unstubAllEnvs());
 const request = () => new NextRequest("http://localhost/api/revalidate", { method: "POST", body: "{}" });
 describe("publicación de tienda en Sanity", () => {
+  it('blocks a rehearsal before signature parsing, cache changes or logs', async () => {
+    vi.stubEnv('VERCEL_ENV', 'preview'); vi.stubEnv('VERCEL_GIT_COMMIT_REF', 'codex/entrega-admin-seo-delivered');
+    const { POST } = await import('./route');
+    expect((await POST(request())).status).toBe(503);
+    expect(mocks.parse).not.toHaveBeenCalled(); expect(mocks.tag).not.toHaveBeenCalled(); expect(mocks.from).not.toHaveBeenCalled();
+  });
   it("invalida datos y rutas de tienda con una publicación firmada", async () => {
     mocks.parse.mockResolvedValue({ isValidSignature: true, body: { _type: "tiendaSettings", _id: "tienda" } });
     const { POST } = await import("./route");

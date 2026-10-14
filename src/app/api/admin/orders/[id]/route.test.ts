@@ -8,7 +8,7 @@ const call = (body: unknown) => PATCH(new NextRequest("http://localhost/api/admi
 beforeEach(() => {
   vi.clearAllMocks(); m.single.mockReset();
   const chain = { select: m.select, eq: m.eq, single: m.single, maybeSingle: m.profile, update: m.update };
-  m.select.mockReturnValue(chain);m.profile.mockResolvedValue({data:{full_name:'Cliente ficticio',email:'daluzalkimya@gmail.com'},error:null});
+  m.select.mockReturnValue(chain);m.profile.mockResolvedValue({data:{first_name:'Cliente',last_name:'ficticio',email:'daluzalkimya@gmail.com'},error:null});
   m.eq.mockReturnValue(chain); m.update.mockReturnValue(chain); m.service.mockReturnValue({ from: () => chain });
   m.auth.mockResolvedValue({ ok: true, supabase: { from: () => chain } });
   m.single.mockResolvedValueOnce({ data: { status: "shipped", payment_status: "paid", delivered_at: null }, error: null })
@@ -23,6 +23,7 @@ describe("entrega separada del pago", () => {
     expect((await call({status:'delivered'})).status).toBe(200);
     expect(m.select.mock.calls.every(([s])=>!String(s).includes('profiles ('))).toBe(true);
     expect(m.eq).toHaveBeenCalledWith('id','u1');
+    expect(m.select).toHaveBeenCalledWith('first_name, last_name, email');
     expect(m.delivery).toHaveBeenCalledWith(expect.objectContaining({user_email:'daluzalkimya@gmail.com',customer_name:'Cliente ficticio'}));
   });
   it("actualiza entrega y fecha sin escribir pago ni ejecutar stock/pago RPC", async () => {

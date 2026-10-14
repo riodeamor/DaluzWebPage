@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { businessIntegrationDisabled } from '@/lib/preview-isolation';
 import crypto from "crypto";
 import { getServiceClient } from "@/lib/auth/helpers";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
@@ -56,6 +57,9 @@ const verifySignature = async (
 // ============================================
 
 export async function POST(req: NextRequest) {
+  if (businessIntegrationDisabled(process.env.MERCADOPAGO_WEBHOOK_SECRET)) {
+    return NextResponse.json({ error: 'Disabled in isolated rehearsal' }, { status: 503 });
+  }
   const rawBody = await req.text();
 
   // MP delivers webhooks in two shapes:

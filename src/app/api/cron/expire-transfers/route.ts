@@ -1,10 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { businessIntegrationDisabled } from '@/lib/preview-isolation';
 import { getServiceClient } from "@/lib/auth/helpers";
 import { EmailNotificationService } from "@/lib/email/notifications";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
+  if (businessIntegrationDisabled(process.env.CRON_SECRET)) {
+    return NextResponse.json({ error: 'Disabled in isolated rehearsal' }, { status: 503 });
+  }
   // Sin el secreto, cualquiera podria cancelar pedidos ajenos llamando la URL.
   const secret = process.env.CRON_SECRET;
   if (!secret || req.headers.get("authorization") !== `Bearer ${secret}`) {

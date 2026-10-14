@@ -125,10 +125,13 @@ export async function PATCH(
           if (fullOrder.user_id) {
             const { data: profile } = await supabaseAdmin
               .from('profiles')
-              .select('full_name, email')
+              .select('first_name, last_name, email')
               .eq('id', fullOrder.user_id)
               .maybeSingle();
-            fullOrder.profiles = profile;
+            fullOrder.profiles = profile ? {
+              ...profile,
+              full_name: [profile.first_name, profile.last_name].filter(Boolean).join(' ').trim(),
+            } : null;
           }
           // Prepare order data for email service
           const emailOrder = {

@@ -10,7 +10,7 @@ export const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND
 // Email configuration
 export const emailConfig = {
   from: process.env.RESEND_FROM_EMAIL || 'noreply@daluzconsciente.com',
-  replyTo: 'contacto@daluzconsciente.com',
+  replyTo: process.env.RESEND_REPLY_TO_EMAIL?.trim() || 'alkimya@daluzconsciente.com',
   domain: process.env.NEXT_PUBLIC_APP_URL || 'https://daluzconsciente.com'
 }
 
@@ -96,4 +96,4 @@ export async function sendBatchEmails(emails: Array<{
   }
   
   return results
-} 
+}

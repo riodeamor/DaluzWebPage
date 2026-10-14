@@ -1,4 +1,5 @@
 import {safeReturn} from "@/lib/treasures/catalog";
+import { assertRehearsalSupabase, isDeliveryRehearsal } from '@/lib/preview-isolation';
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
@@ -24,6 +25,16 @@ const adminRoutes = ["/admin"];
 const authRoutes = ["/login", "/register"];
 
 export async function middleware(request: NextRequest) {
+  try { assertRehearsalSupabase(); } catch {
+    return NextResponse.json({ error: 'Invalid isolated environment' }, { status: 503 });
+  }
+  if (isDeliveryRehearsal() && (
+    request.nextUrl.pathname.startsWith('/api/cron/') ||
+    request.nextUrl.pathname.startsWith('/api/webhooks/') ||
+    request.nextUrl.pathname === '/api/revalidate'
+  )) {
+    return NextResponse.json({ error: 'Disabled in isolated rehearsal' }, { status: 503 });
+  }
   const { pathname } = request.nextUrl;
 
   // Check if this is a protected route

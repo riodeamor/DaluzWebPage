@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { businessIntegrationDisabled } from '@/lib/preview-isolation';
 import { getServiceClient } from "@/lib/auth/helpers";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
 import { PaymentEffectsRepository } from "@/lib/repositories/payment-effects.repository";
@@ -7,6 +8,9 @@ import { PaymentEffectsService } from "@/lib/services/payment-effects.service";
 export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
+  if (businessIntegrationDisabled(process.env.CRON_SECRET)) {
+    return NextResponse.json({ error: 'Disabled in isolated rehearsal' }, { status: 503 });
+  }
   const secret = process.env.CRON_SECRET;
   if (!secret || req.headers.get("authorization") !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });

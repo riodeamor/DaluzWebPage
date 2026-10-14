@@ -5,13 +5,21 @@ vi.mock('@/lib/auth/helpers', () => ({ getServiceClient: mocks.service }));
 vi.mock('@/lib/email/notifications', () => ({ EmailNotificationService: { sendBankTransferExpired: mocks.mail } }));
 import { GET } from './route';
 beforeEach(() => {
-  vi.clearAllMocks(); vi.stubEnv('CRON_SECRET','test');
+  vi.clearAllMocks(); mocks.from.mockReset(); vi.stubEnv('CRON_SECRET','test');
   mocks.service.mockReturnValue({ from: mocks.from });
   const read = { select: vi.fn().mockReturnThis(), eq: vi.fn().mockReturnThis(), lt: vi.fn().mockResolvedValue({ data: [{ id:'order', order_number:'DL-test' }], error:null }) };
   const write = { update: vi.fn().mockReturnThis(), eq: vi.fn().mockReturnThis(), lt: vi.fn().mockReturnThis(), select: vi.fn().mockReturnThis(), maybeSingle: mocks.maybe };
   mocks.from.mockReturnValueOnce(read).mockReturnValue(write);
 });
 describe('vencimiento de transferencias', () => {
+  it('blocks the rehearsal even with a matching authorization, before data or mail', async () => {
+    vi.stubEnv('VERCEL_ENV', 'preview');
+    vi.stubEnv('VERCEL_GIT_COMMIT_REF', 'codex/entrega-admin-seo-delivered');
+    try {
+      expect((await GET(new NextRequest('http://localhost/api/cron/expire-transfers', { headers: { authorization: 'Bearer test' } }))).status).toBe(503);
+      expect(mocks.service).not.toHaveBeenCalled(); expect(mocks.mail).not.toHaveBeenCalled();
+    } finally { vi.unstubAllEnvs(); }
+  });
   it('no envía cancelación si otra operación ya procesó el pedido', async () => {
     mocks.maybe.mockResolvedValue({ data:null, error:null });
     const response = await GET(new NextRequest('http://localhost/api/cron/expire-transfers',{headers:{authorization:'Bearer test'}}));

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { businessIntegrationDisabled } from '@/lib/preview-isolation';
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { parseBody } from 'next-sanity/webhook';
 import { createClient } from '@supabase/supabase-js';
@@ -11,6 +12,9 @@ const supabaseAdmin = createClient(
 const SANITY_WEBHOOK_SECRET = process.env.SANITY_WEBHOOK_SECRET;
 
 export async function POST(request: NextRequest) {
+  if (businessIntegrationDisabled(process.env.SANITY_WEBHOOK_SECRET)) {
+    return NextResponse.json({ error: 'Disabled in isolated rehearsal' }, { status: 503 });
+  }
   try {
     if (!SANITY_WEBHOOK_SECRET) {
       return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 503 });

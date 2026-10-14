@@ -1,4 +1,16 @@
 const assetVersion = require("node:crypto").randomUUID();
+if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF === 'codex/entrega-admin-seo-delivered') {
+  const ref = 'pdxgpfnxsewulpieqdrf';
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL !== `https://${ref}.supabase.co`) {
+    throw new Error('Rehearsal build requires isolated Supabase');
+  }
+  for (const [name, role] of [['NEXT_PUBLIC_SUPABASE_ANON_KEY', 'anon'], ['SUPABASE_SERVICE_ROLE_KEY', 'service_role']]) {
+    try {
+      const claims = JSON.parse(Buffer.from((process.env[name] || '').split('.')[1], 'base64url').toString());
+      if (claims.ref !== ref || claims.role !== role) throw new Error('Wrong project or role');
+    } catch { throw new Error('Rehearsal build requires isolated credentials'); }
+  }
+}
 const {
   PublicAssetVersionPlugin,
 } = require("./scripts/public-asset-version.cjs");
