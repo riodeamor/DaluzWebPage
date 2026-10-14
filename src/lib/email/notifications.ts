@@ -1,4 +1,5 @@
 import { sendEmail, SUPPORT_ADMIN_EMAIL, emailConfig } from './client'
+import { formatDeliveryDate } from './delivery-date'
 import type { PreparedEmail } from './durable-delivery'
 import type { BankTransferConfig } from '@/lib/payments/bank-transfer-config'
 import { 
@@ -458,17 +459,7 @@ export class EmailNotificationService {
         ...getDefaultVariables(),
         customer_name: resolveCustomerName(order),
         order_number: order.order_number,
-        delivery_date: order.delivered_at 
-          ? new Date(order.delivered_at).toLocaleDateString('es-AR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })
-          : new Date().toLocaleDateString('es-AR', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })
+        delivery_date: formatDeliveryDate(order.delivered_at)
       };
 
       const subject = replaceTemplateVariables(template.subject, variables);
