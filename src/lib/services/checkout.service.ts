@@ -1,3 +1,4 @@
+import { isDeliveryRehearsal } from "@/lib/preview-isolation";
 import { MercadoPagoConfig, Preference } from "mercadopago";
 import {
   getMercadoPagoConfig,
@@ -123,6 +124,8 @@ export class CheckoutService {
 
       return order as OrderRecord;
     } catch (error) {
+      // The handler can recover a concurrent checkout after the unique index picks a winner.
+      if (metadata.checkout_request_id && typeof error === "object" && error !== null && "code" in error && error.code === "23505") throw error;
       console.error("Error creating order:", error);
       throw new Error("Failed to create order");
     }
@@ -163,6 +166,11 @@ export class CheckoutService {
     items: CartItem[],
     customerInfo: CustomerInfo,
   ): Promise<CheckoutResult> {
+    if (isDeliveryRehearsal()) {
+      const preferenceId = "rehearsal-" + order.id;
+      await this.ordersRepo.update(order.id, { mercadopago_preference_id: preferenceId });
+      return { preferenceId, initPoint: "" };
+    }
     const mpConfig = await getMercadoPagoConfig();
     const accessToken = await getMercadoPagoAccessToken();
 

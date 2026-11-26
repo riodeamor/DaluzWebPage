@@ -85,15 +85,20 @@ export async function POST(req: NextRequest) {
     db = serviceClient;
     const requestId = checkoutRequestId || randomUUID();
     const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal })).digest("hex");
-    const { data: existing, error: existingError } = await serviceClient.from("orders").select("id,checkout_fingerprint,checkout_ready,status,payment_method,mercadopago_preference_id").eq("user_id", user.id).eq("checkout_request_id", requestId).maybeSingle();
-    if (existingError) throw existingError;
-    if (existing) {
+    const findAttempt = async () => {
+      const { data: existing, error: existingError } = await serviceClient.from("orders").select("id,checkout_fingerprint,checkout_ready,status,payment_method,mercadopago_preference_id").eq("user_id", user.id).eq("checkout_request_id", requestId).maybeSingle();
+      if (existingError) throw existingError;
+      return existing;
+    };
+    const reuseAttempt = (existing: NonNullable<Awaited<ReturnType<typeof findAttempt>>>) => {
       if (existing.checkout_fingerprint !== fingerprint) return NextResponse.json({ error: "Este intento corresponde a otro carrito." }, { status: 409 });
       if (existing.status === "failed" || existing.status === "cancelled") return NextResponse.json({ error: "El intento anterior no está disponible. Volvé a iniciar la compra.", needsNewRequest: true }, { status: 409 });
-      if (!existing.checkout_ready && !existing.mercadopago_preference_id) return NextResponse.json({ error: "La compra sigue procesándose. Intentá nuevamente en unos segundos." }, { status: 409 });
+      if (existing.payment_method === "bank_transfer" ? !existing.checkout_ready : !existing.mercadopago_preference_id) return NextResponse.json({ error: "La compra sigue procesándose. Intentá nuevamente en unos segundos." }, { status: 409 });
       if (existing.payment_method === "bank_transfer") return NextResponse.json({ method: "bank_transfer", redirectUrl: `/checkout/transferencia/${existing.id}` });
       return NextResponse.json({ method: "mercadopago", id: existing.mercadopago_preference_id });
-    }
+    };
+    const existing = await findAttempt();
+    if (existing) return reuseAttempt(existing);
     const { items, coupon, quote } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, couponCode, paymentMethod });
     if (quote.total === null || quote.shipping === null) throw new QuoteError("Ingresá el código postal para calcular el envío.");
     if (quote.total <= 0) throw new QuoteError("El total de la compra debe ser mayor a cero.");
@@ -102,6 +107,17 @@ export async function POST(req: NextRequest) {
     const ordersRepo = new OrdersRepository(serviceClient);
     const checkoutService = new CheckoutService(ordersRepo);
     const metadata = { coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
+    const createCheckoutOrder = async () => {
+      try {
+        return await checkoutService.createOrder(user.id, customerInfo, items, paymentMethod, totals, metadata);
+      } catch (error) {
+        if (typeof error === "object" && error !== null && "code" in error && error.code === "23505") {
+          const winner = await findAttempt();
+          if (winner) return reuseAttempt(winner);
+        }
+        throw error;
+      }
+    };
     const reserveCoupon = async (orderId: string) => {
       if (!coupon) return;
       const { error } = await serviceClient.rpc("reserve_order_coupon", { p_order_id: orderId, p_coupon_id: coupon.id, p_updated_at: coupon.updated_at });
@@ -125,14 +141,8 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      const order = await checkoutService.createOrder(
-        user.id,
-        customerInfo,
-        items,
-        "bank_transfer",
-        totals,
-        metadata,
-      );
+      const order = await createCheckoutOrder();
+      if (order instanceof NextResponse) return order;
       createdOrderId = order.id;
       await checkoutService.createOrderItems(order.id, items);
       await reserveCoupon(order.id);
@@ -163,7 +173,8 @@ export async function POST(req: NextRequest) {
     }
 
     // === Business Logic via Service ===
-    const order = await checkoutService.createOrder(user.id, customerInfo, items, "mercadopago", totals, metadata);
+    const order = await createCheckoutOrder();
+    if (order instanceof NextResponse) return order;
     createdOrderId = order.id;
     await checkoutService.createOrderItems(order.id, items);
     await reserveCoupon(order.id);

@@ -896,7 +896,8 @@ export default function CheckoutPage() {
                 arriba ya limpia preferenceId al cambiar de metodo, pero esto
                 garantiza que el brick nunca aparezca en el flujo de
                 transferencia aunque quede un id colgado. */}
-            {preferenceId && paymentMethod === "mercadopago" && (
+            {preferenceId?.startsWith("rehearsal-") && <p role="status">Preferencia de pago simulada para esta compra de ensayo.</p>}
+            {preferenceId && !preferenceId.startsWith("rehearsal-") && paymentMethod === "mercadopago" && (
               <div className="mt-4">
                 <Wallet initialization={{ preferenceId }} />
               </div>

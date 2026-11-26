@@ -22,13 +22,11 @@ export async function quoteCart(db: SupabaseClient, input: z.infer<typeof quoteS
   const threshold = config ? Number(config.config_value) : null;
   if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0)) throw new QuoteError("El umbral de envío no está configurado correctamente.");
   const region = input.postalCode ? postalRegion(input.postalCode) : null;
-  const productsQuote = calculateQuote(items, coupon, false, {}, null, threshold);
-  const qualifiesFree = threshold !== null && productsQuote.netProducts > threshold;
   let rate: number | null = null, zoneName: string | null = null, carrierName: string | null = null;
   if (region) {
     const { data: zone, error } = await db.from("shipping_zones").select("id,name,is_active,regional_rate,carrier_id").eq("region_key", region).single();
-    if (error || !zone?.is_active || (zone.regional_rate === null && !qualifiesFree)) throw new QuoteError("La tarifa de esta zona no está disponible. Contactanos para coordinar el envío.");
-    rate = zone.regional_rate === null ? 0 : Number(zone.regional_rate);
+    if (error || !zone?.is_active || zone.regional_rate == null) throw new QuoteError("La tarifa de esta zona no está disponible. Contactanos para coordinar el envío.");
+    rate = Number(zone.regional_rate);
     if (!Number.isFinite(rate) || rate < 0) throw new QuoteError("La tarifa de envío no es válida.");
     zoneName = zone.name;
     if (zone.carrier_id) {
