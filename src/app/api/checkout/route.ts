@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { items: requestedItems, customerInfo, paymentMethod, couponCode, checkoutRequestId, expectedTotal } = parsed.data;
+    const { items: requestedItems, customerInfo, paymentMethod, couponCode, checkoutRequestId, expectedTotal, shippingServiceId, shippingQuoteToken } = parsed.data;
     customerInfo.postalCode = customerInfo.postalCode || customerInfo.zipCode;
 
     logger.info("Checkout request received", {
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
     const serviceClient = getServiceClient();
     db = serviceClient;
     const requestId = checkoutRequestId || randomUUID();
-    const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal })).digest("hex");
+    const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal, shippingServiceId, shippingQuoteToken })).digest("hex");
     const findAttempt = async () => {
       const { data: existing, error: existingError } = await serviceClient.from("orders").select("id,checkout_fingerprint,checkout_ready,status,payment_method,mercadopago_preference_id").eq("user_id", user.id).eq("checkout_request_id", requestId).maybeSingle();
       if (existingError) throw existingError;
@@ -99,14 +99,15 @@ export async function POST(req: NextRequest) {
     };
     const existing = await findAttempt();
     if (existing) return reuseAttempt(existing);
-    const { items, coupon, quote } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, couponCode, paymentMethod });
-    if (quote.total === null || quote.shipping === null) throw new QuoteError("Ingresá el código postal para calcular el envío.");
+    const { items, coupon, quote, shippingConfiguration } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, province: customerInfo.state, city: customerInfo.city, country: customerInfo.country, couponCode, paymentMethod, shippingServiceId });
+    if (quote.total === null || quote.shipping === null) throw new QuoteError(quote.shippingMessage || "Este destino requiere coordinar el envío.");
+    if (!shippingConfiguration || !shippingQuoteToken || shippingQuoteToken !== quote.shippingQuoteToken) throw new QuoteError("El origen, servicio o tarifa cambió. Revisá y aceptá la cotización antes de continuar.");
     if (quote.total <= 0) throw new QuoteError("El total de la compra debe ser mayor a cero.");
     if (expectedTotal !== undefined && expectedTotal !== quote.total) throw new QuoteError("El total cambió. Revisá el cálculo actualizado antes de continuar.");
     const totals = { subtotal: quote.subtotal, discount: quote.discount, shipping: quote.shipping, total: quote.total };
     const ordersRepo = new OrdersRepository(serviceClient);
     const checkoutService = new CheckoutService(ordersRepo);
-    const metadata = { coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
+    const metadata = { shipping_snapshot: { configuration: shippingConfiguration, charged_shipping_ars: quote.shipping, discounted_products_ars: quote.discountedProducts }, coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_region_name: quote.zoneName, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
     const createCheckoutOrder = async () => {
       try {
         return await checkoutService.createOrder(user.id, customerInfo, items, paymentMethod, totals, metadata);

@@ -1,7 +1,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { ProductsRepository } from "@/lib/repositories/products.repository";
 import { resolveCheckoutItems } from "@/lib/payments/checkout-catalog";
-import { calculateQuote, postalRegion, QuoteError, type Coupon } from "./pricing";
+import { calculateQuote, QuoteError, type Coupon, type Quote } from "./pricing";
+import { postalNumber } from "./shipping";
 import type { z } from "zod";
 import type { quoteSchema } from "./schemas";
 
@@ -17,25 +18,27 @@ export async function quoteCart(db: SupabaseClient, input: z.infer<typeof quoteS
     if (availabilityError) throw availabilityError;
     if (!available) throw new QuoteError("El cupón no está disponible o agotó sus usos.");
   }
-  const { data: config, error: configError } = await db.from("system_config").select("config_value").eq("config_key", "free_shipping_threshold").maybeSingle();
-  if (configError) throw configError;
-  const threshold = config ? Number(config.config_value) : null;
-  if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0)) throw new QuoteError("El umbral de envío no está configurado correctamente.");
-  const region = input.postalCode ? postalRegion(input.postalCode) : null;
-  let rate: number | null = null, zoneName: string | null = null, carrierName: string | null = null;
-  if (region) {
-    const { data: zone, error } = await db.from("shipping_zones").select("id,name,is_active,regional_rate,carrier_id").eq("region_key", region).single();
-    if (error || !zone?.is_active || zone.regional_rate == null) throw new QuoteError("La tarifa de esta zona no está disponible. Contactanos para coordinar el envío.");
-    rate = Number(zone.regional_rate);
-    if (!Number.isFinite(rate) || rate < 0) throw new QuoteError("La tarifa de envío no es válida.");
-    zoneName = zone.name;
-    if (zone.carrier_id) {
-      const { data: carrier, error: carrierError } = await db.from("shipping_carriers").select("name,is_active").eq("id", zone.carrier_id).single();
-      if (carrierError || !carrier?.is_active) throw new QuoteError("El transportista de esta zona no está disponible.");
-      carrierName = carrier.name;
-    }
-  }
+  let postal: number | null;
+  try { postal = postalNumber(input.postalCode); } catch (e) { throw new QuoteError(e instanceof Error ? e.message : "Código postal inválido."); }
+  const { data: shipping, error: shippingError } = await db.rpc("resolve_manual_shipping", {
+    p_country: input.country || "Argentina", p_province: input.province || null, p_city: input.city || null, p_postal: postal,
+    p_items: items.map(i => ({ productId: i.productId, variantId: i.variantId ?? null, quantity: i.quantity })),
+    p_service_id: input.shippingServiceId ?? null,
+  });
+  if (shippingError || !shipping) throw new QuoteError("No pudimos verificar las reglas de envío. Contactanos para coordinarlo.");
+  const threshold = shipping.threshold === null ? null : Number(shipping.threshold);
+  const rate = shipping.rate_ars === null ? null : Number(shipping.rate_ars);
+  if ((threshold !== null && (!Number.isFinite(threshold) || threshold < 0)) || (rate !== null && (!Number.isFinite(rate) || rate < 0))) throw new QuoteError("La configuración de envío no es válida. Contactanos para coordinarlo.");
   const percentages = Object.fromEntries(products.map(p => [p.id, p.discount_transfer_percent ?? 0]));
   const quote = calculateQuote(items, coupon, input.paymentMethod === "bank_transfer", percentages, rate, threshold);
-  return { items, coupon, quote: { ...quote, region, zoneName, carrierName } };
+  const shippingOptions = ((shipping.options ?? []) as NonNullable<Quote["shippingOptions"]>).map(option => ({
+    ...option,
+    quoted_shipping_ars: calculateQuote(items, coupon, input.paymentMethod === "bank_transfer", percentages,
+      option.manual_rate_ars, option.free_shipping_threshold ?? null).shipping ?? option.manual_rate_ars,
+  }));
+  return { items, coupon, shippingConfiguration: shipping.snapshot ?? null, quote: { ...quote,
+    shippingQuoteToken: shipping.quote_token ?? null, serviceId: input.shippingServiceId ?? null,
+    shippingOptions, shippingWeightG: shipping.weight_g ?? null,
+    region: shipping.region_id ?? null, zoneName: shipping.region_name ?? null, carrierName: shipping.carrier_name ?? null,
+    shippingMessage: rate === null ? (shipping.message || "Coordinar envío") : undefined } };
 }

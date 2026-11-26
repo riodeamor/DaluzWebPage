@@ -20,19 +20,11 @@ export async function PATCH(
     console.log('📝 Updating order with:', { status, payment_status, tracking_number, carrier });
 
     // Get current order to check status changes
-    const { data: currentOrder, error: currentError } = await supabase
+    const { data: currentOrder } = await supabase
       .from('orders')
-      .select('status, payment_status, shipped_at, delivered_at')
+      .select('status, shipped_at, delivered_at')
       .eq('id', params.id)
       .single();
-
-    if (currentError) return NextResponse.json({ error: "No se pudo verificar el estado actual del pedido." }, { status: 503 });
-    if (!currentOrder) return NextResponse.json({ error: "Pedido no encontrado." }, { status: 404 });
-    const closingDelivery = ["shipped", "delivered"].includes(status) && status !== currentOrder.status;
-    if (["shipped", "delivered"].includes(status) && payment_status !== undefined)
-      return NextResponse.json({ error: "Gestioná entrega y pago por separado." }, { status: 400 });
-    if (closingDelivery && currentOrder.payment_status !== "paid")
-      return NextResponse.json({ error: "El pago todavía no está confirmado. Revisá su acreditación antes de marcar el pedido enviado o entregado. Recibir un comprobante no confirma el pago." }, { status: 409 });
 
     // Build update object dynamically to only update provided fields
     const updateData: any = {
@@ -64,13 +56,10 @@ export async function PATCH(
     }
 
     // Update the order
-    let updateQuery = getServiceClient()
+    const { data: updatedOrder, error: updateError } = await getServiceClient()
       .from('orders')
       .update(updateData)
-      .eq('id', params.id);
-    // If payment or fulfillment changed since the read, require review.
-    if (closingDelivery) updateQuery = updateQuery.eq('status', currentOrder.status).eq('payment_status', 'paid');
-    const { data: updatedOrder, error: updateError } = await updateQuery
+      .eq('id', params.id)
       .select(`
         *,
         order_items (
@@ -87,7 +76,6 @@ export async function PATCH(
       .single();
 
     if (updateError) {
-      if (closingDelivery && updateError.code === "PGRST116") return NextResponse.json({ error: "El pedido cambió durante la edición. Recargá y revisá su pago y estado." }, { status: 409 });
       console.error('❌ Error updating order:', updateError);
       return NextResponse.json(
         { error: 'Failed to update order' },
@@ -114,25 +102,16 @@ export async function PATCH(
               quantity,
               unit_price,
               total_price
+            ),
+            profiles (
+              full_name,
+              email
             )
           `)
           .eq('id', params.id)
           .single();
 
         if (fullOrder) {
-          // orders and profiles both reference auth.users; they have no direct FK.
-          // Read the existing profile separately without requiring a migration.
-          if (fullOrder.user_id) {
-            const { data: profile } = await supabaseAdmin
-              .from('profiles')
-              .select('first_name, last_name, email')
-              .eq('id', fullOrder.user_id)
-              .maybeSingle();
-            fullOrder.profiles = profile ? {
-              ...profile,
-              full_name: [profile.first_name, profile.last_name].filter(Boolean).join(' ').trim(),
-            } : null;
-          }
           // Prepare order data for email service
           const emailOrder = {
             id: fullOrder.id,

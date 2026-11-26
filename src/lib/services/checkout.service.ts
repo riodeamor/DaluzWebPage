@@ -6,6 +6,7 @@ import {
 } from "@/lib/mercadopago/config";
 import { OrdersRepository } from "@/lib/repositories/orders.repository";
 import { createServiceRoleClient } from "@/utils/supabase/server";
+import { QuoteError } from "@/lib/commerce/pricing";
 
 // ============================================
 // Types
@@ -124,9 +125,11 @@ export class CheckoutService {
 
       return order as OrderRecord;
     } catch (error) {
-      // The handler can recover a concurrent checkout after the unique index picks a winner.
       if (metadata.checkout_request_id && typeof error === "object" && error !== null && "code" in error && error.code === "23505") throw error;
       console.error("Error creating order:", error);
+      if (error && typeof error === "object" && "code" in error && error.code === "P0001") {
+        throw new QuoteError("La configuración del envío cambió. Revisá la cotización antes de confirmar.");
+      }
       throw new Error("Failed to create order");
     }
   }

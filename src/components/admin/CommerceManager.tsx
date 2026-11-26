@@ -6,10 +6,10 @@ import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 
-type Entry = { id?: string; code: string; type: string; value: number; minimum_purchase: number; expires_at: string | null; usage_limit: number | null; combinable_con_transferencia: boolean; message: string; link: string | null; sort_order: number; is_active: boolean };
-const empty: Entry = { code: "", type: "percent", value: 10, minimum_purchase: 0, expires_at: null, usage_limit: null, combinable_con_transferencia: true, message: "", link: null, sort_order: 0, is_active: true };
+type Entry = { id?: string; kind: "general" | "free_shipping"; code: string; type: string; value: number; minimum_purchase: number; expires_at: string | null; usage_limit: number | null; combinable_con_transferencia: boolean; message: string; link: string | null; sort_order: number; is_active: boolean };
+const empty: Entry = { kind:"general", code: "", type: "percent", value: 10, minimum_purchase: 0, expires_at: null, usage_limit: null, combinable_con_transferencia: true, message: "", link: null, sort_order: 0, is_active: false };
 export default function CommerceManager({ kind }: { kind: "cupones" | "announcements" }) {
-  const [items, setItems] = useState<Entry[]>([]), [form, setForm] = useState<Entry>({ ...empty });
+  const [items, setItems] = useState<Entry[]>([]), [form, setForm] = useState<Entry>({ ...empty, is_active:kind === "cupones" });
   const [error, setError] = useState(""), [busy, setBusy] = useState(false), [loaded, setLoaded] = useState(false);
   const endpoint = `/api/admin/${kind}`, coupon = kind === "cupones";
   const load = async () => {
@@ -66,7 +66,7 @@ export default function CommerceManager({ kind }: { kind: "cupones" | "announcem
           <Switch id="coupon-combinable" checked={form.combinable_con_transferencia} onCheckedChange={value => setForm({ ...form, combinable_con_transferencia: value })} />
           <p>Si se desactiva, este cupón aplica sin descuento adicional por transferencia.</p>
         </> : <>
-          {field("Mensaje", "message")}<p>Usá {"{{free_shipping_threshold}}"} para mostrar el umbral de envío gratis actualizado.</p>{field("Enlace opcional", "link", "text", true)}{field("Orden de rotación", "sort_order", "number")}
+          <Label>Tipo de aviso<select aria-label="Tipo de aviso" value={form.kind || "general"} onChange={e => setForm({...form,kind:e.target.value as "general" | "free_shipping"})}><option value="general">General</option><option value="free_shipping">Envío gratis (se oculta si el beneficio no está disponible)</option></select></Label>{field("Mensaje", "message")}<p>Usá {"{{free_shipping_threshold}}"} para mostrar el umbral de envío gratis actualizado.</p>{field("Enlace opcional", "link", "text", true)}{field("Orden de rotación", "sort_order", "number")}
         </>}
         <Label htmlFor="commerce-active">Activo</Label><Switch id="commerce-active" checked={form.is_active} onCheckedChange={value => setForm({ ...form, is_active: value })} />
         <Button type="submit" disabled={busy}>Guardar</Button>

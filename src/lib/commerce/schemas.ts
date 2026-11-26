@@ -9,13 +9,18 @@ export const couponSchema = z.object({
   is_active: z.boolean().default(true), combinable_con_transferencia: z.boolean().default(true),
 }).refine(c => c.type !== "percent" || c.value <= 100, "El porcentaje no puede superar 100.");
 export const announcementSchema = z.object({
+  kind: z.enum(["general", "free_shipping"]).default("general"),
   message: z.string().trim().min(1).max(500),
   link: z.string().trim().max(2000).nullable().default(null).refine(link => !link || (/^\/(?!\/)/.test(link) && !/[\\\s]/.test(link)) || /^https:\/\/[^\s\\]+$/i.test(link), "Usá un enlace interno o HTTPS."),
-  is_active: z.boolean().default(true), sort_order: z.number().int().min(0).max(10000).default(0),
+  is_active: z.boolean().default(false), sort_order: z.number().int().min(0).max(10000).default(0),
 });
 export const quoteSchema = z.object({
+  shippingServiceId: z.string().uuid().optional(),
   items: z.array(cartItemSchema).min(1).max(100),
   postalCode: z.string().trim().max(12).optional(),
+  province: z.string().trim().max(120).optional(),
+  city: z.string().trim().max(120).optional(),
+  country: z.string().trim().max(80).optional(),
   couponCode: z.string().trim().toUpperCase().max(40).optional(),
   paymentMethod: z.enum(["mercadopago", "bank_transfer"]).default("mercadopago"),
 });

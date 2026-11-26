@@ -48,6 +48,6 @@ describe("CRUD protegido", () => {
   it("crea y pausa avisos con enlace y orden", async () => {
     expect((await notices.POST(req({ message: "Promoción", link: "/productos", sort_order: 2 }))).status).toBe(201);
     expect((await notices.PUT(req({ id, message: "Promoción", link: "/productos", sort_order: 2, is_active: false }))).status).toBe(200);
-    expect(mocks.write).toHaveBeenLastCalledWith({ message: "Promoción", link: "/productos", sort_order: 2, is_active: false });
+    expect(mocks.write).toHaveBeenLastCalledWith({ kind:"general", message: "Promoción", link: "/productos", sort_order: 2, is_active: false });
   });
 });

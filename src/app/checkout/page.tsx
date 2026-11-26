@@ -69,7 +69,8 @@ export default function CheckoutPage() {
     notes: "",
   });
 
-  const { quote, error: quoteError, pending: quotePending } = useCommerceQuote(items, form.zipCode, couponCode, paymentMethod);
+  const [shippingServiceId, setShippingServiceId] = useState("");
+  const { quote, error: quoteError, pending: quotePending } = useCommerceQuote(items, form.zipCode, couponCode, paymentMethod, { province: form.state, city: form.city, country: "Argentina", shippingServiceId: shippingServiceId || undefined });
   const requestRef = useRef<{ signature: string; id: string } | null>(null);
 
   // Cambiar de metodo invalida la preferencia de MercadoPago ya creada.
@@ -155,6 +156,7 @@ export default function CheckoutPage() {
   const handleInputChange = (field: keyof CheckoutForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
     if (field === "zipCode") setPostalCode(value);
+    if (field === "zipCode" || field === "state" || field === "city") setShippingServiceId("");
   };
 
   const validateForm = () => {
@@ -227,7 +229,7 @@ export default function CheckoutPage() {
         );
       }
 
-      const signature = JSON.stringify({ items, form, paymentMethod, couponCode, expectedTotal: quote.total });
+      const signature = JSON.stringify({ items, form, paymentMethod, couponCode, expectedTotal: quote.total, shippingServiceId, shippingQuoteToken: quote.shippingQuoteToken });
       if (requestRef.current?.signature !== signature) requestRef.current = { signature, id: crypto.randomUUID() };
       const response = await fetch("/api/checkout", {
         method: "POST",
@@ -778,7 +780,21 @@ export default function CheckoutPage() {
                   );
                 })()}
 
+                {!!quote?.shippingOptions?.length && <label className="block text-sm">Servicio de envío
+                  <select aria-label="Servicio de envío" className="block w-full rounded border p-2" value={shippingServiceId} onChange={e => setShippingServiceId(e.target.value)}>
+                    <option value="">Elegí un servicio disponible</option>
+                    {quote.shippingOptions.map(option => (
+                      <option key={option.id} value={option.id}>
+                        {option.carrier_name} · {option.modality === "branch" ? "Sucursal: " + option.branch_name + " — " + option.branch_address : "Domicilio"}
+                        {" · "}{new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(option.quoted_shipping_ars ?? option.manual_rate_ars)}
+                      </option>
+                    ))}
+                  </select>
+                </label>}
                 <CommerceControls quote={quote} error={quoteError} pending={quotePending} />
+                {!quotePending && quote?.shippingMessage === "Coordinar envío" && !quote.shippingOptions?.length && (
+                  <a className="underline" href="/contacto" target="_blank" rel="noopener noreferrer">Coordinar envío antes de pagar</a>
+                )}
 
                 {/* Totals */}
                 <div className="space-y-2">
@@ -873,7 +889,7 @@ export default function CheckoutPage() {
             {/* Submit Button */}
             <Button
               onClick={handleSubmit}
-              disabled={loading || !!preferenceId}
+              disabled={loading || !!preferenceId || quotePending || quote?.total == null}
               className="w-full font-semibold h-12 font-title transition-all hover:opacity-90"
               style={{
                 borderRadius: "0px 15px",

@@ -38,6 +38,9 @@ export async function PUT(
     if (!auth.ok) return auth.response;
     const { user, supabase } = auth;
 
+    const { data: existing, error: lookupError } = await supabase.from('shipping_zones').select('*').eq('id', params.id).single();
+    if (lookupError || !existing) return NextResponse.json({ error: 'Zona no encontrada' }, { status: 404 });
+    if (existing.region_key) return NextResponse.json({ error: 'Esta zona pertenece al modelo regional anterior.' }, { status: 409 });
     const updateData: any = {
       updated_at: new Date().toISOString()
     };
@@ -54,7 +57,6 @@ export async function PUT(
     const { data: zone, error } = await supabase
       .from('shipping_zones')
       .update(updateData)
-      .is('region_key', null)
       .eq('id', params.id)
       .select()
       .single();
@@ -81,7 +83,7 @@ export async function DELETE(
     if (!auth.ok) return auth.response;
     const { user, supabase } = auth;
 
-    const { data: regional, error: regionError } = await supabase.from('shipping_zones').select('region_key').eq('id', params.id).single();
+    const { data: regional, error: regionError } = await supabase.from('shipping_zones').select('*').eq('id', params.id).single();
     if (regionError) return NextResponse.json({ error: 'Zona no encontrada' }, { status: 404 });
     if (regional.region_key) return NextResponse.json({ error: 'Las zonas regionales se administran desde Envíos dinámicos.' }, { status: 409 });
     const { error } = await supabase

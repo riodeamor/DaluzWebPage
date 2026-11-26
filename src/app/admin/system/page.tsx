@@ -350,7 +350,7 @@ export default function SystemAdministrationPage() {
       currency: "Moneda",
       tax_rate: "Tasa de Impuesto (IVA)",
       shipping_cost: "Costo de Envío",
-      free_shipping_threshold: "Umbral de Envío Gratis",
+      free_shipping_threshold: "Umbral de envío gratis (configuración anterior)",
 
       // Inventory
       low_stock_threshold: "Umbral de Stock Bajo",
@@ -1327,6 +1327,7 @@ export default function SystemAdministrationPage() {
 
         <TabsContent value="envios" className="space-y-6">
           <RegionalShippingManager />
+          <p className="text-sm">Zonas y tarifas anteriores: se conservan durante la transición y no se convierten automáticamente en las regiones configurables.</p>
           <ShippingManager />
         </TabsContent>
 

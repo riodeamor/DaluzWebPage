@@ -13,7 +13,6 @@ export async function GET(request: NextRequest) {
     const { data: zones, error } = await supabase
       .from('shipping_zones')
       .select('*')
-      .is('region_key', null)
       .order('sort_order', { ascending: true })
       .order('name', { ascending: true });
 
@@ -22,7 +21,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch shipping zones' }, { status: 500 });
     }
 
-    return NextResponse.json({ zones: zones || [] });
+    return NextResponse.json({ zones: (zones || []).filter(zone => !zone.region_key) });
 
   } catch (error) {
     console.error('Error in shipping zones API:', error);

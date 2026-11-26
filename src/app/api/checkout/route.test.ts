@@ -76,7 +76,7 @@ const canonicalItem = {
 function request(paymentMethod?: string, items: CartItem[] = [item], extra: Record<string, unknown> = {}) {
   return new NextRequest("http://localhost/api/checkout", {
     method: "POST",
-    body: JSON.stringify({ items, customerInfo, paymentMethod, ...extra }),
+    body: JSON.stringify({ items, customerInfo, paymentMethod, shippingServiceId:"00000000-0000-0000-0000-000000000400", shippingQuoteToken:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ...extra }),
     headers: { "Content-Type": "application/json", Authorization: "Bearer test-token" },
   });
 }
@@ -90,7 +90,7 @@ function expectNoOrder() {
 beforeEach(() => {
   vi.resetAllMocks();
   mocks.existingOrder = null; mocks.dbError = null; mocks.coupon = null; mocks.couponAvailable = true; mocks.reserveError = null;
-  mocks.rpc.mockImplementation((name: string) => Promise.resolve({ data: name === "coupon_available" ? mocks.couponAvailable : null, error: name === "reserve_order_coupon" ? mocks.reserveError : null }));
+  mocks.rpc.mockImplementation((name: string, args?: { p_postal?: number | null }) => Promise.resolve({ data: name === "coupon_available" ? mocks.couponAvailable : name === "resolve_manual_shipping" ? { snapshot:{origin:{id:"synthetic"}}, quote_token:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", options:[], threshold:90000, region_id:args?.p_postal == null ? null : "region1",region_name:"Configurada",rate_ars:args?.p_postal == null ? null : 500,carrier_name:"OCA",message:"Este destino requiere coordinar el envío." } : null, error: name === "reserve_order_coupon" ? mocks.reserveError : null }));
   mocks.getUser.mockResolvedValue({ data: { user: { id: "u1" } } });
   mocks.findManyByIds.mockResolvedValue([product]);
   mocks.createOrder.mockResolvedValue({ id: "o1" });
@@ -125,11 +125,13 @@ describe("POST /api/checkout catalog validation", () => {
     expectNoOrder();
   });
 
+  it("requires explicit review when origin/tariff token changed even with the same total",async()=>{expect((await POST(request("mercadopago",[item],{shippingQuoteToken:"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",expectedTotal:2500}))).status).toBe(409);expectNoOrder();});
+  it("never confirms a new checkout without a shipping token",async()=>{expect((await POST(request("mercadopago",[item],{shippingQuoteToken:undefined}))).status).toBe(409);expectNoOrder();});
   it("preserves the default Mercado Pago response and passes catalog data to payment", async () => {
     const response = await POST(request());
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ method: "mercadopago", id: "mp1", init_point: "https://example.com/pay" });
-    expect(mocks.createOrder).toHaveBeenCalledWith("u1", customerInfo, [canonicalItem], "mercadopago", { subtotal: 2000, discount: 0, shipping: 500, total: 2500 }, expect.objectContaining({ coupon_discount_amount: 0, transfer_discount_amount: 0, shipping_zone_key: "cordoba" }));
+    expect(mocks.createOrder).toHaveBeenCalledWith("u1", customerInfo, [canonicalItem], "mercadopago", { subtotal: 2000, discount: 0, shipping: 500, total: 2500 }, expect.objectContaining({ coupon_discount_amount: 0, transfer_discount_amount: 0, shipping_zone_key: "region1", shipping_region_name: "Configurada" }));
     expect(mocks.createOrderItems).toHaveBeenCalledWith("o1", [canonicalItem]);
     expect(mocks.createMercadoPagoPreference).toHaveBeenCalledWith({ id: "o1" }, [canonicalItem], customerInfo);
   });

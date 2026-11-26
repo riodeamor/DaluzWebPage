@@ -10,6 +10,7 @@ import { POST } from './route';
 const call=()=>POST(new NextRequest('http://localhost/api/admin/orders/o1/confirm-transfer',{method:'POST'}),{params:{id:'o1'}});
 beforeEach(()=>{vi.clearAllMocks();mocks.auth.mockResolvedValue({ok:true});mocks.find.mockResolvedValue({id:'o1',payment_method:'bank_transfer',payment_status:'awaiting_transfer'});mocks.confirm.mockResolvedValue(true);});
 describe('confirmación administrativa de transferencia',()=>{
+  it('recibir un comprobante no confirma pago, stock ni efectos',async()=>{mocks.find.mockResolvedValue({payment_method:'bank_transfer',payment_status:'proof_submitted'});expect((await call()).status).toBe(409);expect(mocks.confirm).not.toHaveBeenCalled();});
   it('rechaza usuarios no administradores antes de consultar datos',async()=>{mocks.auth.mockResolvedValue({ok:false,response:NextResponse.json({}, {status:403})});expect((await call()).status).toBe(403);expect(mocks.service).not.toHaveBeenCalled();});
   it('acepta la confirmación y permite repetirla para reanudar efectos',async()=>{expect((await call()).status).toBe(200);mocks.find.mockResolvedValue({id:'o1',payment_method:'bank_transfer',payment_status:'paid'});mocks.confirm.mockResolvedValue(false);expect((await call()).status).toBe(200);expect(mocks.confirm).toHaveBeenCalledTimes(2);});
   it('rechaza otro medio de pago',async()=>{mocks.find.mockResolvedValue({payment_method:'mercadopago'});expect((await call()).status).toBe(400);expect(mocks.confirm).not.toHaveBeenCalled();});

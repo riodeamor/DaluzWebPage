@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-type Notice = { id: string; message: string; link: string | null };
+type Notice = { id: string; message: string; link: string | null; kind?: "general" | "free_shipping" };
 
 export default function ZenAnnouncementBar() {
   const [pressed, setPressed] = useState(false);
@@ -13,10 +13,10 @@ export default function ZenAnnouncementBar() {
     let active = true;
     const load = async () => {
       try {
-        const [ar, cr] = await Promise.all([fetch("/api/public/announcements", { cache: "no-store" }), fetch("/api/public/config?keys=free_shipping_threshold")]);
+        const [ar, cr] = await Promise.all([fetch("/api/public/announcements", { cache: "no-store" }), fetch("/api/public/shipping-policy", { cache: "no-store" })]);
         if (!ar.ok || !cr.ok) throw new Error("Avisos no disponibles");
         const [a, c] = await Promise.all([ar.json(), cr.json()]);
-        const amount = c.configs?.free_shipping_threshold;
+        const amount = c.freeShippingThreshold;
         if (active) { setNotices(a.announcements); setThreshold(typeof amount === "number" && Number.isFinite(amount) && amount >= 0 ? amount : null); }
       } catch { if (active) setNotices([]); }
     };
@@ -25,7 +25,7 @@ export default function ZenAnnouncementBar() {
     window.addEventListener("focus", load);
     return () => { active = false; clearInterval(timer); window.removeEventListener("focus", load); };
   }, []);
-  const visibleNotices = notices.filter(notice => threshold !== null || !notice.message.includes("{{free_shipping_threshold}}"));
+  const visibleNotices = notices.filter(notice => threshold !== null || (notice.kind !== "free_shipping" && !notice.message.includes("{{free_shipping_threshold}}")));
   const text = (notice: Notice) => notice.message.split("{{free_shipping_threshold}}").join( threshold === null ? "" : new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 2 }).format(threshold));
 
   const group = (key: string) => (

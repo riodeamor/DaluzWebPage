@@ -21,7 +21,7 @@ beforeAll(async () => {
     CREATE FUNCTION public.update_updated_at_column() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN NEW.updated_at = clock_timestamp(); RETURN NEW; END $$;
     CREATE TABLE shipping_carriers(id uuid PRIMARY KEY);
     CREATE TABLE shipping_zones(id uuid PRIMARY KEY DEFAULT gen_random_uuid(),name text,description text,sort_order integer,is_active boolean DEFAULT true);
-    CREATE TABLE orders(id uuid PRIMARY KEY,user_id uuid,status text,payment_status text,subtotal numeric(12,2));
+    CREATE TABLE orders(id uuid PRIMARY KEY,user_id uuid,status text CHECK (status IN ('pending','paid','processing','shipped','delivered','cancelled','refunded','failed','disputed')),payment_status text,subtotal numeric(12,2));
   `);
   await db.exec(readFileSync(resolve("supabase/migrations/20261002000000_dynamic_commerce.sql"), "utf8"));
 }, 60000);
@@ -55,7 +55,7 @@ describe("migración y reservas reales en PostgreSQL en memoria", () => {
     await reserve(o2);
   });
   it("un pedido pagado sigue consumiendo el cupo", async () => {
-    await reserve(o1); await db.query("UPDATE orders SET status='completed' WHERE id=$1", [o1]);
+    await reserve(o1); await db.query("UPDATE orders SET status='paid',payment_status='paid' WHERE id=$1", [o1]);
     await expect(reserve(o2)).rejects.toThrow("agotó");
   });
   it("rechaza un cupón modificado entre cotización y reserva", async () => {
