@@ -64,26 +64,42 @@ export async function PUT(
     const body = await request.json();
     const serviceClient = getServiceClient();
     const updateData = sanitizeProductPayload(body);
-
-    const { data: updatedProduct, error } = await serviceClient
+    const save = (fields: typeof updateData) => serviceClient
       .from("products")
       .update({
-        ...updateData,
+        ...fields,
         updated_at: new Date().toISOString()
       })
       .eq("id", params.id)
       .select()
       .single();
 
+    let { data: updatedProduct, error } = await save(updateData);
+    let warning: string | undefined;
+    if (error?.code === "PGRST204" && error.message.includes("'treasure_access_ids'") &&
+        Object.prototype.hasOwnProperty.call(updateData, "treasure_access_ids")) {
+      const { treasure_access_ids, ...supportedFields } = updateData;
+      ({ data: updatedProduct, error } = await save(supportedFields));
+      if (treasure_access_ids.length) {
+        warning = "La ficha se guardó. La asignación de Tesoros todavía no está habilitada.";
+      }
+    }
+
     if (error) {
       console.error("Error updating product:", error);
+      if (error.code === "23505") {
+        return NextResponse.json(
+          { error: "Ya existe un producto con la misma URL o código. Revisá esos datos y volvé a guardar." },
+          { status: 409 },
+        );
+      }
       return NextResponse.json(
-        { error: "Failed to update product", details: error.message },
+        { error: "No se pudo guardar el producto.", details: error.message, code: error.code },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, product: updatedProduct });
+    return NextResponse.json({ success: true, product: updatedProduct, warning });
   } catch (error) {
     if (error instanceof ProductFrontInfoError) {
       return NextResponse.json({ error: error.message, message: error.message }, { status: 400 });

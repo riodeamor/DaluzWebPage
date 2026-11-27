@@ -161,6 +161,7 @@ export default function ProductForm({
   } = useProtectedForm(initialData || defaultFormData);
 
   // Form protection state for edit mode
+  const [treasureAssignmentsAvailable, setTreasureAssignmentsAvailable] = useState(false);
   const [initialDataState, setInitialDataState] = useState<any>(null);
   const [hasLocalChanges, setHasLocalChanges] = useState(false);
 
@@ -204,6 +205,7 @@ export default function ProductForm({
       const productData = await productResponse.json();
 
       const product = productData.product;
+      setTreasureAssignmentsAvailable(Array.isArray(product.treasure_access_ids));
       const loadedData = {
         name: product.name || "",
         slug: product.slug || "",
@@ -343,7 +345,7 @@ export default function ProductForm({
         JSON.stringify(initialDataState?.treasure_access_ids ?? []);
       const productData = {
         ...catalogFields,
-        ...(treasuresChanged ? { treasure_access_ids } : {}),
+        ...(treasureAssignmentsAvailable && treasuresChanged ? { treasure_access_ids } : {}),
         status: status,
         price: parseFloat(formData.price) || 0,
         compare_at_price: formData.compare_at_price
@@ -366,7 +368,9 @@ export default function ProductForm({
       });
 
       if (response.ok) {
-        toast.success(
+        const { warning } = await response.json();
+        if (warning) toast.warning(warning);
+        else toast.success(
           mode === "edit"
             ? "Producto actualizado exitosamente"
             : "Producto creado exitosamente",
@@ -962,7 +966,7 @@ export default function ProductForm({
 
           {/* TAB 4: Características */}
           <TabsContent value="features" className="mt-6">
-            <CatalogFields value={formData} onChange={updateFormData} />
+            <CatalogFields value={formData} onChange={updateFormData} treasureAssignmentsAvailable={treasureAssignmentsAvailable} />
             <Card className="admin-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
