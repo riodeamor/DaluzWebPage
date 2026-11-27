@@ -15,6 +15,11 @@ describe("product rich text compatibility", () => {
     expect(result).not.toMatch(/onclick|onerror|<img|<script|alert/);
   });
 
+  it("formats legacy markers inside a saved HTML description", () => {
+    expect(sanitizeProductRichText("<p>**Acción Botánica:** y __cuidado__</p>"))
+      .toBe("<p><strong>Acción Botánica:</strong> y <u>cuidado</u></p>");
+  });
+
   it("escapes literal HTML in plain descriptions", () => {
     expect(sanitizeProductRichText("Rostro < limpio **siempre**"))
       .toContain("&lt; limpio <strong>siempre</strong>");

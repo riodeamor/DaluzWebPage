@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
-import RichTextEditor from "@/components/ui/RichTextEditor";
 import ProductVisualEditor from "./ProductVisualEditor";
 import CatalogFields from "./CatalogFields";
 import ProductImageUpload from "./ProductImageUpload";
@@ -1344,26 +1343,26 @@ export default function ProductForm({
                 {/* Instructions */}
                 <div className="space-y-2">
                   <Label>Instrucciones de Uso</Label>
-                  <RichTextEditor
+                  <ProductVisualEditor
+                    id="usage-instructions"
+                    label="Instrucciones de uso"
                     value={formData.usage_instructions}
                     onChange={(value) =>
                       handleInputChange("usage_instructions", value)
                     }
-                    placeholder="Cómo usar el producto"
-                    rows={3}
                   />
                 </div>
 
                 {/* Precautions */}
                 <div className="space-y-2">
                   <Label>Precauciones</Label>
-                  <RichTextEditor
+                  <ProductVisualEditor
+                    id="precautions"
+                    label="Precauciones"
                     value={formData.precautions}
                     onChange={(value) =>
                       handleInputChange("precautions", value)
                     }
-                    placeholder="Advertencias y precauciones"
-                    rows={2}
                   />
                 </div>
 
@@ -1410,17 +1409,16 @@ export default function ProductForm({
                   </div>
                   <div className="mt-4 space-y-2">
                     <Label>Características del Empaque</Label>
-                    <Textarea
+                    <ProductVisualEditor
+                      id="package-characteristics"
+                      label="Características del empaque"
                       value={formData.package_characteristics}
-                      onChange={(e) =>
+                      onChange={(value) =>
                         handleInputChange(
                           "package_characteristics",
-                          e.target.value,
+                          value,
                         )
                       }
-                      placeholder="Describe las características del empaque..."
-                      rows={2}
-                      className="admin-input"
                     />
                   </div>
                 </div>

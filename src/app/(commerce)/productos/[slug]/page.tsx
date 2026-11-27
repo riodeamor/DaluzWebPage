@@ -38,7 +38,6 @@ import {
   CreditCard,
 } from "lucide-react";
 import { toast } from "sonner";
-import RichTextDisplay from "@/components/ui/RichTextDisplay";
 import ProductRichText from "@/components/ui/ProductRichText";
 import { productRichTextPlainText } from "@/lib/products/rich-text";
 import ProductCard from "@/components/ui/brand/ProductCard";
@@ -1547,7 +1546,7 @@ export default function ProductDetailPage() {
                 </CardHeader>
                 <CardContent>
                   {product.usage_instructions ? (
-                    <RichTextDisplay content={product.usage_instructions} />
+                    <ProductRichText className="prose prose-sm max-w-none" content={product.usage_instructions} />
                   ) : (
                     <p className="text-tierra-media">
                       Información de uso no disponible.
@@ -1560,7 +1559,7 @@ export default function ProductDetailPage() {
                         Precauciones:
                       </h4>
                       <div className="text-sm">
-                        <RichTextDisplay content={product.precautions} />
+                        <ProductRichText className="prose prose-sm max-w-none" content={product.precautions} />
                       </div>
                     </div>
                   )}
@@ -1687,7 +1686,8 @@ export default function ProductDetailPage() {
                           borderColor: `${getColorPalette().primaryColor}10`,
                         }}
                       >
-                        <RichTextDisplay
+                        <ProductRichText
+                          className="prose prose-sm max-w-none"
                           content={product.package_characteristics}
                         />
                       </div>
