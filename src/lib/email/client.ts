@@ -1,11 +1,12 @@
 import { Resend } from 'resend'
+import { isDeliveryRehearsal } from '@/lib/preview-isolation'
 
 // Gracefully handle missing API key for development
 if (!process.env.RESEND_API_KEY) {
   console.warn('⚠️  RESEND_API_KEY not configured. Email notifications will be disabled.')
 }
 
-export const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
+export const resend = !isDeliveryRehearsal() && process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 // Email configuration
 export const emailConfig = {
@@ -43,6 +44,8 @@ export async function sendEmail(data: {
   text?: string
   replyTo?: string
 }) {
+  if (isDeliveryRehearsal()) return { success: true, id: "rehearsal-email" }
+
   // Check if Resend is configured
   if (!resend) {
     console.warn('⚠️  Resend not configured, skipping email send')

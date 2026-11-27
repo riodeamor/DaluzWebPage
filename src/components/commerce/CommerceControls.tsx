@@ -25,9 +25,11 @@ export default function CommerceControls({ quote, error, pending, includePostal 
       {pending && <p>Calculando…</p>}{error && <p role="alert">{error}</p>}
       {quote?.coupon && <p>Cupón {quote.coupon.code} aplicado: −{money(quote.couponDiscount)}{!quote.coupon.combinable_con_transferencia && ". Este cupón no permite descuento adicional por transferencia."}</p>}
       {quote && quote.transferDiscount > 0 && <p>Descuento por transferencia: −{money(quote.transferDiscount)}</p>}
-      {quote?.freeShippingThreshold !== null && quote?.freeShippingThreshold !== undefined && <p>Envío gratis con subtotal de productos post-cupón superior a {money(quote.freeShippingThreshold)}.</p>}
+      {quote?.freeShippingThreshold !== null && quote?.freeShippingThreshold !== undefined && <p>Envío gratis desde {money(quote.freeShippingThreshold)} en productos después de todos los descuentos, para destinos con cobertura y tarifa configuradas.</p>}
+      {quote?.shippingWeightG != null && <p>Peso para tarifar: {quote.shippingWeightG} g, incluido embalaje. Tarifa manual configurada; no es una cotización en tiempo real.</p>}
+      {quote?.shippingOptions?.find(option => option.id === quote.serviceId)?.modality === "branch" && <p>Sucursal: {quote.shippingOptions.find(option => option.id === quote.serviceId)?.branch_address} · CP {quote.shippingOptions.find(option => option.id === quote.serviceId)?.branch_postal_code}</p>}
       {quote && quote.shipping !== null && <p>Envío · {quote.zoneName}{quote.carrierName ? ` · ${quote.carrierName}` : ""}: {money(quote.shipping)}</p>}
-      {quote && quote.shipping === null && <p>Ingresá el código postal para conocer el envío y el total final.</p>}
+      {quote && quote.shipping === null && <p role="status">{quote.shippingMessage || "Este destino requiere coordinar el envío."} Completá provincia, localidad y código postal en el checkout para verificar la cobertura.</p>}
     </div>
   </div>;
 }

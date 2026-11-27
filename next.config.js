@@ -1,6 +1,7 @@
 const assetVersion = require("node:crypto").randomUUID();
 if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_GIT_COMMIT_REF === 'codex/entrega-admin-seo-delivered') {
   const ref = 'pdxgpfnxsewulpieqdrf';
+  process.env.DALUZ_PARCEL_PILOT = '1';
   if (process.env.NEXT_PUBLIC_SUPABASE_URL !== `https://${ref}.supabase.co`) {
     throw new Error('Rehearsal build requires isolated Supabase');
   }
@@ -121,7 +122,7 @@ module.exports = (phase) => {
   return {
     ...nextConfig,
     deploymentId: version,
-    env: { NEXT_PUBLIC_ASSET_VERSION: version },
+    env: { NEXT_PUBLIC_ASSET_VERSION: version, DALUZ_PARCEL_PILOT: process.env.DALUZ_PARCEL_PILOT || "" },
     generateBuildId: async () => version,
     webpack(config, { dev }) {
       if (!dev) config.plugins.push(new PublicAssetVersionPlugin(version));

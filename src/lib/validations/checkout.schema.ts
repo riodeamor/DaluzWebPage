@@ -29,6 +29,8 @@ export const customerInfoSchema = z.object({
 });
 
 export const checkoutPayloadSchema = z.object({
+  shippingServiceId: z.string().uuid().optional(),
+  shippingQuoteToken: z.string().regex(/^[a-f0-9]{32}$/).optional(),
   items: z.array(cartItemSchema).min(1, "No items in cart"),
   customerInfo: customerInfoSchema,
   // .default protege a clientes cacheados que todavia no mandan el campo:

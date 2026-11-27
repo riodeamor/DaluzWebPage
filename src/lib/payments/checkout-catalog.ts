@@ -9,6 +9,7 @@ export interface CheckoutProduct {
   sku: string | null;
   featured_image: string | null;
   discount_transfer_percent: number | null;
+  dimensions?: unknown;
   product_variants: {
     id: string;
     price: number;

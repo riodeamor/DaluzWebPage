@@ -11,6 +11,7 @@ const mocks = vi.hoisted(() => ({
   couponAvailable: true,
   reserveError: null as Record<string, unknown> | null,
   rpc: vi.fn(),
+  insertPilot: vi.fn(),
   findManyByIds: vi.fn(),
   createOrder: vi.fn(),
   createOrderItems: vi.fn(),
@@ -30,6 +31,7 @@ vi.mock("@/lib/auth/helpers", () => ({ getServiceClient: () => ({
   from: (table: string) => {
     const builder = {
       select: () => builder, eq: () => builder, update: () => builder,
+      insert: mocks.insertPilot,
       maybeSingle: async () => ({ data: table === "system_config" ? { config_value: "5000" } : mocks.existingOrder, error: mocks.dbError }),
       single: async () => ({ data: table === "coupons" ? mocks.coupon : { id: "zone1", name: "Córdoba", is_active: true, regional_rate: 500, carrier_id: null }, error: null }),
       then: (resolve: (result: unknown) => unknown) => resolve({ data: null, error: null }),
@@ -60,6 +62,7 @@ vi.mock("@/lib/email/notifications", () => ({
 vi.mock("@/lib/logger", () => ({ logger: { info: vi.fn(), error: vi.fn() } }));
 
 import { POST } from "./route";
+import { POST as quotePOST } from "../cart/quote/route";
 
 const product: CheckoutProduct = {
   id: "p1", name: "Formula", status: "active", currency: "ARS", price: 1000,
@@ -76,7 +79,7 @@ const canonicalItem = {
 function request(paymentMethod?: string, items: CartItem[] = [item], extra: Record<string, unknown> = {}) {
   return new NextRequest("http://localhost/api/checkout", {
     method: "POST",
-    body: JSON.stringify({ items, customerInfo, paymentMethod, ...extra }),
+    body: JSON.stringify({ items, customerInfo, paymentMethod, shippingServiceId:"00000000-0000-0000-0000-000000000400", shippingQuoteToken:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", ...extra }),
     headers: { "Content-Type": "application/json", Authorization: "Bearer test-token" },
   });
 }
@@ -90,7 +93,7 @@ function expectNoOrder() {
 beforeEach(() => {
   vi.resetAllMocks();
   mocks.existingOrder = null; mocks.dbError = null; mocks.coupon = null; mocks.couponAvailable = true; mocks.reserveError = null;
-  mocks.rpc.mockImplementation((name: string) => Promise.resolve({ data: name === "coupon_available" ? mocks.couponAvailable : null, error: name === "reserve_order_coupon" ? mocks.reserveError : null }));
+  mocks.rpc.mockImplementation((name: string, args?: { p_postal?: number | null }) => Promise.resolve({ data: name === "coupon_available" ? mocks.couponAvailable : name === "resolve_manual_shipping" ? { snapshot:{origin:{id:"synthetic"}}, quote_token:"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", options:[], threshold:90000, region_id:args?.p_postal == null ? null : "region1",region_name:"Configurada",rate_ars:args?.p_postal == null ? null : 500,carrier_name:"OCA",message:"Este destino requiere coordinar el envío." } : null, error: name === "reserve_order_coupon" ? mocks.reserveError : null }));
   mocks.getUser.mockResolvedValue({ data: { user: { id: "u1" } } });
   mocks.findManyByIds.mockResolvedValue([product]);
   mocks.createOrder.mockResolvedValue({ id: "o1" });
@@ -106,6 +109,56 @@ beforeEach(() => {
 });
 
 describe("POST /api/checkout catalog validation", () => {
+  it("quotes one or two exact pilot parcels and stores the snapshot without payment", async () => {
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("DALUZ_PARCEL_PILOT", "1");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "https://pdxgpfnxsewulpieqdrf.supabase.co");
+    try {
+      mocks.findManyByIds.mockResolvedValue([{ ...product, dimensions: {
+        length_cm: 8, width_cm: 8, height_cm: 8,
+        shipping_weights: { content_g: 100, container_g: 25 },
+      } }]);
+      const pilotService = "779a7491-f292-4ab7-bdba-496f354e706e";
+      const pilotCustomer = { ...customerInfo, city: "Mendoza Capital", state: "Mendoza", postalCode: "5500" };
+      mocks.insertPilot.mockResolvedValue({ error: null });
+      const quoteRequest = (quantity: number, postalCode: string) => new Request("http://localhost/api/cart/quote", {
+        method: "POST",
+        body: JSON.stringify({
+          items: [{ ...item, quantity }], province: "Mendoza", city: "Mendoza Capital", postalCode,
+          shippingServiceId: pilotService, paymentMethod: "bank_transfer",
+        }),
+      });
+      for (const quantity of [1, 2]) {
+        const response = await quotePOST(quoteRequest(quantity, "5500"));
+        expect(response.status).toBe(200);
+        const { quote } = await response.json();
+        expect(quote.shippingOptions).toMatchObject([{
+          parcel_count: quantity, manual_rate_ars: quantity === 1 ? 13900.41 : 27800.82,
+        }]);
+        const order = await POST(request("bank_transfer", [{ ...item, quantity }], {
+          customerInfo: pilotCustomer, shippingServiceId: pilotService,
+          checkoutRequestId: crypto.randomUUID(), expectedTotal: quote.total, shippingQuoteToken: quote.shippingQuoteToken,
+        }));
+        expect(order.status).toBe(200);
+        expect(mocks.insertPilot.mock.lastCall?.[0].snapshot.parcels).toHaveLength(quantity);
+        const stale = await POST(request("bank_transfer", [{ ...item, quantity }], {
+          customerInfo: pilotCustomer, shippingServiceId: pilotService,
+          checkoutRequestId: crypto.randomUUID(), expectedTotal: quote.total - 1,
+          shippingQuoteToken: quote.shippingQuoteToken,
+        }));
+        expect(stale.status).toBe(409);
+      }
+      const unavailable = await quotePOST(quoteRequest(1, "5501"));
+      expect((await unavailable.json()).quote).toMatchObject({
+        shippingOptions: [], shippingMessage: "Coordinar envío",
+      });
+      expect((await POST(request("bank_transfer"))).status).toBe(409);
+      expect(mocks.insertPilot).toHaveBeenCalledTimes(2);
+      expectNoOrder();
+    } finally {
+      vi.unstubAllEnvs();
+    }
+  });
   it.each(["mercadopago", "bank_transfer"])("rejects tampered prices before writing for %s", async (method) => {
     const response = await POST(request(method, [{ ...item, price: 1 }]));
     expect(response.status).toBe(409);
@@ -125,11 +178,13 @@ describe("POST /api/checkout catalog validation", () => {
     expectNoOrder();
   });
 
+  it("requires explicit review when origin/tariff token changed even with the same total",async()=>{expect((await POST(request("mercadopago",[item],{shippingQuoteToken:"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",expectedTotal:2500}))).status).toBe(409);expectNoOrder();});
+  it("never confirms a new checkout without a shipping token",async()=>{expect((await POST(request("mercadopago",[item],{shippingQuoteToken:undefined}))).status).toBe(409);expectNoOrder();});
   it("preserves the default Mercado Pago response and passes catalog data to payment", async () => {
     const response = await POST(request());
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ method: "mercadopago", id: "mp1", init_point: "https://example.com/pay" });
-    expect(mocks.createOrder).toHaveBeenCalledWith("u1", customerInfo, [canonicalItem], "mercadopago", { subtotal: 2000, discount: 0, shipping: 500, total: 2500 }, expect.objectContaining({ coupon_discount_amount: 0, transfer_discount_amount: 0, shipping_zone_key: "cordoba" }));
+    expect(mocks.createOrder).toHaveBeenCalledWith("u1", customerInfo, [canonicalItem], "mercadopago", { subtotal: 2000, discount: 0, shipping: 500, total: 2500 }, expect.objectContaining({ coupon_discount_amount: 0, transfer_discount_amount: 0, shipping_zone_key: "region1", shipping_region_name: "Configurada" }));
     expect(mocks.createOrderItems).toHaveBeenCalledWith("o1", [canonicalItem]);
     expect(mocks.createMercadoPagoPreference).toHaveBeenCalledWith({ id: "o1" }, [canonicalItem], customerInfo);
   });

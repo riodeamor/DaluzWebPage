@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import type { Quote } from "@/lib/commerce/pricing";
 import type { CartItem } from "@/contexts/CartContext";
-export function useCommerceQuote(items: CartItem[], postalCode: string, couponCode: string, paymentMethod: "mercadopago" | "bank_transfer" = "mercadopago") {
+export function useCommerceQuote(items: CartItem[], postalCode: string, couponCode: string, paymentMethod: "mercadopago" | "bank_transfer" = "mercadopago", destination?: { province?: string; city?: string; country?: string; shippingServiceId?: string }) {
   const [revision, setRevision] = useState(0);
   useEffect(() => {
     const refresh = () => setRevision(value => value + 1);
@@ -10,7 +10,7 @@ export function useCommerceQuote(items: CartItem[], postalCode: string, couponCo
     window.addEventListener("focus", refresh);
     return () => { window.removeEventListener("daluz-quote-refresh", refresh); window.removeEventListener("focus", refresh); };
   }, []);
-  const key = JSON.stringify({ items: items.map(({ productId, variantId, name, price, quantity }) => ({ productId, variantId, name, price, quantity })), postalCode: postalCode || undefined, couponCode: couponCode || undefined, paymentMethod, revision });
+  const key = JSON.stringify({ items: items.map(({ productId, variantId, name, price, quantity }) => ({ productId, variantId, name, price, quantity })), postalCode: postalCode || undefined, couponCode: couponCode || undefined, paymentMethod, ...destination, revision });
   const [result, setResult] = useState<{ key: string; quote: Quote | null; error: string }>({ key: "", quote: null, error: "" });
   useEffect(() => {
     if (!items.length) return;

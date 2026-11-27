@@ -11,6 +11,7 @@ import {
   BANK_TRANSFER_CONFIG_KEYS,
 } from "@/lib/payments/bank-transfer-config";
 import { quoteCart } from "@/lib/commerce/quote";
+import { parcelPilotEnabled } from "@/lib/commerce/parcel-pilot";
 import { QuoteError } from "@/lib/commerce/pricing";
 import { createHash, randomUUID } from "node:crypto";
 import {
@@ -72,7 +73,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { items: requestedItems, customerInfo, paymentMethod, couponCode, checkoutRequestId, expectedTotal } = parsed.data;
+    const { items: requestedItems, customerInfo, paymentMethod, couponCode, checkoutRequestId, expectedTotal, shippingServiceId, shippingQuoteToken } = parsed.data;
     customerInfo.postalCode = customerInfo.postalCode || customerInfo.zipCode;
 
     logger.info("Checkout request received", {
@@ -84,7 +85,29 @@ export async function POST(req: NextRequest) {
     const serviceClient = getServiceClient();
     db = serviceClient;
     const requestId = checkoutRequestId || randomUUID();
-    const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal })).digest("hex");
+    if (parcelPilotEnabled()) {
+      const { quote, shippingConfiguration } = await quoteCart(serviceClient, {
+        items: requestedItems, postalCode: customerInfo.postalCode, province: customerInfo.state,
+        city: customerInfo.city, country: customerInfo.country, couponCode, paymentMethod, shippingServiceId,
+      });
+      if (!checkoutRequestId || !shippingConfiguration || quote.total === null ||
+          !shippingQuoteToken || quote.shippingQuoteToken !== shippingQuoteToken || expectedTotal !== quote.total) {
+        throw new QuoteError("Revisá la cotización actualizada antes de confirmar el pedido de ensayo.");
+      }
+      const { error } = await serviceClient.from("parcel_pilot_orders").insert({
+        user_id: user.id, request_id: requestId, quote_token: shippingQuoteToken,
+        snapshot: shippingConfiguration,
+      });
+      if (error && error.code !== "23505") throw error;
+      if (error?.code === "23505") {
+        const { data: stored, error: readError } = await serviceClient.from("parcel_pilot_orders")
+          .select("quote_token").eq("user_id", user.id).eq("request_id", requestId).single();
+        if (readError) throw readError;
+        if (stored?.quote_token !== shippingQuoteToken) throw new QuoteError("Este intento corresponde a otro carrito.");
+      }
+      return NextResponse.json({ method: "parcel_pilot", id: requestId });
+    }
+    const fingerprint = createHash("sha256").update(JSON.stringify({ requestedItems, customerInfo, paymentMethod, couponCode, expectedTotal, shippingServiceId, shippingQuoteToken })).digest("hex");
     const { data: existing, error: existingError } = await serviceClient.from("orders").select("id,checkout_fingerprint,checkout_ready,status,payment_method,mercadopago_preference_id").eq("user_id", user.id).eq("checkout_request_id", requestId).maybeSingle();
     if (existingError) throw existingError;
     if (existing) {
@@ -94,14 +117,15 @@ export async function POST(req: NextRequest) {
       if (existing.payment_method === "bank_transfer") return NextResponse.json({ method: "bank_transfer", redirectUrl: `/checkout/transferencia/${existing.id}` });
       return NextResponse.json({ method: "mercadopago", id: existing.mercadopago_preference_id });
     }
-    const { items, coupon, quote } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, couponCode, paymentMethod });
-    if (quote.total === null || quote.shipping === null) throw new QuoteError("Ingresá el código postal para calcular el envío.");
+    const { items, coupon, quote, shippingConfiguration } = await quoteCart(serviceClient, { items: requestedItems, postalCode: customerInfo.postalCode, province: customerInfo.state, city: customerInfo.city, country: customerInfo.country, couponCode, paymentMethod, shippingServiceId });
+    if (quote.total === null || quote.shipping === null) throw new QuoteError(quote.shippingMessage || "Este destino requiere coordinar el envío.");
+    if (!shippingConfiguration || !shippingQuoteToken || shippingQuoteToken !== quote.shippingQuoteToken) throw new QuoteError("El origen, servicio o tarifa cambió. Revisá y aceptá la cotización antes de continuar.");
     if (quote.total <= 0) throw new QuoteError("El total de la compra debe ser mayor a cero.");
     if (expectedTotal !== undefined && expectedTotal !== quote.total) throw new QuoteError("El total cambió. Revisá el cálculo actualizado antes de continuar.");
     const totals = { subtotal: quote.subtotal, discount: quote.discount, shipping: quote.shipping, total: quote.total };
     const ordersRepo = new OrdersRepository(serviceClient);
     const checkoutService = new CheckoutService(ordersRepo);
-    const metadata = { coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
+    const metadata = { shipping_snapshot: { configuration: shippingConfiguration, charged_shipping_ars: quote.shipping, discounted_products_ars: quote.discountedProducts }, coupon_id: coupon?.id ?? null, coupon_code: coupon?.code ?? null, coupon_discount_amount: quote.couponDiscount, transfer_discount_amount: quote.transferDiscount, shipping_zone_key: quote.region, shipping_region_name: quote.zoneName, shipping_carrier_name: quote.carrierName, checkout_request_id: requestId, checkout_fingerprint: fingerprint };
     const reserveCoupon = async (orderId: string) => {
       if (!coupon) return;
       const { error } = await serviceClient.rpc("reserve_order_coupon", { p_order_id: orderId, p_coupon_id: coupon.id, p_updated_at: coupon.updated_at });

@@ -29,7 +29,7 @@ export class ProductsRepository {
       .from("products")
       .select(`
         id, name, status, currency, price, sku, featured_image,
-        discount_transfer_percent,
+        discount_transfer_percent, dimensions,
         product_variants (id, price, sku, option1, image_url)
       `)
       .in("id", Array.from(new Set(ids)));
