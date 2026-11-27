@@ -60,9 +60,7 @@ const helpCategories: Array<{
       icon: Users,
       color: "jade",
       items: [
-        { text: "Acceso a contenido", href: "/membresia" },
-        { text: "Calendario de módulos", href: "/membresia/programa" },
-        { text: "Beneficios exclusivos", href: "/membresia/comunidad" },
+        { text: "Ver la membresía", href: "/membresia" },
       ],
       cta: "Conocer más",
     },

@@ -96,7 +96,7 @@ export default function SesionesIntegralesPage() {
               </div>
             </div>
             <div className="sesiones-card-cta">
-              <Link href="/servicios/procesos/sesiones-integrales/pausa-vital" className="procesos-btn-blue">RESERVAR PAUSA VITAL →</Link>
+              <Link href="/servicios/procesos/sesiones-integrales/pausa-vital" className="procesos-btn-blue">CONOCÉ PAUSA VITAL →</Link>
             </div>
           </article>
 

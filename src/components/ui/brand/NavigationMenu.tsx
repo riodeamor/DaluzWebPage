@@ -354,16 +354,6 @@ export const daLuzNavigationItems: NavItem[] = [
     label: "Membresía",
     href: "/membresia",
     badge: "7 meses",
-    children: [
-      {
-        label: "Programa Completo",
-        children: [
-          { label: "Visión General", href: "/membresia" },
-          { label: "Módulos", href: "/membresia/modulos" },
-          { label: "Beneficios", href: "/membresia/beneficios" }
-        ]
-      }
-    ]
   },
   {
     label: "Servicios",
@@ -382,4 +372,4 @@ export const daLuzNavigationItems: NavItem[] = [
     label: "Blog",
     href: "/blog"
   }
-]; 
+];

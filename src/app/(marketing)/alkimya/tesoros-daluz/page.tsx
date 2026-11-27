@@ -262,7 +262,7 @@ export default function TesorosDaLuzPage() {
               Los Tesoros son tu portal de bienvenida. Si sentís el llamado a profundizar con prácticas somáticas de integración, autoconocimiento biológico y masterclasses de autor, te invitamos a explorar la Membresía Da Luz.
             </p>
             <Link
-              href="/membresia/programa"
+              href="/membresia"
               className="font-subtitle italic inline-block mt-4"
             >
               Explorar la Membresía Da Luz

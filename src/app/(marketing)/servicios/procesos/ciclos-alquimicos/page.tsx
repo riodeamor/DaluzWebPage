@@ -91,7 +91,7 @@ export default function CiclosAlquimicosPage() {
               </ProcesosOvalBox>
             </div>
             <div className="ciclos-cycle-cta">
-              <Link href="#" className="procesos-btn-cream ciclos-detail-link">
+              <Link href="/servicios/procesos/oasis" className="procesos-btn-cream ciclos-detail-link">
                 VER DETALLES COMPLETOS DE OASIS
               </Link>
             </div>
@@ -129,7 +129,7 @@ export default function CiclosAlquimicosPage() {
               </ProcesosOvalBox>
             </div>
             <div className="ciclos-cycle-cta">
-              <Link href="#" className="procesos-btn-cream ciclos-detail-link">
+              <Link href="/servicios/procesos/metamorfosis" className="procesos-btn-cream ciclos-detail-link">
                 VER DETALLES COMPLETOS DE METAMORFOSIS
               </Link>
             </div>

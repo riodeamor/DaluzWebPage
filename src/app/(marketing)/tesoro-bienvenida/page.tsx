@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
-export default async function TesoroBienvenidaPage({searchParams}:{searchParams:{token?:string}}) {
-  const secured = await protectTreasure("tesoro-gral", tesoroBienvenida, searchParams.token);
+export default async function TesoroBienvenidaPage({searchParams}:{searchParams:{token?:string; preview?:string}}) {
+  const secured = await protectTreasure("tesoro-gral", tesoroBienvenida, searchParams.token, searchParams.preview === "admin");
   return <><TesoroLayout treasure={secured.treasure} />{secured.pdfUrl && <a href={secured.pdfUrl} target="_blank" rel="noopener noreferrer">Descargar guía PDF</a>}</>;
 }

@@ -338,8 +338,12 @@ export default function ProductForm({
     markAsSaving();
 
     try {
+      const { treasure_access_ids, ...catalogFields } = formData;
+      const treasuresChanged = JSON.stringify(treasure_access_ids ?? []) !==
+        JSON.stringify(initialDataState?.treasure_access_ids ?? []);
       const productData = {
-        ...formData,
+        ...catalogFields,
+        ...(treasuresChanged ? { treasure_access_ids } : {}),
         status: status,
         price: parseFloat(formData.price) || 0,
         compare_at_price: formData.compare_at_price
@@ -372,7 +376,7 @@ export default function ProductForm({
       } else {
         const error = await response.json();
         toast.error(
-          error.message ||
+          error.message || error.error ||
           `Error al ${mode === "edit" ? "actualizar" : "crear"} el producto`,
         );
         markAsSaved();

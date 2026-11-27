@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { TREASURES } from "./catalog";
 import { verifyTreasure } from "./token";
 import type { TesoroData } from "@/components/tesoros/TesoroLayout";
+import { getServiceClient } from "@/lib/auth/helpers";
 export async function unlockedTreasures(
   supabase: Awaited<ReturnType<typeof createClient>>,
   userId: string,
@@ -20,6 +21,7 @@ export async function protectTreasure(
   id: string,
   treasure: TesoroData,
   token?: string,
+  adminPreview = false,
 ) {
   const entry = TREASURES.find((t) => t.id === id);
   if (!entry) throw Error("Tesoro inexistente");
@@ -31,19 +33,27 @@ export async function protectTreasure(
     redirect(
       "/login?redirect=" +
         encodeURIComponent(
-          entry.route + (token ? "?token=" + encodeURIComponent(token) : ""),
+          entry.route + (adminPreview ? "?preview=admin" : token ? "?token=" + encodeURIComponent(token) : ""),
         ) +
         "&message=tesoro",
     );
-  const rights = await unlockedTreasures(db, user.id);
-  if (!rights.includes(id) || (token && !verifyTreasure(token, user.id, id)))
-    redirect("/perfil?aviso=tesoro-no-disponible");
-  const { data: media, error } = await db
+  if (adminPreview) {
+    const { data: isAdmin, error } = await db.rpc("is_admin", { user_id: user.id });
+    if (error || isAdmin !== true) redirect("/perfil?aviso=tesoro-no-disponible");
+  } else {
+    const rights = await unlockedTreasures(db, user.id);
+    if (!rights.includes(id) || (token && !verifyTreasure(token, user.id, id)))
+      redirect("/perfil?aviso=tesoro-no-disponible");
+  }
+  const mediaDb = adminPreview ? getServiceClient() : db;
+  const { data: media, error } = await mediaDb
     .from("treasure_catalog")
     .select("audio_url,pdf_url")
     .eq("access_id", id)
     .single();
-  if (error) throw Error("No pudimos cargar el Tesoro");
+  if (adminPreview && (error?.code === "PGRST205" || error?.code === "42P01"))
+    return { treasure, pdfUrl: null };
+  if (error || !media) throw Error("No pudimos cargar el Tesoro");
   return {
     treasure: media.audio_url
       ? {

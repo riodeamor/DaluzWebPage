@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { TREASURES } from "@/lib/treasures/catalog";
 export default function MediaAdmin() {
   const [items, setItems] = useState<any[]>([]),
     [error, setError] = useState("");
@@ -17,6 +19,18 @@ export default function MediaAdmin() {
   return (
     <main>
       <h1>Archivos de Tesoros</h1>
+      <section aria-labelledby="treasure-preview-title" className="my-6">
+        <h2 id="treasure-preview-title">Vista previa de Tesoros</h2>
+        <ul className="mt-2 grid gap-2 sm:grid-cols-2">
+          {TREASURES.map((treasure) => (
+            <li key={treasure.id}>
+              <Link className="underline" href={treasure.route + "?preview=admin"} prefetch={false}>
+                Ver {treasure.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
       <p role="alert">{error}</p>
       {items.map((i, n) => (
         <form

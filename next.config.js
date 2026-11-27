@@ -17,7 +17,14 @@ const {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
-    return [{ source: "/origen", destination: "/raices", permanent: true }];
+    return [
+      { source: "/origen", destination: "/raices", permanent: true },
+      {
+        source: "/membresia/:legacy(programa|modulos|comunidad)",
+        destination: "/membresia",
+        permanent: true,
+      },
+    ];
   },
   experimental: {
     // typedRoutes: true, // Temporarily disabled

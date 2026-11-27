@@ -52,7 +52,7 @@ export default function ProcesosPage() {
                 <p className="procesos-herramienta-desc">
                   <strong>Nuestra farmacia viva para la autogestión y el reseteo orgánico.</strong> Accedé al catálogo detallado de las <strong>hierbas medicinales, tinturas madre, microdosis y elixires florales</strong> con los que formulamos y asistimos cada sendero. Conocé la signatura botánica de cada planta, sus fitoactivos específicos y cómo actúan sobre la <strong>depuración de tus filtros emuntorios</strong> (hígado, intestino, riñones) y la calibración del sistema nervioso autónomo.
                 </p>
-                <Link href="/productos" className="procesos-btn-blue">
+                <Link href="/servicios/procesos/botiquin-botanico" className="procesos-btn-blue">
                   CONOCER NUESTRAS PLANTAS Y ELIXIRES
                 </Link>
               </div>
@@ -64,7 +64,7 @@ export default function ProcesosPage() {
                 <p className="procesos-herramienta-desc">
                   <strong>Las herramientas clínicas y sutiles</strong> con las que intervenimos sobre el campo electromagnético y la memoria celular. Explorá la base técnica de nuestros abordajes: <strong>sonoterapia con cuencos tibetanos</strong> (432 Hz / ondas Alfa y Theta), radiestesia evolutiva con péndulo, desarticulación de censores subconscientes, Reiki Usui y descompresión de la fascia corporal. <strong>Saberes de alta precisión</strong> para ordenar lo sutil antes de que se cristalice en síntoma físico.
                 </p>
-                <Link href="/servicios/procesos/sesiones-integrales" className="procesos-btn-blue">
+                <Link href="/servicios/procesos/cofre-vibracional" className="procesos-btn-blue">
                   EXPLORAR HERRAMIENTAS Y TERAPIAS
                 </Link>
               </div>
