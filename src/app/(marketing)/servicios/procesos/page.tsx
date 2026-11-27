@@ -3,7 +3,6 @@ import Link from 'next/link';
 import {
   ProcesosBackground,
 } from '@/components/svg/ProcesosPageComponents';
-import './procesos-pages.css';
 
 const PROCESOS_WRAPPER = 'procesos-pages';
 

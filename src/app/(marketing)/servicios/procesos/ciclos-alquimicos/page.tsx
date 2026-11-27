@@ -4,7 +4,6 @@ import {
   ProcesosBackground,
   ProcesosOvalBox,
 } from '@/components/svg/ProcesosPageComponents';
-import '../procesos-pages.css';
 import './ciclos.css';
 
 const PROCESOS_WRAPPER = 'procesos-pages';
